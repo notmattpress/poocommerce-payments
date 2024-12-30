@@ -3,7 +3,7 @@
  */
 import config from 'config';
 
-const { merchant, shopper } = require( '@woocommerce/e2e-utils' );
+const { merchant, shopper } = require( '@poocommerce/e2e-utils' );
 
 /**
  * Internal dependencies
@@ -35,13 +35,13 @@ describe( 'Order > Full refund', () => {
 
 		// Get the order ID so we can open it in the merchant view
 		const ORDER_RECEIVED_ID_SELECTOR =
-			'.woocommerce-order-overview__order.order > strong';
+			'.poocommerce-order-overview__order.order > strong';
 		const orderIdField = await page.$( ORDER_RECEIVED_ID_SELECTOR );
 		orderId = await orderIdField.evaluate( ( el ) => el.innerText );
 
 		// Get the order total so we can verify the refund amount
 		const ORDER_RECEIVED_AMOUNT_SELECTOR =
-			'.woocommerce-order-overview__total .woocommerce-Price-amount';
+			'.poocommerce-order-overview__total .poocommerce-Price-amount';
 		const orderTotalField = await page.$( ORDER_RECEIVED_AMOUNT_SELECTOR );
 		orderAmount = await orderTotalField.evaluate( ( el ) => el.innerText );
 
@@ -124,10 +124,10 @@ describe( 'Order > Full refund', () => {
 
 		// Verify the transaction timeline reflects the refund events
 		await Promise.all( [
-			expect( page ).toMatchElement( 'li.woocommerce-timeline-item', {
+			expect( page ).toMatchElement( 'li.poocommerce-timeline-item', {
 				text: `A payment of ${ orderAmount } was successfully refunded.`,
 			} ),
-			expect( page ).toMatchElement( 'li.woocommerce-timeline-item', {
+			expect( page ).toMatchElement( 'li.poocommerce-timeline-item', {
 				text: 'Payment status changed to Refunded.',
 			} ),
 		] );

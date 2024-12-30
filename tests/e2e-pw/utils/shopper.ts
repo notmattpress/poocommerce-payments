@@ -63,11 +63,11 @@ export const fillCardDetails = async (
 ) => {
 	if (
 		await page.$(
-			'#payment .payment_method_woocommerce_payments .wcpay-upe-element'
+			'#payment .payment_method_poocommerce_payments .wcpay-upe-element'
 		)
 	) {
 		const frameHandle = await page.waitForSelector(
-			'#payment .payment_method_woocommerce_payments .wcpay-upe-element iframe'
+			'#payment .payment_method_poocommerce_payments .wcpay-upe-element iframe'
 		);
 
 		const stripeFrame = await frameHandle.contentFrame();
@@ -144,7 +144,7 @@ export const getPriceFromProduct = async ( page: Page, slug: string ) => {
 	await navigation.goToProductPageBySlug( page, slug );
 
 	const priceText = await page
-		.locator( 'ins .woocommerce-Price-amount.amount' )
+		.locator( 'ins .poocommerce-Price-amount.amount' )
 		.first()
 		.textContent();
 
@@ -194,7 +194,7 @@ export const setupCheckout = async (
 	await page.waitForTimeout( 1000 );
 	await isUIUnblocked( page );
 	await page
-		.locator( '.wc_payment_method.payment_method_woocommerce_payments' )
+		.locator( '.wc_payment_method.payment_method_poocommerce_payments' )
 		.click();
 };
 
@@ -280,16 +280,16 @@ export const emptyCart = async ( page: Page ) => {
 	}
 
 	// Remove coupons if they exist.
-	let coupons = await page.locator( '.woocommerce-remove-coupon' ).all();
+	let coupons = await page.locator( '.poocommerce-remove-coupon' ).all();
 
 	while ( coupons.length ) {
 		await coupons[ 0 ].click();
 		await isUIUnblocked( page );
 
-		coupons = await page.locator( '.woocommerce-remove-coupon' ).all();
+		coupons = await page.locator( '.poocommerce-remove-coupon' ).all();
 	}
 
-	await expect( page.locator( '.cart-empty.woocommerce-info' ) ).toHaveText(
+	await expect( page.locator( '.cart-empty.poocommerce-info' ) ).toHaveText(
 		'Your cart is currently empty.'
 	);
 };

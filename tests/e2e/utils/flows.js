@@ -14,7 +14,7 @@ const {
 	setCheckbox,
 	SHOP_PAGE,
 	WP_ADMIN_DASHBOARD,
-} = require( '@woocommerce/e2e-utils' );
+} = require( '@poocommerce/e2e-utils' );
 const {
 	fillCardDetails,
 	confirmCardAuthentication,
@@ -42,7 +42,7 @@ const WCPAY_MULTI_CURRENCY =
 	baseUrl + 'wp-admin/admin.php?page=wc-settings&tab=wcpay_multi_currency';
 const WCPAY_PAYMENT_SETTINGS =
 	baseUrl +
-	'wp-admin/admin.php?page=wc-settings&tab=checkout&section=woocommerce_payments';
+	'wp-admin/admin.php?page=wc-settings&tab=checkout&section=poocommerce_payments';
 const WC_SUBSCRIPTIONS_PAGE =
 	baseUrl + 'wp-admin/edit.php?post_type=shop_subscription';
 const ACTION_SCHEDULER = baseUrl + 'wp-admin/tools.php?page=action-scheduler';
@@ -107,7 +107,7 @@ export const shopperWCP = {
 		await Promise.all( [
 			page.waitForNavigation( { waitUntil: 'networkidle0' } ),
 			page.click(
-				'.woocommerce-MyAccount-navigation-link--customer-logout a'
+				'.poocommerce-MyAccount-navigation-link--customer-logout a'
 			),
 		] );
 	},
@@ -122,18 +122,18 @@ export const shopperWCP = {
 
 	selectNewPaymentMethod: async () => {
 		if (
-			( await page.$( '#wc-woocommerce_payments-payment-token-new' ) ) !==
+			( await page.$( '#wc-poocommerce_payments-payment-token-new' ) ) !==
 			null
 		) {
 			await expect( page ).toClick(
-				'#wc-woocommerce_payments-payment-token-new'
+				'#wc-poocommerce_payments-payment-token-new'
 			);
 		}
 	},
 
 	toggleSavePaymentMethod: async () => {
 		await expect( page ).toClick(
-			'#wc-woocommerce_payments-new-payment-method'
+			'#wc-poocommerce_payments-new-payment-method'
 		);
 	},
 
@@ -201,10 +201,10 @@ export const shopperWCP = {
 		} );
 
 		if (
-			( await page.$( '#wc-woocommerce_payments-payment-token-new' ) ) !==
+			( await page.$( '#wc-poocommerce_payments-payment-token-new' ) ) !==
 			null
 		) {
-			await setCheckbox( '#wc-woocommerce_payments-payment-token-new' );
+			await setCheckbox( '#wc-poocommerce_payments-payment-token-new' );
 		}
 
 		await fillCardDetails( page, card );
@@ -303,15 +303,15 @@ export const shopperWCP = {
 		}
 
 		// Remove coupons if they exist
-		if ( ( await page.$( '.woocommerce-remove-coupon' ) ) !== null ) {
-			await page.click( '.woocommerce-remove-coupon' );
+		if ( ( await page.$( '.poocommerce-remove-coupon' ) ) !== null ) {
+			await page.click( '.poocommerce-remove-coupon' );
 			await uiUnblocked();
 		}
 
 		await shopperWCP.waitForErrorBanner(
 			'Your cart is currently empty.',
 			'div.wc-block-components-notice-banner',
-			'.cart-empty.woocommerce-info'
+			'.cart-empty.poocommerce-info'
 		);
 	},
 
@@ -366,7 +366,7 @@ export const shopperWCP = {
 		await Promise.race( [ errorBannerToCheck, oldErrorBannerToCheck ] );
 	},
 
-	// Copy of shopper.addToCartFromShopPage from `@woocommerce/e2e-utils` until it removes the deprecated `waitFor` function.
+	// Copy of shopper.addToCartFromShopPage from `@poocommerce/e2e-utils` until it removes the deprecated `waitFor` function.
 	addToCartFromShopPage: async ( productIdOrTitle ) => {
 		if ( Number.isInteger( productIdOrTitle ) ) {
 			const addToCart = `a[data-product_id="${ productIdOrTitle }"]`;
@@ -469,7 +469,7 @@ export const merchantWCP = {
 		for ( const paymentMethod of paymentMethods ) {
 			// Skip fraud protection tools tour.
 			const tourKitDismissButton = await page.$(
-				`button.woocommerce-tour-kit-step-controls__close-btn`
+				`button.poocommerce-tour-kit-step-controls__close-btn`
 			);
 			if ( tourKitDismissButton ) {
 				await tourKitDismissButton.evaluate( ( button ) =>
@@ -504,7 +504,7 @@ export const merchantWCP = {
 		for ( const paymentMethod of paymentMethods ) {
 			// Skip fraud protection tools tour.
 			const tourKitDismissButton = await page.$(
-				`button.woocommerce-tour-kit-step-controls__close-btn`
+				`button.poocommerce-tour-kit-step-controls__close-btn`
 			);
 			if ( tourKitDismissButton ) {
 				await tourKitDismissButton.evaluate( ( button ) =>
@@ -680,12 +680,12 @@ export const merchantWCP = {
 	},
 
 	openWCPSettings: async () => {
-		await merchant.openSettings( 'checkout', 'woocommerce_payments' );
+		await merchant.openSettings( 'checkout', 'poocommerce_payments' );
 	},
 
 	skipFraudProtectionTour: async () => {
 		const tourKitDismissButton = await page.$(
-			`button.woocommerce-tour-kit-step-controls__close-btn`
+			`button.poocommerce-tour-kit-step-controls__close-btn`
 		);
 		if ( tourKitDismissButton ) {
 			await tourKitDismissButton.evaluate( ( button ) => button.click() );

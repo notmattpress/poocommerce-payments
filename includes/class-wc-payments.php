@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -347,7 +347,7 @@ class WC_Payments {
 		add_action( 'admin_init', [ __CLASS__, 'add_woo_admin_notes' ] );
 		add_action( 'init', [ __CLASS__, 'install_actions' ] );
 
-		add_action( 'woocommerce_blocks_payment_method_type_registration', [ __CLASS__, 'register_checkout_gateway' ] );
+		add_action( 'poocommerce_blocks_payment_method_type_registration', [ __CLASS__, 'register_checkout_gateway' ] );
 
 		include_once __DIR__ . '/class-wc-payments-db.php';
 		self::$db_helper = new WC_Payments_DB();
@@ -514,10 +514,10 @@ class WC_Payments {
 		self::$woopay_checkout_service->init();
 
 		// // Load woopay save user section if feature is enabled.
-		add_action( 'woocommerce_cart_loaded_from_session', [ __CLASS__, 'init_woopay' ] );
+		add_action( 'poocommerce_cart_loaded_from_session', [ __CLASS__, 'init_woopay' ] );
 
 		// Init the email template for In Person payment receipt email. We need to do it before passing the mailer to the service.
-		add_filter( 'woocommerce_email_classes', [ __CLASS__, 'add_ipp_emails' ], 10 );
+		add_filter( 'poocommerce_email_classes', [ __CLASS__, 'add_ipp_emails' ], 10 );
 
 		// Always load tracker to avoid class not found errors.
 		include_once WCPAY_ABSPATH . 'includes/admin/tracks/class-tracker.php';
@@ -617,12 +617,12 @@ class WC_Payments {
 		self::set_express_checkout_helper( $express_checkout_helper );
 
 		// Delay registering hooks that could end up in a fatal error due to expired account cache.
-		// The `woocommerce_payments_account_refreshed` action will result in a fatal error if it's fired before the `$wp_rewrite` is defined.
+		// The `poocommerce_payments_account_refreshed` action will result in a fatal error if it's fired before the `$wp_rewrite` is defined.
 		// See #8942 for more details.
 		add_action(
 			'setup_theme',
 			function () {
-				add_action( 'woocommerce_payments_account_refreshed', [ WooPay_Order_Status_Sync::class, 'remove_webhook' ] );
+				add_action( 'poocommerce_payments_account_refreshed', [ WooPay_Order_Status_Sync::class, 'remove_webhook' ] );
 
 				self::maybe_register_woopay_hooks();
 				self::maybe_display_express_checkout_buttons();
@@ -638,27 +638,27 @@ class WC_Payments {
 				self::get_gateway()->get_upe_enabled_payment_method_ids()
 			);
 			if ( [] !== $enabled_bnpl_payment_methods ) {
-				add_action( 'woocommerce_single_product_summary', [ __CLASS__, 'load_stripe_bnpl_site_messaging' ], 10 );
-				add_action( 'woocommerce_proceed_to_checkout', [ __CLASS__, 'load_stripe_bnpl_site_messaging' ], 5 );
-				add_action( 'woocommerce_blocks_enqueue_cart_block_scripts_after', [ __CLASS__, 'load_stripe_bnpl_site_messaging' ] );
+				add_action( 'poocommerce_single_product_summary', [ __CLASS__, 'load_stripe_bnpl_site_messaging' ], 10 );
+				add_action( 'poocommerce_proceed_to_checkout', [ __CLASS__, 'load_stripe_bnpl_site_messaging' ], 5 );
+				add_action( 'poocommerce_blocks_enqueue_cart_block_scripts_after', [ __CLASS__, 'load_stripe_bnpl_site_messaging' ] );
 				add_action( 'wc_ajax_wcpay_get_cart_total', [ __CLASS__, 'ajax_get_cart_total' ] );
 				add_action( 'wc_ajax_wcpay_check_bnpl_availability', [ __CLASS__, 'ajax_check_bnpl_availability' ] );
 			}
 		}
 
-		add_filter( 'woocommerce_payment_gateways', [ __CLASS__, 'register_gateway' ] );
-		add_filter( 'option_woocommerce_gateway_order', [ __CLASS__, 'set_gateway_top_of_list' ], 2 );
-		add_filter( 'default_option_woocommerce_gateway_order', [ __CLASS__, 'set_gateway_top_of_list' ], 3 );
-		add_filter( 'default_option_woocommerce_gateway_order', [ __CLASS__, 'replace_wcpay_gateway_with_payment_methods' ], 4 );
-		add_filter( 'woocommerce_rest_api_option_permissions', [ __CLASS__, 'add_wcpay_options_to_woocommerce_permissions_list' ], 5 );
-		add_filter( 'woocommerce_admin_get_user_data_fields', [ __CLASS__, 'add_user_data_fields' ] );
+		add_filter( 'poocommerce_payment_gateways', [ __CLASS__, 'register_gateway' ] );
+		add_filter( 'option_poocommerce_gateway_order', [ __CLASS__, 'set_gateway_top_of_list' ], 2 );
+		add_filter( 'default_option_poocommerce_gateway_order', [ __CLASS__, 'set_gateway_top_of_list' ], 3 );
+		add_filter( 'default_option_poocommerce_gateway_order', [ __CLASS__, 'replace_wcpay_gateway_with_payment_methods' ], 4 );
+		add_filter( 'poocommerce_rest_api_option_permissions', [ __CLASS__, 'add_wcpay_options_to_poocommerce_permissions_list' ], 5 );
+		add_filter( 'poocommerce_admin_get_user_data_fields', [ __CLASS__, 'add_user_data_fields' ] );
 
 		// Add note query support for source.
-		add_filter( 'woocommerce_rest_notes_object_query', [ __CLASS__, 'possibly_add_source_to_notes_query' ], 10, 2 );
-		add_filter( 'woocommerce_note_where_clauses', [ __CLASS__, 'possibly_add_note_source_where_clause' ], 10, 2 );
+		add_filter( 'poocommerce_rest_notes_object_query', [ __CLASS__, 'possibly_add_source_to_notes_query' ], 10, 2 );
+		add_filter( 'poocommerce_note_where_clauses', [ __CLASS__, 'possibly_add_note_source_where_clause' ], 10, 2 );
 
 		// Priority 5 so we can manipulate the registered gateways before they are shown.
-		add_action( 'woocommerce_admin_field_payment_gateways', [ __CLASS__, 'hide_gateways_on_settings_page' ], 5 );
+		add_action( 'poocommerce_admin_field_payment_gateways', [ __CLASS__, 'hide_gateways_on_settings_page' ], 5 );
 
 		require_once __DIR__ . '/migrations/class-allowed-payment-request-button-types-update.php';
 		require_once __DIR__ . '/migrations/class-allowed-payment-request-button-sizes-update.php';
@@ -671,17 +671,17 @@ class WC_Payments {
 		require_once __DIR__ . '/migrations/class-erase-bnpl-announcement-meta.php';
 		require_once __DIR__ . '/migrations/class-erase-deprecated-flags-and-options.php';
 		require_once __DIR__ . '/migrations/class-manual-capture-payment-method-settings-update.php';
-		add_action( 'woocommerce_woocommerce_payments_updated', [ new Allowed_Payment_Request_Button_Types_Update( self::get_gateway() ), 'maybe_migrate' ] );
-		add_action( 'woocommerce_woocommerce_payments_updated', [ new \WCPay\Migrations\Allowed_Payment_Request_Button_Sizes_Update( self::get_gateway() ), 'maybe_migrate' ] );
-		add_action( 'woocommerce_woocommerce_payments_updated', [ new \WCPay\Migrations\Update_Service_Data_From_Server( self::get_account_service() ), 'maybe_migrate' ] );
-		add_action( 'woocommerce_woocommerce_payments_updated', [ new \WCPay\Migrations\Additional_Payment_Methods_Admin_Notes_Removal(), 'maybe_migrate' ] );
-		add_action( 'woocommerce_woocommerce_payments_updated', [ new \WCPay\Migrations\Link_WooPay_Mutual_Exclusion_Handler( self::get_gateway() ), 'maybe_migrate' ] );
-		add_action( 'woocommerce_woocommerce_payments_updated', [ new \WCPay\Migrations\Gateway_Settings_Sync( self::get_gateway(), self::get_payment_gateway_map() ), 'maybe_sync' ] );
-		add_action( 'woocommerce_woocommerce_payments_updated', [ '\WCPay\Migrations\Delete_Active_WooPay_Webhook', 'maybe_delete' ] );
-		add_action( 'woocommerce_woocommerce_payments_updated', [ new \WCPay\Migrations\Giropay_Deprecation_Settings_Update( self::get_gateway(), self::get_payment_gateway_map() ), 'maybe_migrate' ] );
-		add_action( 'woocommerce_woocommerce_payments_updated', [ new \WCPay\Migrations\Erase_Bnpl_Announcement_Meta(), 'maybe_migrate' ] );
-		add_action( 'woocommerce_woocommerce_payments_updated', [ new \WCPay\Migrations\Erase_Deprecated_Flags_And_Options(), 'maybe_migrate' ] );
-		add_action( 'woocommerce_woocommerce_payments_updated', [ new \WCPay\Migrations\Manual_Capture_Payment_Method_Settings_Update( self::get_gateway(), self::get_payment_gateway_map() ), 'maybe_migrate' ] );
+		add_action( 'poocommerce_poocommerce_payments_updated', [ new Allowed_Payment_Request_Button_Types_Update( self::get_gateway() ), 'maybe_migrate' ] );
+		add_action( 'poocommerce_poocommerce_payments_updated', [ new \WCPay\Migrations\Allowed_Payment_Request_Button_Sizes_Update( self::get_gateway() ), 'maybe_migrate' ] );
+		add_action( 'poocommerce_poocommerce_payments_updated', [ new \WCPay\Migrations\Update_Service_Data_From_Server( self::get_account_service() ), 'maybe_migrate' ] );
+		add_action( 'poocommerce_poocommerce_payments_updated', [ new \WCPay\Migrations\Additional_Payment_Methods_Admin_Notes_Removal(), 'maybe_migrate' ] );
+		add_action( 'poocommerce_poocommerce_payments_updated', [ new \WCPay\Migrations\Link_WooPay_Mutual_Exclusion_Handler( self::get_gateway() ), 'maybe_migrate' ] );
+		add_action( 'poocommerce_poocommerce_payments_updated', [ new \WCPay\Migrations\Gateway_Settings_Sync( self::get_gateway(), self::get_payment_gateway_map() ), 'maybe_sync' ] );
+		add_action( 'poocommerce_poocommerce_payments_updated', [ '\WCPay\Migrations\Delete_Active_WooPay_Webhook', 'maybe_delete' ] );
+		add_action( 'poocommerce_poocommerce_payments_updated', [ new \WCPay\Migrations\Giropay_Deprecation_Settings_Update( self::get_gateway(), self::get_payment_gateway_map() ), 'maybe_migrate' ] );
+		add_action( 'poocommerce_poocommerce_payments_updated', [ new \WCPay\Migrations\Erase_Bnpl_Announcement_Meta(), 'maybe_migrate' ] );
+		add_action( 'poocommerce_poocommerce_payments_updated', [ new \WCPay\Migrations\Erase_Deprecated_Flags_And_Options(), 'maybe_migrate' ] );
+		add_action( 'poocommerce_poocommerce_payments_updated', [ new \WCPay\Migrations\Manual_Capture_Payment_Method_Settings_Update( self::get_gateway(), self::get_payment_gateway_map() ), 'maybe_migrate' ] );
 
 		include_once WCPAY_ABSPATH . '/includes/class-wc-payments-explicit-price-formatter.php';
 		WC_Payments_Explicit_Price_Formatter::init();
@@ -695,7 +695,7 @@ class WC_Payments {
 			include_once WCPAY_ABSPATH . 'includes/admin/class-wc-payments-admin.php';
 		}
 
-		if ( is_admin() && current_user_can( 'manage_woocommerce' ) ) {
+		if ( is_admin() && current_user_can( 'manage_poocommerce' ) ) {
 			$admin = new WC_Payments_Admin(
 				self::$api_client,
 				self::get_gateway(),
@@ -732,13 +732,13 @@ class WC_Payments {
 		}
 
 		if ( defined( 'WC_VERSION' ) && version_compare( WC_VERSION, '7.9.0', '<' ) ) {
-			add_action( 'woocommerce_onboarding_profile_data_updated', 'WC_Payments_Features::maybe_enable_wcpay_subscriptions_after_onboarding', 10, 2 );
+			add_action( 'poocommerce_onboarding_profile_data_updated', 'WC_Payments_Features::maybe_enable_wcpay_subscriptions_after_onboarding', 10, 2 );
 		}
 
-		add_action( 'woocommerce_woocommerce_payments_updated', [ __CLASS__, 'maybe_disable_wcpay_subscriptions_on_update' ] );
+		add_action( 'poocommerce_poocommerce_payments_updated', [ __CLASS__, 'maybe_disable_wcpay_subscriptions_on_update' ] );
 
 		add_action( 'rest_api_init', [ __CLASS__, 'init_rest_api' ] );
-		add_action( 'woocommerce_woocommerce_payments_updated', [ __CLASS__, 'set_plugin_activation_timestamp' ] );
+		add_action( 'poocommerce_poocommerce_payments_updated', [ __CLASS__, 'set_plugin_activation_timestamp' ] );
 
 		add_action( 'admin_enqueue_scripts', [ __CLASS__, 'enqueue_dev_runtime_scripts' ] );
 
@@ -761,7 +761,7 @@ class WC_Payments {
 	}
 
 	/**
-	 * Adds IPP Email template to WooCommerce emails.
+	 * Adds IPP Email template to PooCommerce emails.
 	 *
 	 * @param array $email_classes the email classes.
 	 * @return array
@@ -807,7 +807,7 @@ class WC_Payments {
 			self::$plugin_headers = get_file_data(
 				WCPAY_PLUGIN_FILE,
 				[
-					// Mirrors the functionality on WooCommerce core: https://github.com/woocommerce/woocommerce/blob/ff2eadeccec64aa76abd02c931bf607dd819bbf0/includes/wc-core-functions.php#L1916 .
+					// Mirrors the functionality on PooCommerce core: https://github.com/poocommerce/poocommerce/blob/ff2eadeccec64aa76abd02c931bf607dd819bbf0/includes/wc-core-functions.php#L1916 .
 					'WCRequires' => 'WC requires at least',
 
 					'RequiresWP' => 'Requires at least',
@@ -886,7 +886,7 @@ class WC_Payments {
 
 	/**
 	 * Replace the main WCPay gateway with all WCPay payment methods
-	 * when retrieving the "woocommerce_gateway_order" option.
+	 * when retrieving the "poocommerce_gateway_order" option.
 	 *
 	 * @param array $ordering Gateway order.
 	 *
@@ -934,7 +934,7 @@ class WC_Payments {
 	 * By default, new payment gateways are put at the bottom of the list on the admin "Payments" settings screen.
 	 * For visibility, we want WooPayments to be at the top of the list.
 	 * NOTE: this can be removed after WC version 5.6, when the api supports the use of source.
-	 * https://github.com/woocommerce/woocommerce-admin/pull/6979
+	 * https://github.com/poocommerce/poocommerce-admin/pull/6979
 	 *
 	 * @param array           $args Existing ordering of the payment gateways.
 	 * @param WP_REST_Request $request Full details about the request.
@@ -956,7 +956,7 @@ class WC_Payments {
 	/**
 	 * Adds source where clause to note query.
 	 * NOTE: this can be removed after WC version 5.6, when the api supports the use of source.
-	 * https://github.com/woocommerce/woocommerce-admin/pull/6979
+	 * https://github.com/poocommerce/poocommerce-admin/pull/6979
 	 *
 	 * @param string $where_clauses Existing ordering of the payment gateways.
 	 * @param array  $args Full details about the request.
@@ -996,7 +996,7 @@ class WC_Payments {
 		}
 
 		return new $api_client_class(
-			'WooCommerce Payments/' . WCPAY_VERSION_NUMBER,
+			'PooCommerce Payments/' . WCPAY_VERSION_NUMBER,
 			$http_class,
 			self::$db_helper
 		);
@@ -1014,7 +1014,7 @@ class WC_Payments {
 		$http_class = apply_filters( 'wc_payments_http', null );
 
 		if ( ! $http_class instanceof WC_Payments_Http_Interface ) {
-			$http_class = new WC_Payments_Http( new Automattic\Jetpack\Connection\Manager( 'woocommerce-payments' ) );
+			$http_class = new WC_Payments_Http( new Automattic\Jetpack\Connection\Manager( 'poocommerce-payments' ) );
 			$http_class->init_hooks();
 		}
 
@@ -1445,7 +1445,7 @@ class WC_Payments {
 	/**
 	 * Registers the payment method with the blocks registry.
 	 *
-	 * @param Automattic\WooCommerce\Blocks\Payments\PaymentMethodRegistry $payment_method_registry The registry.
+	 * @param Automattic\PooCommerce\Blocks\Payments\PaymentMethodRegistry $payment_method_registry The registry.
 	 */
 	public static function register_checkout_gateway( $payment_method_registry ) {
 		require_once __DIR__ . '/class-wc-payments-blocks-payment-method.php';
@@ -1456,8 +1456,8 @@ class WC_Payments {
 	 * Handles upgrade routines.
 	 */
 	public static function install_actions() {
-		if ( version_compare( WCPAY_VERSION_NUMBER, get_option( 'woocommerce_woocommerce_payments_version' ), '>' ) ) {
-			do_action( 'woocommerce_woocommerce_payments_updated' );
+		if ( version_compare( WCPAY_VERSION_NUMBER, get_option( 'poocommerce_poocommerce_payments_version' ), '>' ) ) {
+			do_action( 'poocommerce_poocommerce_payments_updated' );
 			self::update_plugin_version();
 		}
 	}
@@ -1466,7 +1466,7 @@ class WC_Payments {
 	 * Updates the plugin version in db.
 	 */
 	public static function update_plugin_version() {
-		update_option( 'woocommerce_woocommerce_payments_version', WCPAY_VERSION_NUMBER );
+		update_option( 'poocommerce_poocommerce_payments_version', WCPAY_VERSION_NUMBER );
 	}
 
 	/**
@@ -1499,26 +1499,26 @@ class WC_Payments {
 			WC_Payments_Notes_Set_Up_StripeLink::possibly_add_note();
 		}
 
-		if ( defined( 'WC_VERSION' ) && version_compare( WC_VERSION, '7.5', '<' ) && get_woocommerce_currency() === 'NOK' ) {
-			add_filter( 'admin_notices', [ __CLASS__, 'wcpay_show_old_woocommerce_for_norway_notice' ] );
+		if ( defined( 'WC_VERSION' ) && version_compare( WC_VERSION, '7.5', '<' ) && get_poocommerce_currency() === 'NOK' ) {
+			add_filter( 'admin_notices', [ __CLASS__, 'wcpay_show_old_poocommerce_for_norway_notice' ] );
 		}
 
-		add_filter( 'admin_notices', [ __CLASS__, 'wcpay_show_old_woocommerce_for_hungary_sweden_and_czech_republic' ] );
+		add_filter( 'admin_notices', [ __CLASS__, 'wcpay_show_old_poocommerce_for_hungary_sweden_and_czech_republic' ] );
 	}
 
 	/**
-	 * Shows an alert notice for Norwegian merchants on WooCommerce 7.4 and below
+	 * Shows an alert notice for Norwegian merchants on PooCommerce 7.4 and below
 	 */
-	public static function wcpay_show_old_woocommerce_for_norway_notice() {
+	public static function wcpay_show_old_poocommerce_for_norway_notice() {
 		?>
 		<div class="notice wcpay-notice notice-error">
 			<p>
 			<?php
 			echo WC_Payments_Utils::esc_interpolated_html( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				sprintf(
-					/* translators: %1$s: WooCommerce, %2$s: WooPayments, a1: documentation URL */
-					__( 'The %1$s version you have installed is not compatible with %2$s for a Norwegian business. Please update %1$s to version 7.5 or above. You can do that via the <a1>the plugins page.</a1>', 'woocommerce-payments' ),
-					'WooCommerce',
+					/* translators: %1$s: PooCommerce, %2$s: WooPayments, a1: documentation URL */
+					__( 'The %1$s version you have installed is not compatible with %2$s for a Norwegian business. Please update %1$s to version 7.5 or above. You can do that via the <a1>the plugins page.</a1>', 'poocommerce-payments' ),
+					'PooCommerce',
 					'WooPayments'
 				),
 				[
@@ -1580,38 +1580,38 @@ class WC_Payments {
 			add_action( 'wc_ajax_wcpay_get_woopay_signature', [ __CLASS__, 'ajax_get_woopay_signature' ] );
 			add_action( 'wc_ajax_wcpay_get_woopay_minimum_session_data', [ WooPay_Session::class, 'ajax_get_woopay_minimum_session_data' ] );
 
-			// This injects the payments API and draft orders into core, so the WooCommerce Blocks plugin is not necessary.
+			// This injects the payments API and draft orders into core, so the PooCommerce Blocks plugin is not necessary.
 			// We should remove this once both features are available by default in the WC minimum supported version.
 			// - The payments API is currently only available in feature builds (with flag `WC_BLOCKS_IS_FEATURE_PLUGIN`).
 			// - The Draft order status is available after WC blocks 7.5.0.
 			if (
 				! defined( 'WC_BLOCKS_IS_FEATURE_PLUGIN' ) &&
-				class_exists( 'Automattic\WooCommerce\Blocks\Package' ) &&
-				class_exists( 'Automattic\WooCommerce\Blocks\Payments\Api' )
+				class_exists( 'Automattic\PooCommerce\Blocks\Package' ) &&
+				class_exists( 'Automattic\PooCommerce\Blocks\Payments\Api' )
 			) {
 				// Register payments API.
-				$blocks_package_container = Automattic\WooCommerce\Blocks\Package::container();
+				$blocks_package_container = Automattic\PooCommerce\Blocks\Package::container();
 				$blocks_package_container->register(
-					Automattic\WooCommerce\Blocks\Payments\Api::class,
+					Automattic\PooCommerce\Blocks\Payments\Api::class,
 					function ( $container ) {
-						$payment_method_registry = $container->get( Automattic\WooCommerce\Blocks\Payments\PaymentMethodRegistry::class );
-						$asset_data_registry     = $container->get( Automattic\WooCommerce\Blocks\Assets\AssetDataRegistry::class );
-						return new Automattic\WooCommerce\Blocks\Payments\Api( $payment_method_registry, $asset_data_registry );
+						$payment_method_registry = $container->get( Automattic\PooCommerce\Blocks\Payments\PaymentMethodRegistry::class );
+						$asset_data_registry     = $container->get( Automattic\PooCommerce\Blocks\Assets\AssetDataRegistry::class );
+						return new Automattic\PooCommerce\Blocks\Payments\Api( $payment_method_registry, $asset_data_registry );
 					}
 				);
-				$blocks_package_container->get( Automattic\WooCommerce\Blocks\Payments\Api::class );
+				$blocks_package_container->get( Automattic\PooCommerce\Blocks\Payments\Api::class );
 
 				// Register draft orders.
-				$draft_orders = $blocks_package_container->get( Automattic\WooCommerce\Blocks\Domain\Services\DraftOrders::class );
+				$draft_orders = $blocks_package_container->get( Automattic\PooCommerce\Blocks\Domain\Services\DraftOrders::class );
 
 				add_filter( 'wc_order_statuses', [ $draft_orders, 'register_draft_order_status' ] );
-				add_filter( 'woocommerce_register_shop_order_post_statuses', [ $draft_orders, 'register_draft_order_post_status' ] );
-				add_filter( 'woocommerce_analytics_excluded_order_statuses', [ $draft_orders, 'append_draft_order_post_status' ] );
-				add_filter( 'woocommerce_valid_order_statuses_for_payment', [ $draft_orders, 'append_draft_order_post_status' ] );
-				add_filter( 'woocommerce_valid_order_statuses_for_payment_complete', [ $draft_orders, 'append_draft_order_post_status' ] );
+				add_filter( 'poocommerce_register_shop_order_post_statuses', [ $draft_orders, 'register_draft_order_post_status' ] );
+				add_filter( 'poocommerce_analytics_excluded_order_statuses', [ $draft_orders, 'append_draft_order_post_status' ] );
+				add_filter( 'poocommerce_valid_order_statuses_for_payment', [ $draft_orders, 'append_draft_order_post_status' ] );
+				add_filter( 'poocommerce_valid_order_statuses_for_payment_complete', [ $draft_orders, 'append_draft_order_post_status' ] );
 				// Hook into the query to retrieve My Account orders so draft status is excluded.
-				add_action( 'woocommerce_my_account_my_orders_query', [ $draft_orders, 'delete_draft_order_post_status_from_args' ] );
-				add_action( 'woocommerce_cleanup_draft_orders', [ $draft_orders, 'delete_expired_draft_orders' ] );
+				add_action( 'poocommerce_my_account_my_orders_query', [ $draft_orders, 'delete_draft_order_post_status_from_args' ] );
+				add_action( 'poocommerce_cleanup_draft_orders', [ $draft_orders, 'delete_expired_draft_orders' ] );
 				add_action( 'admin_init', [ $draft_orders, 'install' ] );
 			}
 
@@ -1725,7 +1725,7 @@ class WC_Payments {
 
 		if ( ! $is_nonce_valid ) {
 			wp_send_json_error(
-				__( 'You aren’t authorized to do that.', 'woocommerce-payments' ),
+				__( 'You aren’t authorized to do that.', 'poocommerce-payments' ),
 				403
 			);
 		}
@@ -1759,7 +1759,7 @@ class WC_Payments {
 		WC()->cart->calculate_totals();
 
 		$cart_total    = WC()->cart->total;
-		$currency_code = get_woocommerce_currency();
+		$currency_code = get_poocommerce_currency();
 
 		wp_send_json( [ 'total' => WC_Payments_Utils::prepare_amount( $cart_total, $currency_code ) ] );
 	}
@@ -1790,16 +1790,16 @@ class WC_Payments {
 	public static function woopay_fields_before_billing_details() {
 		$checkout = WC()->checkout;
 
-		echo '<div class="woocommerce-billing-fields" id="contact_details">';
+		echo '<div class="poocommerce-billing-fields" id="contact_details">';
 
-		echo '<h3>' . esc_html( __( 'Contact information', 'woocommerce-payments' ) ) . '</h3>';
+		echo '<h3>' . esc_html( __( 'Contact information', 'poocommerce-payments' ) ) . '</h3>';
 
-		echo '<div class="woocommerce-billing-fields__field-wrapper">';
-		woocommerce_form_field(
+		echo '<div class="poocommerce-billing-fields__field-wrapper">';
+		poocommerce_form_field(
 			'billing_email',
 			[
 				'type'        => 'email',
-				'label'       => __( 'Email address', 'woocommerce-payments' ),
+				'label'       => __( 'Email address', 'poocommerce-payments' ),
 				'class'       => [ 'form-row-wide woopay-billing-email' ],
 				'input_class' => [ 'woopay-billing-email-input' ],
 				'validate'    => [ 'email' ],
@@ -1825,7 +1825,7 @@ class WC_Payments {
 	 * @param string $value Field value.
 	 * @return string
 	 */
-	public static function filter_woocommerce_form_field_woopay_email( $field, $key, $args, $value ) {
+	public static function filter_poocommerce_form_field_woopay_email( $field, $key, $args, $value ) {
 		$class = $args['class'][0];
 		if ( false === strpos( $class, 'woopay-billing-email' ) && is_checkout() && ! is_checkout_pay_page() ) {
 			$field = '';
@@ -1861,9 +1861,9 @@ class WC_Payments {
 		// Load woopay save user section if feature is enabled.
 		if ( self::$woopay_util->should_enable_woopay( self::get_gateway() ) ) {
 			// Update email field location.
-			add_action( 'woocommerce_checkout_billing', [ __CLASS__, 'woopay_fields_before_billing_details' ], -50 );
-			add_filter( 'woocommerce_form_field_email', [ __CLASS__, 'filter_woocommerce_form_field_woopay_email' ], 20, 4 );
-			add_action( 'woocommerce_checkout_process', [ __CLASS__, 'maybe_show_woopay_phone_number_error' ] );
+			add_action( 'poocommerce_checkout_billing', [ __CLASS__, 'woopay_fields_before_billing_details' ], -50 );
+			add_filter( 'poocommerce_form_field_email', [ __CLASS__, 'filter_poocommerce_form_field_woopay_email' ], 20, 4 );
+			add_action( 'poocommerce_checkout_process', [ __CLASS__, 'maybe_show_woopay_phone_number_error' ] );
 
 			include_once __DIR__ . '/woopay-user/class-woopay-save-user.php';
 
@@ -1914,14 +1914,14 @@ class WC_Payments {
 	 *
 	 * @return  array              An array containing the modified permissions.
 	 */
-	public static function add_wcpay_options_to_woocommerce_permissions_list( $permissions ) {
+	public static function add_wcpay_options_to_poocommerce_permissions_list( $permissions ) {
 		$wcpay_permissions_list = array_fill_keys(
 			[
 				'wcpay_frt_discover_banner_settings',
 				'wcpay_multi_currency_setup_completed',
-				'woocommerce_dismissed_todo_tasks',
-				'woocommerce_remind_me_later_todo_tasks',
-				'woocommerce_deleted_todo_tasks',
+				'poocommerce_dismissed_todo_tasks',
+				'poocommerce_remind_me_later_todo_tasks',
+				'poocommerce_deleted_todo_tasks',
 				'wcpay_fraud_protection_welcome_tour_dismissed',
 				'wcpay_payouts_rename_notice_dismissed',
 				'wcpay_capability_request_dismissed_notices',
@@ -1998,11 +1998,11 @@ class WC_Payments {
 	}
 
 	/**
-	 * Shows an alert notice for Hungarian, Sweden, and Czech Republic merchants on WooCommerce 7.4 and below
+	 * Shows an alert notice for Hungarian, Sweden, and Czech Republic merchants on PooCommerce 7.4 and below
 	 */
-	public static function wcpay_show_old_woocommerce_for_hungary_sweden_and_czech_republic() {
+	public static function wcpay_show_old_poocommerce_for_hungary_sweden_and_czech_republic() {
 		$currencies        = [ 'HUF', 'SEK', 'CZK' ];
-		$store_currency    = get_woocommerce_currency();
+		$store_currency    = get_poocommerce_currency();
 		$should_show_error = in_array( $store_currency, $currencies, true );
 
 		if ( ! defined( 'WC_VERSION' ) || ! version_compare( WC_VERSION, '7.8', '<' ) || ! $should_show_error ) {
@@ -2013,16 +2013,16 @@ class WC_Payments {
 
 		switch ( $store_currency ) {
 			case 'HUF':
-				/* translators: %1$s: WooCommerce , %2$s: WooPayments, %3$s: The current WooCommerce version used by the store */
-				$notice = __( 'The %1$s version you have installed is not compatible with %2$s for a Hungarian business. Please update %1$s to version 7.8 or above (you are using %3$s). You can do that via the <a1>the plugins page.</a1>', 'woocommerce-payments' );
+				/* translators: %1$s: PooCommerce , %2$s: WooPayments, %3$s: The current PooCommerce version used by the store */
+				$notice = __( 'The %1$s version you have installed is not compatible with %2$s for a Hungarian business. Please update %1$s to version 7.8 or above (you are using %3$s). You can do that via the <a1>the plugins page.</a1>', 'poocommerce-payments' );
 				break;
 			case 'SEK':
-				/* translators: %1$s: WooCommerce , %2$s: WooPayments, %3$s: The current WooCommerce version used by the store */
-				$notice = __( 'The %1$s version you have installed is not compatible with %2$s for a Swedish business. Please update %1$s to version 7.8 or above (you are using %3$s). You can do that via the <a1>the plugins page.</a1>', 'woocommerce-payments' );
+				/* translators: %1$s: PooCommerce , %2$s: WooPayments, %3$s: The current PooCommerce version used by the store */
+				$notice = __( 'The %1$s version you have installed is not compatible with %2$s for a Swedish business. Please update %1$s to version 7.8 or above (you are using %3$s). You can do that via the <a1>the plugins page.</a1>', 'poocommerce-payments' );
 				break;
 			case 'CZK':
-				/* translators: %1$s: WooCommerce , %2$s: WooPayments, %3$s: The current WooCommerce version used by the store */
-				$notice = __( 'The %1$s version you have installed is not compatible with %2$s for a Czech Republic business. Please update %1$s to version 7.8 or above (you are using %3$s). You can do that via the <a1>the plugins page.</a1>', 'woocommerce-payments' );
+				/* translators: %1$s: PooCommerce , %2$s: WooPayments, %3$s: The current PooCommerce version used by the store */
+				$notice = __( 'The %1$s version you have installed is not compatible with %2$s for a Czech Republic business. Please update %1$s to version 7.8 or above (you are using %3$s). You can do that via the <a1>the plugins page.</a1>', 'poocommerce-payments' );
 				break;
 		}
 
@@ -2033,7 +2033,7 @@ class WC_Payments {
 			echo WC_Payments_Utils::esc_interpolated_html( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				sprintf(
 					$notice,
-					'WooCommerce',
+					'PooCommerce',
 					'WooPayments',
 					esc_html( WC_VERSION )
 				),
@@ -2105,7 +2105,7 @@ class WC_Payments {
 		if ( isset( $_POST['save_user_in_woopay'] ) && 'true' === $_POST['save_user_in_woopay'] ) {
 			// phpcs:ignore WordPress.Security.NonceVerification.Missing
 			if ( ! isset( $_POST['woopay_user_phone_field'] ) || ! isset( $_POST['woopay_user_phone_field']['no-country-code'] ) || empty( $_POST['woopay_user_phone_field']['no-country-code'] ) ) {
-				wc_add_notice( '<strong>' . __( 'Mobile Number', 'woocommerce-payments' ) . '</strong> ' . __( 'is required to create an WooPay account.', 'woocommerce-payments' ), 'error' );
+				wc_add_notice( '<strong>' . __( 'Mobile Number', 'poocommerce-payments' ) . '</strong> ' . __( 'is required to create an WooPay account.', 'poocommerce-payments' ), 'error' );
 			}
 		}
 	}

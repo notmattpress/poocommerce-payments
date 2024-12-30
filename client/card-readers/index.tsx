@@ -27,13 +27,13 @@ export const ConnectedReaders = (): JSX.Element => {
 						name: 'connected-readers',
 						title: __(
 							'Connected readers',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						),
 						className: 'connected-readers-list',
 					},
 					{
 						name: 'receipt-details',
-						title: __( 'Receipt details', 'woocommerce-payments' ),
+						title: __( 'Receipt details', 'poocommerce-payments' ),
 						className: 'connected-readers-receipt-details',
 					},
 				] }

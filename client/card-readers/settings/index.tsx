@@ -21,12 +21,12 @@ import BrandingDetailsSection from './sections/branding-details';
 
 const ReadersSettingsDescription = (): JSX.Element => (
 	<>
-		<h2>{ __( 'Card reader receipts', 'woocommerce-payments' ) }</h2>
+		<h2>{ __( 'Card reader receipts', 'poocommerce-payments' ) }</h2>
 		<p>
 			{ __(
 				'These details will appear on emailed receipts for customers that pay in person using card readers. ' +
 					'Updating the details here will not affect any other stores settings.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			) }
 		</p>
 	</>

@@ -3,7 +3,7 @@
  * External dependencies
  */
 import { render, waitFor } from '@testing-library/react';
-import { downloadCSVFile } from '@woocommerce/csv-export';
+import { downloadCSVFile } from '@poocommerce/csv-export';
 import apiFetch from '@wordpress/api-fetch';
 import os from 'os';
 
@@ -26,8 +26,8 @@ import {
 } from 'wcpay/types/disputes';
 import { formatDateTimeFromString } from 'wcpay/utils/date-time';
 
-jest.mock( '@woocommerce/csv-export', () => {
-	const actualModule = jest.requireActual( '@woocommerce/csv-export' );
+jest.mock( '@poocommerce/csv-export', () => {
+	const actualModule = jest.requireActual( '@poocommerce/csv-export' );
 
 	return {
 		...actualModule,

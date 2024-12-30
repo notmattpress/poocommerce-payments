@@ -6,7 +6,7 @@
  * Internal dependencies
  */
 
-declare module '@woocommerce/explat' {
+declare module '@poocommerce/explat' {
 	interface ExperimentProps {
 		name: string;
 		defaultExperience: JSX.Element;
@@ -29,8 +29,8 @@ declare module '@automattic/interpolate-components' {
 
 	export = interpolateComponents;
 }
-declare module '@woocommerce/components' {
-	import type { Query } from '@woocommerce/navigation';
+declare module '@poocommerce/components' {
+	import type { Query } from '@poocommerce/navigation';
 
 	interface ReportFiltersProps {
 		advancedFilters?: Record< string, unknown >;
@@ -103,7 +103,7 @@ declare module '@woocommerce/components' {
 	const TableCard: ( props: TableCardProps ) => JSX.Element;
 }
 
-declare module '@woocommerce/navigation' {
+declare module '@poocommerce/navigation' {
 	import type { BrowserHistory, Location } from 'history';
 	/**
 	 * Extension of history.BrowserHistory but also adds { pathname: string } to the location object.
@@ -160,8 +160,8 @@ declare module '@woocommerce/navigation' {
 	const getHistory: () => WooBrowserHistory;
 }
 
-declare module '@woocommerce/csv-export' {
-	import type { TableCardColumn } from '@woocommerce/components';
+declare module '@poocommerce/csv-export' {
+	import type { TableCardColumn } from '@poocommerce/components';
 
 	const downloadCSVFile: ( fileName: string, content: string ) => void;
 	const generateCSVDataFromTable: (

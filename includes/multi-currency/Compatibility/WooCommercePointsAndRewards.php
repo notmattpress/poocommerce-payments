@@ -1,6 +1,6 @@
 <?php
 /**
- * Class WooCommercePointsAndRewards
+ * Class PooCommercePointsAndRewards
  *
  * @package WCPay\MultiCurrency\Compatibility
  */
@@ -10,9 +10,9 @@ namespace WCPay\MultiCurrency\Compatibility;
 use WCPay\MultiCurrency\Currency;
 
 /**
- * Class that controls Multi Currency Compatibility with WooCommerce Points & Rewards Plugin.
+ * Class that controls Multi Currency Compatibility with PooCommerce Points & Rewards Plugin.
  */
-class WooCommercePointsAndRewards extends BaseCompatibility {
+class PooCommercePointsAndRewards extends BaseCompatibility {
 
 	/**
 	 * Default Currency Code.

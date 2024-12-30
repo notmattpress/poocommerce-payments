@@ -11,7 +11,7 @@
  */
 import config from 'config';
 
-const { shopper, merchant } = require( '@woocommerce/e2e-utils' );
+const { shopper, merchant } = require( '@poocommerce/e2e-utils' );
 
 /**
  * Internal dependencies
@@ -33,7 +33,7 @@ import {
 } from '../../../utils/payments';
 
 describeif( RUN_WC_BLOCKS_TESTS )(
-	'WooCommerce Blocks > Successful purchase',
+	'PooCommerce Blocks > Successful purchase',
 	() => {
 		beforeAll( async () => {
 			try {
@@ -64,7 +64,7 @@ describeif( RUN_WC_BLOCKS_TESTS )(
 					text: 'Place Order',
 				}
 			);
-			await page.waitForSelector( 'div.woocommerce-order' );
+			await page.waitForSelector( 'div.poocommerce-order' );
 			await expect( page ).toMatchTextContent( 'p', {
 				text: 'Thank you. Your order has been received.',
 			} );
@@ -93,7 +93,7 @@ describeif( RUN_WC_BLOCKS_TESTS )(
 			await page.waitForNavigation( {
 				waitUntil: 'networkidle0',
 			} );
-			await page.waitForSelector( 'div.woocommerce-order' );
+			await page.waitForSelector( 'div.poocommerce-order' );
 			await expect( page ).toMatchTextContent( 'p', {
 				text: 'Thank you. Your order has been received.',
 			} );

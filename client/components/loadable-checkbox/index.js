@@ -115,7 +115,7 @@ const LoadableCheckboxControl = ( {
 										/* translators: %s: a payment method name. */
 										__(
 											'%s cannot be enabled at checkout. Click to expand.',
-											'woocommerce-payments'
+											'poocommerce-payments'
 										),
 										label
 									) }

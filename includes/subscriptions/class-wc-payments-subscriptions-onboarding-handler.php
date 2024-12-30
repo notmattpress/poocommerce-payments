@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Subscriptions_Onboarding_Handler
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -38,11 +38,11 @@ class WC_Payments_Subscriptions_Onboarding_Handler {
 	 */
 	public function __construct( WC_Payments_Account $account ) {
 		// This action is triggered on product save but after other required subscriptions logic is triggered.
-		add_action( 'woocommerce_admin_process_product_object', [ $this, 'product_save' ] );
-		add_action( 'woocommerce_payments_account_refreshed', [ $this, 'account_data_refreshed' ] );
+		add_action( 'poocommerce_admin_process_product_object', [ $this, 'product_save' ] );
+		add_action( 'poocommerce_payments_account_refreshed', [ $this, 'account_data_refreshed' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_modal_scripts_and_styles' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_toast_script' ] );
-		add_filter( 'woocommerce_subscriptions_admin_pointer_script_parameters', [ $this, 'filter_admin_pointer_script_parameters' ] );
+		add_filter( 'poocommerce_subscriptions_admin_pointer_script_parameters', [ $this, 'filter_admin_pointer_script_parameters' ] );
 
 		$this->account = $account;
 	}
@@ -187,7 +187,7 @@ class WC_Payments_Subscriptions_Onboarding_Handler {
 			'wcpaySubscriptionProductOnboardingModal',
 			[
 				'connectUrl'  => WC_Payments_Account::get_connect_url( 'WC_SUBSCRIPTIONS_PUBLISH_PRODUCT_' . $post->ID ),
-				'pluginScope' => ( defined( 'WC_VERSION' ) && version_compare( WC_VERSION, '6.5', '>=' ) ) ? 'woocommerce-admin' : 'woocommerce',
+				'pluginScope' => ( defined( 'WC_VERSION' ) && version_compare( WC_VERSION, '6.5', '>=' ) ) ? 'poocommerce-admin' : 'poocommerce',
 			]
 		);
 
@@ -235,7 +235,7 @@ class WC_Payments_Subscriptions_Onboarding_Handler {
 			'wcpay-subscription-product-onboarding-toast',
 			'wcpaySubscriptionProductOnboardingToast',
 			[
-				'pluginScope' => ( defined( 'WC_VERSION' ) && version_compare( WC_VERSION, '6.5', '>=' ) ) ? 'woocommerce-admin' : 'woocommerce',
+				'pluginScope' => ( defined( 'WC_VERSION' ) && version_compare( WC_VERSION, '6.5', '>=' ) ) ? 'poocommerce-admin' : 'poocommerce',
 			]
 		);
 
@@ -244,7 +244,7 @@ class WC_Payments_Subscriptions_Onboarding_Handler {
 
 	/**
 	 * Modifies the pointer content found on the "Add new product" page
-	 * when WooCommerce Subscriptions is not active.
+	 * when PooCommerce Subscriptions is not active.
 	 *
 	 * @param array $pointer_params Array of strings used on the "Add new product" page.
 	 * @return array Potentially modified array of strings used on the "Add new product" page.
@@ -255,7 +255,7 @@ class WC_Payments_Subscriptions_Onboarding_Handler {
 		}
 
 		// translators: %1$s: <h3> tag, %2$s: </h3> tag, %3$s: <p> tag, %4$s: WooPayments, %5$s: <em> tag, %6$s: </em> tag, %7$s: <em> tag, %8$s: </em> tag, %9$s: </p> tag.
-		$pointer_params['typePointerContent'] = sprintf( _x( '%1$sChoose Subscription%2$s%3$s%4$s adds two new subscription product types - %5$sSimple subscription%6$s and %7$sVariable subscription%8$s.%9$s', 'used in admin pointer script params in javascript as type pointer content', 'woocommerce-payments' ), '<h3>', '</h3>', '<p>', 'WooPayments', '<em>', '</em>', '<em>', '</em>', '</p>' );
+		$pointer_params['typePointerContent'] = sprintf( _x( '%1$sChoose Subscription%2$s%3$s%4$s adds two new subscription product types - %5$sSimple subscription%6$s and %7$sVariable subscription%8$s.%9$s', 'used in admin pointer script params in javascript as type pointer content', 'poocommerce-payments' ), '<h3>', '</h3>', '<p>', 'WooPayments', '<em>', '</em>', '<em>', '</em>', '</p>' );
 
 		return $pointer_params;
 	}

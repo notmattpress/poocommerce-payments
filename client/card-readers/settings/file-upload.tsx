@@ -52,7 +52,7 @@ const BrandingFileUpload: React.FunctionComponent< CardReaderFileUploadProps > =
 			createErrorNotice(
 				__(
 					'The file you have attached is exceeding the maximum limit.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				)
 			);
 

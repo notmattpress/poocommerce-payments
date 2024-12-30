@@ -2,7 +2,7 @@
  * External dependencies
  */
 import config from 'config';
-const { merchant, shopper, withRestApi } = require( '@woocommerce/e2e-utils' );
+const { merchant, shopper, withRestApi } = require( '@poocommerce/e2e-utils' );
 import {
 	RUN_SUBSCRIPTIONS_TESTS,
 	describeif,
@@ -39,8 +39,8 @@ const testSelectors = {
 	checkoutSubscriptionDetails: '.subscription-details',
 	checkoutSubscriptionFirstPaymentDate: '.first-payment-date',
 	checkoutPlaceOrderButton: '#place_order',
-	checkoutOrderId: '.woocommerce-order-overview__order.order > strong',
-	wcOrderPaymentId: '.woocommerce-order-data__meta',
+	checkoutOrderId: '.poocommerce-order-overview__order.order > strong',
+	wcOrderPaymentId: '.poocommerce-order-data__meta',
 	subscriptionStatus: '.subscription-status',
 	subscriptionProductName: '.order-item',
 	subscriptionRecurringTotal: '.recurring_total',

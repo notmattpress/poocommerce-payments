@@ -6,7 +6,7 @@ import { useDispatch } from '@wordpress/data';
 import { Flex } from '@wordpress/components';
 import { __, sprintf } from '@wordpress/i18n';
 import interpolateComponents from '@automattic/interpolate-components';
-import { Link } from '@woocommerce/components';
+import { Link } from '@poocommerce/components';
 
 /**
  * Internal dependencies
@@ -156,7 +156,7 @@ const AccountBalances: React.FC = () => {
 									__(
 										/* translators: %$1$s: Available instant payout amount, %2$s: Instant payout fee percentage */
 										'Get %1$s via instant payout. Funds are typically in your bank account within 30 mins. Fee: %2$s%%.',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									),
 									formatCurrency(
 										selectedOverview.instantBalance.amount,
@@ -179,7 +179,7 @@ const AccountBalances: React.FC = () => {
 									buttonIcon={ <HelpOutlineIcon /> }
 									buttonLabel={ __(
 										'Learn more about instant payouts',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									) }
 									content={
 										/* 'With instant payout you can receive requested funds in your bank account within 30 mins for a 1.5% fee. Learn more' */
@@ -189,7 +189,7 @@ const AccountBalances: React.FC = () => {
 												__(
 													/* translators: %s: Instant payout fee percentage */
 													'With {{strong}}instant payout{{/strong}} you can receive requested funds in your bank account within 30 mins for a %s%% fee. {{learnMoreLink}}Learn more{{/learnMoreLink}}',
-													'woocommerce-payments'
+													'poocommerce-payments'
 												),
 												selectedOverview.instantBalance
 													.fee_percentage
@@ -198,7 +198,7 @@ const AccountBalances: React.FC = () => {
 												strong: <strong />,
 												learnMoreLink: (
 													<Link
-														href="https://woocommerce.com/document/woopayments/payouts/instant-payouts/"
+														href="https://poocommerce.com/document/woopayments/payouts/instant-payouts/"
 														target="_blank"
 														rel="noreferrer"
 														type="external"

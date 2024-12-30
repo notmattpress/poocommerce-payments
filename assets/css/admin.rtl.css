@@ -1,4 +1,4 @@
-/* TODO: When merging into WooCommerce Core, integrate these icons into the WooCommerce.ttf icon font */
+/* TODO: When merging into PooCommerce Core, integrate these icons into the PooCommerce.ttf icon font */
 @font-face {
 	font-family: 'WCPay';
 	src: url( '../fonts/WCPay.eot' );
@@ -135,12 +135,12 @@
 	background-image: url( '../images/payment-methods/klarna.svg' );
 }
 
-.wc_gateways tr[data-gateway_id='woocommerce_payments'] .payment-method__icon {
+.wc_gateways tr[data-gateway_id='poocommerce_payments'] .payment-method__icon {
 	border: 1px solid #ddd;
 	border-radius: 2px;
 }
 
-.woocommerce-payments-page .woocommerce-inbox-message .components-dropdown {
+.poocommerce-payments-page .poocommerce-inbox-message .components-dropdown {
 	position: absolute;
 }
 

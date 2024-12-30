@@ -3,10 +3,10 @@
 exports[`Deposits list renders correctly a single deposit 1`] = `
 <div>
   <div
-    class=" woocommerce-payments-page"
+    class=" poocommerce-payments-page"
   >
     <div
-      class="woocommerce-filters-deposits"
+      class="poocommerce-filters-deposits"
     >
       <h2
         class="screen-reader-text"
@@ -14,16 +14,16 @@ exports[`Deposits list renders correctly a single deposit 1`] = `
         Filters
       </h2>
       <div
-        class="woocommerce-filters"
+        class="poocommerce-filters"
       >
         <div
-          class="woocommerce-filters__basic-filters"
+          class="poocommerce-filters__basic-filters"
         >
           <div
-            class="woocommerce-filters-filter"
+            class="poocommerce-filters-filter"
           >
             <span
-              class="woocommerce-filters-label"
+              class="poocommerce-filters-label"
             >
               Payout currency
               :
@@ -34,11 +34,11 @@ exports[`Deposits list renders correctly a single deposit 1`] = `
             >
               <button
                 aria-expanded="false"
-                class="components-button woocommerce-dropdown-button"
+                class="components-button poocommerce-dropdown-button"
                 type="button"
               >
                 <div
-                  class="woocommerce-dropdown-button__labels"
+                  class="poocommerce-dropdown-button__labels"
                 >
                   <span>
                     All
@@ -48,10 +48,10 @@ exports[`Deposits list renders correctly a single deposit 1`] = `
             </div>
           </div>
           <div
-            class="woocommerce-filters-filter"
+            class="poocommerce-filters-filter"
           >
             <span
-              class="woocommerce-filters-label"
+              class="poocommerce-filters-label"
             >
               Show
               :
@@ -62,11 +62,11 @@ exports[`Deposits list renders correctly a single deposit 1`] = `
             >
               <button
                 aria-expanded="false"
-                class="components-button woocommerce-dropdown-button"
+                class="components-button poocommerce-dropdown-button"
                 type="button"
               >
                 <div
-                  class="woocommerce-dropdown-button__labels"
+                  class="poocommerce-dropdown-button__labels"
                 >
                   <span>
                     All payouts
@@ -79,7 +79,7 @@ exports[`Deposits list renders correctly a single deposit 1`] = `
       </div>
     </div>
     <div
-      class="components-surface components-card woocommerce-table wcpay-deposits-list woocommerce-report-table has-actions has-menu css-nsno0f-View-Surface-getBorders-primary-Card-rounded em57xhy0"
+      class="components-surface components-card poocommerce-table wcpay-deposits-list poocommerce-report-table has-actions has-menu css-nsno0f-View-Surface-getBorders-primary-Card-rounded em57xhy0"
       data-wp-c16t="true"
       data-wp-component="Card"
     >
@@ -99,10 +99,10 @@ exports[`Deposits list renders correctly a single deposit 1`] = `
             Payout history
           </h2>
           <div
-            class="woocommerce-table__actions"
+            class="poocommerce-table__actions"
           >
             <button
-              class="components-button woocommerce-table__download-button"
+              class="components-button poocommerce-table__download-button"
               type="button"
             >
               <svg
@@ -119,14 +119,14 @@ exports[`Deposits list renders correctly a single deposit 1`] = `
                 </g>
               </svg>
               <span
-                class="woocommerce-table__download-button__label"
+                class="poocommerce-table__download-button__label"
               >
                 Download
               </span>
             </button>
           </div>
           <div
-            class="woocommerce-ellipsis-menu"
+            class="poocommerce-ellipsis-menu"
           >
             <div
               class="components-dropdown"
@@ -134,7 +134,7 @@ exports[`Deposits list renders correctly a single deposit 1`] = `
             >
               <button
                 aria-expanded="false"
-                class="components-button woocommerce-ellipsis-menu__toggle"
+                class="components-button poocommerce-ellipsis-menu__toggle"
                 title="Choose which values to display"
                 type="button"
               >
@@ -162,12 +162,12 @@ exports[`Deposits list renders correctly a single deposit 1`] = `
         >
           <div
             aria-labelledby="caption-1"
-            class="woocommerce-table__table"
+            class="poocommerce-table__table"
             role="group"
           >
             <table>
               <caption
-                class="woocommerce-table__caption screen-reader-text"
+                class="poocommerce-table__caption screen-reader-text"
                 id="caption-1"
               >
                 Payout history
@@ -175,7 +175,7 @@ exports[`Deposits list renders correctly a single deposit 1`] = `
               <tbody>
                 <tr>
                   <th
-                    class="woocommerce-table__header info-button is-sorted is-left-aligned"
+                    class="poocommerce-table__header info-button is-sorted is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -185,7 +185,7 @@ exports[`Deposits list renders correctly a single deposit 1`] = `
                   </th>
                   <th
                     aria-sort="descending"
-                    class="woocommerce-table__header date-time is-left-aligned is-sortable is-sorted"
+                    class="poocommerce-table__header date-time is-left-aligned is-sortable is-sorted"
                     role="columnheader"
                     scope="col"
                   >
@@ -225,7 +225,7 @@ exports[`Deposits list renders correctly a single deposit 1`] = `
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-left-aligned"
+                    class="poocommerce-table__header is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -242,7 +242,7 @@ exports[`Deposits list renders correctly a single deposit 1`] = `
                   </th>
                   <th
                     aria-sort="none"
-                    class="woocommerce-table__header is-sortable is-numeric"
+                    class="poocommerce-table__header is-sortable is-numeric"
                     role="columnheader"
                     scope="col"
                   >
@@ -282,7 +282,7 @@ exports[`Deposits list renders correctly a single deposit 1`] = `
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-left-aligned"
+                    class="poocommerce-table__header is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -298,7 +298,7 @@ exports[`Deposits list renders correctly a single deposit 1`] = `
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-left-aligned"
+                    class="poocommerce-table__header is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -314,7 +314,7 @@ exports[`Deposits list renders correctly a single deposit 1`] = `
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-left-aligned"
+                    class="poocommerce-table__header is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -332,7 +332,7 @@ exports[`Deposits list renders correctly a single deposit 1`] = `
                 </tr>
                 <tr>
                   <th
-                    class="woocommerce-table__item info-button is-sorted is-left-aligned"
+                    class="poocommerce-table__item info-button is-sorted is-left-aligned"
                     scope="row"
                   >
                     <a
@@ -355,7 +355,7 @@ exports[`Deposits list renders correctly a single deposit 1`] = `
                     </a>
                   </th>
                   <td
-                    class="woocommerce-table__item date-time is-left-aligned is-sorted"
+                    class="poocommerce-table__item date-time is-left-aligned is-sorted"
                   >
                     <a
                       data-link-type="wc-admin"
@@ -365,10 +365,10 @@ exports[`Deposits list renders correctly a single deposit 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Fpayouts%2Fdetails&id=po_mock1"
                       tabindex="-1"
@@ -377,10 +377,10 @@ exports[`Deposits list renders correctly a single deposit 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Fpayouts%2Fdetails&id=po_mock1"
                       tabindex="-1"
@@ -389,10 +389,10 @@ exports[`Deposits list renders correctly a single deposit 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Fpayouts%2Fdetails&id=po_mock1"
                       tabindex="-1"
@@ -405,10 +405,10 @@ exports[`Deposits list renders correctly a single deposit 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Fpayouts%2Fdetails&id=po_mock1"
                       tabindex="-1"
@@ -417,10 +417,10 @@ exports[`Deposits list renders correctly a single deposit 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Fpayouts%2Fdetails&id=po_mock1"
                       tabindex="-1"
@@ -431,7 +431,7 @@ exports[`Deposits list renders correctly a single deposit 1`] = `
                 </tr>
                 <tr>
                   <th
-                    class="woocommerce-table__item info-button is-sorted is-left-aligned"
+                    class="poocommerce-table__item info-button is-sorted is-left-aligned"
                     scope="row"
                   >
                     <a
@@ -454,7 +454,7 @@ exports[`Deposits list renders correctly a single deposit 1`] = `
                     </a>
                   </th>
                   <td
-                    class="woocommerce-table__item date-time is-left-aligned is-sorted"
+                    class="poocommerce-table__item date-time is-left-aligned is-sorted"
                   >
                     <a
                       data-link-type="wc-admin"
@@ -464,10 +464,10 @@ exports[`Deposits list renders correctly a single deposit 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Fpayouts%2Fdetails&id=po_mock2"
                       tabindex="-1"
@@ -476,10 +476,10 @@ exports[`Deposits list renders correctly a single deposit 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Fpayouts%2Fdetails&id=po_mock2"
                       tabindex="-1"
@@ -488,10 +488,10 @@ exports[`Deposits list renders correctly a single deposit 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Fpayouts%2Fdetails&id=po_mock2"
                       tabindex="-1"
@@ -504,10 +504,10 @@ exports[`Deposits list renders correctly a single deposit 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Fpayouts%2Fdetails&id=po_mock2"
                       tabindex="-1"
@@ -516,10 +516,10 @@ exports[`Deposits list renders correctly a single deposit 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Fpayouts%2Fdetails&id=po_mock2"
                       tabindex="-1"
@@ -530,7 +530,7 @@ exports[`Deposits list renders correctly a single deposit 1`] = `
                 </tr>
                 <tr>
                   <th
-                    class="woocommerce-table__item info-button is-sorted is-left-aligned"
+                    class="poocommerce-table__item info-button is-sorted is-left-aligned"
                     scope="row"
                   >
                     <a
@@ -553,7 +553,7 @@ exports[`Deposits list renders correctly a single deposit 1`] = `
                     </a>
                   </th>
                   <td
-                    class="woocommerce-table__item date-time is-left-aligned is-sorted"
+                    class="poocommerce-table__item date-time is-left-aligned is-sorted"
                   >
                     <a
                       data-link-type="wc-admin"
@@ -563,10 +563,10 @@ exports[`Deposits list renders correctly a single deposit 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Fpayouts%2Fdetails&id=po_mock3"
                       tabindex="-1"
@@ -575,10 +575,10 @@ exports[`Deposits list renders correctly a single deposit 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Fpayouts%2Fdetails&id=po_mock3"
                       tabindex="-1"
@@ -587,10 +587,10 @@ exports[`Deposits list renders correctly a single deposit 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Fpayouts%2Fdetails&id=po_mock3"
                       tabindex="-1"
@@ -603,10 +603,10 @@ exports[`Deposits list renders correctly a single deposit 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Fpayouts%2Fdetails&id=po_mock3"
                       tabindex="-1"
@@ -615,10 +615,10 @@ exports[`Deposits list renders correctly a single deposit 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Fpayouts%2Fdetails&id=po_mock3"
                       tabindex="-1"
@@ -637,33 +637,33 @@ exports[`Deposits list renders correctly a single deposit 1`] = `
           data-wp-component="CardFooter"
         >
           <ul
-            class="woocommerce-table__summary"
+            class="poocommerce-table__summary"
             role="complementary"
           >
             <li
-              class="woocommerce-table__summary-item"
+              class="poocommerce-table__summary-item"
             >
               <span
-                class="woocommerce-table__summary-value"
+                class="poocommerce-table__summary-value"
               >
                 1
               </span>
               <span
-                class="woocommerce-table__summary-label"
+                class="poocommerce-table__summary-label"
               >
                 payout
               </span>
             </li>
             <li
-              class="woocommerce-table__summary-item"
+              class="poocommerce-table__summary-item"
             >
               <span
-                class="woocommerce-table__summary-value"
+                class="poocommerce-table__summary-value"
               >
                 $50.00
               </span>
               <span
-                class="woocommerce-table__summary-label"
+                class="poocommerce-table__summary-label"
               >
                 total
               </span>
@@ -691,10 +691,10 @@ exports[`Deposits list renders correctly a single deposit 1`] = `
 exports[`Deposits list renders correctly with multiple currencies 1`] = `
 <div>
   <div
-    class=" woocommerce-payments-page"
+    class=" poocommerce-payments-page"
   >
     <div
-      class="woocommerce-filters-deposits"
+      class="poocommerce-filters-deposits"
     >
       <h2
         class="screen-reader-text"
@@ -702,16 +702,16 @@ exports[`Deposits list renders correctly with multiple currencies 1`] = `
         Filters
       </h2>
       <div
-        class="woocommerce-filters"
+        class="poocommerce-filters"
       >
         <div
-          class="woocommerce-filters__basic-filters"
+          class="poocommerce-filters__basic-filters"
         >
           <div
-            class="woocommerce-filters-filter"
+            class="poocommerce-filters-filter"
           >
             <span
-              class="woocommerce-filters-label"
+              class="poocommerce-filters-label"
             >
               Payout currency
               :
@@ -722,11 +722,11 @@ exports[`Deposits list renders correctly with multiple currencies 1`] = `
             >
               <button
                 aria-expanded="false"
-                class="components-button woocommerce-dropdown-button"
+                class="components-button poocommerce-dropdown-button"
                 type="button"
               >
                 <div
-                  class="woocommerce-dropdown-button__labels"
+                  class="poocommerce-dropdown-button__labels"
                 >
                   <span>
                     All
@@ -736,10 +736,10 @@ exports[`Deposits list renders correctly with multiple currencies 1`] = `
             </div>
           </div>
           <div
-            class="woocommerce-filters-filter"
+            class="poocommerce-filters-filter"
           >
             <span
-              class="woocommerce-filters-label"
+              class="poocommerce-filters-label"
             >
               Show
               :
@@ -750,11 +750,11 @@ exports[`Deposits list renders correctly with multiple currencies 1`] = `
             >
               <button
                 aria-expanded="false"
-                class="components-button woocommerce-dropdown-button"
+                class="components-button poocommerce-dropdown-button"
                 type="button"
               >
                 <div
-                  class="woocommerce-dropdown-button__labels"
+                  class="poocommerce-dropdown-button__labels"
                 >
                   <span>
                     All payouts
@@ -767,7 +767,7 @@ exports[`Deposits list renders correctly with multiple currencies 1`] = `
       </div>
     </div>
     <div
-      class="components-surface components-card woocommerce-table wcpay-deposits-list woocommerce-report-table has-actions has-menu css-nsno0f-View-Surface-getBorders-primary-Card-rounded em57xhy0"
+      class="components-surface components-card poocommerce-table wcpay-deposits-list poocommerce-report-table has-actions has-menu css-nsno0f-View-Surface-getBorders-primary-Card-rounded em57xhy0"
       data-wp-c16t="true"
       data-wp-component="Card"
     >
@@ -787,10 +787,10 @@ exports[`Deposits list renders correctly with multiple currencies 1`] = `
             Payout history
           </h2>
           <div
-            class="woocommerce-table__actions"
+            class="poocommerce-table__actions"
           >
             <button
-              class="components-button woocommerce-table__download-button"
+              class="components-button poocommerce-table__download-button"
               type="button"
             >
               <svg
@@ -807,14 +807,14 @@ exports[`Deposits list renders correctly with multiple currencies 1`] = `
                 </g>
               </svg>
               <span
-                class="woocommerce-table__download-button__label"
+                class="poocommerce-table__download-button__label"
               >
                 Download
               </span>
             </button>
           </div>
           <div
-            class="woocommerce-ellipsis-menu"
+            class="poocommerce-ellipsis-menu"
           >
             <div
               class="components-dropdown"
@@ -822,7 +822,7 @@ exports[`Deposits list renders correctly with multiple currencies 1`] = `
             >
               <button
                 aria-expanded="false"
-                class="components-button woocommerce-ellipsis-menu__toggle"
+                class="components-button poocommerce-ellipsis-menu__toggle"
                 title="Choose which values to display"
                 type="button"
               >
@@ -850,12 +850,12 @@ exports[`Deposits list renders correctly with multiple currencies 1`] = `
         >
           <div
             aria-labelledby="caption-0"
-            class="woocommerce-table__table"
+            class="poocommerce-table__table"
             role="group"
           >
             <table>
               <caption
-                class="woocommerce-table__caption screen-reader-text"
+                class="poocommerce-table__caption screen-reader-text"
                 id="caption-0"
               >
                 Payout history
@@ -863,7 +863,7 @@ exports[`Deposits list renders correctly with multiple currencies 1`] = `
               <tbody>
                 <tr>
                   <th
-                    class="woocommerce-table__header info-button is-sorted is-left-aligned"
+                    class="poocommerce-table__header info-button is-sorted is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -873,7 +873,7 @@ exports[`Deposits list renders correctly with multiple currencies 1`] = `
                   </th>
                   <th
                     aria-sort="descending"
-                    class="woocommerce-table__header date-time is-left-aligned is-sortable is-sorted"
+                    class="poocommerce-table__header date-time is-left-aligned is-sortable is-sorted"
                     role="columnheader"
                     scope="col"
                   >
@@ -913,7 +913,7 @@ exports[`Deposits list renders correctly with multiple currencies 1`] = `
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-left-aligned"
+                    class="poocommerce-table__header is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -930,7 +930,7 @@ exports[`Deposits list renders correctly with multiple currencies 1`] = `
                   </th>
                   <th
                     aria-sort="none"
-                    class="woocommerce-table__header is-sortable is-numeric"
+                    class="poocommerce-table__header is-sortable is-numeric"
                     role="columnheader"
                     scope="col"
                   >
@@ -970,7 +970,7 @@ exports[`Deposits list renders correctly with multiple currencies 1`] = `
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-left-aligned"
+                    class="poocommerce-table__header is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -986,7 +986,7 @@ exports[`Deposits list renders correctly with multiple currencies 1`] = `
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-left-aligned"
+                    class="poocommerce-table__header is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -1002,7 +1002,7 @@ exports[`Deposits list renders correctly with multiple currencies 1`] = `
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-left-aligned"
+                    class="poocommerce-table__header is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -1020,7 +1020,7 @@ exports[`Deposits list renders correctly with multiple currencies 1`] = `
                 </tr>
                 <tr>
                   <th
-                    class="woocommerce-table__item info-button is-sorted is-left-aligned"
+                    class="poocommerce-table__item info-button is-sorted is-left-aligned"
                     scope="row"
                   >
                     <a
@@ -1043,7 +1043,7 @@ exports[`Deposits list renders correctly with multiple currencies 1`] = `
                     </a>
                   </th>
                   <td
-                    class="woocommerce-table__item date-time is-left-aligned is-sorted"
+                    class="poocommerce-table__item date-time is-left-aligned is-sorted"
                   >
                     <a
                       data-link-type="wc-admin"
@@ -1053,10 +1053,10 @@ exports[`Deposits list renders correctly with multiple currencies 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Fpayouts%2Fdetails&id=po_mock1"
                       tabindex="-1"
@@ -1065,10 +1065,10 @@ exports[`Deposits list renders correctly with multiple currencies 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Fpayouts%2Fdetails&id=po_mock1"
                       tabindex="-1"
@@ -1077,10 +1077,10 @@ exports[`Deposits list renders correctly with multiple currencies 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Fpayouts%2Fdetails&id=po_mock1"
                       tabindex="-1"
@@ -1093,10 +1093,10 @@ exports[`Deposits list renders correctly with multiple currencies 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Fpayouts%2Fdetails&id=po_mock1"
                       tabindex="-1"
@@ -1105,10 +1105,10 @@ exports[`Deposits list renders correctly with multiple currencies 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Fpayouts%2Fdetails&id=po_mock1"
                       tabindex="-1"
@@ -1119,7 +1119,7 @@ exports[`Deposits list renders correctly with multiple currencies 1`] = `
                 </tr>
                 <tr>
                   <th
-                    class="woocommerce-table__item info-button is-sorted is-left-aligned"
+                    class="poocommerce-table__item info-button is-sorted is-left-aligned"
                     scope="row"
                   >
                     <a
@@ -1142,7 +1142,7 @@ exports[`Deposits list renders correctly with multiple currencies 1`] = `
                     </a>
                   </th>
                   <td
-                    class="woocommerce-table__item date-time is-left-aligned is-sorted"
+                    class="poocommerce-table__item date-time is-left-aligned is-sorted"
                   >
                     <a
                       data-link-type="wc-admin"
@@ -1152,10 +1152,10 @@ exports[`Deposits list renders correctly with multiple currencies 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Fpayouts%2Fdetails&id=po_mock2"
                       tabindex="-1"
@@ -1164,10 +1164,10 @@ exports[`Deposits list renders correctly with multiple currencies 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Fpayouts%2Fdetails&id=po_mock2"
                       tabindex="-1"
@@ -1176,10 +1176,10 @@ exports[`Deposits list renders correctly with multiple currencies 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Fpayouts%2Fdetails&id=po_mock2"
                       tabindex="-1"
@@ -1192,10 +1192,10 @@ exports[`Deposits list renders correctly with multiple currencies 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Fpayouts%2Fdetails&id=po_mock2"
                       tabindex="-1"
@@ -1204,10 +1204,10 @@ exports[`Deposits list renders correctly with multiple currencies 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Fpayouts%2Fdetails&id=po_mock2"
                       tabindex="-1"
@@ -1218,7 +1218,7 @@ exports[`Deposits list renders correctly with multiple currencies 1`] = `
                 </tr>
                 <tr>
                   <th
-                    class="woocommerce-table__item info-button is-sorted is-left-aligned"
+                    class="poocommerce-table__item info-button is-sorted is-left-aligned"
                     scope="row"
                   >
                     <a
@@ -1241,7 +1241,7 @@ exports[`Deposits list renders correctly with multiple currencies 1`] = `
                     </a>
                   </th>
                   <td
-                    class="woocommerce-table__item date-time is-left-aligned is-sorted"
+                    class="poocommerce-table__item date-time is-left-aligned is-sorted"
                   >
                     <a
                       data-link-type="wc-admin"
@@ -1251,10 +1251,10 @@ exports[`Deposits list renders correctly with multiple currencies 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Fpayouts%2Fdetails&id=po_mock3"
                       tabindex="-1"
@@ -1263,10 +1263,10 @@ exports[`Deposits list renders correctly with multiple currencies 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Fpayouts%2Fdetails&id=po_mock3"
                       tabindex="-1"
@@ -1275,10 +1275,10 @@ exports[`Deposits list renders correctly with multiple currencies 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Fpayouts%2Fdetails&id=po_mock3"
                       tabindex="-1"
@@ -1291,10 +1291,10 @@ exports[`Deposits list renders correctly with multiple currencies 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Fpayouts%2Fdetails&id=po_mock3"
                       tabindex="-1"
@@ -1303,10 +1303,10 @@ exports[`Deposits list renders correctly with multiple currencies 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Fpayouts%2Fdetails&id=po_mock3"
                       tabindex="-1"
@@ -1325,19 +1325,19 @@ exports[`Deposits list renders correctly with multiple currencies 1`] = `
           data-wp-component="CardFooter"
         >
           <ul
-            class="woocommerce-table__summary"
+            class="poocommerce-table__summary"
             role="complementary"
           >
             <li
-              class="woocommerce-table__summary-item"
+              class="poocommerce-table__summary-item"
             >
               <span
-                class="woocommerce-table__summary-value"
+                class="poocommerce-table__summary-value"
               >
                 2
               </span>
               <span
-                class="woocommerce-table__summary-label"
+                class="poocommerce-table__summary-label"
               >
                 payouts
               </span>

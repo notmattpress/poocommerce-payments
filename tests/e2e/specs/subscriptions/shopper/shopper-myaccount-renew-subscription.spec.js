@@ -2,7 +2,7 @@
  * External dependencies
  */
 import config from 'config';
-const { shopper, withRestApi } = require( '@woocommerce/e2e-utils' );
+const { shopper, withRestApi } = require( '@poocommerce/e2e-utils' );
 import {
 	RUN_SUBSCRIPTIONS_TESTS,
 	describeif,
@@ -17,11 +17,11 @@ const customerBilling = config.get(
 let subscriptionId;
 
 const testSelectors = {
-	subscriptionIdField: '.woocommerce-orders-table__cell-subscription-id > a',
+	subscriptionIdField: '.poocommerce-orders-table__cell-subscription-id > a',
 	subscriptionRenewButton: 'a.button.subscription_renewal_early',
 	wcNotice: 'div.wc-block-components-notice-banner',
 	wcOldNotice:
-		'.woocommerce .woocommerce-notices-wrapper .woocommerce-message',
+		'.poocommerce .poocommerce-notices-wrapper .poocommerce-message',
 };
 
 describeif( RUN_SUBSCRIPTIONS_TESTS )(

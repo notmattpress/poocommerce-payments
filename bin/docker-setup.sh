@@ -3,7 +3,7 @@
 # Exit if any command fails.
 set -e
 
-WP_CONTAINER=${1-woocommerce_payments_wordpress}
+WP_CONTAINER=${1-poocommerce_payments_wordpress}
 SITE_URL=${WP_URL-"localhost:8082"}
 
 redirect_output() {
@@ -35,7 +35,7 @@ while [[ $? -ne 0 ]]; do
 done
 
 # If the plugin is already active then return early
-cli wp plugin is-active woocommerce-payments > /dev/null
+cli wp plugin is-active poocommerce-payments > /dev/null
 if [[ $? -eq 0 ]]; then
 	set -e
 	echo
@@ -55,7 +55,7 @@ echo "Setting up WordPress..."
 cli wp core install \
 	--path=/var/www/html \
 	--url=$SITE_URL \
-	--title=${SITE_TITLE-"WooCommerce Payments Dev"} \
+	--title=${SITE_TITLE-"PooCommerce Payments Dev"} \
 	--admin_name=${WP_ADMIN-admin} \
 	--admin_password=${WP_ADMIN_PASSWORD-admin} \
 	--admin_email=${WP_ADMIN_EMAIL-admin@example.com} \
@@ -85,41 +85,41 @@ cli wp config set WP_ENVIRONMENT_TYPE development
 echo "Updating permalink structure"
 cli wp rewrite structure '/%postname%/'
 
-echo "Installing and activating WooCommerce..."
-cli wp plugin install woocommerce --activate
+echo "Installing and activating PooCommerce..."
+cli wp plugin install poocommerce --activate
 
 echo "Installing and activating Storefront theme..."
 cli wp theme install storefront --activate
 
-echo "Adding basic WooCommerce settings..."
-cli wp option set woocommerce_store_address "60 29th Street"
-cli wp option set woocommerce_store_address_2 "#343"
-cli wp option set woocommerce_store_city "San Francisco"
-cli wp option set woocommerce_default_country "US:CA"
-cli wp option set woocommerce_store_postcode "94110"
-cli wp option set woocommerce_currency "USD"
-cli wp option set woocommerce_product_type "both"
-cli wp option set woocommerce_allow_tracking "no"
+echo "Adding basic PooCommerce settings..."
+cli wp option set poocommerce_store_address "60 29th Street"
+cli wp option set poocommerce_store_address_2 "#343"
+cli wp option set poocommerce_store_city "San Francisco"
+cli wp option set poocommerce_default_country "US:CA"
+cli wp option set poocommerce_store_postcode "94110"
+cli wp option set poocommerce_currency "USD"
+cli wp option set poocommerce_product_type "both"
+cli wp option set poocommerce_allow_tracking "no"
 
-echo "Importing WooCommerce shop pages..."
+echo "Importing PooCommerce shop pages..."
 cli wp wc --user=admin tool run install_pages
 
 echo "Installing and activating the WordPress Importer plugin..."
 cli wp plugin install wordpress-importer --activate
 
 echo "Importing some sample data..."
-cli wp import wp-content/plugins/woocommerce/sample-data/sample_products.xml --authors=skip
+cli wp import wp-content/plugins/poocommerce/sample-data/sample_products.xml --authors=skip
 
 echo "Activating the WooPayments plugin..."
-cli wp plugin activate woocommerce-payments
+cli wp plugin activate poocommerce-payments
 
 echo "Setting up WooPayments..."
-if [[ "0" == "$(cli wp option list --search=woocommerce_woocommerce_payments_settings --format=count)" ]]; then
+if [[ "0" == "$(cli wp option list --search=poocommerce_poocommerce_payments_settings --format=count)" ]]; then
 	echo "Creating WooPayments settings"
-	cli wp option add woocommerce_woocommerce_payments_settings --format=json '{"enabled":"yes"}'
+	cli wp option add poocommerce_poocommerce_payments_settings --format=json '{"enabled":"yes"}'
 else
 	echo "Updating WooPayments settings"
-	cli wp option update woocommerce_woocommerce_payments_settings --format=json '{"enabled":"yes"}'
+	cli wp option update poocommerce_poocommerce_payments_settings --format=json '{"enabled":"yes"}'
 fi
 
 echo "Installing and activating Disable WordPress Updates..."
@@ -127,9 +127,9 @@ cli wp plugin install disable-wordpress-updates --activate
 
 echo "Installing dev tools plugin..."
 set +e
-git clone git@github.com:Automattic/woocommerce-payments-dev-tools.git docker/wordpress/wp-content/plugins/woocommerce-payments-dev-tools
+git clone git@github.com:Automattic/poocommerce-payments-dev-tools.git docker/wordpress/wp-content/plugins/poocommerce-payments-dev-tools
 if [[ $? -eq 0 ]]; then
-	cli wp plugin activate woocommerce-payments-dev-tools
+	cli wp plugin activate poocommerce-payments-dev-tools
 else
 	echo
 	echo "WARN: Could not clone the dev tools repository. Skipping the install."

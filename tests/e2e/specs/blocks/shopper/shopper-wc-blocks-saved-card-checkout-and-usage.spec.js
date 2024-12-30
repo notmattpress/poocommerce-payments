@@ -5,7 +5,7 @@
  */
 import config from 'config';
 
-const { shopper, merchant } = require( '@woocommerce/e2e-utils' );
+const { shopper, merchant } = require( '@poocommerce/e2e-utils' );
 
 /**
  * Internal dependencies
@@ -24,7 +24,7 @@ const card = config.get( 'cards.basic' );
 
 import { fillCardDetailsWCB } from '../../../utils/payments';
 
-describeif( RUN_WC_BLOCKS_TESTS )( 'WooCommerce Blocks > Saved cards', () => {
+describeif( RUN_WC_BLOCKS_TESTS )( 'PooCommerce Blocks > Saved cards', () => {
 	beforeAll( async () => {
 		try {
 			await checkPageExists( 'checkout-wcb' );
@@ -68,7 +68,7 @@ describeif( RUN_WC_BLOCKS_TESTS )( 'WooCommerce Blocks > Saved cards', () => {
 		await expect( page ).toClick( '.wc-block-checkout__actions button', {
 			text: 'Place Order',
 		} );
-		await page.waitForSelector( 'div.woocommerce-order' );
+		await page.waitForSelector( 'div.poocommerce-order' );
 		await expect( page ).toMatchTextContent( 'p', {
 			text: 'Thank you. Your order has been received.',
 		} );

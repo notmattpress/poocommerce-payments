@@ -2,8 +2,8 @@
  * External dependencies
  */
 import React, { useMemo } from 'react';
-import { ReportFilters } from '@woocommerce/components';
-import { getQuery } from '@woocommerce/navigation';
+import { ReportFilters } from '@poocommerce/components';
+import { getQuery } from '@poocommerce/navigation';
 
 /**
  * Internal dependencies
@@ -45,7 +45,7 @@ export const TransactionsFilters = ( {
 	);
 
 	return (
-		<div className="woocommerce-filters-transactions">
+		<div className="poocommerce-filters-transactions">
 			<ReportFilters
 				key={ customerCurrencies?.length }
 				filters={ filters }

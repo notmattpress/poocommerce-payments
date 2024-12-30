@@ -7,9 +7,9 @@ import config from 'config';
  */
 import { fillCardDetails, setupProductCheckout } from '../../../utils/payments';
 
-const { merchant, shopper, uiUnblocked } = require( '@woocommerce/e2e-utils' );
+const { merchant, shopper, uiUnblocked } = require( '@poocommerce/e2e-utils' );
 
-const orderIdSelector = '.woocommerce-order-overview__order.order > strong';
+const orderIdSelector = '.poocommerce-order-overview__order.order > strong';
 const orderStatusDropdownSelector = 'select[name="order_status"]';
 const cancelModalSelector = 'div.wcpay-confirmation-modal';
 const refundModalSelector = 'div.refund-confirmation-modal';
@@ -208,7 +208,7 @@ describe( 'Order > Status Change', () => {
 
 			// Get the order price
 			const priceElement = await page.$(
-				'#woocommerce-order-items .total .woocommerce-Price-amount'
+				'#poocommerce-order-items .total .poocommerce-Price-amount'
 			);
 			const orderAmount = await page.evaluate(
 				( el ) => el.textContent,

@@ -2,7 +2,7 @@
 /**
  * Class RestController
  *
- * @package WooCommerce\Payments\MultiCurrency
+ * @package PooCommerce\Payments\MultiCurrency
  */
 
 namespace WCPay\MultiCurrency;
@@ -259,6 +259,6 @@ class RestController extends \WP_REST_Controller {
 	 * Verify access.
 	 */
 	public function check_permission() {
-		return current_user_can( 'manage_woocommerce' );
+		return current_user_can( 'manage_poocommerce' );
 	}
 }

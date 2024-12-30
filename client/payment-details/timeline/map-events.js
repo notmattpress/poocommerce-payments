@@ -7,7 +7,7 @@ import { flatMap } from 'lodash';
 import { __, sprintf } from '@wordpress/i18n';
 import { addQueryArgs } from '@wordpress/url';
 import { createInterpolateElement } from '@wordpress/element';
-import { Link } from '@woocommerce/components';
+import { Link } from '@poocommerce/components';
 import SyncIcon from 'gridicons/dist/sync';
 import PlusIcon from 'gridicons/dist/plus';
 import MinusIcon from 'gridicons/dist/minus';
@@ -45,7 +45,7 @@ const getStatusChangeTimelineItem = ( event, status ) => {
 		icon: <SyncIcon />,
 		headline: sprintf(
 			// translators: %s new status, for example Authorized, Refunded, etc
-			__( 'Payment status changed to %s.', 'woocommerce-payments' ),
+			__( 'Payment status changed to %s.', 'poocommerce-payments' ),
 			status
 		),
 		body: [],
@@ -75,12 +75,12 @@ const getDepositTimelineItem = (
 				? // translators: %1$s - formatted amount, %2$s - payout arrival date, <a> - link to the payout
 				  __(
 						'%1$s was added to your <a>%2$s payout</a>.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 				  )
 				: // translators: %1$s - formatted amount, %2$s - payout arrival date, <a> - link to the payout
 				  __(
 						'%1$s was deducted from your <a>%2$s payout</a>.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 				  ),
 			formattedAmount,
 			formatDateTimeFromTimestamp( event.deposit.arrival_date )
@@ -101,12 +101,12 @@ const getDepositTimelineItem = (
 				? // translators: %s - formatted amount
 				  __(
 						'%s will be added to a future payout.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 				  )
 				: // translators: %s - formatted amount
 				  __(
 						'%s will be deducted from a future payout.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 				  ),
 			formattedAmount
 		);
@@ -136,7 +136,7 @@ const getFinancingPaydownTimelineItem = ( event, formattedAmount, body ) => {
 			// translators: %1$s - formatted amount, %2$s - payout arrival date, <a> - link to the payout
 			__(
 				'%1$s was subtracted from your <a>%2$s payout</a>.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			formattedAmount,
 			formatDateTimeFromTimestamp( event.deposit.arrival_date )
@@ -156,7 +156,7 @@ const getFinancingPaydownTimelineItem = ( event, formattedAmount, body ) => {
 		headline = sprintf(
 			__(
 				'%s will be subtracted from a future payout.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			formattedAmount
 		);
@@ -238,7 +238,7 @@ const formatNetString = ( event ) => {
 export const composeNetString = ( event ) => {
 	return sprintf(
 		/* translators: %s is a monetary amount */
-		__( 'Net payout: %s', 'woocommerce-payments' ),
+		__( 'Net payout: %s', 'poocommerce-payments' ),
 		formatNetString( event )
 	);
 };
@@ -247,7 +247,7 @@ export const composeFeeString = ( event ) => {
 	if ( ! event.fee_rates ) {
 		return sprintf(
 			/* translators: %s is a monetary amount */
-			__( 'Fee: %s', 'woocommerce-payments' ),
+			__( 'Fee: %s', 'poocommerce-payments' ),
 			formatCurrency( event.fee, event.currency )
 		);
 	}
@@ -267,8 +267,8 @@ export const composeFeeString = ( event ) => {
 	}
 
 	const baseFeeLabel = isBaseFeeOnly( event )
-		? __( 'Base fee', 'woocommerce-payments' )
-		: __( 'Fee', 'woocommerce-payments' );
+		? __( 'Base fee', 'poocommerce-payments' )
+		: __( 'Fee', 'poocommerce-payments' );
 
 	if ( isBaseFeeOnly( event ) && history[ 0 ]?.capped ) {
 		return sprintf(
@@ -321,7 +321,7 @@ const getRefundTrackingDetails = ( event ) => {
 				/* translators: %s is a trcking reference number */
 				__(
 					'Acquirer Reference Number (ARN) %s',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				event.acquirer_reference_number
 		  )
@@ -334,17 +334,17 @@ const getRefundFailureReason = ( event ) => {
 		case 'expired_or_canceled_card':
 			return __(
 				'the card being expired or canceled.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			);
 		case 'lost_or_stolen_card':
 			return __(
 				'the card being lost or stolen.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			);
 		case 'unknown':
 			return __(
 				'the card being lost or stolen.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			);
 	}
 };
@@ -375,16 +375,16 @@ export const feeBreakdown = ( event ) => {
 		base: ( () => {
 			if ( isCapped ) {
 				/* translators: %2$s is the capped fee */
-				return __( 'Base fee: capped at %2$s', 'woocommerce-payments' );
+				return __( 'Base fee: capped at %2$s', 'poocommerce-payments' );
 			}
 
 			if ( fixedRate !== 0 ) {
 				/* translators: %1$s% is the fee percentage and %2$s is the fixed rate */
-				return __( 'Base fee: %1$s%% + %2$s', 'woocommerce-payments' );
+				return __( 'Base fee: %1$s%% + %2$s', 'poocommerce-payments' );
 			}
 
 			/* translators: %1$s% is the fee percentage */
-			return __( 'Base fee: %1$s%%', 'woocommerce-payments' );
+			return __( 'Base fee: %1$s%%', 'poocommerce-payments' );
 		} )(),
 
 		'additional-international':
@@ -392,50 +392,50 @@ export const feeBreakdown = ( event ) => {
 				? __(
 						/* translators: %1$s% is the fee percentage and %2$s is the fixed rate */
 						'International card fee: %1$s%% + %2$s',
-						'woocommerce-payments'
+						'poocommerce-payments'
 				  )
 				: __(
 						/* translators: %1$s% is the fee percentage */
 						'International card fee: %1$s%%',
-						'woocommerce-payments'
+						'poocommerce-payments'
 				  ),
 		'additional-fx':
 			fixedRate !== 0
 				? __(
 						/* translators: %1$s% is the fee percentage and %2$s is the fixed rate */
 						'Currency conversion fee: %1$s%% + %2$s',
-						'woocommerce-payments'
+						'poocommerce-payments'
 				  )
 				: __(
 						/* translators: %1$s% is the fee percentage */
 						'Currency conversion fee: %1$s%%',
-						'woocommerce-payments'
+						'poocommerce-payments'
 				  ),
 		'additional-wcpay-subscription':
 			fixedRate !== 0
 				? __(
 						/* translators: %1$s% is the fee amount and %2$s is the fixed rate */
 						'Subscription transaction fee: %1$s%% + %2$s',
-						'woocommerce-payments'
+						'poocommerce-payments'
 				  )
 				: __(
 						/* translators: %1$s% is the fee amount */
 						'Subscription transaction fee: %1$s%%',
-						'woocommerce-payments'
+						'poocommerce-payments'
 				  ),
 		'additional-device':
 			fixedRate !== 0
 				? __(
 						/* translators: %1$s% is the fee amount and %2$s is the fixed rate */
 						'Tap to pay transaction fee: %1$s%% + %2$s',
-						'woocommerce-payments'
+						'poocommerce-payments'
 				  )
 				: __(
 						/* translators: %1$s% is the fee amount */
 						'Tap to pay transaction fee: %1$s%%',
-						'woocommerce-payments'
+						'poocommerce-payments'
 				  ),
-		discount: __( 'Discount', 'woocommerce-payments' ),
+		discount: __( 'Discount', 'poocommerce-payments' ),
 	} );
 
 	const feeHistoryStrings = {};
@@ -467,12 +467,12 @@ export const feeBreakdown = ( event ) => {
 				variable:
 					sprintf(
 						/* translators: %s is a percentage number */
-						__( 'Variable fee: %s', 'woocommerce-payments' ),
+						__( 'Variable fee: %s', 'poocommerce-payments' ),
 						percentageRateFormatted
 					) + '%',
 				fixed: sprintf(
 					/* translators: %s is a monetary amount */
-					__( 'Fixed fee: %s', 'woocommerce-payments' ),
+					__( 'Fixed fee: %s', 'poocommerce-payments' ),
 					fixedRateFormatted
 				),
 			};
@@ -519,9 +519,9 @@ const getManualFraudOutcomeTimelineItem = ( event, status ) => {
 
 	const headline = isBlock
 		? // translators: %s: the username that approved the payment, <a> - link to the user
-		  __( 'Payment was blocked by <a>%s</a>', 'woocommerce-payments' )
+		  __( 'Payment was blocked by <a>%s</a>', 'poocommerce-payments' )
 		: // translators: %s: the username that approved the payment, <a> - link to the user
-		  __( 'Payment was approved by <a>%s</a>', 'woocommerce-payments' );
+		  __( 'Payment was approved by <a>%s</a>', 'poocommerce-payments' );
 
 	const icon = isBlock ? (
 		<CrossIcon className="is-error" />
@@ -569,11 +569,11 @@ const getAutomaticFraudOutcomeTimelineItem = ( event, status ) => {
 	const headline = isBlock
 		? __(
 				'Payment was screened by your fraud filters and blocked.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 		  )
 		: __(
 				'Payment was screened by your fraud filters and placed in review.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 		  );
 
 	const icon = isBlock ? (
@@ -615,14 +615,14 @@ const mapEventToTimelineItems = ( event ) => {
 			return [
 				getStatusChangeTimelineItem(
 					event,
-					__( 'Started', 'woocommerce-payments' )
+					__( 'Started', 'poocommerce-payments' )
 				),
 			];
 		case 'authorized':
 			return [
 				getStatusChangeTimelineItem(
 					event,
-					__( 'Authorized', 'woocommerce-payments' )
+					__( 'Authorized', 'poocommerce-payments' )
 				),
 				getMainTimelineItem(
 					event,
@@ -630,7 +630,7 @@ const mapEventToTimelineItems = ( event ) => {
 						/* translators: %s is a monetary amount */
 						__(
 							'A payment of %s was successfully authorized.',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						),
 						event.amount,
 						true
@@ -642,7 +642,7 @@ const mapEventToTimelineItems = ( event ) => {
 			return [
 				getStatusChangeTimelineItem(
 					event,
-					__( 'Authorization voided', 'woocommerce-payments' )
+					__( 'Authorization voided', 'poocommerce-payments' )
 				),
 				getMainTimelineItem(
 					event,
@@ -650,7 +650,7 @@ const mapEventToTimelineItems = ( event ) => {
 						__(
 							/* translators: %s is a monetary amount */
 							'Authorization for %s was voided.',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						),
 						event.amount,
 						true
@@ -662,7 +662,7 @@ const mapEventToTimelineItems = ( event ) => {
 			return [
 				getStatusChangeTimelineItem(
 					event,
-					__( 'Authorization expired', 'woocommerce-payments' )
+					__( 'Authorization expired', 'poocommerce-payments' )
 				),
 				getMainTimelineItem(
 					event,
@@ -670,7 +670,7 @@ const mapEventToTimelineItems = ( event ) => {
 						__(
 							/* translators: %s is a monetary amount */
 							'Authorization for %s expired.',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						),
 						event.amount,
 						true
@@ -683,7 +683,7 @@ const mapEventToTimelineItems = ( event ) => {
 			return [
 				getStatusChangeTimelineItem(
 					event,
-					__( 'Paid', 'woocommerce-payments' )
+					__( 'Paid', 'poocommerce-payments' )
 				),
 				getDepositTimelineItem( event, formattedNet, true ),
 				getMainTimelineItem(
@@ -692,7 +692,7 @@ const mapEventToTimelineItems = ( event ) => {
 						__(
 							/* translators: %s is a monetary amount */
 							'A payment of %s was successfully charged.',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						),
 						event.amount_captured,
 						true
@@ -722,8 +722,8 @@ const mapEventToTimelineItems = ( event ) => {
 				getStatusChangeTimelineItem(
 					event,
 					type === 'full_refund'
-						? __( 'Refunded', 'woocommerce-payments' )
-						: __( 'Partial refund', 'woocommerce-payments' )
+						? __( 'Refunded', 'poocommerce-payments' )
+						: __( 'Partial refund', 'poocommerce-payments' )
 				),
 				getDepositTimelineItem( event, depositAmount, false ),
 				getMainTimelineItem(
@@ -732,7 +732,7 @@ const mapEventToTimelineItems = ( event ) => {
 						__(
 							/* translators: %s is a monetary amount */
 							'A payment of %s was successfully refunded.',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						),
 						formattedAmount
 					),
@@ -755,7 +755,7 @@ const mapEventToTimelineItems = ( event ) => {
 						__(
 							/* translators: %s is a monetary amount */
 							'%s refund was attempted but failed due to %s',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						),
 						formattedRefundFailureAmount,
 						getRefundFailureReason( event )
@@ -772,7 +772,7 @@ const mapEventToTimelineItems = ( event ) => {
 			return [
 				getStatusChangeTimelineItem(
 					event,
-					__( 'Failed', 'woocommerce-payments' )
+					__( 'Failed', 'poocommerce-payments' )
 				),
 				getMainTimelineItem(
 					event,
@@ -780,7 +780,7 @@ const mapEventToTimelineItems = ( event ) => {
 						/* translators: %1$s is the payment amount, %2$s is the failure reason message */
 						__(
 							'A payment of %1$s failed: %2$s.',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						),
 						formatExplicitCurrency( event.amount, event.currency ),
 						paymentFailureMessage
@@ -791,12 +791,12 @@ const mapEventToTimelineItems = ( event ) => {
 		case 'dispute_needs_response':
 			let reasonHeadline = __(
 				'Payment disputed',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			);
 			if ( disputeReasons[ event.reason ] ) {
 				reasonHeadline = sprintf(
 					/* translators: %s is a monetary amount */
-					__( 'Payment disputed as %s.', 'woocommerce-payments' ),
+					__( 'Payment disputed as %s.', 'poocommerce-payments' ),
 					disputeReasons[ event.reason ].display
 				);
 			}
@@ -808,13 +808,13 @@ const mapEventToTimelineItems = ( event ) => {
 					icon: <InfoOutlineIcon />,
 					headline: __(
 						'No funds have been withdrawn yet.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					body: [
 						__(
 							// eslint-disable-next-line max-len
 							"The cardholder's bank is requesting more information to decide whether to return these funds to the cardholder.",
-							'woocommerce-payments'
+							'poocommerce-payments'
 						),
 					],
 				};
@@ -836,13 +836,13 @@ const mapEventToTimelineItems = ( event ) => {
 					[
 						sprintf(
 							/* translators: %s is a monetary amount */
-							__( 'Disputed amount: %s', 'woocommerce-payments' ),
+							__( 'Disputed amount: %s', 'poocommerce-payments' ),
 							disputedAmount
 						),
 						composeFXString( event ),
 						sprintf(
 							/* translators: %s is a monetary amount */
-							__( 'Fee: %s', 'woocommerce-payments' ),
+							__( 'Fee: %s', 'poocommerce-payments' ),
 							formatCurrency( event.fee, event.currency )
 						),
 					]
@@ -852,7 +852,7 @@ const mapEventToTimelineItems = ( event ) => {
 			return [
 				getStatusChangeTimelineItem(
 					event,
-					__( 'Disputed: Needs response', 'woocommerce-payments' )
+					__( 'Disputed: Needs response', 'poocommerce-payments' )
 				),
 				depositTimelineItem,
 				getMainTimelineItem(
@@ -865,13 +865,13 @@ const mapEventToTimelineItems = ( event ) => {
 			return [
 				getStatusChangeTimelineItem(
 					event,
-					__( 'Disputed: In review', 'woocommerce-payments' )
+					__( 'Disputed: In review', 'poocommerce-payments' )
 				),
 				getMainTimelineItem(
 					event,
 					__(
 						'Challenge evidence submitted.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					<CheckmarkIcon className="is-success" />
 				),
@@ -884,17 +884,17 @@ const mapEventToTimelineItems = ( event ) => {
 			return [
 				getStatusChangeTimelineItem(
 					event,
-					__( 'Disputed: Won', 'woocommerce-payments' )
+					__( 'Disputed: Won', 'poocommerce-payments' )
 				),
 				getDepositTimelineItem( event, formattedExplicitTotal, true, [
 					sprintf(
 						/* translators: %s is a monetary amount */
-						__( 'Dispute reversal: %s', 'woocommerce-payments' ),
+						__( 'Dispute reversal: %s', 'poocommerce-payments' ),
 						formatCurrency( event.amount, event.currency )
 					),
 					sprintf(
 						/* translators: %s is a monetary amount */
-						__( 'Fee refund: %s', 'woocommerce-payments' ),
+						__( 'Fee refund: %s', 'poocommerce-payments' ),
 						formatCurrency( Math.abs( event.fee ), event.currency )
 					),
 				] ),
@@ -902,7 +902,7 @@ const mapEventToTimelineItems = ( event ) => {
 					event,
 					__(
 						'Dispute won! The bank ruled in your favor.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					<NoticeOutlineIcon className="is-success" />
 				),
@@ -911,13 +911,13 @@ const mapEventToTimelineItems = ( event ) => {
 			return [
 				getStatusChangeTimelineItem(
 					event,
-					__( 'Disputed: Lost', 'woocommerce-payments' )
+					__( 'Disputed: Lost', 'poocommerce-payments' )
 				),
 				getMainTimelineItem(
 					event,
 					__(
 						'Dispute lost. The bank ruled in favor of your customer.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					<CrossIcon className="is-error" />
 				),
@@ -928,7 +928,7 @@ const mapEventToTimelineItems = ( event ) => {
 					event,
 					__(
 						'Dispute inquiry closed. The bank chose not to pursue this dispute.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					<NoticeOutlineIcon className="is-success" />
 				),
@@ -939,7 +939,7 @@ const mapEventToTimelineItems = ( event ) => {
 					event,
 					__(
 						'The disputed charge has been refunded.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					<NoticeOutlineIcon className="is-success" />
 				),
@@ -954,7 +954,7 @@ const mapEventToTimelineItems = ( event ) => {
 							sprintf(
 								__(
 									'Loan repayment: <a>Loan %s</a>',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								),
 								event.loan_id
 							),

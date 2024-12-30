@@ -27,7 +27,7 @@ const ExportLanguage: React.FC = () => {
 	return (
 		<div className="reporting-export-language">
 			<SelectControl
-				label={ __( 'Language', 'woocommerce-payments' ) }
+				label={ __( 'Language', 'poocommerce-payments' ) }
 				value={ exportLanguage }
 				onChange={ handleExportLanguageChange }
 				options={ getExportLanguageOptions() }
@@ -36,7 +36,7 @@ const ExportLanguage: React.FC = () => {
 				{ interpolateComponents( {
 					mixedString: __(
 						'You can change your global site language preferences in {{learnMoreLink}}General Settings{{/learnMoreLink}}.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					components: {
 						learnMoreLink: (

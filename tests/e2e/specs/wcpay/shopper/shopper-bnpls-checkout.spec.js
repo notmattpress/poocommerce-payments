@@ -1,9 +1,9 @@
 /**
  * External dependencies
  */
-const { shopper, merchant } = require( '@woocommerce/e2e-utils' );
+const { shopper, merchant } = require( '@poocommerce/e2e-utils' );
 import config from 'config';
-import { uiUnblocked } from '@woocommerce/e2e-utils/build/page-utils';
+import { uiUnblocked } from '@poocommerce/e2e-utils/build/page-utils';
 /**
  * Internal dependencies
  */

@@ -2,7 +2,7 @@
 /**
  * Class WC_REST_Payments_Files_Controller
  *
- * @package WooCommerce\Payments\Admin
+ * @package PooCommerce\Payments\Admin
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -100,7 +100,7 @@ class WC_REST_Payments_Files_Controller extends WC_Payments_REST_Controller {
 		if ( ! $file_service->is_file_public( $purpose ) && ! $this->check_permission() ) {
 			return new WP_Error(
 				'rest_forbidden',
-				__( 'Sorry, you are not allowed to do that.', 'woocommerce-payments' ),
+				__( 'Sorry, you are not allowed to do that.', 'poocommerce-payments' ),
 				[ 'status' => rest_authorization_required_code() ]
 			);
 		}

@@ -3,17 +3,17 @@
  */
 import config from 'config';
 
-const { merchant } = require( '@woocommerce/e2e-utils' );
+const { merchant } = require( '@poocommerce/e2e-utils' );
 
 const WCADMIN_GATEWAYS_LIST = `${ config.get(
 	'url'
 ) }wp-admin/admin.php?page=wc-settings&tab=checkout&section`;
 
 const WC_GATEWAYS_LIST_TABLE__WC_PAYMENTS_TOGGLE =
-	'tr[data-gateway_id="woocommerce_payments"] .wc-payment-gateway-method-toggle-enabled';
+	'tr[data-gateway_id="poocommerce_payments"] .wc-payment-gateway-method-toggle-enabled';
 
 describe( 'payment gateways disable confirmation', () => {
-	// Newer WooCommerce versions get rid of the 'Save Changes' button and save the changes immediately
+	// Newer PooCommerce versions get rid of the 'Save Changes' button and save the changes immediately
 	const saveChangesIfAvailable = async () => {
 		const saveChangesSelector =
 			"xpath/.//button[contains(., 'Save changes')]";
@@ -113,7 +113,7 @@ describe( 'payment gateways disable confirmation', () => {
 		await expect( page ).not.toMatchTextContent( 'Disable WooPayments' );
 
 		await page.waitForSelector(
-			`${ WC_GATEWAYS_LIST_TABLE__WC_PAYMENTS_TOGGLE } .woocommerce-input-toggle:not(.woocommerce-input-toggle--loading)`
+			`${ WC_GATEWAYS_LIST_TABLE__WC_PAYMENTS_TOGGLE } .poocommerce-input-toggle:not(.poocommerce-input-toggle--loading)`
 		);
 
 		await saveChangesIfAvailable();
@@ -130,7 +130,7 @@ describe( 'payment gateways disable confirmation', () => {
 			WC_GATEWAYS_LIST_TABLE__WC_PAYMENTS_TOGGLE
 		);
 		await page.waitForSelector(
-			`${ WC_GATEWAYS_LIST_TABLE__WC_PAYMENTS_TOGGLE } .woocommerce-input-toggle:not(.woocommerce-input-toggle--loading)`
+			`${ WC_GATEWAYS_LIST_TABLE__WC_PAYMENTS_TOGGLE } .poocommerce-input-toggle:not(.poocommerce-input-toggle--loading)`
 		);
 		await saveChangesIfAvailable();
 		await expect(

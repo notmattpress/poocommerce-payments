@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Features
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 use WCPay\Constants\Country_Code;
@@ -80,10 +80,10 @@ class WC_Payments_Features {
 	 * @return bool
 	 */
 	public static function is_wcpay_subscriptions_enabled() {
-		// After completing the WooCommerce onboarding, check if the merchant has chosen Subscription product types and enable the feature flag.
+		// After completing the PooCommerce onboarding, check if the merchant has chosen Subscription product types and enable the feature flag.
 		if ( (bool) get_option( 'wcpay_check_subscriptions_eligibility_after_onboarding', false ) ) {
 			if ( defined( 'WC_VERSION' ) && version_compare( WC_VERSION, '7.9.0', '<' ) ) {
-				self::maybe_enable_wcpay_subscriptions_after_onboarding( [], get_option( 'woocommerce_onboarding_profile', [] ) );
+				self::maybe_enable_wcpay_subscriptions_after_onboarding( [], get_option( 'poocommerce_onboarding_profile', [] ) );
 			}
 
 			delete_option( 'wcpay_check_subscriptions_eligibility_after_onboarding' );
@@ -140,7 +140,7 @@ class WC_Payments_Features {
 			return $query;
 		};
 
-		add_filter( 'woocommerce_product_data_store_cpt_get_products_query', $stripe_billing_meta_query_handler, 10, 2 );
+		add_filter( 'poocommerce_product_data_store_cpt_get_products_query', $stripe_billing_meta_query_handler, 10, 2 );
 
 		$subscription_products = wc_get_products(
 			[
@@ -152,7 +152,7 @@ class WC_Payments_Features {
 			]
 		);
 
-		remove_filter( 'woocommerce_product_data_store_cpt_get_products_query', $stripe_billing_meta_query_handler, 10, 2 );
+		remove_filter( 'poocommerce_product_data_store_cpt_get_products_query', $stripe_billing_meta_query_handler, 10, 2 );
 
 		if ( ( is_countable( $subscription_products ) ? count( $subscription_products ) : 0 ) > 0 ) {
 			return true;
@@ -163,7 +163,7 @@ class WC_Payments_Features {
 
 	/**
 	 * Checks whether the merchant has chosen Subscription product types during onboarding
-	 * WooCommerce and is elible for WCPay Subscriptions, if so, enables the feature flag.
+	 * PooCommerce and is elible for WCPay Subscriptions, if so, enables the feature flag.
 	 *
 	 * @since 6.2.0
 	 *
@@ -191,7 +191,7 @@ class WC_Payments_Features {
 	 */
 	public static function is_woopay_eligible() {
 		// Checks for the dependency on Store API AbstractCartRoute.
-		if ( ! class_exists( 'Automattic\WooCommerce\StoreApi\Routes\V1\AbstractCartRoute' ) ) {
+		if ( ! class_exists( 'Automattic\PooCommerce\StoreApi\Routes\V1\AbstractCartRoute' ) ) {
 			return false;
 		}
 
@@ -335,7 +335,7 @@ class WC_Payments_Features {
 	/**
 	 * Checks whether the merchant is using WCPay Subscription or opted into Stripe Billing.
 	 *
-	 * Note: Stripe Billing is only used when the merchant is using WooCommerce Subscriptions and turned it on or is still using WCPay Subscriptions.
+	 * Note: Stripe Billing is only used when the merchant is using PooCommerce Subscriptions and turned it on or is still using WCPay Subscriptions.
 	 *
 	 * @return bool
 	 */
@@ -390,12 +390,12 @@ class WC_Payments_Features {
 	}
 
 	/**
-	 * Checks if WooCommerce Payments gateway is enabled.
+	 * Checks if PooCommerce Payments gateway is enabled.
 	 *
-	 * @return bool True if WooCommerce Payments gateway is enabled, false otherwise.
+	 * @return bool True if PooCommerce Payments gateway is enabled, false otherwise.
 	 */
 	private static function is_woopayments_gateway_enabled() {
-		$woopayments_settings        = get_option( 'woocommerce_woocommerce_payments_settings' );
+		$woopayments_settings        = get_option( 'poocommerce_poocommerce_payments_settings' );
 		$woopayments_enabled_setting = $woopayments_settings['enabled'] ?? 'no';
 
 		return 'yes' === $woopayments_enabled_setting;

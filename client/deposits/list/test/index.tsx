@@ -4,8 +4,8 @@
  * External dependencies
  */
 import { render, waitFor } from '@testing-library/react';
-import { updateQueryString } from '@woocommerce/navigation';
-import { downloadCSVFile } from '@woocommerce/csv-export';
+import { updateQueryString } from '@poocommerce/navigation';
+import { downloadCSVFile } from '@poocommerce/csv-export';
 import apiFetch from '@wordpress/api-fetch';
 
 import os from 'os';
@@ -33,8 +33,8 @@ jest.mock( 'wcpay/data', () => ( {
 	useReportingExportLanguage: jest.fn( () => [ 'en', jest.fn() ] ),
 } ) );
 
-jest.mock( '@woocommerce/csv-export', () => {
-	const actualModule = jest.requireActual( '@woocommerce/csv-export' );
+jest.mock( '@poocommerce/csv-export', () => {
+	const actualModule = jest.requireActual( '@poocommerce/csv-export' );
 
 	return {
 		...actualModule,
@@ -216,7 +216,7 @@ describe( 'Deposits list', () => {
 
 		let { container } = render( <DepositsList /> );
 		let tableSummary = container.querySelectorAll(
-			'.woocommerce-table__summary'
+			'.poocommerce-table__summary'
 		);
 
 		expect( tableSummary ).toHaveLength( 0 );
@@ -231,7 +231,7 @@ describe( 'Deposits list', () => {
 
 		( { container } = render( <DepositsList /> ) );
 		tableSummary = container.querySelectorAll(
-			'.woocommerce-table__summary'
+			'.poocommerce-table__summary'
 		);
 
 		expect( tableSummary ).toHaveLength( 1 );

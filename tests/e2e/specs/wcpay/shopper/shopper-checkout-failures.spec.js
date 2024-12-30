@@ -10,9 +10,9 @@ import {
 } from '../../../utils/payments';
 import { shopperWCP } from '../../../utils';
 
-const { uiUnblocked } = require( '@woocommerce/e2e-utils' );
+const { uiUnblocked } = require( '@poocommerce/e2e-utils' );
 const notice = 'div.wc-block-components-notice-banner';
-const oldNotice = 'div.woocommerce-NoticeGroup > ul.woocommerce-error > li';
+const oldNotice = 'div.poocommerce-NoticeGroup > ul.poocommerce-error > li';
 
 const waitForBanner = async ( errorText ) => {
 	return shopperWCP.waitForErrorBanner( errorText, notice, oldNotice );
@@ -50,7 +50,7 @@ describe( 'Shopper > Checkout > Failures with various cards', () => {
 		await expect(
 			page
 		).toMatchElement(
-			'div.woocommerce-NoticeGroup > ul.woocommerce-error',
+			'div.poocommerce-NoticeGroup > ul.poocommerce-error',
 			{ text: "Your card's expiration year is in the past." }
 		);
 	} );
@@ -63,7 +63,7 @@ describe( 'Shopper > Checkout > Failures with various cards', () => {
 		await expect(
 			page
 		).toMatchElement(
-			'div.woocommerce-NoticeGroup > ul.woocommerce-error',
+			'div.poocommerce-NoticeGroup > ul.poocommerce-error',
 			{ text: "Your card's security code is incomplete." }
 		);
 	} );
@@ -110,7 +110,7 @@ describe( 'Shopper > Checkout > Failures with various cards', () => {
 		await expect(
 			page
 		).toMatchElement(
-			'div.woocommerce-NoticeGroup > ul.woocommerce-error',
+			'div.poocommerce-NoticeGroup > ul.poocommerce-error',
 			{ text: 'Your card number is invalid.' }
 		);
 	} );
@@ -119,9 +119,9 @@ describe( 'Shopper > Checkout > Failures with various cards', () => {
 		const declinedCard = config.get( 'cards.declined-3ds' );
 		await fillCardDetails( page, declinedCard );
 		await expect( page ).toClick( '#place_order' );
-		await page.waitForSelector( 'ul.woocommerce-error' );
+		await page.waitForSelector( 'ul.poocommerce-error' );
 		const declined3dsCardError = await page.$eval(
-			'div.woocommerce-NoticeGroup > ul.woocommerce-error',
+			'div.poocommerce-NoticeGroup > ul.poocommerce-error',
 			( el ) => el.innerText
 		);
 		await expect( page ).toMatchTextContent(

@@ -177,7 +177,7 @@ abstract class UPE_Payment_Method {
 				$order = is_a( $order, 'WC_Order' ) ? $order : null;
 			}
 
-			$currency = get_woocommerce_currency();
+			$currency = get_poocommerce_currency();
 			if ( $order ) {
 				$currency = $order->get_currency();
 			}
@@ -343,6 +343,6 @@ abstract class UPE_Payment_Method {
 			$order = wc_get_order( $order_id );
 			return $order->get_currency();
 		}
-		return get_woocommerce_currency();
+		return get_poocommerce_currency();
 	}
 }

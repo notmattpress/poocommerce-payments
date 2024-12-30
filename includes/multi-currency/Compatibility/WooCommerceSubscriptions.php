@@ -1,6 +1,6 @@
 <?php
 /**
- * Class WooCommerceSubscriptions
+ * Class PooCommerceSubscriptions
  *
  * @package WCPay\MultiCurrency\Compatibility
  */
@@ -13,9 +13,9 @@ use WCPay\MultiCurrency\FrontendCurrencies;
 use WCPay\MultiCurrency\MultiCurrency;
 
 /**
- * Class that controls Multi Currency Compatibility with WooCommerce Subscriptions Plugin and WCPay Subscriptions.
+ * Class that controls Multi Currency Compatibility with PooCommerce Subscriptions Plugin and WCPay Subscriptions.
  */
-class WooCommerceSubscriptions extends BaseCompatibility {
+class PooCommerceSubscriptions extends BaseCompatibility {
 
 	/**
 	 * Our allowed subscription types.
@@ -65,16 +65,16 @@ class WooCommerceSubscriptions extends BaseCompatibility {
 			if ( ! is_admin() && ! defined( 'DOING_CRON' ) ) {
 				$this->frontend_currencies = $this->multi_currency->get_frontend_currencies();
 
-				add_filter( 'woocommerce_subscriptions_product_price', [ $this, 'get_subscription_product_price' ], 50, 2 );
-				add_filter( 'woocommerce_product_get__subscription_sign_up_fee', [ $this, 'get_subscription_product_signup_fee' ], 50, 2 );
-				add_filter( 'woocommerce_product_variation_get__subscription_sign_up_fee', [ $this, 'get_subscription_product_signup_fee' ], 50, 2 );
-				add_filter( 'option_woocommerce_subscriptions_multiple_purchase', [ $this, 'maybe_disable_mixed_cart' ], 50 );
+				add_filter( 'poocommerce_subscriptions_product_price', [ $this, 'get_subscription_product_price' ], 50, 2 );
+				add_filter( 'poocommerce_product_get__subscription_sign_up_fee', [ $this, 'get_subscription_product_signup_fee' ], 50, 2 );
+				add_filter( 'poocommerce_product_variation_get__subscription_sign_up_fee', [ $this, 'get_subscription_product_signup_fee' ], 50, 2 );
+				add_filter( 'option_poocommerce_subscriptions_multiple_purchase', [ $this, 'maybe_disable_mixed_cart' ], 50 );
 				add_filter( MultiCurrency::FILTER_PREFIX . 'override_selected_currency', [ $this, 'override_selected_currency' ], 50 );
 				add_filter( MultiCurrency::FILTER_PREFIX . 'should_convert_product_price', [ $this, 'should_convert_product_price' ], 50, 2 );
 				add_filter( MultiCurrency::FILTER_PREFIX . 'should_convert_coupon_amount', [ $this, 'should_convert_coupon_amount' ], 50, 2 );
 				add_filter( MultiCurrency::FILTER_PREFIX . 'should_disable_currency_switching', [ $this, 'should_disable_currency_switching' ], 50 );
-				add_filter( 'woocommerce_subscription_price_string_details', [ $this, 'maybe_set_current_my_account_subscription' ], 50, 2 );
-				add_filter( 'woocommerce_get_formatted_subscription_total', [ $this, 'maybe_clear_current_my_account_subscription' ], 50, 2 );
+				add_filter( 'poocommerce_subscription_price_string_details', [ $this, 'maybe_set_current_my_account_subscription' ], 50, 2 );
+				add_filter( 'poocommerce_get_formatted_subscription_total', [ $this, 'maybe_clear_current_my_account_subscription' ], 50, 2 );
 				add_filter( 'wc_price', [ $this, 'maybe_get_explicit_format_for_subscription_total' ], 50, 5 );
 			}
 		}
@@ -354,7 +354,7 @@ class WooCommerceSubscriptions extends BaseCompatibility {
 	 * Maybe clears the current_my_account_subscription var and clears the FrontendCurrencies cache.
 	 *
 	 * During the $subscription->get_formatted_order_total() call we may set the current_my_account_subscription var, and we want to clear it as soon as
-	 * we no longer need it. The woocommerce_get_formatted_subscription_total filter is at the end of that call, so we check to see if the var is set,
+	 * we no longer need it. The poocommerce_get_formatted_subscription_total filter is at the end of that call, so we check to see if the var is set,
 	 * and if it is, we clear it, and we also clear the FrontendCurrencies cache.
 	 *
 	 * Tell Psalm to ignore the WC_Subscription class, this class is only loaded if Subscriptions is active.
@@ -401,7 +401,7 @@ class WooCommerceSubscriptions extends BaseCompatibility {
 		 *
 		 * @psalm-suppress UndefinedDocblockClass
 		 */
-		$currency_code = $this->current_my_account_subscription->get_currency() ?? get_woocommerce_currency();
+		$currency_code = $this->current_my_account_subscription->get_currency() ?? get_poocommerce_currency();
 
 		// This is sourced from WC_Payments_Explicit_Price_Formatter::get_explicit_price_with_currency.
 		$price_to_check = html_entity_decode( wp_strip_all_tags( $html_price ) );

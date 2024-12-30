@@ -6,7 +6,7 @@ import { normalizeShippingAddress, getExpressCheckoutData } from '.';
 
 /**
  * Checks if the intermediate address is redacted for the given country.
- * CA and GB addresses are redacted and are causing errors until WooCommerce is able to
+ * CA and GB addresses are redacted and are causing errors until PooCommerce is able to
  * handle redacted addresses.
  * https://developers.google.com/pay/api/web/reference/response-objects#IntermediateAddress
  *
@@ -53,7 +53,7 @@ const updateShortcodeField = ( formSelector, fieldName, value ) => {
 };
 
 /**
- * Updates the WooCommerce Blocks shipping UI to reflect a new shipping address.
+ * Updates the PooCommerce Blocks shipping UI to reflect a new shipping address.
  *
  * @param {Object} eventAddress - The shipping address returned by the payment event.
  */
@@ -64,7 +64,7 @@ const updateBlocksShippingUI = ( eventAddress ) => {
 };
 
 /**
- * Updates the WooCommerce shortcode cart/checkout shipping UI to reflect a new shipping address.
+ * Updates the PooCommerce shortcode cart/checkout shipping UI to reflect a new shipping address.
  *
  * @param {Object} eventAddress - The shipping address returned by the payment event.
  */
@@ -78,7 +78,7 @@ const updateShortcodeShippingUI = ( eventAddress ) => {
 		keys.forEach( ( key ) => {
 			if ( address[ key ] ) {
 				updateShortcodeField(
-					'form.woocommerce-shipping-calculator',
+					'form.poocommerce-shipping-calculator',
 					`calc_shipping_${ key }`,
 					address[ key ]
 				);
@@ -86,14 +86,14 @@ const updateShortcodeShippingUI = ( eventAddress ) => {
 		} );
 		document
 			.querySelector(
-				'form.woocommerce-shipping-calculator [name="calc_shipping"]'
+				'form.poocommerce-shipping-calculator [name="calc_shipping"]'
 			)
 			?.click();
 	} else if ( context === 'checkout' ) {
 		keys.forEach( ( key ) => {
 			if ( address[ key ] ) {
 				updateShortcodeField(
-					'form.woocommerce-checkout',
+					'form.poocommerce-checkout',
 					`billing_${ key }`,
 					address[ key ]
 				);
@@ -103,10 +103,10 @@ const updateShortcodeShippingUI = ( eventAddress ) => {
 };
 
 /**
- * Updates the WooCommerce shipping UI to reflect a new shipping address.
+ * Updates the PooCommerce shipping UI to reflect a new shipping address.
  *
  * Determines the current context (cart or checkout) and updates either
- * WooCommerce Blocks or shortcode-based shipping forms, if applicable.
+ * PooCommerce Blocks or shortcode-based shipping forms, if applicable.
  *
  * @param {Object} newAddress - The new shipping address object returned by the payment event.
  * @param {string} newAddress.country - The country code of the shipping address.

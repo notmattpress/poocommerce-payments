@@ -6,7 +6,7 @@
 import * as React from 'react';
 import { render, screen } from '@testing-library/react';
 import user from '@testing-library/user-event';
-import { getQuery, updateQueryString } from '@woocommerce/navigation';
+import { getQuery, updateQueryString } from '@poocommerce/navigation';
 
 /**
  * Internal dependencies
@@ -217,7 +217,7 @@ describe( 'Authorizations list', () => {
 
 			( { container } = render( <Authorizations /> ) );
 			let tableSummaryIsLoading = container.querySelector(
-				'.woocommerce-table__summary.is-loading'
+				'.poocommerce-table__summary.is-loading'
 			);
 			expect( tableSummaryIsLoading ).toBeInTheDocument();
 
@@ -233,11 +233,11 @@ describe( 'Authorizations list', () => {
 
 			( { container } = render( <Authorizations /> ) );
 			tableSummaryIsLoading = container.querySelector(
-				'.woocommerce-table__summary.is-loading'
+				'.poocommerce-table__summary.is-loading'
 			);
 			expect( tableSummaryIsLoading ).not.toBeInTheDocument();
 			const tableSummary = container.querySelectorAll(
-				'.woocommerce-table__summary'
+				'.poocommerce-table__summary'
 			);
 
 			expect( tableSummary ).toHaveLength( 1 );
