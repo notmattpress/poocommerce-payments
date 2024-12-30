@@ -81,7 +81,7 @@
     "@fingerprintjs/fingerprintjs": "3.4.1",
     "@stripe/connect-js": "3.3.16",
     "@stripe/react-connect-js": "3.3.17",
-    "@stripe/react-stripe-js": "2.5.1",
+    "@stripe/react-stripe-js": "3.1.1",
     "@stripe/stripe-js": "1.15.1",
     "@poocommerce/explat": "2.3.0",
     "@poocommerce/number": "2.4.0",
