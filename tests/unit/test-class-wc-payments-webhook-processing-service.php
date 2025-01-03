@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Webhook_Processing_Service_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use PHPUnit\Framework\MockObject\MockObject;
@@ -268,7 +268,7 @@ class WC_Payments_Webhook_Processing_Service_Test extends WCPAY_UnitTestCase {
 			->expects( $this->once() )
 			->method( 'add_order_note' )
 			->with(
-				'A refund of <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&pound;</span>9.99</bdi></span> was <strong>unsuccessful</strong> using WooPayments (<code>test_refund_id</code>).'
+				'A refund of <span class="poocommerce-Price-amount amount"><bdi><span class="poocommerce-Price-currencySymbol">&pound;</span>9.99</bdi></span> was <strong>unsuccessful</strong> using WooPayments (<code>test_refund_id</code>).'
 			);
 
 		// The expects condition here is the real test; we expect that the 'update_meta_data' function
@@ -289,7 +289,7 @@ class WC_Payments_Webhook_Processing_Service_Test extends WCPAY_UnitTestCase {
 	}
 
 	/**
-	 * Test a vaild refund failure deletes WooCommerce Refund.
+	 * Test a vaild refund failure deletes PooCommerce Refund.
 	 */
 	public function test_valid_failed_refund_webhook_deletes_wc_refund() {
 		// Setup test request data.
@@ -387,7 +387,7 @@ class WC_Payments_Webhook_Processing_Service_Test extends WCPAY_UnitTestCase {
 			->expects( $this->once() )
 			->method( 'add_order_note' )
 			->with(
-				'A refund of <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&pound;</span>9.99</bdi></span> was <strong>unsuccessful</strong> using WooPayments (<code>test_refund_id</code>).'
+				'A refund of <span class="poocommerce-Price-amount amount"><bdi><span class="poocommerce-Price-currencySymbol">&pound;</span>9.99</bdi></span> was <strong>unsuccessful</strong> using WooPayments (<code>test_refund_id</code>).'
 			);
 
 		$this->mock_db_wrapper
@@ -420,7 +420,7 @@ class WC_Payments_Webhook_Processing_Service_Test extends WCPAY_UnitTestCase {
 		$this->mock_order
 			->expects( $this->once() )
 			->method( 'add_order_note' )
-			->with( 'A refund of <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&euro;</span>9.99</bdi></span> was <strong>unsuccessful</strong> using WooPayments (<code>test_refund_id</code>).' );
+			->with( 'A refund of <span class="poocommerce-Price-amount amount"><bdi><span class="poocommerce-Price-currencySymbol">&euro;</span>9.99</bdi></span> was <strong>unsuccessful</strong> using WooPayments (<code>test_refund_id</code>).' );
 
 		$this->mock_db_wrapper
 			->expects( $this->once() )
@@ -452,7 +452,7 @@ class WC_Payments_Webhook_Processing_Service_Test extends WCPAY_UnitTestCase {
 		$this->mock_order
 			->expects( $this->once() )
 			->method( 'add_order_note' )
-			->with( 'A refund of <span class="woocommerce-Price-amount amount"><bdi><span class="woocommerce-Price-currencySymbol">&yen;</span>999.00</bdi></span> was <strong>unsuccessful</strong> using WooPayments (<code>test_refund_id</code>).' );
+			->with( 'A refund of <span class="poocommerce-Price-amount amount"><bdi><span class="poocommerce-Price-currencySymbol">&yen;</span>999.00</bdi></span> was <strong>unsuccessful</strong> using WooPayments (<code>test_refund_id</code>).' );
 
 		$this->mock_db_wrapper
 			->expects( $this->once() )
@@ -565,14 +565,14 @@ class WC_Payments_Webhook_Processing_Service_Test extends WCPAY_UnitTestCase {
 	 */
 	public function test_action_hook_exception_returns_response() {
 		add_action(
-			'woocommerce_payments_before_webhook_delivery',
+			'poocommerce_payments_before_webhook_delivery',
 			function () {
 				throw new Exception( 'Crash before' );
 			}
 		);
 
 		add_action(
-			'woocommerce_payments_after_webhook_delivery',
+			'poocommerce_payments_after_webhook_delivery',
 			function () {
 				throw new Exception( 'Crash after' );
 			}

@@ -12,14 +12,14 @@ const {
 	shopper,
 	clearAndFillInput,
 	uiUnblocked,
-} = require( '@woocommerce/e2e-utils' );
+} = require( '@poocommerce/e2e-utils' );
 
 const productName = config.get( 'products.simple.name' );
 const billingDetails = config.get( 'addresses.customer.billing' );
 const card = config.get( 'cards.basic' );
 const couponInputSelector = '#coupon_code';
 const applyCouponSelector = 'button[name="apply_coupon"]';
-const removeCouponSelector = '.woocommerce-remove-coupon';
+const removeCouponSelector = '.poocommerce-remove-coupon';
 
 describe( 'Checkout with free coupon & after modifying cart on Checkout page', () => {
 	describe( 'Classic Checkout', () => {

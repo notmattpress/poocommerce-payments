@@ -3,7 +3,7 @@
 exports[`CapitalPage renders the TableCard component with loan data 1`] = `
 <div>
   <div
-    class=" woocommerce-payments-page"
+    class=" poocommerce-payments-page"
   >
     <div
       class="date-format-notice wcpay-banner-notice is-info"
@@ -61,7 +61,7 @@ exports[`CapitalPage renders the TableCard component with loan data 1`] = `
       >
         Viewing test loans. To view live loans, disable test mode in 
         <a
-          href="admin.php?page=wc-settings&tab=checkout&section=woocommerce_payments"
+          href="admin.php?page=wc-settings&tab=checkout&section=poocommerce_payments"
         >
           WooPayments settings
         </a>
@@ -250,7 +250,7 @@ exports[`CapitalPage renders the TableCard component with loan data 1`] = `
       />
     </div>
     <div
-      class="components-surface components-card woocommerce-table wcpay-loans-list css-nsno0f-View-Surface-getBorders-primary-Card-rounded em57xhy0"
+      class="components-surface components-card poocommerce-table wcpay-loans-list css-nsno0f-View-Surface-getBorders-primary-Card-rounded em57xhy0"
       data-wp-c16t="true"
       data-wp-component="Card"
     >
@@ -270,7 +270,7 @@ exports[`CapitalPage renders the TableCard component with loan data 1`] = `
             All loans
           </h2>
           <div
-            class="woocommerce-table__actions"
+            class="poocommerce-table__actions"
           />
         </div>
         <div
@@ -280,12 +280,12 @@ exports[`CapitalPage renders the TableCard component with loan data 1`] = `
         >
           <div
             aria-labelledby="caption-0"
-            class="woocommerce-table__table"
+            class="poocommerce-table__table"
             role="group"
           >
             <table>
               <caption
-                class="woocommerce-table__caption screen-reader-text"
+                class="poocommerce-table__caption screen-reader-text"
                 id="caption-0"
               >
                 All loans
@@ -293,7 +293,7 @@ exports[`CapitalPage renders the TableCard component with loan data 1`] = `
               <tbody>
                 <tr>
                   <th
-                    class="woocommerce-table__header is-left-aligned is-sorted"
+                    class="poocommerce-table__header is-left-aligned is-sorted"
                     role="columnheader"
                     scope="col"
                   >
@@ -309,7 +309,7 @@ exports[`CapitalPage renders the TableCard component with loan data 1`] = `
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-center-aligned is-left-aligned"
+                    class="poocommerce-table__header is-center-aligned is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -325,7 +325,7 @@ exports[`CapitalPage renders the TableCard component with loan data 1`] = `
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-numeric"
+                    class="poocommerce-table__header is-numeric"
                     role="columnheader"
                     scope="col"
                   >
@@ -341,7 +341,7 @@ exports[`CapitalPage renders the TableCard component with loan data 1`] = `
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-numeric"
+                    class="poocommerce-table__header is-numeric"
                     role="columnheader"
                     scope="col"
                   >
@@ -357,7 +357,7 @@ exports[`CapitalPage renders the TableCard component with loan data 1`] = `
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-numeric"
+                    class="poocommerce-table__header is-numeric"
                     role="columnheader"
                     scope="col"
                   >
@@ -373,7 +373,7 @@ exports[`CapitalPage renders the TableCard component with loan data 1`] = `
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-numeric"
+                    class="poocommerce-table__header is-numeric"
                     role="columnheader"
                     scope="col"
                   >
@@ -391,11 +391,11 @@ exports[`CapitalPage renders the TableCard component with loan data 1`] = `
                 </tr>
                 <tr>
                   <th
-                    class="woocommerce-table__item is-left-aligned is-sorted"
+                    class="poocommerce-table__item is-left-aligned is-sorted"
                     scope="row"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions&type=charge&filter=advanced&loan_id_is=financingoffer_1QEpQ2J5cIRIG92xWoVJJE3S"
                       tabindex="-1"
@@ -404,10 +404,10 @@ exports[`CapitalPage renders the TableCard component with loan data 1`] = `
                     </a>
                   </th>
                   <td
-                    class="woocommerce-table__item is-center-aligned is-left-aligned"
+                    class="poocommerce-table__item is-center-aligned is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions&type=charge&filter=advanced&loan_id_is=financingoffer_1QEpQ2J5cIRIG92xWoVJJE3S"
                       tabindex="-1"
@@ -420,10 +420,10 @@ exports[`CapitalPage renders the TableCard component with loan data 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions&type=charge&filter=advanced&loan_id_is=financingoffer_1QEpQ2J5cIRIG92xWoVJJE3S"
                       tabindex="-1"
@@ -432,10 +432,10 @@ exports[`CapitalPage renders the TableCard component with loan data 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions&type=charge&filter=advanced&loan_id_is=financingoffer_1QEpQ2J5cIRIG92xWoVJJE3S"
                       tabindex="-1"
@@ -444,10 +444,10 @@ exports[`CapitalPage renders the TableCard component with loan data 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions&type=charge&filter=advanced&loan_id_is=financingoffer_1QEpQ2J5cIRIG92xWoVJJE3S"
                       tabindex="-1"
@@ -456,10 +456,10 @@ exports[`CapitalPage renders the TableCard component with loan data 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions&type=charge&filter=advanced&loan_id_is=financingoffer_1QEpQ2J5cIRIG92xWoVJJE3S"
                       tabindex="-1"
@@ -478,47 +478,47 @@ exports[`CapitalPage renders the TableCard component with loan data 1`] = `
           data-wp-component="CardFooter"
         >
           <ul
-            class="woocommerce-table__summary"
+            class="poocommerce-table__summary"
             role="complementary"
           >
             <li
-              class="woocommerce-table__summary-item"
+              class="poocommerce-table__summary-item"
             >
               <span
-                class="woocommerce-table__summary-value"
+                class="poocommerce-table__summary-value"
               >
                 1
               </span>
               <span
-                class="woocommerce-table__summary-label"
+                class="poocommerce-table__summary-label"
               >
                 loan
               </span>
             </li>
             <li
-              class="woocommerce-table__summary-item"
+              class="poocommerce-table__summary-item"
             >
               <span
-                class="woocommerce-table__summary-value"
+                class="poocommerce-table__summary-value"
               >
                 $1,000.00
               </span>
               <span
-                class="woocommerce-table__summary-label"
+                class="poocommerce-table__summary-label"
               >
                 total
               </span>
             </li>
             <li
-              class="woocommerce-table__summary-item"
+              class="poocommerce-table__summary-item"
             >
               <span
-                class="woocommerce-table__summary-value"
+                class="poocommerce-table__summary-value"
               >
                 $100.00
               </span>
               <span
-                class="woocommerce-table__summary-label"
+                class="poocommerce-table__summary-label"
               >
                 fixed fees
               </span>

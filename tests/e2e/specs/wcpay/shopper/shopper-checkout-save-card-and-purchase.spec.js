@@ -3,7 +3,7 @@
  */
 import config from 'config';
 
-const { shopper } = require( '@woocommerce/e2e-utils' );
+const { shopper } = require( '@poocommerce/e2e-utils' );
 
 /**
  * Internal dependencies
@@ -97,7 +97,7 @@ describe( 'Saved cards ', () => {
 				);
 
 				await expect( page ).not.toMatchElement(
-					'input#wc-woocommerce_payments-new-payment-method'
+					'input#wc-poocommerce_payments-new-payment-method'
 				);
 			} );
 		}

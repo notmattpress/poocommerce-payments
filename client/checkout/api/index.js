@@ -469,7 +469,7 @@ export default class WCPayAPI {
 	}
 
 	/**
-	 * Fetches the cart data from the woocommerce store api.
+	 * Fetches the cart data from the poocommerce store api.
 	 *
 	 * @return {Object} JSON data.
 	 * @throws Error if the response is not ok.

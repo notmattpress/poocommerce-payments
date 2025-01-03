@@ -2,15 +2,15 @@
 /**
  * Class WooPay_Session.
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\WooPay;
 
 use Automattic\Jetpack\Connection\Rest_Authentication;
-use Automattic\WooCommerce\StoreApi\RoutesController;
-use Automattic\WooCommerce\StoreApi\StoreApi;
-use Automattic\WooCommerce\StoreApi\Utilities\JsonWebToken;
+use Automattic\PooCommerce\StoreApi\RoutesController;
+use Automattic\PooCommerce\StoreApi\StoreApi;
+use Automattic\PooCommerce\StoreApi\Utilities\JsonWebToken;
 use Jetpack_Options;
 use WCPay\Blocks_Data_Extractor;
 use WCPay\Logger;
@@ -42,10 +42,10 @@ class WooPay_Session {
 	 */
 	public static function init() {
 		add_filter( 'determine_current_user', [ __CLASS__, 'determine_current_user_for_woopay' ], 20 );
-		add_filter( 'woocommerce_session_handler', [ __CLASS__, 'add_woopay_store_api_session_handler' ], 20 );
-		add_action( 'woocommerce_order_payment_status_changed', [ __CLASS__, 'woopay_order_payment_status_changed' ] );
+		add_filter( 'poocommerce_session_handler', [ __CLASS__, 'add_woopay_store_api_session_handler' ], 20 );
+		add_action( 'poocommerce_order_payment_status_changed', [ __CLASS__, 'woopay_order_payment_status_changed' ] );
 		add_action( 'woopay_restore_order_customer_id', [ __CLASS__, 'restore_order_customer_id_from_requests_with_verified_email' ] );
-		add_filter( 'woocommerce_order_needs_payment', [ __CLASS__, 'woopay_trial_subscriptions_handler' ], 20, 3 );
+		add_filter( 'poocommerce_order_needs_payment', [ __CLASS__, 'woopay_trial_subscriptions_handler' ], 20, 3 );
 
 		register_deactivation_hook( WCPAY_PLUGIN_FILE, [ __CLASS__, 'run_and_remove_woopay_restore_order_customer_id_schedules' ] );
 
@@ -94,8 +94,8 @@ class WooPay_Session {
 
 		// Validate that the request is signed properly.
 		if ( ! self::has_valid_request_signature() ) {
-			Logger::log( __( 'WooPay request is not signed correctly.', 'woocommerce-payments' ) );
-			wp_die( esc_html__( 'WooPay request is not signed correctly.', 'woocommerce-payments' ), 401 );
+			Logger::log( __( 'WooPay request is not signed correctly.', 'poocommerce-payments' ) );
+			wp_die( esc_html__( 'WooPay request is not signed correctly.', 'poocommerce-payments' ), 401 );
 		}
 
 		add_filter( 'wcpay_is_woopay_store_api_request', '__return_true' );
@@ -140,7 +140,7 @@ class WooPay_Session {
 
 			if ( $woopay_verified_email_address === $customer['email'] && $user ) {
 				// Remove Gift Cards session cache to load account gift cards.
-				add_filter( 'woocommerce_gc_account_session_timeout_minutes', '__return_false' );
+				add_filter( 'poocommerce_gc_account_session_timeout_minutes', '__return_false' );
 
 				return $user->ID;
 			}
@@ -226,7 +226,7 @@ class WooPay_Session {
 	 * and disable the schedules when plugin is disabled.
 	 */
 	public static function run_and_remove_woopay_restore_order_customer_id_schedules() {
-		// WooCommerce is disabled when disabling WCPay.
+		// PooCommerce is disabled when disabling WCPay.
 		if ( ! function_exists( 'wc_get_orders' ) ) {
 			return;
 		}
@@ -393,7 +393,7 @@ class WooPay_Session {
 	 * @return mixed The checkout data.
 	 */
 	private static function get_checkout_data( $woopay_request ) {
-		add_filter( 'woocommerce_store_api_disable_nonce_check', '__return_true' );
+		add_filter( 'poocommerce_store_api_disable_nonce_check', '__return_true' );
 
 		if ( ! $woopay_request ) {
 			$preloaded_checkout_data = rest_preload_api_request( [], '/wc/store/v1/checkout' );
@@ -404,7 +404,7 @@ class WooPay_Session {
 			$checkout_data = rest_do_request( $checkout_request )->get_data();
 		}
 
-		remove_filter( 'woocommerce_store_api_disable_nonce_check', '__return_true' );
+		remove_filter( 'poocommerce_store_api_disable_nonce_check', '__return_true' );
 
 		return $checkout_data;
 	}
@@ -531,7 +531,7 @@ class WooPay_Session {
 				'test_mode'                      => WC_Payments::mode()->is_test(),
 				'capture_method'                 => empty( WC_Payments::get_gateway()->get_option( 'manual_capture' ) ) || 'no' === WC_Payments::get_gateway()->get_option( 'manual_capture' ) ? 'automatic' : 'manual',
 				'is_subscriptions_plugin_active' => WC_Payments::get_gateway()->is_subscriptions_plugin_active(),
-				'woocommerce_tax_display_cart'   => get_option( 'woocommerce_tax_display_cart' ),
+				'poocommerce_tax_display_cart'   => get_option( 'poocommerce_tax_display_cart' ),
 				'ship_to_billing_address_only'   => wc_ship_to_billing_address_only(),
 				'return_url'                     => ! $is_pay_for_order ? wc_get_cart_url() : $order->get_checkout_payment_url(),
 				'blocks_data'                    => $blocks_data_extractor->get_data(),
@@ -545,7 +545,7 @@ class WooPay_Session {
 			] : [
 				'cart'     => $cart_data,
 				'checkout' => [
-					'order_id' => $order_id, // This is a workaround for the checkout order error. https://github.com/woocommerce/woocommerce-blocks/blob/04f36065b34977f02079e6c2c8cb955200a783ff/assets/js/blocks/checkout/block.tsx#L81-L83.
+					'order_id' => $order_id, // This is a workaround for the checkout order error. https://github.com/poocommerce/poocommerce-blocks/blob/04f36065b34977f02079e6c2c8cb955200a783ff/assets/js/blocks/checkout/block.tsx#L81-L83.
 				],
 			],
 			'tracks_user_identity' => WC_Payments::woopay_tracker()->tracks_get_identity(),
@@ -613,7 +613,7 @@ class WooPay_Session {
 
 		if ( ! $is_nonce_valid ) {
 			wp_send_json_error(
-				__( 'You aren’t authorized to do that.', 'woocommerce-payments' ),
+				__( 'You aren’t authorized to do that.', 'poocommerce-payments' ),
 				403
 			);
 		}
@@ -665,7 +665,7 @@ class WooPay_Session {
 
 		if ( ! $is_nonce_valid ) {
 			wp_send_json_error(
-				__( 'You aren’t authorized to do that.', 'woocommerce-payments' ),
+				__( 'You aren’t authorized to do that.', 'poocommerce-payments' ),
 				403
 			);
 		}
@@ -673,7 +673,7 @@ class WooPay_Session {
 		$blog_id = Jetpack_Options::get_option( 'id' );
 		if ( empty( $blog_id ) ) {
 			wp_send_json_error(
-				__( 'Could not determine the blog ID.', 'woocommerce-payments' ),
+				__( 'Could not determine the blog ID.', 'poocommerce-payments' ),
 				503
 			);
 		}
@@ -691,7 +691,7 @@ class WooPay_Session {
 
 		if ( ! $is_nonce_valid ) {
 			wp_send_json_error(
-				__( 'You aren’t authorized to do that.', 'woocommerce-payments' ),
+				__( 'You aren’t authorized to do that.', 'poocommerce-payments' ),
 				403
 			);
 		}
@@ -734,7 +734,7 @@ class WooPay_Session {
 
 		if ( ! $is_nonce_valid ) {
 			wp_send_json_error(
-				__( 'You aren’t authorized to do that.', 'woocommerce-payments' ),
+				__( 'You aren’t authorized to do that.', 'poocommerce-payments' ),
 				403
 			);
 		}
@@ -742,7 +742,7 @@ class WooPay_Session {
 		$blog_id = Jetpack_Options::get_option( 'id' );
 		if ( empty( $blog_id ) ) {
 			wp_send_json_error(
-				__( 'Could not determine the blog ID.', 'woocommerce-payments' ),
+				__( 'Could not determine the blog ID.', 'poocommerce-payments' ),
 				503
 			);
 		}
@@ -875,11 +875,11 @@ class WooPay_Session {
 		$custom_message = WC_Payments::get_gateway()->get_option( 'platform_checkout_custom_message' );
 
 		$terms_value          = wc_terms_and_conditions_page_id() ?
-			'<a href="' . get_permalink( wc_terms_and_conditions_page_id() ) . '">' . __( 'Terms of Service', 'woocommerce-payments' ) . '</a>' :
-			__( 'Terms of Service', 'woocommerce-payments' );
+			'<a href="' . get_permalink( wc_terms_and_conditions_page_id() ) . '">' . __( 'Terms of Service', 'poocommerce-payments' ) . '</a>' :
+			__( 'Terms of Service', 'poocommerce-payments' );
 		$privacy_policy_value = wc_privacy_policy_page_id() ?
-			'<a href="' . get_permalink( wc_privacy_policy_page_id() ) . '">' . __( 'Privacy Policy', 'woocommerce-payments' ) . '</a>' :
-			__( 'Privacy Policy', 'woocommerce-payments' );
+			'<a href="' . get_permalink( wc_privacy_policy_page_id() ) . '">' . __( 'Privacy Policy', 'poocommerce-payments' ) . '</a>' :
+			__( 'Privacy Policy', 'poocommerce-payments' );
 
 		$replacement_map = [
 			'[terms_of_service_link]' => $terms_value,
@@ -898,15 +898,15 @@ class WooPay_Session {
 	 */
 	private static function get_option_fields_status() {
 		// Shortcode checkout options.
-		$company        = get_option( 'woocommerce_checkout_company_field', 'optional' );
-		$address_2      = get_option( 'woocommerce_checkout_address_2_field', 'optional' );
-		$phone          = get_option( 'woocommerce_checkout_phone_field', 'required' );
-		$terms_checkbox = ! empty( get_option( 'woocommerce_terms_page_id', null ) );
+		$company        = get_option( 'poocommerce_checkout_company_field', 'optional' );
+		$address_2      = get_option( 'poocommerce_checkout_address_2_field', 'optional' );
+		$phone          = get_option( 'poocommerce_checkout_phone_field', 'required' );
+		$terms_checkbox = ! empty( get_option( 'poocommerce_terms_page_id', null ) );
 
 		// Blocks checkout options. To get the blocks checkout options, we need
 		// to parse the checkout page content because the options are stored
 		// in the blocks HTML as a JSON.
-		$checkout_page_id = get_option( 'woocommerce_checkout_page_id' );
+		$checkout_page_id = get_option( 'poocommerce_checkout_page_id' );
 		$checkout_page    = get_post( $checkout_page_id );
 
 		if ( empty( $checkout_page ) ) {
@@ -919,7 +919,7 @@ class WooPay_Session {
 		}
 
 		$checkout_page_blocks = parse_blocks( $checkout_page->post_content );
-		$checkout_block_index = array_search( 'woocommerce/checkout', array_column( $checkout_page_blocks, 'blockName' ), true );
+		$checkout_block_index = array_search( 'poocommerce/checkout', array_column( $checkout_page_blocks, 'blockName' ), true );
 
 		// If we can find the index, it means the merchant checkout page is using blocks checkout.
 		if ( false !== $checkout_block_index && ! empty( $checkout_page_blocks[ $checkout_block_index ]['attrs'] ) ) {
@@ -950,8 +950,8 @@ class WooPay_Session {
 				$phone = 'hidden';
 			}
 
-			$fields_block   = self::get_inner_block( $checkout_page_blocks[ $checkout_block_index ], 'woocommerce/checkout-fields-block' );
-			$terms_block    = self::get_inner_block( $fields_block, 'woocommerce/checkout-terms-block' );
+			$fields_block   = self::get_inner_block( $checkout_page_blocks[ $checkout_block_index ], 'poocommerce/checkout-fields-block' );
+			$terms_block    = self::get_inner_block( $fields_block, 'poocommerce/checkout-terms-block' );
 			$terms_checkbox = isset( $terms_block['attrs']['checkbox'] ) && $terms_block['attrs']['checkbox'];
 		}
 

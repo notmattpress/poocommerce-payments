@@ -1,7 +1,7 @@
 {
-    "name": "woocommerce/payments",
-    "description": "WooCommerce Payments",
-    "homepage": "https://github.com/Automattic/woocommerce-payments",
+    "name": "poocommerce/payments",
+    "description": "PooCommerce Payments",
+    "homepage": "https://github.com/Automattic/poocommerce-payments",
     "type": "wordpress-plugin",
     "license": "GPL-3.0-or-later",
     "prefer-stable": true,
@@ -26,23 +26,23 @@
         "automattic/jetpack-config": "3.0.0",
         "automattic/jetpack-autoloader": "5.0.0",
         "automattic/jetpack-sync": "4.1.0",
-        "woocommerce/subscriptions-core": "6.7.1"
+        "poocommerce/subscriptions-core": "6.7.1"
     },
     "require-dev": {
         "composer/installers": "1.10.0",
         "phpunit/phpunit": "9.5.14",
-        "woocommerce/woocommerce-sniffs": "1.0.0",
-        "woocommerce/action-scheduler": "3.8.2",
+        "poocommerce/poocommerce-sniffs": "1.0.0",
+        "poocommerce/action-scheduler": "3.8.2",
         "kalessil/production-dependencies-guard": "dev-master",
         "vimeo/psalm": "4.13.1",
         "php-stubs/wordpress-stubs": "5.9.6",
-        "php-stubs/woocommerce-stubs": "6.8.0",
+        "php-stubs/poocommerce-stubs": "6.8.0",
         "rregeer/phpunit-coverage-check": "0.3.1",
         "yoast/phpunit-polyfills": "1.1.0",
         "cweagans/composer-patches": "1.7.1",
         "automattic/jetpack-changelogger": "3.3.2",
         "spatie/phpunit-watcher": "1.23",
-        "woocommerce/qit-cli": "0.4.0",
+        "poocommerce/qit-cli": "0.4.0",
         "slevomat/coding-standard": "8.15.0",
         "dg/bypass-finals": "1.5.1",
         "sirbrillig/phpcs-variable-analysis": "^2.11",
@@ -100,7 +100,7 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/automattic/woocommerce-subscriptions-core.git"
+            "url": "https://github.com/automattic/poocommerce-subscriptions-core.git"
         }
     ]
 }

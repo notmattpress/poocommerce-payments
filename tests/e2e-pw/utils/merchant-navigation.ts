@@ -19,7 +19,7 @@ export const goToPaymentDetails = async (
 
 export const goToWooPaymentsSettings = async ( page: Page ) => {
 	await page.goto(
-		'/wp-admin/admin.php?page=wc-settings&tab=checkout&section=woocommerce_payments'
+		'/wp-admin/admin.php?page=wc-settings&tab=checkout&section=poocommerce_payments'
 	);
 };
 

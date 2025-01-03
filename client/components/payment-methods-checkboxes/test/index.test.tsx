@@ -14,7 +14,7 @@ import PaymentMethodsCheckbox from '../payment-method-checkbox';
 import { upeCapabilityStatuses } from '../../../additional-methods-setup/constants';
 import { act } from 'react-dom/test-utils';
 
-jest.mock( '@woocommerce/components', () => {
+jest.mock( '@poocommerce/components', () => {
 	return {
 		Pill: ( {
 			className,
@@ -257,7 +257,7 @@ describe( 'PaymentMethodsCheckboxes', () => {
 
 		// Test that the Contact support pill content isn't shown
 		expect(
-			screen.queryByText( 'Contact WooCommerce Support' )
+			screen.queryByText( 'Contact PooCommerce Support' )
 		).not.toBeInTheDocument();
 	} );
 } );

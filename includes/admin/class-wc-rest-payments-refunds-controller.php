@@ -2,7 +2,7 @@
 /**
  * Class WC_REST_Payments_Timeline_Controller
  *
- * @package WooCommerce\Payments\Admin
+ * @package PooCommerce\Payments\Admin
  */
 
 use WCPay\Core\Server\Request\Refund_Charge;
@@ -39,7 +39,7 @@ class WC_REST_Payments_Refunds_Controller extends WC_Payments_REST_Controller {
 	/**
 	 * Makes direct refund bypassing any order checks.
 	 *
-	 * @internal Not intended for usage in integrations or outside of WooCommerce Payments.
+	 * @internal Not intended for usage in integrations or outside of PooCommerce Payments.
 	 * @param WP_REST_Request $request Full data about the request.
 	 */
 	public function process_refund( $request ) {

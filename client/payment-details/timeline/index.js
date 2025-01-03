@@ -4,7 +4,7 @@
  * External dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { Timeline } from '@woocommerce/components';
+import { Timeline } from '@poocommerce/components';
 import { Card, CardBody, CardHeader } from '@wordpress/components';
 
 /**
@@ -28,7 +28,7 @@ const PaymentDetailsTimeline = ( { paymentIntentId } ) => {
 			<CardHeader>
 				<Loadable
 					isLoading={ isLoading }
-					value={ __( 'Timeline', 'woocommerce-payments' ) }
+					value={ __( 'Timeline', 'poocommerce-payments' ) }
 				/>
 			</CardHeader>
 			<CardBody>
@@ -36,7 +36,7 @@ const PaymentDetailsTimeline = ( { paymentIntentId } ) => {
 					{ timelineError instanceof Error ? (
 						__(
 							'Error while loading timeline',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						)
 					) : (
 						<Timeline items={ items } />

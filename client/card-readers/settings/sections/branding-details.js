@@ -25,28 +25,28 @@ const BrandingDetailsSection = () => {
 				'.components-circular-option-picker__dropdown-link-action button'
 			)
 			.forEach( function ( el ) {
-				el.innerHTML = __( 'Edit', 'woocommerce-payments' );
+				el.innerHTML = __( 'Edit', 'poocommerce-payments' );
 			} );
 	}, [] );
 
 	return (
 		<>
-			<h4>{ __( 'Branding', 'woocommerce-payments' ) }</h4>
+			<h4>{ __( 'Branding', 'poocommerce-payments' ) }</h4>
 			<p className="wcpay-branding-help-label">
 				{ __(
 					'Your business’s logo will be used on printed receipts.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				) }
 			</p>
 
 			<BrandingFileUpload
 				fieldKey="branding-logo"
-				label={ __( 'Logo', 'woocommerce-payments' ) }
+				label={ __( 'Logo', 'poocommerce-payments' ) }
 				accept="image/png, image/jpeg"
 				disabled={ false }
 				help={ __(
 					'Upload a .png or .jpg file.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				) }
 				purpose="business_logo"
 				fileID={ getAccountBrandingLogo }

@@ -1,4 +1,4 @@
-const { uiUnblocked, shopper, merchant } = require( '@woocommerce/e2e-utils' );
+const { uiUnblocked, shopper, merchant } = require( '@poocommerce/e2e-utils' );
 const {
 	setupProductCheckout,
 	fillCardDetails,
@@ -46,14 +46,14 @@ describe.each( cardTestingPreventionStates )(
 			await shopperWCP.waitForErrorBanner(
 				'Error: Your card was declined.',
 				'div.wc-block-components-notice-banner',
-				'div.woocommerce-NoticeGroup > ul.woocommerce-error > li'
+				'div.poocommerce-NoticeGroup > ul.poocommerce-error > li'
 			);
 
 			// after the card has been declined, go to the order page and pay with a basic card
 			await shopperWCP.goToOrders();
 
 			const payButtons = await page.$$(
-				'.woocommerce-button.button.pay'
+				'.poocommerce-button.button.pay'
 			);
 			const payButton = payButtons.find(
 				async ( button ) =>

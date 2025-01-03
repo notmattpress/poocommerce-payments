@@ -62,14 +62,14 @@ const AddressDetailsSection = () => {
 
 	return (
 		<>
-			<h4>{ __( 'Business address', 'woocommerce-payments' ) }</h4>
+			<h4>{ __( 'Business address', 'poocommerce-payments' ) }</h4>
 			{ businessSuppotAddressErrorMessage && (
 				<Notice status="error" isDismissible={ false }>
 					<span>{ businessSuppotAddressErrorMessage }</span>
 				</Notice>
 			) }
 			<SelectControl
-				label={ __( 'Country', 'woocommerce-payments' ) }
+				label={ __( 'Country', 'poocommerce-payments' ) }
 				value={ accountBusinessSupportAddressCountry }
 				onChange={ ( value ) =>
 					handleAddressPropertyChange( 'country', value )
@@ -78,7 +78,7 @@ const AddressDetailsSection = () => {
 			/>
 			<TextControl
 				className="card-readers-support-address-line1-input"
-				label={ __( 'Address line 1', 'woocommerce-payments' ) }
+				label={ __( 'Address line 1', 'poocommerce-payments' ) }
 				value={ accountBusinessSupportAddressLine1 }
 				onChange={ ( value ) =>
 					handleAddressPropertyChange( 'line1', value )
@@ -86,7 +86,7 @@ const AddressDetailsSection = () => {
 			/>
 			<TextControl
 				className="card-readers-support-address-line2-input"
-				label={ __( 'Address line 2', 'woocommerce-payments' ) }
+				label={ __( 'Address line 2', 'poocommerce-payments' ) }
 				value={ accountBusinessSupportAddressLine2 }
 				onChange={ ( value ) =>
 					handleAddressPropertyChange( 'line2', value )
@@ -94,7 +94,7 @@ const AddressDetailsSection = () => {
 			/>
 			<TextControl
 				className="card-readers-support-address-city"
-				label={ __( 'City', 'woocommerce-payments' ) }
+				label={ __( 'City', 'poocommerce-payments' ) }
 				value={ accountBusinessSupportAddressCity }
 				onChange={ ( value ) =>
 					handleAddressPropertyChange( 'city', value )
@@ -102,7 +102,7 @@ const AddressDetailsSection = () => {
 			/>
 			{ countryStatesOptions.length > 0 && (
 				<SelectControl
-					label={ __( 'State', 'woocommerce-payments' ) }
+					label={ __( 'State', 'poocommerce-payments' ) }
 					value={ accountBusinessSupportAddressState }
 					onChange={ ( value ) =>
 						handleAddressPropertyChange( 'state', value )
@@ -112,7 +112,7 @@ const AddressDetailsSection = () => {
 			) }
 			<TextControl
 				className="card-readers-support-address-postcode"
-				label={ __( 'Postal code', 'woocommerce-payments' ) }
+				label={ __( 'Postal code', 'poocommerce-payments' ) }
 				value={ accountBusinessSupportAddressPostalCode }
 				onChange={ ( value ) =>
 					handleAddressPropertyChange( 'postal_code', value )

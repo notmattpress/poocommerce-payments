@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Captured_Event_Note
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -110,8 +110,8 @@ class WC_Payments_Captured_Event_Note {
 		$fee_amount   = WC_Payments_Utils::interpret_stripe_amount( (int) $data['transaction_details']['store_fee'], $fee_currency );
 
 		$base_fee_label = $this->is_base_fee_only()
-			? __( 'Base fee', 'woocommerce-payments' )
-			: __( 'Fee', 'woocommerce-payments' );
+			? __( 'Base fee', 'poocommerce-payments' )
+			: __( 'Fee', 'poocommerce-payments' );
 
 		$is_capped = isset( $history[0]['capped'] ) && true === $history[0]['capped'];
 
@@ -194,7 +194,7 @@ class WC_Payments_Captured_Event_Note {
 		// Format and return the net string.
 		return sprintf(
 			/* translators: %s is a monetary amount */
-			__( 'Net payout: %s', 'woocommerce-payments' ),
+			__( 'Net payout: %s', 'poocommerce-payments' ),
 			WC_Payments_Utils::format_explicit_currency( $net, $currency )
 		);
 	}
@@ -249,12 +249,12 @@ class WC_Payments_Captured_Event_Note {
 					'label'    => $label,
 					'variable' => sprintf(
 						/* translators: %s is a percentage number */
-						__( 'Variable fee: %s', 'woocommerce-payments' ),
+						__( 'Variable fee: %s', 'poocommerce-payments' ),
 						$percentage_rate_formatted
 					) . '%',
 					'fixed'    => sprintf(
 						/* translators: %s is a monetary amount */
-						__( 'Fixed fee: %s', 'woocommerce-payments' ),
+						__( 'Fixed fee: %s', 'poocommerce-payments' ),
 						$fix_rate_formatted
 					),
 				];
@@ -310,34 +310,34 @@ class WC_Payments_Captured_Event_Note {
 
 		$res['base'] = $is_capped
 			/* translators: %2$s is the capped fee */
-			? __( 'Base fee: capped at %2$s', 'woocommerce-payments' )
+			? __( 'Base fee: capped at %2$s', 'poocommerce-payments' )
 			:
 			( 0 !== $fixed_rate
 				/* translators: %1$s% is the fee percentage and %2$s is the fixed rate */
-				? __( 'Base fee: %1$s%% + %2$s', 'woocommerce-payments' )
+				? __( 'Base fee: %1$s%% + %2$s', 'poocommerce-payments' )
 				/* translators: %1$s% is the fee percentage */
-				: __( 'Base fee: %1$s%%', 'woocommerce-payments' )
+				: __( 'Base fee: %1$s%%', 'poocommerce-payments' )
 			);
 
 		$res['additional-international'] = 0 !== $fixed_rate
 			/* translators: %1$s% is the fee percentage and %2$s is the fixed rate */
-			? __( 'International card fee: %1$s%% + %2$s', 'woocommerce-payments' )
+			? __( 'International card fee: %1$s%% + %2$s', 'poocommerce-payments' )
 			/* translators: %1$s% is the fee percentage */
-			: __( 'International card fee: %1$s%%', 'woocommerce-payments' );
+			: __( 'International card fee: %1$s%%', 'poocommerce-payments' );
 
 		$res['additional-fx'] = 0 !== $fixed_rate
 			/* translators: %1$s% is the fee percentage and %2$s is the fixed rate */
-			? __( 'Currency conversion fee: %1$s%% + %2$s', 'woocommerce-payments' )
+			? __( 'Currency conversion fee: %1$s%% + %2$s', 'poocommerce-payments' )
 			/* translators: %1$s% is the fee percentage */
-			: __( 'Currency conversion fee: %1$s%%', 'woocommerce-payments' );
+			: __( 'Currency conversion fee: %1$s%%', 'poocommerce-payments' );
 
 		$res['additional-wcpay-subscription'] = 0 !== $fixed_rate
 			/* translators: %1$s% is the fee percentage and %2$s is the fixed rate */
-			? __( 'Subscription transaction fee: %1$s%% + %2$s', 'woocommerce-payments' )
+			? __( 'Subscription transaction fee: %1$s%% + %2$s', 'poocommerce-payments' )
 			/* translators: %1$s% is the fee percentage */
-			: __( 'Subscription transaction fee: %1$s%%', 'woocommerce-payments' );
+			: __( 'Subscription transaction fee: %1$s%%', 'poocommerce-payments' );
 
-		$res['discount'] = __( 'Discount', 'woocommerce-payments' );
+		$res['discount'] = __( 'Discount', 'poocommerce-payments' );
 
 		return $res;
 	}

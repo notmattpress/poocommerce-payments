@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Utils_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use PHPUnit\Framework\MockObject\MockObject;
@@ -848,7 +848,7 @@ class WC_Payments_Utils_Test extends WCPAY_UnitTestCase {
 		global $current_section, $current_tab;
 
 		$this->set_is_admin( true );
-		$current_section = 'woocommerce_payments';
+		$current_section = 'poocommerce_payments';
 		$current_tab     = 'checkout';
 
 		$this->assertTrue( WC_Payments_Utils::is_payments_settings_page() );
@@ -858,7 +858,7 @@ class WC_Payments_Utils_Test extends WCPAY_UnitTestCase {
 		global $current_section, $current_tab;
 
 		$this->set_is_admin( true );
-		$current_section = 'woocommerce_payments_foo';
+		$current_section = 'poocommerce_payments_foo';
 		$current_tab     = 'checkout';
 
 		$this->assertTrue( WC_Payments_Utils::is_payments_settings_page() );
@@ -893,9 +893,9 @@ class WC_Payments_Utils_Test extends WCPAY_UnitTestCase {
 
 	public function not_payment_settings_page_conditions_provider(): array {
 		return [
-			'is_admin() is false'                 => [ false, 'woocommerce_payments_foo', 'checkout' ],
-			'section is not woocommerce_payments' => [ true, 'foo', 'checkout' ],
-			'tab is not checkout'                 => [ true, 'woocommerce_payments', 'shipping' ],
+			'is_admin() is false'                 => [ false, 'poocommerce_payments_foo', 'checkout' ],
+			'section is not poocommerce_payments' => [ true, 'foo', 'checkout' ],
+			'tab is not checkout'                 => [ true, 'poocommerce_payments', 'shipping' ],
 		];
 	}
 

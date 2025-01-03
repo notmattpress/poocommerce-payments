@@ -6,7 +6,7 @@ import { capitalize, partial } from 'lodash';
 import moment from 'moment';
 import { dateI18n } from '@wordpress/date';
 import { NAMESPACE } from 'wcpay/data/constants';
-import { numberFormat } from '@woocommerce/number';
+import { numberFormat } from '@poocommerce/number';
 import { __ } from '@wordpress/i18n';
 
 /**
@@ -143,7 +143,7 @@ export const getPaymentSettingsUrl = () => {
 	return getAdminUrl( {
 		page: 'wc-settings',
 		tab: 'checkout',
-		section: 'woocommerce_payments',
+		section: 'poocommerce_payments',
 	} );
 };
 
@@ -158,7 +158,7 @@ export const getPaymentMethodSettingsUrl = ( method ) => {
 	return getAdminUrl( {
 		page: 'wc-settings',
 		tab: 'checkout',
-		section: 'woocommerce_payments',
+		section: 'poocommerce_payments',
 		method,
 	} );
 };
@@ -299,12 +299,12 @@ export const getExportLanguage = ( language, storedLanguage ) => {
 export const getExportLanguageOptions = () => {
 	return [
 		{
-			label: __( 'English (United States)', 'woocommerce-payments' ),
+			label: __( 'English (United States)', 'poocommerce-payments' ),
 			value: 'en_US',
 		},
 		{
 			label:
-				__( 'Site Language - ', 'woocommerce-payments' ) +
+				__( 'Site Language - ', 'poocommerce-payments' ) +
 				wcpaySettings.locale.native_name,
 			value: wcpaySettings.locale.code,
 		},

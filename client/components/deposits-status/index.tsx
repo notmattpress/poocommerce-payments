@@ -28,11 +28,11 @@ const getIntervalType = ( interval: DepositsIntervals ): string => {
 		case 'daily':
 		case 'weekly':
 		case 'monthly':
-			return __( 'Automatic', 'woocommerce-payments' );
+			return __( 'Automatic', 'poocommerce-payments' );
 		case 'manual':
-			return __( 'Manual', 'woocommerce-payments' );
+			return __( 'Manual', 'poocommerce-payments' );
 		default:
-			return __( 'Unknown', 'woocommerce-payments' );
+			return __( 'Unknown', 'poocommerce-payments' );
 	}
 };
 
@@ -54,7 +54,7 @@ const DepositsStatusDisabled: React.FC< DepositsStatusProps > = ( props ) => {
 	return (
 		<span className={ 'account-status__info__red' }>
 			<GridiconNotice size={ iconSize } />
-			{ __( 'Disabled', 'woocommerce-payments' ) }
+			{ __( 'Disabled', 'poocommerce-payments' ) }
 		</span>
 	);
 };
@@ -63,13 +63,13 @@ const DepositsStatusSuspended: React.FC< DepositsStatusProps > = ( props ) => {
 	const { iconSize } = props;
 
 	const learnMoreHref =
-		'https://woocommerce.com/document/woopayments/payouts/why-payouts-suspended/';
+		'https://poocommerce.com/document/woopayments/payouts/why-payouts-suspended/';
 
 	const description = createInterpolateElement(
 		/* translators: <a> - suspended accounts FAQ URL */
 		__(
 			'Temporarily suspended (<a>learn more</a>)',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		{
 			a: (
@@ -97,7 +97,7 @@ const DepositsStatusPending: React.FC< DepositsStatusProps > = ( props ) => {
 	return (
 		<span className={ 'account-status__info__gray' }>
 			<GridiconNotice size={ iconSize } />
-			{ __( 'Pending verification', 'woocommerce-payments' ) }
+			{ __( 'Pending verification', 'poocommerce-payments' ) }
 		</span>
 	);
 };

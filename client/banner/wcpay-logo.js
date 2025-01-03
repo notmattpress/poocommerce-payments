@@ -9,7 +9,7 @@ export default ( props ) => (
 		src={ logoImg }
 		width="241"
 		height="64"
-		alt={ __( 'WooPayments logo', 'woocommerce-payments' ) }
+		alt={ __( 'WooPayments logo', 'poocommerce-payments' ) }
 		{ ...props }
 	/>
 );

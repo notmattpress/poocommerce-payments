@@ -40,7 +40,7 @@ describe( 'Getting styles for automated theming', () => {
 		} );
 
 		const fieldStyles = upeStyles.getFieldStyles(
-			'.woocommerce-checkout .form-row input',
+			'.poocommerce-checkout .form-row input',
 			'.Input'
 		);
 		expect( fieldStyles ).toEqual( {

@@ -3,7 +3,7 @@
  */
 import config from 'config';
 
-const { shopper } = require( '@woocommerce/e2e-utils' );
+const { shopper } = require( '@poocommerce/e2e-utils' );
 
 /**
  * Internal dependencies
@@ -52,7 +52,7 @@ describe( 'Payment Methods', () => {
 				if ( cardType === 'declined-3ds' ) {
 					await confirmCardAuthentication( page );
 				}
-				await expect( page ).toMatchElement( '.woocommerce-error', {
+				await expect( page ).toMatchElement( '.poocommerce-error', {
 					timeout: 30000,
 				} );
 
@@ -84,7 +84,7 @@ describe( 'Payment Methods', () => {
 			waitUntil: 'networkidle0',
 		} );
 
-		await expect( page ).not.toMatchElement( '.woocommerce-error', {
+		await expect( page ).not.toMatchElement( '.poocommerce-error', {
 			timeout: 3000,
 		} );
 	} );

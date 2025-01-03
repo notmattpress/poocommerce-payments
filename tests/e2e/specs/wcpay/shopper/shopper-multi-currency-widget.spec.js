@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-const { merchant, shopper } = require( '@woocommerce/e2e-utils' );
+const { merchant, shopper } = require( '@poocommerce/e2e-utils' );
 
 /**
  * Internal dependencies

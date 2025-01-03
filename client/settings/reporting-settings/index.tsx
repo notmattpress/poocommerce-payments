@@ -21,7 +21,7 @@ const Reporting: React.FC = () => {
 						<span id="reporting-card-title">
 							{ __(
 								'Report exporting default language',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 						</span>
 					</h4>

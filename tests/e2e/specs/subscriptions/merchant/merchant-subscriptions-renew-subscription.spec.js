@@ -8,7 +8,7 @@ const {
 	withRestApi,
 	evalAndClick,
 	uiUnblocked,
-} = require( '@woocommerce/e2e-utils' );
+} = require( '@poocommerce/e2e-utils' );
 import {
 	RUN_SUBSCRIPTIONS_TESTS,
 	describeif,
@@ -51,7 +51,7 @@ describeif( RUN_SUBSCRIPTIONS_TESTS )(
 
 			// Get the subscription ID
 			const subscriptionIdField = await page.$(
-				'.woocommerce-orders-table__cell-subscription-id > a'
+				'.poocommerce-orders-table__cell-subscription-id > a'
 			);
 			subscriptionId = await subscriptionIdField.evaluate(
 				( el ) => el.innerText
@@ -101,7 +101,7 @@ describeif( RUN_SUBSCRIPTIONS_TESTS )(
 			await expect(
 				page
 			).toMatchElement(
-				'div.woocommerce_subscriptions_related_orders > table > tbody > tr > td',
+				'div.poocommerce_subscriptions_related_orders > table > tbody > tr > td',
 				{ text: 'Renewal Order' }
 			);
 		} );

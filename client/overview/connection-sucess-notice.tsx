@@ -28,12 +28,12 @@ const ConnectionSuccessNotice: React.FC = () => {
 		return (
 			<DropdownMenu
 				className="wcpay-connection-success__dropdown"
-				label={ __( 'Dismiss element', 'woocommerce-payments' ) }
+				label={ __( 'Dismiss element', 'poocommerce-payments' ) }
 				icon="ellipsis"
 				controls={ [
 					{
 						icon: 'button',
-						title: __( 'Dismiss', 'woocommerce-payments' ),
+						title: __( 'Dismiss', 'poocommerce-payments' ),
 						onClick: () => setIsDismissed( true ),
 					},
 				] }
@@ -49,14 +49,14 @@ const ConnectionSuccessNotice: React.FC = () => {
 				<h2>
 					{ __(
 						'Congratulations! Your store is being verified.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 				</h2>
 			) : (
 				<h2>
 					{ __(
 						'Congratulations! Your store has been verified.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 				</h2>
 			) }

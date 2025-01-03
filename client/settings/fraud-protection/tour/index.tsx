@@ -3,7 +3,7 @@
  */
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from '@wordpress/data';
-import { TourKit } from '@woocommerce/components';
+import { TourKit } from '@poocommerce/components';
 
 /**
  * Internal dependencies

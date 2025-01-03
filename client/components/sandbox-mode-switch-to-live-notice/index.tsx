@@ -11,7 +11,7 @@ import HelpOutlineIcon from 'gridicons/dist/help-outline';
  */
 import BannerNotice from '../banner-notice';
 import interpolateComponents from '@automattic/interpolate-components';
-import { Link } from '@woocommerce/components';
+import { Link } from '@poocommerce/components';
 import { recordEvent } from 'wcpay/tracks';
 import { ClickTooltip } from 'wcpay/components/tooltip';
 import ErrorBoundary from 'wcpay/components/error-boundary';
@@ -53,7 +53,7 @@ const SandboxModeSwitchToLiveNotice: React.FC< Props > = ( {
 						__(
 							// eslint-disable-next-line max-len
 							"{{div}}{{strong}}You're using a test account.{{/strong}} To accept payments from shoppers, {{switchToLiveLink}}activate your %1$s account.{{/switchToLiveLink}}{{/div}}{{learnMoreIcon/}}",
-							'woocommerce-payments'
+							'poocommerce-payments'
 						),
 						'WooPayments'
 					),
@@ -65,7 +65,7 @@ const SandboxModeSwitchToLiveNotice: React.FC< Props > = ( {
 								buttonIcon={ <HelpOutlineIcon /> }
 								buttonLabel={ __(
 									'Learn more about sandbox mode',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								) }
 								maxWidth={ '250px' }
 								content={
@@ -76,7 +76,7 @@ const SandboxModeSwitchToLiveNotice: React.FC< Props > = ( {
 												__(
 													// eslint-disable-next-line max-len
 													'Sandbox mode gives you access to all %1$s features while checkout transactions are simulated. {{learnMoreLink}}Learn more{{/learnMoreLink}}',
-													'woocommerce-payments'
+													'poocommerce-payments'
 												),
 												'WooPayments'
 											),
@@ -86,7 +86,7 @@ const SandboxModeSwitchToLiveNotice: React.FC< Props > = ( {
 													<Link
 														href={
 															// eslint-disable-next-line max-len
-															'https://woocommerce.com/document/woopayments/testing-and-troubleshooting/sandbox-mode/'
+															'https://poocommerce.com/document/woopayments/testing-and-troubleshooting/sandbox-mode/'
 														}
 														target="_blank"
 														rel="noreferrer"

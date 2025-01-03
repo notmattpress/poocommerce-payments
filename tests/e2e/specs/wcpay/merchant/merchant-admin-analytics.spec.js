@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-const { merchant, shopper } = require( '@woocommerce/e2e-utils' );
+const { merchant, shopper } = require( '@poocommerce/e2e-utils' );
 
 /**
  * Internal dependencies
@@ -23,7 +23,7 @@ describe( 'Admin Order Analytics', () => {
 		await shopper.placeOrder();
 		await expect( page ).toMatchTextContent( 'Order received' );
 		const orderCell = await page.$(
-			'.woocommerce-order-overview__order > strong'
+			'.poocommerce-order-overview__order > strong'
 		);
 		const orderId = await page.evaluate(
 			( order ) => order.innerText,

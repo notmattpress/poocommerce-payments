@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-const { merchant, evalAndClick } = require( '@woocommerce/e2e-utils' );
+const { merchant, evalAndClick } = require( '@poocommerce/e2e-utils' );
 
 /**
  * Internal dependencies

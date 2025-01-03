@@ -2,7 +2,7 @@
  * External dependencies
  */
 import config from 'config';
-const { shopper, withRestApi } = require( '@woocommerce/e2e-utils' );
+const { shopper, withRestApi } = require( '@poocommerce/e2e-utils' );
 import {
 	RUN_SUBSCRIPTIONS_TESTS,
 	describeif,

@@ -3,7 +3,7 @@
  */
 import config from 'config';
 
-const { merchant, shopper } = require( '@woocommerce/e2e-utils' );
+const { merchant, shopper } = require( '@poocommerce/e2e-utils' );
 
 /**
  * Internal dependencies
@@ -74,11 +74,11 @@ describe.each( dataTable )(
 
 			// Remember the order ID and order total. We will need them later.
 			orderId = await page.$eval(
-				'.woocommerce-order-overview__order.order > strong',
+				'.poocommerce-order-overview__order.order > strong',
 				( el ) => el.innerText
 			);
 			orderTotal = await page.$eval(
-				'.woocommerce-order-overview__total strong',
+				'.poocommerce-order-overview__total strong',
 				( el ) => Number( el.innerText.replace( '$', '' ) )
 			);
 
@@ -200,10 +200,10 @@ describe.each( dataTable )(
 
 			// Verify the transaction timeline reflects the refund events
 			await Promise.all( [
-				expect( page ).toMatchElement( 'li.woocommerce-timeline-item', {
+				expect( page ).toMatchElement( 'li.poocommerce-timeline-item', {
 					text: `A payment of $${ refundTotalString } was successfully refunded.`,
 				} ),
-				expect( page ).toMatchElement( 'li.woocommerce-timeline-item', {
+				expect( page ).toMatchElement( 'li.poocommerce-timeline-item', {
 					text: 'Payment status changed to Partial refund.',
 				} ),
 			] );
