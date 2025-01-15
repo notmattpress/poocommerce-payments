@@ -114,7 +114,7 @@ const SaveSettingsSection = ( { disabled = false } ) => {
 				disabled={ isSaving || isLoading || disabled || ! isDirty }
 				onClick={ saveOnClick }
 			>
-				{ __( 'Save changes', 'woocommerce-payments' ) }
+				{ __( 'Save changes', 'poocommerce-payments' ) }
 			</Button>
 			{ isWooPayDisableFeedbackOpen ? (
 				<WooPayDisableFeedback

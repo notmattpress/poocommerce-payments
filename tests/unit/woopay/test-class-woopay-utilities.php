@@ -2,7 +2,7 @@
 /**
  * Class WooPay_Utilities_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\WooPay\WooPay_Utilities;
@@ -106,7 +106,7 @@ class WooPay_Utilities_Test extends WCPAY_UnitTestCase {
 	 * @return void
 	 */
 	public function test_should_enable_woopay_on_cart_or_checkout_logged_out() {
-		add_filter( 'woocommerce_is_checkout', '__return_true' );
+		add_filter( 'poocommerce_is_checkout', '__return_true' );
 		wp_set_current_user( 0 );
 
 		$woopay_utilities = new WooPay_Utilities();
@@ -121,7 +121,7 @@ class WooPay_Utilities_Test extends WCPAY_UnitTestCase {
 	 * @return void
 	 */
 	public function test_should_enable_woopay_on_cart_or_checkout_logged_in() {
-		add_filter( 'woocommerce_is_checkout', '__return_true' );
+		add_filter( 'poocommerce_is_checkout', '__return_true' );
 		wp_set_current_user( 1 );
 
 		$woopay_utilities = new WooPay_Utilities();
@@ -136,7 +136,7 @@ class WooPay_Utilities_Test extends WCPAY_UnitTestCase {
 	 * @return void
 	 */
 	public function test_should_enable_woopay_on_cart_or_checkout_logged_out_has_subscription() {
-		add_filter( 'woocommerce_is_checkout', '__return_true' );
+		add_filter( 'poocommerce_is_checkout', '__return_true' );
 		wp_set_current_user( 0 );
 		WC_Subscriptions_Cart::set_cart_contains_subscription( true );
 
@@ -152,7 +152,7 @@ class WooPay_Utilities_Test extends WCPAY_UnitTestCase {
 	 * @return void
 	 */
 	public function test_should_enable_woopay_on_cart_or_checkout_logged_in_has_subscription() {
-		add_filter( 'woocommerce_is_checkout', '__return_true' );
+		add_filter( 'poocommerce_is_checkout', '__return_true' );
 		wp_set_current_user( 1 );
 		WC_Subscriptions_Cart::set_cart_contains_subscription( true );
 
@@ -168,9 +168,9 @@ class WooPay_Utilities_Test extends WCPAY_UnitTestCase {
 	 * @return void
 	 */
 	public function test_should_enable_woopay_on_cart_or_checkout_logged_out_guest_checkout_disabled() {
-		add_filter( 'woocommerce_is_checkout', '__return_true' );
+		add_filter( 'poocommerce_is_checkout', '__return_true' );
 		wp_set_current_user( 0 );
-		update_option( 'woocommerce_enable_guest_checkout', 'no' );
+		update_option( 'poocommerce_enable_guest_checkout', 'no' );
 
 		$woopay_utilities = new WooPay_Utilities();
 
@@ -192,10 +192,10 @@ class WooPay_Utilities_Test extends WCPAY_UnitTestCase {
 	}
 
 	private function clean_up_should_enable_woopay_tests() {
-		remove_filter( 'woocommerce_is_checkout', '__return_true' );
+		remove_filter( 'poocommerce_is_checkout', '__return_true' );
 		wp_set_current_user( 0 );
 		WC_Subscriptions_Cart::set_cart_contains_subscription( false );
-		update_option( 'woocommerce_enable_guest_checkout', 'yes' );
+		update_option( 'poocommerce_enable_guest_checkout', 'yes' );
 	}
 
 	/**

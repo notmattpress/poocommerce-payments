@@ -7,23 +7,23 @@
 
 namespace WCPay\WooPay;
 
-use Automattic\WooCommerce\Blocks\Integrations\IntegrationRegistry;
-use Automattic\WooCommerce\Blocks\Integrations\IntegrationInterface;
+use Automattic\PooCommerce\Blocks\Integrations\IntegrationRegistry;
+use Automattic\PooCommerce\Blocks\Integrations\IntegrationInterface;
 
 /**
  * WooPay
  */
 class WooPay_Adapted_Extensions extends IntegrationRegistry {
-	const POINTS_AND_REWARDS_PLUGIN = 'woocommerce-points-and-rewards';
+	const POINTS_AND_REWARDS_PLUGIN = 'poocommerce-points-and-rewards';
 	const POINTS_AND_REWARDS_API    = 'points-and-rewards';
-	const GIFT_CARDS_API            = 'woocommerce-gift-cards';
+	const GIFT_CARDS_API            = 'poocommerce-gift-cards';
 	const GIFT_CARDS_BLOCKS         = 'wc-gift-cards-blocks';
 
 	/**
 	 * Initializa WC Blocks regitered integrations.
 	 */
 	public function init() {
-		do_action( 'woocommerce_blocks_checkout_block_registration', $this );
+		do_action( 'poocommerce_blocks_checkout_block_registration', $this );
 	}
 
 	/**
@@ -166,18 +166,18 @@ class WooPay_Adapted_Extensions extends IntegrationRegistry {
 		$extension_data = [];
 
 		if ( defined( 'WOOCOMMERCE_MULTICURRENCY_VERSION' ) ) {
-			$extension_data['woocommerce-multicurrency'] = [
-				'currency' => get_woocommerce_currency(),
+			$extension_data['poocommerce-multicurrency'] = [
+				'currency' => get_poocommerce_currency(),
 			];
 		}
 
-		if ( $this->is_affiliate_for_woocommerce_enabled() && function_exists( 'afwc_get_referrer_id' ) ) {
+		if ( $this->is_affiliate_for_poocommerce_enabled() && function_exists( 'afwc_get_referrer_id' ) ) {
 			/**
 			 * Suppress psalm warning.
 			 *
 			 * @psalm-suppress UndefinedFunction
 			 */
-			$extension_data['affiliate-for-woocommerce'] = [
+			$extension_data['affiliate-for-poocommerce'] = [
 				'affiliate-user' => afwc_get_referrer_id(),
 			];
 		}
@@ -203,7 +203,7 @@ class WooPay_Adapted_Extensions extends IntegrationRegistry {
 	 */
 	public function update_order_extension_data( $order_id ) {
 		if ( ! empty( $_GET['affiliate'] ) && // phpcs:ignore WordPress.Security.NonceVerification
-			$this->is_affiliate_for_woocommerce_enabled()
+			$this->is_affiliate_for_poocommerce_enabled()
 		) {
 			$affiliate_id = (int) wc_clean( wp_unslash( $_GET['affiliate'] ) ); // phpcs:ignore WordPress.Security.NonceVerification
 
@@ -236,12 +236,12 @@ class WooPay_Adapted_Extensions extends IntegrationRegistry {
 	}
 
 	/**
-	 * Check if Affiliate for WooCommerce is enabled and
+	 * Check if Affiliate for PooCommerce is enabled and
 	 * its functions used on WCPay are available.
 	 *
 	 * @return boolean
 	 */
-	public function is_affiliate_for_woocommerce_enabled() {
+	public function is_affiliate_for_poocommerce_enabled() {
 		return defined( 'AFWC_PLUGIN_FILE' ) &&
 			function_exists( 'afwc_get_referrer_id' ) &&
 			class_exists( 'AFWC_API' ) &&

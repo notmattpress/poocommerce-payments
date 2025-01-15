@@ -2,7 +2,7 @@
 /**
  * Class file for WCPay\Core\Server\Request\Create_Setup_Intention.
  *
- * @package WooCommerce Payments
+ * @package PooCommerce Payments
  */
 
 namespace WCPay\Core\Server\Request;
@@ -102,7 +102,7 @@ class Create_And_Confirm_Setup_Intention extends Request {
 		// Hard to validate without hardcoding a list here.
 		if ( empty( $payment_methods ) ) {
 			throw new Invalid_Request_Parameter_Exception(
-				esc_html__( 'Intentions require at least one payment method', 'woocommerce-payments' ),
+				esc_html__( 'Intentions require at least one payment method', 'poocommerce-payments' ),
 				'wcpay_core_invalid_request_parameter_missing_payment_method_types'
 			);
 		}

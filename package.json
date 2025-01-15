@@ -1,18 +1,18 @@
 {
-  "name": "woocommerce-payments",
+  "name": "poocommerce-payments",
   "version": "8.7.1",
   "main": "webpack.config.js",
   "author": "Automattic",
   "license": "GPL-3.0-or-later",
-  "repository": "github:Automattic/woocommerce-payments",
+  "repository": "github:Automattic/poocommerce-payments",
   "engines": {
     "npm": ">=8.15.0",
     "node": ">=20.11.1"
   },
   "config": {
-    "wp_org_slug": "woocommerce-payments",
+    "wp_org_slug": "poocommerce-payments",
     "translate": true,
-    "translate_project": "woocommerce/woocommerce-payments"
+    "translate_project": "poocommerce/poocommerce-payments"
   },
   "scripts": {
     "postinstall": "composer install",
@@ -22,8 +22,8 @@
     "build:deps": "rm -rf vendor && composer install --no-dev --optimize-autoloader",
     "build:release": "node tasks/release.js && mv release/$npm_package_name.zip .",
     "postbuild:client": "npm run i18n:pot && npm run i18n:build && npm run assets:rtl",
-    "i18n:pot": "wpi18n makepot --domain-path languages --pot-file woocommerce-payments.pot --type plugin --main-file woocommerce-payments.php --exclude bin,dist,docker,node_modules,release,tasks,tests,vendor",
-    "i18n:build": "php bin/combine-pot-files.php languages/woocommerce-payments-client.pot languages/woocommerce-payments.pot",
+    "i18n:pot": "wpi18n makepot --domain-path languages --pot-file poocommerce-payments.pot --type plugin --main-file poocommerce-payments.php --exclude bin,dist,docker,node_modules,release,tasks,tests,vendor",
+    "i18n:build": "php bin/combine-pot-files.php languages/poocommerce-payments-client.pot languages/poocommerce-payments.pot",
     "assets:rtl": "rtlcss assets/css/admin.css && rtlcss assets/css/success.css",
     "test": "npm run test:js && npm run test:php",
     "test:js": "wp-scripts test-unit-js --config tests/js/jest.config.js",
@@ -72,7 +72,7 @@
     "tube:start": "source ./bin/jurassictube/config.env && jurassictube -u \"$username\" -s \"$subdomain\" -h \"$localhost\"",
     "tube:stop": "source ./bin/jurassictube/config.env && jurassictube -b -s \"$subdomain\"",
     "psalm": "./bin/run-psalm.sh",
-    "xdebug:toggle": "docker compose exec -u root wordpress /var/www/html/wp-content/plugins/woocommerce-payments/bin/xdebug-toggle.sh",
+    "xdebug:toggle": "docker compose exec -u root wordpress /var/www/html/wp-content/plugins/poocommerce-payments/bin/xdebug-toggle.sh",
     "changelog": "./vendor/bin/changelogger add",
     "cli": "./bin/cli.sh"
   },
@@ -83,9 +83,9 @@
     "@stripe/react-connect-js": "3.3.17",
     "@stripe/react-stripe-js": "2.5.1",
     "@stripe/stripe-js": "1.15.1",
-    "@woocommerce/explat": "2.3.0",
-    "@woocommerce/number": "2.4.0",
-    "@woocommerce/onboarding": "3.5.0",
+    "@poocommerce/explat": "2.3.0",
+    "@poocommerce/number": "2.4.0",
+    "@poocommerce/onboarding": "3.5.0",
     "canvas-confetti": "1.9.2",
     "compare-versions": "6.1.1",
     "debug": "4.3.5",
@@ -113,17 +113,17 @@
     "@types/wordpress__data-controls": "2.2.0",
     "@typescript-eslint/eslint-plugin": "4.15.2",
     "@typescript-eslint/parser": "4.15.2",
-    "@woocommerce/api": "0.2.0",
-    "@woocommerce/components": "12.3.0",
-    "@woocommerce/csv-export": "1.9.0",
-    "@woocommerce/currency": "4.3.0",
-    "@woocommerce/date": "4.2.0",
-    "@woocommerce/dependency-extraction-webpack-plugin": "2.2.0",
-    "@woocommerce/e2e-environment": "0.2.3",
-    "@woocommerce/e2e-utils": "0.2.0",
-    "@woocommerce/eslint-plugin": "1.1.0",
-    "@woocommerce/experimental": "1.2.0",
-    "@woocommerce/settings": "1.0.0",
+    "@poocommerce/api": "0.2.0",
+    "@poocommerce/components": "12.3.0",
+    "@poocommerce/csv-export": "1.9.0",
+    "@poocommerce/currency": "4.3.0",
+    "@poocommerce/date": "4.2.0",
+    "@poocommerce/dependency-extraction-webpack-plugin": "2.2.0",
+    "@poocommerce/e2e-environment": "0.2.3",
+    "@poocommerce/e2e-utils": "0.2.0",
+    "@poocommerce/eslint-plugin": "1.1.0",
+    "@poocommerce/experimental": "1.2.0",
+    "@poocommerce/settings": "1.0.0",
     "@wordpress/api-fetch": "6.3.1",
     "@wordpress/babel-plugin-makepot": "4.3.2",
     "@wordpress/babel-preset-default": "8.3.0",
@@ -214,9 +214,9 @@
   },
   "overrides": {
     "@automattic/puppeteer-utils": "github:Automattic/puppeteer-utils#update/babel-deps",
-    "@woocommerce/components": {
-      "@woocommerce/csv-export": "1.9.0",
-      "@woocommerce/currency": "4.3.0"
+    "@poocommerce/components": {
+      "@poocommerce/csv-export": "1.9.0",
+      "@poocommerce/currency": "4.3.0"
     },
     "@wordpress/scripts": {
       "@wordpress/eslint-plugin": "8.0.2"

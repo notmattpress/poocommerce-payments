@@ -2,7 +2,7 @@
  * The Event type represents the different events that can be tracked in WooPayments.
  * It also allows an arbitrary string for dynamic event names.
  *
- * @see https://github.com/Automattic/woocommerce-payments/issues/8075#issuecomment-1933823687
+ * @see https://github.com/Automattic/poocommerce-payments/issues/8075#issuecomment-1933823687
  * @typedef {string} Event
  */
 export type Event =

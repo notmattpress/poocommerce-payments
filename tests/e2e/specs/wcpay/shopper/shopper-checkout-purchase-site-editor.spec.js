@@ -7,7 +7,7 @@ const {
 	shopper,
 	merchant,
 	activateTheme,
-} = require( '@woocommerce/e2e-utils' );
+} = require( '@poocommerce/e2e-utils' );
 
 /**
  * Internal dependencies

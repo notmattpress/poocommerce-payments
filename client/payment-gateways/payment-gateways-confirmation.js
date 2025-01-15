@@ -1,4 +1,4 @@
-/* global jQuery, woocommerce_admin */
+/* global jQuery, poocommerce_admin */
 /**
  * External dependencies
  */
@@ -26,7 +26,7 @@ const PaymentGatewaysConfirmation = () => {
 		setIsConfirmationModalVisible( false );
 		hasUserConfirmedDeactivation.current = true;
 		jQuery(
-			'tr[data-gateway_id="woocommerce_payments"] .wc-payment-gateway-method-toggle-enabled'
+			'tr[data-gateway_id="poocommerce_payments"] .wc-payment-gateway-method-toggle-enabled'
 		).trigger( 'click' );
 
 		recordEvent( 'wcpay_gateway_toggle', {
@@ -47,15 +47,15 @@ const PaymentGatewaysConfirmation = () => {
 				return;
 			}
 
-			if ( woocommerce_admin.ajax_url !== settings.url ) {
+			if ( poocommerce_admin.ajax_url !== settings.url ) {
 				return;
 			}
 
 			if (
 				! settings.data.includes(
-					'action=woocommerce_toggle_gateway_enabled'
+					'action=poocommerce_toggle_gateway_enabled'
 				) ||
-				! settings.data.includes( 'gateway_id=woocommerce_payments' )
+				! settings.data.includes( 'gateway_id=poocommerce_payments' )
 			) {
 				return;
 			}
@@ -64,7 +64,7 @@ const PaymentGatewaysConfirmation = () => {
 			// if they're trying to enable it (i.e.: it's currently disabled), no need to show the modal
 			if (
 				jQuery(
-					'tr[data-gateway_id="woocommerce_payments"] .woocommerce-input-toggle--disabled'
+					'tr[data-gateway_id="poocommerce_payments"] .poocommerce-input-toggle--disabled'
 				).length === 1
 			) {
 				return;
@@ -80,8 +80,8 @@ const PaymentGatewaysConfirmation = () => {
 			// after the request is aborted, the toggle keeps the "loading" state
 			// removing the class, just to ensure the UI isn't in a _weird_ state
 			jQuery(
-				'tr[data-gateway_id="woocommerce_payments"] .woocommerce-input-toggle--loading'
-			).removeClass( 'woocommerce-input-toggle--loading' );
+				'tr[data-gateway_id="poocommerce_payments"] .poocommerce-input-toggle--loading'
+			).removeClass( 'poocommerce-input-toggle--loading' );
 
 			// finally, we're showing the confirmation dialog
 			setIsConfirmationModalVisible( true );

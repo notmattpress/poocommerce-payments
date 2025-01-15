@@ -66,7 +66,7 @@ async function createDisputedOrder( browser: Browser ) {
 
 			// Get the order ID
 			const orderIdField = shopperPage.locator(
-				'.woocommerce-order-overview__order.order > strong'
+				'.poocommerce-order-overview__order.order > strong'
 			);
 			return orderIdField.innerText();
 		}

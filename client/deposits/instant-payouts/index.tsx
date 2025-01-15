@@ -54,7 +54,7 @@ const InstantPayoutButton: React.FC< InstantPayoutButtonProps > = ( {
 					__(
 						/* translators: %s: Available instant payout amount */
 						'Get %s now',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					formatCurrency(
 						instantBalance.amount,

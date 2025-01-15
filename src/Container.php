@@ -2,7 +2,7 @@
 /**
  * Class Container
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay;
@@ -67,7 +67,7 @@ class Container implements ContainerInterface {
 	 * but are useful while testing the container.
 	 *
 	 * @param LegacyContainer $legacy_container Delegate container for classes in `includes` (Optional).
-	 * @param WooContainer    $woo_container    Delegate container for WooCommerce (Optional).
+	 * @param WooContainer    $woo_container    Delegate container for PooCommerce (Optional).
 	 */
 	public function __construct(
 		?LegacyContainer $legacy_container = null,
@@ -84,7 +84,7 @@ class Container implements ContainerInterface {
 		// Allow delegating unresolved queries to classes from `includes`.
 		$this->container->delegate( $legacy_container ?? new LegacyContainer() );
 
-		// Allow delegating unresolved queries to the WooCommerce container.
+		// Allow delegating unresolved queries to the PooCommerce container.
 		$this->container->delegate( $woo_container ?? new WooContainer() );
 	}
 

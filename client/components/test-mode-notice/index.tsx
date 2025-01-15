@@ -10,7 +10,7 @@ import { __, _n, sprintf } from '@wordpress/i18n';
 import { getPaymentSettingsUrl, isInTestMode } from 'utils';
 import BannerNotice from '../banner-notice';
 import interpolateComponents from '@automattic/interpolate-components';
-import { Link } from '@woocommerce/components';
+import { Link } from '@poocommerce/components';
 import { recordEvent } from 'wcpay/tracks';
 
 type CurrentPage =
@@ -30,21 +30,21 @@ interface Props {
 }
 
 const nounToUse = {
-	documents: __( 'document', 'woocommerce-payments' ),
-	deposits: __( 'payout', 'woocommerce-payments' ),
-	disputes: __( 'dispute', 'woocommerce-payments' ),
-	loans: __( 'loan', 'woocommerce-payments' ),
-	payments: __( 'order', 'woocommerce-payments' ),
-	transactions: __( 'order', 'woocommerce-payments' ),
+	documents: __( 'document', 'poocommerce-payments' ),
+	deposits: __( 'payout', 'poocommerce-payments' ),
+	disputes: __( 'dispute', 'poocommerce-payments' ),
+	loans: __( 'loan', 'poocommerce-payments' ),
+	payments: __( 'order', 'poocommerce-payments' ),
+	transactions: __( 'order', 'poocommerce-payments' ),
 };
 
 const verbToUse = {
-	documents: __( 'created', 'woocommerce-payments' ),
-	deposits: __( 'created', 'woocommerce-payments' ),
-	disputes: __( 'created', 'woocommerce-payments' ),
-	loans: __( 'created', 'woocommerce-payments' ),
-	payments: __( 'placed', 'woocommerce-payments' ),
-	transactions: __( 'placed', 'woocommerce-payments' ),
+	documents: __( 'created', 'poocommerce-payments' ),
+	deposits: __( 'created', 'poocommerce-payments' ),
+	disputes: __( 'created', 'poocommerce-payments' ),
+	loans: __( 'created', 'poocommerce-payments' ),
+	payments: __( 'placed', 'poocommerce-payments' ),
+	transactions: __( 'placed', 'poocommerce-payments' ),
 };
 
 const getNoticeContent = (
@@ -61,7 +61,7 @@ const getNoticeContent = (
 							/* translators: %1$s: WooPayments */
 							__(
 								'{{strong}}%1$s is in sandbox mode.{{/strong}} You need to set up a live %1$s account before you can accept real transactions.',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							'WooPayments'
 						),
@@ -77,7 +77,7 @@ const getNoticeContent = (
 							/* translators: %1$s: WooPayments */
 							__(
 								'{{strong}}%1$s is in test mode.{{/strong}} All transactions will be simulated. {{learnMoreLink}}Learn more{{/learnMoreLink}}',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							'WooPayments'
 						),
@@ -88,7 +88,7 @@ const getNoticeContent = (
 								// eslint-disable-next-line jsx-a11y/anchor-has-content
 								<Link
 									href={
-										'https://woocommerce.com/document/woopayments/testing-and-troubleshooting/sandbox-mode/'
+										'https://poocommerce.com/document/woopayments/testing-and-troubleshooting/sandbox-mode/'
 									}
 									target="_blank"
 									rel="noreferrer"
@@ -119,7 +119,7 @@ const getNoticeContent = (
 								'%1$s was in test mode when this %2$s was %3$s. To view live %2$ss, disable test mode in {{settingsLink}}%1$s settings{{/settingsLink}}.',
 								'%1$s was in test mode when these %2$ss were %3$s. To view live %2$ss, disable test mode in {{settingsLink}}%1$s settings{{/settingsLink}}.',
 								'deposits' === currentPage ? 2 : 1,
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							'WooPayments',
 							nounToUse[ currentPage ],
@@ -141,7 +141,7 @@ const getNoticeContent = (
 							/* translators: %1$s: WooPayments */
 							__(
 								'Viewing test %1$s. To view live %1s, disable test mode in {{settingsLink}}%2s settings{{/settingsLink}}.',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							'deposits' === currentPage
 								? 'payouts'

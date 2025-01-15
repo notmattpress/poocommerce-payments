@@ -1,6 +1,6 @@
 const path = require( 'path' );
 const { config } = require( 'dotenv' );
-const { useE2EJestConfig } = require( '@woocommerce/e2e-environment' );
+const { useE2EJestConfig } = require( '@poocommerce/e2e-environment' );
 const fs = require( 'fs' );
 
 config( { path: path.resolve( __dirname, '.env' ) } );

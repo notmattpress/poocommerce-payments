@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Subscriptions.
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Class for loading WooCommerce Payments Subscriptions.
+ * Class for loading PooCommerce Payments Subscriptions.
  */
 class WC_Payments_Subscriptions {
 
@@ -57,7 +57,7 @@ class WC_Payments_Subscriptions {
 	private static $stripe_billing_migrator;
 
 	/**
-	 * Initialize WooCommerce Payments subscriptions. (Stripe Billing)
+	 * Initialize PooCommerce Payments subscriptions. (Stripe Billing)
 	 *
 	 * @param WC_Payments_API_Client       $api_client       WCPay API client.
 	 * @param WC_Payments_Customer_Service $customer_service WCPay Customer Service.

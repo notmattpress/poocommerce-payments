@@ -3,7 +3,7 @@
  */
 import config from 'config';
 
-const { shopper, merchant } = require( '@woocommerce/e2e-utils' );
+const { shopper, merchant } = require( '@poocommerce/e2e-utils' );
 
 /**
  * Internal dependencies

@@ -16,7 +16,7 @@ const Banner = ( { style } ) => {
 	let logoWidth,
 		logoHeight,
 		showPill,
-		className = 'woocommerce-payments-banner';
+		className = 'poocommerce-payments-banner';
 	if ( style === 'account-page' ) {
 		logoWidth = 196;
 		logoHeight = 65;
@@ -33,12 +33,12 @@ const Banner = ( { style } ) => {
 				<WCPayLogo
 					width={ logoWidth }
 					height={ logoHeight }
-					className="woocommerce-payments-banner-logo"
+					className="poocommerce-payments-banner-logo"
 				/>
 				{ showPill && (
-					<div className="woocommerce-payments-banner-pill">
+					<div className="poocommerce-payments-banner-pill">
 						<div>
-							{ __( 'Recommended', 'woocommerce-payments' ) }
+							{ __( 'Recommended', 'poocommerce-payments' ) }
 						</div>
 					</div>
 				) }

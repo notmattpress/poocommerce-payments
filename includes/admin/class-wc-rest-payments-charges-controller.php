@@ -2,7 +2,7 @@
 /**
  * Class WC_REST_Payments_Charges_Controller
  *
- * @package WooCommerce\Payments\Admin
+ * @package PooCommerce\Payments\Admin
  */
 
 use WCPay\Core\Server\Request\Get_Charge;
@@ -76,7 +76,7 @@ class WC_REST_Payments_Charges_Controller extends WC_Payments_REST_Controller {
 		$order    = wc_get_order( $order_id );
 
 		if ( false === $order ) {
-			return new WP_Error( 'wcpay_missing_order', __( 'Order not found', 'woocommerce-payments' ), [ 'status' => 404 ] );
+			return new WP_Error( 'wcpay_missing_order', __( 'Order not found', 'poocommerce-payments' ), [ 'status' => 404 ] );
 		}
 
 		$currency        = $order->get_currency();

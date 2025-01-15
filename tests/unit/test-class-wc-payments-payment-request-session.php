@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Payment_Request_Session_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 /**
@@ -81,7 +81,7 @@ class WC_Payments_Payment_Request_Session_Test extends WCPAY_UnitTestCase {
 		$session = new WC_Payments_Payment_Request_Session();
 		$session->init();
 
-		$this->assertNull( apply_filters( 'woocommerce_session_handler', null ) );
+		$this->assertNull( apply_filters( 'poocommerce_session_handler', null ) );
 	}
 
 	public function test_uses_custom_session_handler() {
@@ -98,9 +98,9 @@ class WC_Payments_Payment_Request_Session_Test extends WCPAY_UnitTestCase {
 
 		rest_do_request( $request );
 
-		$this->assertNotNull( apply_filters( 'woocommerce_session_handler', null ) );
+		$this->assertNotNull( apply_filters( 'poocommerce_session_handler', null ) );
 
-		// need to manually call this method, because otherwise WooCommerce hasn't instantiated the session when the request is made.
+		// need to manually call this method, because otherwise PooCommerce hasn't instantiated the session when the request is made.
 		WC()->initialize_session();
 
 		$this->assertInstanceOf( WC_Payments_Payment_Request_Session_Handler::class, WC()->session );

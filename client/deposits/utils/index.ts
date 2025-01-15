@@ -34,7 +34,7 @@ export const getDepositMonthlyAnchorLabel = ( {
 		.format( 'Do' );
 
 	if ( 31 === monthlyAnchor ) {
-		label = __( 'Last day of the month', 'woocommerce-payments' );
+		label = __( 'Last day of the month', 'poocommerce-payments' );
 	}
 	if ( ! capitalize ) {
 		label = label.toLowerCase();

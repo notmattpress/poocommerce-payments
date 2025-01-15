@@ -64,7 +64,7 @@ export function* getDispute( id ) {
 		yield controls.dispatch(
 			'core/notices',
 			'createErrorNotice',
-			__( 'Error retrieving dispute.', 'woocommerce-payments' )
+			__( 'Error retrieving dispute.', 'poocommerce-payments' )
 		);
 		yield updateErrorForDispute( id, undefined, e );
 	}
@@ -91,7 +91,7 @@ export function* getDisputes( query ) {
 		yield controls.dispatch(
 			'core/notices',
 			'createErrorNotice',
-			__( 'Error retrieving disputes.', 'woocommerce-payments' )
+			__( 'Error retrieving disputes.', 'poocommerce-payments' )
 		);
 	}
 }
@@ -112,7 +112,7 @@ export function* getDisputesSummary( query ) {
 			'createErrorNotice',
 			__(
 				'Error retrieving the summary of disputes.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			)
 		);
 	}

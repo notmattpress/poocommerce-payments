@@ -167,7 +167,7 @@ describe( 'UPE checkout utils', () => {
 				}
 
 				if ( argument === 'gatewayId' ) {
-					return 'woocommerce_payments';
+					return 'poocommerce_payments';
 				}
 			} );
 
@@ -185,8 +185,8 @@ describe( 'UPE checkout utils', () => {
 
 		test( 'Selected UPE Payment Method is card', () => {
 			container.innerHTML = `<input
-				id="payment_method_woocommerce_payments"
-				value="woocommerce_payments"
+				id="payment_method_poocommerce_payments"
+				value="poocommerce_payments"
 				name="payment_method"
 				type="radio"
 				class="input-radio"
@@ -198,8 +198,8 @@ describe( 'UPE checkout utils', () => {
 		test( 'Selected UPE Payment Method is bancontact', () => {
 			container.innerHTML = `
 				<input
-					id="payment_method_woocommerce_payments_bancontact"
-					value="woocommerce_payments_bancontact"
+					id="payment_method_poocommerce_payments_bancontact"
+					value="poocommerce_payments_bancontact"
 					name="payment_method"
 					type="radio"
 					class="input-radio"
@@ -259,11 +259,11 @@ describe( 'UPE checkout utils', () => {
 			container = document.createElement( 'div' );
 			container.innerHTML = `
 				<ul class="wc_payment_methods payment_methods methods">
-					<li class="wc_payment_method payment_method_woocommerce_payments_card" data-payment-method-type="card">
-						<input id="payment_method_woocommerce_payments" type="radio" class="input-radio">
+					<li class="wc_payment_method payment_method_poocommerce_payments_card" data-payment-method-type="card">
+						<input id="payment_method_poocommerce_payments" type="radio" class="input-radio">
 					</li>
-					<li class="wc_payment_method payment_method_woocommerce_payments_bancontact" data-payment-method-type="bancontact">
-						<input id="payment_method_woocommerce_payments_bancontact" type="radio" class="input-radio">
+					<li class="wc_payment_method payment_method_poocommerce_payments_bancontact" data-payment-method-type="bancontact">
+						<input id="payment_method_poocommerce_payments_bancontact" type="radio" class="input-radio">
 					</li>
 				</ul>
 			`;
@@ -289,7 +289,7 @@ describe( 'UPE checkout utils', () => {
 
 		it( 'should be true when the payment method is restricted to the location', () => {
 			const bancontactUpeElement = document.querySelector(
-				'.payment_method_woocommerce_payments_bancontact'
+				'.payment_method_poocommerce_payments_bancontact'
 			);
 
 			expect(
@@ -299,7 +299,7 @@ describe( 'UPE checkout utils', () => {
 
 		it( 'should be false when the payment method is not restricted to the location', () => {
 			const cardUpeElement = document.querySelector(
-				'.payment_method_woocommerce_payments_card'
+				'.payment_method_poocommerce_payments_card'
 			);
 
 			expect(
@@ -319,25 +319,25 @@ describe( 'UPE checkout utils', () => {
 					<option value="BE">Belgium</option>
 				</select>
 				<ul class="wc_payment_methods payment_methods methods">
-					<li class="wc_payment_method payment_method_woocommerce_payments_card" data-payment-method-type="card">
+					<li class="wc_payment_method payment_method_poocommerce_payments_card" data-payment-method-type="card">
 						<input
-							id="payment_method payment_method_woocommerce_payments"
+							id="payment_method payment_method_poocommerce_payments"
 							type="radio"
 							class="input-radio"
 							name="payment_method"
-							value="woocommerce_payments"
+							value="poocommerce_payments"
 						>
 						<div class="wcpay-upe-form" data-payment-method-type="card">
 							<div class="wcpay-upe-element" data-payment-method-type="card"></div>
 						</div>
 					</li>
-					<li class="wc_payment_method payment_method_woocommerce_payments_bancontact" data-payment-method-type="bancontact">
+					<li class="wc_payment_method payment_method_poocommerce_payments_bancontact" data-payment-method-type="bancontact">
 						<input
-							id="payment_method payment_method_woocommerce_payments_bancontact"
+							id="payment_method payment_method_poocommerce_payments_bancontact"
 							type="radio"
 							class="input-radio"
 							name="payment_method"
-							value="woocommerce_payments_bancontact"
+							value="poocommerce_payments_bancontact"
 						>
 						<div class="wcpay-upe-form" data-payment-method-type="bancontact">
 							<div class="wcpay-upe-element" data-payment-method-type="bancontact"></div>
@@ -364,7 +364,7 @@ describe( 'UPE checkout utils', () => {
 				}
 
 				if ( argument === 'gatewayId' ) {
-					return 'woocommerce_payments';
+					return 'poocommerce_payments';
 				}
 			} );
 			window.wcpayCustomerData = { billing_country: 'BE' };
@@ -376,7 +376,7 @@ describe( 'UPE checkout utils', () => {
 
 		it( 'should show payment method if country is supported', () => {
 			const upeElement = document.querySelector(
-				'.payment_method_woocommerce_payments_card'
+				'.payment_method_poocommerce_payments_card'
 			);
 			document.getElementById( 'billing_country' ).value = 'US';
 
@@ -387,7 +387,7 @@ describe( 'UPE checkout utils', () => {
 
 		it( 'should hide payment method if country is not supported', () => {
 			const upeElement = document.querySelector(
-				'.payment_method_woocommerce_payments_card'
+				'.payment_method_poocommerce_payments_card'
 			);
 			document.getElementById( 'billing_country' ).value = 'BE';
 
@@ -398,7 +398,7 @@ describe( 'UPE checkout utils', () => {
 
 		it( 'should fall back to card as the default payment method if the selected payment method is toggled off', () => {
 			const input = document.getElementById(
-				'payment_method payment_method_woocommerce_payments_bancontact'
+				'payment_method payment_method_poocommerce_payments_bancontact'
 			);
 			input.setAttribute( 'checked', 'checked' );
 
@@ -415,7 +415,7 @@ describe( 'UPE checkout utils', () => {
 				)
 				.closest( '.wc_payment_method' )
 				.querySelector(
-					`input[name="payment_method"][value="woocommerce_payments"]`
+					`input[name="payment_method"][value="poocommerce_payments"]`
 				);
 
 			jest.spyOn( cardPaymentMethod, 'click' );
@@ -430,7 +430,7 @@ describe( 'UPE checkout utils', () => {
 	describe( 'getUPESettings', () => {
 		afterEach( () => {
 			const checkboxElement = document.getElementById(
-				'wc-woocommerce_payments-new-payment-method'
+				'wc-poocommerce_payments-new-payment-method'
 			);
 			if ( checkboxElement ) {
 				checkboxElement.remove();
@@ -469,8 +469,8 @@ describe( 'UPE checkout utils', () => {
 					<div class="wcpay-upe-element" data-payment-method-type="card"></div>
 					<input
 						type="radio"
-						id="wc-woocommerce_payments-new-payment-method"
-						name="wc-woocommerce_payments-new-payment-method"
+						id="wc-poocommerce_payments-new-payment-method"
+						name="wc-poocommerce_payments-new-payment-method"
 						class="input-radio"
 						checked
 					>
@@ -555,7 +555,7 @@ describe( 'UPE checkout utils', () => {
 			const checkboxElement = document.createElement( 'input' );
 			checkboxElement.type = 'checkbox';
 			checkboxElement.checked = isChecked;
-			checkboxElement.id = 'wc-woocommerce_payments-new-payment-method';
+			checkboxElement.id = 'wc-poocommerce_payments-new-payment-method';
 
 			document.body.appendChild( checkboxElement );
 		}
@@ -572,14 +572,14 @@ describe( 'UPE checkout utils', () => {
 
 		it( 'should generate correct event names when there are payment methods', () => {
 			getPaymentMethodsConstants.mockImplementation( () => [
-				'woocommerce_payments_bancontact',
-				'woocommerce_payments_eps',
+				'poocommerce_payments_bancontact',
+				'poocommerce_payments_eps',
 			] );
 
 			const result = generateCheckoutEventNames();
 
 			expect( result ).toEqual(
-				'checkout_place_order_woocommerce_payments_bancontact checkout_place_order_woocommerce_payments_eps'
+				'checkout_place_order_poocommerce_payments_bancontact checkout_place_order_poocommerce_payments_eps'
 			);
 		} );
 	} );
@@ -799,13 +799,13 @@ describe( 'isUsingSavedPaymentMethod', () => {
 		container.innerHTML = `
 			<div class="wcpay-upe-form" data-payment-method-type="card">
 			<label>
-				<input type="radio" id="wc-woocommerce_payments-payment-token-new" value="new">
+				<input type="radio" id="wc-poocommerce_payments-payment-token-new" value="new">
 				Use a new payment method
 				</label>
 			</div>
 			<div class="wcpay-upe-form" data-payment-method-type="sepa_debit">
 				<label>
-					<input type="radio" id="wc-woocommerce_payments_sepa_debit-payment-token-new" value="new">
+					<input type="radio" id="wc-poocommerce_payments_sepa_debit-payment-token-new" value="new">
 					Use a new payment method
 				</label>
 			</div>
@@ -820,7 +820,7 @@ describe( 'isUsingSavedPaymentMethod', () => {
 
 	test( 'new CC is selected', () => {
 		const input = document.querySelector(
-			'#wc-woocommerce_payments-payment-token-new'
+			'#wc-poocommerce_payments-payment-token-new'
 		);
 		input.checked = true;
 		const paymentMethodType = 'card';
@@ -830,7 +830,7 @@ describe( 'isUsingSavedPaymentMethod', () => {
 
 	test( 'saved CC is selected', () => {
 		const input = document.querySelector(
-			'#wc-woocommerce_payments-payment-token-new'
+			'#wc-poocommerce_payments-payment-token-new'
 		);
 		input.checked = false;
 		const paymentMethodType = 'card';
@@ -840,7 +840,7 @@ describe( 'isUsingSavedPaymentMethod', () => {
 
 	test( 'new SEPA is selected', () => {
 		const input = document.querySelector(
-			'#wc-woocommerce_payments_sepa_debit-payment-token-new'
+			'#wc-poocommerce_payments_sepa_debit-payment-token-new'
 		);
 		input.checked = true;
 		const paymentMethodType = 'sepa_debit';
@@ -850,7 +850,7 @@ describe( 'isUsingSavedPaymentMethod', () => {
 
 	test( 'saved SEPA is selected', () => {
 		const input = document.querySelector(
-			'#wc-woocommerce_payments_sepa_debit-payment-token-new'
+			'#wc-poocommerce_payments_sepa_debit-payment-token-new'
 		);
 		input.checked = false;
 		const paymentMethodType = 'sepa_debit';

@@ -1,6 +1,6 @@
 <?php
 /**
- * Class WooCommerceBookings
+ * Class PooCommerceBookings
  *
  * @package WCPay\MultiCurrency\Compatibility
  */
@@ -12,9 +12,9 @@ use WCPay\MultiCurrency\MultiCurrency;
 use WCPay\MultiCurrency\Utils;
 
 /**
- * Class that controls Multi Currency Compatibility with WooCommerce Bookings Plugin.
+ * Class that controls Multi Currency Compatibility with PooCommerce Bookings Plugin.
  */
-class WooCommerceBookings extends BaseCompatibility {
+class PooCommerceBookings extends BaseCompatibility {
 	/**
 	 * Front-end currencies.
 	 *
@@ -43,13 +43,13 @@ class WooCommerceBookings extends BaseCompatibility {
 		// Add needed actions and filters if Bookings is active.
 		if ( class_exists( 'WC_Bookings' ) ) {
 			if ( ! is_admin() || wp_doing_ajax() ) {
-				add_filter( 'woocommerce_product_get_block_cost', [ $this, 'get_price' ], 50, 1 );
-				add_filter( 'woocommerce_product_get_cost', [ $this, 'get_price' ], 50, 1 );
-				add_filter( 'woocommerce_product_get_display_cost', [ $this, 'get_price' ], 50, 1 );
-				add_filter( 'woocommerce_product_booking_person_type_get_block_cost', [ $this, 'get_price' ], 50, 1 );
-				add_filter( 'woocommerce_product_booking_person_type_get_cost', [ $this, 'get_price' ], 50, 1 );
-				add_filter( 'woocommerce_product_get_resource_base_costs', [ $this, 'get_resource_prices' ], 50, 1 );
-				add_filter( 'woocommerce_product_get_resource_block_costs', [ $this, 'get_resource_prices' ], 50, 1 );
+				add_filter( 'poocommerce_product_get_block_cost', [ $this, 'get_price' ], 50, 1 );
+				add_filter( 'poocommerce_product_get_cost', [ $this, 'get_price' ], 50, 1 );
+				add_filter( 'poocommerce_product_get_display_cost', [ $this, 'get_price' ], 50, 1 );
+				add_filter( 'poocommerce_product_booking_person_type_get_block_cost', [ $this, 'get_price' ], 50, 1 );
+				add_filter( 'poocommerce_product_booking_person_type_get_cost', [ $this, 'get_price' ], 50, 1 );
+				add_filter( 'poocommerce_product_get_resource_base_costs', [ $this, 'get_resource_prices' ], 50, 1 );
+				add_filter( 'poocommerce_product_get_resource_block_costs', [ $this, 'get_resource_prices' ], 50, 1 );
 				add_filter( MultiCurrency::FILTER_PREFIX . 'should_convert_product_price', [ $this, 'should_convert_product_price' ] );
 				add_action( 'wp_ajax_wc_bookings_calculate_costs', [ $this, 'add_wc_price_args_filter_for_ajax' ], 9 );
 				add_action( 'wp_ajax_nopriv_wc_bookings_calculate_costs', [ $this, 'add_wc_price_args_filter_for_ajax' ], 9 );
@@ -143,7 +143,7 @@ class WooCommerceBookings extends BaseCompatibility {
 				'decimal_separator'  => $this->frontend_currencies->get_price_decimal_separator( $args['decimal_separator'] ),
 				'thousand_separator' => $this->frontend_currencies->get_price_thousand_separator( $args['thousand_separator'] ),
 				'decimals'           => $this->frontend_currencies->get_price_decimals( $args['decimals'] ),
-				'price_format'       => $this->frontend_currencies->get_woocommerce_price_format( $args['price_format'] ),
+				'price_format'       => $this->frontend_currencies->get_poocommerce_price_format( $args['price_format'] ),
 			],
 			$args
 		);

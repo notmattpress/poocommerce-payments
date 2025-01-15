@@ -2,7 +2,7 @@
 /**
  * Class SavedPaymentMethod
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Internal\Payment\PaymentMethod;
@@ -19,7 +19,7 @@ class SavedPaymentMethod implements PaymentMethodInterface {
 	private $id;
 
 	/**
-	 * Contains the WooCommerce token ID.
+	 * Contains the PooCommerce token ID.
 	 *
 	 * @var int
 	 */
@@ -29,7 +29,7 @@ class SavedPaymentMethod implements PaymentMethodInterface {
 	 * Class constructor.
 	 *
 	 * @param string $id       External ID of the payment method.
-	 * @param int    $token_id Internal WooCommerce token ID.
+	 * @param int    $token_id Internal PooCommerce token ID.
 	 */
 	public function __construct( string $id, int $token_id ) {
 		$this->id       = $id;

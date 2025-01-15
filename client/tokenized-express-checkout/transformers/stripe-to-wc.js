@@ -28,7 +28,7 @@ export const transformStripeShippingAddressForStoreApi = (
  * @param {Object} paymentData Stripe's order object.
  * @param {string} paymentMethodId Stripe's payment method id.
  *
- * @return {Object} Order object in the format WooCommerce expects.
+ * @return {Object} Order object in the format PooCommerce expects.
  */
 export const transformStripePaymentMethodForStoreApi = (
 	paymentData,
@@ -71,7 +71,7 @@ export const transformStripePaymentMethodForStoreApi = (
 					phone: billingPhone,
 			  }
 			: undefined,
-		payment_method: 'woocommerce_payments',
+		payment_method: 'poocommerce_payments',
 		payment_data: [
 			{
 				key: 'payment_method',

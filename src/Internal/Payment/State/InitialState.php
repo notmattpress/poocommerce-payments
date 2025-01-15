@@ -2,7 +2,7 @@
 /**
  * Class InitialState
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Internal\Payment\State;
@@ -150,14 +150,14 @@ class InitialState extends AbstractPaymentState {
 
 		if ( ! $this->fraud_prevention_service->verify_token( $context->get_fraud_prevention_token() ) ) {
 			throw new StateTransitionException(
-				esc_html__( "We're not able to process this payment. Please refresh the page and try again.", 'woocommerce-payments' )
+				esc_html__( "We're not able to process this payment. Please refresh the page and try again.", 'poocommerce-payments' )
 			);
 		}
 
 		if ( $this->failed_transaction_rate_limiter->is_limited() ) {
 			$this->order_service->add_rate_limiter_note( $context->get_order_id() );
 			throw new StateTransitionException(
-				esc_html__( 'Your payment was not processed.', 'woocommerce-payments' ),
+				esc_html__( 'Your payment was not processed.', 'poocommerce-payments' ),
 				400
 			);
 		}
@@ -289,7 +289,7 @@ class InitialState extends AbstractPaymentState {
 			throw new StateTransitionException(
 				esc_html__(
 					'Please enter a valid phone number, whose length is less than 20.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				)
 			);
 		}

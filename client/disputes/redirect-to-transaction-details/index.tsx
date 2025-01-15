@@ -2,7 +2,7 @@
  * External dependencies
  */
 import React, { useEffect } from 'react';
-import { getHistory } from '@woocommerce/navigation';
+import { getHistory } from '@poocommerce/navigation';
 import { Spinner, Icon, Flex, FlexItem } from '@wordpress/components';
 
 /**

@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Express_Checkout_Ajax_Handler
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -48,7 +48,7 @@ class WC_Payments_Express_Checkout_Ajax_Handler {
 
 		if ( WC_Payments_Features::is_tokenized_cart_ece_enabled() ) {
 			add_action(
-				'woocommerce_store_api_checkout_update_order_from_request',
+				'poocommerce_store_api_checkout_update_order_from_request',
 				[
 					$this,
 					'tokenized_cart_set_payment_method_type',
@@ -68,7 +68,7 @@ class WC_Payments_Express_Checkout_Ajax_Handler {
 	public function ajax_create_order() {
 		try {
 			if ( WC()->cart->is_empty() ) {
-				throw new Exception( __( 'Empty cart', 'woocommerce-payments' ) );
+				throw new Exception( __( 'Empty cart', 'poocommerce-payments' ) );
 			}
 
 			if ( ! defined( 'WOOCOMMERCE_CHECKOUT' ) ) {
@@ -108,12 +108,12 @@ class WC_Payments_Express_Checkout_Ajax_Handler {
 
 		try {
 			if (
-				! isset( $_POST['payment_method'] ) || 'woocommerce_payments' !== $_POST['payment_method']
+				! isset( $_POST['payment_method'] ) || 'poocommerce_payments' !== $_POST['payment_method']
 				|| ! isset( $_POST['order'] ) || ! intval( $_POST['order'] )
 				|| ! isset( $_POST['wcpay-payment-method'] ) || empty( $_POST['wcpay-payment-method'] )
 			) {
 				// Incomplete request.
-				throw new Exception( __( 'Invalid request', 'woocommerce-payments' ) );
+				throw new Exception( __( 'Invalid request', 'poocommerce-payments' ) );
 			}
 
 			// Set up an environment, similar to core checkout.
@@ -125,29 +125,29 @@ class WC_Payments_Express_Checkout_Ajax_Handler {
 			$order    = wc_get_order( $order_id );
 
 			if ( ! is_a( $order, WC_Order::class ) ) {
-				throw new Exception( __( 'Invalid order!', 'woocommerce-payments' ) );
+				throw new Exception( __( 'Invalid order!', 'poocommerce-payments' ) );
 			}
 
 			if ( ! $order->needs_payment() ) {
-				throw new Exception( __( 'This order does not require payment!', 'woocommerce-payments' ) );
+				throw new Exception( __( 'This order does not require payment!', 'poocommerce-payments' ) );
 			}
 
 			$this->express_checkout_button_helper->add_order_payment_method_title( $order_id );
 
 			// Load the gateway.
 			$all_gateways = WC()->payment_gateways->get_available_payment_gateways();
-			$gateway      = $all_gateways['woocommerce_payments'];
+			$gateway      = $all_gateways['poocommerce_payments'];
 			$result       = $gateway->process_payment( $order_id );
 
 			// process_payment() should only return `success` or throw an exception.
 			if ( ! is_array( $result ) || ! isset( $result['result'] ) || 'success' !== $result['result'] || ! isset( $result['redirect'] ) ) {
-				throw new Exception( __( 'Unable to determine payment success.', 'woocommerce-payments' ) );
+				throw new Exception( __( 'Unable to determine payment success.', 'poocommerce-payments' ) );
 			}
 
 			// Include the order ID in the result.
 			$result['order_id'] = $order_id;
 
-			$result = apply_filters( 'woocommerce_payment_successful_result', $result, $order_id );
+			$result = apply_filters( 'poocommerce_payment_successful_result', $result, $order_id );
 
 			wp_send_json( $result );
 		} catch ( Exception $e ) {
@@ -250,17 +250,17 @@ class WC_Payments_Express_Checkout_Ajax_Handler {
 
 		try {
 			$product_id      = isset( $_POST['product_id'] ) ? absint( $_POST['product_id'] ) : false;
-			$qty             = ! isset( $_POST['qty'] ) ? 1 : apply_filters( 'woocommerce_add_to_cart_quantity', absint( $_POST['qty'] ), $product_id );
+			$qty             = ! isset( $_POST['qty'] ) ? 1 : apply_filters( 'poocommerce_add_to_cart_quantity', absint( $_POST['qty'] ), $product_id );
 			$addon_value     = isset( $_POST['addon_value'] ) ? max( (float) $_POST['addon_value'], 0 ) : 0;
 			$product         = wc_get_product( $product_id );
 			$variation_id    = null;
-			$currency        = get_woocommerce_currency();
+			$currency        = get_poocommerce_currency();
 			$is_deposit      = isset( $_POST['wc_deposit_option'] ) ? 'yes' === sanitize_text_field( wp_unslash( $_POST['wc_deposit_option'] ) ) : null;
 			$deposit_plan_id = isset( $_POST['wc_deposit_payment_plan'] ) ? absint( $_POST['wc_deposit_payment_plan'] ) : 0;
 
 			if ( ! is_a( $product, 'WC_Product' ) ) {
 				/* translators: product ID */
-				throw new Exception( sprintf( __( 'Product with the ID (%d) cannot be found.', 'woocommerce-payments' ), $product_id ) );
+				throw new Exception( sprintf( __( 'Product with the ID (%d) cannot be found.', 'poocommerce-payments' ), $product_id ) );
 			}
 
 			if ( ( 'variable' === $product->get_type() || 'variable-subscription' === $product->get_type() ) && isset( $_POST['attributes'] ) ) {
@@ -281,7 +281,7 @@ class WC_Payments_Express_Checkout_Ajax_Handler {
 
 			if ( ! $product->has_enough_stock( $qty ) ) {
 				/* translators: 1: product name 2: quantity in stock */
-				throw new Exception( sprintf( __( 'You cannot add that amount of "%1$s"; to the cart because there is not enough stock (%2$s remaining).', 'woocommerce-payments' ), $product->get_name(), wc_format_stock_quantity_for_display( $product->get_stock_quantity(), $product ) ) );
+				throw new Exception( sprintf( __( 'You cannot add that amount of "%1$s"; to the cart because there is not enough stock (%2$s remaining).', 'poocommerce-payments' ), $product->get_name(), wc_format_stock_quantity_for_display( $product->get_stock_quantity(), $product ) ) );
 			}
 
 			$price = $this->express_checkout_button_helper->get_product_price( $product, $is_deposit, $deposit_plan_id );
@@ -302,7 +302,7 @@ class WC_Payments_Express_Checkout_Ajax_Handler {
 				$total_tax += $tax;
 
 				$items[] = [
-					'label'   => __( 'Tax', 'woocommerce-payments' ),
+					'label'   => __( 'Tax', 'poocommerce-payments' ),
 					'amount'  => WC_Payments_Utils::prepare_amount( $tax, $currency ),
 					'pending' => 0 === $tax,
 				];
@@ -310,14 +310,14 @@ class WC_Payments_Express_Checkout_Ajax_Handler {
 
 			if ( wc_shipping_enabled() && $product->needs_shipping() ) {
 				$items[] = [
-					'label'   => __( 'Shipping', 'woocommerce-payments' ),
+					'label'   => __( 'Shipping', 'poocommerce-payments' ),
 					'amount'  => 0,
 					'pending' => true,
 				];
 
 				$data['shippingOptions'] = [
 					'id'     => 'pending',
-					'label'  => __( 'Pending', 'woocommerce-payments' ),
+					'label'  => __( 'Pending', 'poocommerce-payments' ),
 					'detail' => '',
 					'amount' => 0,
 				];
@@ -331,8 +331,8 @@ class WC_Payments_Express_Checkout_Ajax_Handler {
 			];
 
 			$data['needs_shipping'] = wc_shipping_enabled() && 0 !== wc_get_shipping_method_count( true ) && $product->needs_shipping();
-			$data['currency']       = strtolower( get_woocommerce_currency() );
-			$data['country_code']   = substr( get_option( 'woocommerce_default_country' ), 0, 2 );
+			$data['currency']       = strtolower( get_poocommerce_currency() );
+			$data['country_code']   = substr( get_option( 'poocommerce_default_country' ), 0, 2 );
 			$data['has_free_trial'] = class_exists( 'WC_Subscriptions_Product' ) ? WC_Subscriptions_Product::get_trial_length( $product ) > 0 : false;
 
 			wp_send_json( $data );
@@ -364,7 +364,7 @@ class WC_Payments_Express_Checkout_Ajax_Handler {
 				[
 					'error' => [
 						'code'    => 'invalid_product_id',
-						'message' => __( 'Invalid product id', 'woocommerce-payments' ),
+						'message' => __( 'Invalid product id', 'poocommerce-payments' ),
 					],
 				],
 				404
@@ -376,7 +376,7 @@ class WC_Payments_Express_Checkout_Ajax_Handler {
 
 		$product_type = $product->get_type();
 
-		$is_add_to_cart_valid = apply_filters( 'woocommerce_add_to_cart_validation', true, $product_id, $quantity );
+		$is_add_to_cart_valid = apply_filters( 'poocommerce_add_to_cart_validation', true, $product_id, $quantity );
 
 		if ( ! $is_add_to_cart_valid ) {
 			// Some extensions error messages needs to be
@@ -405,7 +405,7 @@ class WC_Payments_Express_Checkout_Ajax_Handler {
 
 		if ( in_array( $product_type, [ 'simple', 'variation', 'subscription', 'subscription_variation', 'booking', 'bundle', 'mix-and-match' ], true ) ) {
 			$allowed_item_data = [
-				// Teams for WooCommerce Memberships fields.
+				// Teams for PooCommerce Memberships fields.
 				'team_name',
 				'team_owner_takes_seat',
 			];
@@ -444,7 +444,7 @@ class WC_Payments_Express_Checkout_Ajax_Handler {
 	 * @param \WP_REST_Request $request Store API request to update the order.
 	 */
 	public function tokenized_cart_set_payment_method_type( \WC_Order $order, \WP_REST_Request $request ) {
-		if ( ! isset( $request['payment_method'] ) || 'woocommerce_payments' !== $request['payment_method'] ) {
+		if ( ! isset( $request['payment_method'] ) || 'poocommerce_payments' !== $request['payment_method'] ) {
 			return;
 		}
 
@@ -503,7 +503,7 @@ class WC_Payments_Express_Checkout_Ajax_Handler {
 		// If that's the case, let's temporarily allow to skip the zip code validation, in order to get some shipping rates.
 		$is_update_customer_route = $request->get_route() === '/wc/store/v1/cart/update-customer';
 		if ( $is_update_customer_route ) {
-			add_filter( 'woocommerce_validate_postcode', [ $this, 'maybe_skip_postcode_validation' ], 10, 3 );
+			add_filter( 'poocommerce_validate_postcode', [ $this, 'maybe_skip_postcode_validation' ], 10, 3 );
 		}
 
 		$request_data = $request->get_json_params();
@@ -552,7 +552,7 @@ class WC_Payments_Express_Checkout_Ajax_Handler {
 	}
 
 	/**
-	 * Transform a GooglePay/ApplePay state address data fields into values that are valid for WooCommerce.
+	 * Transform a GooglePay/ApplePay state address data fields into values that are valid for PooCommerce.
 	 *
 	 * @param array $address The address to normalize from the GooglePay/ApplePay request.
 	 *
@@ -574,7 +574,7 @@ class WC_Payments_Express_Checkout_Ajax_Handler {
 	}
 
 	/**
-	 * Transform a GooglePay/ApplePay postcode address data fields into values that are valid for WooCommerce.
+	 * Transform a GooglePay/ApplePay postcode address data fields into values that are valid for PooCommerce.
 	 *
 	 * @param array $address The address to normalize from the GooglePay/ApplePay request.
 	 *

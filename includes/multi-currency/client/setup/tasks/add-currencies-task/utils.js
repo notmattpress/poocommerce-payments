@@ -37,7 +37,7 @@ export const ConcatenateCurrencyStrings = (
 	const filteredCurrencies = currencies.filter(
 		( code ) => code !== except && currenciesData[ code ]
 	);
-	const __and = __( 'and', 'woocommerce-payments' );
+	const __and = __( 'and', 'poocommerce-payments' );
 	return filteredCurrencies
 		.map( ( code ) =>
 			StringRepresentationOfCurrency( currenciesData[ code ] )

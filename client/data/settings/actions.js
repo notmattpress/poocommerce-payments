@@ -228,12 +228,12 @@ export function* saveSettings() {
 		} );
 
 		yield dispatch( 'core/notices' ).createSuccessNotice(
-			__( 'Settings saved.', 'woocommerce-payments' )
+			__( 'Settings saved.', 'poocommerce-payments' )
 		);
 	} catch ( e ) {
 		error = e;
 		yield dispatch( 'core/notices' ).createErrorNotice(
-			__( 'Error saving settings.', 'woocommerce-payments' )
+			__( 'Error saving settings.', 'poocommerce-payments' )
 		);
 
 		if ( error.server_error ) {
@@ -310,7 +310,7 @@ export function* submitStripeBillingSubscriptionMigration() {
 		yield dispatch( 'core/notices' ).createErrorNotice(
 			__(
 				'Error starting the Stripe Billing migration.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			)
 		);
 	}

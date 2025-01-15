@@ -7,7 +7,7 @@ const {
 	shopper,
 	withRestApi,
 	evalAndClick,
-} = require( '@woocommerce/e2e-utils' );
+} = require( '@poocommerce/e2e-utils' );
 import {
 	RUN_SUBSCRIPTIONS_TESTS,
 	RUN_ACTION_SCHEDULER_TESTS,
@@ -17,7 +17,7 @@ import {
 import { fillCardDetails, setupCheckout } from '../../../utils/payments';
 
 const productSlug = 'subscription-signup-fee-product';
-const actionSchedulerHook = 'woocommerce_scheduled_subscription_payment';
+const actionSchedulerHook = 'poocommerce_scheduled_subscription_payment';
 const customerBilling = config.get(
 	'addresses.subscriptions-customer.billing'
 );

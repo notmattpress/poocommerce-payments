@@ -1,4 +1,4 @@
-# WooCommerce Payments End-to-end tests
+# PooCommerce Payments End-to-end tests
 
 E2E tests can be run locally or in GitHub Actions. Github Actions are already configured and doesn't require any changes to run the tests.
 
@@ -11,7 +11,7 @@ For running E2E tests locally, create a new file named `local.env` under `tests/
 <p>
 
 ```
-# WooCommerce Payments Dev Tools Repo
+# PooCommerce Payments Dev Tools Repo
 WCP_DEV_TOOLS_REPO='https://github.com/dev-tools-repo.git or git@github.com:org/dev-tools-repo.git'
 
 # Optional to see additional verbose output. Default false.
@@ -50,7 +50,7 @@ E2E_WOOPAY_BLOG_ID=<WPCOM Site ID for https://pay.woo.com>
 
 **Using Live Server**
 
-For using a live server, you'll need to add Jetpack blog token, user token & blog id from one of your test sites connected to WooCommerce Payments live account. On a connected test site, you can use the code below to extract the blog id & tokens.
+For using a live server, you'll need to add Jetpack blog token, user token & blog id from one of your test sites connected to PooCommerce Payments live account. On a connected test site, you can use the code below to extract the blog id & tokens.
 ```
 Jetpack_Options::get_option( 'id' );
 Jetpack_Options::get_option( 'blog_token' );
@@ -109,13 +109,13 @@ SKIP_WC_BLOCKS_TESTS=1
 ---
 
 <details>
-<summary>Using specific version of WordPress / WooCommerce</summary>
+<summary>Using specific version of WordPress / PooCommerce</summary>
 <p>
 
-To use a specific version of WordPress or WooCommerce for testing, the following env variables needs to be added to your `local.env`.
+To use a specific version of WordPress or PooCommerce for testing, the following env variables needs to be added to your `local.env`.
 ```
 E2E_WP_VERSION='<wordpress_version>'
-E2E_WC_VERSION='<woocommerce_version>'
+E2E_WC_VERSION='<poocommerce_version>'
 ```
 
 </p>
@@ -182,7 +182,7 @@ Note that, at the moment, we are only able to run a subset of the regular E2E te
 
 ## Writing tests
 
-Package `@woocommerce/e2e-environment` overrides `it` method to attach custom reporter for failed tests.
+Package `@poocommerce/e2e-environment` overrides `it` method to attach custom reporter for failed tests.
 It is important to write test cases within `it()` rather than `test()` function to make sure failed tests are reported to Slack channel.
 
 ## Debugging tests
@@ -191,7 +191,7 @@ Create file `local.env` inside `tests/e2e/config` folder and set `E2E_DEBUG=true
 
 ## Slack integration
 
-Slack reporter requires custom jest config provided by `@woocommerce/e2e-environment` package. This config is only applied with `npm run test:e2e` command.
+Slack reporter requires custom jest config provided by `@poocommerce/e2e-environment` package. This config is only applied with `npm run test:e2e` command.
 
 **Configuration steps:**
 

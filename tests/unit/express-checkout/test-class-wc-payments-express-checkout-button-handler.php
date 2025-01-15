@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Express_Checkout_Button_Handler_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use PHPUnit\Framework\MockObject\MockObject;
@@ -130,7 +130,7 @@ class WC_Payments_Express_Checkout_Button_Handler_Test extends WCPAY_UnitTestCas
 			'Should not require shipping address for subscription without shipping methods'
 		);
 
-		remove_filter( 'woocommerce_shipping_method_count', '__return_zero' );
+		remove_filter( 'poocommerce_shipping_method_count', '__return_zero' );
 		WC_Subscriptions_Cart::set_cart_contains_subscription( false );
 	}
 }

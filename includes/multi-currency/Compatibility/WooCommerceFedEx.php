@@ -1,6 +1,6 @@
 <?php
 /**
- * Class WooCommerceFedEx
+ * Class PooCommerceFedEx
  *
  * @package WCPay\MultiCurrency\Compatibility
  */
@@ -10,9 +10,9 @@ namespace WCPay\MultiCurrency\Compatibility;
 use WCPay\MultiCurrency\MultiCurrency;
 
 /**
- * Class that controls Multi Currency Compatibility with WooCommerce FedEx Plugin.
+ * Class that controls Multi Currency Compatibility with PooCommerce FedEx Plugin.
  */
-class WooCommerceFedEx extends BaseCompatibility {
+class PooCommerceFedEx extends BaseCompatibility {
 
 	/**
 	 * Calls to look for in the backtrace when determining whether

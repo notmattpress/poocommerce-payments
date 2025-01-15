@@ -205,7 +205,7 @@ export const handleAppearanceForFloatingLabel = (
 	// Subtract the label's lineHeight from padding-top to account for floating label height.
 	// Minus 4px which is a constant value added by stripe to the padding-top.
 	// Minus 1px for each vertical padding to account for the unpredictable input height
-	// (see https://github.com/Automattic/woocommerce-payments/issues/9476#issuecomment-2374766540).
+	// (see https://github.com/Automattic/poocommerce-payments/issues/9476#issuecomment-2374766540).
 	// When the result is less than 0, it will automatically use 0.
 	if ( appearance.rules[ '.Input' ].paddingTop ) {
 		appearance.rules[

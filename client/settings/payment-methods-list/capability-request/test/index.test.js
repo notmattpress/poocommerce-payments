@@ -14,17 +14,17 @@ import CapabilityNotice from '../capability-request-notice';
 
 const CapabilityRequestListMock = {
 	id: 'jcb',
-	label: __( 'JCB', 'woocommerce-payments' ),
+	label: __( 'JCB', 'poocommerce-payments' ),
 	country: 'JP',
 	states: {
 		unrequested: {
 			status: 'info',
 			content: __(
 				'Enable JCB for your customers, the only international payment brand based in Japan.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			actions: 'request',
-			actionsLabel: __( 'Enable JCB', 'woocommerce-payments' ),
+			actionsLabel: __( 'Enable JCB', 'poocommerce-payments' ),
 		},
 	},
 };

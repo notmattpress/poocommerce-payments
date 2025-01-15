@@ -124,7 +124,7 @@ export const initializeBnplSiteMessaging = async () => {
 
 	const priceElement =
 		document.querySelector( '.price' ) || // For non-block product templates.
-		document.querySelector( '.wp-block-woocommerce-product-price' ); // For block product templates.
+		document.querySelector( '.wp-block-poocommerce-product-price' ); // For block product templates.
 	const cartTotalElement = document.querySelector(
 		'.cart_totals .shop_table'
 	);

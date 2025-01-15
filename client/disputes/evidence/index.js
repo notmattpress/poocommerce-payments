@@ -95,7 +95,7 @@ export const DisputeEvidenceForm = ( props ) => {
 			if ( ! isEvidenceWithinLengthLimit( field, value ) ) {
 				const errorMessage = __(
 					'Reached maximum character count for evidence',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				);
 				if (
 					! getNotices().some(
@@ -161,7 +161,7 @@ export const DisputeEvidenceForm = ( props ) => {
 							displayAsReadOnly
 								? __(
 										'No information submitted',
-										'woocommerce-payments'
+										'poocommerce-payments'
 								  )
 								: null
 						}
@@ -180,7 +180,7 @@ export const DisputeEvidenceForm = ( props ) => {
 							displayAsReadOnly
 								? __(
 										'Date not submitted',
-										'woocommerce-payments'
+										'poocommerce-payments'
 								  )
 								: null
 						}
@@ -219,7 +219,7 @@ export const DisputeEvidenceForm = ( props ) => {
 
 	const confirmMessage = __(
 		"Are you sure you're ready to submit this evidence? Evidence submissions are final.",
-		'woocommerce-payments'
+		'poocommerce-payments'
 	);
 	const handleSubmit = () =>
 		window.confirm( confirmMessage ) && onSave( true );
@@ -234,24 +234,24 @@ export const DisputeEvidenceForm = ( props ) => {
 							{ __(
 								// eslint-disable-next-line max-len
 								"When you submit your evidence, we'll format it and send it to the cardholder's bank, then email you once the dispute has been decided.",
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 						</p>
 						<p>
 							<strong>
 								{ __(
 									'Evidence submission is final.',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								) }
 							</strong>{ ' ' }
 							{ __(
 								'You can also save this evidence for later instead of submitting it immediately.',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }{ ' ' }
 							<strong>
 								{ __(
 									'We will automatically submit any saved evidence at the due date.',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								) }
 							</strong>
 						</p>
@@ -262,7 +262,7 @@ export const DisputeEvidenceForm = ( props ) => {
 							<Button isPrimary onClick={ handleSubmit }>
 								{ __(
 									'Submit evidence',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								) }
 							</Button>
 							<Button
@@ -271,7 +271,7 @@ export const DisputeEvidenceForm = ( props ) => {
 							>
 								{ __(
 									'Save for later',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								) }
 							</Button>
 						</div>
@@ -304,7 +304,7 @@ export const DisputeEvidencePage = ( props ) => {
 		>
 			{ __(
 				'Evidence is already submitted. Details below are read-only.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			) }
 		</Notice>
 	);
@@ -314,7 +314,7 @@ export const DisputeEvidencePage = ( props ) => {
 			<Page isNarrow className="wcpay-dispute-details">
 				<TestModeNotice currentPage="disputes" isDetailsView={ true } />
 				<div>
-					{ __( 'Dispute not loaded', 'woocommerce-payments' ) }
+					{ __( 'Dispute not loaded', 'poocommerce-payments' ) }
 				</div>
 			</Page>
 		);
@@ -332,7 +332,7 @@ export const DisputeEvidencePage = ( props ) => {
 								isLoading={ isLoading }
 								value={ __(
 									'Challenge dispute',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								) }
 							/>
 						}
@@ -350,7 +350,7 @@ export const DisputeEvidencePage = ( props ) => {
 								isLoading={ isLoading }
 								value={ __(
 									'Product type',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								) }
 							/>
 						}
@@ -367,7 +367,7 @@ export const DisputeEvidencePage = ( props ) => {
 									{
 										label: __(
 											'Select one…',
-											'woocommerce-payments'
+											'poocommerce-payments'
 										),
 										disabled: true,
 										value: '',
@@ -375,28 +375,28 @@ export const DisputeEvidencePage = ( props ) => {
 									{
 										label: __(
 											'Physical product',
-											'woocommerce-payments'
+											'poocommerce-payments'
 										),
 										value: 'physical_product',
 									},
 									{
 										label: __(
 											'Digital product or service',
-											'woocommerce-payments'
+											'poocommerce-payments'
 										),
 										value: 'digital_product_or_service',
 									},
 									{
 										label: __(
 											'Offline service',
-											'woocommerce-payments'
+											'poocommerce-payments'
 										),
 										value: 'offline_service',
 									},
 									{
 										label: __(
 											'Multiple product types',
-											'woocommerce-payments'
+											'poocommerce-payments'
 										),
 										value: 'multiple',
 									},
@@ -483,7 +483,7 @@ export default ( { query } ) => {
 
 		return __(
 			'There are unsaved changes on this page. Are you sure you want to leave and discard the unsaved changes?',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		);
 	} );
 
@@ -535,7 +535,7 @@ export default ( { query } ) => {
 					"The files you've attached to this dispute as evidence will exceed the limit for a " +
 						"dispute's total size. Try using smaller files as evidence. Hint: if you've attached " +
 						'images, you might want to try providing them in lower resolutions.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				)
 			);
 			return true;
@@ -604,8 +604,8 @@ export default ( { query } ) => {
 
 	const handleSaveSuccess = ( submit ) => {
 		const message = submit
-			? __( 'Evidence submitted!', 'woocommerce-payments' )
-			: __( 'Evidence saved!', 'woocommerce-payments' );
+			? __( 'Evidence submitted!', 'poocommerce-payments' )
+			: __( 'Evidence saved!', 'poocommerce-payments' );
 
 		recordEvent(
 			submit
@@ -614,7 +614,7 @@ export default ( { query } ) => {
 		);
 		/*
 			We rely on WC-Admin Transient notices to display success message.
-			https://github.com/woocommerce/woocommerce-admin/tree/master/client/layout/transient-notices.
+			https://github.com/poocommerce/poocommerce-admin/tree/master/client/layout/transient-notices.
 		*/
 		createSuccessNotice( message, {
 			actions: [
@@ -622,11 +622,11 @@ export default ( { query } ) => {
 					label: submit
 						? __(
 								'View submitted evidence',
-								'woocommerce-payments'
+								'poocommerce-payments'
 						  )
 						: __(
 								'Return to evidence submission',
-								'woocommerce-payments'
+								'poocommerce-payments'
 						  ),
 					url: getAdminUrl( {
 						page: 'wc-admin',
@@ -659,8 +659,8 @@ export default ( { query } ) => {
 		);
 
 		const message = submit
-			? __( 'Failed to submit evidence. (%s)', 'woocommerce-payments' )
-			: __( 'Failed to save evidence. (%s)', 'woocommerce-payments' );
+			? __( 'Failed to submit evidence. (%s)', 'poocommerce-payments' )
+			: __( 'Failed to save evidence. (%s)', 'poocommerce-payments' );
 		createErrorNotice( sprintf( message, err.message ) );
 	};
 
@@ -672,7 +672,7 @@ export default ( { query } ) => {
 			createInfoNotice(
 				__(
 					'Please wait until file upload is finished',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				)
 			);
 			return;

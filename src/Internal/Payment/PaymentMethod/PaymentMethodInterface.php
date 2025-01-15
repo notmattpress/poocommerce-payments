@@ -2,7 +2,7 @@
 /**
  * Interface Payment_Method
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Internal\Payment\PaymentMethod;

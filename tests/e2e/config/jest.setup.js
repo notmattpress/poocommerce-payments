@@ -4,7 +4,7 @@
 import { setDefaultOptions } from 'expect-puppeteer';
 import { setBrowserViewport } from '@wordpress/e2e-test-utils';
 
-import { addConsoleSuppression } from '@woocommerce/e2e-environment';
+import { addConsoleSuppression } from '@poocommerce/e2e-environment';
 
 setDefaultOptions( { timeout: 3000 } );
 

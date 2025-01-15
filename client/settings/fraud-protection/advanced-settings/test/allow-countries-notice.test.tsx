@@ -25,9 +25,9 @@ declare const global: {
 		admin: {
 			preloadSettings: {
 				general: {
-					woocommerce_allowed_countries: string;
-					woocommerce_all_except_countries: string[];
-					woocommerce_specific_allowed_countries: string[];
+					poocommerce_allowed_countries: string;
+					poocommerce_all_except_countries: string[];
+					poocommerce_specific_allowed_countries: string[];
 				};
 			};
 		};
@@ -43,9 +43,9 @@ describe( 'Allowed countries rule card notice tests', () => {
 			admin: {
 				preloadSettings: {
 					general: {
-						woocommerce_allowed_countries: 'all',
-						woocommerce_all_except_countries: [],
-						woocommerce_specific_allowed_countries: [],
+						poocommerce_allowed_countries: 'all',
+						poocommerce_all_except_countries: [],
+						poocommerce_specific_allowed_countries: [],
 					},
 				},
 			},
@@ -56,9 +56,9 @@ describe( 'Allowed countries rule card notice tests', () => {
 		};
 	} );
 	test( 'renders correctly when specific countries are allowed, others will be hold', () => {
-		global.wcSettings.admin.preloadSettings.general.woocommerce_allowed_countries =
+		global.wcSettings.admin.preloadSettings.general.poocommerce_allowed_countries =
 			'specific';
-		global.wcSettings.admin.preloadSettings.general.woocommerce_specific_allowed_countries = [
+		global.wcSettings.admin.preloadSettings.general.poocommerce_specific_allowed_countries = [
 			'CA',
 			'US',
 		];
@@ -75,9 +75,9 @@ describe( 'Allowed countries rule card notice tests', () => {
 		);
 	} );
 	test( 'renders correctly when specific countries are allowed, others will be blocked', () => {
-		global.wcSettings.admin.preloadSettings.general.woocommerce_allowed_countries =
+		global.wcSettings.admin.preloadSettings.general.poocommerce_allowed_countries =
 			'specific';
-		global.wcSettings.admin.preloadSettings.general.woocommerce_specific_allowed_countries = [
+		global.wcSettings.admin.preloadSettings.general.poocommerce_specific_allowed_countries = [
 			'CA',
 			'US',
 		];
@@ -94,9 +94,9 @@ describe( 'Allowed countries rule card notice tests', () => {
 		);
 	} );
 	test( 'renders correctly when countries except some are allowed, others will be hold', () => {
-		global.wcSettings.admin.preloadSettings.general.woocommerce_allowed_countries =
+		global.wcSettings.admin.preloadSettings.general.poocommerce_allowed_countries =
 			'all_except';
-		global.wcSettings.admin.preloadSettings.general.woocommerce_all_except_countries = [
+		global.wcSettings.admin.preloadSettings.general.poocommerce_all_except_countries = [
 			'CA',
 			'US',
 		];
@@ -113,9 +113,9 @@ describe( 'Allowed countries rule card notice tests', () => {
 		);
 	} );
 	test( 'renders correctly when countries except some are allowed, others will be blocked', () => {
-		global.wcSettings.admin.preloadSettings.general.woocommerce_allowed_countries =
+		global.wcSettings.admin.preloadSettings.general.poocommerce_allowed_countries =
 			'all_except';
-		global.wcSettings.admin.preloadSettings.general.woocommerce_all_except_countries = [
+		global.wcSettings.admin.preloadSettings.general.poocommerce_all_except_countries = [
 			'CA',
 			'US',
 		];
@@ -132,9 +132,9 @@ describe( 'Allowed countries rule card notice tests', () => {
 		);
 	} );
 	test( 'renders html entities correctly', () => {
-		global.wcSettings.admin.preloadSettings.general.woocommerce_allowed_countries =
+		global.wcSettings.admin.preloadSettings.general.poocommerce_allowed_countries =
 			'specific';
-		global.wcSettings.admin.preloadSettings.general.woocommerce_specific_allowed_countries = [
+		global.wcSettings.admin.preloadSettings.general.poocommerce_specific_allowed_countries = [
 			'ST',
 		];
 		global.wcSettings.countries.ST =

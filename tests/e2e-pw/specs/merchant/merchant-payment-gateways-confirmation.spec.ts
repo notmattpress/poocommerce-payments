@@ -31,7 +31,7 @@ test.skip( 'payment gateways disable confirmation', () => {
 
 	const waitForToggleLoading = ( page: Page ) =>
 		page
-			.locator( '.woocommerce-input-toggle--loading' )
+			.locator( '.poocommerce-input-toggle--loading' )
 			.waitFor( { state: 'hidden' } );
 
 	test.beforeEach( async ( { page } ) => {
@@ -106,7 +106,7 @@ test.skip( 'payment gateways disable confirmation', () => {
 		// After clicking "Cancel", the modal should close and WCPay should still be enabled
 		await expect( getModalHeading( page ) ).not.toBeVisible();
 		await expect( getToggle( page ) ).not.toHaveClass(
-			'woocommerce-input-toggle--disabled'
+			'poocommerce-input-toggle--disabled'
 		);
 
 		// trying again to disable it - the modal should display again

@@ -2,7 +2,7 @@
 /**
  * Class Track_Events
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Constants;
@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Event names for WooCommerce Analytics.
+ * Event names for PooCommerce Analytics.
  *
  * @psalm-immutable
  */

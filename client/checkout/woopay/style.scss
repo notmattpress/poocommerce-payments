@@ -11,7 +11,7 @@
 #contact-fields,
 .woopay-billing-email {
 	.wc-block-components-text-input,
-	.woocommerce-input-wrapper {
+	.poocommerce-input-wrapper {
 		display: inline-block;
 		position: relative;
 		width: 100%;
@@ -160,7 +160,7 @@
 	}
 
 	svg {
-		fill: $studio-woocommerce-purple-60;
+		fill: $studio-poocommerce-purple-60;
 		position: relative;
 		top: 1px;
 	}
@@ -183,9 +183,9 @@
 	}
 
 	&[data-theme='dark'] {
-		background: $studio-woocommerce-purple-60 !important;
+		background: $studio-poocommerce-purple-60 !important;
 		color: $white !important;
-		border-color: $studio-woocommerce-purple-60 !important;
+		border-color: $studio-poocommerce-purple-60 !important;
 
 		svg {
 			fill: $white;
@@ -293,7 +293,7 @@
 }
 
 /**
- * Sourced from https://github.com/woocommerce/woocommerce-blocks/blob/4dfe904f761423c1ac494f0d6319c602965b5efe/assets/js/base/components/spinner/style.scss.
+ * Sourced from https://github.com/poocommerce/poocommerce-blocks/blob/4dfe904f761423c1ac494f0d6319c602965b5efe/assets/js/base/components/spinner/style.scss.
  * Depending on the wc-blocks version, these styles are not loaded, so they need to be included here.
  */
 .wc-block-components-spinner {

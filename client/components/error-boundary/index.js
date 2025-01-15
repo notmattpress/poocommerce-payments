@@ -33,7 +33,7 @@ class ErrorBoundary extends Component {
 			<InlineNotice icon status="error" isDismissible={ false }>
 				{ __(
 					'There was an error rendering this view. Please contact support for assistance if the problem persists.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				) }
 				<br />
 				{ this.state.error.toString() }

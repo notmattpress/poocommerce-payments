@@ -11,13 +11,13 @@ const PaymentDetailsPaymentMethodCheck = ( props ) => {
 
 	switch ( checked ) {
 		case 'pass':
-			return __( 'Passed', 'woocommerce-payments' );
+			return __( 'Passed', 'poocommerce-payments' );
 		case 'fail':
-			return __( 'Failed', 'woocommerce-payments' );
+			return __( 'Failed', 'poocommerce-payments' );
 		case 'unavailable':
-			return __( 'Unavailable', 'woocommerce-payments' );
+			return __( 'Unavailable', 'poocommerce-payments' );
 		default:
-			return __( 'Not checked', 'woocommerce-payments' );
+			return __( 'Not checked', 'poocommerce-payments' );
 	}
 };
 

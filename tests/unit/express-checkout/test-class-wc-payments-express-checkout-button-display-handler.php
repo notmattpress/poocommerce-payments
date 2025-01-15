@@ -2,7 +2,7 @@
 /**
  * These tests make assertions against class WC_Payments_Express_Checkout_Button_Display_Handler.
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use PHPUnit\Framework\MockObject\MockObject;
@@ -169,9 +169,9 @@ class WC_Payments_Express_Checkout_Button_Display_Handler_Test extends WCPAY_Uni
 		$this->express_checkout_button_display_handler->init();
 
 		add_filter(
-			'woocommerce_available_payment_gateways',
+			'poocommerce_available_payment_gateways',
 			function () {
-				return [ 'woocommerce_payments' => $this->mock_wcpay_gateway ];
+				return [ 'poocommerce_payments' => $this->mock_wcpay_gateway ];
 			}
 		);
 	}
@@ -182,7 +182,7 @@ class WC_Payments_Express_Checkout_Button_Display_Handler_Test extends WCPAY_Uni
 	 * @return void
 	 */
 	public function tear_down() {
-		remove_all_filters( 'woocommerce_available_payment_gateways' );
+		remove_all_filters( 'poocommerce_available_payment_gateways' );
 
 		parent::tear_down();
 	}

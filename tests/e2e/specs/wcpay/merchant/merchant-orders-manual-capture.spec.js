@@ -5,7 +5,7 @@ const {
 	merchant,
 	shopper,
 	selectOrderAction,
-} = require( '@woocommerce/e2e-utils' );
+} = require( '@poocommerce/e2e-utils' );
 import config from 'config';
 
 /**
@@ -47,7 +47,7 @@ describe( 'Order > Manual Capture', () => {
 		await shopper.placeOrder();
 		await expect( page ).toMatchTextContent( 'Order received' );
 		const orderIdField = await page.$(
-			'.woocommerce-order-overview__order.order > strong'
+			'.poocommerce-order-overview__order.order > strong'
 		);
 		orderId = await orderIdField.evaluate( ( el ) => el.innerText );
 	}, 120000 );

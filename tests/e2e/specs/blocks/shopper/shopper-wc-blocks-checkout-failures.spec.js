@@ -5,7 +5,7 @@
  */
 import config from 'config';
 
-const { shopper, merchant, uiUnblocked } = require( '@woocommerce/e2e-utils' );
+const { shopper, merchant, uiUnblocked } = require( '@poocommerce/e2e-utils' );
 
 /**
  * Internal dependencies
@@ -27,7 +27,7 @@ import {
 } from '../../../utils/payments';
 
 describeif( RUN_WC_BLOCKS_TESTS )(
-	'WooCommerce Blocks > Checkout failures',
+	'PooCommerce Blocks > Checkout failures',
 	() => {
 		beforeAll( async () => {
 			// Check whether block checkout page exists & create if required

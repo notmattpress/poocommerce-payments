@@ -98,7 +98,7 @@ const StripeBillingSection: React.FC = () => {
 
 	return (
 		<StripeBillingMigrationNoticeContext.Provider value={ noticeContext }>
-			<h4>{ __( 'Subscriptions', 'woocommerce-payments' ) }</h4>
+			<h4>{ __( 'Subscriptions', 'poocommerce-payments' ) }</h4>
 			<Notices />
 			<StripeBillingToggle onChange={ stripeBillingSettingToggle } />
 		</StripeBillingMigrationNoticeContext.Provider>

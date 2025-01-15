@@ -6,7 +6,7 @@
 import * as React from 'react';
 import { render, screen } from '@testing-library/react';
 import user from '@testing-library/user-event';
-import { getQuery, updateQueryString } from '@woocommerce/navigation';
+import { getQuery, updateQueryString } from '@poocommerce/navigation';
 
 /**
  * Internal dependencies
@@ -118,7 +118,7 @@ describe( 'Documents list', () => {
 
 		( { container } = render( <DocumentsList /> ) );
 		let tableSummary = container.querySelectorAll(
-			'.woocommerce-table__summary'
+			'.poocommerce-table__summary'
 		);
 		expect( tableSummary ).toHaveLength( 0 );
 
@@ -131,7 +131,7 @@ describe( 'Documents list', () => {
 
 		( { container } = render( <DocumentsList /> ) );
 		tableSummary = container.querySelectorAll(
-			'.woocommerce-table__summary'
+			'.poocommerce-table__summary'
 		);
 
 		expect( tableSummary ).toHaveLength( 1 );
@@ -145,7 +145,7 @@ describe( 'Documents list', () => {
 
 		( { container } = render( <DocumentsList /> ) );
 		let tableSummary = container.querySelectorAll(
-			'.woocommerce-table__summary'
+			'.poocommerce-table__summary'
 		);
 		expect( tableSummary ).toHaveLength( 0 );
 
@@ -158,7 +158,7 @@ describe( 'Documents list', () => {
 
 		( { container } = render( <DocumentsList /> ) );
 		tableSummary = container.querySelectorAll(
-			'.woocommerce-table__summary'
+			'.poocommerce-table__summary'
 		);
 
 		expect( tableSummary ).toHaveLength( 1 );

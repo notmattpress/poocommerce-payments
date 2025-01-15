@@ -41,7 +41,7 @@ const SetupCompleteMessaging = () => {
 
 	// can't just check for "0", some methods could have been disabled
 	if ( addedPaymentMethodsCount <= 0 ) {
-		return __( 'Setup complete!', 'woocommerce-payments' );
+		return __( 'Setup complete!', 'poocommerce-payments' );
 	}
 
 	return sprintf(
@@ -49,7 +49,7 @@ const SetupCompleteMessaging = () => {
 			'Setup complete! One new payment method is now live on your store!',
 			'Setup complete! %s new payment methods are now live on your store!',
 			addedPaymentMethodsCount,
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		addedPaymentMethodsCount
 	);
@@ -78,7 +78,7 @@ const SetupComplete = () => {
 
 	return (
 		<WizardTaskItem
-			title={ __( 'Enablement complete', 'woocommerce-payments' ) }
+			title={ __( 'Enablement complete', 'poocommerce-payments' ) }
 			index={ 2 }
 		>
 			<CollapsibleBody>
@@ -88,12 +88,12 @@ const SetupComplete = () => {
 				<EnabledMethodsList />
 				<div className="setup-complete-task__buttons">
 					<Button
-						href="admin.php?page=wc-settings&tab=checkout&section=woocommerce_payments"
+						href="admin.php?page=wc-settings&tab=checkout&section=poocommerce_payments"
 						isPrimary
 					>
 						{ __(
 							'Go to payments settings',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 					</Button>
 					{ multiCurrency && (
@@ -103,7 +103,7 @@ const SetupComplete = () => {
 						>
 							{ __(
 								'Go to Multi-Currency settings',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 						</Button>
 					) }

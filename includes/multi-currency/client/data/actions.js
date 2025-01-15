@@ -79,7 +79,7 @@ export function* submitEnabledCurrenciesUpdate( currencies ) {
 		yield updateCurrencies( result );
 
 		yield dispatch( 'core/notices' ).createSuccessNotice(
-			__( 'Enabled currencies updated.', 'woocommerce-payments' )
+			__( 'Enabled currencies updated.', 'poocommerce-payments' )
 		);
 
 		recordEvent( 'wcpay_multi_currency_enabled_currencies_updated', {
@@ -88,7 +88,7 @@ export function* submitEnabledCurrenciesUpdate( currencies ) {
 		} );
 	} catch ( e ) {
 		yield dispatch( 'core/notices' ).createErrorNotice(
-			__( 'Error updating enabled currencies.', 'woocommerce-payments' )
+			__( 'Error updating enabled currencies.', 'poocommerce-payments' )
 		);
 	}
 }
@@ -104,11 +104,11 @@ export function* submitCurrencySettings( currencyCode, settings ) {
 		yield updateCurrencySettings( currencyCode, result );
 
 		yield dispatch( 'core/notices' ).createSuccessNotice(
-			__( 'Currency settings updated.', 'woocommerce-payments' )
+			__( 'Currency settings updated.', 'poocommerce-payments' )
 		);
 	} catch ( e ) {
 		yield dispatch( 'core/notices' ).createErrorNotice(
-			__( 'Error updating currency settings.', 'woocommerce-payments' )
+			__( 'Error updating currency settings.', 'poocommerce-payments' )
 		);
 	}
 }
@@ -137,11 +137,11 @@ export function* submitStoreSettingsUpdate(
 		if ( suppressNotices ) return;
 
 		yield dispatch( 'core/notices' ).createSuccessNotice(
-			__( 'Store settings saved.', 'woocommerce-payments' )
+			__( 'Store settings saved.', 'poocommerce-payments' )
 		);
 	} catch ( e ) {
 		yield dispatch( 'core/notices' ).createErrorNotice(
-			__( 'Error saving store settings.', 'woocommerce-payments' )
+			__( 'Error saving store settings.', 'poocommerce-payments' )
 		);
 	}
 }

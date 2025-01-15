@@ -2,7 +2,7 @@
 /**
  * Class WooPay_Tracker
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay;
@@ -65,17 +65,17 @@ class WooPay_Tracker extends Jetpack_Tracks_Client {
 		add_action( 'wp_ajax_nopriv_get_identity', [ $this, 'ajax_tracks_id' ] );
 
 		// Actions that should result in recorded Tracks events.
-		add_action( 'woocommerce_after_checkout_form', [ $this, 'classic_checkout_start' ] );
-		add_action( 'woocommerce_after_cart', [ $this, 'classic_cart_page_view' ] );
-		add_action( 'woocommerce_after_single_product', [ $this, 'classic_product_page_view' ] );
-		add_action( 'woocommerce_blocks_enqueue_checkout_block_scripts_after', [ $this, 'blocks_checkout_start' ] );
-		add_action( 'woocommerce_blocks_enqueue_cart_block_scripts_after', [ $this, 'blocks_cart_page_view' ] );
-		add_action( 'woocommerce_checkout_order_processed', [ $this, 'checkout_order_processed' ], 10, 2 );
-		add_action( 'woocommerce_store_api_checkout_order_processed', [ $this, 'checkout_order_processed' ], 10, 2 );
-		add_action( 'woocommerce_payments_save_user_in_woopay', [ $this, 'must_save_payment_method_to_platform' ] );
+		add_action( 'poocommerce_after_checkout_form', [ $this, 'classic_checkout_start' ] );
+		add_action( 'poocommerce_after_cart', [ $this, 'classic_cart_page_view' ] );
+		add_action( 'poocommerce_after_single_product', [ $this, 'classic_product_page_view' ] );
+		add_action( 'poocommerce_blocks_enqueue_checkout_block_scripts_after', [ $this, 'blocks_checkout_start' ] );
+		add_action( 'poocommerce_blocks_enqueue_cart_block_scripts_after', [ $this, 'blocks_cart_page_view' ] );
+		add_action( 'poocommerce_checkout_order_processed', [ $this, 'checkout_order_processed' ], 10, 2 );
+		add_action( 'poocommerce_store_api_checkout_order_processed', [ $this, 'checkout_order_processed' ], 10, 2 );
+		add_action( 'poocommerce_payments_save_user_in_woopay', [ $this, 'must_save_payment_method_to_platform' ] );
 		add_action( 'wp_footer', [ $this, 'add_frontend_tracks_scripts' ] );
-		add_action( 'before_woocommerce_pay_form', [ $this, 'pay_for_order_page_view' ] );
-		add_action( 'woocommerce_thankyou', [ $this, 'thank_you_page_view' ] );
+		add_action( 'before_poocommerce_pay_form', [ $this, 'pay_for_order_page_view' ] );
+		add_action( 'poocommerce_thankyou', [ $this, 'thank_you_page_view' ] );
 	}
 
 	/**
@@ -88,14 +88,14 @@ class WooPay_Tracker extends Jetpack_Tracks_Client {
 			empty( $_REQUEST['tracksNonce'] ) || ! wp_verify_nonce( $_REQUEST['tracksNonce'], 'platform_tracks_nonce' )
 		) {
 			wp_send_json_error(
-				__( 'You aren’t authorized to do that.', 'woocommerce-payments' ),
+				__( 'You aren’t authorized to do that.', 'poocommerce-payments' ),
 				403
 			);
 		}
 
 		if ( ! isset( $_REQUEST['tracksEventName'] ) ) {
 			wp_send_json_error(
-				__( 'No valid event name or type.', 'woocommerce-payments' ),
+				__( 'No valid event name or type.', 'poocommerce-payments' ),
 				403
 			);
 		}
@@ -542,8 +542,8 @@ class WooPay_Tracker extends Jetpack_Tracks_Client {
 		$payment_gateway = wc_get_payment_gateway_by_order( $order_id );
 		$properties      = [ 'payment_title' => 'other' ];
 
-		// If the order was placed using WooCommerce Payments, record the payment title using Tracks.
-		if ( isset( $payment_gateway->id ) && strpos( $payment_gateway->id, 'woocommerce_payments' ) === 0 ) {
+		// If the order was placed using PooCommerce Payments, record the payment title using Tracks.
+		if ( isset( $payment_gateway->id ) && strpos( $payment_gateway->id, 'poocommerce_payments' ) === 0 ) {
 			$order         = wc_get_order( $order_id );
 			$payment_title = $order->get_payment_method_title();
 			$properties    = [ 'payment_title' => $payment_title ];
@@ -581,7 +581,7 @@ class WooPay_Tracker extends Jetpack_Tracks_Client {
 	public function thank_you_page_view( $order_id ) {
 		$order = wc_get_order( $order_id );
 
-		if ( ! $order || 'woocommerce_payments' !== $order->get_payment_method() ) {
+		if ( ! $order || 'poocommerce_payments' !== $order->get_payment_method() ) {
 			return;
 		}
 

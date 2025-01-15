@@ -2,7 +2,7 @@
 /**
  * WC_Payments_Fraud_Service class
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -16,7 +16,7 @@ use WCPay\Logger;
  */
 class WC_Payments_Fraud_Service {
 	/**
-	 * Client for making requests to the WooCommerce Payments API
+	 * Client for making requests to the PooCommerce Payments API
 	 *
 	 * @var WC_Payments_API_Client
 	 */
@@ -53,7 +53,7 @@ class WC_Payments_Fraud_Service {
 	/**
 	 * Constructor for WC_Payments_Fraud_Service.
 	 *
-	 * @param WC_Payments_API_Client       $payments_api_client      - WooCommerce Payments API client.
+	 * @param WC_Payments_API_Client       $payments_api_client      - PooCommerce Payments API client.
 	 * @param WC_Payments_Customer_Service $customer_service         - Customer class instance.
 	 * @param WC_Payments_Account          $account                  - Account class instance.
 	 * @param WC_Payments_Session_Service  $session_service          - Session Service class instance.
@@ -132,7 +132,7 @@ class WC_Payments_Fraud_Service {
 	 * Check if the current user has just logged in,
 	 * and sends that information to the server to link the current browser session with the user.
 	 *
-	 * Called after the WooCommerce session has been initialized.
+	 * Called after the PooCommerce session has been initialized.
 	 *
 	 * @return void
 	 *
@@ -185,9 +185,9 @@ class WC_Payments_Fraud_Service {
 			return;
 		}
 
-		// Bail if this is not a WooCommerce admin page.
-		if ( is_callable( '\Automattic\WooCommerce\Admin\PageController::is_admin_or_embed_page' )
-			&& ! \Automattic\WooCommerce\Admin\PageController::is_admin_or_embed_page() ) {
+		// Bail if this is not a PooCommerce admin page.
+		if ( is_callable( '\Automattic\PooCommerce\Admin\PageController::is_admin_or_embed_page' )
+			&& ! \Automattic\PooCommerce\Admin\PageController::is_admin_or_embed_page() ) {
 			return;
 		}
 

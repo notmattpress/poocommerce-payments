@@ -45,7 +45,7 @@ class Klarna_Payment_Method extends UPE_Payment_Method {
 	 * @return string
 	 */
 	public function get_title( ?string $account_country = null, $payment_details = false ) {
-		return __( 'Klarna', 'woocommerce-payments' );
+		return __( 'Klarna', 'poocommerce-payments' );
 	}
 
 	/**
@@ -68,7 +68,7 @@ class Klarna_Payment_Method extends UPE_Payment_Method {
 
 		// If the merchant is in the EEA, UK, or Switzerland, only the countries that have the same domestic currency as the store currency will be supported.
 		if ( in_array( $account_country, $eea_countries, true ) ) {
-			$store_currency = strtoupper( get_woocommerce_currency() );
+			$store_currency = strtoupper( get_poocommerce_currency() );
 
 			$countries_that_support_store_currency = array_keys( $this->limits_per_currency[ $store_currency ] );
 

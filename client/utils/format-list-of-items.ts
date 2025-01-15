@@ -20,7 +20,7 @@ export const formatListOfItems = ( items: string[] ): string => {
 		return sprintf(
 			// eslint-disable-next-line max-len
 			// translators: the first %s is a placeholder for the first item in a list of two. The last %s corresponds to the second item in the list.
-			__( '%s and %s', 'woocommerce-payments' ),
+			__( '%s and %s', 'poocommerce-payments' ),
 			items[ 0 ],
 			items[ 1 ]
 		);
@@ -31,7 +31,7 @@ export const formatListOfItems = ( items: string[] ): string => {
 		// it'll be up to translators to decide whether the last comma is necessary in the language they're translating.
 		// eslint-disable-next-line max-len
 		// translators: the first %s is a placeholder for a comma-separated list of one or more items. The last %s corresponds to the last item in the list.
-		__( '%s, and %s', 'woocommerce-payments' ),
+		__( '%s, and %s', 'poocommerce-payments' ),
 		items.join( ', ' ),
 		lastItem
 	);

@@ -38,7 +38,7 @@ export function* getPaymentActivityData(
 			'createErrorNotice',
 			__(
 				'Error retrieving payment activity data.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			)
 		);
 	}

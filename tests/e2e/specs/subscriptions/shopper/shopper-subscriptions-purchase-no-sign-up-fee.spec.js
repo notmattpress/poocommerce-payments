@@ -2,7 +2,7 @@
  * External dependencies
  */
 import config from 'config';
-const { merchant, shopper, withRestApi } = require( '@woocommerce/e2e-utils' );
+const { merchant, shopper, withRestApi } = require( '@poocommerce/e2e-utils' );
 import {
 	RUN_SUBSCRIPTIONS_TESTS,
 	describeif,
@@ -20,9 +20,9 @@ const customerBilling = config.get(
 let orderId;
 
 const testSelectors = {
-	checkoutOrderId: '.woocommerce-order-overview__order.order > strong',
+	checkoutOrderId: '.poocommerce-order-overview__order.order > strong',
 	adminOrderTransactionLink: 'p.order_number > a',
-	adminTransactionDetails: 'li.woocommerce-timeline-item',
+	adminTransactionDetails: 'li.poocommerce-timeline-item',
 	adminSubscriptionStatus: '.subscription-status',
 	adminSubscriptionProductName: '.order-item',
 	adminSubscriptionRecurringTotal: '.recurring_total',

@@ -2,7 +2,7 @@
 /**
  * Class PaymentProcessingService
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Internal\Service;
@@ -79,7 +79,7 @@ class PaymentProcessingService {
 	/**
 	 * Process payment.
 	 *
-	 * @param int  $order_id          Order ID provided by WooCommerce core.
+	 * @param int  $order_id          Order ID provided by PooCommerce core.
 	 * @param bool $automatic_capture Whether to only create an authorization instead of a charge (optional).
 	 *
 	 * @throws StateTransitionException  In case a state cannot be initialized.

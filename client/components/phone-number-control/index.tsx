@@ -89,7 +89,7 @@ const PhoneNumberControl: React.FC< Props > = ( {
 					onChange={ handleSelect }
 					aria-label={ __(
 						'phone number country code',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 				>
 					{ Object.keys( countryCodes )

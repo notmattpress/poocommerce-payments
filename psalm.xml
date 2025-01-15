@@ -9,7 +9,7 @@
 	checkForThrowsDocblock="true"
 >
     <projectFiles>
-        <file name="woocommerce-payments.php" />
+        <file name="poocommerce-payments.php" />
         <directory name="includes" />
         <directory name="src" />
         <ignoreFiles>
@@ -34,14 +34,14 @@
 		<InvalidGlobal errorLevel="suppress" />
 		<UndefinedClass>
 			<errorLevel type="suppress">
-				<referencedClass name="Automattic\WooCommerce\StoreApi\Utilities\JsonWebToken" />
-				<referencedClass name="Automattic\WooCommerce\StoreApi\SessionHandler" />
-				<referencedClass name="Automattic\WooCommerce\Utilities\PluginUtil" />
+				<referencedClass name="Automattic\PooCommerce\StoreApi\Utilities\JsonWebToken" />
+				<referencedClass name="Automattic\PooCommerce\StoreApi\SessionHandler" />
+				<referencedClass name="Automattic\PooCommerce\Utilities\PluginUtil" />
 			</errorLevel>
 		</UndefinedClass>
 		<UndefinedDocblockClass>
 			<errorLevel type="suppress">
-				<referencedClass name="Automattic\WooCommerce\Utilities\PluginUtil" />
+				<referencedClass name="Automattic\PooCommerce\Utilities\PluginUtil" />
 			</errorLevel>
 		</UndefinedDocblockClass>
 		<MissingThrowsDocblock>

@@ -15,7 +15,7 @@ project.properties
 dist
 release
 languages/*.pot
-woocommerce-payments.zip
+poocommerce-payments.zip
 
 # Grunt
 /node_modules/

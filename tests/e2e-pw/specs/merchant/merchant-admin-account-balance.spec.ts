@@ -72,7 +72,7 @@ test.describe( 'Merchant account balance overview', () => {
 				{
 					type: 'issue',
 					description:
-						'https://github.com/Automattic/woocommerce-payments/issues/9188',
+						'https://github.com/Automattic/poocommerce-payments/issues/9188',
 				},
 				{
 					type: 'description',

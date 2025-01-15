@@ -75,7 +75,7 @@ const PaymentActivityDataComponent: React.FC< Props > = ( {
 		<div className="wcpay-payment-activity-data">
 			<PaymentDataTile
 				id="wcpay-payment-activity-data__total-payment-volume"
-				label={ __( 'Total payment volume', 'woocommerce-payments' ) }
+				label={ __( 'Total payment volume', 'poocommerce-payments' ) }
 				currencyCode={ currency }
 				tooltip={
 					<ClickTooltip
@@ -84,14 +84,14 @@ const PaymentActivityDataComponent: React.FC< Props > = ( {
 						buttonIcon={ <HelpOutlineIcon /> }
 						buttonLabel={ __(
 							'Total payment volume tooltip',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 						content={
 							<>
 								{ interpolateComponents( {
 									mixedString: __(
 										'{{strong}}Total payment volume{{/strong}} is the sum of all transactions in a given time period, minus refunds and disputes.',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									),
 									components: {
 										strong: <strong />,
@@ -103,7 +103,7 @@ const PaymentActivityDataComponent: React.FC< Props > = ( {
 								>
 									{ __(
 										'Total payment volume = Charges - Refunds - Disputes',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									) }
 								</InlineNotice>
 							</>
@@ -132,7 +132,7 @@ const PaymentActivityDataComponent: React.FC< Props > = ( {
 			<div className="wcpay-payment-data-highlights">
 				<PaymentDataTile
 					id="wcpay-payment-data-highlights__charges"
-					label={ __( 'Charges', 'woocommerce-payments' ) }
+					label={ __( 'Charges', 'poocommerce-payments' ) }
 					currencyCode={ currency }
 					tooltip={
 						<ClickTooltip
@@ -140,12 +140,12 @@ const PaymentActivityDataComponent: React.FC< Props > = ( {
 							buttonIcon={ <HelpOutlineIcon /> }
 							buttonLabel={ __(
 								'Charges tooltip',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 							content={ interpolateComponents( {
 								mixedString: __(
 									'A {{strong}}charge{{/strong}} is the amount billed to your customer’s payment method.',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								),
 								components: {
 									strong: <strong />,
@@ -178,7 +178,7 @@ const PaymentActivityDataComponent: React.FC< Props > = ( {
 				/>
 				<PaymentDataTile
 					id="wcpay-payment-data-highlights__refunds"
-					label={ __( 'Refunds', 'woocommerce-payments' ) }
+					label={ __( 'Refunds', 'poocommerce-payments' ) }
 					currencyCode={ currency }
 					amount={ refunds }
 					reportLink={ getAdminUrl( {
@@ -205,7 +205,7 @@ const PaymentActivityDataComponent: React.FC< Props > = ( {
 				/>
 				<PaymentDataTile
 					id="wcpay-payment-data-highlights__disputes"
-					label={ __( 'Disputes', 'woocommerce-payments' ) }
+					label={ __( 'Disputes', 'poocommerce-payments' ) }
 					currencyCode={ currency }
 					tooltip={
 						<ClickTooltip
@@ -213,12 +213,12 @@ const PaymentActivityDataComponent: React.FC< Props > = ( {
 							buttonIcon={ <HelpOutlineIcon /> }
 							buttonLabel={ __(
 								'Disputes tooltip',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 							content={ interpolateComponents( {
 								mixedString: __(
 									'{{strong}}Disputes{{/strong}} includes the amount of any disputed charges. Dispute fees are included in the Fees section. {{learnMoreLink}}Learn more{{/learnMoreLink}}.',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								),
 								components: {
 									strong: <strong />,
@@ -227,7 +227,7 @@ const PaymentActivityDataComponent: React.FC< Props > = ( {
 										<a
 											target="_blank"
 											rel="noopener noreferrer"
-											href="https://woocommerce.com/document/woopayments/fraud-and-disputes/"
+											href="https://poocommerce.com/document/woopayments/fraud-and-disputes/"
 										/>
 									),
 								},
@@ -259,7 +259,7 @@ const PaymentActivityDataComponent: React.FC< Props > = ( {
 				/>
 				<PaymentDataTile
 					id="wcpay-payment-data-highlights__fees"
-					label={ __( 'Fees', 'woocommerce-payments' ) }
+					label={ __( 'Fees', 'poocommerce-payments' ) }
 					currencyCode={ currency }
 					tooltip={
 						<ClickTooltip
@@ -267,12 +267,12 @@ const PaymentActivityDataComponent: React.FC< Props > = ( {
 							buttonIcon={ <HelpOutlineIcon /> }
 							buttonLabel={ __(
 								'Fees tooltip',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 							content={ interpolateComponents( {
 								mixedString: __(
 									'{{strong}}Fees{{/strong}} includes all types of fees charged by WooPayments. {{learnMoreLink}}Learn more{{/learnMoreLink}}.',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								),
 								components: {
 									strong: <strong />,
@@ -281,7 +281,7 @@ const PaymentActivityDataComponent: React.FC< Props > = ( {
 										<a
 											target="_blank"
 											rel="noopener noreferrer"
-											href="https://woocommerce.com/document/woopayments/fees-and-debits/fees/"
+											href="https://poocommerce.com/document/woopayments/fees-and-debits/fees/"
 										/>
 									),
 								},

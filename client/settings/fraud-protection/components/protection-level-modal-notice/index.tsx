@@ -21,15 +21,15 @@ const ProtectionLevelModalNotice: React.FC< ProtectionLevelModalNoticeProps > = 
 	const modalTexts = {
 		[ ProtectionLevel.BASIC ]: __(
 			'Provides basic anti-fraud protection only.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		[ ProtectionLevel.STANDARD ]: __(
 			"Provides a standard level of filtering that's suitable for most business.",
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		[ ProtectionLevel.HIGH ]: __(
 			'Offers the highest level of filtering for stores, but may catch some legitimate transactions.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 	};
 

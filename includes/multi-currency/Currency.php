@@ -2,7 +2,7 @@
 /**
  * Class Currency
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\MultiCurrency;
@@ -85,7 +85,7 @@ class Currency implements \JsonSerializable {
 		$this->code                 = $code;
 		$this->rate                 = $rate;
 
-		if ( get_woocommerce_currency() === $code ) {
+		if ( get_poocommerce_currency() === $code ) {
 			$this->is_default = true;
 		}
 
@@ -98,12 +98,12 @@ class Currency implements \JsonSerializable {
 	}
 
 	/**
-	 * Retrieves the currency's translated name from WooCommerce core.
+	 * Retrieves the currency's translated name from PooCommerce core.
 	 *
 	 * @param string $code The currency code.
 	 */
 	public function get_currency_name_from_code( $code ): string {
-		$wc_currencies = get_woocommerce_currencies();
+		$wc_currencies = get_poocommerce_currencies();
 		return $wc_currencies[ $code ];
 	}
 
@@ -154,12 +154,12 @@ class Currency implements \JsonSerializable {
 	}
 
 	/**
-	 * Retrieves the currency's name from WooCommerce core.
+	 * Retrieves the currency's name from PooCommerce core.
 	 *
 	 * @return string Currency name.
 	 */
 	public function get_name(): string {
-		$wc_currencies = get_woocommerce_currencies();
+		$wc_currencies = get_poocommerce_currencies();
 		return $wc_currencies[ $this->code ];
 	}
 
@@ -182,12 +182,12 @@ class Currency implements \JsonSerializable {
 	}
 
 	/**
-	 * Retrieves the currency's symbol from WooCommerce core.
+	 * Retrieves the currency's symbol from PooCommerce core.
 	 *
 	 * @return string Currency symbol.
 	 */
 	public function get_symbol(): string {
-		return get_woocommerce_currency_symbol( $this->code );
+		return get_poocommerce_currency_symbol( $this->code );
 	}
 
 	/**

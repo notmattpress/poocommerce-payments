@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Express_Checkout_Button_Helper
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -70,7 +70,7 @@ class WC_Payments_Express_Checkout_Button_Helper {
 
 		$items     = [];
 		$discounts = 0;
-		$currency  = get_woocommerce_currency();
+		$currency  = get_poocommerce_currency();
 
 		// Default show only subtotal instead of itemization.
 		if ( ! apply_filters( 'wcpay_payment_request_hide_itemization', ! $itemized_display_items ) ) {
@@ -109,7 +109,7 @@ class WC_Payments_Express_Checkout_Button_Helper {
 
 		if ( ! $this->cart_prices_include_tax() ) {
 			$items[] = [
-				'label'  => esc_html( __( 'Tax', 'woocommerce-payments' ) ),
+				'label'  => esc_html( __( 'Tax', 'poocommerce-payments' ) ),
 				'amount' => WC_Payments_Utils::prepare_amount( $tax, $currency ),
 			];
 		}
@@ -118,7 +118,7 @@ class WC_Payments_Express_Checkout_Button_Helper {
 			$shipping_tax = $this->cart_prices_include_tax() ? WC()->cart->shipping_tax_total : 0;
 			$items[]      = [
 				'key'    => 'total_shipping',
-				'label'  => esc_html( __( 'Shipping', 'woocommerce-payments' ) ),
+				'label'  => esc_html( __( 'Shipping', 'poocommerce-payments' ) ),
 				'amount' => WC_Payments_Utils::prepare_amount( $shipping + $shipping_tax, $currency ),
 			];
 		}
@@ -126,7 +126,7 @@ class WC_Payments_Express_Checkout_Button_Helper {
 		if ( WC()->cart->has_discount() ) {
 			$items[] = [
 				'key'    => 'total_discount',
-				'label'  => esc_html( __( 'Discount', 'woocommerce-payments' ) ),
+				'label'  => esc_html( __( 'Discount', 'poocommerce-payments' ) ),
 				'amount' => WC_Payments_Utils::prepare_amount( $discounts, $currency ),
 			];
 		}
@@ -162,7 +162,7 @@ class WC_Payments_Express_Checkout_Button_Helper {
 	 * @return boolean
 	 */
 	public function cart_prices_include_tax() {
-		return ! wc_tax_enabled() || 'incl' === get_option( 'woocommerce_tax_display_cart' );
+		return ! wc_tax_enabled() || 'incl' === get_option( 'poocommerce_tax_display_cart' );
 	}
 
 	/**
@@ -173,7 +173,7 @@ class WC_Payments_Express_Checkout_Button_Helper {
 	public function get_total_label() {
 		// Get statement descriptor from API/cached account data.
 		$statement_descriptor = $this->account->get_statement_descriptor();
-		return str_replace( "'", '', $statement_descriptor ) . apply_filters( 'wcpay_payment_request_total_label_suffix', ' (via WooCommerce)' );
+		return str_replace( "'", '', $statement_descriptor ) . apply_filters( 'wcpay_payment_request_total_label_suffix', ' (via PooCommerce)' );
 	}
 
 	/**
@@ -216,7 +216,7 @@ class WC_Payments_Express_Checkout_Button_Helper {
 	 * @return boolean
 	 */
 	public function is_cart() {
-		return is_cart() || has_block( 'woocommerce/cart' );
+		return is_cart() || has_block( 'poocommerce/cart' );
 	}
 
 	/**
@@ -225,7 +225,7 @@ class WC_Payments_Express_Checkout_Button_Helper {
 	 * @return boolean
 	 */
 	public function is_checkout() {
-		return is_checkout() || has_block( 'woocommerce/checkout' );
+		return is_checkout() || has_block( 'poocommerce/checkout' );
 	}
 
 	/**
@@ -428,8 +428,8 @@ class WC_Payments_Express_Checkout_Button_Helper {
 
 			// ...and tax is calculated based on billing address.
 			&& wc_tax_enabled()
-			&& 'billing' === get_option( 'woocommerce_tax_based_on' )
-			&& 'yes' !== get_option( 'woocommerce_prices_include_tax' )
+			&& 'billing' === get_option( 'poocommerce_tax_based_on' )
+			&& 'yes' !== get_option( 'poocommerce_prices_include_tax' )
 		) {
 			return false;
 		}
@@ -504,7 +504,7 @@ class WC_Payments_Express_Checkout_Button_Helper {
 		}
 
 		foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
-			$_product = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
+			$_product = apply_filters( 'poocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
 
 			if ( ! in_array( $_product->get_type(), $this->supported_product_types(), true ) ) {
 				return false;
@@ -565,19 +565,19 @@ class WC_Payments_Express_Checkout_Button_Helper {
 			if ( ! empty( $packages ) && WC()->customer->has_calculated_shipping() ) {
 				foreach ( $packages as $package ) {
 					if ( empty( $package['rates'] ) ) {
-						throw new Exception( __( 'Unable to find shipping method for address.', 'woocommerce-payments' ) );
+						throw new Exception( __( 'Unable to find shipping method for address.', 'poocommerce-payments' ) );
 					}
 
 					foreach ( $package['rates'] as $rate ) {
 						$data['shipping_options'][] = [
 							'id'          => $rate->id,
 							'displayName' => $rate->label,
-							'amount'      => WC_Payments_Utils::prepare_amount( $rate->cost, get_woocommerce_currency() ),
+							'amount'      => WC_Payments_Utils::prepare_amount( $rate->cost, get_poocommerce_currency() ),
 						];
 					}
 				}
 			} else {
-				throw new Exception( __( 'Unable to find shipping method for address.', 'woocommerce-payments' ) );
+				throw new Exception( __( 'Unable to find shipping method for address.', 'poocommerce-payments' ) );
 			}
 
 			// The first shipping option is automatically applied on the client.
@@ -670,7 +670,7 @@ class WC_Payments_Express_Checkout_Button_Helper {
 
 		/** @var WC_Product_Variable $product */ // phpcs:ignore
 		$product  = $this->get_product();
-		$currency = get_woocommerce_currency();
+		$currency = get_poocommerce_currency();
 
 		if ( 'variable' === $product->get_type() || 'variable-subscription' === $product->get_type() ) {
 			$variation_attributes = $product->get_variation_attributes();
@@ -713,7 +713,7 @@ class WC_Payments_Express_Checkout_Button_Helper {
 			$total_tax += $tax;
 
 			$items[] = [
-				'label'   => __( 'Tax', 'woocommerce-payments' ),
+				'label'   => __( 'Tax', 'poocommerce-payments' ),
 				'amount'  => WC_Payments_Utils::prepare_amount( $tax, $currency ),
 				'pending' => 0 === $tax,
 			];
@@ -721,14 +721,14 @@ class WC_Payments_Express_Checkout_Button_Helper {
 
 		if ( wc_shipping_enabled() && 0 !== wc_get_shipping_method_count( true ) && $product->needs_shipping() ) {
 			$items[] = [
-				'label'   => __( 'Shipping', 'woocommerce-payments' ),
+				'label'   => __( 'Shipping', 'poocommerce-payments' ),
 				'amount'  => 0,
 				'pending' => true,
 			];
 
 			$data['shippingOptions'] = [
 				'id'     => 'pending',
-				'label'  => __( 'Pending', 'woocommerce-payments' ),
+				'label'  => __( 'Pending', 'poocommerce-payments' ),
 				'detail' => '',
 				'amount' => 0,
 			];
@@ -743,7 +743,7 @@ class WC_Payments_Express_Checkout_Button_Helper {
 
 		$data['needs_shipping'] = ( wc_shipping_enabled() && 0 !== wc_get_shipping_method_count( true ) && $product->needs_shipping() );
 		$data['currency']       = strtolower( $currency );
-		$data['country_code']   = substr( get_option( 'woocommerce_default_country' ), 0, 2 );
+		$data['country_code']   = substr( get_option( 'poocommerce_default_country' ), 0, 2 );
 		$data['product_type']   = $product->get_type();
 
 		return apply_filters( 'wcpay_payment_request_product_data', $data, $product );
@@ -751,7 +751,7 @@ class WC_Payments_Express_Checkout_Button_Helper {
 
 	/**
 	 * The Store API doesn't allow checkout without the billing email address present on the order data.
-	 * https://github.com/woocommerce/woocommerce/issues/48540
+	 * https://github.com/poocommerce/poocommerce/issues/48540
 	 *
 	 * @return bool
 	 */
@@ -845,7 +845,7 @@ class WC_Payments_Express_Checkout_Button_Helper {
 			$base_price = wc_get_price_excluding_tax( $product );
 		}
 
-		// If WooCommerce Deposits is active, we need to get the correct price for the product.
+		// If PooCommerce Deposits is active, we need to get the correct price for the product.
 		if ( class_exists( 'WC_Deposits_Product_Manager' ) && class_exists( 'WC_Deposits_Plans_Manager' ) && WC_Deposits_Product_Manager::deposits_enabled( $product->get_id() ) ) {
 			// If is_deposit is null, we use the default deposit type for the product.
 			if ( is_null( $is_deposit ) ) {
@@ -880,7 +880,7 @@ class WC_Payments_Express_Checkout_Button_Helper {
 		if ( ! is_numeric( $base_price ) || ! is_numeric( $sign_up_fee ) ) {
 			$error_message = sprintf(
 				// Translators: %d is the numeric ID of the product without a price.
-				__( 'Express checkout does not support products without prices! Please add a price to product #%d', 'woocommerce-payments' ),
+				__( 'Express checkout does not support products without prices! Please add a price to product #%d', 'poocommerce-payments' ),
 				(int) $product->get_id()
 			);
 			throw new Invalid_Price_Exception(
@@ -907,7 +907,7 @@ class WC_Payments_Express_Checkout_Button_Helper {
 		// Follows the way `WC_Cart_Totals::get_item_tax_rates()` works.
 		$tax_class = $product->get_tax_class();
 		$rates     = WC_Tax::get_rates( $tax_class );
-		// No cart item, `woocommerce_cart_totals_get_item_tax_rates` can't be applied here.
+		// No cart item, `poocommerce_cart_totals_get_item_tax_rates` can't be applied here.
 
 		// Normally there should be a single tax, but `calc_tax` returns an array, let's use it.
 		return WC_Tax::calc_tax( $price, $rates, false );
@@ -939,7 +939,7 @@ class WC_Payments_Express_Checkout_Button_Helper {
 		}
 
 		// If the above doesn't work, fallback to matching against the list of translated
-		// states from WooCommerce.
+		// states from PooCommerce.
 		return $this->get_normalized_state_from_wc_states( $state, $country );
 	}
 
@@ -969,7 +969,7 @@ class WC_Payments_Express_Checkout_Button_Helper {
 			wc_add_notice(
 				sprintf(
 					/* translators: %s: country. */
-					__( 'The express checkout is not supported in %s because some required fields couldn\'t be verified. Please proceed to the checkout page and try again.', 'woocommerce-payments' ),
+					__( 'The express checkout is not supported in %s because some required fields couldn\'t be verified. Please proceed to the checkout page and try again.', 'poocommerce-payments' ),
 					$countries[ $posted_data['billing_country'] ] ?? $posted_data['billing_country']
 				),
 				'error'
@@ -981,7 +981,7 @@ class WC_Payments_Express_Checkout_Button_Helper {
 	 * Normalizes billing and shipping state fields.
 	 */
 	public function normalize_state() {
-		check_ajax_referer( 'woocommerce-process_checkout', '_wpnonce' );
+		check_ajax_referer( 'poocommerce-process_checkout', '_wpnonce' );
 
 		$billing_country  = ! empty( $_POST['billing_country'] ) ? wc_clean( wp_unslash( $_POST['billing_country'] ) ) : '';
 		$shipping_country = ! empty( $_POST['shipping_country'] ) ? wc_clean( wp_unslash( $_POST['shipping_country'] ) ) : '';
@@ -1083,7 +1083,7 @@ class WC_Payments_Express_Checkout_Button_Helper {
 	}
 
 	/**
-	 * Get normalized state from WooCommerce list of translated states.
+	 * Get normalized state from PooCommerce list of translated states.
 	 *
 	 * @param string $state Full state name or state code.
 	 * @param string $country Two-letter country code.
@@ -1164,7 +1164,7 @@ class WC_Payments_Express_Checkout_Button_Helper {
 	 * @return  void
 	 */
 	public function add_order_payment_method_title( $order_id ) {
-		if ( empty( $_POST['express_payment_type'] ) || ! isset( $_POST['payment_method'] ) || 'woocommerce_payments' !== $_POST['payment_method'] ) { // phpcs:ignore WordPress.Security.NonceVerification
+		if ( empty( $_POST['express_payment_type'] ) || ! isset( $_POST['payment_method'] ) || 'poocommerce_payments' !== $_POST['payment_method'] ) { // phpcs:ignore WordPress.Security.NonceVerification
 			return;
 		}
 
@@ -1246,7 +1246,7 @@ class WC_Payments_Express_Checkout_Button_Helper {
 			}
 		}
 
-		$packages = apply_filters( 'woocommerce_cart_shipping_packages', $packages );
+		$packages = apply_filters( 'poocommerce_cart_shipping_packages', $packages );
 
 		WC()->shipping->calculate_shipping( $packages );
 	}

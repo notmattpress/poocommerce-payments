@@ -32,7 +32,7 @@ const StripeBillingToggle: React.FC< Props > = ( { onChange } ) => {
 			onChange={ onChange }
 			label={ __(
 				'Enable Stripe Billing for future subscriptions',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			) }
 			help={ interpolateComponents( {
 				mixedString: sprintf(
@@ -43,20 +43,20 @@ const StripeBillingToggle: React.FC< Props > = ( { onChange } ) => {
 									' Stripe Billing for payment processing. Note: This feature supports card payments only and' +
 									' may lack support for key subscription features.' +
 									' {{learnMoreLink}}Learn more{{/learnMoreLink}}',
-								'woocommerce-payments'
+								'poocommerce-payments'
 						  )
 						: __(
 								'By enabling this setting, future %s subscription purchases will utilize Stripe Billing for payment' +
 									' processing. Note: This feature supports card payments only and may lack support for key' +
 									' subscription features. {{learnMoreLink}}Learn more{{/learnMoreLink}}',
-								'woocommerce-payments'
+								'poocommerce-payments'
 						  ),
 					'WooPayments'
 				),
 				components: {
 					learnMoreLink: (
 						// eslint-disable-next-line max-len
-						<ExternalLink href="https://woocommerce.com/document/woopayments/subscriptions/stripe-billing/" />
+						<ExternalLink href="https://poocommerce.com/document/woopayments/subscriptions/stripe-billing/" />
 					),
 				},
 			} ) }

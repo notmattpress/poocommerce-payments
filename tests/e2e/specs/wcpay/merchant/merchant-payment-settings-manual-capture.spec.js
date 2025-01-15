@@ -3,7 +3,7 @@
  */
 import { merchantWCP } from '../../../utils';
 
-const { merchant } = require( '@woocommerce/e2e-utils' );
+const { merchant } = require( '@poocommerce/e2e-utils' );
 
 const checkboxCaptureLaterOption = 'capture-later-checkbox';
 const paymentMethodWarningIconId = 'loadable-checkbox-icon-warning';

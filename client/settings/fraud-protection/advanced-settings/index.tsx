@@ -11,7 +11,7 @@ import React, {
 import ReactDOM from 'react-dom';
 import { isMatchWith } from 'lodash';
 import { sprintf, __ } from '@wordpress/i18n';
-import { Link } from '@woocommerce/components';
+import { Link } from '@poocommerce/components';
 import { LoadableBlock } from 'wcpay/components/loadable';
 import { Button, Notice } from '@wordpress/components';
 import { dispatch } from '@wordpress/data';
@@ -77,18 +77,18 @@ const Breadcrumb = () => (
 				href={ getAdminUrl( {
 					page: 'wc-settings',
 					tab: 'checkout',
-					section: 'woocommerce_payments',
+					section: 'poocommerce_payments',
 				} ) }
 			>
 				{ 'WooPayments' }
 			</Link>
 			&nbsp;&gt;&nbsp;
-			{ __( 'Advanced fraud protection', 'woocommerce-payments' ) }
+			{ __( 'Advanced fraud protection', 'poocommerce-payments' ) }
 		</h2>
 		<p className="fraud-protection-advanced-settings-notice">
 			{ __(
 				'At least one risk filter needs to be enabled for advanced protection.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			) }
 		</p>
 	</>
@@ -96,7 +96,7 @@ const Breadcrumb = () => (
 
 const SaveFraudProtectionSettingsButton: React.FC = ( { children } ) => {
 	const headerElement = document.querySelector(
-		'.woocommerce-layout__header-wrapper'
+		'.poocommerce-layout__header-wrapper'
 	);
 	return headerElement && ReactDOM.createPortal( children, headerElement );
 };
@@ -135,7 +135,7 @@ const FraudProtectionAdvancedSettingsPage: React.FC = () => {
 		);
 		if ( saveButton ) {
 			document
-				.querySelector( '.woocommerce-layout__header-heading' )
+				.querySelector( '.poocommerce-layout__header-heading' )
 				?.after( saveButton );
 		}
 	} );
@@ -179,7 +179,7 @@ const FraudProtectionAdvancedSettingsPage: React.FC = () => {
 				dispatch( 'core/notices' ).createErrorNotice(
 					__(
 						'At least one risk filter needs to be enabled for advanced protection.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					)
 				);
 				return;
@@ -189,7 +189,7 @@ const FraudProtectionAdvancedSettingsPage: React.FC = () => {
 			dispatch( 'core/notices' ).createErrorNotice(
 				__(
 					'Current protection level is set to "basic". At least one risk filter needs to be enabled for advanced protection.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				)
 			);
 		} else if ( ProtectionLevel.ADVANCED !== currentProtectionLevel ) {
@@ -197,7 +197,7 @@ const FraudProtectionAdvancedSettingsPage: React.FC = () => {
 			dispatch( 'core/notices' ).createSuccessNotice(
 				__(
 					'Current protection level is set to "advanced".',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				)
 			);
 		}
@@ -225,7 +225,7 @@ const FraudProtectionAdvancedSettingsPage: React.FC = () => {
 	// Hack to make "Payments > Settings" the active selected menu item.
 	useEffect( () => {
 		const wcSettingsMenuItem = document.querySelector(
-			'#toplevel_page_wc-admin-path--payments-overview a[href$="section=woocommerce_payments"]'
+			'#toplevel_page_wc-admin-path--payments-overview a[href$="section=poocommerce_payments"]'
 		);
 		if ( wcSettingsMenuItem ) {
 			wcSettingsMenuItem.setAttribute( 'aria-current', 'page' );
@@ -307,7 +307,7 @@ const FraudProtectionAdvancedSettingsPage: React.FC = () => {
 		// Source: https://stackoverflow.com/a/68637899
 		return __(
 			'There are unsaved changes on this page. Are you sure you want to leave and discard the unsaved changes?',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		);
 	} ) as EffectCallback;
 
@@ -329,7 +329,7 @@ const FraudProtectionAdvancedSettingsPage: React.FC = () => {
 				! isDirty
 			}
 		>
-			{ __( 'Save Changes', 'woocommerce-payments' ) }
+			{ __( 'Save Changes', 'poocommerce-payments' ) }
 		</Button>
 	);
 
@@ -358,7 +358,7 @@ const FraudProtectionAdvancedSettingsPage: React.FC = () => {
 										'%s %s',
 										__(
 											'Settings were not saved.',
-											'woocommerce-payments'
+											'poocommerce-payments'
 										),
 										validationError
 									) }
@@ -371,7 +371,7 @@ const FraudProtectionAdvancedSettingsPage: React.FC = () => {
 									{ __(
 										'There was an error retrieving your fraud protection settings.' +
 											' Please refresh the page to try again.',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									) }
 								</Notice>
 							</div>
@@ -403,14 +403,14 @@ const FraudProtectionAdvancedSettingsPage: React.FC = () => {
 								href={ getAdminUrl( {
 									page: 'wc-settings',
 									tab: 'checkout',
-									section: 'woocommerce_payments',
+									section: 'poocommerce_payments',
 								} ) }
 								variant="secondary"
 								disabled={ isSaving || isLoading }
 							>
 								{ __(
 									'Back to Payments Settings',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								) }
 							</Button>
 

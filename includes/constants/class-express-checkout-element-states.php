@@ -2,7 +2,7 @@
 /**
  * Class Express_Checkout_Element_States
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Constants;
@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * This class provides a list of states for the Payment Request API to match against WooCommerce states.
+ * This class provides a list of states for the Payment Request API to match against PooCommerce states.
  * The list is based on libaddressinput: https://github.com/google/libaddressinput,
  * which is used by Chromium based browsers in the native Payment Request address dialog.
  *
@@ -398,7 +398,7 @@ class Express_Checkout_Element_States {
 			'JH' => [ 'Jharkhand', 'Jharkhand', NULL ],
 			'KA' => [ 'Karnataka', 'Karnataka', NULL ],
 			'KL' => [ 'Kerala', 'Kerala', NULL ],
-			// 'LA' => __( 'Ladakh', 'woocommerce' ),
+			// 'LA' => __( 'Ladakh', 'poocommerce' ),
 			'MP' => [ 'Madhya Pradesh', 'Madhya Pradesh', NULL ],
 			'MH' => [ 'Maharashtra', 'Maharashtra', NULL ],
 			'MN' => [ 'Manipur', 'Manipur', NULL ],

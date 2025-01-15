@@ -31,7 +31,7 @@ const GeneralSettings = () => {
 					{ ! isTestModeOnboarding && (
 						<>
 							<h4>
-								{ __( 'Test mode', 'woocommerce-payments' ) }
+								{ __( 'Test mode', 'poocommerce-payments' ) }
 							</h4>
 							<CheckboxControl
 								checked={ isEnabled }
@@ -51,13 +51,13 @@ const GeneralSettings = () => {
 								} }
 								label={ __(
 									'Enable test mode',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								) }
 								help={ interpolateComponents( {
 									mixedString: __(
 										'Use {{testCardHelpLink}}test card numbers{{/testCardHelpLink}} to simulate ' +
 											'various transactions. {{learnMoreLink}}Learn more{{/learnMoreLink}}',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									),
 									components: {
 										testCardHelpLink: (
@@ -66,7 +66,7 @@ const GeneralSettings = () => {
 												target="_blank"
 												rel="noreferrer"
 												/* eslint-disable-next-line max-len */
-												href="https://woocommerce.com/document/woopayments/testing-and-troubleshooting/testing/#test-cards"
+												href="https://poocommerce.com/document/woopayments/testing-and-troubleshooting/testing/#test-cards"
 											/>
 										),
 										learnMoreLink: (
@@ -74,7 +74,7 @@ const GeneralSettings = () => {
 											<a
 												target="_blank"
 												rel="noreferrer"
-												href="https://woocommerce.com/document/woopayments/testing-and-troubleshooting/testing/"
+												href="https://poocommerce.com/document/woopayments/testing-and-troubleshooting/testing/"
 											/>
 										),
 									},
@@ -90,7 +90,7 @@ const GeneralSettings = () => {
 								{
 									label: __(
 										'Set up payments',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									),
 									variant: 'secondary',
 									onClick: () => {
@@ -114,7 +114,7 @@ const GeneralSettings = () => {
 										__(
 											'{{b}}%1$s is in sandbox mode.{{/b}} You need to set up a live %1$s account before ' +
 												'you can accept real transactions. {{learnMoreLink}}Learn more{{/learnMoreLink}}',
-											'woocommerce-payments'
+											'poocommerce-payments'
 										),
 										'WooPayments'
 									),
@@ -126,7 +126,7 @@ const GeneralSettings = () => {
 												target="_blank"
 												rel="noreferrer"
 												// eslint-disable-next-line max-len
-												href="https://woocommerce.com/document/woopayments/testing-and-troubleshooting/sandbox-mode/"
+												href="https://poocommerce.com/document/woopayments/testing-and-troubleshooting/sandbox-mode/"
 											/>
 										),
 									},

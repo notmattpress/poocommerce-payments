@@ -12,7 +12,7 @@ import {
 	selectOnCheckout,
 	completeRedirectedPayment,
 } from '../../../utils/payments';
-const { shopper, merchant } = require( '@woocommerce/e2e-utils' );
+const { shopper, merchant } = require( '@poocommerce/e2e-utils' );
 
 const UPE_METHOD_CHECKBOXES = [
 	"//label[contains(text(), 'Bancontact')]/preceding-sibling::span/input[@type='checkbox']",

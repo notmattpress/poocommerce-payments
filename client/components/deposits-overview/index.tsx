@@ -10,7 +10,7 @@ import {
 	CardHeader,
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import { getHistory } from '@woocommerce/navigation';
+import { getHistory } from '@poocommerce/navigation';
 
 /**
  * Internal dependencies.
@@ -97,7 +97,7 @@ const DepositsOverview: React.FC = () => {
 		return (
 			<Card className="wcpay-deposits-overview">
 				<CardHeader>
-					{ __( 'Payouts', 'woocommerce-payments' ) }
+					{ __( 'Payouts', 'poocommerce-payments' ) }
 				</CardHeader>
 
 				<CardBody className="wcpay-deposits-overview__schedule__container">
@@ -131,7 +131,7 @@ const DepositsOverview: React.FC = () => {
 
 	return (
 		<Card className="wcpay-deposits-overview">
-			<CardHeader>{ __( 'Payouts', 'woocommerce-payments' ) }</CardHeader>
+			<CardHeader>{ __( 'Payouts', 'poocommerce-payments' ) }</CardHeader>
 
 			{ /* Deposit schedule message */ }
 			{ isDepositsUnrestricted && !! account && hasScheduledDeposits && (
@@ -182,7 +182,7 @@ const DepositsOverview: React.FC = () => {
 				<>
 					<CardBody className="wcpay-deposits-overview__heading">
 						<span className="wcpay-deposits-overview__heading__title">
-							{ __( 'Payout history', 'woocommerce-payments' ) }
+							{ __( 'Payout history', 'poocommerce-payments' ) }
 						</span>
 					</CardBody>
 					<RecentDepositsList deposits={ deposits } />
@@ -198,7 +198,7 @@ const DepositsOverview: React.FC = () => {
 						>
 							{ __(
 								'View full payout history',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 						</Button>
 					) }
@@ -210,7 +210,7 @@ const DepositsOverview: React.FC = () => {
 								getAdminUrl( {
 									page: 'wc-settings',
 									tab: 'checkout',
-									section: 'woocommerce_payments',
+									section: 'poocommerce_payments',
 								} ) + '#payout-schedule'
 							}
 							onClick={ () =>
@@ -221,7 +221,7 @@ const DepositsOverview: React.FC = () => {
 						>
 							{ __(
 								'Change payout schedule',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 						</Button>
 					) }

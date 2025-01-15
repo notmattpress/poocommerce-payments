@@ -2,7 +2,7 @@
 /**
  * Set up top-level menus for WCPay.
  *
- * @package WooCommerce\Payments\Admin
+ * @package PooCommerce\Payments\Admin
  */
 
 use Automattic\Jetpack\Identity_Crisis as Jetpack_Identity_Crisis;
@@ -42,14 +42,14 @@ class WC_Payments_Admin {
 	const PAYMENTS_SUBMENU_SLUG = 'wc-admin&path=/payments/overview';
 
 	/**
-	 * Client for making requests to the WooCommerce Payments API.
+	 * Client for making requests to the PooCommerce Payments API.
 	 *
 	 * @var WC_Payments_API_Client
 	 */
 	protected $payments_api_client;
 
 	/**
-	 * WCPay Gateway instance to get information regarding WooCommerce Payments setup.
+	 * WCPay Gateway instance to get information regarding PooCommerce Payments setup.
 	 *
 	 * @var WC_Payment_Gateway_WCPay
 	 */
@@ -118,8 +118,8 @@ class WC_Payments_Admin {
 	/**
 	 * Hook in admin menu items.
 	 *
-	 * @param WC_Payments_API_Client         $payments_api_client WooCommerce Payments API client.
-	 * @param WC_Payment_Gateway_WCPay       $gateway             WCPay Gateway instance to get information regarding WooCommerce Payments setup.
+	 * @param WC_Payments_API_Client         $payments_api_client PooCommerce Payments API client.
+	 * @param WC_Payment_Gateway_WCPay       $gateway             WCPay Gateway instance to get information regarding PooCommerce Payments setup.
 	 * @param WC_Payments_Account            $account             Account instance.
 	 * @param WC_Payments_Onboarding_Service $onboarding_service  Onboarding service instance.
 	 * @param WC_Payments_Order_Service      $order_service       Order service instance.
@@ -156,7 +156,7 @@ class WC_Payments_Admin {
 		add_action( 'admin_notices', [ $this, 'display_not_supported_currency_notice' ], 9999 );
 		add_action( 'admin_notices', [ $this, 'display_isk_decimal_notice' ] );
 
-		add_action( 'woocommerce_admin_order_data_after_payment_info', [ $this, 'render_order_edit_payment_details_container' ] );
+		add_action( 'poocommerce_admin_order_data_after_payment_info', [ $this, 'render_order_edit_payment_details_container' ] );
 
 		// Add menu items.
 		add_action( 'admin_menu', [ $this, 'add_payments_menu' ], 0 );
@@ -164,9 +164,9 @@ class WC_Payments_Admin {
 		add_action( 'admin_init', [ $this, 'maybe_redirect_from_payments_admin_child_pages' ], 16 );
 		add_action( 'admin_enqueue_scripts', [ $this, 'register_payments_scripts' ], 9 );
 		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_payments_scripts' ], 9 );
-		add_action( 'woocommerce_admin_field_payment_gateways', [ $this, 'payment_gateways_container' ] );
-		add_action( 'woocommerce_admin_order_totals_after_total', [ $this, 'show_woopay_payment_method_name_admin' ] );
-		add_action( 'woocommerce_admin_order_totals_after_total', [ $this, 'display_wcpay_transaction_fee' ] );
+		add_action( 'poocommerce_admin_field_payment_gateways', [ $this, 'payment_gateways_container' ] );
+		add_action( 'poocommerce_admin_order_totals_after_total', [ $this, 'show_woopay_payment_method_name_admin' ] );
+		add_action( 'poocommerce_admin_order_totals_after_total', [ $this, 'display_wcpay_transaction_fee' ] );
 		add_action( 'admin_init', [ $this, 'redirect_deposits_to_payouts' ] );
 	}
 
@@ -196,7 +196,7 @@ class WC_Payments_Admin {
 	 * Add notice explaining that the selected currency is not available.
 	 */
 	public function display_not_supported_currency_notice() {
-		if ( ! current_user_can( 'manage_woocommerce' ) ) {
+		if ( ! current_user_can( 'manage_poocommerce' ) ) {
 			return;
 		}
 
@@ -205,13 +205,13 @@ class WC_Payments_Admin {
 			<div id="wcpay-unsupported-currency-notice" class="notice notice-warning">
 				<p>
 					<b>
-						<?php esc_html_e( 'Unsupported currency:', 'woocommerce-payments' ); ?>
-						<?php esc_html( ' ' . get_woocommerce_currency() ); ?>
+						<?php esc_html_e( 'Unsupported currency:', 'poocommerce-payments' ); ?>
+						<?php esc_html( ' ' . get_poocommerce_currency() ); ?>
 					</b>
 					<?php
 						printf(
 							/* translators: %s: WooPayments*/
-							esc_html__( 'The selected currency is not available for the country set in your %s account.', 'woocommerce-payments' ),
+							esc_html__( 'The selected currency is not available for the country set in your %s account.', 'poocommerce-payments' ),
 							'WooPayments'
 						);
 					?>
@@ -234,25 +234,25 @@ class WC_Payments_Admin {
 	 * Add notice explaining that ISK cannot have decimals.
 	 */
 	public function display_isk_decimal_notice() {
-		if ( ! current_user_can( 'manage_woocommerce' ) ) {
+		if ( ! current_user_can( 'manage_poocommerce' ) ) {
 			return;
 		}
 
-		if ( get_woocommerce_currency() === 'ISK' && wc_get_price_decimals() !== 0 ) {
+		if ( get_poocommerce_currency() === 'ISK' && wc_get_price_decimals() !== 0 ) {
 			$url = get_admin_url( null, 'admin.php?page=wc-settings' );
 
 			?>
 			<div id="wcpay-unsupported-currency-notice" class="notice notice-error">
 				<p>
 					<b>
-						<?php esc_html_e( 'Unsupported currency:', 'woocommerce-payments' ); ?>
-						<?php esc_html( ' ' . get_woocommerce_currency() ); ?>
+						<?php esc_html_e( 'Unsupported currency:', 'poocommerce-payments' ); ?>
+						<?php esc_html( ' ' . get_poocommerce_currency() ); ?>
 					</b>
 					<?php
 						echo wp_kses_post(
 							sprintf(
 								/* Translators: %1$s: Opening anchor tag. %2$s: Closing anchor tag.*/
-								__( 'Icelandic Króna does not accept decimals. Please update your currency number of decimals to 0 or select a different currency. %1$sVisit settings%2$s', 'woocommerce-payments' ),
+								__( 'Icelandic Króna does not accept decimals. Please update your currency number of decimals to 0 or select a different currency. %1$sVisit settings%2$s', 'poocommerce-payments' ),
 								'<a href="' . $url . '">',
 								'</a>'
 							)
@@ -268,7 +268,7 @@ class WC_Payments_Admin {
 	 * Add payments menu items.
 	 */
 	public function add_payments_menu() {
-		if ( ! current_user_can( 'manage_woocommerce' ) ) {
+		if ( ! current_user_can( 'manage_poocommerce' ) ) {
 			return;
 		}
 		global $submenu;
@@ -276,7 +276,7 @@ class WC_Payments_Admin {
 		$this->admin_child_pages = [
 			'wc-payments-overview'     => [
 				'id'       => 'wc-payments-overview',
-				'title'    => __( 'Overview', 'woocommerce-payments' ),
+				'title'    => __( 'Overview', 'poocommerce-payments' ),
 				'parent'   => 'wc-payments',
 				'path'     => '/payments/overview',
 				'nav_args' => [
@@ -286,7 +286,7 @@ class WC_Payments_Admin {
 			],
 			'wc-payments-deposits'     => [
 				'id'       => 'wc-payments-deposits',
-				'title'    => __( 'Payouts', 'woocommerce-payments' ),
+				'title'    => __( 'Payouts', 'poocommerce-payments' ),
 				'parent'   => 'wc-payments',
 				'path'     => '/payments/payouts',
 				'nav_args' => [
@@ -296,7 +296,7 @@ class WC_Payments_Admin {
 			],
 			'wc-payments-transactions' => [
 				'id'       => 'wc-payments-transactions',
-				'title'    => __( 'Transactions', 'woocommerce-payments' ),
+				'title'    => __( 'Transactions', 'poocommerce-payments' ),
 				'parent'   => 'wc-payments',
 				'path'     => '/payments/transactions',
 				'nav_args' => [
@@ -306,7 +306,7 @@ class WC_Payments_Admin {
 			],
 			'wc-payments-disputes'     => [
 				'id'       => 'wc-payments-disputes',
-				'title'    => __( 'Disputes', 'woocommerce-payments' ),
+				'title'    => __( 'Disputes', 'poocommerce-payments' ),
 				'parent'   => 'wc-payments',
 				'path'     => '/payments/disputes',
 				'nav_args' => [
@@ -333,10 +333,10 @@ class WC_Payments_Admin {
 		wc_admin_register_page(
 			[
 				'id'         => 'wc-payments',
-				'title'      => __( 'Payments', 'woocommerce-payments' ),
-				'capability' => 'manage_woocommerce',
+				'title'      => __( 'Payments', 'poocommerce-payments' ),
+				'capability' => 'manage_poocommerce',
 				'path'       => $top_level_link,
-				'position'   => '55.7', // After WooCommerce & Product menu items.
+				'position'   => '55.7', // After PooCommerce & Product menu items.
 				'icon'       => $menu_icon,
 				'nav_args'   => [
 					'title'        => 'WooPayments',
@@ -360,10 +360,10 @@ class WC_Payments_Admin {
 			wc_admin_register_page(
 				[
 					'id'         => 'wc-payments-onboarding',
-					'title'      => __( 'Onboarding', 'woocommerce-payments' ),
+					'title'      => __( 'Onboarding', 'poocommerce-payments' ),
 					'parent'     => 'wc-payments',
 					'path'       => '/payments/onboarding',
-					'capability' => 'manage_woocommerce',
+					'capability' => 'manage_poocommerce',
 					'nav_args'   => [
 						'parent' => 'wc-payments',
 					],
@@ -377,10 +377,10 @@ class WC_Payments_Admin {
 			wc_admin_register_page(
 				[
 					'id'         => 'wc-payments-onboarding-kyc',
-					'title'      => __( 'Continue onboarding', 'woocommerce-payments' ),
+					'title'      => __( 'Continue onboarding', 'poocommerce-payments' ),
 					'parent'     => 'wc-payments',
 					'path'       => '/payments/onboarding/kyc',
-					'capability' => 'manage_woocommerce',
+					'capability' => 'manage_poocommerce',
 					'nav_args'   => [
 						'parent' => 'wc-payments',
 						'order'  => 50,
@@ -398,10 +398,10 @@ class WC_Payments_Admin {
 			) {
 				$this->admin_child_pages['wc-payments-onboarding-kyc'] = [
 					'id'         => 'wc-payments-onboarding-kyc',
-					'title'      => __( 'Continue onboarding', 'woocommerce-payments' ),
+					'title'      => __( 'Continue onboarding', 'poocommerce-payments' ),
 					'parent'     => 'wc-payments',
 					'path'       => '/payments/onboarding/kyc',
-					'capability' => 'manage_woocommerce',
+					'capability' => 'manage_poocommerce',
 					'nav_args'   => [
 						'parent' => 'wc-payments',
 						'order'  => 50,
@@ -412,7 +412,7 @@ class WC_Payments_Admin {
 			if ( $this->account->is_card_present_eligible() && $this->account->has_card_readers_available() ) {
 				$this->admin_child_pages['wc-payments-card-readers'] = [
 					'id'       => 'wc-payments-card-readers',
-					'title'    => __( 'Card Readers', 'woocommerce-payments' ),
+					'title'    => __( 'Card Readers', 'poocommerce-payments' ),
 					'parent'   => 'wc-payments',
 					'path'     => '/payments/card-readers',
 					'nav_args' => [
@@ -425,7 +425,7 @@ class WC_Payments_Admin {
 			if ( $this->account->get_capital()['has_previous_loans'] ) {
 				$this->admin_child_pages['wc-payments-capital'] = [
 					'id'       => 'wc-payments-capital',
-					'title'    => __( 'Capital Loans', 'woocommerce-payments' ),
+					'title'    => __( 'Capital Loans', 'poocommerce-payments' ),
 					'parent'   => 'wc-payments',
 					'path'     => '/payments/loans',
 					'nav_args' => [
@@ -438,7 +438,7 @@ class WC_Payments_Admin {
 			if ( WC_Payments_Features::is_documents_section_enabled() ) {
 				$this->admin_child_pages['wc-payments-documents'] = [
 					'id'       => 'wc-payments-documents',
-					'title'    => __( 'Documents', 'woocommerce-payments' ),
+					'title'    => __( 'Documents', 'poocommerce-payments' ),
 					'parent'   => 'wc-payments',
 					'path'     => '/payments/documents',
 					'nav_args' => [
@@ -465,14 +465,14 @@ class WC_Payments_Admin {
 
 			wc_admin_connect_page(
 				[
-					'id'        => 'woocommerce-settings-payments-woocommerce-payments',
-					'parent'    => 'woocommerce-settings-payments',
-					'screen_id' => 'woocommerce_page_wc-settings-checkout-woocommerce_payments',
+					'id'        => 'poocommerce-settings-payments-poocommerce-payments',
+					'parent'    => 'poocommerce-settings-payments',
+					'screen_id' => 'poocommerce_page_wc-settings-checkout-poocommerce_payments',
 					'title'     => 'WooPayments',
 					'nav_args'  => [
 						'parent' => 'wc-payments',
-						'title'  => __( 'Settings', 'woocommerce-payments' ),
-						'url'    => 'wc-settings&tab=checkout&section=woocommerce_payments',
+						'title'  => __( 'Settings', 'poocommerce-payments' ),
+						'url'    => 'wc-settings&tab=checkout&section=poocommerce_payments',
 						'order'  => 99,
 					],
 				]
@@ -482,16 +482,16 @@ class WC_Payments_Admin {
 			$last_submenu_key               = $submenu_keys[ count( $submenu ) - 1 ];
 			$submenu[ $last_submenu_key ][] = [ // PHPCS:Ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 				$this->get_settings_menu_item_name(),
-				'manage_woocommerce',
+				'manage_poocommerce',
 				WC_Payments_Admin_Settings::get_settings_url(),
 			];
 
 			// Temporary fix to settings menu disappearance is to register the page after settings menu has been manually added.
-			// TODO: More robust solution is to be implemented by https://github.com/Automattic/woocommerce-payments/issues/231.
+			// TODO: More robust solution is to be implemented by https://github.com/Automattic/poocommerce-payments/issues/231.
 			wc_admin_register_page(
 				[
 					'id'     => 'wc-payments-deposit-details',
-					'title'  => __( 'Payout details', 'woocommerce-payments' ),
+					'title'  => __( 'Payout details', 'poocommerce-payments' ),
 					'parent' => 'wc-payments-transactions', // Not (top level) deposits, as workaround for showing up as submenu page.
 					'path'   => '/payments/payouts/details',
 				]
@@ -499,7 +499,7 @@ class WC_Payments_Admin {
 			wc_admin_register_page(
 				[
 					'id'     => 'wc-payments-transaction-details',
-					'title'  => __( 'Payment details', 'woocommerce-payments' ),
+					'title'  => __( 'Payment details', 'poocommerce-payments' ),
 					'parent' => 'wc-payments-transactions',
 					'path'   => '/payments/transactions/details',
 				]
@@ -508,7 +508,7 @@ class WC_Payments_Admin {
 			wc_admin_register_page(
 				[
 					'id'     => 'wc-payments-disputes-details-legacy-redirect',
-					'title'  => __( 'Dispute details', 'woocommerce-payments' ),
+					'title'  => __( 'Dispute details', 'poocommerce-payments' ),
 					'parent' => 'wc-payments-disputes',
 					'path'   => '/payments/disputes/details',
 				]
@@ -517,7 +517,7 @@ class WC_Payments_Admin {
 			wc_admin_register_page(
 				[
 					'id'     => 'wc-payments-disputes-challenge',
-					'title'  => __( 'Challenge dispute', 'woocommerce-payments' ),
+					'title'  => __( 'Challenge dispute', 'poocommerce-payments' ),
 					'parent' => 'wc-payments-disputes-details',
 					'path'   => '/payments/disputes/challenge',
 				]
@@ -525,16 +525,16 @@ class WC_Payments_Admin {
 			wc_admin_register_page(
 				[
 					'id'     => 'wc-payments-additional-payment-methods',
-					'parent' => 'woocommerce-settings-payments',
-					'title'  => __( 'Add new payment methods', 'woocommerce-payments' ),
+					'parent' => 'poocommerce-settings-payments',
+					'title'  => __( 'Add new payment methods', 'poocommerce-payments' ),
 					'path'   => '/payments/additional-payment-methods',
 				]
 			);
 			wc_admin_register_page(
 				[
 					'id'     => 'wc-payments-multi-currency-setup',
-					'parent' => 'woocommerce-settings-payments',
-					'title'  => __( 'Set up multiple currencies', 'woocommerce-payments' ),
+					'parent' => 'poocommerce-settings-payments',
+					'title'  => __( 'Set up multiple currencies', 'poocommerce-payments' ),
 					'path'   => '/payments/multi-currency-setup',
 				]
 			);
@@ -559,13 +559,13 @@ class WC_Payments_Admin {
 	 * Register the CSS and JS scripts
 	 */
 	public function register_payments_scripts() {
-		if ( ! current_user_can( 'manage_woocommerce' ) ) {
+		if ( ! current_user_can( 'manage_poocommerce' ) ) {
 			return;
 		}
 
 		WC_Payments::register_script_with_dependencies( 'WCPAY_DASH_APP', 'dist/index', [ 'wp-api-request' ] );
 
-		wp_set_script_translations( 'WCPAY_DASH_APP', 'woocommerce-payments' );
+		wp_set_script_translations( 'WCPAY_DASH_APP', 'poocommerce-payments' );
 
 		WC_Payments_Utils::register_style(
 			'WCPAY_DASH_APP',
@@ -576,7 +576,7 @@ class WC_Payments_Admin {
 		);
 
 		WC_Payments::register_script_with_dependencies( 'WCPAY_TOS', 'dist/tos' );
-		wp_set_script_translations( 'WCPAY_TOS', 'woocommerce-payments' );
+		wp_set_script_translations( 'WCPAY_TOS', 'poocommerce-payments' );
 
 		WC_Payments_Utils::register_style(
 			'WCPAY_TOS',
@@ -610,7 +610,7 @@ class WC_Payments_Admin {
 			]
 		);
 
-		wp_set_script_translations( 'WCPAY_ADMIN_SETTINGS', 'woocommerce-payments' );
+		wp_set_script_translations( 'WCPAY_ADMIN_SETTINGS', 'poocommerce-payments' );
 
 		WC_Payments_Utils::register_style(
 			'WCPAY_ADMIN_SETTINGS',
@@ -631,7 +631,7 @@ class WC_Payments_Admin {
 		);
 
 		WC_Payments::register_script_with_dependencies( 'WCPAY_PLUGINS_PAGE', 'dist/plugins-page', [ 'wp-api-request' ] );
-		wp_set_script_translations( 'WCPAY_PLUGINS_PAGE', 'woocommerce-payments' );
+		wp_set_script_translations( 'WCPAY_PLUGINS_PAGE', 'poocommerce-payments' );
 
 		WC_Payments_Utils::register_style(
 			'WCPAY_PLUGINS_PAGE',
@@ -754,7 +754,7 @@ class WC_Payments_Admin {
 			add_action( 'admin_footer', [ $this, 'load_plugins_page_wrapper' ] );
 		}
 
-		if ( in_array( $screen->id, [ 'shop_order', 'woocommerce_page_wc-orders' ], true ) ) {
+		if ( in_array( $screen->id, [ 'shop_order', 'poocommerce_page_wc-orders' ], true ) ) {
 			$order = wc_get_order();
 
 			if ( $order && strpos( $order->get_payment_method(), WC_Payment_Gateway_WCPay::GATEWAY_ID ) !== false ) {
@@ -781,7 +781,7 @@ class WC_Payments_Admin {
 					'wcpay_order_config',
 					[
 						'disableManualRefunds'  => ! $this->wcpay_gateway->has_refund_failed( $order ),
-						'manualRefundsTip'      => __( 'Refunding manually requires reimbursing your customer offline via cash, check, etc. The refund amounts entered here will only be used to balance your analytics.', 'woocommerce-payments' ),
+						'manualRefundsTip'      => __( 'Refunding manually requires reimbursing your customer offline via cash, check, etc. The refund amounts entered here will only be used to balance your analytics.', 'poocommerce-payments' ),
 						'refundAmount'          => $refund_amount,
 						'formattedRefundAmount' => wp_strip_all_tags( wc_price( $refund_amount, [ 'currency' => $order->get_currency() ] ) ),
 						'refundedAmount'        => $order->get_total_refunded(),
@@ -853,7 +853,7 @@ class WC_Payments_Admin {
 		$locale_info = include $path;
 
 		// Get symbols for those currencies without a short one.
-		$symbols       = get_woocommerce_currency_symbols();
+		$symbols       = get_poocommerce_currency_symbols();
 		$currency_data = [];
 
 		foreach ( $locale_info as $key => $value ) {
@@ -947,9 +947,9 @@ class WC_Payments_Admin {
 			'isMultiCurrencyEnabled'             => WC_Payments_Features::is_customer_multi_currency_enabled(),
 			'shouldUseExplicitPrice'             => WC_Payments_Explicit_Price_Formatter::should_output_explicit_price(),
 			'overviewTasksVisibility'            => [
-				'dismissedTodoTasks'     => get_option( 'woocommerce_dismissed_todo_tasks', [] ),
-				'deletedTodoTasks'       => get_option( 'woocommerce_deleted_todo_tasks', [] ),
-				'remindMeLaterTodoTasks' => get_option( 'woocommerce_remind_me_later_todo_tasks', [] ),
+				'dismissedTodoTasks'     => get_option( 'poocommerce_dismissed_todo_tasks', [] ),
+				'deletedTodoTasks'       => get_option( 'poocommerce_deleted_todo_tasks', [] ),
+				'remindMeLaterTodoTasks' => get_option( 'poocommerce_remind_me_later_todo_tasks', [] ),
 			],
 			'currentUserEmail'                   => $current_user_email,
 			'currencyData'                       => $currency_data,
@@ -964,7 +964,7 @@ class WC_Payments_Admin {
 			'progressiveOnboarding'              => $this->account->get_progressive_onboarding_details(),
 			'accountDefaultCurrency'             => $this->account->get_account_default_currency(),
 			'frtDiscoverBannerSettings'          => get_option( 'wcpay_frt_discover_banner_settings', '' ),
-			'storeCurrency'                      => get_option( 'woocommerce_currency' ),
+			'storeCurrency'                      => get_option( 'poocommerce_currency' ),
 			'isWooPayStoreCountryAvailable'      => WooPay_Utilities::is_store_country_available(),
 			'woopayLastDisableDate'              => $this->wcpay_gateway->get_option( 'platform_checkout_last_disable_date' ),
 			'isStripeBillingEnabled'             => WC_Payments_Features::is_stripe_billing_enabled(),
@@ -1169,7 +1169,7 @@ class WC_Payments_Admin {
 	 * @return string
 	 */
 	private function get_settings_menu_item_name() {
-		return __( 'Settings', 'woocommerce' ); // PHPCS:Ignore WordPress.WP.I18n.TextDomainMismatch
+		return __( 'Settings', 'poocommerce' ); // PHPCS:Ignore WordPress.WP.I18n.TextDomainMismatch
 	}
 
 	/**
@@ -1187,7 +1187,7 @@ class WC_Payments_Admin {
 	 * @return bool True if a redirection happened, false otherwise.
 	 */
 	public function maybe_redirect_from_payments_admin_child_pages(): bool {
-		if ( wp_doing_ajax() || ! current_user_can( 'manage_woocommerce' ) ) {
+		if ( wp_doing_ajax() || ! current_user_can( 'manage_poocommerce' ) ) {
 			return false;
 		}
 
@@ -1215,7 +1215,7 @@ class WC_Payments_Admin {
 			$this->account->redirect_to_onboarding_welcome_page(
 				sprintf(
 				/* translators: 1: WooPayments. */
-					__( 'Please <b>complete your %1$s setup</b> to continue using it.', 'woocommerce-payments' ),
+					__( 'Please <b>complete your %1$s setup</b> to continue using it.', 'poocommerce-payments' ),
 					'WooPayments'
 				)
 			);
@@ -1237,11 +1237,11 @@ class WC_Payments_Admin {
 		}
 		?>
 		<div class="wc-payment-gateway-method-name-woopay-wrapper">
-			<?php echo esc_html_e( 'Paid with', 'woocommerce-payments' ) . ' '; ?>
+			<?php echo esc_html_e( 'Paid with', 'poocommerce-payments' ) . ' '; ?>
 			<img alt="WooPay" src="<?php echo esc_url_raw( plugins_url( 'assets/images/woopay.svg', WCPAY_PLUGIN_FILE ) ); ?>">
 			<?php
 			if ( $order->get_meta( 'last4' ) ) {
-				echo esc_html_e( 'Card ending in', 'woocommerce-payments' ) . ' ';
+				echo esc_html_e( 'Card ending in', 'poocommerce-payments' ) . ' ';
 				echo esc_html( $order->get_meta( 'last4' ) );
 			}
 			?>
@@ -1268,12 +1268,12 @@ class WC_Payments_Admin {
 					echo wc_help_tip(
 						sprintf(
 							/* translators: %s: WooPayments */
-							__( 'This represents the fee %s collects for the transaction.', 'woocommerce-payments' ),
+							__( 'This represents the fee %s collects for the transaction.', 'poocommerce-payments' ),
 							'WooPayments'
 						)
 					);
 				?>
-				<?php esc_html_e( 'Transaction Fee:', 'woocommerce-payments' ); ?>
+				<?php esc_html_e( 'Transaction Fee:', 'poocommerce-payments' ); ?>
 			</td>
 			<td width="1%"></td>
 			<td class="total">

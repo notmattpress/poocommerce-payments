@@ -10,7 +10,7 @@ import { useDispatch } from '@wordpress/data';
  */
 import BannerNotice from 'components/banner-notice';
 import interpolateComponents from '@automattic/interpolate-components';
-import { Link } from '@woocommerce/components';
+import { Link } from '@poocommerce/components';
 import './style.scss';
 
 const optionName = 'wcpay_date_format_notice_dismissed';
@@ -57,7 +57,7 @@ const DateFormatNotice: React.FC = () => {
 				},
 				mixedString: __(
 					'The date and time formats now match your preferences. You can update them anytime in the {{settingsLink}}settings{{/settingsLink}}.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 			} ) }
 		</BannerNotice>

@@ -111,7 +111,7 @@ const MigrateOptionNotice: React.FC< Props > = ( {
 			className={ `woopayments-stripe-billing-notice ${ noticeClassName }` }
 			actions={ [
 				{
-					label: __( 'Begin migration', 'woocommerce-payments' ),
+					label: __( 'Begin migration', 'poocommerce-payments' ),
 					onClick: startMigration,
 				},
 			] }
@@ -126,7 +126,7 @@ const MigrateOptionNotice: React.FC< Props > = ( {
 							' We suggest migrating them to on-site billing powered by the %s plugin.' +
 							' {{learnMoreLink}}Learn more{{/learnMoreLink}}',
 						stripeBillingSubscriptionCount,
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					stripeBillingSubscriptionCount,
 					'Woo Subscriptions'
@@ -134,7 +134,7 @@ const MigrateOptionNotice: React.FC< Props > = ( {
 				components: {
 					learnMoreLink: (
 						// eslint-disable-next-line max-len
-						<ExternalLink href="https://woocommerce.com/document/woopayments/subscriptions/comparison/#migrating-subscribers" />
+						<ExternalLink href="https://poocommerce.com/document/woopayments/subscriptions/comparison/#migrating-subscribers" />
 					),
 				},
 			} ) }

@@ -1,11 +1,11 @@
 <?php
 /**
- * WooCommerce inbox remote note service.
+ * PooCommerce inbox remote note service.
  *
- * @package WooCommerce\Payments\Admin
+ * @package PooCommerce\Payments\Admin
  */
 
-use Automattic\WooCommerce\Admin\Notes\Note;
+use Automattic\PooCommerce\Admin\Notes\Note;
 use WCPay\Exceptions\Rest_Request_Exception;
 
 defined( 'ABSPATH' ) || exit;
@@ -57,7 +57,7 @@ class WC_Payments_Remote_Note_Service {
 	 *
 	 * @param array $note_data The note data to process.
 	 *
-	 * @return Automattic\WooCommerce\Admin\Notes\WC_Admin_Note|Automattic\WooCommerce\Admin\Notes\Note Note object.
+	 * @return Automattic\PooCommerce\Admin\Notes\WC_Admin_Note|Automattic\PooCommerce\Admin\Notes\Note Note object.
 	 *
 	 * @throws Rest_Request_Exception If note data is invalid.
 	 */
@@ -77,7 +77,7 @@ class WC_Payments_Remote_Note_Service {
 		$note->set_content_data( (object) [] );
 		$note->set_type( Note::E_WC_ADMIN_NOTE_INFORMATIONAL );
 		$note->set_name( $note_name );
-		$note->set_source( 'woocommerce-payments' );
+		$note->set_source( 'poocommerce-payments' );
 
 		if ( isset( $note_data['actions'] ) && is_array( $note_data['actions'] ) ) {
 			foreach ( $note_data['actions'] as $action_key => $action ) {

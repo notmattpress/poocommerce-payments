@@ -171,10 +171,10 @@ const PhoneNumberInput = ( {
 					setFocusLost( true );
 				} }
 				onChange={ handlePhoneNumberInputChange }
-				placeholder={ __( 'Mobile number', 'woocommerce-payments' ) }
+				placeholder={ __( 'Mobile number', 'poocommerce-payments' ) }
 				aria-label={
 					inputProps.ariaLabel ||
-					__( 'Mobile phone number', 'woocommerce-payments' )
+					__( 'Mobile phone number', 'poocommerce-payments' )
 				}
 				name={ inputProps.name }
 				className={

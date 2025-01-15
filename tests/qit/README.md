@@ -1,4 +1,4 @@
-## WooCommerce Payments QIT tests
+## PooCommerce Payments QIT tests
 
 We currently only use the security tests from the [QIT toolkit](https://qit.woo.com/docs/) and these can be run locally.
 
@@ -15,7 +15,7 @@ We currently only use the security tests from the [QIT toolkit](https://qit.woo.
    npm run test:qit-phpstan-local
    ```
 
-- The commands use the `build:release` to create `woocommerce-payments.zip` at the root of the directory which is then uploaded and used for the QIT tests.
+- The commands use the `build:release` to create `poocommerce-payments.zip` at the root of the directory which is then uploaded and used for the QIT tests.
 
 
 #### Analysing results

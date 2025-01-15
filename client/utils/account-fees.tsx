@@ -19,9 +19,9 @@ import { createInterpolateElement } from '@wordpress/element';
 import { ExternalLink } from '@wordpress/components';
 
 const countryFeeStripeDocsBaseLink =
-	'https://woocommerce.com/document/woopayments/fees-and-debits/fees/#';
+	'https://poocommerce.com/document/woopayments/fees-and-debits/fees/#';
 const countryFeeStripeDocsBaseLinkNoCountry =
-	'https://woocommerce.com/document/woopayments/fees-and-debits/fees/';
+	'https://poocommerce.com/document/woopayments/fees-and-debits/fees/';
 const countryFeeStripeDocsSectionNumbers: Record< string, string > = {
 	AE: 'united-arab-emirates',
 	AU: 'australia',
@@ -123,7 +123,7 @@ export const formatMethodFeesTooltip = (
 			? 1 - accountFees.discount[ 0 ].discount
 			: 1;
 
-	// Per https://woocommerce.com/terms-conditions/woopayments-promotion-2023/ we exclude FX fees from discounts.
+	// Per https://poocommerce.com/terms-conditions/woopayments-promotion-2023/ we exclude FX fees from discounts.
 	const total = {
 		percentage_rate:
 			accountFees.base.percentage_rate * discountAdjustedFeeRate +
@@ -143,7 +143,7 @@ export const formatMethodFeesTooltip = (
 	return (
 		<div className={ 'wcpay-fees-tooltip' }>
 			<div>
-				<div>{ __( 'Base fee', 'woocommerce-payments' ) }</div>
+				<div>{ __( 'Base fee', 'poocommerce-payments' ) }</div>
 				<div>
 					{ getFeeDescriptionString(
 						accountFees.base,
@@ -156,7 +156,7 @@ export const formatMethodFeesTooltip = (
 					<div>
 						{ __(
 							'International payment method fee',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 					</div>
 					<div>
@@ -174,7 +174,7 @@ export const formatMethodFeesTooltip = (
 					<div>
 						{ __(
 							'Currency conversion fee',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 					</div>
 					<div>{ getFeeDescriptionString( accountFees.fx ) }</div>
@@ -184,7 +184,7 @@ export const formatMethodFeesTooltip = (
 			) }
 			<div>
 				<div>
-					{ __( 'Total per transaction', 'woocommerce-payments' ) }
+					{ __( 'Total per transaction', 'poocommerce-payments' ) }
 				</div>
 				<div className={ 'wcpay-fees-tooltip__bold' }>
 					{ getFeeDescriptionString( total ) }
@@ -203,7 +203,7 @@ export const formatMethodFeesTooltip = (
 										/* translators: %s: WooPayments */
 										__(
 											'{{linkToStripePage /}} about %s Fees in your country',
-											'woocommerce-payments'
+											'poocommerce-payments'
 										),
 										'WooPayments'
 									),
@@ -217,7 +217,7 @@ export const formatMethodFeesTooltip = (
 											>
 												{ __(
 													'Learn more',
-													'woocommerce-payments'
+													'poocommerce-payments'
 												) }
 											</ExternalLink>
 										),
@@ -228,7 +228,7 @@ export const formatMethodFeesTooltip = (
 										/* translators: %s: WooPayments */
 										__(
 											'{{linkToStripePage /}} about %s Fees',
-											'woocommerce-payments'
+											'poocommerce-payments'
 										),
 										'WooPayments'
 									),
@@ -241,7 +241,7 @@ export const formatMethodFeesTooltip = (
 											>
 												{ __(
 													'Learn more',
-													'woocommerce-payments'
+													'poocommerce-payments'
 												) }
 											</ExternalLink>
 										),
@@ -266,9 +266,9 @@ export const formatAccountFeesDescription = (
 	// Default formats will be used if no matching field was passed in the `formats` parameter.
 	const formats = {
 		/* translators: %1: Percentage part of the fee. %2: Fixed part of the fee */
-		fee: __( '%1$f%% + %2$s per transaction', 'woocommerce-payments' ),
+		fee: __( '%1$f%% + %2$s per transaction', 'poocommerce-payments' ),
 		/* translators: %f percentage discount to apply */
-		discount: __( '(%f%% discount)', 'woocommerce-payments' ),
+		discount: __( '(%f%% discount)', 'poocommerce-payments' ),
 		displayBaseFeeIfDifferent: true,
 		...customFormats,
 	};
@@ -307,7 +307,7 @@ export const formatAccountFeesDescription = (
 			currentBaseFeeDescription = sprintf(
 				// eslint-disable-next-line max-len
 				/* translators: %1 Base fee (that don't apply to this account at this moment), %2: Current fee (e.g: "2.9% + $.30 per transaction") */
-				__( '<s>%1$s</s> %2$s', 'woocommerce-payments' ),
+				__( '<s>%1$s</s> %2$s', 'poocommerce-payments' ),
 				feeDescription,
 				currentBaseFeeDescription
 			);
@@ -336,11 +336,11 @@ export const formatMethodFeesDescription = (
 	methodFees: FeeStructure | undefined
 ): string | JSX.Element => {
 	if ( ! methodFees ) {
-		return __( 'missing fees', 'woocommerce-payments' );
+		return __( 'missing fees', 'poocommerce-payments' );
 	}
 
 	/* translators: %1: Percentage part of the fee. %2: Fixed part of the fee */
-	const format = __( 'From %1$f%% + %2$s', 'woocommerce-payments' );
+	const format = __( 'From %1$f%% + %2$s', 'poocommerce-payments' );
 
 	return formatAccountFeesDescription( methodFees, {
 		fee: format,
@@ -356,39 +356,39 @@ export const getTransactionsPaymentMethodName = (
 		case 'au_becs_debit':
 			return __(
 				'BECS Direct Debit transactions',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			);
 		case 'bancontact':
-			return __( 'Bancontact transactions', 'woocommerce-payments' );
+			return __( 'Bancontact transactions', 'poocommerce-payments' );
 		case 'card':
-			return __( 'Card transactions', 'woocommerce-payments' );
+			return __( 'Card transactions', 'poocommerce-payments' );
 		case 'card_present':
-			return __( 'In-person transactions', 'woocommerce-payments' );
+			return __( 'In-person transactions', 'poocommerce-payments' );
 		case 'eps':
-			return __( 'EPS transactions', 'woocommerce-payments' );
+			return __( 'EPS transactions', 'poocommerce-payments' );
 		case 'giropay':
-			return __( 'giropay transactions', 'woocommerce-payments' );
+			return __( 'giropay transactions', 'poocommerce-payments' );
 		case 'ideal':
-			return __( 'iDEAL transactions', 'woocommerce-payments' );
+			return __( 'iDEAL transactions', 'poocommerce-payments' );
 		case 'p24':
 			return __(
 				'Przelewy24 (P24) transactions',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			);
 		case 'sepa_debit':
 			return __(
 				'SEPA Direct Debit transactions',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			);
 		case 'sofort':
-			return __( 'Sofort transactions', 'woocommerce-payments' );
+			return __( 'Sofort transactions', 'poocommerce-payments' );
 		case 'affirm':
-			return __( 'Affirm transactions', 'woocommerce-payments' );
+			return __( 'Affirm transactions', 'poocommerce-payments' );
 		case 'afterpay_clearpay':
-			return __( 'Afterpay transactions', 'woocommerce-payments' );
+			return __( 'Afterpay transactions', 'poocommerce-payments' );
 		case 'klarna':
-			return __( 'Klarna transactions', 'woocommerce-payments' );
+			return __( 'Klarna transactions', 'poocommerce-payments' );
 		default:
-			return __( 'Unknown transactions', 'woocommerce-payments' );
+			return __( 'Unknown transactions', 'poocommerce-payments' );
 	}
 };

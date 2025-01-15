@@ -6,7 +6,7 @@
  * with the `authentication_needed` error, and a retry rule has been applied to retry the payment in the future.
  *
  * @extends     WC_Email_Failed_Order
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 use WCPay\Logger;
@@ -32,11 +32,11 @@ class WC_Payments_Email_Failed_Authentication_Retry extends WC_Email_Failed_Orde
 	 */
 	public function __construct() {
 		$this->id          = 'failed_authentication_requested';
-		$this->title       = __( 'Payment authentication requested email', 'woocommerce-payments' );
-		$this->description = __( 'Payment authentication requested emails are sent to chosen recipient(s) when an attempt to automatically process a subscription renewal payment fails because the transaction requires an SCA verification, the customer is requested to authenticate the payment, and a retry rule has been applied to notify the customer again within a certain time period.', 'woocommerce-payments' );
+		$this->title       = __( 'Payment authentication requested email', 'poocommerce-payments' );
+		$this->description = __( 'Payment authentication requested emails are sent to chosen recipient(s) when an attempt to automatically process a subscription renewal payment fails because the transaction requires an SCA verification, the customer is requested to authenticate the payment, and a retry rule has been applied to notify the customer again within a certain time period.', 'poocommerce-payments' );
 
-		$this->heading = __( 'Automatic renewal payment failed due to authentication required', 'woocommerce-payments' );
-		$this->subject = __( '[{site_title}] Automatic payment failed for {order_number}. Customer asked to authenticate payment and will be notified again {retry_time}', 'woocommerce-payments' );
+		$this->heading = __( 'Automatic renewal payment failed due to authentication required', 'poocommerce-payments' );
+		$this->subject = __( '[{site_title}] Automatic payment failed for {order_number}. Customer asked to authenticate payment and will be notified again {retry_time}', 'poocommerce-payments' );
 
 		$this->template_html  = 'failed-renewal-authentication-requested.php';
 		$this->template_plain = 'plain/failed-renewal-authentication-requested.php';

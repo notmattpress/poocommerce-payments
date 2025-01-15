@@ -3,11 +3,11 @@
 exports[`RenderPaymentCardReaderChargeDetails renders reader charges 1`] = `
 <div>
   <div
-    class="wcpay-payment-details woocommerce-payments-page"
+    class="wcpay-payment-details poocommerce-payments-page"
     style="max-width: 1032px;"
   >
     <div
-      class="components-surface components-card woocommerce-table transactions-list woocommerce-report-table has-search has-actions has-menu css-nsno0f-View-Surface-getBorders-primary-Card-rounded em57xhy0"
+      class="components-surface components-card poocommerce-table transactions-list poocommerce-report-table has-search has-actions has-menu css-nsno0f-View-Surface-getBorders-primary-Card-rounded em57xhy0"
       data-wp-c16t="true"
       data-wp-component="Card"
     >
@@ -27,10 +27,10 @@ exports[`RenderPaymentCardReaderChargeDetails renders reader charges 1`] = `
             Card readers
           </h2>
           <div
-            class="woocommerce-table__actions"
+            class="poocommerce-table__actions"
           >
             <button
-              class="components-button woocommerce-table__download-button"
+              class="components-button poocommerce-table__download-button"
               type="button"
             >
               <svg
@@ -47,14 +47,14 @@ exports[`RenderPaymentCardReaderChargeDetails renders reader charges 1`] = `
                 </g>
               </svg>
               <span
-                class="woocommerce-table__download-button__label"
+                class="poocommerce-table__download-button__label"
               >
                 Download
               </span>
             </button>
           </div>
           <div
-            class="woocommerce-ellipsis-menu"
+            class="poocommerce-ellipsis-menu"
           >
             <div
               class="components-dropdown"
@@ -62,7 +62,7 @@ exports[`RenderPaymentCardReaderChargeDetails renders reader charges 1`] = `
             >
               <button
                 aria-expanded="false"
-                class="components-button woocommerce-ellipsis-menu__toggle"
+                class="components-button poocommerce-ellipsis-menu__toggle"
                 title="Choose which values to display"
                 type="button"
               >
@@ -90,12 +90,12 @@ exports[`RenderPaymentCardReaderChargeDetails renders reader charges 1`] = `
         >
           <div
             aria-labelledby="caption-1"
-            class="woocommerce-table__table"
+            class="poocommerce-table__table"
             role="group"
           >
             <table>
               <caption
-                class="woocommerce-table__caption screen-reader-text"
+                class="poocommerce-table__caption screen-reader-text"
                 id="caption-1"
               >
                 Card readers
@@ -103,7 +103,7 @@ exports[`RenderPaymentCardReaderChargeDetails renders reader charges 1`] = `
               <tbody>
                 <tr>
                   <th
-                    class="woocommerce-table__header is-left-aligned"
+                    class="poocommerce-table__header is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -114,7 +114,7 @@ exports[`RenderPaymentCardReaderChargeDetails renders reader charges 1`] = `
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-left-aligned"
+                    class="poocommerce-table__header is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -125,7 +125,7 @@ exports[`RenderPaymentCardReaderChargeDetails renders reader charges 1`] = `
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-left-aligned"
+                    class="poocommerce-table__header is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -136,7 +136,7 @@ exports[`RenderPaymentCardReaderChargeDetails renders reader charges 1`] = `
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-left-aligned"
+                    class="poocommerce-table__header is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -149,46 +149,46 @@ exports[`RenderPaymentCardReaderChargeDetails renders reader charges 1`] = `
                 </tr>
                 <tr>
                   <th
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                     scope="row"
                   >
                     1
                   </th>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     active
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     3
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     $3.00
                   </td>
                 </tr>
                 <tr>
                   <th
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                     scope="row"
                   >
                     2
                   </th>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     inactive
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     1
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     $0.00
                   </td>
@@ -223,11 +223,11 @@ exports[`RenderPaymentCardReaderChargeDetails renders reader charges 1`] = `
 exports[`RenderPaymentCardReaderChargeDetails renders without reader charges 1`] = `
 <div>
   <div
-    class="wcpay-payment-details woocommerce-payments-page"
+    class="wcpay-payment-details poocommerce-payments-page"
     style="max-width: 1032px;"
   >
     <div
-      class="components-surface components-card woocommerce-table transactions-list woocommerce-report-table has-search has-actions has-menu css-nsno0f-View-Surface-getBorders-primary-Card-rounded em57xhy0"
+      class="components-surface components-card poocommerce-table transactions-list poocommerce-report-table has-search has-actions has-menu css-nsno0f-View-Surface-getBorders-primary-Card-rounded em57xhy0"
       data-wp-c16t="true"
       data-wp-component="Card"
     >
@@ -247,10 +247,10 @@ exports[`RenderPaymentCardReaderChargeDetails renders without reader charges 1`]
             Card readers
           </h2>
           <div
-            class="woocommerce-table__actions"
+            class="poocommerce-table__actions"
           />
           <div
-            class="woocommerce-ellipsis-menu"
+            class="poocommerce-ellipsis-menu"
           >
             <div
               class="components-dropdown"
@@ -258,7 +258,7 @@ exports[`RenderPaymentCardReaderChargeDetails renders without reader charges 1`]
             >
               <button
                 aria-expanded="false"
-                class="components-button woocommerce-ellipsis-menu__toggle"
+                class="components-button poocommerce-ellipsis-menu__toggle"
                 title="Choose which values to display"
                 type="button"
               >
@@ -286,12 +286,12 @@ exports[`RenderPaymentCardReaderChargeDetails renders without reader charges 1`]
         >
           <div
             aria-labelledby="caption-0"
-            class="woocommerce-table__table"
+            class="poocommerce-table__table"
             role="group"
           >
             <table>
               <caption
-                class="woocommerce-table__caption screen-reader-text"
+                class="poocommerce-table__caption screen-reader-text"
                 id="caption-0"
               >
                 Card readers
@@ -299,7 +299,7 @@ exports[`RenderPaymentCardReaderChargeDetails renders without reader charges 1`]
               <tbody>
                 <tr>
                   <th
-                    class="woocommerce-table__header is-left-aligned"
+                    class="poocommerce-table__header is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -310,7 +310,7 @@ exports[`RenderPaymentCardReaderChargeDetails renders without reader charges 1`]
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-left-aligned"
+                    class="poocommerce-table__header is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -321,7 +321,7 @@ exports[`RenderPaymentCardReaderChargeDetails renders without reader charges 1`]
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-left-aligned"
+                    class="poocommerce-table__header is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -332,7 +332,7 @@ exports[`RenderPaymentCardReaderChargeDetails renders without reader charges 1`]
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-left-aligned"
+                    class="poocommerce-table__header is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -345,7 +345,7 @@ exports[`RenderPaymentCardReaderChargeDetails renders without reader charges 1`]
                 </tr>
                 <tr>
                   <td
-                    class="woocommerce-table__empty-item"
+                    class="poocommerce-table__empty-item"
                     colspan="4"
                   >
                     No data to display

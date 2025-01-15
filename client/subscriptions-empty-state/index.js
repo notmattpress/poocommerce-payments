@@ -24,7 +24,7 @@ const Description = () => (
 			__(
 				'Track recurring revenue and manage active subscriptions directly from your store’s ' +
 					'dashboard — powered by %s.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			'WooPayments'
 		) }
@@ -36,7 +36,7 @@ const TOS = () => (
 		{ createInterpolateElement(
 			__(
 				'By clicking "Finish setup", you agree to the <a>Terms of Service</a>',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			{
 				a: (
@@ -70,7 +70,7 @@ const ActionButtons = () => {
 					setIsFinishingSetup( true );
 				} }
 			>
-				{ __( 'Finish setup', 'woocommerce-payments' ) }
+				{ __( 'Finish setup', 'poocommerce-payments' ) }
 			</Button>
 			<Button
 				disabled={ isCreatingProduct }
@@ -84,7 +84,7 @@ const ActionButtons = () => {
 					setIsCreatingProduct( true );
 				} }
 			>
-				{ __( 'Create subscription product', 'woocommerce-payments' ) }
+				{ __( 'Create subscription product', 'poocommerce-payments' ) }
 			</Button>
 		</div>
 	);

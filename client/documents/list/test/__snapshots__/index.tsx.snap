@@ -3,10 +3,10 @@
 exports[`Documents list renders correctly 1`] = `
 <div>
   <div
-    class=" woocommerce-payments-page"
+    class=" poocommerce-payments-page"
   >
     <div
-      class="woocommerce-filters-documents"
+      class="poocommerce-filters-documents"
     >
       <h2
         class="screen-reader-text"
@@ -14,16 +14,16 @@ exports[`Documents list renders correctly 1`] = `
         Filters
       </h2>
       <div
-        class="woocommerce-filters"
+        class="poocommerce-filters"
       >
         <div
-          class="woocommerce-filters__basic-filters"
+          class="poocommerce-filters__basic-filters"
         >
           <div
-            class="woocommerce-filters-filter"
+            class="poocommerce-filters-filter"
           >
             <span
-              class="woocommerce-filters-label"
+              class="poocommerce-filters-label"
             >
               Show
               :
@@ -34,11 +34,11 @@ exports[`Documents list renders correctly 1`] = `
             >
               <button
                 aria-expanded="false"
-                class="components-button woocommerce-dropdown-button"
+                class="components-button poocommerce-dropdown-button"
                 type="button"
               >
                 <div
-                  class="woocommerce-dropdown-button__labels"
+                  class="poocommerce-dropdown-button__labels"
                 >
                   <span>
                     All documents
@@ -51,7 +51,7 @@ exports[`Documents list renders correctly 1`] = `
       </div>
     </div>
     <div
-      class="components-surface components-card woocommerce-table documents-list woocommerce-report-table has-search has-actions has-menu css-nsno0f-View-Surface-getBorders-primary-Card-rounded em57xhy0"
+      class="components-surface components-card poocommerce-table documents-list poocommerce-report-table has-search has-actions has-menu css-nsno0f-View-Surface-getBorders-primary-Card-rounded em57xhy0"
       data-wp-c16t="true"
       data-wp-component="Card"
     >
@@ -71,10 +71,10 @@ exports[`Documents list renders correctly 1`] = `
             Documents
           </h2>
           <div
-            class="woocommerce-table__actions"
+            class="poocommerce-table__actions"
           />
           <div
-            class="woocommerce-ellipsis-menu"
+            class="poocommerce-ellipsis-menu"
           >
             <div
               class="components-dropdown"
@@ -82,7 +82,7 @@ exports[`Documents list renders correctly 1`] = `
             >
               <button
                 aria-expanded="false"
-                class="components-button woocommerce-ellipsis-menu__toggle"
+                class="components-button poocommerce-ellipsis-menu__toggle"
                 title="Choose which values to display"
                 type="button"
               >
@@ -110,12 +110,12 @@ exports[`Documents list renders correctly 1`] = `
         >
           <div
             aria-labelledby="caption-0"
-            class="woocommerce-table__table"
+            class="poocommerce-table__table"
             role="group"
           >
             <table>
               <caption
-                class="woocommerce-table__caption screen-reader-text"
+                class="poocommerce-table__caption screen-reader-text"
                 id="caption-0"
               >
                 Documents
@@ -124,7 +124,7 @@ exports[`Documents list renders correctly 1`] = `
                 <tr>
                   <th
                     aria-sort="descending"
-                    class="woocommerce-table__header date is-left-aligned is-sortable is-sorted"
+                    class="poocommerce-table__header date is-left-aligned is-sortable is-sorted"
                     role="columnheader"
                     scope="col"
                   >
@@ -164,7 +164,7 @@ exports[`Documents list renders correctly 1`] = `
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-left-aligned"
+                    class="poocommerce-table__header is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -180,7 +180,7 @@ exports[`Documents list renders correctly 1`] = `
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-left-aligned"
+                    class="poocommerce-table__header is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -196,7 +196,7 @@ exports[`Documents list renders correctly 1`] = `
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-numeric"
+                    class="poocommerce-table__header is-numeric"
                     role="columnheader"
                     scope="col"
                   >
@@ -214,23 +214,23 @@ exports[`Documents list renders correctly 1`] = `
                 </tr>
                 <tr>
                   <th
-                    class="woocommerce-table__item date is-left-aligned is-sorted"
+                    class="poocommerce-table__item date is-left-aligned is-sorted"
                     scope="row"
                   >
                     Jan 2, 2020
                   </th>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     VAT Invoice
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     VAT invoice without proper period dates
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <button
                       class="components-button documents-list__download-button is-link"
@@ -242,23 +242,23 @@ exports[`Documents list renders correctly 1`] = `
                 </tr>
                 <tr>
                   <th
-                    class="woocommerce-table__item date is-left-aligned is-sorted"
+                    class="poocommerce-table__item date is-left-aligned is-sorted"
                     scope="row"
                   >
                     Jan 4, 2020
                   </th>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     VAT Invoice
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     VAT invoice without proper period dates
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <button
                       class="components-button documents-list__download-button is-link"
@@ -278,19 +278,19 @@ exports[`Documents list renders correctly 1`] = `
           data-wp-component="CardFooter"
         >
           <ul
-            class="woocommerce-table__summary"
+            class="poocommerce-table__summary"
             role="complementary"
           >
             <li
-              class="woocommerce-table__summary-item"
+              class="poocommerce-table__summary-item"
             >
               <span
-                class="woocommerce-table__summary-value"
+                class="poocommerce-table__summary-value"
               >
                 10
               </span>
               <span
-                class="woocommerce-table__summary-label"
+                class="poocommerce-table__summary-label"
               >
                 documents
               </span>
@@ -318,10 +318,10 @@ exports[`Documents list renders correctly 1`] = `
 exports[`Documents list renders table summary only when the documents summary data is available with a single document 1`] = `
 <div>
   <div
-    class=" woocommerce-payments-page"
+    class=" poocommerce-payments-page"
   >
     <div
-      class="woocommerce-filters-documents"
+      class="poocommerce-filters-documents"
     >
       <h2
         class="screen-reader-text"
@@ -329,16 +329,16 @@ exports[`Documents list renders table summary only when the documents summary da
         Filters
       </h2>
       <div
-        class="woocommerce-filters"
+        class="poocommerce-filters"
       >
         <div
-          class="woocommerce-filters__basic-filters"
+          class="poocommerce-filters__basic-filters"
         >
           <div
-            class="woocommerce-filters-filter"
+            class="poocommerce-filters-filter"
           >
             <span
-              class="woocommerce-filters-label"
+              class="poocommerce-filters-label"
             >
               Show
               :
@@ -349,11 +349,11 @@ exports[`Documents list renders table summary only when the documents summary da
             >
               <button
                 aria-expanded="false"
-                class="components-button woocommerce-dropdown-button"
+                class="components-button poocommerce-dropdown-button"
                 type="button"
               >
                 <div
-                  class="woocommerce-dropdown-button__labels"
+                  class="poocommerce-dropdown-button__labels"
                 >
                   <span>
                     All documents
@@ -366,7 +366,7 @@ exports[`Documents list renders table summary only when the documents summary da
       </div>
     </div>
     <div
-      class="components-surface components-card woocommerce-table documents-list woocommerce-report-table has-search has-actions has-menu css-nsno0f-View-Surface-getBorders-primary-Card-rounded em57xhy0"
+      class="components-surface components-card poocommerce-table documents-list poocommerce-report-table has-search has-actions has-menu css-nsno0f-View-Surface-getBorders-primary-Card-rounded em57xhy0"
       data-wp-c16t="true"
       data-wp-component="Card"
     >
@@ -386,10 +386,10 @@ exports[`Documents list renders table summary only when the documents summary da
             Documents
           </h2>
           <div
-            class="woocommerce-table__actions"
+            class="poocommerce-table__actions"
           />
           <div
-            class="woocommerce-ellipsis-menu"
+            class="poocommerce-ellipsis-menu"
           >
             <div
               class="components-dropdown"
@@ -397,7 +397,7 @@ exports[`Documents list renders table summary only when the documents summary da
             >
               <button
                 aria-expanded="false"
-                class="components-button woocommerce-ellipsis-menu__toggle"
+                class="components-button poocommerce-ellipsis-menu__toggle"
                 title="Choose which values to display"
                 type="button"
               >
@@ -425,12 +425,12 @@ exports[`Documents list renders table summary only when the documents summary da
         >
           <div
             aria-labelledby="caption-7"
-            class="woocommerce-table__table"
+            class="poocommerce-table__table"
             role="group"
           >
             <table>
               <caption
-                class="woocommerce-table__caption screen-reader-text"
+                class="poocommerce-table__caption screen-reader-text"
                 id="caption-7"
               >
                 Documents
@@ -439,7 +439,7 @@ exports[`Documents list renders table summary only when the documents summary da
                 <tr>
                   <th
                     aria-sort="descending"
-                    class="woocommerce-table__header date is-left-aligned is-sortable is-sorted"
+                    class="poocommerce-table__header date is-left-aligned is-sortable is-sorted"
                     role="columnheader"
                     scope="col"
                   >
@@ -479,7 +479,7 @@ exports[`Documents list renders table summary only when the documents summary da
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-left-aligned"
+                    class="poocommerce-table__header is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -495,7 +495,7 @@ exports[`Documents list renders table summary only when the documents summary da
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-left-aligned"
+                    class="poocommerce-table__header is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -511,7 +511,7 @@ exports[`Documents list renders table summary only when the documents summary da
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-numeric"
+                    class="poocommerce-table__header is-numeric"
                     role="columnheader"
                     scope="col"
                   >
@@ -529,23 +529,23 @@ exports[`Documents list renders table summary only when the documents summary da
                 </tr>
                 <tr>
                   <th
-                    class="woocommerce-table__item date is-left-aligned is-sorted"
+                    class="poocommerce-table__item date is-left-aligned is-sorted"
                     scope="row"
                   >
                     Jan 2, 2020
                   </th>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     VAT Invoice
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     VAT invoice without proper period dates
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <button
                       class="components-button documents-list__download-button is-link"
@@ -557,23 +557,23 @@ exports[`Documents list renders table summary only when the documents summary da
                 </tr>
                 <tr>
                   <th
-                    class="woocommerce-table__item date is-left-aligned is-sorted"
+                    class="poocommerce-table__item date is-left-aligned is-sorted"
                     scope="row"
                   >
                     Jan 4, 2020
                   </th>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     VAT Invoice
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     VAT invoice without proper period dates
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <button
                       class="components-button documents-list__download-button is-link"
@@ -593,19 +593,19 @@ exports[`Documents list renders table summary only when the documents summary da
           data-wp-component="CardFooter"
         >
           <ul
-            class="woocommerce-table__summary"
+            class="poocommerce-table__summary"
             role="complementary"
           >
             <li
-              class="woocommerce-table__summary-item"
+              class="poocommerce-table__summary-item"
             >
               <span
-                class="woocommerce-table__summary-value"
+                class="poocommerce-table__summary-value"
               >
                 1
               </span>
               <span
-                class="woocommerce-table__summary-label"
+                class="poocommerce-table__summary-label"
               >
                 document
               </span>

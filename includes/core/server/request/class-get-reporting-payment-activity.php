@@ -2,7 +2,7 @@
 /**
  * Class file for WCPay\Core\Server\Request\Get_Payment_Activity.
  *
- * @package WooCommerce Payments
+ * @package PooCommerce Payments
  */
 
 namespace WCPay\Core\Server\Request;
@@ -89,7 +89,7 @@ class Get_Reporting_Payment_Activity extends Request {
 				esc_html(
 					sprintf(
 						// Translators: %s is a provided timezone.
-						__( '%s is not a valid timezone.', 'woocommerce-payments' ),
+						__( '%s is not a valid timezone.', 'poocommerce-payments' ),
 						$timezone,
 					)
 				),

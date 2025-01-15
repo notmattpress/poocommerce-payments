@@ -5,7 +5,7 @@
 import React, { useState, useLayoutEffect } from 'react';
 import { ExternalLink } from '@wordpress/components';
 import { __, sprintf } from '@wordpress/i18n';
-import { getQuery } from '@woocommerce/navigation';
+import { getQuery } from '@poocommerce/navigation';
 
 /**
  * Internal dependencies
@@ -34,29 +34,29 @@ import DuplicatedPaymentMethodsContext from './duplicated-payment-methods-contex
 
 const ExpressCheckoutDescription = () => (
 	<>
-		<h2>{ __( 'Express checkouts', 'woocommerce-payments' ) }</h2>
+		<h2>{ __( 'Express checkouts', 'poocommerce-payments' ) }</h2>
 		<p>
 			{ __(
 				'Let your customers use their favorite express payment methods and digital wallets ' +
 					'for faster, more secure checkouts across different parts of your store.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			) }
 		</p>
-		<ExternalLink href="https://woocommerce.com/document/woopayments/settings-guide/#express-checkouts">
-			{ __( 'Learn more', 'woocommerce-payments' ) }
+		<ExternalLink href="https://poocommerce.com/document/woopayments/settings-guide/#express-checkouts">
+			{ __( 'Learn more', 'poocommerce-payments' ) }
 		</ExternalLink>
 	</>
 );
 
 const GeneralSettingsDescription = () => (
 	<>
-		<h2>{ __( 'General', 'woocommerce-payments' ) }</h2>
+		<h2>{ __( 'General', 'poocommerce-payments' ) }</h2>
 		<p>
 			{ sprintf(
 				/* translators: %s: WooPayments */
 				__(
 					'Enable or disable %s on your store.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				'WooPayments'
 			) }
@@ -66,15 +66,15 @@ const GeneralSettingsDescription = () => (
 
 const TransactionsDescription = () => (
 	<>
-		<h2>{ __( 'Transactions', 'woocommerce-payments' ) }</h2>
+		<h2>{ __( 'Transactions', 'poocommerce-payments' ) }</h2>
 		<p>
 			{ __(
 				"Update your store's configuration to ensure smooth transactions.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			) }
 		</p>
-		<ExternalLink href="https://woocommerce.com/document/woopayments/">
-			{ __( 'View our documentation', 'woocommerce-payments' ) }
+		<ExternalLink href="https://poocommerce.com/document/woopayments/">
+			{ __( 'View our documentation', 'poocommerce-payments' ) }
 		</ExternalLink>
 	</>
 );
@@ -84,20 +84,20 @@ const DepositsDescription = () => {
 
 	return (
 		<>
-			<h2>{ __( 'Payouts', 'woocommerce-payments' ) }</h2>
+			<h2>{ __( 'Payouts', 'poocommerce-payments' ) }</h2>
 			<p>
 				{ sprintf(
 					__(
 						'Funds are available for payout %s business days after they’re received.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					depositDelayDays
 				) }
 			</p>
-			<ExternalLink href="https://woocommerce.com/document/woopayments/payouts/payout-schedule/">
+			<ExternalLink href="https://poocommerce.com/document/woopayments/payouts/payout-schedule/">
 				{ __(
 					'Learn more about pending schedules',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				) }
 			</ExternalLink>
 		</>
@@ -107,17 +107,17 @@ const DepositsDescription = () => {
 const FraudProtectionDescription = () => {
 	return (
 		<>
-			<h2>{ __( 'Fraud protection', 'woocommerce-payments' ) }</h2>
+			<h2>{ __( 'Fraud protection', 'poocommerce-payments' ) }</h2>
 			<p>
 				{ __(
 					'Help avoid unauthorized transactions and disputes by setting your fraud protection level.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				) }
 			</p>
-			<ExternalLink href="https://woocommerce.com/document/woopayments/fraud-and-disputes/fraud-protection/">
+			<ExternalLink href="https://poocommerce.com/document/woopayments/fraud-and-disputes/fraud-protection/">
 				{ __(
 					'Learn more about fraud protection',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				) }
 			</ExternalLink>
 		</>
@@ -127,11 +127,11 @@ const FraudProtectionDescription = () => {
 const ReportingDescription = () => {
 	return (
 		<>
-			<h2>{ __( 'Reporting', 'woocommerce-payments' ) }</h2>
+			<h2>{ __( 'Reporting', 'poocommerce-payments' ) }</h2>
 			<p>
 				{ __(
 					'Adjust your report exporting language preferences.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				) }
 			</p>
 		</>
@@ -141,15 +141,15 @@ const ReportingDescription = () => {
 const AdvancedDescription = () => {
 	return (
 		<>
-			<h2>{ __( 'Advanced settings', 'woocommerce-payments' ) }</h2>
+			<h2>{ __( 'Advanced settings', 'poocommerce-payments' ) }</h2>
 			<p>
 				{ __(
 					'More options for specific payment needs.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				) }
 			</p>
-			<ExternalLink href="https://woocommerce.com/document/woopayments/settings-guide/#advanced-settings">
-				{ __( 'View our documentation', 'woocommerce-payments' ) }
+			<ExternalLink href="https://poocommerce.com/document/woopayments/settings-guide/#advanced-settings">
+				{ __( 'View our documentation', 'poocommerce-payments' ) }
 			</ExternalLink>
 		</>
 	);
@@ -175,7 +175,7 @@ const SettingsManager = () => {
 			}
 
 			const headerElement = document.querySelector(
-				'.woocommerce-layout__header'
+				'.poocommerce-layout__header'
 			);
 			const headerSize = headerElement ? headerElement.clientHeight : 60;
 			const headerOffset = headerSize + 50; // header size + margin

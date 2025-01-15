@@ -65,7 +65,7 @@ jQuery( ( $ ) => {
 	let wcPayECEError = '';
 	const defaultErrorMessage = __(
 		'There was an error getting the product information.',
-		'woocommerce-payments'
+		'poocommerce-payments'
 	);
 
 	/**
@@ -109,19 +109,19 @@ jQuery( ( $ ) => {
 			payment.paymentFailed( { reason: 'fail' } );
 			onAbortPaymentHandler();
 
-			$( '.woocommerce-error' ).remove();
+			$( '.poocommerce-error' ).remove();
 
-			const $container = $( '.woocommerce-notices-wrapper' ).first();
+			const $container = $( '.poocommerce-notices-wrapper' ).first();
 
 			if ( $container.length ) {
 				$container.append(
-					$( '<div class="woocommerce-error" />' ).text( message )
+					$( '<div class="poocommerce-error" />' ).text( message )
 				);
 
 				$( 'html, body' ).animate(
 					{
 						scrollTop: $container
-							.find( '.woocommerce-error' )
+							.find( '.poocommerce-error' )
 							.offset().top,
 					},
 					600
@@ -283,14 +283,14 @@ jQuery( ( $ ) => {
 									?.i18n_unavailable_text ||
 									__(
 										'Sorry, this product is unavailable. Please choose a different combination.',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									)
 							);
 						} else {
 							window.alert(
 								__(
 									'Please select your product options before proceeding.',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								)
 							);
 						}
@@ -415,9 +415,9 @@ jQuery( ( $ ) => {
 		},
 
 		attachProductPageEventListeners: ( elements, eceButton ) => {
-			// WooCommerce Deposits support.
-			// Trigger the "woocommerce_variation_has_changed" event when the deposit option is changed.
-			// Needs to be defined before the `woocommerce_variation_has_changed` event handler is set.
+			// PooCommerce Deposits support.
+			// Trigger the "poocommerce_variation_has_changed" event when the deposit option is changed.
+			// Needs to be defined before the `poocommerce_variation_has_changed` event handler is set.
 			$(
 				'input[name=wc_deposit_option],input[name=wc_deposit_payment_plan]'
 			)
@@ -427,12 +427,12 @@ jQuery( ( $ ) => {
 						.has(
 							'input[name=wc_deposit_option],input[name=wc_deposit_payment_plan]'
 						)
-						.trigger( 'woocommerce_variation_has_changed' );
+						.trigger( 'poocommerce_variation_has_changed' );
 				} );
 
 			$( document.body )
-				.off( 'woocommerce_variation_has_changed' )
-				.on( 'woocommerce_variation_has_changed', () => {
+				.off( 'poocommerce_variation_has_changed' )
+				.on( 'poocommerce_variation_has_changed', () => {
 					expressCheckoutButtonUi.blockButton();
 
 					$.when( wcpayECE.getSelectedProductData() )

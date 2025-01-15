@@ -1,8 +1,8 @@
 <?php
 /**
- * WooCommerce Payments Currency Switcher Widget
+ * PooCommerce Payments Currency Switcher Widget
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\MultiCurrency;
@@ -47,23 +47,23 @@ class CurrencySwitcherWidget extends WC_Widget {
 		$this->compatibility  = $compatibility;
 
 		$this->widget_id          = 'currency_switcher_widget';
-		$this->widget_name        = __( 'Currency Switcher Widget', 'woocommerce-payments' );
-		$this->widget_description = __( 'Let your customers switch between your enabled currencies', 'woocommerce-payments' );
+		$this->widget_name        = __( 'Currency Switcher Widget', 'poocommerce-payments' );
+		$this->widget_description = __( 'Let your customers switch between your enabled currencies', 'poocommerce-payments' );
 		$this->settings           = [
 			'title'  => [
 				'type'  => 'text',
 				'std'   => '',
-				'label' => __( 'Title', 'woocommerce-payments' ),
+				'label' => __( 'Title', 'poocommerce-payments' ),
 			],
 			'symbol' => [
 				'type'  => 'checkbox',
 				'std'   => true,
-				'label' => __( 'Display currency symbols', 'woocommerce-payments' ),
+				'label' => __( 'Display currency symbols', 'poocommerce-payments' ),
 			],
 			'flag'   => [
 				'type'  => 'checkbox',
 				'std'   => false,
-				'label' => __( 'Display flags in supported devices', 'woocommerce-payments' ),
+				'label' => __( 'Display flags in supported devices', 'poocommerce-payments' ),
 			],
 		];
 

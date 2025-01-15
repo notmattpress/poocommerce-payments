@@ -14,35 +14,35 @@ const status: {
 } = {
 	warning_needs_response: {
 		type: 'warning',
-		message: __( 'Inquiry: Needs response', 'woocommerce-payments' ),
+		message: __( 'Inquiry: Needs response', 'poocommerce-payments' ),
 	},
 	warning_under_review: {
 		type: 'primary',
-		message: __( 'Inquiry: Under review', 'woocommerce-payments' ),
+		message: __( 'Inquiry: Under review', 'poocommerce-payments' ),
 	},
 	warning_closed: {
 		type: 'light',
-		message: __( 'Inquiry: Closed', 'woocommerce-payments' ),
+		message: __( 'Inquiry: Closed', 'poocommerce-payments' ),
 	},
 	needs_response: {
 		type: 'warning',
-		message: __( 'Needs response', 'woocommerce-payments' ),
+		message: __( 'Needs response', 'poocommerce-payments' ),
 	},
 	under_review: {
 		type: 'primary',
-		message: __( 'Under review', 'woocommerce-payments' ),
+		message: __( 'Under review', 'poocommerce-payments' ),
 	},
 	charge_refunded: {
 		type: 'light',
-		message: __( 'Charge refunded', 'woocommerce-payments' ),
+		message: __( 'Charge refunded', 'poocommerce-payments' ),
 	},
 	won: {
 		type: 'success',
-		message: __( 'Won', 'woocommerce-payments' ),
+		message: __( 'Won', 'poocommerce-payments' ),
 	},
 	lost: {
 		type: 'light',
-		message: __( 'Lost', 'woocommerce-payments' ),
+		message: __( 'Lost', 'poocommerce-payments' ),
 	},
 };
 

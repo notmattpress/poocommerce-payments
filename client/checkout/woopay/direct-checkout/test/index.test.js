@@ -175,7 +175,7 @@ describe( 'WooPay direct checkout cart item listeners', () => {
 		await new Promise( ( resolve ) => setImmediate( resolve ) );
 
 		await wpHookCallbacks[
-			'experimental__woocommerce_blocks-cart-add-item'
+			'experimental__poocommerce_blocks-cart-add-item'
 		]();
 
 		expect(
@@ -197,7 +197,7 @@ describe( 'WooPay direct checkout cart item listeners', () => {
 		await new Promise( ( resolve ) => setImmediate( resolve ) );
 
 		await wpHookCallbacks[
-			'experimental__woocommerce_blocks-cart-add-item'
+			'experimental__poocommerce_blocks-cart-add-item'
 		]();
 
 		expect(

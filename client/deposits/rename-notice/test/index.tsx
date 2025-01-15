@@ -16,7 +16,7 @@ jest.mock( '@wordpress/data', () => ( {
 	useDispatch: jest.fn().mockReturnValue( { updateOptions: jest.fn() } ),
 } ) );
 
-jest.mock( '@woocommerce/components', () => ( {
+jest.mock( '@poocommerce/components', () => ( {
 	TourKit: () => <div>Tour Component</div>,
 } ) );
 

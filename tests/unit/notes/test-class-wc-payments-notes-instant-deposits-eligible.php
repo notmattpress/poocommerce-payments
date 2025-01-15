@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Notes_Instant_Deposits_Eligible_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 /**

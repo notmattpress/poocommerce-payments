@@ -23,13 +23,13 @@ const DownloadButton: React.FunctionComponent< DownloadButtonProps > = ( {
 	onClick,
 } ) => (
 	<Button
-		className="woocommerce-table__download-button"
+		className="poocommerce-table__download-button"
 		disabled={ isDisabled }
 		onClick={ onClick }
 	>
 		<CloudDownloadIcon />
-		<span className="woocommerce-table__download-button__label">
-			{ __( 'Download', 'woocommerce-payments' ) }
+		<span className="poocommerce-table__download-button__label">
+			{ __( 'Download', 'poocommerce-payments' ) }
 		</span>
 	</Button>
 );

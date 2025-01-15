@@ -2,7 +2,7 @@
 /**
  * Compatibility_Service class
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay;
@@ -20,7 +20,7 @@ class Compatibility_Service {
 	const UPDATE_COMPATIBILITY_DATA = 'wcpay_update_compatibility_data';
 
 	/**
-	 * Client for making requests to the WooCommerce Payments API
+	 * Client for making requests to the PooCommerce Payments API
 	 *
 	 * @var WC_Payments_API_Client
 	 */
@@ -29,7 +29,7 @@ class Compatibility_Service {
 	/**
 	 * Constructor for Compatibility_Service.
 	 *
-	 * @param WC_Payments_API_Client $payments_api_client WooCommerce Payments API client.
+	 * @param WC_Payments_API_Client $payments_api_client PooCommerce Payments API client.
 	 */
 	public function __construct( WC_Payments_API_Client $payments_api_client ) {
 		$this->payments_api_client = $payments_api_client;
@@ -41,7 +41,7 @@ class Compatibility_Service {
 	 * @return void
 	 */
 	public function init_hooks() {
-		add_action( 'woocommerce_payments_account_refreshed', [ $this, 'update_compatibility_data' ] );
+		add_action( 'poocommerce_payments_account_refreshed', [ $this, 'update_compatibility_data' ] );
 		add_action( 'after_switch_theme', [ $this, 'update_compatibility_data' ] );
 		add_filter( 'wc_payments_get_onboarding_data_args', [ $this, 'add_compatibility_onboarding_data' ] );
 	}
@@ -85,18 +85,18 @@ class Compatibility_Service {
 	private function get_compatibility_data(): array {
 		$active_plugins        = get_option( 'active_plugins', [] );
 		$post_types_count      = $this->get_post_types_count();
-		$wc_permalinks         = get_option( 'woocommerce_permalinks', [] );
+		$wc_permalinks         = get_option( 'poocommerce_permalinks', [] );
 		$wc_shop_permalink     = $this->get_permalink_for_page_id( 'shop' );
 		$wc_cart_permalink     = $this->get_permalink_for_page_id( 'cart' );
 		$wc_checkout_permalink = $this->get_permalink_for_page_id( 'checkout' );
 
 		return [
 			'woopayments_version'    => WCPAY_VERSION_NUMBER,
-			'woocommerce_version'    => WC_VERSION,
-			'woocommerce_permalinks' => $wc_permalinks,
-			'woocommerce_shop'       => $wc_shop_permalink,
-			'woocommerce_cart'       => $wc_cart_permalink,
-			'woocommerce_checkout'   => $wc_checkout_permalink,
+			'poocommerce_version'    => WC_VERSION,
+			'poocommerce_permalinks' => $wc_permalinks,
+			'poocommerce_shop'       => $wc_shop_permalink,
+			'poocommerce_cart'       => $wc_cart_permalink,
+			'poocommerce_checkout'   => $wc_checkout_permalink,
 			'blog_theme'             => get_stylesheet(),
 			'active_plugins'         => $active_plugins,
 			'post_types_count'       => $post_types_count,

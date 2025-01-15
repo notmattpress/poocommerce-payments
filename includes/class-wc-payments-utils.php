@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Utils
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -240,51 +240,51 @@ class WC_Payments_Utils {
 
 	/**
 	 * List of countries enabled for Stripe platform account. See also this URL:
-	 * https://woocommerce.com/document/woopayments/compatibility/countries/#supported-countries
+	 * https://poocommerce.com/document/woopayments/compatibility/countries/#supported-countries
 	 *
 	 * @return string[]
 	 */
 	public static function supported_countries(): array {
 		return [
-			Country_Code::UNITED_ARAB_EMIRATES => __( 'United Arab Emirates', 'woocommerce-payments' ),
-			Country_Code::AUSTRIA              => __( 'Austria', 'woocommerce-payments' ),
-			Country_Code::AUSTRALIA            => __( 'Australia', 'woocommerce-payments' ),
-			Country_Code::BELGIUM              => __( 'Belgium', 'woocommerce-payments' ),
-			Country_Code::BULGARIA             => __( 'Bulgaria', 'woocommerce-payments' ),
-			Country_Code::CANADA               => __( 'Canada', 'woocommerce-payments' ),
-			Country_Code::SWITZERLAND          => __( 'Switzerland', 'woocommerce-payments' ),
-			Country_Code::CYPRUS               => __( 'Cyprus', 'woocommerce-payments' ),
-			Country_Code::CZECHIA              => __( 'Czech Republic', 'woocommerce-payments' ),
-			Country_Code::GERMANY              => __( 'Germany', 'woocommerce-payments' ),
-			Country_Code::DENMARK              => __( 'Denmark', 'woocommerce-payments' ),
-			Country_Code::ESTONIA              => __( 'Estonia', 'woocommerce-payments' ),
-			Country_Code::FINLAND              => __( 'Finland', 'woocommerce-payments' ),
-			Country_Code::SPAIN                => __( 'Spain', 'woocommerce-payments' ),
-			Country_Code::FRANCE               => __( 'France', 'woocommerce-payments' ),
-			Country_Code::CROATIA              => __( 'Croatia', 'woocommerce-payments' ),
-			Country_Code::JAPAN                => __( 'Japan', 'woocommerce-payments' ),
-			Country_Code::LUXEMBOURG           => __( 'Luxembourg', 'woocommerce-payments' ),
-			Country_Code::UNITED_KINGDOM       => __( 'United Kingdom (UK)', 'woocommerce-payments' ),
-			Country_Code::GREECE               => __( 'Greece', 'woocommerce-payments' ),
-			Country_Code::HONG_KONG            => __( 'Hong Kong', 'woocommerce-payments' ),
-			Country_Code::HUNGARY              => __( 'Hungary', 'woocommerce-payments' ),
-			Country_Code::IRELAND              => __( 'Ireland', 'woocommerce-payments' ),
-			Country_Code::ITALY                => __( 'Italy', 'woocommerce-payments' ),
-			Country_Code::LITHUANIA            => __( 'Lithuania', 'woocommerce-payments' ),
-			Country_Code::LATVIA               => __( 'Latvia', 'woocommerce-payments' ),
-			Country_Code::MALTA                => __( 'Malta', 'woocommerce-payments' ),
-			Country_Code::NETHERLANDS          => __( 'Netherlands', 'woocommerce-payments' ),
-			Country_Code::NORWAY               => __( 'Norway', 'woocommerce-payments' ),
-			Country_Code::NEW_ZEALAND          => __( 'New Zealand', 'woocommerce-payments' ),
-			Country_Code::POLAND               => __( 'Poland', 'woocommerce-payments' ),
-			Country_Code::PORTUGAL             => __( 'Portugal', 'woocommerce-payments' ),
-			Country_Code::ROMANIA              => __( 'Romania', 'woocommerce-payments' ),
-			Country_Code::SWEDEN               => __( 'Sweden', 'woocommerce-payments' ),
-			Country_Code::SLOVENIA             => __( 'Slovenia', 'woocommerce-payments' ),
-			Country_Code::SLOVAKIA             => __( 'Slovakia', 'woocommerce-payments' ),
-			Country_Code::SINGAPORE            => __( 'Singapore', 'woocommerce-payments' ),
-			Country_Code::UNITED_STATES        => __( 'United States (US)', 'woocommerce-payments' ),
-			Country_Code::PUERTO_RICO          => __( 'Puerto Rico', 'woocommerce-payments' ),
+			Country_Code::UNITED_ARAB_EMIRATES => __( 'United Arab Emirates', 'poocommerce-payments' ),
+			Country_Code::AUSTRIA              => __( 'Austria', 'poocommerce-payments' ),
+			Country_Code::AUSTRALIA            => __( 'Australia', 'poocommerce-payments' ),
+			Country_Code::BELGIUM              => __( 'Belgium', 'poocommerce-payments' ),
+			Country_Code::BULGARIA             => __( 'Bulgaria', 'poocommerce-payments' ),
+			Country_Code::CANADA               => __( 'Canada', 'poocommerce-payments' ),
+			Country_Code::SWITZERLAND          => __( 'Switzerland', 'poocommerce-payments' ),
+			Country_Code::CYPRUS               => __( 'Cyprus', 'poocommerce-payments' ),
+			Country_Code::CZECHIA              => __( 'Czech Republic', 'poocommerce-payments' ),
+			Country_Code::GERMANY              => __( 'Germany', 'poocommerce-payments' ),
+			Country_Code::DENMARK              => __( 'Denmark', 'poocommerce-payments' ),
+			Country_Code::ESTONIA              => __( 'Estonia', 'poocommerce-payments' ),
+			Country_Code::FINLAND              => __( 'Finland', 'poocommerce-payments' ),
+			Country_Code::SPAIN                => __( 'Spain', 'poocommerce-payments' ),
+			Country_Code::FRANCE               => __( 'France', 'poocommerce-payments' ),
+			Country_Code::CROATIA              => __( 'Croatia', 'poocommerce-payments' ),
+			Country_Code::JAPAN                => __( 'Japan', 'poocommerce-payments' ),
+			Country_Code::LUXEMBOURG           => __( 'Luxembourg', 'poocommerce-payments' ),
+			Country_Code::UNITED_KINGDOM       => __( 'United Kingdom (UK)', 'poocommerce-payments' ),
+			Country_Code::GREECE               => __( 'Greece', 'poocommerce-payments' ),
+			Country_Code::HONG_KONG            => __( 'Hong Kong', 'poocommerce-payments' ),
+			Country_Code::HUNGARY              => __( 'Hungary', 'poocommerce-payments' ),
+			Country_Code::IRELAND              => __( 'Ireland', 'poocommerce-payments' ),
+			Country_Code::ITALY                => __( 'Italy', 'poocommerce-payments' ),
+			Country_Code::LITHUANIA            => __( 'Lithuania', 'poocommerce-payments' ),
+			Country_Code::LATVIA               => __( 'Latvia', 'poocommerce-payments' ),
+			Country_Code::MALTA                => __( 'Malta', 'poocommerce-payments' ),
+			Country_Code::NETHERLANDS          => __( 'Netherlands', 'poocommerce-payments' ),
+			Country_Code::NORWAY               => __( 'Norway', 'poocommerce-payments' ),
+			Country_Code::NEW_ZEALAND          => __( 'New Zealand', 'poocommerce-payments' ),
+			Country_Code::POLAND               => __( 'Poland', 'poocommerce-payments' ),
+			Country_Code::PORTUGAL             => __( 'Portugal', 'poocommerce-payments' ),
+			Country_Code::ROMANIA              => __( 'Romania', 'poocommerce-payments' ),
+			Country_Code::SWEDEN               => __( 'Sweden', 'poocommerce-payments' ),
+			Country_Code::SLOVENIA             => __( 'Slovenia', 'poocommerce-payments' ),
+			Country_Code::SLOVAKIA             => __( 'Slovakia', 'poocommerce-payments' ),
+			Country_Code::SINGAPORE            => __( 'Singapore', 'poocommerce-payments' ),
+			Country_Code::UNITED_STATES        => __( 'United States (US)', 'poocommerce-payments' ),
+			Country_Code::PUERTO_RICO          => __( 'Puerto Rico', 'poocommerce-payments' ),
 		];
 	}
 
@@ -307,7 +307,7 @@ class WC_Payments_Utils {
 	 * @return array The charge_id(s) for the order or subscription.
 	 */
 	public static function get_charge_ids_from_search_term( $term ) {
-		$order_term = __( 'Order #', 'woocommerce-payments' );
+		$order_term = __( 'Order #', 'poocommerce-payments' );
 		if ( substr( $term, 0, strlen( $order_term ) ) === $order_term ) {
 			$term_parts = explode( $order_term, $term, 2 );
 			$order_id   = isset( $term_parts[1] ) ? $term_parts[1] : '';
@@ -317,7 +317,7 @@ class WC_Payments_Utils {
 			}
 		}
 
-		$subscription_term = __( 'Subscription #', 'woocommerce-payments' );
+		$subscription_term = __( 'Subscription #', 'poocommerce-payments' );
 		if ( function_exists( 'wcs_get_subscription' ) && substr( $term, 0, strlen( $subscription_term ) ) === $subscription_term ) {
 			$term_parts      = explode( $subscription_term, $term, 2 );
 			$subscription_id = isset( $term_parts[1] ) ? $term_parts[1] : '';
@@ -550,7 +550,7 @@ class WC_Payments_Utils {
 			is_admin()
 			&& $current_tab && $current_section
 			&& 'checkout' === $current_tab
-			&& 0 === strpos( $current_section, 'woocommerce_payments' )
+			&& 0 === strpos( $current_section, 'poocommerce_payments' )
 		);
 	}
 
@@ -661,7 +661,7 @@ class WC_Payments_Utils {
 		// These notices can be shown when placing an order or adding a new payment method, so we aim for
 		// more generic messages instead of specific order/payment messages when the API Exception is redacted.
 		if ( $e instanceof Connection_Exception ) {
-			$error_message = __( 'There was an error while processing this request. If you continue to see this notice, please contact the admin.', 'woocommerce-payments' );
+			$error_message = __( 'There was an error while processing this request. If you continue to see this notice, please contact the admin.', 'poocommerce-payments' );
 		} elseif ( $e instanceof Amount_Too_Small_Exception ) {
 			$minimum_amount = $e->get_minimum_amount();
 			$currency       = $e->get_currency();
@@ -675,18 +675,18 @@ class WC_Payments_Utils {
 				// translators: %s a formatted price.
 				__(
 					'The selected payment method requires a total amount of at least %s.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				wp_strip_all_tags( html_entity_decode( $price ) )
 			);
 		} elseif ( $e instanceof API_Exception && 'amount_too_large' === $e->get_error_code() ) {
 			$error_message = $e->getMessage();
 		} elseif ( $e instanceof API_Exception && 'wcpay_bad_request' === $e->get_error_code() ) {
-			$error_message = __( 'We\'re not able to process this request. Please refresh the page and try again.', 'woocommerce-payments' );
+			$error_message = __( 'We\'re not able to process this request. Please refresh the page and try again.', 'poocommerce-payments' );
 		} elseif ( $e instanceof API_Exception && ! empty( $e->get_error_type() ) && 'card_error' !== $e->get_error_type() ) {
-			$error_message = __( 'We\'re not able to process this request. Please refresh the page and try again.', 'woocommerce-payments' );
+			$error_message = __( 'We\'re not able to process this request. Please refresh the page and try again.', 'poocommerce-payments' );
 		} elseif ( $e instanceof API_Exception && 'card_error' === $e->get_error_type() && 'incorrect_zip' === $e->get_error_code() && ! $blocked_by_fraud_rules ) {
-			$error_message = __( 'We couldn’t verify the postal code in your billing address. Make sure the information is current with your card issuing bank and try again.', 'woocommerce-payments' );
+			$error_message = __( 'We couldn’t verify the postal code in your billing address. Make sure the information is current with your card issuing bank and try again.', 'poocommerce-payments' );
 		}
 
 		return $error_message;
@@ -1030,13 +1030,13 @@ class WC_Payments_Utils {
 
 	/**
 	 * Return the currency format based on the symbol position.
-	 * Similar to get_woocommerce_price_format but with an input.
+	 * Similar to get_poocommerce_price_format but with an input.
 	 *
 	 * @param string $currency_pos currency symbol position.
 	 *
 	 * @return string The currency format.
 	 */
-	public static function get_woocommerce_price_format( string $currency_pos ): string {
+	public static function get_poocommerce_price_format( string $currency_pos ): string {
 		$default_left = '%1$s%2$s';
 
 		switch ( $currency_pos ) {
@@ -1079,7 +1079,7 @@ class WC_Payments_Utils {
 					$currency_format_for_wc_price['decimals'] = $format;
 					break;
 				case 'currency_pos':
-					$currency_format_for_wc_price['price_format'] = self::get_woocommerce_price_format( $format );
+					$currency_format_for_wc_price['price_format'] = self::get_poocommerce_price_format( $format );
 					break;
 			}
 		}
@@ -1153,7 +1153,7 @@ class WC_Payments_Utils {
 	 * @return bool True if HPOS tables are enabled and being used.
 	 */
 	public static function is_hpos_tables_usage_enabled() {
-		return class_exists( '\Automattic\WooCommerce\Utilities\OrderUtil' ) && \Automattic\WooCommerce\Utilities\OrderUtil::custom_orders_table_usage_is_enabled();
+		return class_exists( '\Automattic\PooCommerce\Utilities\OrderUtil' ) && \Automattic\PooCommerce\Utilities\OrderUtil::custom_orders_table_usage_is_enabled();
 	}
 
 	/**
@@ -1181,34 +1181,34 @@ class WC_Payments_Utils {
 	public static function get_dispute_reason_description( string $reason ): string {
 		switch ( $reason ) {
 			case 'bank_cannot_process':
-				return __( 'Bank cannot process', 'woocommerce-payments' );
+				return __( 'Bank cannot process', 'poocommerce-payments' );
 			case 'check_returned':
-				return __( 'Check returned', 'woocommerce-payments' );
+				return __( 'Check returned', 'poocommerce-payments' );
 			case 'credit_not_processed':
-				return __( 'Credit not processed', 'woocommerce-payments' );
+				return __( 'Credit not processed', 'poocommerce-payments' );
 			case 'customer_initiated':
-				return __( 'Customer initiated', 'woocommerce-payments' );
+				return __( 'Customer initiated', 'poocommerce-payments' );
 			case 'debit_not_authorized':
-				return __( 'Debit not authorized', 'woocommerce-payments' );
+				return __( 'Debit not authorized', 'poocommerce-payments' );
 			case 'duplicate':
-				return __( 'Duplicate', 'woocommerce-payments' );
+				return __( 'Duplicate', 'poocommerce-payments' );
 			case 'fraudulent':
-				return __( 'Transaction unauthorized', 'woocommerce-payments' );
+				return __( 'Transaction unauthorized', 'poocommerce-payments' );
 			case 'incorrect_account_details':
-				return __( 'Incorrect account details', 'woocommerce-payments' );
+				return __( 'Incorrect account details', 'poocommerce-payments' );
 			case 'insufficient_funds':
-				return __( 'Insufficient funds', 'woocommerce-payments' );
+				return __( 'Insufficient funds', 'poocommerce-payments' );
 			case 'product_not_received':
-				return __( 'Product not received', 'woocommerce-payments' );
+				return __( 'Product not received', 'poocommerce-payments' );
 			case 'product_unacceptable':
-				return __( 'Product unacceptable', 'woocommerce-payments' );
+				return __( 'Product unacceptable', 'poocommerce-payments' );
 			case 'subscription_canceled':
-				return __( 'Subscription canceled', 'woocommerce-payments' );
+				return __( 'Subscription canceled', 'poocommerce-payments' );
 			case 'unrecognized':
-				return __( 'Unrecognized', 'woocommerce-payments' );
+				return __( 'Unrecognized', 'poocommerce-payments' );
 			default:
 			case 'general':
-				return __( 'General', 'woocommerce-payments' );
+				return __( 'General', 'poocommerce-payments' );
 		}
 	}
 
@@ -1327,7 +1327,7 @@ class WC_Payments_Utils {
 	 * @return bool True if the current page is the cart page, false otherwise.
 	 */
 	public static function is_cart_page(): bool {
-		return is_cart() || has_block( 'woocommerce/cart' );
+		return is_cart() || has_block( 'poocommerce/cart' );
 	}
 
 	/**
@@ -1339,7 +1339,7 @@ class WC_Payments_Utils {
 	 * @psalm-suppress UndefinedFunction
 	 */
 	public static function is_cart_block(): bool {
-		return has_block( 'woocommerce/cart' ) || ( wp_is_block_theme() && is_cart() );
+		return has_block( 'poocommerce/cart' ) || ( wp_is_block_theme() && is_cart() );
 	}
 
 	/**
@@ -1348,7 +1348,7 @@ class WC_Payments_Utils {
 	 * @return bool True if request is a Store API request, false otherwise.
 	 */
 	public static function is_store_api_request(): bool {
-		// @TODO We should move to a more robust way of getting to the route, like WC is doing in the StoreAPI library. https://github.com/woocommerce/woocommerce/blob/9ac48232a944baa2dbfaa7dd47edf9027cca9519/plugins/woocommerce/src/StoreApi/Authentication.php#L15-L15
+		// @TODO We should move to a more robust way of getting to the route, like WC is doing in the StoreAPI library. https://github.com/poocommerce/poocommerce/blob/9ac48232a944baa2dbfaa7dd47edf9027cca9519/plugins/poocommerce/src/StoreApi/Authentication.php#L15-L15
 		if ( isset( $_REQUEST['rest_route'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification
 			$rest_route = sanitize_text_field( $_REQUEST['rest_route'] ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.NonceVerification
 		} else {

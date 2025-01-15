@@ -2,15 +2,15 @@
 /**
  * Class WC_Payments_Onboarding_Service
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-use Automattic\WooCommerce\Admin\Notes\DataStore;
-use Automattic\WooCommerce\Admin\Notes\Note;
+use Automattic\PooCommerce\Admin\Notes\DataStore;
+use Automattic\PooCommerce\Admin\Notes\Note;
 use WCPay\Database_Cache;
 use WCPay\Exceptions\API_Exception;
 use WCPay\Logger;
@@ -69,7 +69,7 @@ class WC_Payments_Onboarding_Service {
 	const FROM_STRIPE_EMBEDDED  = 'STRIPE_EMBEDDED';
 
 	/**
-	 * Client for making requests to the WooCommerce Payments API
+	 * Client for making requests to the PooCommerce Payments API
 	 *
 	 * @var WC_Payments_API_Client
 	 */
@@ -351,7 +351,7 @@ class WC_Payments_Onboarding_Service {
 		$details_submitted = $result['details_submitted'] ?? false;
 
 		if ( ! $result || ! $success ) {
-			throw new API_Exception( __( 'Failed to finalize onboarding session.', 'woocommerce-payments' ), 'wcpay-onboarding-finalize-error', 400 );
+			throw new API_Exception( __( 'Failed to finalize onboarding session.', 'poocommerce-payments' ), 'wcpay-onboarding-finalize-error', 400 );
 		}
 
 		// Clear the embedded KYC in progress option, since the onboarding flow is now complete.
@@ -439,7 +439,7 @@ class WC_Payments_Onboarding_Service {
 		// Onboarding needs to hide wp-admin navigation and masterbar while JS loads.
 		// This class will be removed by the onboarding component.
 		if ( isset( $_GET['path'] ) && '/payments/onboarding' === $_GET['path'] ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended
-			$classes .= ' woocommerce-admin-is-loading';
+			$classes .= ' poocommerce-admin-is-loading';
 		}
 
 		return $classes;
@@ -627,7 +627,7 @@ class WC_Payments_Onboarding_Service {
 			return $where_clause . " AND name like 'wcpay-promo-%'";
 		};
 
-		add_filter( 'woocommerce_note_where_clauses', $add_like_clause );
+		add_filter( 'poocommerce_note_where_clauses', $add_like_clause );
 
 		$wcpay_promo_notes = $data_store->get_notes(
 			[
@@ -637,7 +637,7 @@ class WC_Payments_Onboarding_Service {
 			]
 		);
 
-		remove_filter( 'woocommerce_note_where_clauses', $add_like_clause );
+		remove_filter( 'poocommerce_note_where_clauses', $add_like_clause );
 
 		// If we didn't get an array back from the data store, return an empty array of results.
 		if ( ! is_array( $wcpay_promo_notes ) ) {
@@ -1072,7 +1072,7 @@ class WC_Payments_Onboarding_Service {
 
 		/**
 		 * Keeps the list of enabled payment method IDs synchronized between the default
-		 * `woocommerce_woocommerce_payments_settings` and duplicates in individual gateway settings.
+		 * `poocommerce_poocommerce_payments_settings` and duplicates in individual gateway settings.
 		 */
 		foreach ( $enabled_payment_methods as $payment_method_id ) {
 			$payment_gateway = WC_Payments::get_payment_gateway_by_id( $payment_method_id );

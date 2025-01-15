@@ -3,7 +3,7 @@ const path = require( 'path' );
 const { mapValues } = require( 'lodash' );
 const { ProvidePlugin } = require( 'webpack' );
 const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
-const WooCommerceDependencyExtractionWebpackPlugin = require( '@woocommerce/dependency-extraction-webpack-plugin' );
+const PooCommerceDependencyExtractionWebpackPlugin = require( '@poocommerce/dependency-extraction-webpack-plugin' );
 const WebpackRTLPlugin = require( './webpack-rtl-plugin' );
 
 module.exports = {
@@ -143,7 +143,7 @@ module.exports = {
 		new WebpackRTLPlugin( {
 			filenameSuffix: '-rtl.css',
 		} ),
-		new WooCommerceDependencyExtractionWebpackPlugin( {
+		new PooCommerceDependencyExtractionWebpackPlugin( {
 			injectPolyfill: true,
 			requestToExternal( request ) {
 				switch ( request ) {

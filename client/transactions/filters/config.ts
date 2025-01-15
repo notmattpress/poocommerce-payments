@@ -2,7 +2,7 @@
  * External dependencies
  */
 import { __, _x, sprintf } from '@wordpress/i18n';
-import { getSetting } from '@woocommerce/settings';
+import { getSetting } from '@poocommerce/settings';
 
 /**
  * Internal dependencies
@@ -51,8 +51,8 @@ const loanSelectionOptions = loanDefinitions.map( ( loanDefinition ) => {
 		'ID: %s | %s',
 		loanDefinitionSplitted[ 0 ],
 		'active' === loanDefinitionSplitted[ 1 ]
-			? __( 'In Progress', 'woocommerce-payments' )
-			: __( 'Paid in Full', 'woocommerce-payments' )
+			? __( 'In Progress', 'poocommerce-payments' )
+			: __( 'Paid in Full', 'poocommerce-payments' )
 	);
 
 	return { label: loanDisplayValue, value: loanDefinitionSplitted[ 0 ] };
@@ -88,7 +88,7 @@ export const getFilters = (
 ): [ TransactionsFilterType, TransactionsFilterType ] => {
 	return [
 		{
-			label: __( 'Deposit currency', 'woocommerce-payments' ),
+			label: __( 'Deposit currency', 'poocommerce-payments' ),
 			param: 'store_currency_is',
 			staticParams: [
 				'paged',
@@ -115,7 +115,7 @@ export const getFilters = (
 			showFilters: () => showDepositCurrencyFilter,
 			filters: [
 				{
-					label: __( 'All currencies', 'woocommerce-payments' ),
+					label: __( 'All currencies', 'poocommerce-payments' ),
 					value: '---',
 				},
 				...depositCurrencyOptions,
@@ -123,7 +123,7 @@ export const getFilters = (
 			defaultValue: '---',
 		},
 		{
-			label: __( 'Show', 'woocommerce-payments' ),
+			label: __( 'Show', 'poocommerce-payments' ),
 			param: 'filter',
 			staticParams: [
 				'paged',
@@ -136,11 +136,11 @@ export const getFilters = (
 			showFilters: () => true,
 			filters: [
 				{
-					label: __( 'All transactions', 'woocommerce-payments' ),
+					label: __( 'All transactions', 'poocommerce-payments' ),
 					value: 'all',
 				},
 				{
-					label: __( 'Advanced filters', 'woocommerce-payments' ),
+					label: __( 'Advanced filters', 'poocommerce-payments' ),
 					value: 'advanced',
 				},
 			],
@@ -156,7 +156,7 @@ export const getFilters = (
 export const getAdvancedFilters = (
 	customerCurrencyOptions?: TransactionsFilterEntryType[]
 ): any => {
-	// TODO: Remove this and all the checks once we drop support of WooCommerce 7.7 and below.
+	// TODO: Remove this and all the checks once we drop support of PooCommerce 7.7 and below.
 	const wooCommerceVersionString = getSetting( 'wcVersion' );
 	const wooCommerceVersion = parseFloat( wooCommerceVersionString ); // This will parse 7.7.1 to 7.7, but it's fine for this purpose
 
@@ -166,52 +166,52 @@ export const getAdvancedFilters = (
 			wooCommerceVersion < 7.8
 				? __(
 						'Transactions match {{select /}} filters',
-						'woocommerce-payments'
+						'poocommerce-payments'
 				  )
 				: __(
 						'Transactions match <select /> filters',
-						'woocommerce-payments'
+						'poocommerce-payments'
 				  ),
 		filters: {
 			date: {
 				labels: {
-					add: __( 'Date', 'woocommerce-payments' ),
+					add: __( 'Date', 'poocommerce-payments' ),
 					remove: __(
 						'Remove transaction date filter',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					rule: __(
 						'Select a transaction date filter match',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					/* translators: A sentence describing a Transaction date filter. */
 					title:
 						wooCommerceVersion < 7.8
 							? __(
 									'{{title}}Date{{/title}} {{rule /}} {{filter /}}',
-									'woocommerce-payments'
+									'poocommerce-payments'
 							  )
 							: __(
 									'<title>Date</title> <rule /> <filter />',
-									'woocommerce-payments'
+									'poocommerce-payments'
 							  ),
 					filter: __(
 						'Select a transaction date',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 				},
 				rules: [
 					{
 						value: 'before',
-						label: __( 'Before', 'woocommerce-payments' ),
+						label: __( 'Before', 'poocommerce-payments' ),
 					},
 					{
 						value: 'after',
-						label: __( 'After', 'woocommerce-payments' ),
+						label: __( 'After', 'poocommerce-payments' ),
 					},
 					{
 						value: 'between',
-						label: __( 'Between', 'woocommerce-payments' ),
+						label: __( 'Between', 'poocommerce-payments' ),
 					},
 				],
 				input: {
@@ -220,29 +220,29 @@ export const getAdvancedFilters = (
 			},
 			customer_currency: {
 				labels: {
-					add: __( 'Customer currency', 'woocommerce-payments' ),
+					add: __( 'Customer currency', 'poocommerce-payments' ),
 					remove: __(
 						'Remove transaction customer currency filter',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					rule: __(
 						'Select a transaction customer currency filter match',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					/* translators: A sentence describing a Transaction customer currency filter. */
 					title:
 						wooCommerceVersion < 7.8
 							? __(
 									'{{title}}Customer currency{{/title}} {{rule /}} {{filter /}}',
-									'woocommerce-payments'
+									'poocommerce-payments'
 							  )
 							: __(
 									'<title>Customer currency</title> <rule /> <filter />',
-									'woocommerce-payments'
+									'poocommerce-payments'
 							  ),
 					filter: __(
 						'Select a customer currency',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 				},
 				rules: [
@@ -252,7 +252,7 @@ export const getAdvancedFilters = (
 						label: _x(
 							'Is',
 							'transaction customer currency',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						),
 					},
 					{
@@ -261,7 +261,7 @@ export const getAdvancedFilters = (
 						label: _x(
 							'Is not',
 							'transaction customer currency',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						),
 					},
 				],
@@ -272,29 +272,29 @@ export const getAdvancedFilters = (
 			},
 			type: {
 				labels: {
-					add: __( 'Type', 'woocommerce-payments' ),
+					add: __( 'Type', 'poocommerce-payments' ),
 					remove: __(
 						'Remove transaction type filter',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					rule: __(
 						'Select a transaction type filter match',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					/* translators: A sentence describing a Transaction type filter. */
 					title:
 						wooCommerceVersion < 7.8
 							? __(
 									'{{title}}Type{{/title}} {{rule /}} {{filter /}}',
-									'woocommerce-payments'
+									'poocommerce-payments'
 							  )
 							: __(
 									'<title>Type</title> <rule /> <filter />',
-									'woocommerce-payments'
+									'poocommerce-payments'
 							  ),
 					filter: __(
 						'Select a transaction type',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 				},
 				rules: [
@@ -304,7 +304,7 @@ export const getAdvancedFilters = (
 						label: _x(
 							'Is',
 							'transaction type',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						),
 					},
 					{
@@ -313,7 +313,7 @@ export const getAdvancedFilters = (
 						label: _x(
 							'Is not',
 							'transaction type',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						),
 					},
 				],
@@ -324,21 +324,21 @@ export const getAdvancedFilters = (
 			},
 			loan_id_is: {
 				labels: {
-					add: __( 'Loan', 'woocommerce-payments' ),
-					remove: __( 'Remove loan filter', 'woocommerce-payments' ),
-					rule: __( 'Select a loan', 'woocommerce-payments' ),
+					add: __( 'Loan', 'poocommerce-payments' ),
+					remove: __( 'Remove loan filter', 'poocommerce-payments' ),
+					rule: __( 'Select a loan', 'poocommerce-payments' ),
 					/* translators: A sentence describing a Loan ID filter. */
 					title:
 						wooCommerceVersion < 7.8
 							? __(
 									'{{title}}Loan{{/title}} {{rule /}} {{filter /}}',
-									'woocommerce-payments'
+									'poocommerce-payments'
 							  )
 							: __(
 									'<title>Loan</title> <rule /> <filter />',
-									'woocommerce-payments'
+									'poocommerce-payments'
 							  ),
-					filter: __( 'Select a loan', 'woocommerce-payments' ),
+					filter: __( 'Select a loan', 'poocommerce-payments' ),
 				},
 				input: {
 					component: 'SelectControl',
@@ -348,29 +348,29 @@ export const getAdvancedFilters = (
 			},
 			source_device: {
 				labels: {
-					add: __( 'Device Type', 'woocommerce-payments' ),
+					add: __( 'Device Type', 'poocommerce-payments' ),
 					remove: __(
 						'Remove transaction device type filter',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					rule: __(
 						'Select a transaction device type filter match',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					/* translators: A sentence describing a Transaction Device Type filter. */
 					title:
 						wooCommerceVersion < 7.8
 							? __(
 									'{{title}}Device type{{/title}} {{rule /}} {{filter /}}',
-									'woocommerce-payments'
+									'poocommerce-payments'
 							  )
 							: __(
 									'<title>Device type</title> <rule /> <filter />',
-									'woocommerce-payments'
+									'poocommerce-payments'
 							  ),
 					filter: __(
 						'Select a transaction device type',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 				},
 				rules: [
@@ -380,7 +380,7 @@ export const getAdvancedFilters = (
 						label: _x(
 							'Is',
 							'Source device',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						),
 					},
 					{
@@ -389,7 +389,7 @@ export const getAdvancedFilters = (
 						label: _x(
 							'Is not',
 							'Source device',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						),
 					},
 				],
@@ -400,36 +400,36 @@ export const getAdvancedFilters = (
 			},
 			channel: {
 				labels: {
-					add: __( 'Channel', 'woocommerce-payments' ),
+					add: __( 'Channel', 'poocommerce-payments' ),
 					remove: __(
 						'Remove transaction channel filter',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					rule: __(
 						'Select a transaction channel filter match',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					/* translators: A sentence describing a Transaction Channel filter. */
 					title:
 						wooCommerceVersion < 7.8
 							? __(
 									'{{title}}Channel{{/title}} {{rule /}} {{filter /}}',
-									'woocommerce-payments'
+									'poocommerce-payments'
 							  )
 							: __(
 									'<title>Channel</title> <rule /> <filter />',
-									'woocommerce-payments'
+									'poocommerce-payments'
 							  ),
 					filter: __(
 						'Select a transaction channel',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 				},
 				rules: [
 					{
 						value: 'is',
 						/* translators: Sentence fragment, logical, "Is" refers to searching for transactions matching a chosen transaction channel type. */
-						label: _x( 'Is', 'Channel', 'woocommerce-payments' ),
+						label: _x( 'Is', 'Channel', 'poocommerce-payments' ),
 					},
 					{
 						value: 'is_not',
@@ -437,7 +437,7 @@ export const getAdvancedFilters = (
 						label: _x(
 							'Is not',
 							'Channel',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						),
 					},
 				],
@@ -448,29 +448,29 @@ export const getAdvancedFilters = (
 			},
 			customer_country: {
 				labels: {
-					add: __( 'Customer Country', 'woocommerce-payments' ),
+					add: __( 'Customer Country', 'poocommerce-payments' ),
 					remove: __(
 						'Remove transaction customer country filter',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					rule: __(
 						'Select a transaction customer country filter match',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					/* translators: A sentence describing a Transaction customer country. */
 					title:
 						wooCommerceVersion < 7.8
 							? __(
 									'{{title}}Customer country{{/title}} {{rule /}} {{filter /}}',
-									'woocommerce-payments'
+									'poocommerce-payments'
 							  )
 							: __(
 									'<title>Customer country</title> <rule /> <filter />',
-									'woocommerce-payments'
+									'poocommerce-payments'
 							  ),
 					filter: __(
 						'Select a transaction customer country',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 				},
 				rules: [
@@ -480,7 +480,7 @@ export const getAdvancedFilters = (
 						label: _x(
 							'Is',
 							'Customer Country',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						),
 					},
 					{
@@ -489,7 +489,7 @@ export const getAdvancedFilters = (
 						label: _x(
 							'Is not',
 							'Customer Country',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						),
 					},
 				],
@@ -500,36 +500,36 @@ export const getAdvancedFilters = (
 			},
 			risk_level: {
 				labels: {
-					add: __( 'Risk Level', 'woocommerce-payments' ),
+					add: __( 'Risk Level', 'poocommerce-payments' ),
 					remove: __(
 						'Remove transaction Risk Level filter',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					rule: __(
 						'Select a transaction Risk Level filter match',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					/* translators: A sentence describing a Transaction Risk Level filter. */
 					title:
 						wooCommerceVersion < 7.8
 							? __(
 									'{{title}}Risk Level{{/title}} {{rule /}} {{filter /}}',
-									'woocommerce-payments'
+									'poocommerce-payments'
 							  )
 							: __(
 									'<title>Risk Level</title> <rule /> <filter />',
-									'woocommerce-payments'
+									'poocommerce-payments'
 							  ),
 					filter: __(
 						'Select a transaction Risk Level',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 				},
 				rules: [
 					{
 						value: 'is',
 						/* translators: Sentence fragment, logical, "Is" refers to searching for transactions matching a chosen transaction risk level. */
-						label: _x( 'Is', 'Risk Level', 'woocommerce-payments' ),
+						label: _x( 'Is', 'Risk Level', 'poocommerce-payments' ),
 					},
 					{
 						value: 'is_not',
@@ -537,7 +537,7 @@ export const getAdvancedFilters = (
 						label: _x(
 							'Is not',
 							'Risk Level',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						),
 					},
 				],

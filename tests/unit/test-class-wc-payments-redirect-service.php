@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Redirect_Service_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\Core\Server\Request\Get_Account_Capital_Link;

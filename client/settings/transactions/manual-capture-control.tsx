@@ -52,25 +52,25 @@ const ManualCaptureControl = (): JSX.Element => {
 				data-testid={ 'capture-later-checkbox' }
 				label={ __(
 					'Issue an authorization on checkout, and capture later',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				) }
 				help={
 					<span>
 						{ __(
 							'Charge must be captured on the order details screen within 7 days of authorization, ' +
 								'otherwise the authorization and order will be canceled.',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 						{ isCardPresentEligible
 							? interpolateComponents( {
 									mixedString: __(
 										/** translators: {{a}}: opening and closing anchor tags. The white space at the beginning of the sentence is intentional. */
 										' The setting is not applied to {{a}}In-Person Payments{{/a}} (please note that In-Person Payments should be captured within 2 days of authorization).',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									),
 									components: {
 										a: (
-											<ExternalLink href="https://woocommerce.com/in-person-payments/" />
+											<ExternalLink href="https://poocommerce.com/in-person-payments/" />
 										),
 									},
 							  } )
@@ -82,12 +82,12 @@ const ManualCaptureControl = (): JSX.Element => {
 				<ConfirmationModal
 					title={ __(
 						'Enable manual capture',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 					actions={
 						<>
 							<Button onClick={ handleModalCancel } isSecondary>
-								{ __( 'Cancel', 'woocommerce-payments' ) }
+								{ __( 'Cancel', 'poocommerce-payments' ) }
 							</Button>
 							<Button
 								onClick={ handleModalConfirmation }
@@ -95,7 +95,7 @@ const ManualCaptureControl = (): JSX.Element => {
 							>
 								{ __(
 									'Enable manual capture',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								) }
 							</Button>
 						</>
@@ -105,19 +105,19 @@ const ManualCaptureControl = (): JSX.Element => {
 					<strong>
 						{ __(
 							'Payments must be captured within 7 days or the authorization will expire and money will be returned to the shopper.',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 					</strong>
 					<p>
 						{ __(
 							'Additionally, only card payments support manual capture. Non-card payments will be hidden from checkout.',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 					</p>
 					<p>
 						{ __(
 							'Do you want to continue?',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 					</p>
 				</ConfirmationModal>

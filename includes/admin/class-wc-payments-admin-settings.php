@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Admin_Settings
  *
- * @package WooCommerce\Payments\Admin
+ * @package PooCommerce\Payments\Admin
  */
 
 /**
@@ -43,7 +43,7 @@ class WC_Payments_Admin_Settings {
 	 * @return void
 	 */
 	public function init_hooks() {
-		add_action( 'woocommerce_woocommerce_payments_admin_notices', [ $this, 'display_test_mode_notice' ] );
+		add_action( 'poocommerce_poocommerce_payments_admin_notices', [ $this, 'display_test_mode_notice' ] );
 		add_filter( 'plugin_action_links_' . plugin_basename( WCPAY_PLUGIN_FILE ), [ $this, 'add_plugin_links' ] );
 	}
 
@@ -55,11 +55,11 @@ class WC_Payments_Admin_Settings {
 			?>
 			<div id="wcpay-test-mode-notice" class="notice notice-warning">
 				<p>
-					<b><?php esc_html_e( 'Test mode active: ', 'woocommerce-payments' ); ?></b>
+					<b><?php esc_html_e( 'Test mode active: ', 'poocommerce-payments' ); ?></b>
 					<?php
 						printf(
 							/* translators: %s: WooPayments */
-							esc_html__( "All transactions are simulated. Customers can't make real purchases through %s.", 'woocommerce-payments' ),
+							esc_html__( "All transactions are simulated. Customers can't make real purchases through %s.", 'poocommerce-payments' ),
 							'WooPayments'
 						);
 					?>
@@ -78,7 +78,7 @@ class WC_Payments_Admin_Settings {
 	 */
 	public function add_plugin_links( $links ) {
 		$plugin_links = [
-			'<a href="' . esc_attr( self::get_settings_url() ) . '">' . esc_html__( 'Settings', 'woocommerce-payments' ) . '</a>',
+			'<a href="' . esc_attr( self::get_settings_url() ) . '">' . esc_html__( 'Settings', 'poocommerce-payments' ) . '</a>',
 		];
 
 		return array_merge( $plugin_links, $links );

@@ -72,10 +72,10 @@ const CVSExportModal: React.FunctionComponent< CSVExportModalProps > = ( {
 	const buttonContent = (
 		<>
 			<Button isSecondary onClick={ onClose }>
-				{ __( 'Cancel', 'woocommerce-payments' ) }
+				{ __( 'Cancel', 'poocommerce-payments' ) }
 			</Button>
 			<Button isPrimary onClick={ onDownload }>
-				{ __( 'Download', 'woocommerce-payments' ) }
+				{ __( 'Download', 'poocommerce-payments' ) }
 			</Button>
 		</>
 	);
@@ -85,14 +85,14 @@ const CVSExportModal: React.FunctionComponent< CSVExportModalProps > = ( {
 			case 'transactions':
 				return __(
 					'Export transactions report',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				);
 			case 'deposits':
-				return __( 'Export deposits report', 'woocommerce-payments' );
+				return __( 'Export deposits report', 'poocommerce-payments' );
 			case 'disputes':
-				return __( 'Export disputes report', 'woocommerce-payments' );
+				return __( 'Export disputes report', 'poocommerce-payments' );
 			default:
-				return __( 'Export report', 'woocommerce-payments' );
+				return __( 'Export report', 'poocommerce-payments' );
 		}
 	};
 
@@ -101,22 +101,22 @@ const CVSExportModal: React.FunctionComponent< CSVExportModalProps > = ( {
 			case 'transactions':
 				return __(
 					'Exporting {{total/}} transactions…',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				);
 			case 'deposits':
 				return __(
 					'Exporting {{total/}} deposits…',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				);
 			case 'disputes':
 				return __(
 					'Exporting {{total/}} disputes…',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				);
 			default:
 				return __(
 					'Exporting {{total/}} rows…',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				);
 		}
 	};
@@ -126,20 +126,20 @@ const CVSExportModal: React.FunctionComponent< CSVExportModalProps > = ( {
 			case 'transactions':
 				return __(
 					'Export transactions report in',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				);
 			case 'deposits':
 				return __(
 					'Export deposits report in',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				);
 			case 'disputes':
 				return __(
 					'Export disputes report in',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				);
 			default:
-				return __( 'Export report in', 'woocommerce-payments' );
+				return __( 'Export report in', 'poocommerce-payments' );
 		}
 	};
 
@@ -194,12 +194,12 @@ const CVSExportModal: React.FunctionComponent< CSVExportModalProps > = ( {
 					<CheckboxControl
 						label={ __(
 							'Remember the language settings.',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 						help={ interpolateComponents( {
 							mixedString: __(
 								"Don't worry, you can always change this later in the {{learnMoreLink}}Payment Settings{{/learnMoreLink}}",
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							components: {
 								learnMoreLink: (
@@ -208,7 +208,7 @@ const CVSExportModal: React.FunctionComponent< CSVExportModalProps > = ( {
 										href={ getAdminUrl( {
 											page: 'wc-settings',
 											tab: 'checkout',
-											section: 'woocommerce_payments',
+											section: 'poocommerce_payments',
 										} ) }
 									/>
 								),

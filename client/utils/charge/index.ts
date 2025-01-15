@@ -185,11 +185,11 @@ export const getChargeAmounts = ( charge: Charge ): ChargeAmounts => {
 export const getTransactionChannel = ( channel: string ): string => {
 	switch ( channel ) {
 		case 'in_person':
-			return __( 'In-Person', 'woocommerce-payments' );
+			return __( 'In-Person', 'poocommerce-payments' );
 		case 'in_person_pos':
-			return __( 'In-Person (POS)', 'woocommerce-payments' );
+			return __( 'In-Person (POS)', 'poocommerce-payments' );
 		default:
-			return __( 'Online', 'woocommerce-payments' );
+			return __( 'Online', 'poocommerce-payments' );
 	}
 };
 
@@ -213,10 +213,10 @@ export const getChargeChannel = (
 ): string => {
 	if ( type === 'card_present' || type === 'interac_present' ) {
 		if ( metadata?.ipp_channel === 'mobile_pos' ) {
-			return __( 'In-Person (POS)', 'woocommerce-payments' );
+			return __( 'In-Person (POS)', 'poocommerce-payments' );
 		}
-		return __( 'In-Person', 'woocommerce-payments' );
+		return __( 'In-Person', 'poocommerce-payments' );
 	}
 
-	return __( 'Online', 'woocommerce-payments' );
+	return __( 'Online', 'poocommerce-payments' );
 };

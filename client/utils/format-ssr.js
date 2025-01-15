@@ -125,8 +125,8 @@ Taxonomies: Product Types: ${ printTerms( systemStatus.settings.taxonomies ) }
 Taxonomies: Product Visibility: ${ printTerms(
 		systemStatus.settings.product_visibility_terms
 	) }
-Connected to WooCommerce.com: ${
-		systemStatus.settings.woocommerce_com_connected === 'yes'
+Connected to PooCommerce.com: ${
+		systemStatus.settings.poocommerce_com_connected === 'yes'
 			? CHECK_MARK
 			: DASH_MARK
 	}
@@ -147,18 +147,18 @@ Child Theme: ${
 		systemStatus.theme.is_child_theme
 			? CHECK_MARK
 			: CROSS_MARK +
-			  ' - If you are modifying WooCommerce on a parent theme that you did not build personally we recommend using a child theme.'
+			  ' - If you are modifying PooCommerce on a parent theme that you did not build personally we recommend using a child theme.'
 	}
-WooCommerce Support: ${
-		systemStatus.theme.has_woocommerce_support ? CHECK_MARK : CROSS_MARK
+PooCommerce Support: ${
+		systemStatus.theme.has_poocommerce_support ? CHECK_MARK : CROSS_MARK
 	}
 
 ### Templates ###
 
 ${
-	systemStatus.theme.has_woocommerce_file
+	systemStatus.theme.has_poocommerce_file
 		? 'Archive Template: ' +
-		  'Your theme has a woocommerce.php file, you will not be able to override the woocommerce/archive-product.php custom template.'
+		  'Your theme has a poocommerce.php file, you will not be able to override the poocommerce/archive-product.php custom template.'
 		: ''
 }
 Overrides: ${
@@ -176,7 +176,7 @@ ${
 		: ''
 }
 
-### WooCommerce Payments ###
+### PooCommerce Payments ###
 
 Connected to WPCOM: ${
 		wcPayData.status === 'NOACCOUNT' ||
@@ -208,7 +208,7 @@ function printDatabaseDetails( database ) {
 			'Database Index Size: ' +
 			dbSize.index.toFixed( 2 ) +
 			'MB\n';
-		result += printTables( dbTables.woocommerce );
+		result += printTables( dbTables.poocommerce );
 		result += printTables( dbTables.other );
 	} else {
 		result = 'Unable to retrieve database information.';

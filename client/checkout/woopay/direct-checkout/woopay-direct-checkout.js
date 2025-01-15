@@ -19,9 +19,9 @@ class WooPayDirectCheckout {
 	static redirectElements = {
 		CLASSIC_CART_PROCEED_BUTTON: '.wc-proceed-to-checkout .checkout-button',
 		BLOCKS_CART_PROCEED_BUTTON:
-			'.wp-block-woocommerce-proceed-to-checkout-block',
+			'.wp-block-poocommerce-proceed-to-checkout-block',
 		BLOCKS_MINI_CART_PROCEED_BUTTON:
-			'a.wp-block-woocommerce-mini-cart-checkout-button-block',
+			'a.wp-block-poocommerce-mini-cart-checkout-button-block',
 		BLOCKS_FOOTER_MINI_CART_PROCEED_BUTTON:
 			'a.wc-block-mini-cart__footer-checkout',
 		CLASSIC_MINI_CART_PROCEED_BUTTON:
@@ -338,7 +338,7 @@ class WooPayDirectCheckout {
 			// If the button is in the mini cart, add a spinner.
 			if (
 				element.classList.contains(
-					'wp-block-woocommerce-mini-cart-checkout-button-block'
+					'wp-block-poocommerce-mini-cart-checkout-button-block'
 				) ||
 				element.classList.contains(
 					'wc-block-mini-cart__footer-checkout'

@@ -73,7 +73,7 @@ function DuplicateNotice( {
 			{ interpolateComponents( {
 				mixedString: __(
 					'This payment method is enabled by other extensions. {{reviewExtensions}}Review extensions{{/reviewExtensions}} to improve the shopper experience.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				components: {
 					reviewExtensions: (

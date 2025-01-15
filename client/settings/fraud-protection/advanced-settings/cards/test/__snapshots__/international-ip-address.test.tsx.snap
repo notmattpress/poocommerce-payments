@@ -334,7 +334,7 @@ exports[`International IP address card renders correctly when enabled and checke
 </div>
 `;
 
-exports[`International IP address card renders correctly when woocommerce_allowed_countries is all 1`] = `
+exports[`International IP address card renders correctly when poocommerce_allowed_countries is all 1`] = `
 <div>
   <div
     class="components-surface components-card fraud-protection-rule-card css-nsno0f-View-Surface-getBorders-primary-Card-rounded em57xhy0"
@@ -454,7 +454,7 @@ exports[`International IP address card renders correctly when woocommerce_allowe
 </div>
 `;
 
-exports[`International IP address card renders correctly when woocommerce_allowed_countries is all_except 1`] = `
+exports[`International IP address card renders correctly when poocommerce_allowed_countries is all_except 1`] = `
 <div>
   <div
     class="components-surface components-card fraud-protection-rule-card css-nsno0f-View-Surface-getBorders-primary-Card-rounded em57xhy0"
@@ -619,7 +619,7 @@ exports[`International IP address card renders correctly when woocommerce_allowe
 </div>
 `;
 
-exports[`International IP address card renders correctly when woocommerce_allowed_countries is specific 1`] = `
+exports[`International IP address card renders correctly when poocommerce_allowed_countries is specific 1`] = `
 <div>
   <div
     class="components-surface components-card fraud-protection-rule-card css-nsno0f-View-Surface-getBorders-primary-Card-rounded em57xhy0"

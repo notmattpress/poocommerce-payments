@@ -2,7 +2,7 @@
 /**
  * Class WC_Payment_Gateway_WCPay_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use PHPUnit\Framework\MockObject\MockObject;
@@ -706,24 +706,24 @@ class WC_Payment_Gateway_WCPay_Process_Payment_Test extends WCPAY_UnitTestCase {
 	}
 
 	/**
-	 * Tests that woocommerce_order_status_pending action is not called when the $_POST 'is-woopay-preflight-check' is present.
+	 * Tests that poocommerce_order_status_pending action is not called when the $_POST 'is-woopay-preflight-check' is present.
 	 */
-	public function test_woopay_preflight_request_does_not_call_woocommerce_order_status_pending() {
-		// Arrange: Add woocommerce_order_status_pending action to check if it's called.
+	public function test_woopay_preflight_request_does_not_call_poocommerce_order_status_pending() {
+		// Arrange: Add poocommerce_order_status_pending action to check if it's called.
 		$results = [
-			'has_called_woocommerce_order_status_pending' => false,
+			'has_called_poocommerce_order_status_pending' => false,
 		];
 		add_action(
-			'woocommerce_order_status_pending',
+			'poocommerce_order_status_pending',
 			function () use ( &$results ) {
-				$results['has_called_woocommerce_order_status_pending'] = true;
+				$results['has_called_poocommerce_order_status_pending'] = true;
 			}
 		);
 
 		// Arrange: Add filter to change default order status to 'wc-checkout-draft'.
 		// Needed to avoid a default order status of 'pending'.
 		add_filter(
-			'woocommerce_default_order_status',
+			'poocommerce_default_order_status',
 			function () {
 				return 'wc-checkout-draft';
 			}
@@ -754,11 +754,11 @@ class WC_Payment_Gateway_WCPay_Process_Payment_Test extends WCPAY_UnitTestCase {
 		// Act: process payment.
 		$this->mock_wcpay_gateway->process_payment( $order->get_id() );
 
-		// Assert: woocommerce_order_status_pending was not called.
-		$this->assertFalse( $results['has_called_woocommerce_order_status_pending'] );
+		// Assert: poocommerce_order_status_pending was not called.
+		$this->assertFalse( $results['has_called_poocommerce_order_status_pending'] );
 
-		remove_all_actions( 'woocommerce_order_status_pending' );
-		remove_all_filters( 'woocommerce_default_order_status' );
+		remove_all_actions( 'poocommerce_order_status_pending' );
+		remove_all_filters( 'poocommerce_default_order_status' );
 	}
 
 	/**
@@ -820,7 +820,7 @@ class WC_Payment_Gateway_WCPay_Process_Payment_Test extends WCPAY_UnitTestCase {
 		$this->assertEquals( 'Order status changed from Pending payment to Failed.', $notes[1]->content );
 		$this->assertStringContainsString( "A payment of &#36;50.00 failed to complete with the following message: $error_message", strip_tags( $notes[0]->content, '' ) );
 
-		// Assert: A WooCommerce notice was added.
+		// Assert: A PooCommerce notice was added.
 		$error_notices = WC()->session->get( 'wc_notices' );
 		$this->assertNotEmpty( $error_notices );
 		$this->assertEquals( $error_notice, $error_notices['error'][0]['notice'] );
@@ -1115,7 +1115,7 @@ class WC_Payment_Gateway_WCPay_Process_Payment_Test extends WCPAY_UnitTestCase {
 			->with( $intent->get_payment_method_id(), $order->get_user() )
 			->will( $this->returnValue( new WC_Payment_Token_CC() ) );
 
-		$_POST['wc-woocommerce_payments-new-payment-method'] = 'true';
+		$_POST['wc-poocommerce_payments-new-payment-method'] = 'true';
 
 		$this->mock_wcpay_gateway->process_payment( $order->get_id() );
 	}

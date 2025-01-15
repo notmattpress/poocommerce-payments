@@ -2,7 +2,7 @@
 /**
  * Class WC_REST_Payments_Settings_Controller
  *
- * @package WooCommerce\Payments\Admin
+ * @package PooCommerce\Payments\Admin
  */
 
 use WCPay\Constants\Payment_Method;
@@ -80,14 +80,14 @@ class WC_REST_Payments_Settings_Controller extends WC_Payments_REST_Controller {
 					'is_wcpay_enabled'                     => [
 						'description'       => sprintf(
 							/* translators: %s: WooPayments */
-							__( 'If %s should be enabled.', 'woocommerce-payments' ),
+							__( 'If %s should be enabled.', 'poocommerce-payments' ),
 							'WooPayments'
 						),
 						'type'              => 'boolean',
 						'validate_callback' => 'rest_validate_request_arg',
 					],
 					'enabled_payment_method_ids'           => [
-						'description'       => __( 'Payment method IDs that should be enabled. Other methods will be disabled.', 'woocommerce-payments' ),
+						'description'       => __( 'Payment method IDs that should be enabled. Other methods will be disabled.', 'poocommerce-payments' ),
 						'type'              => 'array',
 						'items'             => [
 							'type' => 'string',
@@ -98,7 +98,7 @@ class WC_REST_Payments_Settings_Controller extends WC_Payments_REST_Controller {
 					'is_manual_capture_enabled'            => [
 						'description'       => sprintf(
 						/* translators: %s: WooPayments */
-							__( 'If %s manual capture of charges should be enabled.', 'woocommerce-payments' ),
+							__( 'If %s manual capture of charges should be enabled.', 'poocommerce-payments' ),
 							'WooPayments'
 						),
 						'type'              => 'boolean',
@@ -107,7 +107,7 @@ class WC_REST_Payments_Settings_Controller extends WC_Payments_REST_Controller {
 					'is_saved_cards_enabled'               => [
 						'description'       => sprintf(
 							/* translators: %s: WooPayments */
-							__( 'If %s "Saved cards" should be enabled.', 'woocommerce-payments' ),
+							__( 'If %s "Saved cards" should be enabled.', 'poocommerce-payments' ),
 							'WooPayments'
 						),
 						'type'              => 'boolean',
@@ -116,7 +116,7 @@ class WC_REST_Payments_Settings_Controller extends WC_Payments_REST_Controller {
 					'is_test_mode_enabled'                 => [
 						'description'       => sprintf(
 							/* translators: %s: WooPayments */
-							__( '%s test mode setting.', 'woocommerce-payments' ),
+							__( '%s test mode setting.', 'poocommerce-payments' ),
 							'WooPayments'
 						),
 						'type'              => 'boolean',
@@ -125,7 +125,7 @@ class WC_REST_Payments_Settings_Controller extends WC_Payments_REST_Controller {
 					'is_multi_currency_enabled'            => [
 						'description'       => sprintf(
 							/* translators: %s: WooPayments */
-							__( '%s Multi-Currency feature flag setting.', 'woocommerce-payments' ),
+							__( '%s Multi-Currency feature flag setting.', 'poocommerce-payments' ),
 							'WooPayments'
 						),
 						'type'              => 'boolean',
@@ -134,7 +134,7 @@ class WC_REST_Payments_Settings_Controller extends WC_Payments_REST_Controller {
 					'is_wcpay_subscription_enabled'        => [
 						'description'       => sprintf(
 							/* translators: %s: WooPayments */
-							__( '%s Subscriptions feature flag setting.', 'woocommerce-payments' ),
+							__( '%s Subscriptions feature flag setting.', 'poocommerce-payments' ),
 							'WooPayments'
 						),
 						'type'              => 'boolean',
@@ -143,78 +143,78 @@ class WC_REST_Payments_Settings_Controller extends WC_Payments_REST_Controller {
 					'account_statement_descriptor'         => [
 						'description'       => sprintf(
 							/* translators: %s: WooPayments */
-							__( '%s bank account descriptor to be displayed in customers\' bank accounts.', 'woocommerce-payments' ),
+							__( '%s bank account descriptor to be displayed in customers\' bank accounts.', 'poocommerce-payments' ),
 							'WooPayments'
 						),
 						'type'              => 'string',
 						'validate_callback' => [ $this, 'validate_statement_descriptor' ],
 					],
 					'account_business_name'                => [
-						'description' => __( 'The customer-facing business name.', 'woocommerce-payments' ),
+						'description' => __( 'The customer-facing business name.', 'poocommerce-payments' ),
 						'type'        => 'string',
 					],
 					'account_business_url'                 => [
-						'description' => __( 'The business’s publicly available website.', 'woocommerce-payments' ),
+						'description' => __( 'The business’s publicly available website.', 'poocommerce-payments' ),
 						'type'        => 'string',
 					],
 					'account_business_support_address'     => [
-						'description'       => __( 'A publicly available mailing address for sending support issues to.', 'woocommerce-payments' ),
+						'description'       => __( 'A publicly available mailing address for sending support issues to.', 'poocommerce-payments' ),
 						'type'              => 'object',
 						'validate_callback' => [ $this, 'validate_business_support_address' ],
 					],
 					'account_business_support_email'       => [
-						'description'       => __( 'A publicly available email address for sending support issues to.', 'woocommerce-payments' ),
+						'description'       => __( 'A publicly available email address for sending support issues to.', 'poocommerce-payments' ),
 						'type'              => 'string',
 						'validate_callback' => [ $this, 'validate_business_support_email_address' ],
 					],
 					'account_business_support_phone'       => [
-						'description'       => __( 'A publicly available phone number to call with support issues.', 'woocommerce-payments' ),
+						'description'       => __( 'A publicly available phone number to call with support issues.', 'poocommerce-payments' ),
 						'type'              => 'string',
 						'validate_callback' => [ $this, 'validate_business_support_phone' ],
 					],
 					'account_branding_logo'                => [
-						'description' => __( 'A logo id for the account that will be used in Checkout', 'woocommerce-payments' ),
+						'description' => __( 'A logo id for the account that will be used in Checkout', 'poocommerce-payments' ),
 						'type'        => 'string',
 					],
 					'account_branding_icon'                => [
-						'description' => __( 'An icon for the account.', 'woocommerce-payments' ),
+						'description' => __( 'An icon for the account.', 'poocommerce-payments' ),
 						'type'        => 'string',
 					],
 					'account_branding_primary_color'       => [
-						'description' => __( 'A CSS hex color value representing the primary branding color for this account.', 'woocommerce-payments' ),
+						'description' => __( 'A CSS hex color value representing the primary branding color for this account.', 'poocommerce-payments' ),
 						'type'        => 'string',
 					],
 					'account_branding_secondary_color'     => [
-						'description' => __( 'A CSS hex color value representing the secondary branding color for this account.', 'woocommerce-payments' ),
+						'description' => __( 'A CSS hex color value representing the secondary branding color for this account.', 'poocommerce-payments' ),
 						'type'        => 'string',
 					],
 					'deposit_schedule_interval'            => [
-						'description' => __( 'An interval for deposit scheduling.', 'woocommerce-payments' ),
+						'description' => __( 'An interval for deposit scheduling.', 'poocommerce-payments' ),
 						'type'        => 'string',
 					],
 					'deposit_schedule_weekly_anchor'       => [
-						'description' => __( 'Weekly anchor for deposit scheduling when interval is set to weekly', 'woocommerce-payments' ),
+						'description' => __( 'Weekly anchor for deposit scheduling when interval is set to weekly', 'poocommerce-payments' ),
 						'type'        => 'string',
 					],
 					'deposit_schedule_monthly_anchor'      => [
-						'description' => __( 'Monthly anchor for deposit scheduling when interval is set to monthly', 'woocommerce-payments' ),
+						'description' => __( 'Monthly anchor for deposit scheduling when interval is set to monthly', 'poocommerce-payments' ),
 						'type'        => [ 'integer', 'null' ],
 					],
 					'reporting_export_language'            => [
-						'description' => __( 'The language for an exported report for transactions, deposits, or disputes.', 'woocommerce-payments' ),
+						'description' => __( 'The language for an exported report for transactions, deposits, or disputes.', 'poocommerce-payments' ),
 						'type'        => 'string',
 					],
 					'is_payment_request_enabled'           => [
 						'description'       => sprintf(
 							/* translators: %s: WooPayments */
-							__( 'If %s express checkouts should be enabled.', 'woocommerce-payments' ),
+							__( 'If %s express checkouts should be enabled.', 'poocommerce-payments' ),
 							'WooPayments'
 						),
 						'type'              => 'boolean',
 						'validate_callback' => 'rest_validate_request_arg',
 					],
 					'payment_request_enabled_locations'    => [
-						'description'       => __( 'Express checkout locations that should be enabled.', 'woocommerce-payments' ),
+						'description'       => __( 'Express checkout locations that should be enabled.', 'poocommerce-payments' ),
 						'type'              => 'array',
 						'items'             => [
 							'type' => 'string',
@@ -223,7 +223,7 @@ class WC_REST_Payments_Settings_Controller extends WC_Payments_REST_Controller {
 						'validate_callback' => 'rest_validate_request_arg',
 					],
 					'payment_request_button_type'          => [
-						'description'       => __( '1-click checkout button types.', 'woocommerce-payments' ),
+						'description'       => __( '1-click checkout button types.', 'poocommerce-payments' ),
 						'type'              => 'string',
 						'items'             => [
 							'type' => 'string',
@@ -232,7 +232,7 @@ class WC_REST_Payments_Settings_Controller extends WC_Payments_REST_Controller {
 						'validate_callback' => 'rest_validate_request_arg',
 					],
 					'payment_request_button_size'          => [
-						'description'       => __( '1-click checkout button sizes.', 'woocommerce-payments' ),
+						'description'       => __( '1-click checkout button sizes.', 'poocommerce-payments' ),
 						'type'              => 'string',
 						'items'             => [
 							'type' => 'string',
@@ -242,7 +242,7 @@ class WC_REST_Payments_Settings_Controller extends WC_Payments_REST_Controller {
 						'validate_callback' => 'rest_validate_request_arg',
 					],
 					'payment_request_button_theme'         => [
-						'description'       => __( '1-click checkout button themes.', 'woocommerce-payments' ),
+						'description'       => __( '1-click checkout button themes.', 'poocommerce-payments' ),
 						'type'              => 'string',
 						'items'             => [
 							'type' => 'string',
@@ -251,27 +251,27 @@ class WC_REST_Payments_Settings_Controller extends WC_Payments_REST_Controller {
 						'validate_callback' => 'rest_validate_request_arg',
 					],
 					'payment_request_button_border_radius' => [
-						'description'       => __( '1-click checkout button border radius.', 'woocommerce-payments' ),
+						'description'       => __( '1-click checkout button border radius.', 'poocommerce-payments' ),
 						'type'              => 'integer',
 						'validate_callback' => 'rest_validate_request_arg',
 					],
 					'is_woopay_enabled'                    => [
-						'description'       => __( 'If WooPay should be enabled.', 'woocommerce-payments' ),
+						'description'       => __( 'If WooPay should be enabled.', 'poocommerce-payments' ),
 						'type'              => 'boolean',
 						'validate_callback' => 'rest_validate_request_arg',
 					],
 					'woopay_custom_message'                => [
-						'description'       => __( 'Custom message to display to WooPay customers.', 'woocommerce-payments' ),
+						'description'       => __( 'Custom message to display to WooPay customers.', 'poocommerce-payments' ),
 						'type'              => 'string',
 						'validate_callback' => 'rest_validate_request_arg',
 					],
 					'woopay_store_logo'                    => [
-						'description'       => __( 'Store logo to display to WooPay customers.', 'woocommerce-payments' ),
+						'description'       => __( 'Store logo to display to WooPay customers.', 'poocommerce-payments' ),
 						'type'              => 'string',
 						'validate_callback' => 'rest_validate_request_arg',
 					],
 					'woopay_enabled_locations'             => [
-						'description'       => __( 'Express checkout locations that should be enabled.', 'woocommerce-payments' ),
+						'description'       => __( 'Express checkout locations that should be enabled.', 'poocommerce-payments' ),
 						'type'              => 'array',
 						'items'             => [
 							'type' => 'string',
@@ -281,22 +281,22 @@ class WC_REST_Payments_Settings_Controller extends WC_Payments_REST_Controller {
 						'validate_callback' => 'rest_validate_request_arg',
 					],
 					'is_stripe_billing_enabled'            => [
-						'description'       => __( 'If Stripe Billing is enabled.', 'woocommerce-payments' ),
+						'description'       => __( 'If Stripe Billing is enabled.', 'poocommerce-payments' ),
 						'type'              => 'boolean',
 						'validate_callback' => 'rest_validate_request_arg',
 					],
 					'is_migrating_stripe_billing'          => [
-						'description'       => __( 'Whether there is a Stripe Billing off-site to on-site billing migration in progress.', 'woocommerce-payments' ),
+						'description'       => __( 'Whether there is a Stripe Billing off-site to on-site billing migration in progress.', 'poocommerce-payments' ),
 						'type'              => 'boolean',
 						'validate_callback' => 'rest_validate_request_arg',
 					],
 					'stripe_billing_subscription_count'    => [
-						'description'       => __( 'The number of subscriptions using Stripe Billing', 'woocommerce-payments' ),
+						'description'       => __( 'The number of subscriptions using Stripe Billing', 'poocommerce-payments' ),
 						'type'              => 'int',
 						'validate_callback' => 'rest_validate_request_arg',
 					],
 					'stripe_billing_migrated_count'        => [
-						'description'       => __( 'The number of subscriptions migrated from Stripe Billing to on-site billing.', 'woocommerce-payments' ),
+						'description'       => __( 'The number of subscriptions migrated from Stripe Billing to on-site billing.', 'poocommerce-payments' ),
 						'type'              => 'int',
 						'validate_callback' => 'rest_validate_request_arg',
 					],
@@ -368,7 +368,7 @@ class WC_REST_Payments_Settings_Controller extends WC_Payments_REST_Controller {
 		if ( '' !== $value && ! is_email( $value ) ) {
 			return new WP_Error(
 				'rest_invalid_pattern',
-				__( 'Error: Invalid email address: ', 'woocommerce-payments' ) . $value
+				__( 'Error: Invalid email address: ', 'poocommerce-payments' ) . $value
 			);
 		}
 
@@ -392,7 +392,7 @@ class WC_REST_Payments_Settings_Controller extends WC_Payments_REST_Controller {
 		if ( '' !== $value && ! WC_Validation::is_phone( $value ) ) {
 			return new WP_Error(
 				'rest_invalid_pattern',
-				__( 'Error: Invalid phone number: ', 'woocommerce-payments' ) . $value
+				__( 'Error: Invalid phone number: ', 'poocommerce-payments' ) . $value
 			);
 		}
 
@@ -401,7 +401,7 @@ class WC_REST_Payments_Settings_Controller extends WC_Payments_REST_Controller {
 			if ( '+81' !== substr( $value, 0, 3 ) ) {
 				return new WP_Error(
 					'rest_invalid_pattern',
-					__( 'Error: Invalid Japanese phone number: ', 'woocommerce-payments' ) . $value
+					__( 'Error: Invalid Japanese phone number: ', 'poocommerce-payments' ) . $value
 				);
 			}
 		}
@@ -428,7 +428,7 @@ class WC_REST_Payments_Settings_Controller extends WC_Payments_REST_Controller {
 				if ( ! in_array( $field, [ 'city', 'country', 'line1', 'line2', 'postal_code', 'state' ], true ) ) {
 					return new WP_Error(
 						'rest_invalid_pattern',
-						__( 'Error: Invalid address format!', 'woocommerce-payments' )
+						__( 'Error: Invalid address format!', 'poocommerce-payments' )
 					);
 				}
 			}

@@ -2,7 +2,7 @@
 /**
  * Class WooPay_Session_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use PHPUnit\Framework\MockObject\MockObject;
@@ -346,7 +346,7 @@ class WooPay_Session_Test extends WCPAY_UnitTestCase {
 	}
 
 	private function setup_adapted_extensions() {
-		update_option( WooPay_Scheduler::ENABLED_ADAPTED_EXTENSIONS_OPTION_NAME, [ 'woocommerce-points-and-rewards' ] );
+		update_option( WooPay_Scheduler::ENABLED_ADAPTED_EXTENSIONS_OPTION_NAME, [ 'poocommerce-points-and-rewards' ] );
 	}
 
 	private function set_is_woopay_eligible( $is_woopay_eligible ) {

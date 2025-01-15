@@ -23,7 +23,7 @@ import {
 } from 'wcpay/data';
 import { upeCapabilityStatuses } from 'wcpay/additional-methods-setup/constants';
 
-jest.mock( '@woocommerce/components', () => {
+jest.mock( '@poocommerce/components', () => {
 	return {
 		Pill: ( { className, children } ) => (
 			<span className={ className }>{ children }</span>

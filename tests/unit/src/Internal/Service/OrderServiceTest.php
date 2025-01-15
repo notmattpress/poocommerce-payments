@@ -2,7 +2,7 @@
 /**
  * Class OrderServiceTest
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Tests\Internal\Service;
@@ -463,7 +463,7 @@ class OrderServiceTest extends WCPAY_UnitTestCase {
 		// Mock the store currency.
 		$this->mock_legacy_proxy->expects( $this->once() )
 			->method( 'call_function' )
-			->with( 'get_option', 'woocommerce_currency' )
+			->with( 'get_option', 'poocommerce_currency' )
 			->willReturn( $store_currency );
 
 		// Mock the order currency.

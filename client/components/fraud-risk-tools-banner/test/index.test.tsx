@@ -16,7 +16,7 @@ declare const global: {
 	};
 };
 
-jest.mock( '@woocommerce/components', () => {
+jest.mock( '@poocommerce/components', () => {
 	const Pill: React.FC< HTMLAttributes< HTMLDivElement > > = ( {
 		className,
 		children,

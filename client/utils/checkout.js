@@ -31,8 +31,8 @@ export const getUPEConfig = ( name ) => {
 		typeof wc === 'object' &&
 		typeof wc.wcSettings !== 'undefined'
 	) {
-		// If getSettings or woocommerce_payments_data is not available, default to an empty object so we return null bellow.
-		config = wc.wcSettings.getSetting( 'woocommerce_payments_data' ) || {};
+		// If getSettings or poocommerce_payments_data is not available, default to an empty object so we return null bellow.
+		config = wc.wcSettings.getSetting( 'poocommerce_payments_data' ) || {};
 	} else {
 		return null;
 	}

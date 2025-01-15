@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Admin_Sections_Overwrite_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use PHPUnit\Framework\MockObject\MockObject;
@@ -39,7 +39,7 @@ class WC_Payments_Admin_Sections_Overwrite_Test extends WCPAY_UnitTestCase {
 		];
 
 		$expected_sections = [
-			'woocommerce_payments' => 'WooPayments',
+			'poocommerce_payments' => 'WooPayments',
 			''                     => 'All payment methods',
 		];
 
@@ -53,7 +53,7 @@ class WC_Payments_Admin_Sections_Overwrite_Test extends WCPAY_UnitTestCase {
 
 		$this->assertEquals(
 			$expected_sections,
-			apply_filters( 'woocommerce_get_sections_checkout', $sections )
+			apply_filters( 'poocommerce_get_sections_checkout', $sections )
 		);
 	}
 }

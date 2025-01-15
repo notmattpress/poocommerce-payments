@@ -12,7 +12,7 @@ npx --no-install yarnhook
 # make sure composer packages are installed and the autoload files are regenerated
 composer install
 
-DEV_TOOLS_PLUGIN_PATH=${LOCAL_WCPAY_DEV_TOOLS_PLUGIN_REPO_PATH:-"docker/wordpress/wp-content/plugins/woocommerce-payments-dev-tools"}
+DEV_TOOLS_PLUGIN_PATH=${LOCAL_WCPAY_DEV_TOOLS_PLUGIN_REPO_PATH:-"docker/wordpress/wp-content/plugins/poocommerce-payments-dev-tools"}
 if [ ! -d $DEV_TOOLS_PLUGIN_PATH ]; then
 	echo
     echo "\033[33mCouldn't find the '$DEV_TOOLS_PLUGIN_PATH' directory. Skipping the auto-update for the WCPay Dev Tools plugin...\033[0m"

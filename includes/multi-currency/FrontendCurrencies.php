@@ -1,8 +1,8 @@
 <?php
 /**
- * WooCommerce Payments Multi-Currency Frontend Currencies
+ * PooCommerce Payments Multi-Currency Frontend Currencies
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\MultiCurrency;
@@ -63,7 +63,7 @@ class FrontendCurrencies {
 	 *
 	 * @var string
 	 */
-	private $woocommerce_currency;
+	private $poocommerce_currency;
 
 	/**
 	 * Price Decimal Separator cache.
@@ -109,20 +109,20 @@ class FrontendCurrencies {
 	public function init_hooks() {
 		if ( ! is_admin() && ! defined( 'DOING_CRON' ) && ! Utils::is_admin_api_request() ) {
 			// Currency hooks.
-			add_filter( 'woocommerce_currency', [ $this, 'get_woocommerce_currency' ], 900 );
+			add_filter( 'poocommerce_currency', [ $this, 'get_poocommerce_currency' ], 900 );
 			add_filter( 'wc_get_price_decimals', [ $this, 'get_price_decimals' ], 900 );
 			add_filter( 'wc_get_price_decimal_separator', [ $this, 'get_price_decimal_separator' ], 900 );
 			add_filter( 'wc_get_price_thousand_separator', [ $this, 'get_price_thousand_separator' ], 900 );
-			add_filter( 'woocommerce_price_format', [ $this, 'get_woocommerce_price_format' ], 900 );
-			add_action( 'before_woocommerce_pay', [ $this, 'init_order_currency_from_query_vars' ] );
-			add_action( 'woocommerce_order_get_total', [ $this, 'maybe_init_order_currency_from_order_total_prop' ], 900, 2 );
-			add_action( 'woocommerce_get_formatted_order_total', [ $this, 'maybe_clear_order_currency_after_formatted_order_total' ], 900, 4 );
+			add_filter( 'poocommerce_price_format', [ $this, 'get_poocommerce_price_format' ], 900 );
+			add_action( 'before_poocommerce_pay', [ $this, 'init_order_currency_from_query_vars' ] );
+			add_action( 'poocommerce_order_get_total', [ $this, 'maybe_init_order_currency_from_order_total_prop' ], 900, 2 );
+			add_action( 'poocommerce_get_formatted_order_total', [ $this, 'maybe_clear_order_currency_after_formatted_order_total' ], 900, 4 );
 		}
 
-		add_filter( 'woocommerce_thankyou_order_id', [ $this, 'init_order_currency' ] );
-		add_action( 'woocommerce_account_view-order_endpoint', [ $this, 'init_order_currency' ], 9 );
-		add_filter( 'woocommerce_cart_hash', [ $this, 'add_currency_to_cart_hash' ], 900 );
-		add_filter( 'woocommerce_shipping_method_add_rate_args', [ $this, 'fix_price_decimals_for_shipping_rates' ], 900, 2 );
+		add_filter( 'poocommerce_thankyou_order_id', [ $this, 'init_order_currency' ] );
+		add_action( 'poocommerce_account_view-order_endpoint', [ $this, 'init_order_currency' ], 9 );
+		add_filter( 'poocommerce_cart_hash', [ $this, 'add_currency_to_cart_hash' ], 900 );
+		add_filter( 'poocommerce_shipping_method_add_rate_args', [ $this, 'fix_price_decimals_for_shipping_rates' ], 900, 2 );
 	}
 
 	/**
@@ -133,7 +133,7 @@ class FrontendCurrencies {
 	public function selected_currency_changed() {
 		$this->selected_currency_code   = null;
 		$this->price_decimal_separators = [];
-		$this->woocommerce_currency     = null;
+		$this->poocommerce_currency     = null;
 		$this->store_currency           = null;
 	}
 
@@ -150,23 +150,23 @@ class FrontendCurrencies {
 	}
 
 	/**
-	 * Returns the currency code to be used by WooCommerce.
+	 * Returns the currency code to be used by PooCommerce.
 	 *
 	 * @return string The code of the currency to be used.
 	 */
-	public function get_woocommerce_currency(): string {
+	public function get_poocommerce_currency(): string {
 		if ( $this->compatibility->should_return_store_currency() ) {
 			return $this->get_store_currency()->get_code();
 		}
 
-		if ( empty( $this->woocommerce_currency ) ) {
-			$this->woocommerce_currency = $this->get_selected_currency_code();
+		if ( empty( $this->poocommerce_currency ) ) {
+			$this->poocommerce_currency = $this->get_selected_currency_code();
 		}
-		return $this->woocommerce_currency;
+		return $this->poocommerce_currency;
 	}
 
 	/**
-	 * Returns the number of decimals to be used by WooCommerce.
+	 * Returns the number of decimals to be used by PooCommerce.
 	 *
 	 * @param int $decimals The original decimal count.
 	 *
@@ -181,7 +181,7 @@ class FrontendCurrencies {
 	}
 
 	/**
-	 * Returns the decimal separator to be used by WooCommerce.
+	 * Returns the decimal separator to be used by PooCommerce.
 	 *
 	 * @param string $separator The original separator.
 	 *
@@ -204,7 +204,7 @@ class FrontendCurrencies {
 	}
 
 	/**
-	 * Returns the thousand separator to be used by WooCommerce.
+	 * Returns the thousand separator to be used by PooCommerce.
 	 *
 	 * @param string $separator The original separator.
 	 *
@@ -219,13 +219,13 @@ class FrontendCurrencies {
 	}
 
 	/**
-	 * Returns the currency format to be used by WooCommerce.
+	 * Returns the currency format to be used by PooCommerce.
 	 *
 	 * @param string $format The original currency format.
 	 *
 	 * @return string The currency format.
 	 */
-	public function get_woocommerce_price_format( $format ): string {
+	public function get_poocommerce_price_format( $format ): string {
 		$currency_code = $this->get_currency_code();
 		if ( $currency_code !== $this->get_store_currency()->get_code() ) {
 			$currency_pos = $this->localization_service->get_currency_format( $currency_code )['currency_pos'];
@@ -272,7 +272,7 @@ class FrontendCurrencies {
 
 		// We remove these filters here because 'wc_get_order'
 		// can trigger them, leading to an infinitely recursive call.
-		remove_filter( 'woocommerce_price_format', [ $this, 'get_woocommerce_price_format' ], 900 );
+		remove_filter( 'poocommerce_price_format', [ $this, 'get_poocommerce_price_format' ], 900 );
 		remove_filter( 'wc_get_price_thousand_separator', [ $this, 'get_price_thousand_separator' ], 900 );
 		remove_filter( 'wc_get_price_decimal_separator', [ $this, 'get_price_decimal_separator' ], 900 );
 		remove_filter( 'wc_get_price_decimals', [ $this, 'get_price_decimals' ], 900 );
@@ -280,7 +280,7 @@ class FrontendCurrencies {
 		add_filter( 'wc_get_price_decimals', [ $this, 'get_price_decimals' ], 900 );
 		add_filter( 'wc_get_price_decimal_separator', [ $this, 'get_price_decimal_separator' ], 900 );
 		add_filter( 'wc_get_price_thousand_separator', [ $this, 'get_price_thousand_separator' ], 900 );
-		add_filter( 'woocommerce_price_format', [ $this, 'get_woocommerce_price_format' ], 900 );
+		add_filter( 'poocommerce_price_format', [ $this, 'get_poocommerce_price_format' ], 900 );
 
 		if ( $order ) {
 			$this->order_currency = $order->get_currency();

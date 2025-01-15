@@ -47,10 +47,10 @@ class Afterpay_Payment_Method extends UPE_Payment_Method {
 	 */
 	public function get_title( ?string $account_country = null, $payment_details = false ) {
 		if ( 'GB' === $account_country ) {
-			return __( 'Clearpay', 'woocommerce-payments' );
+			return __( 'Clearpay', 'poocommerce-payments' );
 		}
 
-		return __( 'Afterpay', 'woocommerce-payments' );
+		return __( 'Afterpay', 'poocommerce-payments' );
 	}
 
 	/**

@@ -49,7 +49,7 @@ export const usePaymentActivityDateRangePresets = (): {
 				.clone()
 				.set( { hour: 0, minute: 0, second: 0, millisecond: 0 } ),
 			end: todayEndOfDay,
-			displayKey: __( 'Today', 'woocommerce-payments' ),
+			displayKey: __( 'Today', 'poocommerce-payments' ),
 		},
 		last_7_days: {
 			start: now
@@ -57,7 +57,7 @@ export const usePaymentActivityDateRangePresets = (): {
 				.subtract( 7, 'days' )
 				.set( { hour: 0, minute: 0, second: 0, millisecond: 0 } ),
 			end: yesterdayEndOfDay,
-			displayKey: __( 'Last 7 days', 'woocommerce-payments' ),
+			displayKey: __( 'Last 7 days', 'poocommerce-payments' ),
 		},
 		last_4_weeks: {
 			start: now
@@ -65,7 +65,7 @@ export const usePaymentActivityDateRangePresets = (): {
 				.subtract( 4, 'weeks' )
 				.set( { hour: 0, minute: 0, second: 0, millisecond: 0 } ),
 			end: yesterdayEndOfDay,
-			displayKey: __( 'Last 4 weeks', 'woocommerce-payments' ),
+			displayKey: __( 'Last 4 weeks', 'poocommerce-payments' ),
 		},
 		last_3_months: {
 			start: now
@@ -73,7 +73,7 @@ export const usePaymentActivityDateRangePresets = (): {
 				.subtract( 3, 'months' )
 				.set( { hour: 0, minute: 0, second: 0, millisecond: 0 } ),
 			end: yesterdayEndOfDay,
-			displayKey: __( 'Last 3 months', 'woocommerce-payments' ),
+			displayKey: __( 'Last 3 months', 'poocommerce-payments' ),
 		},
 		last_12_months: {
 			start: now
@@ -81,22 +81,22 @@ export const usePaymentActivityDateRangePresets = (): {
 				.subtract( 12, 'months' )
 				.set( { hour: 0, minute: 0, second: 0, millisecond: 0 } ),
 			end: yesterdayEndOfDay,
-			displayKey: __( 'Last 12 months', 'woocommerce-payments' ),
+			displayKey: __( 'Last 12 months', 'poocommerce-payments' ),
 		},
 		month_to_date: {
 			start: now.clone().startOf( 'month' ),
 			end: todayEndOfDay,
-			displayKey: __( 'Month to date', 'woocommerce-payments' ),
+			displayKey: __( 'Month to date', 'poocommerce-payments' ),
 		},
 		quarter_to_date: {
 			start: now.clone().startOf( 'quarter' ),
 			end: todayEndOfDay,
-			displayKey: __( 'Quarter to date', 'woocommerce-payments' ),
+			displayKey: __( 'Quarter to date', 'poocommerce-payments' ),
 		},
 		year_to_date: {
 			start: now.clone().startOf( 'year' ),
 			end: todayEndOfDay,
-			displayKey: __( 'Year to date', 'woocommerce-payments' ),
+			displayKey: __( 'Year to date', 'poocommerce-payments' ),
 		},
 		all_time: {
 			start: moment(
@@ -104,7 +104,7 @@ export const usePaymentActivityDateRangePresets = (): {
 				'YYYY-MM-DD\\THH:mm:ss'
 			),
 			end: todayEndOfDay,
-			displayKey: __( 'All time', 'woocommerce-payments' ),
+			displayKey: __( 'All time', 'poocommerce-payments' ),
 		},
 	};
 

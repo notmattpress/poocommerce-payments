@@ -35,7 +35,7 @@ export const expressCheckoutIframe = async ( api, context, emailSelector ) => {
 
 	// Make the otp iframe.
 	const iframe = document.createElement( 'iframe' );
-	iframe.title = __( 'WooPay SMS code verification', 'woocommerce-payments' );
+	iframe.title = __( 'WooPay SMS code verification', 'poocommerce-payments' );
 	iframe.classList.add( 'woopay-otp-iframe' );
 
 	// To prevent twentytwenty.intrinsicRatioVideos from trying to resize the iframe.
@@ -242,7 +242,7 @@ export const expressCheckoutIframe = async ( api, context, emailSelector ) => {
 						// Set the notice text.
 						const errorMessage = __(
 							'WooPay is unavailable at this time. Sorry for the inconvenience.',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						);
 						showErrorMessage( context, errorMessage );
 						closeIframe( false );

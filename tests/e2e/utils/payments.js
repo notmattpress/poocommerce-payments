@@ -4,17 +4,17 @@
 import config from 'config';
 import { shopperWCP } from './flows';
 
-const { shopper, uiUnblocked } = require( '@woocommerce/e2e-utils' );
+const { shopper, uiUnblocked } = require( '@poocommerce/e2e-utils' );
 
-// WooCommerce Checkout
+// PooCommerce Checkout
 export async function fillCardDetails( page, card ) {
 	if (
 		await page.$(
-			'#payment .payment_method_woocommerce_payments .wcpay-upe-element'
+			'#payment .payment_method_poocommerce_payments .wcpay-upe-element'
 		)
 	) {
 		const frameHandle = await page.waitForSelector(
-			'#payment .payment_method_woocommerce_payments .wcpay-upe-element iframe'
+			'#payment .payment_method_poocommerce_payments .wcpay-upe-element iframe'
 		);
 
 		const stripeFrame = await frameHandle.contentFrame();
@@ -80,14 +80,14 @@ export async function clearCardDetails() {
 	} else {
 		// Handling Stripe UPE element
 		const frameHandle = await page.waitForSelector(
-			'#payment .payment_method_woocommerce_payments .wcpay-upe-element iframe[name^="__privateStripeFrame"]'
+			'#payment .payment_method_poocommerce_payments .wcpay-upe-element iframe[name^="__privateStripeFrame"]'
 		);
 
 		await page.waitForTimeout( 1000 );
 
 		await page.evaluate( ( selector ) => {
 			document.querySelector( selector ).scrollIntoView();
-		}, '#payment .payment_method_woocommerce_payments .wcpay-upe-element iframe[name^="__privateStripeFrame"]' );
+		}, '#payment .payment_method_poocommerce_payments .wcpay-upe-element iframe[name^="__privateStripeFrame"]' );
 
 		await page.waitForTimeout( 500 );
 
@@ -118,7 +118,7 @@ export async function clearCardDetails() {
 export async function fillCardDetailsPayForOrder( page, card ) {
 	await page.waitForSelector( '.__PrivateStripeElement' );
 	const frameHandle = await page.waitForSelector(
-		'#payment .payment_method_woocommerce_payments .wcpay-upe-element iframe'
+		'#payment .payment_method_poocommerce_payments .wcpay-upe-element iframe'
 	);
 	const stripeFrame = await frameHandle.contentFrame();
 
@@ -146,7 +146,7 @@ export async function fillCardDetailsPayForOrder( page, card ) {
 	}
 }
 
-// WooCommerce Blocks Checkout
+// PooCommerce Blocks Checkout
 export async function fillCardDetailsWCB( page, card ) {
 	await page.waitForSelector( '.__PrivateStripeElement' );
 	const frameHandle = await page.waitForSelector(
@@ -277,12 +277,12 @@ export async function setupCheckout( billingDetails ) {
 	// field changes. Need to wait to make sure that all key presses were processed by that mechanism.
 	await page.waitForTimeout( 1000 );
 	await uiUnblocked();
-	await page.click( 'label[for="payment_method_woocommerce_payments"]' );
+	await page.click( 'label[for="payment_method_poocommerce_payments"]' );
 }
 
-// Copy of the fillBillingDetails function from woocommerce/e2e-utils/src/flows/shopper.js
+// Copy of the fillBillingDetails function from poocommerce/e2e-utils/src/flows/shopper.js
 // Supporting countries that do not have a state select input.
-// Remove after https://github.com/woocommerce/woocommerce/pull/44090 is merged.
+// Remove after https://github.com/poocommerce/poocommerce/pull/44090 is merged.
 async function fillBillingDetails( customerBillingDetails ) {
 	await expect( page ).toFill(
 		'#billing_first_name',
@@ -337,10 +337,10 @@ async function fillBillingDetails( customerBillingDetails ) {
  */
 export async function selectOnCheckout( paymentMethod, page ) {
 	await page.$(
-		'#payment .payment_method_woocommerce_payments_' + paymentMethod
+		'#payment .payment_method_poocommerce_payments_' + paymentMethod
 	);
 	const radioLabel = await page.waitForSelector(
-		'#payment .payment_method_woocommerce_payments_' +
+		'#payment .payment_method_poocommerce_payments_' +
 			paymentMethod +
 			' label'
 	);

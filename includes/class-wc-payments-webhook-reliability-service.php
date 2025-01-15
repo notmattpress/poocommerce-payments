@@ -2,7 +2,7 @@
 /**
  * WC_Payments_Webhook_Reliability_Service class
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -24,7 +24,7 @@ class WC_Payments_Webhook_Reliability_Service {
 	const WEBHOOK_PROCESS_EVENT_ACTION       = 'wcpay_webhook_process_event';
 
 	/**
-	 * Client for making requests to the WooCommerce Payments API.
+	 * Client for making requests to the PooCommerce Payments API.
 	 *
 	 * @var WC_Payments_API_Client
 	 */
@@ -47,7 +47,7 @@ class WC_Payments_Webhook_Reliability_Service {
 	/**
 	 * WC_Payments_Webhook_Reliability_Service constructor.
 	 *
-	 * @param WC_Payments_API_Client                 $payments_api_client WooCommerce Payments API client.
+	 * @param WC_Payments_API_Client                 $payments_api_client PooCommerce Payments API client.
 	 * @param WC_Payments_Action_Scheduler_Service   $action_scheduler_service Wrapper for ActionScheduler service.
 	 * @param WC_Payments_Webhook_Processing_Service $webhook_processing_service WC_Payments_Webhook_Processing_Service instance.
 	 */
@@ -60,18 +60,18 @@ class WC_Payments_Webhook_Reliability_Service {
 		$this->action_scheduler_service   = $action_scheduler_service;
 		$this->webhook_processing_service = $webhook_processing_service;
 
-		// Note: Sometimes the `woocommerce_payments_account_refreshed` hook is ran before ActionScheduler is initialized.
+		// Note: Sometimes the `poocommerce_payments_account_refreshed` hook is ran before ActionScheduler is initialized.
 		// In that case, we will not be able to schedule jobs. We will just ignore it.
-		add_action( 'woocommerce_payments_account_refreshed', [ $this, 'maybe_schedule_fetch_events' ] );
+		add_action( 'poocommerce_payments_account_refreshed', [ $this, 'maybe_schedule_fetch_events' ] );
 		add_action( self::WEBHOOK_FETCH_EVENTS_ACTION, [ $this, 'fetch_events_and_schedule_processing_jobs' ] );
 		add_action( self::WEBHOOK_PROCESS_EVENT_ACTION, [ $this, 'process_event' ] );
 	}
 
 	/**
-	 * During the account data refresh, check the relevant flag to remaining failed events on the WooCommerce Payments server,
+	 * During the account data refresh, check the relevant flag to remaining failed events on the PooCommerce Payments server,
 	 * and decide whether scheduling a job to fetch them.
 	 *
-	 * @param  mixed|array $account Account data retrieved from WooCommerce Payments server.
+	 * @param  mixed|array $account Account data retrieved from PooCommerce Payments server.
 	 *
 	 * @return void
 	 */
@@ -86,7 +86,7 @@ class WC_Payments_Webhook_Reliability_Service {
 	}
 
 	/**
-	 * Fetch failed events from the WooCommerce Payments server through ActionScheduler.
+	 * Fetch failed events from the PooCommerce Payments server through ActionScheduler.
 	 *
 	 * @return void
 	 */

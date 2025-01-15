@@ -37,7 +37,7 @@ export const checkPageExists = async ( slug ) => {
  * Retrieves the product price from the current product page.
  *
  * This function assumes that the Puppeteer page object is already navigated to a product page.
- * It extracts the textual content of the element with the class '.woocommerce-Price-amount.amount',
+ * It extracts the textual content of the element with the class '.poocommerce-Price-amount.amount',
  * which is expected to contain the product's price. The function then removes any non-numeric characters
  * from this text, typically to exclude the currency symbol, and returns just the numeric price.
  *
@@ -47,17 +47,17 @@ export const checkPageExists = async ( slug ) => {
  *                          with an error message indicating that the price element was not found.
  */
 export const getProductPriceFromProductPage = async () => {
-	await page.waitForSelector( '.woocommerce-Price-amount.amount', {
+	await page.waitForSelector( '.poocommerce-Price-amount.amount', {
 		timeout: 5000,
 	} );
 	const price = await page.evaluate( () => {
 		let priceElement = document.querySelector(
-			'ins .woocommerce-Price-amount.amount'
+			'ins .poocommerce-Price-amount.amount'
 		);
 		if ( ! priceElement ) {
 			// If no discounted price is found, look for the regular price
 			priceElement = document.querySelector(
-				'.woocommerce-Price-amount.amount'
+				'.poocommerce-Price-amount.amount'
 			);
 		}
 

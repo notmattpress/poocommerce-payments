@@ -29,14 +29,14 @@ import InlineNotice from 'components/inline-notice';
 import { DepositFailureNotice } from 'components/deposits-overview/deposit-notices';
 
 const daysOfWeek = [
-	{ label: __( 'Monday', 'woocommerce-payments' ), value: 'monday' },
-	{ label: __( 'Tuesday', 'woocommerce-payments' ), value: 'tuesday' },
+	{ label: __( 'Monday', 'poocommerce-payments' ), value: 'monday' },
+	{ label: __( 'Tuesday', 'poocommerce-payments' ), value: 'tuesday' },
 	{
-		label: __( 'Wednesday', 'woocommerce-payments' ),
+		label: __( 'Wednesday', 'poocommerce-payments' ),
 		value: 'wednesday',
 	},
-	{ label: __( 'Thursday', 'woocommerce-payments' ), value: 'thursday' },
-	{ label: __( 'Friday', 'woocommerce-payments' ), value: 'friday' },
+	{ label: __( 'Thursday', 'poocommerce-payments' ), value: 'thursday' },
+	{ label: __( 'Friday', 'poocommerce-payments' ), value: 'friday' },
 ];
 
 // Monthly deposit schedule anchors: 1-28 labelled with ordinal suffix and 31 labelled as "Last day of the month".
@@ -85,15 +85,15 @@ const CustomizeDepositSchedule = () => {
 	let depositIntervalsOptions = [
 		{
 			value: 'daily',
-			label: __( 'Daily', 'woocommerce-payments' ),
+			label: __( 'Daily', 'poocommerce-payments' ),
 		},
 		{
 			value: 'weekly',
-			label: __( 'Weekly', 'woocommerce-payments' ),
+			label: __( 'Weekly', 'poocommerce-payments' ),
 		},
 		{
 			value: 'monthly',
-			label: __( 'Monthly', 'woocommerce-payments' ),
+			label: __( 'Monthly', 'poocommerce-payments' ),
 		},
 	];
 
@@ -106,14 +106,14 @@ const CustomizeDepositSchedule = () => {
 		<>
 			<div className="schedule-controls">
 				<SelectControl
-					label={ __( 'Frequency', 'woocommerce-payments' ) }
+					label={ __( 'Frequency', 'poocommerce-payments' ) }
 					value={ depositScheduleInterval }
 					onChange={ handleIntervalChange }
 					options={ depositIntervalsOptions }
 				/>
 				{ depositScheduleInterval === 'monthly' && (
 					<SelectControl
-						label={ __( 'Date', 'woocommerce-payments' ) }
+						label={ __( 'Date', 'poocommerce-payments' ) }
 						value={ depositScheduleMonthlyAnchor }
 						onChange={ setDepositScheduleMonthlyAnchor }
 						options={ monthlyAnchors }
@@ -121,7 +121,7 @@ const CustomizeDepositSchedule = () => {
 				) }
 				{ depositScheduleInterval === 'weekly' && (
 					<SelectControl
-						label={ __( 'Day', 'woocommerce-payments' ) }
+						label={ __( 'Day', 'poocommerce-payments' ) }
 						value={ depositScheduleWeeklyAnchor }
 						onChange={ setDepositScheduleWeeklyAnchor }
 						options={ daysOfWeek }
@@ -132,17 +132,17 @@ const CustomizeDepositSchedule = () => {
 				{ depositScheduleInterval === 'monthly' &&
 					__(
 						'Payouts scheduled on a weekend will be sent on the next business day.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 				{ depositScheduleInterval === 'weekly' &&
 					__(
 						'Payouts that fall on a holiday will initiate on the next business day.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 				{ depositScheduleInterval === 'daily' &&
 					__(
 						'Payouts will occur every business day.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 			</p>
 		</>
@@ -162,13 +162,13 @@ const DepositsSchedule = () => {
 				{ interpolateComponents( {
 					mixedString: __(
 						'Payout scheduling is currently unavailable for your store. {{learnMoreLink}}Learn more{{/learnMoreLink}}',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					components: {
 						learnMoreLink: (
 							// eslint-disable-next-line jsx-a11y/anchor-has-content
 							<a
-								href="https://woocommerce.com/document/woopayments/payouts/payout-schedule/"
+								href="https://poocommerce.com/document/woopayments/payouts/payout-schedule/"
 								target="_blank"
 								rel="noreferrer noopener"
 							/>
@@ -185,13 +185,13 @@ const DepositsSchedule = () => {
 					mixedString: __(
 						'Your first payout will be held for 7-14 days. ' +
 							'Payout scheduling will be available after this period. {{learnMoreLink}}Learn more{{/learnMoreLink}}',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					components: {
 						learnMoreLink: (
 							// eslint-disable-next-line jsx-a11y/anchor-has-content
 							<a
-								href="https://woocommerce.com/document/woopayments/payouts/payout-schedule/"
+								href="https://poocommerce.com/document/woopayments/payouts/payout-schedule/"
 								target="_blank"
 								rel="noreferrer noopener"
 							/>
@@ -220,13 +220,13 @@ const Deposits = () => {
 	return (
 		<Card className="deposits">
 			<CardBody>
-				<h4>{ __( 'Payout schedule', 'woocommerce-payments' ) }</h4>
+				<h4>{ __( 'Payout schedule', 'poocommerce-payments' ) }</h4>
 
 				<DepositsSchedule />
 
 				<div className="deposits__bank-information">
 					<h4>
-						{ __( 'Payout bank account', 'woocommerce-payments' ) }
+						{ __( 'Payout bank account', 'poocommerce-payments' ) }
 					</h4>
 					{ hasErroredExternalAccount ? (
 						<DepositFailureNotice
@@ -236,7 +236,7 @@ const Deposits = () => {
 						<p className="deposits__bank-information-help">
 							{ __(
 								'Manage and update your bank account information to receive payouts.',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }{ ' ' }
 							{ accountLink && (
 								<ExternalLink
@@ -253,7 +253,7 @@ const Deposits = () => {
 								>
 									{ __(
 										'Manage in Stripe',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									) }
 								</ExternalLink>
 							) }

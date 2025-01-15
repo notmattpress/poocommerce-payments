@@ -1,8 +1,8 @@
 <?php
 /**
- * WooCommerce Deposits helpers.
+ * PooCommerce Deposits helpers.
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 // phpcs:disable Generic.Files.OneObjectStructurePerFile.MultipleFound

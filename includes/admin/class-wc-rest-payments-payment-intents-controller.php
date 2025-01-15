@@ -2,7 +2,7 @@
 /**
  * Class WC_REST_Payments_Payment_Intents_Controller
  *
- * @package WooCommerce\Payments\Admin
+ * @package PooCommerce\Payments\Admin
  */
 
 use WCPay\Core\Server\Request\Create_And_Confirm_Intention;

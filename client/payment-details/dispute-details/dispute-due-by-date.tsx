@@ -37,15 +37,15 @@ const DisputeDueByDate: React.FC< {
 								'(%d day left to respond)',
 								'(%d days left to respond)',
 								daysRemaining,
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							daysRemaining
 						) }
 
 					{ daysRemaining === 0 &&
-						__( '(Last day today)', 'woocommerce-payments' ) }
+						__( '(Last day today)', 'poocommerce-payments' ) }
 					{ daysRemaining < 0 &&
-						__( '(Past due)', 'woocommerce-payments' ) }
+						__( '(Past due)', 'poocommerce-payments' ) }
 				</span>
 			) }
 		</span>

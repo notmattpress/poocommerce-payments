@@ -15,7 +15,7 @@ const FraudProtectionRuleDescription: React.FC = ( { children } ) => {
 			<strong>
 				{ __(
 					'How does this filter protect me?',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				) }
 			</strong>
 			<p>{ children }</p>

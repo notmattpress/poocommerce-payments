@@ -3,7 +3,7 @@
  */
 import config from 'config';
 
-const { merchant, shopper } = require( '@woocommerce/e2e-utils' );
+const { merchant, shopper } = require( '@poocommerce/e2e-utils' );
 
 /**
  * Internal dependencies
@@ -46,7 +46,7 @@ describe( 'Order > Refund Failure', () => {
 
 		// Get the order ID so we can open it in the merchant view
 		const orderIdField = await page.$(
-			'.woocommerce-order-overview__order.order > strong'
+			'.poocommerce-order-overview__order.order > strong'
 		);
 		orderId = await orderIdField.evaluate( ( el ) => el.innerText );
 
@@ -84,7 +84,7 @@ describe( 'Order > Refund Failure', () => {
 				};
 				await page.evaluate(
 					hideElementIfExists,
-					'.woocommerce-layout__header'
+					'.poocommerce-layout__header'
 				);
 				await page.evaluate( hideElementIfExists, '#wpadminbar' );
 

@@ -45,10 +45,10 @@ const BusinessDetailsSection = ( { setInputsValid } ) => {
 
 	return (
 		<>
-			<h4>{ __( 'Business details', 'woocommerce-payments' ) }</h4>
+			<h4>{ __( 'Business details', 'poocommerce-payments' ) }</h4>
 			<TextControl
 				className="card-readers-business-name-input"
-				label={ __( 'Business name', 'woocommerce-payments' ) }
+				label={ __( 'Business name', 'poocommerce-payments' ) }
 				value={ accountBusinessName }
 				onChange={ setAccountBusinessName }
 			/>
@@ -57,14 +57,14 @@ const BusinessDetailsSection = ( { setInputsValid } ) => {
 					<span>
 						{ __(
 							'Error: Invalid business URL, should start with http:// or https:// prefix.',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 					</span>
 				</Notice>
 			) }
 			<TextControl
 				className="card-readers-business-url-input"
-				label={ __( 'Business URL', 'woocommerce-payments' ) }
+				label={ __( 'Business URL', 'poocommerce-payments' ) }
 				value={ accountBusinessURL }
 				onChange={ setAccountBusinessURL }
 				onBlur={ validateBusinessURL }

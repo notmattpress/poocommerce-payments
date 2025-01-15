@@ -22,6 +22,6 @@ if ( bnplPaymentMethods.length ) {
 	// Register BNPL site messaging on the cart block.
 	registerPlugin( 'bnpl-site-messaging', {
 		render: renderBNPLCartMessaging,
-		scope: 'woocommerce-checkout',
+		scope: 'poocommerce-checkout',
 	} );
 }

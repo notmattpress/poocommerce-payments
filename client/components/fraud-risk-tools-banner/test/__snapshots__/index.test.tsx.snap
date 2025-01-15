@@ -37,7 +37,7 @@ exports[`FRTDiscoverabilityBanner renders 1`] = `
         >
           <a
             class="components-button is-primary"
-            href="/wp-admin/admin.php?page=wc-settings&tab=checkout&anchor=%23fp-settings&section=woocommerce_payments/"
+            href="/wp-admin/admin.php?page=wc-settings&tab=checkout&anchor=%23fp-settings&section=poocommerce_payments/"
           >
             Learn more
           </a>

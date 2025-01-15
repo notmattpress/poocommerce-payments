@@ -2,12 +2,12 @@
 /**
  * Payments service provider file.
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Internal\DependencyManagement\ServiceProvider;
 
-use Automattic\WooCommerce\Utilities\PluginUtil;
+use Automattic\PooCommerce\Utilities\PluginUtil;
 use WC_Payments_Customer_Service;
 use WCPay\Container;
 use WCPay\Core\Mode;

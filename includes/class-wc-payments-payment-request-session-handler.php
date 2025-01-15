@@ -2,12 +2,12 @@
 /**
  * Class WC_Payments_Payment_Request_Session_Handler
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 defined( 'ABSPATH' ) || exit;
 
-use Automattic\WooCommerce\StoreApi\Utilities\JsonWebToken;
+use Automattic\PooCommerce\StoreApi\Utilities\JsonWebToken;
 
 /**
  * WC_Payments_Payment_Request_Session_Handler class
@@ -51,7 +51,7 @@ final class WC_Payments_Payment_Request_Session_Handler extends WC_Session_Handl
 		$this->init_session_cookie();
 
 		if ( $this->_customer_id !== $this->_data['token_customer_id'] ) {
-			throw new Exception( __( 'Invalid token: cookie and session customer mismatch', 'woocommerce-payments' ) );
+			throw new Exception( __( 'Invalid token: cookie and session customer mismatch', 'poocommerce-payments' ) );
 		}
 
 		add_action( 'shutdown', [ $this, 'save_data' ], 20 );
@@ -60,7 +60,7 @@ final class WC_Payments_Payment_Request_Session_Handler extends WC_Session_Handl
 	/**
 	 * Setup cookie and customer ID.
 	 * We need to ensure that we _also_ call `init_session_from_token` when `init_session_cookie` is called.
-	 * Otherwise, this clears everything: https://github.com/woocommerce/woocommerce/blob/de4a8ffdd474ca1879d4aa16487d6c52472a861b/plugins/woocommerce/src/StoreApi/Routes/V1/Checkout.php#L556-L558
+	 * Otherwise, this clears everything: https://github.com/poocommerce/poocommerce/blob/de4a8ffdd474ca1879d4aa16487d6c52472a861b/plugins/poocommerce/src/StoreApi/Routes/V1/Checkout.php#L556-L558
 	 */
 	public function init_session_cookie() {
 		// If an account has been created after the session has been initialized, update the session.
@@ -71,8 +71,8 @@ final class WC_Payments_Payment_Request_Session_Handler extends WC_Session_Handl
 		if ( is_user_logged_in() && strval( get_current_user_id() ) !== $this->_customer_id ) {
 			$previous_session_data = $this->_data;
 			/**
-			 * This is borrowed from WooCommerce core, which also converts the user ID to a string.
-			 * https://github.com/woocommerce/woocommerce/blob/f01e9452045e2d483649670adc2f042391774e38/plugins/woocommerce/includes/class-wc-session-handler.php#L107
+			 * This is borrowed from PooCommerce core, which also converts the user ID to a string.
+			 * https://github.com/poocommerce/poocommerce/blob/f01e9452045e2d483649670adc2f042391774e38/plugins/poocommerce/includes/class-wc-session-handler.php#L107
 			 *
 			 * @psalm-suppress InvalidPropertyAssignmentValue
 			 */

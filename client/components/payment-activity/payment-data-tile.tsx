@@ -3,7 +3,7 @@
  */
 import * as React from 'react';
 import { __ } from '@wordpress/i18n';
-import { Link } from '@woocommerce/components';
+import { Link } from '@poocommerce/components';
 import { recordEvent } from 'wcpay/tracks';
 
 /**
@@ -83,7 +83,7 @@ const PaymentDataTile: React.FC< PaymentDataTileProps > = ( {
 				</p>
 				{ reportLink && (
 					<Link href={ reportLink } onClick={ handleReportLinkClick }>
-						{ __( 'View report', 'woocommerce-payments' ) }
+						{ __( 'View report', 'poocommerce-payments' ) }
 					</Link>
 				) }
 			</div>

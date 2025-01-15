@@ -1,12 +1,12 @@
 <?php
 /**
- * Set up refund policy note for WooCommerce inbox.
+ * Set up refund policy note for PooCommerce inbox.
  *
- * @package WooCommerce\Payments\Admin
+ * @package PooCommerce\Payments\Admin
  */
 
-use Automattic\WooCommerce\Admin\Notes\Note;
-use Automattic\WooCommerce\Admin\Notes\NoteTraits;
+use Automattic\PooCommerce\Admin\Notes\Note;
+use Automattic\PooCommerce\Admin\Notes\NoteTraits;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -67,18 +67,18 @@ class WC_Payments_Notes_Qualitative_Feedback {
 		$note->set_title(
 			sprintf(
 				/* translators: %s: WooPayments */
-				__( 'Help us make improvements to %s', 'woocommerce-payments' ),
+				__( 'Help us make improvements to %s', 'poocommerce-payments' ),
 				'WooPayments'
 			)
 		);
-		$note->set_content( __( 'Share your feedback in this 2 minute survey about how we can make the process of accepting payments more useful for your store.', 'woocommerce-payments' ) );
+		$note->set_content( __( 'Share your feedback in this 2 minute survey about how we can make the process of accepting payments more useful for your store.', 'poocommerce-payments' ) );
 		$note->set_content_data( (object) [] );
 		$note->set_type( Note::E_WC_ADMIN_NOTE_INFORMATIONAL );
 		$note->set_name( self::NOTE_NAME );
-		$note->set_source( 'woocommerce-payments' );
+		$note->set_source( 'poocommerce-payments' );
 		$note->add_action(
 			self::NOTE_NAME,
-			__( 'Share feedback', 'woocommerce-payments' ),
+			__( 'Share feedback', 'poocommerce-payments' ),
 			self::NOTE_DOCUMENTATION_URL,
 			'unactioned',
 			true

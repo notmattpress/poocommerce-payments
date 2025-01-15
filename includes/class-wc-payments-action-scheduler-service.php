@@ -2,7 +2,7 @@
 /**
  * WC_Payments_Action_Scheduler_Service class
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 use WCPay\Compatibility_Service;
@@ -15,10 +15,10 @@ defined( 'ABSPATH' ) || exit;
  */
 class WC_Payments_Action_Scheduler_Service {
 
-	const GROUP_ID = 'woocommerce_payments';
+	const GROUP_ID = 'poocommerce_payments';
 
 	/**
-	 * Client for making requests to the WooCommerce Payments API
+	 * Client for making requests to the PooCommerce Payments API
 	 *
 	 * @var WC_Payments_API_Client
 	 */
@@ -41,7 +41,7 @@ class WC_Payments_Action_Scheduler_Service {
 	/**
 	 * Constructor for WC_Payments_Action_Scheduler_Service.
 	 *
-	 * @param WC_Payments_API_Client    $payments_api_client - WooCommerce Payments API client.
+	 * @param WC_Payments_API_Client    $payments_api_client - PooCommerce Payments API client.
 	 * @param WC_Payments_Order_Service $order_service - Order Service.
 	 * @param Compatibility_Service     $compatibility_service - Compatibility service instance.
 	 */
@@ -158,12 +158,12 @@ class WC_Payments_Action_Scheduler_Service {
 	 * @param array  $args      Optional. An array containing the arguments to be passed to the hook.
 	 *                          Defaults to an empty array.
 	 * @param string $group     Optional. The AS group the action will be created under.
-	 *                          Defaults to 'woocommerce_payments'.
+	 *                          Defaults to 'poocommerce_payments'.
 	 *
 	 * @return void
 	 */
 	public function schedule_job( int $timestamp, string $hook, array $args = [], string $group = self::GROUP_ID ) {
-		// The `action_scheduler_init` hook was introduced in ActionScheduler 3.5.5 (WooCommerce 7.9.0).
+		// The `action_scheduler_init` hook was introduced in ActionScheduler 3.5.5 (PooCommerce 7.9.0).
 		if ( version_compare( WC()->version, '7.9.0', '>=' ) ) {
 			// If the ActionScheduler is already initialized, schedule the job.
 			if ( did_action( 'action_scheduler_init' ) ) {
@@ -211,14 +211,14 @@ class WC_Payments_Action_Scheduler_Service {
 	 * @param array  $args      Optional. An array containing the arguments to be passed to the action.
 	 *                          Defaults to an empty array.
 	 * @param string $group     Optional. The ActionScheduler group the action will be created under.
-	 *                          Defaults to 'woocommerce_payments'.
+	 *                          Defaults to 'poocommerce_payments'.
 	 *
 	 * @return void
 	 */
 	private function schedule_action_and_prevent_duplicates( int $timestamp, string $action, array $args = [], string $group = self::GROUP_ID ) {
 		// Unschedule any previously scheduled actions with the same name, args, and group combination.
 		// It is more efficient/performant to check if the action is already scheduled before unscheduling it.
-		// @see https://github.com/Automattic/woocommerce-payments/issues/6662.
+		// @see https://github.com/Automattic/poocommerce-payments/issues/6662.
 		if ( as_has_scheduled_action( $action, $args, $group ) ) {
 			as_unschedule_action( $action, $args, $group );
 		}

@@ -2,7 +2,7 @@
 /**
  * Class WC_REST_Payments_Reader_Charges
  *
- * @package WooCommerce\Payments\Admin
+ * @package PooCommerce\Payments\Admin
  */
 
 use WCPay\Core\Server\Request\Get_Charge;
@@ -279,7 +279,7 @@ class WC_REST_Payments_Reader_Controller extends WC_Payments_REST_Controller {
 			$wcpay_request  = Get_Intention::create( $request->get_param( 'payment_intent_id' ) );
 			$payment_intent = $wcpay_request->send();
 			if ( Intent_Status::SUCCEEDED !== $payment_intent->get_status() ) {
-				throw new \RuntimeException( __( 'Invalid payment intent', 'woocommerce-payments' ) );
+				throw new \RuntimeException( __( 'Invalid payment intent', 'poocommerce-payments' ) );
 			}
 
 			$charge         = $payment_intent->get_charge();
@@ -290,7 +290,7 @@ class WC_REST_Payments_Reader_Controller extends WC_Payments_REST_Controller {
 			/* Collect receipt data, stored on the store side. */
 			$order = wc_get_order( $charge_array['order']['number'] );
 			if ( false === $order ) {
-				throw new \RuntimeException( __( 'Order not found', 'woocommerce-payments' ) );
+				throw new \RuntimeException( __( 'Order not found', 'poocommerce-payments' ) );
 			}
 
 			// Retrieve branding logo file ID.

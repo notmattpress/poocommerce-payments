@@ -115,25 +115,25 @@ exports[`PaymentDetailsSummary capture notification and fraud buttons renders ca
         data-wp-component="CardBody"
       >
         <ul
-          class="woocommerce-list woocommerce-list--horizontal"
+          class="poocommerce-list poocommerce-list--horizontal"
           role="menu"
         >
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Date
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   Sep 19, 2019, 5:24pm
                 </span>
@@ -141,21 +141,21 @@ exports[`PaymentDetailsSummary capture notification and fraud buttons renders ca
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Channel
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   <span>
                     Online
@@ -165,21 +165,21 @@ exports[`PaymentDetailsSummary capture notification and fraud buttons renders ca
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Customer
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   <a
                     data-link-type="wc-admin"
@@ -192,21 +192,21 @@ exports[`PaymentDetailsSummary capture notification and fraud buttons renders ca
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Order
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   <a
                     data-link-type="external"
@@ -219,21 +219,21 @@ exports[`PaymentDetailsSummary capture notification and fraud buttons renders ca
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Payment method
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   <span
                     class="payment-method-details"
@@ -259,21 +259,21 @@ exports[`PaymentDetailsSummary capture notification and fraud buttons renders ca
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Risk evaluation
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   Normal
                 </span>
@@ -295,7 +295,7 @@ exports[`PaymentDetailsSummary capture notification and fraud buttons renders ca
           >
             You must 
             <a
-              href="https://woocommerce.com/document/woopayments/settings-guide/authorize-and-capture/#capturing-authorized-orders"
+              href="https://poocommerce.com/document/woopayments/settings-guide/authorize-and-capture/#capturing-authorized-orders"
               rel="noreferer"
               target="_blank"
             >
@@ -471,25 +471,25 @@ exports[`PaymentDetailsSummary capture notification and fraud buttons renders th
         data-wp-component="CardBody"
       >
         <ul
-          class="woocommerce-list woocommerce-list--horizontal"
+          class="poocommerce-list poocommerce-list--horizontal"
           role="menu"
         >
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Date
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   Sep 19, 2019, 5:24pm
                 </span>
@@ -497,21 +497,21 @@ exports[`PaymentDetailsSummary capture notification and fraud buttons renders th
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Channel
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   <span>
                     Online
@@ -521,21 +521,21 @@ exports[`PaymentDetailsSummary capture notification and fraud buttons renders th
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Customer
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   <a
                     data-link-type="wc-admin"
@@ -548,21 +548,21 @@ exports[`PaymentDetailsSummary capture notification and fraud buttons renders th
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Order
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   <a
                     data-link-type="external"
@@ -575,21 +575,21 @@ exports[`PaymentDetailsSummary capture notification and fraud buttons renders th
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Payment method
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   <span
                     class="payment-method-details"
@@ -615,21 +615,21 @@ exports[`PaymentDetailsSummary capture notification and fraud buttons renders th
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Risk evaluation
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   Normal
                 </span>
@@ -651,7 +651,7 @@ exports[`PaymentDetailsSummary capture notification and fraud buttons renders th
           >
             You must 
             <a
-              href="https://woocommerce.com/document/woopayments/settings-guide/authorize-and-capture/#capturing-authorized-orders"
+              href="https://poocommerce.com/document/woopayments/settings-guide/authorize-and-capture/#capturing-authorized-orders"
               rel="noreferer"
               target="_blank"
             >
@@ -831,25 +831,25 @@ exports[`PaymentDetailsSummary correctly renders a charge 1`] = `
         data-wp-component="CardBody"
       >
         <ul
-          class="woocommerce-list woocommerce-list--horizontal"
+          class="poocommerce-list poocommerce-list--horizontal"
           role="menu"
         >
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Date
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   Sep 19, 2019, 5:24pm
                 </span>
@@ -857,21 +857,21 @@ exports[`PaymentDetailsSummary correctly renders a charge 1`] = `
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Channel
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   <span>
                     Online
@@ -881,21 +881,21 @@ exports[`PaymentDetailsSummary correctly renders a charge 1`] = `
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Customer
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   <a
                     data-link-type="wc-admin"
@@ -908,21 +908,21 @@ exports[`PaymentDetailsSummary correctly renders a charge 1`] = `
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Order
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   <a
                     data-link-type="external"
@@ -935,21 +935,21 @@ exports[`PaymentDetailsSummary correctly renders a charge 1`] = `
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Payment method
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   <span
                     class="payment-method-details"
@@ -975,21 +975,21 @@ exports[`PaymentDetailsSummary correctly renders a charge 1`] = `
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Risk evaluation
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   Normal
                 </span>
@@ -1142,25 +1142,25 @@ exports[`PaymentDetailsSummary correctly renders when payment intent is missing 
         data-wp-component="CardBody"
       >
         <ul
-          class="woocommerce-list woocommerce-list--horizontal"
+          class="poocommerce-list poocommerce-list--horizontal"
           role="menu"
         >
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Date
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   Sep 19, 2019, 5:24pm
                 </span>
@@ -1168,21 +1168,21 @@ exports[`PaymentDetailsSummary correctly renders when payment intent is missing 
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Channel
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   <span>
                     Online
@@ -1192,21 +1192,21 @@ exports[`PaymentDetailsSummary correctly renders when payment intent is missing 
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Customer
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   <a
                     data-link-type="wc-admin"
@@ -1219,21 +1219,21 @@ exports[`PaymentDetailsSummary correctly renders when payment intent is missing 
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Order
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   <a
                     data-link-type="external"
@@ -1246,21 +1246,21 @@ exports[`PaymentDetailsSummary correctly renders when payment intent is missing 
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Payment method
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   <span
                     class="payment-method-details"
@@ -1286,21 +1286,21 @@ exports[`PaymentDetailsSummary correctly renders when payment intent is missing 
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Risk evaluation
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   Normal
                 </span>
@@ -1467,25 +1467,25 @@ exports[`PaymentDetailsSummary order missing notice does not render notice if or
         data-wp-component="CardBody"
       >
         <ul
-          class="woocommerce-list woocommerce-list--horizontal"
+          class="poocommerce-list poocommerce-list--horizontal"
           role="menu"
         >
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Date
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   Sep 19, 2019, 5:24pm
                 </span>
@@ -1493,21 +1493,21 @@ exports[`PaymentDetailsSummary order missing notice does not render notice if or
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Channel
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   <span>
                     Online
@@ -1517,21 +1517,21 @@ exports[`PaymentDetailsSummary order missing notice does not render notice if or
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Customer
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   <a
                     data-link-type="wc-admin"
@@ -1544,21 +1544,21 @@ exports[`PaymentDetailsSummary order missing notice does not render notice if or
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Order
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   <a
                     data-link-type="external"
@@ -1571,21 +1571,21 @@ exports[`PaymentDetailsSummary order missing notice does not render notice if or
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Payment method
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   <span
                     class="payment-method-details"
@@ -1611,21 +1611,21 @@ exports[`PaymentDetailsSummary order missing notice does not render notice if or
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Risk evaluation
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   Normal
                 </span>
@@ -1792,25 +1792,25 @@ exports[`PaymentDetailsSummary order missing notice renders notice if order miss
         data-wp-component="CardBody"
       >
         <ul
-          class="woocommerce-list woocommerce-list--horizontal"
+          class="poocommerce-list poocommerce-list--horizontal"
           role="menu"
         >
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Date
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   Sep 19, 2019, 5:24pm
                 </span>
@@ -1818,21 +1818,21 @@ exports[`PaymentDetailsSummary order missing notice renders notice if order miss
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Channel
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   <span>
                     Online
@@ -1842,21 +1842,21 @@ exports[`PaymentDetailsSummary order missing notice renders notice if order miss
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Customer
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   <a
                     data-link-type="wc-admin"
@@ -1869,21 +1869,21 @@ exports[`PaymentDetailsSummary order missing notice renders notice if order miss
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Order
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   <span>
                     –
@@ -1893,21 +1893,21 @@ exports[`PaymentDetailsSummary order missing notice renders notice if order miss
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Payment method
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   <span
                     class="payment-method-details"
@@ -1933,21 +1933,21 @@ exports[`PaymentDetailsSummary order missing notice renders notice if order miss
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Risk evaluation
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   Normal
                 </span>
@@ -2140,25 +2140,25 @@ exports[`PaymentDetailsSummary renders a charge with subscriptions 1`] = `
         data-wp-component="CardBody"
       >
         <ul
-          class="woocommerce-list woocommerce-list--horizontal"
+          class="poocommerce-list poocommerce-list--horizontal"
           role="menu"
         >
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Date
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   Sep 19, 2019, 5:24pm
                 </span>
@@ -2166,21 +2166,21 @@ exports[`PaymentDetailsSummary renders a charge with subscriptions 1`] = `
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Channel
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   <span>
                     Online
@@ -2190,21 +2190,21 @@ exports[`PaymentDetailsSummary renders a charge with subscriptions 1`] = `
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Customer
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   <a
                     data-link-type="wc-admin"
@@ -2217,21 +2217,21 @@ exports[`PaymentDetailsSummary renders a charge with subscriptions 1`] = `
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Order
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   <a
                     data-link-type="external"
@@ -2244,21 +2244,21 @@ exports[`PaymentDetailsSummary renders a charge with subscriptions 1`] = `
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Subscription
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   <a
                     data-link-type="external"
@@ -2271,21 +2271,21 @@ exports[`PaymentDetailsSummary renders a charge with subscriptions 1`] = `
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Payment method
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   <span
                     class="payment-method-details"
@@ -2311,21 +2311,21 @@ exports[`PaymentDetailsSummary renders a charge with subscriptions 1`] = `
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Risk evaluation
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   Normal
                 </span>
@@ -2469,25 +2469,25 @@ exports[`PaymentDetailsSummary renders fully refunded information for a charge 1
         data-wp-component="CardBody"
       >
         <ul
-          class="woocommerce-list woocommerce-list--horizontal"
+          class="poocommerce-list poocommerce-list--horizontal"
           role="menu"
         >
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Date
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   Sep 19, 2019, 5:24pm
                 </span>
@@ -2495,21 +2495,21 @@ exports[`PaymentDetailsSummary renders fully refunded information for a charge 1
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Channel
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   <span>
                     Online
@@ -2519,21 +2519,21 @@ exports[`PaymentDetailsSummary renders fully refunded information for a charge 1
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Customer
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   <a
                     data-link-type="wc-admin"
@@ -2546,21 +2546,21 @@ exports[`PaymentDetailsSummary renders fully refunded information for a charge 1
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Order
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   <a
                     data-link-type="external"
@@ -2573,21 +2573,21 @@ exports[`PaymentDetailsSummary renders fully refunded information for a charge 1
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Payment method
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   <span
                     class="payment-method-details"
@@ -2613,21 +2613,21 @@ exports[`PaymentDetailsSummary renders fully refunded information for a charge 1
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Risk evaluation
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   Normal
                 </span>
@@ -2737,25 +2737,25 @@ exports[`PaymentDetailsSummary renders loading state 1`] = `
         data-wp-component="CardBody"
       >
         <ul
-          class="woocommerce-list woocommerce-list--horizontal"
+          class="poocommerce-list poocommerce-list--horizontal"
           role="menu"
         >
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Date
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   –
                 </span>
@@ -2763,21 +2763,21 @@ exports[`PaymentDetailsSummary renders loading state 1`] = `
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Channel
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   <span>
                     Online
@@ -2787,21 +2787,21 @@ exports[`PaymentDetailsSummary renders loading state 1`] = `
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Customer
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   –
                 </span>
@@ -2809,21 +2809,21 @@ exports[`PaymentDetailsSummary renders loading state 1`] = `
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Order
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   <span>
                     –
@@ -2833,21 +2833,21 @@ exports[`PaymentDetailsSummary renders loading state 1`] = `
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Payment method
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   <span>
                     –
@@ -2857,21 +2857,21 @@ exports[`PaymentDetailsSummary renders loading state 1`] = `
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Risk evaluation
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   –
                 </span>
@@ -3041,25 +3041,25 @@ exports[`PaymentDetailsSummary renders partially refunded information for a char
         data-wp-component="CardBody"
       >
         <ul
-          class="woocommerce-list woocommerce-list--horizontal"
+          class="poocommerce-list poocommerce-list--horizontal"
           role="menu"
         >
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Date
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   Sep 19, 2019, 5:24pm
                 </span>
@@ -3067,21 +3067,21 @@ exports[`PaymentDetailsSummary renders partially refunded information for a char
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Channel
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   <span>
                     Online
@@ -3091,21 +3091,21 @@ exports[`PaymentDetailsSummary renders partially refunded information for a char
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Customer
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   <a
                     data-link-type="wc-admin"
@@ -3118,21 +3118,21 @@ exports[`PaymentDetailsSummary renders partially refunded information for a char
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Order
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   <a
                     data-link-type="external"
@@ -3145,21 +3145,21 @@ exports[`PaymentDetailsSummary renders partially refunded information for a char
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Payment method
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   <span
                     class="payment-method-details"
@@ -3185,21 +3185,21 @@ exports[`PaymentDetailsSummary renders partially refunded information for a char
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Risk evaluation
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   Normal
                 </span>
@@ -3366,25 +3366,25 @@ exports[`PaymentDetailsSummary renders the Tap to Pay channel from metadata 1`] 
         data-wp-component="CardBody"
       >
         <ul
-          class="woocommerce-list woocommerce-list--horizontal"
+          class="poocommerce-list poocommerce-list--horizontal"
           role="menu"
         >
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Date
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   Sep 19, 2019, 5:24pm
                 </span>
@@ -3392,21 +3392,21 @@ exports[`PaymentDetailsSummary renders the Tap to Pay channel from metadata 1`] 
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Channel
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   <span>
                     Tap to Pay on iPhone
@@ -3416,21 +3416,21 @@ exports[`PaymentDetailsSummary renders the Tap to Pay channel from metadata 1`] 
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Customer
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   <a
                     data-link-type="wc-admin"
@@ -3443,21 +3443,21 @@ exports[`PaymentDetailsSummary renders the Tap to Pay channel from metadata 1`] 
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Order
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   <a
                     data-link-type="external"
@@ -3470,21 +3470,21 @@ exports[`PaymentDetailsSummary renders the Tap to Pay channel from metadata 1`] 
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Payment method
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   <span
                     class="payment-method-details"
@@ -3510,21 +3510,21 @@ exports[`PaymentDetailsSummary renders the Tap to Pay channel from metadata 1`] 
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Risk evaluation
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   Normal
                 </span>
@@ -3691,25 +3691,25 @@ exports[`PaymentDetailsSummary renders the information of a dispute-reversal cha
         data-wp-component="CardBody"
       >
         <ul
-          class="woocommerce-list woocommerce-list--horizontal"
+          class="poocommerce-list poocommerce-list--horizontal"
           role="menu"
         >
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Date
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   Sep 19, 2019, 5:24pm
                 </span>
@@ -3717,21 +3717,21 @@ exports[`PaymentDetailsSummary renders the information of a dispute-reversal cha
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Channel
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   <span>
                     Online
@@ -3741,21 +3741,21 @@ exports[`PaymentDetailsSummary renders the information of a dispute-reversal cha
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Customer
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   <a
                     data-link-type="wc-admin"
@@ -3768,21 +3768,21 @@ exports[`PaymentDetailsSummary renders the information of a dispute-reversal cha
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Order
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   <a
                     data-link-type="external"
@@ -3795,21 +3795,21 @@ exports[`PaymentDetailsSummary renders the information of a dispute-reversal cha
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Payment method
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   <span
                     class="payment-method-details"
@@ -3835,21 +3835,21 @@ exports[`PaymentDetailsSummary renders the information of a dispute-reversal cha
             </div>
           </li>
           <li
-            class="woocommerce-list__item"
+            class="poocommerce-list__item"
           >
             <div
-              class="woocommerce-list__item-inner"
+              class="poocommerce-list__item-inner"
             >
               <div
-                class="woocommerce-list__item-text"
+                class="poocommerce-list__item-text"
               >
                 <span
-                  class="woocommerce-list__item-title"
+                  class="poocommerce-list__item-title"
                 >
                   Risk evaluation
                 </span>
                 <span
-                  class="woocommerce-list__item-content"
+                  class="poocommerce-list__item-content"
                 >
                   Normal
                 </span>
@@ -3875,7 +3875,7 @@ exports[`PaymentDetailsSummary renders the information of a dispute-reversal cha
           >
             Good news! You won this dispute on -. The disputed amount and the dispute fee have been credited back to your account. 
             <a
-              href="https://woocommerce.com/document/woopayments/fraud-and-disputes/"
+              href="https://poocommerce.com/document/woopayments/fraud-and-disputes/"
               rel="noopener noreferrer"
               target="_blank"
             >

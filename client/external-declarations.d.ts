@@ -22,6 +22,6 @@ declare module 'dompurify' {
 	/* eslint-enable @typescript-eslint/naming-convention */
 }
 
-declare module '@woocommerce/settings' {
+declare module '@poocommerce/settings' {
 	const getSetting: ( key: string ) => string;
 }

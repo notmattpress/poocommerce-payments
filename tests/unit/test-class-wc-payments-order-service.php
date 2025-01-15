@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Order_Service_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\Constants\Fraud_Meta_Box_Type;
@@ -745,7 +745,7 @@ class WC_Payments_Order_Service_Test extends WCPAY_UnitTestCase {
 		// Arrange: Create the intent, get the proper order status variations. Set the fraud outcome status.
 		$intent            = WC_Helper_Intention::create_intention( $intent_args ); // Stripe uses single 'l'.
 		$order_status      = Order_Status::CANCELLED; // WCPay uses double 'l'.
-		$wc_order_statuses = wc_get_order_statuses(); // WooCommerce uses single 'l' for US English.
+		$wc_order_statuses = wc_get_order_statuses(); // PooCommerce uses single 'l' for US English.
 		if ( $order_fraud_outcome ) {
 			$this->order_service->set_fraud_outcome_status_for_order( $this->order, Rule::FRAUD_OUTCOME_REVIEW );
 		}

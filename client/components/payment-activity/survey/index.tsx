@@ -73,7 +73,7 @@ const Survey: React.FC = () => {
 						</span>
 						{ __(
 							'We appreciate your feedback!',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 					</div>
 
@@ -100,7 +100,7 @@ const Survey: React.FC = () => {
 				<div className="survey_container">
 					{ __(
 						'Are these metrics helpful?',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 
 					<div className="survey_container__emoticons">
@@ -138,7 +138,7 @@ const Survey: React.FC = () => {
 							<TextareaControl
 								label={ __(
 									'Why do you feel that way? (optional)',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								) }
 								onChange={ ( text ) => {
 									setSurveyAnswers( ( prev ) => ( {
@@ -152,8 +152,8 @@ const Survey: React.FC = () => {
 							<p className="comment_container__disclaimer">
 								{ createInterpolateElement(
 									__(
-										'Your feedback will be only be shared with WooCommerce and treated pursuant to our <a>privacy policy</a>.',
-										'woocommerce-payments'
+										'Your feedback will be only be shared with PooCommerce and treated pursuant to our <a>privacy policy</a>.',
+										'poocommerce-payments'
 									),
 									{
 										a: (
@@ -177,7 +177,7 @@ const Survey: React.FC = () => {
 									setReviewRating( undefined );
 								} }
 							>
-								{ __( 'Cancel', 'woocommerce-payments' ) }
+								{ __( 'Cancel', 'poocommerce-payments' ) }
 							</Button>
 							<Button
 								variant={ 'primary' }
@@ -187,7 +187,7 @@ const Survey: React.FC = () => {
 									setSurveySubmitted( surveyAnswers )
 								}
 							>
-								{ __( 'Send', 'woocommerce-payments' ) }
+								{ __( 'Send', 'poocommerce-payments' ) }
 							</Button>
 						</div>
 					</>

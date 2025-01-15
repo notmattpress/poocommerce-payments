@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { getQuery, updateQueryString } from '@woocommerce/navigation';
+import { getQuery, updateQueryString } from '@poocommerce/navigation';
 
 /**
  * Internal dependencies
@@ -10,7 +10,7 @@ import { useAllDepositsOverviews } from 'wcpay/data';
 import type * as AccountOverview from 'wcpay/types/account-overview';
 
 // Extend the Query interface to include the selected_currency query parameter.
-declare module '@woocommerce/navigation' {
+declare module '@poocommerce/navigation' {
 	interface Query {
 		selected_currency?: string;
 	}

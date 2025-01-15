@@ -3,7 +3,7 @@
  */
 import { __ } from '@wordpress/i18n';
 import React, { useState, useEffect } from 'react';
-import { TourKit } from '@woocommerce/components';
+import { TourKit } from '@poocommerce/components';
 import { useDispatch } from '@wordpress/data';
 import { createInterpolateElement } from '@wordpress/element';
 
@@ -58,19 +58,19 @@ export const PayoutsRenameNotice = () => {
 							name: 'deposits-now-payouts',
 							heading: __(
 								'Deposits are now known as Payouts!',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							descriptions: {
 								desktop: createInterpolateElement(
 									__(
 										"Same reliable system for quick access to your earnings — now with a clearer name. To enhance your experience, 'Deposits' will now be called 'Payouts'. <link>Learn More.</link>",
-										'woocommerce-payments'
+										'poocommerce-payments'
 									),
 									{
 										link: (
 											// eslint-disable-next-line jsx-a11y/anchor-has-content
 											<a
-												href="https://woocommerce.com/document/woopayments/payouts/deposits-and-payouts/"
+												href="https://poocommerce.com/document/woopayments/payouts/deposits-and-payouts/"
 												target="_blank"
 												rel="noreferrer"
 											/>

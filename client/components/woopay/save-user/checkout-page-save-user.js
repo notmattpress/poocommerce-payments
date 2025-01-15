@@ -6,11 +6,11 @@
 import React, { useEffect, useState, useCallback, useRef } from 'react';
 import { __ } from '@wordpress/i18n';
 import { useDispatch, useSelect } from '@wordpress/data';
-import { ValidationInputError } from '@woocommerce/blocks-checkout'; // eslint-disable-line import/no-unresolved
+import { ValidationInputError } from '@poocommerce/blocks-checkout'; // eslint-disable-line import/no-unresolved
 import {
 	VALIDATION_STORE_KEY,
 	CHECKOUT_STORE_KEY,
-} from '@woocommerce/block-data'; // eslint-disable-line import/no-unresolved
+} from '@poocommerce/block-data'; // eslint-disable-line import/no-unresolved
 
 /**
  * Internal dependencies
@@ -167,7 +167,7 @@ const CheckoutPageSaveUser = ( { isBlocksCheckout } ) => {
 	}, [ isPhoneValid ] );
 
 	useEffect( () => {
-		const checkoutForm = jQuery( 'form.woocommerce-checkout' );
+		const checkoutForm = jQuery( 'form.poocommerce-checkout' );
 
 		checkoutForm.on( 'checkout_place_order', function () {
 			jQuery( '#validate-error-invalid-woopay-phone-number' ).show();
@@ -198,7 +198,7 @@ const CheckoutPageSaveUser = ( { isBlocksCheckout } ) => {
 				[ errorId ]: {
 					message: __(
 						'Please enter a valid mobile phone number.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					// Hides errors when the number has not been typed yet but shows when trying to place the order.
 					hidden: isPhoneValid === null,
@@ -322,7 +322,7 @@ const CheckoutPageSaveUser = ( { isBlocksCheckout } ) => {
 							<span className="wc-block-components-checkbox__label">
 								{ __(
 									'Securely save my information for 1-click checkout',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								) }
 							</span>
 						</label>
@@ -376,7 +376,7 @@ const CheckoutPageSaveUser = ( { isBlocksCheckout } ) => {
 							>
 								{ __(
 									'Please enter a valid mobile phone number.',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								) }
 							</p>
 						) }

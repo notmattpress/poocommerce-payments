@@ -2,7 +2,7 @@
 /**
  * Class WC_REST_Payments_Reports_Transactions_Controller
  *
- * @package WooCommerce\Payments\Reports
+ * @package PooCommerce\Payments\Reports
  */
 
 use WCPay\Core\Server\Request\List_Transactions;
@@ -161,71 +161,71 @@ class WC_REST_Payments_Reports_Transactions_Controller extends WC_Payments_REST_
 	public function get_collection_params() {
 		return [
 			'date_before'         => [
-				'description' => __( 'Filter transactions before this date.', 'woocommerce-payments' ),
+				'description' => __( 'Filter transactions before this date.', 'poocommerce-payments' ),
 				'type'        => 'string',
 				'format'      => 'date-time',
 				'required'    => false,
 			],
 			'date_after'          => [
-				'description' => __( 'Filter transactions after this date.', 'woocommerce-payments' ),
+				'description' => __( 'Filter transactions after this date.', 'poocommerce-payments' ),
 				'type'        => 'string',
 				'format'      => 'date-time',
 				'required'    => false,
 			],
 			'date_between'        => [
-				'description' => __( 'Filter transactions between these dates.', 'woocommerce-payments' ),
+				'description' => __( 'Filter transactions between these dates.', 'poocommerce-payments' ),
 				'type'        => 'array',
 			],
 			'order_id'            => [
-				'description'       => __( 'Filter transactions based on the associated order ID.', 'woocommerce-payments' ),
+				'description'       => __( 'Filter transactions based on the associated order ID.', 'poocommerce-payments' ),
 				'type'              => 'integer',
 				'required'          => false,
 				'sanitize_callback' => 'absint',
 				'validate_callback' => 'rest_validate_request_arg',
 			],
 			'deposit_id'          => [
-				'description'       => __( 'Filter transactions based on the associated deposit ID.', 'woocommerce-payments' ),
+				'description'       => __( 'Filter transactions based on the associated deposit ID.', 'poocommerce-payments' ),
 				'type'              => 'string',
 				'required'          => false,
 				'validate_callback' => 'rest_validate_request_arg',
 			],
 			'customer_email'      => [
-				'description'       => __( 'Filter transactions based on the customer email.', 'woocommerce-payments' ),
+				'description'       => __( 'Filter transactions based on the customer email.', 'poocommerce-payments' ),
 				'type'              => 'string',
 				'required'          => false,
 				'validate_callback' => 'rest_validate_request_arg',
 			],
 			'payment_method_type' => [
-				'description'       => __( 'Filter transactions based on the payment method used.', 'woocommerce-payments' ),
+				'description'       => __( 'Filter transactions based on the payment method used.', 'poocommerce-payments' ),
 				'type'              => 'string',
 				'required'          => false,
 				'validate_callback' => 'rest_validate_request_arg',
 			],
 			'type'                => [
-				'description'       => __( 'Filter transactions where type is a specific value.', 'woocommerce-payments' ),
+				'description'       => __( 'Filter transactions where type is a specific value.', 'poocommerce-payments' ),
 				'type'              => 'string',
 				'required'          => false,
 				'validate_callback' => 'rest_validate_request_arg',
 			],
 			'match'               => [
-				'description' => __( 'Match filter for the transactions.', 'woocommerce-payments' ),
+				'description' => __( 'Match filter for the transactions.', 'poocommerce-payments' ),
 				'type'        => 'string',
 				'required'    => false,
 			],
 			'user_timezone'       => [
-				'description' => __( 'Include timezone into date filtering.', 'woocommerce-payments' ),
+				'description' => __( 'Include timezone into date filtering.', 'poocommerce-payments' ),
 				'type'        => 'string',
 				'required'    => false,
 			],
 			'page'                => [
-				'description' => __( 'Page number.', 'woocommerce-payments' ),
+				'description' => __( 'Page number.', 'poocommerce-payments' ),
 				'type'        => 'integer',
 				'required'    => false,
 				'default'     => 1,
 				'minimum'     => 1,
 			],
 			'per_page'            => [
-				'description' => __( 'Page size.', 'woocommerce-payments' ),
+				'description' => __( 'Page size.', 'poocommerce-payments' ),
 				'type'        => 'integer',
 				'required'    => false,
 				'default'     => 25,
@@ -233,13 +233,13 @@ class WC_REST_Payments_Reports_Transactions_Controller extends WC_Payments_REST_
 				'maximum'     => 100,
 			],
 			'sort'                => [
-				'description' => __( 'Field on which to sort.', 'woocommerce-payments' ),
+				'description' => __( 'Field on which to sort.', 'poocommerce-payments' ),
 				'type'        => 'string',
 				'required'    => false,
 				'default'     => 'date',
 			],
 			'direction'           => [
-				'description' => __( 'Direction on which to sort.', 'woocommerce-payments' ),
+				'description' => __( 'Direction on which to sort.', 'poocommerce-payments' ),
 				'type'        => 'string',
 				'required'    => false,
 				'default'     => 'desc',
@@ -260,122 +260,122 @@ class WC_REST_Payments_Reports_Transactions_Controller extends WC_Payments_REST_
 			'type'       => 'object',
 			'properties' => [
 				'date'                 => [
-					'description' => __( 'The date and time when the transaction was created.', 'woocommerce-payments' ),
+					'description' => __( 'The date and time when the transaction was created.', 'poocommerce-payments' ),
 					'type'        => 'string',
 					'format'      => 'date-time',
 					'context'     => [ 'view' ],
 				],
 				'transaction_id'       => [
-					'description' => __( 'A unique identifier for each transaction based on its transaction type.', 'woocommerce-payments' ),
+					'description' => __( 'A unique identifier for each transaction based on its transaction type.', 'poocommerce-payments' ),
 					'type'        => 'string',
 					'context'     => [ 'view' ],
 				],
 				'source_id'            => [
-					'description' => __( 'A unique source id for each transaction.', 'woocommerce-payments' ),
+					'description' => __( 'A unique source id for each transaction.', 'poocommerce-payments' ),
 					'type'        => 'string',
 					'context'     => [ 'view' ],
 				],
 				'channel'              => [
-					'description' => __( 'Indicates whether the transaction was made online or offline.', 'woocommerce-payments' ),
+					'description' => __( 'Indicates whether the transaction was made online or offline.', 'poocommerce-payments' ),
 					'type'        => 'string',
 					'context'     => [ 'view' ],
 				],
 				'payment_method'       => [
-					'description' => __( 'Specifies whether the payment method used was a card (Visa, Mastercard, etc.) or an Alternative Payment Method (APM) or Local Payment Method (LPM) (iDEAL, Apple Pay, Google Pay, etc.).', 'woocommerce-payments' ),
+					'description' => __( 'Specifies whether the payment method used was a card (Visa, Mastercard, etc.) or an Alternative Payment Method (APM) or Local Payment Method (LPM) (iDEAL, Apple Pay, Google Pay, etc.).', 'poocommerce-payments' ),
 					'type'        => 'object',
 					'context'     => [ 'view' ],
 					'properties'  => [
 						'type' => [
-							'description' => __( 'Specifies whether the payment method used was a card (Visa, Mastercard, etc.) or an Alternative Payment Method (APM) or Local Payment Method (LPM) (iDEAL, Apple Pay, Google Pay, etc.).', 'woocommerce-payments' ),
+							'description' => __( 'Specifies whether the payment method used was a card (Visa, Mastercard, etc.) or an Alternative Payment Method (APM) or Local Payment Method (LPM) (iDEAL, Apple Pay, Google Pay, etc.).', 'poocommerce-payments' ),
 							'type'        => 'string',
 							'context'     => [ 'view' ],
 						],
 						'id'   => [
-							'description' => __( 'The payment method ID used to create the transaction type.', 'woocommerce-payments' ),
+							'description' => __( 'The payment method ID used to create the transaction type.', 'poocommerce-payments' ),
 							'type'        => 'string',
 							'context'     => [ 'view' ],
 						],
 					],
 				],
 				'type'                 => [
-					'description' => __( 'The type of the transaction.', 'woocommerce-payments' ),
+					'description' => __( 'The type of the transaction.', 'poocommerce-payments' ),
 					'type'        => 'string',
 					'context'     => [ 'view' ],
 				],
 				'transaction_currency' => [
-					'description' => __( 'The currency of the transaction.', 'woocommerce-payments' ),
+					'description' => __( 'The currency of the transaction.', 'poocommerce-payments' ),
 					'type'        => 'string',
 					'context'     => [ 'view' ],
 				],
 				'amount'               => [
-					'description' => __( 'The amount of the transaction.', 'woocommerce-payments' ),
+					'description' => __( 'The amount of the transaction.', 'poocommerce-payments' ),
 					'type'        => 'number',
 					'context'     => [ 'view' ],
 				],
 				'exchange_rate'        => [
-					'description' => __( 'The exchange rate of the transaction.', 'woocommerce-payments' ),
+					'description' => __( 'The exchange rate of the transaction.', 'poocommerce-payments' ),
 					'type'        => 'number',
 					'context'     => [ 'view' ],
 				],
 				'deposit_currency'     => [
-					'description' => __( 'The currency of the store.', 'woocommerce-payments' ),
+					'description' => __( 'The currency of the store.', 'poocommerce-payments' ),
 					'type'        => 'string',
 					'context'     => [ 'view' ],
 				],
 				'fees'                 => [
-					'description' => __( 'Transaction fees.', 'woocommerce-payments' ),
+					'description' => __( 'Transaction fees.', 'poocommerce-payments' ),
 					'type'        => 'number',
 					'context'     => [ 'view' ],
 				],
 				'customer'             => [
-					'description' => __( 'Customer details.', 'woocommerce-payments' ),
+					'description' => __( 'Customer details.', 'poocommerce-payments' ),
 					'type'        => 'object',
 					'context'     => [ 'view' ],
 					'properties'  => [
 						'name'    => [
-							'name'    => __( 'Customer name.', 'woocommerce-payments' ),
+							'name'    => __( 'Customer name.', 'poocommerce-payments' ),
 							'type'    => 'string',
 							'context' => [ 'view' ],
 						],
 						'email'   => [
-							'description' => __( 'Customer email.', 'woocommerce-payments' ),
+							'description' => __( 'Customer email.', 'poocommerce-payments' ),
 							'type'        => 'string',
 							'context'     => [ 'view' ],
 						],
 						'country' => [
-							'description' => __( 'Customer country.', 'woocommerce-payments' ),
+							'description' => __( 'Customer country.', 'poocommerce-payments' ),
 							'type'        => 'string',
 							'context'     => [ 'view' ],
 						],
 					],
 				],
 				'net_amount'           => [
-					'description' => __( 'Net amount.', 'woocommerce-payments' ),
+					'description' => __( 'Net amount.', 'poocommerce-payments' ),
 					'type'        => 'number',
 					'context'     => [ 'view' ],
 				],
 				'order_id'             => [
-					'description' => __( 'The identifier of the WooCommerce order associated with this transaction.', 'woocommerce-payments' ),
+					'description' => __( 'The identifier of the PooCommerce order associated with this transaction.', 'poocommerce-payments' ),
 					'type'        => 'number',
 					'context'     => [ 'view' ],
 				],
 				'risk_level'           => [
-					'description' => __( 'Fraud risk level.', 'woocommerce-payments' ),
+					'description' => __( 'Fraud risk level.', 'poocommerce-payments' ),
 					'type'        => 'number',
 					'context'     => [ 'view' ],
 				],
 				'deposit_date'         => [
-					'description' => __( 'Deposit date of transaction', 'woocommerce-payments' ),
+					'description' => __( 'Deposit date of transaction', 'poocommerce-payments' ),
 					'type'        => 'string',
 					'context'     => [ 'view' ],
 				],
 				'deposit_id'           => [
-					'description' => __( 'A unique identifier for the deposit.', 'woocommerce-payments' ),
+					'description' => __( 'A unique identifier for the deposit.', 'poocommerce-payments' ),
 					'type'        => 'string',
 					'context'     => [ 'view' ],
 				],
 				'deposit_status'       => [
-					'description' => __( 'The status of the deposit', 'woocommerce-payments' ),
+					'description' => __( 'The status of the deposit', 'poocommerce-payments' ),
 					'type'        => 'string',
 					'context'     => [ 'view' ],
 				],

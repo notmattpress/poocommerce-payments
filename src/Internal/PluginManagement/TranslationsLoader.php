@@ -2,7 +2,7 @@
 /**
  * Class TranslationsLoader
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Internal\PluginManagement;
@@ -91,7 +91,7 @@ class TranslationsLoader {
 			return [];
 		}
 
-		// Use the same timeout values as Woo Core https://github.com/woocommerce/woocommerce/blob/trunk/plugins/woocommerce/includes/admin/helper/class-wc-helper-updater.php#L257.
+		// Use the same timeout values as Woo Core https://github.com/poocommerce/poocommerce/blob/trunk/plugins/poocommerce/includes/admin/helper/class-wc-helper-updater.php#L257.
 		$timeout = wp_doing_cron() ? 30 : 3;
 
 		if ( ! function_exists( 'get_plugin_data' ) ) {
@@ -115,7 +115,7 @@ class TranslationsLoader {
 		];
 
 		$raw_response = wp_remote_post(
-			'https://translate.wordpress.com/api/translations-updates/woocommerce',
+			'https://translate.wordpress.com/api/translations-updates/poocommerce',
 			[
 				'body'    => wp_json_encode( $request_body ),
 				'headers' => [ 'Content-Type: application/json' ],

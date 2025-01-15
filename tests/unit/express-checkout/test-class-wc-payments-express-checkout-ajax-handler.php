@@ -2,7 +2,7 @@
 /**
  * These tests make assertions against class WC_Payments_Express_Checkout_Ajax_Handler.
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use PHPUnit\Framework\MockObject\MockObject;

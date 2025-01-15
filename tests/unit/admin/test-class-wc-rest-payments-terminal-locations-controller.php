@@ -2,7 +2,7 @@
 /**
  * Class WC_REST_Payments_Terminal_Locations_Controller_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use PHPUnit\Framework\MockObject\MockObject;
@@ -39,10 +39,10 @@ class WC_REST_Payments_Terminal_Locations_Controller_Test extends WCPAY_UnitTest
 		wp_set_current_user( 1 );
 
 		// Set the store location for running test cases as intended.
-		update_option( 'woocommerce_store_city', 'San Francisco' );
-		update_option( 'woocommerce_default_country', 'US:CA' );
-		update_option( 'woocommerce_store_address', '60 29th Street Suite 343' );
-		update_option( 'woocommerce_store_postcode', '94110' );
+		update_option( 'poocommerce_store_city', 'San Francisco' );
+		update_option( 'poocommerce_default_country', 'US:CA' );
+		update_option( 'poocommerce_store_address', '60 29th Street Suite 343' );
+		update_option( 'poocommerce_store_postcode', '94110' );
 
 		$this->mock_api_client = $this->getMockBuilder( WC_Payments_API_Client::class )
 			->disableOriginalConstructor()
@@ -75,9 +75,9 @@ class WC_REST_Payments_Terminal_Locations_Controller_Test extends WCPAY_UnitTest
 		delete_transient( Controller::STORE_LOCATIONS_TRANSIENT_KEY );
 
 		// Set the store location settings for running the test case as intended.
-		delete_option( 'woocommerce_store_city' );
-		delete_option( 'woocommerce_store_address' );
-		delete_option( 'woocommerce_store_postcode' );
+		delete_option( 'poocommerce_store_city' );
+		delete_option( 'poocommerce_store_address' );
+		delete_option( 'poocommerce_store_postcode' );
 
 		$this->mock_wcpay_request( Get_Request::class, 0 );
 		$this->mock_api_client
@@ -100,7 +100,7 @@ class WC_REST_Payments_Terminal_Locations_Controller_Test extends WCPAY_UnitTest
 		delete_transient( Controller::STORE_LOCATIONS_TRANSIENT_KEY );
 
 		// Set the store location settings for running the test case as intended.
-		update_option( 'woocommerce_default_country', 'US:InvalidState' );
+		update_option( 'poocommerce_default_country', 'US:InvalidState' );
 
 		$request = $this->mock_wcpay_request( Get_Request::class );
 

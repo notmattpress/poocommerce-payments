@@ -40,7 +40,7 @@ const useContextValue = ( initialState: OverviewSurveyFields = {} ) => {
 				createErrorNotice(
 					__(
 						'An error occurred while submitting the survey. Please try again.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					)
 				);
 			}

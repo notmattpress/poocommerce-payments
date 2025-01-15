@@ -2,7 +2,7 @@
 /**
  * Class WC_Payment_Gateway_WCPay_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 namespace WCPay\Payment_Methods;
@@ -1079,11 +1079,11 @@ class UPE_Split_Payment_Gateway_Test extends WCPAY_UnitTestCase {
 		$order               = WC_Helper_Order::create_order();
 		$payment_information = new Payment_Information( 'pm_mock', $order );
 
-		$_POST['payment_method'] = 'woocommerce_payments';
+		$_POST['payment_method'] = 'poocommerce_payments';
 
 		$mock_upe_gateway->expects( $this->once() )
 			->method( 'get_payment_methods_from_gateway_id' )
-			->with( 'woocommerce_payments' )
+			->with( 'poocommerce_payments' )
 			->will(
 				$this->returnValue( [ Payment_Method::CARD ] )
 			);

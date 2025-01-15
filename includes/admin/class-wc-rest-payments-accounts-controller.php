@@ -2,7 +2,7 @@
 /**
  * Class WC_REST_Payments_Accounts_Controller
  *
- * @package WooCommerce\Payments\Admin
+ * @package PooCommerce\Payments\Admin
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -44,7 +44,7 @@ class WC_REST_Payments_Accounts_Controller extends WC_Payments_REST_Controller {
 	public function get_account_data( $request ) {
 		$account = WC_Payments::get_account_service()->get_cached_account_data();
 		if ( [] === $account ) {
-			$default_currency = get_woocommerce_currency();
+			$default_currency = get_poocommerce_currency();
 			$status           = WC_Payments_Account::is_on_boarding_disabled() ? 'ONBOARDING_DISABLED' : 'NOACCOUNT';
 			$account          = [
 				'card_present_eligible'    => false,

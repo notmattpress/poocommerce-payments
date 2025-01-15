@@ -6,7 +6,7 @@ const {
 	shopper,
 	withRestApi,
 	setCheckbox,
-} = require( '@woocommerce/e2e-utils' );
+} = require( '@poocommerce/e2e-utils' );
 import {
 	RUN_SUBSCRIPTIONS_TESTS,
 	describeif,
@@ -21,16 +21,16 @@ const productSlug = 'subscription-no-signup-fee-product';
 let subscriptionId;
 
 const testSelectors = {
-	subscriptionIdField: '.woocommerce-orders-table__cell-subscription-id > a',
+	subscriptionIdField: '.poocommerce-orders-table__cell-subscription-id > a',
 	subscriptionChangePaymentButton:
 		'.subscription_details a.button.change_payment_method',
 	wcNotice: 'div.wc-block-components-notice-banner',
-	wcOldNotice: '.woocommerce .woocommerce-message',
+	wcOldNotice: '.poocommerce .poocommerce-message',
 	pageTitle: 'h1.entry-title',
-	newPaymentMethodCheckbox: 'input#wc-woocommerce_payments-payment-token-new',
+	newPaymentMethodCheckbox: 'input#wc-poocommerce_payments-payment-token-new',
 	subscriptionPaymentMethod: '.subscription-payment-method',
 	savedTokensCheckboxes:
-		'.payment_method_woocommerce_payments .woocommerce-SavedPaymentMethods-tokenInput',
+		'.payment_method_poocommerce_payments .poocommerce-SavedPaymentMethods-tokenInput',
 };
 
 describeif( RUN_SUBSCRIPTIONS_TESTS )(

@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Currency_Manager
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay;
@@ -38,7 +38,7 @@ class WC_Payments_Currency_Manager {
 	 * @return void
 	 */
 	public function init_hooks() {
-		add_action( 'update_option_woocommerce_woocommerce_payments_settings', [ $this, 'maybe_add_missing_currencies' ] );
+		add_action( 'update_option_poocommerce_poocommerce_payments_settings', [ $this, 'maybe_add_missing_currencies' ] );
 		add_action( 'admin_head', [ $this, 'add_payment_method_currency_dependencies_script' ] );
 	}
 

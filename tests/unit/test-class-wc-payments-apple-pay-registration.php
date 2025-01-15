@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Apple_Pay_Registration_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 /**
@@ -117,7 +117,7 @@ class WC_Payments_Apple_Pay_Registration_Test extends WCPAY_UnitTestCase {
 
 	public function test_it_verifies_domain_during_upgrade() {
 		$verify_callback_priority = has_action(
-			'woocommerce_woocommerce_payments_updated',
+			'poocommerce_poocommerce_payments_updated',
 			[ $this->wc_apple_pay_registration, 'verify_domain_on_update' ]
 		);
 

@@ -1,8 +1,8 @@
 .wcpay-disputes-list {
-	.woocommerce-table__header.is-center-aligned {
+	.poocommerce-table__header.is-center-aligned {
 		text-align: center;
 	}
-	.woocommerce-table__item a.components-button {
+	.poocommerce-table__item a.components-button {
 		display: inline-flex;
 	}
 	.due-soon {
@@ -16,12 +16,12 @@
 		}
 	}
 
-	.woocommerce-pagination {
+	.poocommerce-pagination {
 		align-items: flex-end;
 	}
 }
 
-// TODO generalize most of these styles to other WCPay views, if not WooCommerce Admin in general.
+// TODO generalize most of these styles to other WCPay views, if not PooCommerce Admin in general.
 .wcpay-dispute-details,
 .wcpay-dispute-evidence {
 	$horizontal-card-padding: 24px;

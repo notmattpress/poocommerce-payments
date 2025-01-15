@@ -2,7 +2,7 @@
 /**
  * Class WooPay_Tracker_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\WooPay_Tracker;
