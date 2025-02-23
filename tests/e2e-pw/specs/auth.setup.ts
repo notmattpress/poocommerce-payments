@@ -100,11 +100,11 @@ setup( 'authenticate as customer', async ( { page } ) => {
 			await page.goto( `/my-account` );
 			await expect(
 				page.locator(
-					'.woocommerce-MyAccount-navigation-link--customer-logout'
+					'.poocommerce-MyAccount-navigation-link--customer-logout'
 				)
 			).toBeVisible();
 			await expect(
-				page.locator( 'div.woocommerce-MyAccount-content > p >> nth=0' )
+				page.locator( 'div.poocommerce-MyAccount-content > p >> nth=0' )
 			).toContainText( 'Hello' );
 
 			console.log( 'Logged-in as customer successfully.' );

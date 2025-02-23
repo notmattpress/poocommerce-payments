@@ -74,7 +74,7 @@ const ProductDetail = ( { cart, context } ) => {
 		return null;
 	}
 
-	if ( context !== 'woocommerce/cart' ) {
+	if ( context !== 'poocommerce/cart' ) {
 		return null;
 	}
 

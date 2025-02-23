@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Incentives_Service_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use PHPUnit\Framework\MockObject\MockObject;
@@ -44,7 +44,7 @@ class WC_Payments_Incentives_Service_Test extends WCPAY_UnitTestCase {
 		];
 
 		// Ensure no payment gateways are available.
-		add_filter( 'woocommerce_available_payment_gateways', '__return_empty_array' );
+		add_filter( 'poocommerce_available_payment_gateways', '__return_empty_array' );
 	}
 
 	/**
@@ -57,15 +57,15 @@ class WC_Payments_Incentives_Service_Test extends WCPAY_UnitTestCase {
 		$menu = null; // phpcs:ignore: WordPress.WP.GlobalVariablesOverride.Prohibited
 
 		remove_all_filters( 'pre_http_request' );
-		remove_filter( 'woocommerce_available_payment_gateways', '__return_empty_array' );
+		remove_filter( 'poocommerce_available_payment_gateways', '__return_empty_array' );
 
 		parent::tear_down();
 	}
 
 	public function test_filters_registered_properly() {
 		$this->assertNotFalse( has_action( 'admin_menu', [ $this->incentives_service, 'add_payments_menu_badge' ] ) );
-		$this->assertNotFalse( has_filter( 'woocommerce_admin_allowed_promo_notes', [ $this->incentives_service, 'allowed_promo_notes' ] ) );
-		$this->assertNotFalse( has_filter( 'woocommerce_admin_woopayments_onboarding_task_badge', [ $this->incentives_service, 'onboarding_task_badge' ] ) );
+		$this->assertNotFalse( has_filter( 'poocommerce_admin_allowed_promo_notes', [ $this->incentives_service, 'allowed_promo_notes' ] ) );
+		$this->assertNotFalse( has_filter( 'poocommerce_admin_woopayments_onboarding_task_badge', [ $this->incentives_service, 'onboarding_task_badge' ] ) );
 	}
 
 	public function test_add_payments_menu_badge_without_incentive() {
@@ -132,7 +132,7 @@ class WC_Payments_Incentives_Service_Test extends WCPAY_UnitTestCase {
 
 	public function test_get_cached_connect_incentive_non_supported_country() {
 		add_filter(
-			'woocommerce_countries_base_country',
+			'poocommerce_countries_base_country',
 			function () {
 				return '__';
 			}
@@ -140,7 +140,7 @@ class WC_Payments_Incentives_Service_Test extends WCPAY_UnitTestCase {
 
 		$this->assertNull( $this->incentives_service->get_cached_connect_incentive() );
 
-		remove_all_filters( 'woocommerce_countries_base_country' );
+		remove_all_filters( 'poocommerce_countries_base_country' );
 	}
 
 	public function test_get_cached_connect_incentive_cached_error() {

@@ -2,7 +2,7 @@
 /**
  * Class WC_REST_Payments_Survey_Controller
  *
- * @package WooCommerce\Payments\Admin
+ * @package PooCommerce\Payments\Admin
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -144,6 +144,6 @@ class WC_REST_Payments_Survey_Controller extends WP_REST_Controller {
 	 * @return bool
 	 */
 	public function check_permission() {
-		return current_user_can( 'manage_woocommerce' );
+		return current_user_can( 'manage_poocommerce' );
 	}
 }

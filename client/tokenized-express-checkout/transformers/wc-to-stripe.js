@@ -12,7 +12,7 @@ import { applyFilters } from '@wordpress/hooks';
 
 /**
  * GooglePay/ApplePay expect the prices to be formatted in cents.
- * But WooCommerce has a setting to define the number of decimals for amounts.
+ * But PooCommerce has a setting to define the number of decimals for amounts.
  * Using this function to ensure the prices provided to GooglePay/ApplePay
  * are always provided accurately, regardless of the number of decimals.
  *
@@ -70,7 +70,7 @@ export const transformCartDataForDisplayItems = ( rawCartData ) => {
 	if ( taxAmount ) {
 		displayItems.push( {
 			amount: transformPrice( taxAmount, cartData.totals ),
-			name: __( 'Tax', 'woocommerce-payments' ),
+			name: __( 'Tax', 'poocommerce-payments' ),
 		} );
 	}
 
@@ -81,7 +81,7 @@ export const transformCartDataForDisplayItems = ( rawCartData ) => {
 	if ( shippingAmount ) {
 		displayItems.push( {
 			amount: transformPrice( shippingAmount, cartData.totals ),
-			name: __( 'Shipping', 'woocommerce-payments' ),
+			name: __( 'Shipping', 'poocommerce-payments' ),
 		} );
 	}
 
@@ -89,7 +89,7 @@ export const transformCartDataForDisplayItems = ( rawCartData ) => {
 	if ( refundAmount ) {
 		displayItems.push( {
 			amount: -transformPrice( refundAmount, cartData.totals ),
-			name: __( 'Refund', 'woocommerce-payments' ),
+			name: __( 'Refund', 'poocommerce-payments' ),
 		} );
 	}
 

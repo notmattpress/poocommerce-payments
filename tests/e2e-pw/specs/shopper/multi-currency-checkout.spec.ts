@@ -56,7 +56,7 @@ test.describe( 'Multi-currency checkout', () => {
 					async () => {
 						await expect(
 							shopperPage.locator(
-								'.woocommerce-order-overview__total'
+								'.poocommerce-order-overview__total'
 							)
 						).toHaveText( new RegExp( currency ) );
 					}
@@ -71,7 +71,7 @@ test.describe( 'Multi-currency checkout', () => {
 						);
 						await expect(
 							shopperPage.locator(
-								'.woocommerce-table--order-details tfoot tr:last-child td'
+								'.poocommerce-table--order-details tfoot tr:last-child td'
 							)
 						).toHaveText( new RegExp( currency ) );
 					}

@@ -158,7 +158,7 @@ describe( 'ConnectAccountPage', () => {
 		);
 
 		const modalSelector =
-			'.woocommerce-payments__onboarding_location_check-modal';
+			'.poocommerce-payments__onboarding_location_check-modal';
 		expect( document.body.querySelector( modalSelector ) ).not.toBeNull();
 
 		// eslint-disable-next-line @typescript-eslint/ban-ts-comment

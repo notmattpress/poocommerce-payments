@@ -17,7 +17,7 @@ export const dataHasLoaded = async ( page: Page ) => {
 
 export const tableDataHasLoaded = async ( page: Page ) => {
 	await page
-		.locator( '.woocommerce-table__table.is-loading' )
+		.locator( '.poocommerce-table__table.is-loading' )
 		.waitFor( { state: 'hidden' } );
 };
 
@@ -29,7 +29,7 @@ export const waitAndSkipTourComponent = async (
 		await page.waitForSelector( `${ containerClass }`, { timeout: 3000 } );
 		if ( await page.isVisible( `${ containerClass }` ) ) {
 			await page.click(
-				`${ containerClass } button.woocommerce-tour-kit-step-controls__close-btn`
+				`${ containerClass } button.poocommerce-tour-kit-step-controls__close-btn`
 			);
 		}
 	} catch ( error ) {
@@ -41,7 +41,7 @@ const isWooPaymentsSettingsPage = ( page: Page ) => {
 	return page
 		.url()
 		.includes(
-			'/wp-admin/admin.php?page=wc-settings&tab=checkout&section=woocommerce_payments'
+			'/wp-admin/admin.php?page=wc-settings&tab=checkout&section=poocommerce_payments'
 		);
 };
 

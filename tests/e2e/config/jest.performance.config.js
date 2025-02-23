@@ -1,5 +1,5 @@
 const path = require( 'path' );
-const { useE2EJestConfig } = require( '@woocommerce/e2e-environment' );
+const { useE2EJestConfig } = require( '@poocommerce/e2e-environment' );
 
 // eslint-disable-next-line react-hooks/rules-of-hooks
 const testConfig = useE2EJestConfig( {

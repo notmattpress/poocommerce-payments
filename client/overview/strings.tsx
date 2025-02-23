@@ -14,7 +14,7 @@ export default {
 					/* translators: %1$s: WooPayments */
 					__(
 						'{{bold}}%1s is in test mode.{{bold /}}. All transactions will be simulated.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					'WooPayments'
 				),
@@ -27,7 +27,7 @@ export default {
 					/* translators: %1$s: WooPayments */
 					__(
 						'{{bold}}%1s is in sandbox mode.{{bold /}}. You need to set up a live %1s account before you can accept real transactions.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					'WooPayments'
 				),
@@ -37,9 +37,9 @@ export default {
 			} ),
 		},
 		actions: {
-			goLive: __( 'Ready to go live?', 'woocommerce-payments' ),
-			setUpPayments: __( 'Set up payments', 'woocommerce-payments' ),
-			learnMore: __( 'Learn more', 'woocommerce-payments' ),
+			goLive: __( 'Ready to go live?', 'poocommerce-payments' ),
+			setUpPayments: __( 'Set up payments', 'poocommerce-payments' ),
+			learnMore: __( 'Learn more', 'poocommerce-payments' ),
 		},
 	},
 };

@@ -64,18 +64,18 @@ const PaymentMethodLabel = ( {
 			{ label }
 			{ required && (
 				<span className="payment-method__required-label">
-					{ '(' + __( 'Required', 'woocommerce-payments' ) + ')' }
+					{ '(' + __( 'Required', 'poocommerce-payments' ) + ')' }
 				</span>
 			) }
 			{ upeCapabilityStatuses.PENDING_APPROVAL === status && (
 				<Chip
-					message={ __( 'Pending approval', 'woocommerce-payments' ) }
+					message={ __( 'Pending approval', 'poocommerce-payments' ) }
 					type="warning"
 				/>
 			) }
 			{ upeCapabilityStatuses.REJECTED === status && (
 				<Chip
-					message={ __( 'Rejected', 'woocommerce-payments' ) }
+					message={ __( 'Rejected', 'poocommerce-payments' ) }
 					type="alert"
 				/>
 			) }
@@ -83,7 +83,7 @@ const PaymentMethodLabel = ( {
 				<Chip
 					message={ __(
 						'Pending activation',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 					type="warning"
 				/>
@@ -92,7 +92,7 @@ const PaymentMethodLabel = ( {
 				<Chip
 					message={ __(
 						'More information needed',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 					type="warning"
 				/>
@@ -174,7 +174,7 @@ const PaymentMethod = ( {
 		if ( upeCapabilityStatuses.PENDING_APPROVAL === status ) {
 			return __(
 				'This payment method is pending approval. Once approved, you will be able to use it.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			);
 		}
 
@@ -183,7 +183,7 @@ const PaymentMethod = ( {
 				__(
 					"%s won't be visible to your customers until you provide the required " +
 						'information. Follow the instructions sent by our partner Stripe to %s.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				label,
 				wcpaySettings?.accountEmail ?? ''
@@ -195,7 +195,7 @@ const PaymentMethod = ( {
 				// translators: {{contactSupportLink}}: placeholders are opening and closing anchor tags.
 				mixedString: __(
 					'Please {{contactSupportLink}}contact support{{/contactSupportLink}} for more details.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				components: {
 					contactSupportLink: (
@@ -205,10 +205,10 @@ const PaymentMethod = ( {
 							rel="noreferrer"
 							title={ __(
 								'Contact Support',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 							href={
-								'https://woocommerce.com/my-account/contact-support/'
+								'https://poocommerce.com/my-account/contact-support/'
 							}
 						/>
 					),
@@ -226,7 +226,7 @@ const PaymentMethod = ( {
 				mixedString: __(
 					'We need more information from you to enable this method. ' +
 						'{{learnMoreLink}}Learn more.{{/learnMoreLink}}',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				components: {
 					learnMoreLink: (
@@ -236,12 +236,12 @@ const PaymentMethod = ( {
 							rel="noreferrer"
 							title={ __(
 								'Learn more about enabling payment methods',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 							/* eslint-disable-next-line max-len */
 							href={
 								isPoInProgress
-									? 'https://woocommerce.com/document/woopayments/startup-guide/gradual-signup/#additional-payment-methods'
+									? 'https://poocommerce.com/document/woopayments/startup-guide/gradual-signup/#additional-payment-methods'
 									: getDocumentationUrlForDisabledPaymentMethod(
 											paymentMethodId
 									  )
@@ -256,7 +256,7 @@ const PaymentMethod = ( {
 			/* translators: %s: a payment method name. */
 			__(
 				'%s is not available to your customers when the "manual capture" setting is enabled.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			label
 		);
@@ -322,7 +322,7 @@ const PaymentMethod = ( {
 										aria-label={ sprintf(
 											__(
 												'Base transaction fees: %s',
-												'woocommerce-payments'
+												'poocommerce-payments'
 											),
 											formatMethodFeesDescription(
 												accountFees[ id ]
@@ -351,15 +351,15 @@ const PaymentMethod = ( {
 					<span>
 						{ __(
 							'Support for Sofort is ending soon. ',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 						<a
 							// eslint-disable-next-line max-len
-							href="https://woocommerce.com/document/woopayments/payment-methods/additional-payment-methods/#sofort-migration"
+							href="https://poocommerce.com/document/woopayments/payment-methods/additional-payment-methods/#sofort-migration"
 							target="_blank"
 							rel="external noreferrer noopener"
 						>
-							{ __( 'Learn more', 'woocommerce-payments' ) }
+							{ __( 'Learn more', 'poocommerce-payments' ) }
 						</a>
 					</span>
 				</InlineNotice>
