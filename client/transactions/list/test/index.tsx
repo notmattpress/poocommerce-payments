@@ -8,9 +8,9 @@ import { render, screen, waitFor } from '@testing-library/react';
 import user from '@testing-library/user-event';
 import apiFetch from '@wordpress/api-fetch';
 import { dateI18n } from '@wordpress/date';
-import { downloadCSVFile } from '@woocommerce/csv-export';
-import { getQuery, updateQueryString } from '@woocommerce/navigation';
-import { useUserPreferences } from '@woocommerce/data';
+import { downloadCSVFile } from '@poocommerce/csv-export';
+import { getQuery, updateQueryString } from '@poocommerce/navigation';
+import { useUserPreferences } from '@poocommerce/data';
 import { getUserTimeZone } from 'wcpay/utils/test-utils';
 import moment from 'moment';
 import os from 'os';
@@ -22,8 +22,8 @@ import { TransactionsList } from '../';
 import { useTransactions, useTransactionsSummary } from 'data/index';
 import type { Transaction } from 'data/transactions/hooks';
 
-jest.mock( '@woocommerce/csv-export', () => {
-	const actualModule = jest.requireActual( '@woocommerce/csv-export' );
+jest.mock( '@poocommerce/csv-export', () => {
+	const actualModule = jest.requireActual( '@poocommerce/csv-export' );
 
 	return {
 		...actualModule,
@@ -31,8 +31,8 @@ jest.mock( '@woocommerce/csv-export', () => {
 	};
 } );
 
-jest.mock( '@woocommerce/data', () => {
-	const actualModule = jest.requireActual( '@woocommerce/data' );
+jest.mock( '@poocommerce/data', () => {
+	const actualModule = jest.requireActual( '@poocommerce/data' );
 
 	return {
 		...actualModule,
@@ -380,7 +380,7 @@ describe( 'Transactions list', () => {
 
 			( { container } = render( <TransactionsList /> ) );
 			let tableSummary = container.querySelectorAll(
-				'.woocommerce-table__summary'
+				'.poocommerce-table__summary'
 			);
 			expect( tableSummary ).toHaveLength( 0 );
 
@@ -398,7 +398,7 @@ describe( 'Transactions list', () => {
 
 			( { container } = render( <TransactionsList /> ) );
 			tableSummary = container.querySelectorAll(
-				'.woocommerce-table__summary'
+				'.poocommerce-table__summary'
 			);
 
 			expect( tableSummary ).toHaveLength( 1 );
@@ -412,7 +412,7 @@ describe( 'Transactions list', () => {
 
 			( { container } = render( <TransactionsList /> ) );
 			let tableSummary = container.querySelectorAll(
-				'.woocommerce-table__summary'
+				'.poocommerce-table__summary'
 			);
 			expect( tableSummary ).toHaveLength( 0 );
 
@@ -430,7 +430,7 @@ describe( 'Transactions list', () => {
 
 			( { container } = render( <TransactionsList /> ) );
 			tableSummary = container.querySelectorAll(
-				'.woocommerce-table__summary'
+				'.poocommerce-table__summary'
 			);
 
 			expect( tableSummary ).toHaveLength( 1 );
@@ -440,7 +440,7 @@ describe( 'Transactions list', () => {
 		test( 'renders table with a TTP source device', () => {
 			( { container } = render( <TransactionsList /> ) );
 			const ttpLogo = container.querySelectorAll(
-				'.woocommerce-taptopay__icon'
+				'.poocommerce-taptopay__icon'
 			);
 
 			expect( ttpLogo ).toHaveLength( 1 );

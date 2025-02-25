@@ -2,7 +2,7 @@
 /**
  * MinimumAmountService class.
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Internal\Service;
@@ -59,7 +59,7 @@ class MinimumAmountService {
 		$minimum_amount = $this->get_cached_amount( $currency );
 
 		if ( $minimum_amount > $amount ) {
-			throw new Amount_Too_Small_Exception( esc_html__( 'Order amount too small', 'woocommerce-payments' ), $minimum_amount, $currency, 400 ); //phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped
+			throw new Amount_Too_Small_Exception( esc_html__( 'Order amount too small', 'poocommerce-payments' ), $minimum_amount, $currency, 400 ); //phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped
 		}
 	}
 

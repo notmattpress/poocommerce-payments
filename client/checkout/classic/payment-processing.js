@@ -454,7 +454,7 @@ export async function mountStripePaymentElement(
 	 * This script handles the radio input interaction when toggling
 	 * between the user's saved card / entering new card details.
 	 *
-	 * Ref: https://github.com/woocommerce/woocommerce/blob/2429498/assets/js/frontend/tokenization-form.js#L109
+	 * Ref: https://github.com/poocommerce/poocommerce/blob/2429498/assets/js/frontend/tokenization-form.js#L109
 	 */
 	const event = new Event( 'wc-credit-card-form-init' );
 	document.body.dispatchEvent( event );
@@ -479,14 +479,14 @@ export async function mountStripePaymentElement(
 		domElement.style.padding = '0';
 		// creating a new element to be added to the DOM, so that the message can be displayed.
 		const messageWrapper = document.createElement( 'div' );
-		messageWrapper.classList.add( 'woocommerce-error' );
+		messageWrapper.classList.add( 'poocommerce-error' );
 		messageWrapper.innerHTML = e.error.message;
 		messageWrapper.style.margin = '0';
 		domElement.appendChild( messageWrapper );
 		// hiding any "save payment method" checkboxes.
 		const savePaymentMethodWrapper = domElement
 			.closest( '.payment_box' )
-			?.querySelector( '.woocommerce-SavedPaymentMethods-saveNew' );
+			?.querySelector( '.poocommerce-SavedPaymentMethods-saveNew' );
 		if ( savePaymentMethodWrapper ) {
 			savePaymentMethodWrapper.style.display = 'none';
 		}
@@ -597,7 +597,7 @@ export const processPayment = (
 				throw new Error(
 					__(
 						'Invalid or missing payment details. Please ensure the provided payment method is correctly entered.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					)
 				);
 			}
@@ -638,7 +638,7 @@ export const processPayment = (
 		}
 	} )();
 
-	// Prevent WC Core default form submission (see woocommerce/assets/js/frontend/checkout.js) from happening.
+	// Prevent WC Core default form submission (see poocommerce/assets/js/frontend/checkout.js) from happening.
 	return false;
 };
 

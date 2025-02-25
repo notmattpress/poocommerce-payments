@@ -48,7 +48,7 @@ const CancelAuthorizationButton: React.FC< CancelAuthorizationButtonProps > = ( 
 			isBusy={ isLoading && IsCancelRequested } // Button should be in busy state when the cancel is requested
 			disabled={ ( isLoading && IsCancelRequested ) || isRequesting } // Button should be disabled when the cancel is requested
 		>
-			{ children || __( 'Cancel', 'woocommerce-payments' ) }
+			{ children || __( 'Cancel', 'poocommerce-payments' ) }
 		</Button>
 	);
 };

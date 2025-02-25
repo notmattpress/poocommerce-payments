@@ -89,7 +89,7 @@ const CapabilityNotice = ( {
 				'success',
 				__(
 					'Capability requested successfully!',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				)
 			);
 
@@ -97,7 +97,7 @@ const CapabilityNotice = ( {
 		} catch ( exception ) {
 			createNotice(
 				'error',
-				__( 'Error requesting the capability!', 'woocommerce-payments' )
+				__( 'Error requesting the capability!', 'poocommerce-payments' )
 			);
 
 			setIsLoading( false );

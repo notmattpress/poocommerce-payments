@@ -5,7 +5,7 @@
  */
 import React, { useState } from 'react';
 import { Card, Notice } from '@wordpress/components';
-import { getQuery } from '@woocommerce/navigation';
+import { getQuery } from '@poocommerce/navigation';
 import { __ } from '@wordpress/i18n';
 import { dispatch } from '@wordpress/data';
 
@@ -49,7 +49,7 @@ const OverviewPageError = () => {
 			{ wcpaySettings.errorMessage ||
 				__(
 					'There was a problem redirecting you to the account dashboard. Please try again.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				) }
 		</BannerNotice>
 	);
@@ -149,7 +149,7 @@ const OverviewPage = () => {
 		dispatch( 'core/notices' ).createSuccessNotice(
 			__(
 				'Success! You can start using WooPayments in sandbox mode.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			)
 		);
 
@@ -165,7 +165,7 @@ const OverviewPage = () => {
 				<Notice status="error" isDismissible={ false }>
 					{ __(
 						'There was a problem redirecting you to the loan offer. Please check that it is not expired and try again.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 				</Notice>
 			) }
@@ -173,7 +173,7 @@ const OverviewPage = () => {
 				<Notice status="error" isDismissible={ false }>
 					{ __(
 						'There was a problem redirecting you to the requested link. Please check that it is valid and try again.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 				</Notice>
 			) }
@@ -181,7 +181,7 @@ const OverviewPage = () => {
 				<Notice status="error" isDismissible={ false }>
 					{ __(
 						'There was a problem resetting your account. Please wait a few seconds and try again.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 				</Notice>
 			) }

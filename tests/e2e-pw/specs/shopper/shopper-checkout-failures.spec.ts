@@ -53,7 +53,7 @@ test.describe( 'Shopper > Checkout > Failures with various cards', () => {
 		await page.keyboard.press( 'Tab' );
 
 		const frameHandle = await page.waitForSelector(
-			'#payment .payment_method_woocommerce_payments .wcpay-upe-element iframe'
+			'#payment .payment_method_poocommerce_payments .wcpay-upe-element iframe'
 		);
 
 		const stripeFrame = await frameHandle.contentFrame();
@@ -121,7 +121,7 @@ test.describe( 'Shopper > Checkout > Failures with various cards', () => {
 		);
 
 		const frameHandle = await page.waitForSelector(
-			'#payment .payment_method_woocommerce_payments .wcpay-upe-element iframe'
+			'#payment .payment_method_poocommerce_payments .wcpay-upe-element iframe'
 		);
 
 		const stripeFrame = await frameHandle.contentFrame();

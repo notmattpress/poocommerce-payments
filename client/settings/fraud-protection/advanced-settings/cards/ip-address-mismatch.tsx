@@ -4,7 +4,7 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
 import interpolateComponents from '@automattic/interpolate-components';
-import { Link } from '@woocommerce/components';
+import { Link } from '@poocommerce/components';
 
 /**
  * Internal dependencies
@@ -15,12 +15,12 @@ import FraudProtectionRuleToggle from '../rule-toggle';
 
 const IPAddressMismatchRuleCard: React.FC = () => (
 	<FraudProtectionRuleCard
-		title={ __( 'IP Address Mismatch', 'woocommerce-payments' ) }
+		title={ __( 'IP Address Mismatch', 'poocommerce-payments' ) }
 		description={ interpolateComponents( {
 			mixedString: __(
 				"This filter screens for customer's {{ipAddressLink}}IP address{{/ipAddressLink}} to see if it is in a different " +
 					'country than indicated in their billing address.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			components: {
 				ipAddressLink: (
@@ -38,14 +38,14 @@ const IPAddressMismatchRuleCard: React.FC = () => (
 			setting={ 'ip_address_mismatch' }
 			label={ __(
 				"Screen transactions where the IP country and billing country don't match",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			) }
 		></FraudProtectionRuleToggle>
 		<FraudProtectionRuleDescription>
 			{ __(
 				'Fraudulent transactions often use fake addresses to place orders. If the IP address seems to be in ' +
 					'one country, but the billing address is in another, that could signal potential fraud.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			) }
 		</FraudProtectionRuleDescription>
 	</FraudProtectionRuleCard>

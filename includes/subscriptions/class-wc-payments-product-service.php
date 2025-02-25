@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Product_Service
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 use WCPay\Exceptions\API_Exception;
@@ -60,7 +60,7 @@ class WC_Payments_Product_Service {
 	const TEST_PRICE_ID_KEY = '_wcpay_product_price_id_test';
 
 	/**
-	 * Client for making requests to the WooCommerce Payments API
+	 * Client for making requests to the PooCommerce Payments API
 	 *
 	 * @var WC_Payments_API_Client
 	 */
@@ -101,7 +101,7 @@ class WC_Payments_Product_Service {
 		}
 
 		add_action( 'wp_trash_post', [ $this, 'maybe_archive_product' ] );
-		add_filter( 'woocommerce_duplicate_product_exclude_meta', [ $this, 'exclude_meta_wcpay_product' ] );
+		add_filter( 'poocommerce_duplicate_product_exclude_meta', [ $this, 'exclude_meta_wcpay_product' ] );
 	}
 
 	/**
@@ -477,7 +477,7 @@ class WC_Payments_Product_Service {
 			$_REQUEST['_subscription_period_interval'] = (string) $new_interval;
 
 			/* translators: %1$s Opening strong tag, %2$s Closing strong tag, %3$s The subscription renewal interval (every x time) */
-			wcs_add_admin_notice( sprintf( __( '%1$sThere was an issue saving your product!%2$s A subscription product\'s billing period cannot be longer than one year. We have updated this product to renew every %3$s.', 'woocommerce-payments' ), '<strong>', '</strong>', wcs_get_subscription_period_strings( $new_interval, $period ) ), 'error' );
+			wcs_add_admin_notice( sprintf( __( '%1$sThere was an issue saving your product!%2$s A subscription product\'s billing period cannot be longer than one year. We have updated this product to renew every %3$s.', 'poocommerce-payments' ), '<strong>', '</strong>', wcs_get_subscription_period_strings( $new_interval, $period ) ), 'error' );
 		}
 	}
 
@@ -522,7 +522,7 @@ class WC_Payments_Product_Service {
 				$admin_notice_sent = true;
 
 				/* translators: %1$s Opening strong tag, %2$s Closing strong tag */
-				wcs_add_admin_notice( sprintf( __( '%1$sThere was an issue saving your variations!%2$s A subscription product\'s billing period cannot be longer than one year. We have updated one or more of this product\'s variations to renew every %3$s.', 'woocommerce-payments' ), '<strong>', '</strong>', wcs_get_subscription_period_strings( $new_interval, $period ) ), 'error' );
+				wcs_add_admin_notice( sprintf( __( '%1$sThere was an issue saving your variations!%2$s A subscription product\'s billing period cannot be longer than one year. We have updated one or more of this product\'s variations to renew every %3$s.', 'poocommerce-payments' ), '<strong>', '</strong>', wcs_get_subscription_period_strings( $new_interval, $period ) ), 'error' );
 			}
 		}
 	}
@@ -534,10 +534,10 @@ class WC_Payments_Product_Service {
 		// This needs to run before WC_Subscriptions_Admin::save_subscription_meta(), which has a priority of 11.
 		add_action( 'save_post', [ $this, 'limit_subscription_product_intervals' ], 10 );
 		// This needs to run before WC_Subscriptions_Admin::save_product_variation(), which has a priority of 20.
-		add_action( 'woocommerce_save_product_variation', [ $this, 'limit_subscription_variation_intervals' ], 19, 2 );
+		add_action( 'poocommerce_save_product_variation', [ $this, 'limit_subscription_variation_intervals' ], 19, 2 );
 
 		add_action( 'save_post_product', [ $this, 'maybe_schedule_product_create_or_update' ], 12 );
-		add_action( 'woocommerce_save_product_variation', [ $this, 'maybe_schedule_product_create_or_update' ], 30 );
+		add_action( 'poocommerce_save_product_variation', [ $this, 'maybe_schedule_product_create_or_update' ], 30 );
 	}
 
 	/**
@@ -545,10 +545,10 @@ class WC_Payments_Product_Service {
 	 */
 	private function remove_product_update_listeners() {
 		remove_action( 'save_post', [ $this, 'limit_subscription_product_intervals' ], 10 );
-		remove_action( 'woocommerce_save_product_variation', [ $this, 'limit_subscription_variation_intervals' ], 19 );
+		remove_action( 'poocommerce_save_product_variation', [ $this, 'limit_subscription_variation_intervals' ], 19 );
 
 		remove_action( 'save_post_product', [ $this, 'maybe_schedule_product_create_or_update' ], 12 );
-		remove_action( 'woocommerce_save_product_variation', [ $this, 'maybe_schedule_product_create_or_update' ], 30 );
+		remove_action( 'poocommerce_save_product_variation', [ $this, 'maybe_schedule_product_create_or_update' ], 30 );
 	}
 
 	/**

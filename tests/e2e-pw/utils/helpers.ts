@@ -94,12 +94,12 @@ export const getShopper = async (
 		await shopperPage.goto( '/my-account' );
 		expect(
 			shopperPage.locator(
-				'.woocommerce-MyAccount-navigation-link--customer-logout'
+				'.poocommerce-MyAccount-navigation-link--customer-logout'
 			)
 		).toBeVisible( { timeout: 1000 } );
 		await expect(
 			shopperPage.locator(
-				'div.woocommerce-MyAccount-content > p >> nth=0'
+				'div.poocommerce-MyAccount-content > p >> nth=0'
 			)
 		).toContainText( 'Hello', { timeout: 1000 } );
 		await shopperPage

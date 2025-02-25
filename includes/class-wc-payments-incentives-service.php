@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Incentives_Service
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -39,9 +39,9 @@ class WC_Payments_Incentives_Service {
 	 */
 	public function init_hooks() {
 		add_action( 'admin_menu', [ $this, 'add_payments_menu_badge' ] );
-		add_filter( 'woocommerce_admin_allowed_promo_notes', [ $this, 'allowed_promo_notes' ] );
-		add_filter( 'woocommerce_admin_woopayments_onboarding_task_badge', [ $this, 'onboarding_task_badge' ] );
-		add_filter( 'woocommerce_admin_woopayments_onboarding_task_additional_data', [ $this, 'onboarding_task_additional_data' ], 20 );
+		add_filter( 'poocommerce_admin_allowed_promo_notes', [ $this, 'allowed_promo_notes' ] );
+		add_filter( 'poocommerce_admin_woopayments_onboarding_task_badge', [ $this, 'onboarding_task_badge' ] );
+		add_filter( 'poocommerce_admin_woopayments_onboarding_task_additional_data', [ $this, 'onboarding_task_additional_data' ], 20 );
 	}
 
 	/**
@@ -272,7 +272,7 @@ class WC_Payments_Incentives_Service {
 		if ( ! empty(
 			wc_get_orders(
 				[
-					'payment_method' => 'woocommerce_payments',
+					'payment_method' => 'poocommerce_payments',
 					'return'         => 'ids',
 					'limit'          => 1,
 				]
@@ -309,8 +309,8 @@ class WC_Payments_Incentives_Service {
 			'country'      => WC()->countries->get_base_country(),
 			// Store locale, e.g. `en_US`.
 			'locale'       => get_locale(),
-			// WooCommerce active for duration in seconds.
-			'active_for'   => time() - get_option( 'woocommerce_admin_install_timestamp', time() ),
+			// PooCommerce active for duration in seconds.
+			'active_for'   => time() - get_option( 'poocommerce_admin_install_timestamp', time() ),
 			// Whether the store has paid orders in the last 90 days.
 			'has_orders'   => ! empty(
 				wc_get_orders(

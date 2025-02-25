@@ -129,11 +129,11 @@ export const addCartProduct = async (
 const ensureSavedCardNotSelected = async ( page: Page ) => {
 	if (
 		await page
-			.locator( '#wc-woocommerce_payments-payment-token-new' )
+			.locator( '#wc-poocommerce_payments-payment-token-new' )
 			.isVisible()
 	) {
 		const newCardOption = await page.locator(
-			'#wc-woocommerce_payments-payment-token-new'
+			'#wc-poocommerce_payments-payment-token-new'
 		);
 		if ( newCardOption ) {
 			await newCardOption.click();
@@ -148,11 +148,11 @@ export const fillCardDetails = async (
 	await ensureSavedCardNotSelected( page );
 	if (
 		await page.$(
-			'#payment .payment_method_woocommerce_payments .wcpay-upe-element'
+			'#payment .payment_method_poocommerce_payments .wcpay-upe-element'
 		)
 	) {
 		const frameHandle = await page.waitForSelector(
-			'#payment .payment_method_woocommerce_payments .wcpay-upe-element iframe'
+			'#payment .payment_method_poocommerce_payments .wcpay-upe-element iframe'
 		);
 
 		const stripeFrame = await frameHandle.contentFrame();
@@ -195,7 +195,7 @@ export const fillCardDetailsWCB = async (
 	card: typeof config.cards.basic
 ) => {
 	const newPaymentMethodRadioButton = page.locator(
-		'#radio-control-wc-payment-method-options-woocommerce_payments'
+		'#radio-control-wc-payment-method-options-poocommerce_payments'
 	);
 	if ( await newPaymentMethodRadioButton.isVisible() ) {
 		await newPaymentMethodRadioButton.click();
@@ -255,7 +255,7 @@ export const getPriceFromProduct = async ( page: Page, slug: string ) => {
 	await navigation.goToProductPageBySlug( page, slug );
 
 	const priceText = await page
-		.locator( 'ins .woocommerce-Price-amount.amount' )
+		.locator( 'ins .poocommerce-Price-amount.amount' )
 		.first()
 		.textContent();
 
@@ -443,13 +443,13 @@ export const emptyCart = async ( page: Page ) => {
 	}
 
 	// Remove coupons if they exist.
-	let coupons = await page.locator( '.woocommerce-remove-coupon' ).all();
+	let coupons = await page.locator( '.poocommerce-remove-coupon' ).all();
 
 	while ( coupons.length ) {
 		await coupons[ 0 ].click();
 		await isUIUnblocked( page );
 
-		coupons = await page.locator( '.woocommerce-remove-coupon' ).all();
+		coupons = await page.locator( '.poocommerce-remove-coupon' ).all();
 	}
 
 	await expect(

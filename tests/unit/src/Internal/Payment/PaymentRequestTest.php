@@ -2,7 +2,7 @@
 /**
  * Class PaymentRequestTest
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Tests\Internal\Payment;
@@ -163,15 +163,15 @@ class PaymentRequestTest extends WCPAY_UnitTestCase {
 		return [
 			'empty payment_method param' => [ [ 'payment_method' => '' ] ],
 			'not WooPayments method'     => [
-				[ 'payment_method' => 'NOT_woocommerce_payments' ],
+				[ 'payment_method' => 'NOT_poocommerce_payments' ],
 			],
 		];
 	}
 
 	public function test_get_payment_throw_exception_due_to_invalid_token_id() {
 		$request   = [
-			'payment_method'                        => 'woocommerce_payments',
-			'wc-woocommerce_payments-payment-token' => 123456,
+			'payment_method'                        => 'poocommerce_payments',
+			'wc-poocommerce_payments-payment-token' => 123456,
 		];
 		$this->sut = new PaymentRequest(
 			$this->mock_legacy_proxy,
@@ -191,8 +191,8 @@ class PaymentRequestTest extends WCPAY_UnitTestCase {
 	public function test_get_payment_return_saved_payment_method() {
 		// Prepare.
 		$request    = [
-			'payment_method'                        => 'woocommerce_payments',
-			'wc-woocommerce_payments-payment-token' => 123456,
+			'payment_method'                        => 'poocommerce_payments',
+			'wc-poocommerce_payments-payment-token' => 123456,
 		];
 		$this->sut  = new PaymentRequest(
 			$this->mock_legacy_proxy,
@@ -224,7 +224,7 @@ class PaymentRequestTest extends WCPAY_UnitTestCase {
 
 	public function test_get_payment_return_new_payment_method() {
 		$request   = [
-			'payment_method'       => 'woocommerce_payments',
+			'payment_method'       => 'poocommerce_payments',
 			'wcpay-payment-method' => 'pm_mock',
 		];
 		$this->sut = new PaymentRequest(
@@ -238,7 +238,7 @@ class PaymentRequestTest extends WCPAY_UnitTestCase {
 	}
 
 	public function test_get_payment_method_throw_exception_due_to_no_payment_method_attached() {
-		$request   = [ 'payment_method' => 'woocommerce_payments' ];
+		$request   = [ 'payment_method' => 'poocommerce_payments' ];
 		$this->sut = new PaymentRequest(
 			$this->mock_legacy_proxy,
 			$request
@@ -258,17 +258,17 @@ class PaymentRequestTest extends WCPAY_UnitTestCase {
 				null,
 			],
 			'Payment method set, no CVC'         => [
-				'woocommerce_payments',
+				'poocommerce_payments',
 				null,
 				null,
 			],
 			'Payment method set, new CVC'        => [
-				'woocommerce_payments',
+				'poocommerce_payments',
 				'new',
 				null,
 			],
 			'Payment method set, meaningful CVC' => [
-				'woocommerce_payments',
+				'poocommerce_payments',
 				'xyz1234',
 				'xyz1234',
 			],

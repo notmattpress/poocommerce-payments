@@ -69,14 +69,14 @@ const EmbeddedKyc: React.FC< Props > = ( {
 			setLoadErrorMessage(
 				__(
 					"Failed to create account session. Please check that you're using the latest version of WooPayments.",
-					'woocommerce-payments'
+					'poocommerce-payments'
 				)
 			);
 		} catch ( error ) {
 			setLoadErrorMessage(
 				__(
 					'Failed to retrieve account session. Please try again later.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				)
 			);
 		}
@@ -108,7 +108,7 @@ const EmbeddedKyc: React.FC< Props > = ( {
 				setLoadErrorMessage(
 					__(
 						'Failed to create account session. Please check that you are using the latest version of WooPayments.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					)
 				);
 			}

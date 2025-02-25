@@ -2,7 +2,7 @@
 /**
  * Class WC_Payment_Gateway_WCPay_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use PHPUnit\Framework\MockObject\MockObject;
@@ -316,7 +316,7 @@ class WC_Payment_Gateway_WCPay_Payment_Types extends WCPAY_UnitTestCase {
 
 		// Mock a subscription that is a WCPay Subscription.
 		$mock_subscription                 = new WC_Subscription();
-		$mock_subscription->payment_method = 'woocommerce_payments';
+		$mock_subscription->payment_method = 'poocommerce_payments';
 
 		$mock_subscription->update_meta_data( '_wcpay_subscription_id', 'test_is_wcpay_subscription' );
 

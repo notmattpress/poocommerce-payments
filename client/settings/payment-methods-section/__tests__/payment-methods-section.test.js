@@ -24,7 +24,7 @@ import {
 import { upeCapabilityStatuses } from 'wcpay/additional-methods-setup/constants';
 import DuplicatedPaymentMethodsContext from 'wcpay/settings/settings-manager/duplicated-payment-methods-context';
 
-jest.mock( '@woocommerce/components', () => {
+jest.mock( '@poocommerce/components', () => {
 	return {
 		Pill: ( { className, children } ) => (
 			<span className={ className }>{ children }</span>
