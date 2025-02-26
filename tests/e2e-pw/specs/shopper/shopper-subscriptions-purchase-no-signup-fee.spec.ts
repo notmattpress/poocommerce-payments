@@ -51,7 +51,7 @@ describeif( shouldRunSubscriptionsTests )(
 			).toBeVisible();
 
 			const orderIdField = shopperPage.locator(
-				'.woocommerce-order-overview__order.order > strong'
+				'.poocommerce-order-overview__order.order > strong'
 			);
 			orderId = await orderIdField.textContent();
 		} );

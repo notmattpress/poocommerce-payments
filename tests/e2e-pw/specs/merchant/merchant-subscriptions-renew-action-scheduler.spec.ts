@@ -24,7 +24,7 @@ describeif( shouldRunSubscriptionsTests && shouldRunActionSchedulerTests )(
 	'Subscriptions > Renew a subscription via Action Scheduler',
 	() => {
 		const actionSchedulerHook =
-			'woocommerce_scheduled_subscription_payment';
+			'poocommerce_scheduled_subscription_payment';
 
 		const customerBillingConfig =
 			config.addresses[ 'subscriptions-customer' ].billing;

@@ -42,14 +42,14 @@ const SetupComplete = () => {
 
 	return (
 		<WizardTaskItem
-			title={ __( 'Setup complete', 'woocommerce-payments' ) }
+			title={ __( 'Setup complete', 'poocommerce-payments' ) }
 			index={ 3 }
 		>
 			<CollapsibleBody>
 				<p className="wcpay-wizard-task__description-element is-muted-color">
 					{ __(
 						"You're ready to begin accepting payments using foreign currencies!",
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 				</p>
 				<p className="wcpay-wizard-task__description-element is-muted-color">
@@ -57,7 +57,7 @@ const SetupComplete = () => {
 						__(
 							'Your product prices are automatically converted from your default currency (%s) based on the currency ' +
 								'exchange rate and formatting rules for each currency.',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						),
 						defaultCurrency && defaultCurrency.name
 					) }
@@ -66,13 +66,13 @@ const SetupComplete = () => {
 					{ __(
 						'To enter your own exchange rates or update the formatting rules for each currency, visit the Multi-Currency ' +
 							'settings.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 				</p>
 				<br />
 				<div className="setup-complete-task__buttons">
 					<Button href="admin.php?page=wc-admin" isPrimary>
-						{ __( 'Back to home', 'woocommerce-payments' ) }
+						{ __( 'Back to home', 'poocommerce-payments' ) }
 					</Button>
 					<Button
 						href="admin.php?page=wc-settings&tab=wcpay_multi_currency"
@@ -80,7 +80,7 @@ const SetupComplete = () => {
 					>
 						{ __(
 							'View Multi-Currency settings',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 					</Button>
 				</div>

@@ -31,16 +31,16 @@ const MultiCurrencyToggle = () => {
 
 	return (
 		<CheckboxControl
-			label={ __( 'Enable Multi-Currency', 'woocommerce-payments' ) }
+			label={ __( 'Enable Multi-Currency', 'poocommerce-payments' ) }
 			help={ interpolateComponents( {
 				mixedString: __(
 					'Allow customers to shop and pay in multiple currencies. {{learnMoreLink}}Learn more{{/learnMoreLink}}',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				components: {
 					learnMoreLink: (
 						// eslint-disable-next-line max-len
-						<ExternalLink href="https://woocommerce.com/document/woopayments/currencies/multi-currency-setup/" />
+						<ExternalLink href="https://poocommerce.com/document/woopayments/currencies/multi-currency-setup/" />
 					),
 				},
 			} ) }

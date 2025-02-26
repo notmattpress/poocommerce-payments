@@ -2,7 +2,7 @@
 /**
  * Class CompletedState
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Internal\Payment\State;

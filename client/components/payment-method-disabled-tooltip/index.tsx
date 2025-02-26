@@ -14,9 +14,9 @@ import PAYMENT_METHOD_IDS from 'wcpay/constants/payment-method';
 
 export const DocumentationUrlForDisabledPaymentMethod = {
 	DEFAULT:
-		'https://woocommerce.com/document/woopayments/payment-methods/additional-payment-methods/#method-cant-be-enabled',
+		'https://poocommerce.com/document/woopayments/payment-methods/additional-payment-methods/#method-cant-be-enabled',
 	BNPLS:
-		'https://woocommerce.com/document/woopayments/payment-methods/buy-now-pay-later/#contact-support',
+		'https://poocommerce.com/document/woopayments/payment-methods/buy-now-pay-later/#contact-support',
 };
 
 export const getDocumentationUrlForDisabledPaymentMethod = (
@@ -49,7 +49,7 @@ const PaymentMethodDisabledTooltip = ( {
 				mixedString: __(
 					'We need more information from you to enable this method. ' +
 						'{{learnMoreLink}}Learn more.{{/learnMoreLink}}',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				components: {
 					learnMoreLink: (
@@ -59,7 +59,7 @@ const PaymentMethodDisabledTooltip = ( {
 							rel="noreferrer"
 							title={ __(
 								'Learn more about enabling payment methods',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 							/* eslint-disable-next-line max-len */
 							href={ getDocumentationUrlForDisabledPaymentMethod(

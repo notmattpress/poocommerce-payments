@@ -14,7 +14,7 @@ import {
 import * as shopper from '../../utils/shopper';
 import { goToOrder, goToPaymentDetails } from '../../utils/merchant-navigation';
 
-test.describe( 'WooCommerce Payments - Full Refund', () => {
+test.describe( 'PooCommerce Payments - Full Refund', () => {
 	let merchantPage: Page;
 	let shopperPage: Page;
 	let orderId: string;
@@ -38,7 +38,7 @@ test.describe( 'WooCommerce Payments - Full Refund', () => {
 		// Get the order total so we can verify the refund amount
 		orderAmount = await shopperPage
 			.locator(
-				'.woocommerce-order-overview__total .woocommerce-Price-amount'
+				'.poocommerce-order-overview__total .poocommerce-Price-amount'
 			)
 			.textContent();
 

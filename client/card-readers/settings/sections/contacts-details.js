@@ -22,7 +22,7 @@ const ContactDetailsSection = ( { setInputsValid } ) => {
 	return (
 		<>
 			<h4>
-				{ __( 'Customer support contacts', 'woocommerce-payments' ) }
+				{ __( 'Customer support contacts', 'poocommerce-payments' ) }
 			</h4>
 			<SupportEmailInput setInputVallid={ setEmailInputValid } />
 			<SupportPhoneInput setInputVallid={ setPhoneInputValid } />

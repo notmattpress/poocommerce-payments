@@ -60,7 +60,7 @@ const failures = [
 ];
 
 describeif( shouldRunWCBlocksTests )(
-	'WooCommerce Blocks > Checkout failures',
+	'PooCommerce Blocks > Checkout failures',
 	() => {
 		let shopperPage: Page;
 

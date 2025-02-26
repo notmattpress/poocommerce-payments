@@ -3,7 +3,7 @@
 exports[`DownloadButton renders a disabled button 1`] = `
 <div>
   <button
-    class="components-button woocommerce-table__download-button"
+    class="components-button poocommerce-table__download-button"
     disabled=""
     type="button"
   >
@@ -21,7 +21,7 @@ exports[`DownloadButton renders a disabled button 1`] = `
       </g>
     </svg>
     <span
-      class="woocommerce-table__download-button__label"
+      class="poocommerce-table__download-button__label"
     >
       Download
     </span>
@@ -32,7 +32,7 @@ exports[`DownloadButton renders a disabled button 1`] = `
 exports[`DownloadButton renders an active button 1`] = `
 <div>
   <button
-    class="components-button woocommerce-table__download-button"
+    class="components-button poocommerce-table__download-button"
     type="button"
   >
     <svg
@@ -49,7 +49,7 @@ exports[`DownloadButton renders an active button 1`] = `
       </g>
     </svg>
     <span
-      class="woocommerce-table__download-button__label"
+      class="poocommerce-table__download-button__label"
     >
       Download
     </span>

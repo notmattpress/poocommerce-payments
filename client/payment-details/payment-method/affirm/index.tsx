@@ -70,7 +70,7 @@ const AffirmDetails: React.FC< AffirmDetailsProps > = ( {
 			<div className="payment-method-details__column">
 				<Detail
 					isLoading={ isLoading }
-					label={ __( 'ID', 'woocommerce-payments' ) }
+					label={ __( 'ID', 'poocommerce-payments' ) }
 				>
 					{ !! id ? id : '–' }
 				</Detail>
@@ -79,21 +79,21 @@ const AffirmDetails: React.FC< AffirmDetailsProps > = ( {
 			<div className="payment-method-details__column">
 				<Detail
 					isLoading={ isLoading }
-					label={ __( 'Owner', 'woocommerce-payments' ) }
+					label={ __( 'Owner', 'poocommerce-payments' ) }
 				>
 					{ name || '–' }
 				</Detail>
 
 				<Detail
 					isLoading={ isLoading }
-					label={ __( 'Owner email', 'woocommerce-payments' ) }
+					label={ __( 'Owner email', 'poocommerce-payments' ) }
 				>
 					{ email || '–' }
 				</Detail>
 
 				<Detail
 					isLoading={ isLoading }
-					label={ __( 'Address', 'woocommerce-payments' ) }
+					label={ __( 'Address', 'poocommerce-payments' ) }
 				>
 					<span
 						// eslint-disable-next-line react/no-danger

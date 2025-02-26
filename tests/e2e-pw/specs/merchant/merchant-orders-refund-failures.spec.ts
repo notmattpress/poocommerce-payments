@@ -66,7 +66,7 @@ test.describe( 'Order > Refund Failure', () => {
 				};
 				await merchantPage.evaluate(
 					hideElementIfExists,
-					'.woocommerce-layout__header'
+					'.poocommerce-layout__header'
 				);
 				await merchantPage.evaluate(
 					hideElementIfExists,

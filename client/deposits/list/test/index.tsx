@@ -5,11 +5,11 @@
  */
 import React from 'react';
 import { render, waitFor } from '@testing-library/react';
-import { updateQueryString } from '@woocommerce/navigation';
-import { downloadCSVFile } from '@woocommerce/csv-export';
+import { updateQueryString } from '@poocommerce/navigation';
+import { downloadCSVFile } from '@poocommerce/csv-export';
 import apiFetch from '@wordpress/api-fetch';
 import os from 'os';
-import { useUserPreferences } from '@woocommerce/data';
+import { useUserPreferences } from '@poocommerce/data';
 
 /**
  * Internal dependencies
@@ -28,8 +28,8 @@ jest.mock( 'wcpay/data', () => ( {
 	useDepositsSummary: jest.fn(),
 } ) );
 
-jest.mock( '@woocommerce/csv-export', () => {
-	const actualModule = jest.requireActual( '@woocommerce/csv-export' );
+jest.mock( '@poocommerce/csv-export', () => {
+	const actualModule = jest.requireActual( '@poocommerce/csv-export' );
 
 	return {
 		...actualModule,
@@ -39,8 +39,8 @@ jest.mock( '@woocommerce/csv-export', () => {
 
 jest.mock( '@wordpress/api-fetch', () => jest.fn() );
 
-jest.mock( '@woocommerce/data', () => {
-	const actualModule = jest.requireActual( '@woocommerce/data' );
+jest.mock( '@poocommerce/data', () => {
+	const actualModule = jest.requireActual( '@poocommerce/data' );
 
 	return {
 		...actualModule,
@@ -224,7 +224,7 @@ describe( 'Deposits list', () => {
 
 		let { container } = render( <DepositsList /> );
 		let tableSummary = container.querySelectorAll(
-			'.woocommerce-table__summary'
+			'.poocommerce-table__summary'
 		);
 
 		expect( tableSummary ).toHaveLength( 0 );
@@ -239,7 +239,7 @@ describe( 'Deposits list', () => {
 
 		( { container } = render( <DepositsList /> ) );
 		tableSummary = container.querySelectorAll(
-			'.woocommerce-table__summary'
+			'.poocommerce-table__summary'
 		);
 
 		expect( tableSummary ).toHaveLength( 1 );
