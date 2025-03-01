@@ -2,7 +2,7 @@
 /**
  * Class WC_REST_Payments_Reporting_Controller
  *
- * @package WooCommerce\Payments\Admin
+ * @package PooCommerce\Payments\Admin
  */
 
 use WCPay\Core\Server\Request\Get_Reporting_Payment_Activity;

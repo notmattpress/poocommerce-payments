@@ -2,7 +2,7 @@
 /**
  * Class file for WCPay\Core\Server\Request\Get_Payment_Process_Factors.
  *
- * @package WooCommerce Payments
+ * @package PooCommerce Payments
  */
 
 namespace WCPay\Core\Server\Request;

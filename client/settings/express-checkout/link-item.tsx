@@ -65,7 +65,7 @@ const LinkExpressCheckoutItem = (): React.ReactElement => {
 											<HoverTooltip
 												content={ __(
 													'To enable Link by Stripe, you must first disable WooPay.',
-													'woocommerce-payments'
+													'poocommerce-payments'
 												) }
 											>
 												<div className="loadable-checkbox__icon">
@@ -77,7 +77,7 @@ const LinkExpressCheckoutItem = (): React.ReactElement => {
 														<VisuallyHidden>
 															{ __(
 																'Link by Stripe cannot be enabled at checkout. Click to expand.',
-																'woocommerce-payments'
+																'poocommerce-payments'
 															) }
 														</VisuallyHidden>
 													</div>
@@ -90,7 +90,7 @@ const LinkExpressCheckoutItem = (): React.ReactElement => {
 								<CheckboxControl
 									label={ __(
 										'Link by Stripe',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									) }
 									checked={ isStripeLinkEnabled }
 									onChange={ updateStripeLinkCheckout }
@@ -106,14 +106,14 @@ const LinkExpressCheckoutItem = (): React.ReactElement => {
 									<div className="express-checkout__label express-checkout__label-mobile">
 										{ __(
 											'Link by Stripe',
-											'woocommerce-payments'
+											'poocommerce-payments'
 										) }
 									</div>
 									<div className="express-checkout__label-container">
 										<div className="express-checkout__label express-checkout__label-desktop">
 											{ __(
 												'Link by Stripe',
-												'woocommerce-payments'
+												'poocommerce-payments'
 											) }
 										</div>
 										<div className="express-checkout__description">
@@ -123,7 +123,7 @@ const LinkExpressCheckoutItem = (): React.ReactElement => {
 													? /* eslint-disable max-len */
 													  __(
 															'Link autofills your customers’ payment and shipping details to deliver an easy and seamless checkout experience.',
-															'woocommerce-payments'
+															'poocommerce-payments'
 													  )
 													: interpolateComponents( {
 															mixedString: __(
@@ -132,7 +132,7 @@ const LinkExpressCheckoutItem = (): React.ReactElement => {
 																	'By enabling this feature, you agree to the ' +
 																	'{{stripeLinkTerms}}Link by Stripe terms{{/stripeLinkTerms}}, ' +
 																	'and {{privacyPolicy}}Privacy Policy{{/privacyPolicy}}.',
-																'woocommerce-payments'
+																'poocommerce-payments'
 															),
 															components: {
 																stripeLinkTerms: (
@@ -163,12 +163,12 @@ const LinkExpressCheckoutItem = (): React.ReactElement => {
 									target="_blank"
 									rel="noreferrer"
 									/* eslint-disable-next-line max-len */
-									href="https://woocommerce.com/document/woopayments/payment-methods/link-by-stripe/"
+									href="https://poocommerce.com/document/woopayments/payment-methods/link-by-stripe/"
 									isSecondary
 								>
 									{ __(
 										'Read more',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									) }
 								</Button>
 							</div>
