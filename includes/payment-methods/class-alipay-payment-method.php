@@ -53,7 +53,7 @@ class Alipay_Payment_Method extends UPE_Payment_Method {
 	 * @return string
 	 */
 	public function get_title( ?string $account_country = null, $payment_details = false ) {
-		return __( 'Alipay', 'woocommerce-payments' );
+		return __( 'Alipay', 'poocommerce-payments' );
 	}
 
 	/**

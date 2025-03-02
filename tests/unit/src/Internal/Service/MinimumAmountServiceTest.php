@@ -2,7 +2,7 @@
 /**
  * Class MinimumAmountServiceTest
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Tests\Internal\Service;

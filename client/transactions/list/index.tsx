@@ -12,12 +12,12 @@ import {
 	Search,
 	Link,
 	TableCardColumn,
-} from '@woocommerce/components';
+} from '@poocommerce/components';
 import {
 	onQueryChange,
 	getQuery,
 	updateQueryString,
-} from '@woocommerce/navigation';
+} from '@poocommerce/navigation';
 
 /**
  * Internal dependencies
@@ -112,18 +112,18 @@ const getSourceDeviceIcon = ( txn: Transaction ) => {
 	if ( txn.source_device === 'ios' ) {
 		tooltipDescription = __(
 			'Tap to Pay on iPhone',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		);
 	} else if ( txn.source_device === 'android' ) {
 		tooltipDescription = __(
 			'Tap to Pay on Android',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		);
 	}
 
 	return (
 		<HoverTooltip isVisible={ false } content={ tooltipDescription }>
-			<span className="woocommerce-taptopay__icon"></span>
+			<span className="poocommerce-taptopay__icon"></span>
 		</HoverTooltip>
 	);
 };
@@ -135,14 +135,14 @@ const getColumns = (
 	[
 		{
 			key: 'transaction_id',
-			label: __( 'Transaction ID', 'woocommerce-payments' ),
+			label: __( 'Transaction ID', 'poocommerce-payments' ),
 			visible: false,
 			isLeftAligned: true,
 		},
 		{
 			key: 'date',
-			label: __( 'Date / Time', 'woocommerce-payments' ),
-			screenReaderLabel: __( 'Date and time', 'woocommerce-payments' ),
+			label: __( 'Date / Time', 'poocommerce-payments' ),
+			screenReaderLabel: __( 'Date and time', 'poocommerce-payments' ),
 			required: true,
 			isLeftAligned: true,
 			defaultOrder: 'desc',
@@ -152,34 +152,34 @@ const getColumns = (
 		},
 		{
 			key: 'type',
-			label: __( 'Type', 'woocommerce-payments' ),
-			screenReaderLabel: __( 'Type', 'woocommerce-payments' ),
+			label: __( 'Type', 'poocommerce-payments' ),
+			screenReaderLabel: __( 'Type', 'poocommerce-payments' ),
 			required: true,
 			isLeftAligned: true,
 		},
 		{
 			key: 'channel',
-			label: __( 'Channel', 'woocommerce-payments' ),
-			screenReaderLabel: __( 'Channel', 'woocommerce-payments' ),
+			label: __( 'Channel', 'poocommerce-payments' ),
+			screenReaderLabel: __( 'Channel', 'poocommerce-payments' ),
 			required: true,
 			isLeftAligned: true,
 		},
 		{
 			key: 'customer_currency',
-			label: __( 'Paid Currency', 'woocommerce-payments' ),
+			label: __( 'Paid Currency', 'poocommerce-payments' ),
 			screenReaderLabel: __(
 				'Customer Currency',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			isSortable: true,
 			visible: false,
 		},
 		{
 			key: 'customer_amount',
-			label: __( 'Amount Paid', 'woocommerce-payments' ),
+			label: __( 'Amount Paid', 'poocommerce-payments' ),
 			screenReaderLabel: __(
 				'Amount in Customer Currency',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			isNumeric: true,
 			isSortable: true,
@@ -187,101 +187,101 @@ const getColumns = (
 		},
 		{
 			key: 'currency',
-			label: __( 'Payout Currency', 'woocommerce-payments' ),
-			screenReaderLabel: __( 'Payout Currency', 'woocommerce-payments' ),
+			label: __( 'Payout Currency', 'poocommerce-payments' ),
+			screenReaderLabel: __( 'Payout Currency', 'poocommerce-payments' ),
 			isSortable: true,
 			visible: false,
 		},
 		{
 			key: 'amount',
-			label: __( 'Amount', 'woocommerce-payments' ),
+			label: __( 'Amount', 'poocommerce-payments' ),
 			screenReaderLabel: __(
 				'Amount in Payout Currency',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			isNumeric: true,
 			isSortable: true,
 		},
 		{
 			key: 'fees',
-			label: __( 'Fees', 'woocommerce-payments' ),
-			screenReaderLabel: __( 'Fees', 'woocommerce-payments' ),
+			label: __( 'Fees', 'poocommerce-payments' ),
+			screenReaderLabel: __( 'Fees', 'poocommerce-payments' ),
 			isNumeric: true,
 			isSortable: true,
 		},
 		{
 			key: 'net',
-			label: __( 'Net', 'woocommerce-payments' ),
-			screenReaderLabel: __( 'Net', 'woocommerce-payments' ),
+			label: __( 'Net', 'poocommerce-payments' ),
+			screenReaderLabel: __( 'Net', 'poocommerce-payments' ),
 			isNumeric: true,
 			required: true,
 			isSortable: true,
 		},
 		{
 			key: 'order',
-			label: __( 'Order #', 'woocommerce-payments' ),
-			screenReaderLabel: __( 'Order number', 'woocommerce-payments' ),
+			label: __( 'Order #', 'poocommerce-payments' ),
+			screenReaderLabel: __( 'Order number', 'poocommerce-payments' ),
 			required: true,
 		},
 		includeSubscription && {
 			key: 'subscriptions',
-			label: __( 'Subscription #', 'woocommerce-payments' ),
+			label: __( 'Subscription #', 'poocommerce-payments' ),
 			screenReaderLabel: __(
 				'Subscription number',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 		},
 		{
 			key: 'source',
-			label: __( 'Payment Method', 'woocommerce-payments' ),
-			screenReaderLabel: __( 'Payment Method', 'woocommerce-payments' ),
+			label: __( 'Payment Method', 'poocommerce-payments' ),
+			screenReaderLabel: __( 'Payment Method', 'poocommerce-payments' ),
 			cellClassName: 'is-center-aligned',
 		},
 		{
 			key: 'customer_name',
-			label: __( 'Customer', 'woocommerce-payments' ),
-			screenReaderLabel: __( 'Customer', 'woocommerce-payments' ),
+			label: __( 'Customer', 'poocommerce-payments' ),
+			screenReaderLabel: __( 'Customer', 'poocommerce-payments' ),
 			isLeftAligned: true,
 		},
 		{
 			key: 'customer_email',
-			label: __( 'Email', 'woocommerce-payments' ),
-			screenReaderLabel: __( 'Email', 'woocommerce-payments' ),
+			label: __( 'Email', 'poocommerce-payments' ),
+			screenReaderLabel: __( 'Email', 'poocommerce-payments' ),
 			visible: false,
 			isLeftAligned: true,
 		},
 		{
 			key: 'customer_country',
-			label: __( 'Country', 'woocommerce-payments' ),
-			screenReaderLabel: __( 'Country', 'woocommerce-payments' ),
+			label: __( 'Country', 'poocommerce-payments' ),
+			screenReaderLabel: __( 'Country', 'poocommerce-payments' ),
 			visible: false,
 			isLeftAligned: true,
 		},
 		{
 			key: 'risk_level',
-			label: __( 'Risk level', 'woocommerce-payments' ),
-			screenReaderLabel: __( 'Risk level', 'woocommerce-payments' ),
+			label: __( 'Risk level', 'poocommerce-payments' ),
+			screenReaderLabel: __( 'Risk level', 'poocommerce-payments' ),
 			visible: false,
 			isLeftAligned: true,
 		},
 		includeDeposit && {
 			key: 'deposit_id',
-			label: __( 'Payout ID', 'woocommerce-payments' ),
-			screenReaderLabel: __( 'Payout ID', 'woocommerce-payments' ),
+			label: __( 'Payout ID', 'poocommerce-payments' ),
+			screenReaderLabel: __( 'Payout ID', 'poocommerce-payments' ),
 			cellClassName: 'deposit',
 			isLeftAligned: true,
 			visible: false,
 		},
 		includeDeposit && {
 			key: 'deposit',
-			label: __( 'Payout date', 'woocommerce-payments' ),
-			screenReaderLabel: __( 'Payout date', 'woocommerce-payments' ),
+			label: __( 'Payout date', 'poocommerce-payments' ),
+			screenReaderLabel: __( 'Payout date', 'poocommerce-payments' ),
 			cellClassName: 'deposit',
 			isLeftAligned: true,
 		},
 		includeDeposit && {
 			key: 'deposit_status',
-			label: __( 'Payout status', 'woocommerce-payments' ),
+			label: __( 'Payout status', 'poocommerce-payments' ),
 			visible: false,
 		},
 	].filter( Boolean ) as Column[]; // We explicitly define the type because TypeScript can't infer the type post-filtering.
@@ -335,7 +335,7 @@ export const TransactionsList = (
 		const orderUrl = txn.order ? (
 			<OrderLink order={ txn.order } />
 		) : (
-			__( 'N/A', 'woocommerce-payments' )
+			__( 'N/A', 'poocommerce-payments' )
 		);
 		const orderSubscriptions = txn.order && txn.order.subscriptions;
 		const subscriptionsValue =
@@ -502,14 +502,14 @@ export const TransactionsList = (
 				display:
 					! isFinancingType && ! isReaderFee
 						? customerName
-						: __( 'N/A', 'woocommerce-payments' ),
+						: __( 'N/A', 'poocommerce-payments' ),
 			},
 			customer_email: {
 				value: txn.customer_email,
 				display:
 					! isFinancingType && ! isReaderFee
 						? customerEmail
-						: __( 'N/A', 'woocommerce-payments' ),
+						: __( 'N/A', 'poocommerce-payments' ),
 			},
 			customer_country: {
 				value: txn.customer_country,
@@ -571,14 +571,14 @@ export const TransactionsList = (
 	let searchPlaceholder = wcpaySettings.isSubscriptionsActive
 		? __(
 				'Search by order number, subscription number, customer name, or billing email',
-				'woocommerce-payments'
+				'poocommerce-payments'
 		  )
 		: __(
 				'Search by order number, customer name, or billing email',
-				'woocommerce-payments'
+				'poocommerce-payments'
 		  );
 
-	const title = __( 'Transactions', 'woocommerce-payments' );
+	const title = __( 'Transactions', 'poocommerce-payments' );
 
 	const downloadable = !! rows.length;
 
@@ -663,7 +663,7 @@ export const TransactionsList = (
 		const confirmMessage = sprintf(
 			__(
 				"You are about to export %d transactions. If you'd like to reduce the size of your export, you can use one or more filters. Would you like to continue?",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			totalRows
 		);
@@ -684,7 +684,7 @@ export const TransactionsList = (
 				sprintf(
 					__(
 						'We’re processing your export. 🎉 The file will download automatically and be emailed to %s.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					userEmail
 				)
@@ -695,7 +695,7 @@ export const TransactionsList = (
 	if ( ! wcpaySettings.featureFlags.customSearch ) {
 		searchPlaceholder = __(
 			'Search by customer name',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		);
 	}
 
@@ -721,7 +721,7 @@ export const TransactionsList = (
 					// We've already checked that `.count` is not undefined, but TypeScript doesn't detect
 					// that so we remove the `undefined` in the type manually.
 					transactionsSummary.count as number,
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				value: `${ applyThousandSeparator(
 					transactionsSummary.count as number
@@ -733,7 +733,7 @@ export const TransactionsList = (
 		if ( hasTransactions && ( isSingleCurrency || isCurrencyFiltered ) ) {
 			summary.push(
 				{
-					label: __( 'total', 'woocommerce-payments' ),
+					label: __( 'total', 'poocommerce-payments' ),
 					value: `${ formatExplicitCurrency(
 						// We've already checked that `.total` is not undefined, but TypeScript doesn't detect
 						// that so we remove the `undefined` in the type manually.
@@ -742,14 +742,14 @@ export const TransactionsList = (
 					) }`,
 				},
 				{
-					label: __( 'fees', 'woocommerce-payments' ),
+					label: __( 'fees', 'poocommerce-payments' ),
 					value: `${ formatCurrency(
 						transactionsSummary.fees ?? 0,
 						transactionsSummary.currency
 					) }`,
 				},
 				{
-					label: __( 'net', 'woocommerce-payments' ),
+					label: __( 'net', 'poocommerce-payments' ),
 					value: `${ formatExplicitCurrency(
 						transactionsSummary.net ?? 0,
 						transactionsSummary.currency
@@ -776,7 +776,7 @@ export const TransactionsList = (
 				/>
 			) }
 			<TableCard
-				className="transactions-list woocommerce-report-table has-search"
+				className="transactions-list poocommerce-report-table has-search"
 				title={ title }
 				isLoading={ isLoading }
 				rowsPerPage={ parseInt( getQuery().per_page ?? '', 10 ) || 25 }

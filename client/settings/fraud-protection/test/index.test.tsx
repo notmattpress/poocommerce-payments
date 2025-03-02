@@ -34,7 +34,7 @@ jest.mock( '@wordpress/data', () => ( {
 	useDispatch: jest.fn(),
 } ) );
 
-jest.mock( '@woocommerce/components', () => ( {
+jest.mock( '@poocommerce/components', () => ( {
 	TourKit: () => <div>Tour Component</div>,
 } ) );
 
@@ -91,7 +91,7 @@ describe( 'FraudProtection', () => {
 			enumerable: true,
 			value: {
 				search:
-					'?page=wc-settings&tab=checkout&anchor=%23fp-settings&section=woocommerce_payments/',
+					'?page=wc-settings&tab=checkout&anchor=%23fp-settings&section=poocommerce_payments/',
 			},
 		} );
 

@@ -68,7 +68,7 @@ describe( 'wc-to-stripe transformers', () => {
 							},
 							catalog_visibility: 'visible',
 							extensions: {
-								'woocommerce-deposits': {
+								'poocommerce-deposits': {
 									is_deposit: true,
 									has_payment_plan: true,
 									plan_schedule: [
@@ -370,7 +370,7 @@ describe( 'wc-to-stripe transformers', () => {
 							},
 							catalog_visibility: 'visible',
 							extensions: {
-								'woocommerce-deposits': {
+								'poocommerce-deposits': {
 									is_deposit: true,
 									has_payment_plan: true,
 									plan_schedule: [
@@ -601,7 +601,7 @@ describe( 'wc-to-stripe transformers', () => {
 								{
 									rate_id: 'pickup_location:1',
 									name:
-										'Local pickup &#8211; options coming from WooCommerce Blocks (Australian warehouse)',
+										'Local pickup &#8211; options coming from PooCommerce Blocks (Australian warehouse)',
 									description: '',
 									delivery_time: '',
 									price: '0',
@@ -647,7 +647,7 @@ describe( 'wc-to-stripe transformers', () => {
 						'42 Wallaby Way, Sydney New South Wales 200, Australia - Ask for P. Sherman',
 					id: 'pickup_location:1',
 					displayName:
-						'Local pickup – options coming from WooCommerce Blocks (Australian warehouse)',
+						'Local pickup – options coming from PooCommerce Blocks (Australian warehouse)',
 				},
 			] );
 		} );

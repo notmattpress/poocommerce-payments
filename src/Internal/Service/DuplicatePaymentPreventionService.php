@@ -2,7 +2,7 @@
 /**
  * Class DuplicatePaymentPreventionService
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Internal\Service;
@@ -198,7 +198,7 @@ class DuplicatePaymentPreventionService {
 			$duplicate_order_id,
 			sprintf(
 				/* translators: order ID integer number */
-				__( 'WooCommerce Payments: detected and deleted order ID %d, which has duplicate cart content with this order.', 'woocommerce-payments' ),
+				__( 'PooCommerce Payments: detected and deleted order ID %d, which has duplicate cart content with this order.', 'poocommerce-payments' ),
 				$current_order_id
 			)
 		);

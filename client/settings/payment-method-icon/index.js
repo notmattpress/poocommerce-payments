@@ -16,12 +16,12 @@ const PaymentMethodIcon = ( { Icon, label } ) => {
 	return (
 		<span
 			className={ classNames(
-				'woocommerce-payments__payment-method-icon'
+				'poocommerce-payments__payment-method-icon'
 			) }
 		>
 			<Icon />
 			{ label && (
-				<span className="woocommerce-payments__payment-method-icon__label">
+				<span className="poocommerce-payments__payment-method-icon__label">
 					{ label }
 				</span>
 			) }

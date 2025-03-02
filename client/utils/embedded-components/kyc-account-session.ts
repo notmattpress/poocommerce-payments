@@ -69,7 +69,7 @@ const useKycAccountSession = ( {
 					setLoadErrorMessage(
 						__(
 							"Failed to create account session. Please check that you're using the latest version of WooPayments.",
-							'woocommerce-payments'
+							'poocommerce-payments'
 						)
 					);
 					return;
@@ -93,7 +93,7 @@ const useKycAccountSession = ( {
 				setLoadErrorMessage(
 					__(
 						'Failed to retrieve account session. Please try again later.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					)
 				);
 			}
