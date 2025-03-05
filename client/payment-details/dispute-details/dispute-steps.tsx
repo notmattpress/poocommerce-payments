@@ -40,7 +40,7 @@ export const DisputeSteps: React.FC< Props > = ( {
 			// Translators: %1$s is the store name, %2$s is the charge date.
 			__(
 				`Problem with your purchase from %1$s on %2$s?`,
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			wcpaySettings.storeName,
 			chargeDate
@@ -52,7 +52,7 @@ export const DisputeSteps: React.FC< Props > = ( {
 				`Hello %1$s,\n\n` +
 					`We noticed that on %2$s, you disputed a %3$s charge on %4$s. We wanted to contact you to make sure everything was all right with your purchase and see if there's anything else we can do to resolve any problems you might have had.\n\n` +
 					`Alternatively, if the dispute was a mistake, you can easily withdraw it by calling the number on the back of your card. Thank you so much - we appreciate your business and look forward to working with you.`,
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			customerName,
 			disputeDate,
@@ -67,7 +67,7 @@ export const DisputeSteps: React.FC< Props > = ( {
 	return (
 		<div className="dispute-steps">
 			<div className="dispute-steps__header">
-				{ __( 'Steps to resolve:', 'woocommerce-payments' ) }
+				{ __( 'Steps to resolve:', 'poocommerce-payments' ) }
 			</div>
 			<ol className="dispute-steps__steps">
 				<li>
@@ -75,7 +75,7 @@ export const DisputeSteps: React.FC< Props > = ( {
 						? createInterpolateElement(
 								__(
 									'<a>Email the customer</a> to identify the issue and work towards a resolution where possible.',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								),
 								{
 									a: (
@@ -90,18 +90,18 @@ export const DisputeSteps: React.FC< Props > = ( {
 						  )
 						: __(
 								'Email the customer to identify the issue and work towards a resolution where possible.',
-								'woocommerce-payments'
+								'poocommerce-payments'
 						  ) }
 				</li>
 				<li>
 					{ createInterpolateElement(
 						__(
 							'Assist the customer <a>in withdrawing their dispute</a> if they agree to do so.',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						),
 						{
 							a: (
-								<ExternalLink href="https://woocommerce.com/document/woopayments/fraud-and-disputes/managing-disputes/#withdrawals" />
+								<ExternalLink href="https://poocommerce.com/document/woopayments/fraud-and-disputes/managing-disputes/#withdrawals" />
 							),
 						}
 					) }
@@ -110,7 +110,7 @@ export const DisputeSteps: React.FC< Props > = ( {
 					{ createInterpolateElement(
 						__(
 							'Challenge <challengeIcon/> or accept <acceptIcon/> the dispute by <dueByDate/>',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						),
 						{
 							challengeIcon: (
@@ -118,11 +118,11 @@ export const DisputeSteps: React.FC< Props > = ( {
 									buttonIcon={ <HelpOutlineIcon /> }
 									buttonLabel={ __(
 										'Challenge the dispute tooltip',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									) }
 									content={ __(
 										"Challenge the dispute if you consider the claim invalid. You'll need to provide evidence to back your claim. Keep in mind that challenging doesn't ensure a resolution in your favor.",
-										'woocommerce-payments'
+										'poocommerce-payments'
 									) }
 								/>
 							),
@@ -131,13 +131,13 @@ export const DisputeSteps: React.FC< Props > = ( {
 									buttonIcon={ <HelpOutlineIcon /> }
 									buttonLabel={ __(
 										'Accept the dispute tooltip',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									) }
 									content={ sprintf(
 										// Translators: %s is a formatted currency amount, eg $10.00.
 										__(
 											`Accepting this dispute will automatically close it. The disputed amount and the %s dispute fee will not be returned to you.`,
-											'woocommerce-payments'
+											'poocommerce-payments'
 										),
 										getDisputeFeeFormatted(
 											dispute,
@@ -178,7 +178,7 @@ export const InquirySteps: React.FC< Props > = ( {
 			// Translators: %1$s is the store name, %2$s is the charge date.
 			__(
 				`Problem with your purchase from %1$s on %2$s?`,
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			wcpaySettings.storeName,
 			chargeDate
@@ -190,7 +190,7 @@ export const InquirySteps: React.FC< Props > = ( {
 				`Hello %1$s,\n\n` +
 					`We noticed that on %2$s, you raised a question with your payment provider about a %3$s charge made on %4$s. We wanted to reach out to ensure everything is all right with your purchase and to see if there’s anything we can do to resolve any problems you might have had.\n\n` +
 					`Alternatively, if this was a mistake, please contact your payment provider to resolve it. Thank you so much - we appreciate your business and look forward to working with you.`,
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			customerName,
 			disputeDate,
@@ -209,7 +209,7 @@ export const InquirySteps: React.FC< Props > = ( {
 				? createInterpolateElement(
 						__(
 							'<a>Email the customer</a> to identify the issue and work towards a resolution where possible.',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						),
 						{
 							a: (
@@ -224,7 +224,7 @@ export const InquirySteps: React.FC< Props > = ( {
 				  )
 				: __(
 						'Email the customer to identify the issue and work towards a resolution where possible.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 				  ) }
 		</li>
 	);
@@ -234,7 +234,7 @@ export const InquirySteps: React.FC< Props > = ( {
 				{ createInterpolateElement(
 					__(
 						'Submit evidence <submitEvidenceIcon/> or issue a refund by <dueByDate/>.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					{
 						submitEvidenceIcon: (
@@ -242,16 +242,16 @@ export const InquirySteps: React.FC< Props > = ( {
 								buttonIcon={ <HelpOutlineIcon /> }
 								buttonLabel={ __(
 									'Submit evidence tooltip',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								) }
 								content={ createInterpolateElement(
 									__(
 										"To submit evidence, provide documentation that supports your case. Keep in mind that submitting evidence doesn't ensure a favorable outcome. If the cardholder agrees to withdraw the inquiry, you'll still need to officially submit your evidence to prevent bank escalation. <learnMoreLink>Learn more</learnMoreLink>",
-										'woocommerce-payments'
+										'poocommerce-payments'
 									),
 									{
 										learnMoreLink: (
-											<ExternalLink href="https://woocommerce.com/document/woopayments/fraud-and-disputes/managing-disputes/#inquiries" />
+											<ExternalLink href="https://poocommerce.com/document/woopayments/fraud-and-disputes/managing-disputes/#inquiries" />
 										),
 									}
 								) }
@@ -272,7 +272,7 @@ export const InquirySteps: React.FC< Props > = ( {
 				{ createInterpolateElement(
 					__(
 						'Issue a refund by <dueByDate/>.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					{
 						dueByDate: (
@@ -289,7 +289,7 @@ export const InquirySteps: React.FC< Props > = ( {
 	return (
 		<div className="dispute-steps">
 			<div className="dispute-steps__header">
-				{ __( 'Steps to resolve:', 'woocommerce-payments' ) }
+				{ __( 'Steps to resolve:', 'poocommerce-payments' ) }
 			</div>
 			<ol className="dispute-steps__steps">{ steps }</ol>
 		</div>

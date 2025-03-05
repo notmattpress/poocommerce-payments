@@ -44,7 +44,7 @@ const CurrencyInformationForMethods = ( { selectedMethods } ) => {
 		const paymentMethodInformation = PaymentMethodsMap[ paymentMethod ];
 		if ( ! paymentMethodInformation ) return;
 
-		// TODO : fix in https://github.com/Automattic/woocommerce-payments/issues/10182 to remove duplicated logic
+		// TODO : fix in https://github.com/Automattic/poocommerce-payments/issues/10182 to remove duplicated logic
 		let currencies = paymentMethodInformation.currencies || [];
 		if ( paymentMethodInformation.accepts_only_domestic_payment ) {
 			currencies = [ stripeAccountDomesticCurrency ];
@@ -91,7 +91,7 @@ const CurrencyInformationForMethods = ( { selectedMethods } ) => {
 			/* translators: %1: name of payment method being setup %2: name of missing currency that will be added */
 			"%1$s requires an additional currency, so {{strong}}we'll add %2$s to your store{{/strong}}. " +
 				'You can view & manage currencies later in settings.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		);
 	} else if (
 		paymentMethodsWithMissingCurrencies.length === 1 &&
@@ -101,7 +101,7 @@ const CurrencyInformationForMethods = ( { selectedMethods } ) => {
 			/* translators: %1: name of payment method being setup %2: list of missing currencies that will be added */
 			"%1$s requires additional currencies, so {{strong}}we'll add %2$s to your store{{/strong}}. " +
 				'You can view & manage currencies later in settings.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		);
 	} else if (
 		paymentMethodsWithMissingCurrencies.length > 1 &&
@@ -111,14 +111,14 @@ const CurrencyInformationForMethods = ( { selectedMethods } ) => {
 			/* translators: %1: list of payment methods being setup %2: name of missing currency that will be added */
 			"%1$s require an additional currency, so {{strong}}we'll add %2$s to your store{{/strong}}. " +
 				'You can view & manage currencies later in settings.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		);
 	} else {
 		stringFormat = __(
 			/* translators: %1: list of payment methods being setup %2: list of missing currencies that will be added */
 			"%1$s require additional currencies, so {{strong}}we'll add %2$s to your store{{/strong}}. " +
 				'You can view & manage currencies later in settings.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		);
 	}
 

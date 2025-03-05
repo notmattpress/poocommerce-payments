@@ -2,7 +2,7 @@
 /**
  * Class WooPay_Scheduler.
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\WooPay;
@@ -47,7 +47,7 @@ class WooPay_Scheduler {
 		add_action( 'validate_woopay_compatibility', [ $this, 'update_compatibility_and_maybe_show_incompatibility_warning' ] );
 		add_action( 'activated_plugin', [ $this, 'show_warning_when_incompatible_extension_is_enabled' ] );
 		add_action( 'deactivated_plugin', [ $this, 'hide_warning_when_incompatible_extension_is_disabled' ] );
-		add_action( 'woocommerce_woocommerce_payments_updated', [ $this, 'remove_legacy_schedule_action_name_on_update' ] );
+		add_action( 'poocommerce_poocommerce_payments_updated', [ $this, 'remove_legacy_schedule_action_name_on_update' ] );
 
 		register_deactivation_hook( WCPAY_PLUGIN_FILE, [ $this, 'remove_scheduler' ] );
 	}

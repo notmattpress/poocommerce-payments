@@ -26,14 +26,14 @@ const BannerActions: React.FC< BannerActionsProps > = ( {
 	return (
 		<div className="discoverability-card__actions">
 			<Button
-				href="/wp-admin/admin.php?page=wc-settings&tab=checkout&anchor=%23fp-settings&section=woocommerce_payments/"
+				href="/wp-admin/admin.php?page=wc-settings&tab=checkout&anchor=%23fp-settings&section=poocommerce_payments/"
 				variant="primary"
 				onClick={ handleLearnMoreButtonClick }
 			>
-				{ __( 'Learn more', 'woocommerce-payments' ) }
+				{ __( 'Learn more', 'poocommerce-payments' ) }
 			</Button>
 			<Button variant="tertiary" onClick={ handleDontShowAgainOnClick }>
-				{ __( 'Dismiss', 'woocommerce-payments' ) }
+				{ __( 'Dismiss', 'poocommerce-payments' ) }
 			</Button>
 		</div>
 	);

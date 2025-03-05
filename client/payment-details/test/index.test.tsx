@@ -43,7 +43,7 @@ jest.mock( '@wordpress/data', () => ( {
 } ) );
 
 const mockHistoryReplace = jest.fn();
-jest.mock( '@woocommerce/navigation', () => ( {
+jest.mock( '@poocommerce/navigation', () => ( {
 	getQuery: () => {
 		return {
 			status_is: '',

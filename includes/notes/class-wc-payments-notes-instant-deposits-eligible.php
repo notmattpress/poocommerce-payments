@@ -2,11 +2,11 @@
 /**
  * Notify merchant that they are eligible for Instant Deposits.
  *
- * @package WooCommerce\Payments\Admin
+ * @package PooCommerce\Payments\Admin
  */
 
-use Automattic\WooCommerce\Admin\Notes\Note;
-use Automattic\WooCommerce\Admin\Notes\NoteTraits;
+use Automattic\PooCommerce\Admin\Notes\Note;
+use Automattic\PooCommerce\Admin\Notes\NoteTraits;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -30,7 +30,7 @@ class WC_Payments_Notes_Instant_Deposits_Eligible {
 		$note->set_title(
 			sprintf(
 				/* translators: %s: WooPayments */
-				__( 'You’re now eligible to receive Instant Payouts with %s', 'woocommerce-payments' ),
+				__( 'You’re now eligible to receive Instant Payouts with %s', 'poocommerce-payments' ),
 				'WooPayments'
 			)
 		);
@@ -38,20 +38,20 @@ class WC_Payments_Notes_Instant_Deposits_Eligible {
 			WC_Payments_Utils::esc_interpolated_html(
 				sprintf(
 					/* translators: %s: WooPayments */
-					__( "Get immediate access to your funds when you need them – including nights, weekends, and holidays. With %s' <a>Instant Payouts feature</a>, you're able to transfer your earnings to a debit card within minutes.", 'woocommerce-payments' ),
+					__( "Get immediate access to your funds when you need them – including nights, weekends, and holidays. With %s' <a>Instant Payouts feature</a>, you're able to transfer your earnings to a debit card within minutes.", 'poocommerce-payments' ),
 					'WooPayments'
 				),
-				[ 'a' => '<a href="https://woocommerce.com/document/woopayments/payouts/instant-payouts/">' ]
+				[ 'a' => '<a href="https://poocommerce.com/document/woopayments/payouts/instant-payouts/">' ]
 			)
 		);
 		$note->set_content_data( (object) [] );
 		$note->set_type( Note::E_WC_ADMIN_NOTE_INFORMATIONAL );
 		$note->set_name( self::NOTE_NAME );
-		$note->set_source( 'woocommerce-payments' );
+		$note->set_source( 'poocommerce-payments' );
 		$note->add_action(
 			self::NOTE_NAME,
-			__( 'Request an instant payout', 'woocommerce-payments' ),
-			'https://woocommerce.com/document/woopayments/payouts/instant-payouts/#request-an-instant-payout',
+			__( 'Request an instant payout', 'poocommerce-payments' ),
+			'https://poocommerce.com/document/woopayments/payouts/instant-payouts/#request-an-instant-payout',
 			'unactioned',
 			true
 		);

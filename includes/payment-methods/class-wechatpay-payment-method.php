@@ -81,7 +81,7 @@ class Wechatpay_Payment_Method extends UPE_Payment_Method {
 	 * @return string
 	 */
 	public function get_title( ?string $account_country = null, $payment_details = false ) {
-		return __( 'WeChat Pay', 'woocommerce-payments' );
+		return __( 'WeChat Pay', 'poocommerce-payments' );
 	}
 
 	/**

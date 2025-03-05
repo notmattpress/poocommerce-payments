@@ -2,7 +2,7 @@
 /**
  * Class WC_Payment_Gateway_WCPay_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use PHPUnit\Framework\MockObject\MockObject;
@@ -885,11 +885,11 @@ class WC_Payment_Gateway_WCPay_Subscriptions_Test extends WCPAY_UnitTestCase {
 		$subscription->add_payment_token( WC_Helper_Token::create_token( self::PAYMENT_METHOD_ID, self::USER_ID ) );
 
 		$this->wcpay_gateway->add_subscription_payment_meta( [], $subscription );
-		$this->assertTrue( has_action( 'woocommerce_subscription_payment_meta_input_' . WC_Payment_Gateway_WCPay::GATEWAY_ID . '_wc_order_tokens_token' ) );
+		$this->assertTrue( has_action( 'poocommerce_subscription_payment_meta_input_' . WC_Payment_Gateway_WCPay::GATEWAY_ID . '_wc_order_tokens_token' ) );
 	}
 
 	public function test_adds_custom_payment_meta_input_fallback_until_subs_3_0_7() {
-		remove_all_actions( 'woocommerce_admin_order_data_after_billing_address' );
+		remove_all_actions( 'poocommerce_admin_order_data_after_billing_address' );
 
 		WC_Subscriptions::$version = '3.0.7';
 
@@ -921,11 +921,11 @@ class WC_Payment_Gateway_WCPay_Subscriptions_Test extends WCPAY_UnitTestCase {
 
 		$payment_gateway->init_hooks();
 
-		$this->assertTrue( has_action( 'woocommerce_admin_order_data_after_billing_address' ) );
+		$this->assertTrue( has_action( 'poocommerce_admin_order_data_after_billing_address' ) );
 	}
 
 	public function test_does_not_add_custom_payment_meta_input_fallback_for_subs_3_0_8() {
-		remove_all_actions( 'woocommerce_admin_order_data_after_billing_address' );
+		remove_all_actions( 'poocommerce_admin_order_data_after_billing_address' );
 
 		$mock_payment_method = $this->getMockBuilder( CC_Payment_Method::class )
 			->setConstructorArgs( [ $this->mock_token_service ] )
@@ -949,7 +949,7 @@ class WC_Payment_Gateway_WCPay_Subscriptions_Test extends WCPAY_UnitTestCase {
 			$this->mock_session_rate_limiter
 		);
 
-		$this->assertFalse( has_action( 'woocommerce_admin_order_data_after_billing_address' ) );
+		$this->assertFalse( has_action( 'poocommerce_admin_order_data_after_billing_address' ) );
 	}
 
 	public function test_add_payment_method_select_to_subscription_edit_when_subscription() {
@@ -1077,7 +1077,7 @@ class WC_Payment_Gateway_WCPay_Subscriptions_Test extends WCPAY_UnitTestCase {
 
 	public function test_update_subscription_token_not_wcpay() {
 		$subscription    = WC_Helper_Order::create_order( self::USER_ID );
-		$non_wcpay_token = WC_Helper_Token::create_token( self::PAYMENT_METHOD_ID, self::USER_ID, 'not_woocommerce_payments' );
+		$non_wcpay_token = WC_Helper_Token::create_token( self::PAYMENT_METHOD_ID, self::USER_ID, 'not_poocommerce_payments' );
 
 		$updated             = $this->wcpay_gateway->update_subscription_token( false, $subscription, $non_wcpay_token );
 		$subscription_tokens = $subscription->get_payment_tokens();

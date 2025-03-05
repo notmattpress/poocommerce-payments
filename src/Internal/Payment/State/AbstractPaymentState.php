@@ -2,7 +2,7 @@
 /**
  * Class AbstractPaymentState
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Internal\Payment\State;
@@ -132,7 +132,7 @@ abstract class AbstractPaymentState {
 			esc_html(
 				sprintf(
 				// translators: %1$s is the name of a method of the payment object, %2$s is its current state.
-					__( 'The %1$s method is not available in the current payment state (%2$s).', 'woocommerce-payments' ),
+					__( 'The %1$s method is not available in the current payment state (%2$s).', 'poocommerce-payments' ),
 					$method_name,
 					get_class( $this )
 				)
