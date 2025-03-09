@@ -2,7 +2,7 @@
 /**
  * Class Logger
  *
- * @package WooCommerce\Payments\MultiCurrency
+ * @package PooCommerce\Payments\MultiCurrency
  */
 
 namespace WCPay\MultiCurrency;
@@ -18,7 +18,7 @@ class Logger {
 	const LOG_FILE = 'woopayments-multi-currency';
 
 	/**
-	 * The WooCommerce logger instance.
+	 * The PooCommerce logger instance.
 	 *
 	 * @var \WC_Logger|null
 	 */

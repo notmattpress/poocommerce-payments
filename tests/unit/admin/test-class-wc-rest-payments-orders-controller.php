@@ -2,7 +2,7 @@
 /**
  * Class WC_REST_Payments_Orders_Controller_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use PHPUnit\Framework\MockObject\MockObject;
@@ -156,8 +156,8 @@ class WC_REST_Payments_Orders_Controller_Test extends WCPAY_UnitTestCase {
 		);
 
 		$result_order = wc_get_order( $order->get_id() );
-		$this->assertEquals( 'woocommerce_payments', $result_order->get_payment_method() );
-		$this->assertEquals( 'WooCommerce In-Person Payments', $result_order->get_payment_method_title() );
+		$this->assertEquals( 'poocommerce_payments', $result_order->get_payment_method() );
+		$this->assertEquals( 'PooCommerce In-Person Payments', $result_order->get_payment_method_title() );
 		$this->assertEquals( Order_Status::COMPLETED, $result_order->get_status() );
 		$url = '/wc/v3/' . ( $this->is_wpcom() ? 'sites/3/' : '' ) . 'payments/readers/receipts/' . $this->mock_intent_id;
 		$this->assertStringEndsWith( $url, $result_order->get_meta( 'receipt_url' ) );
@@ -212,8 +212,8 @@ class WC_REST_Payments_Orders_Controller_Test extends WCPAY_UnitTestCase {
 		);
 
 		$result_order = wc_get_order( $order->get_id() );
-		$this->assertSame( 'woocommerce_payments', $result_order->get_payment_method() );
-		$this->assertSame( 'WooCommerce In-Person Payments', $result_order->get_payment_method_title() );
+		$this->assertSame( 'poocommerce_payments', $result_order->get_payment_method() );
+		$this->assertSame( 'PooCommerce In-Person Payments', $result_order->get_payment_method_title() );
 		$this->assertSame( Order_Status::COMPLETED, $result_order->get_status() );
 		$url = '/wc/v3/' . ( $this->is_wpcom() ? 'sites/3/' : '' ) . 'payments/readers/receipts/';
 		$this->assertStringEndsWith( $url . $this->mock_intent_id, $result_order->get_meta( 'receipt_url' ) );
@@ -272,8 +272,8 @@ class WC_REST_Payments_Orders_Controller_Test extends WCPAY_UnitTestCase {
 		);
 
 		$result_order = wc_get_order( $order->get_id() );
-		$this->assertSame( 'woocommerce_payments', $result_order->get_payment_method() );
-		$this->assertSame( 'WooCommerce In-Person Payments', $result_order->get_payment_method_title() );
+		$this->assertSame( 'poocommerce_payments', $result_order->get_payment_method() );
+		$this->assertSame( 'PooCommerce In-Person Payments', $result_order->get_payment_method_title() );
 		$this->assertSame( Order_Status::COMPLETED, $result_order->get_status() );
 		$url = '/wc/v3/' . ( $this->is_wpcom() ? 'sites/3/' : '' ) . 'payments/readers/receipts/';
 		$this->assertStringEndsWith( $url . $this->mock_intent_id, $result_order->get_meta( 'receipt_url' ) );
@@ -1806,7 +1806,7 @@ class WC_REST_Payments_Orders_Controller_Test extends WCPAY_UnitTestCase {
 
 		$response = $this->controller->capture_terminal_payment( $request );
 		$this->assertEquals( 200, $response->get_status() );
-		$this->assertEquals( 'woocommerce_payments', $subscription->get_payment_method() );
+		$this->assertEquals( 'poocommerce_payments', $subscription->get_payment_method() );
 	}
 
 	/**

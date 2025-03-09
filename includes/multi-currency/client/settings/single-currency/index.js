@@ -117,13 +117,13 @@ const SingleCurrencySettings = () => {
 
 	const CurrencySettingsDescription = () => (
 		<>
-			<h2>{ __( 'Currency settings', 'woocommerce-payments' ) }</h2>
+			<h2>{ __( 'Currency settings', 'poocommerce-payments' ) }</h2>
 			<p>
 				{ __(
 					'Choose between automatic or manual exchange ' +
 						'rates and modify formatting rules to refine the ' +
 						'display of your prices.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				) }
 			</p>
 		</>
@@ -131,7 +131,7 @@ const SingleCurrencySettings = () => {
 
 	const CurrencyPreviewDescription = () => (
 		<>
-			<h2>{ __( 'Preview', 'woocommerce-payments' ) }</h2>
+			<h2>{ __( 'Preview', 'poocommerce-payments' ) }</h2>
 			<p>
 				{ ! isLoading
 					? sprintf(
@@ -139,7 +139,7 @@ const SingleCurrencySettings = () => {
 								'Enter a price in your default currency (%s) to ' +
 									'see it converted to %s using the ' +
 									'exchange rate and formatting rules above.',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							storeCurrency.name,
 							targetCurrency.name
@@ -177,7 +177,7 @@ const SingleCurrencySettings = () => {
 						isLink
 						onClick={ () => closeSingleCurrencySettings() }
 					>
-						{ __( 'Enabled currencies', 'woocommerce-payments' ) }
+						{ __( 'Enabled currencies', 'poocommerce-payments' ) }
 					</Button>{ ' ' }
 					&gt; { targetCurrency.name } ({ targetCurrency.code }){ ' ' }
 					{ targetCurrency.flag }
@@ -193,7 +193,7 @@ const SingleCurrencySettings = () => {
 								<h3>
 									{ __(
 										'Exchange rate',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									) }
 								</h3>
 								<fieldset>
@@ -231,7 +231,7 @@ const SingleCurrencySettings = () => {
 													<h4>
 														{ __(
 															'Fetch rates automatically',
-															'woocommerce-payments'
+															'poocommerce-payments'
 														) }
 													</h4>
 												</div>
@@ -245,7 +245,7 @@ const SingleCurrencySettings = () => {
 														? sprintf(
 																__(
 																	'Current rate: 1 %s = %s %s (Last updated: %s)',
-																	'woocommerce-payments'
+																	'poocommerce-payments'
 																),
 																storeCurrency.code,
 																targetCurrency.rate,
@@ -300,7 +300,7 @@ const SingleCurrencySettings = () => {
 													<h4>
 														{ __(
 															'Manual',
-															'woocommerce-payments'
+															'poocommerce-payments'
 														) }
 													</h4>
 												</div>
@@ -312,7 +312,7 @@ const SingleCurrencySettings = () => {
 												>
 													{ __(
 														'Enter your fixed rate of exchange',
-														'woocommerce-payments'
+														'poocommerce-payments'
 													) }
 												</p>
 											</label>
@@ -322,7 +322,7 @@ const SingleCurrencySettings = () => {
 												<h4>
 													{ __(
 														'Manual Rate',
-														'woocommerce-payments'
+														'poocommerce-payments'
 													) }
 												</h4>
 												<input
@@ -352,7 +352,7 @@ const SingleCurrencySettings = () => {
 												>
 													{ __(
 														'Enter the manual rate you would like to use. Must be a positive number.',
-														'woocommerce-payments'
+														'poocommerce-payments'
 													) }
 												</p>
 											</li>
@@ -364,7 +364,7 @@ const SingleCurrencySettings = () => {
 								<h3>
 									{ __(
 										'Formatting rules',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									) }
 								</h3>
 								<fieldset>
@@ -373,7 +373,7 @@ const SingleCurrencySettings = () => {
 											<h4>
 												{ __(
 													'Price rounding',
-													'woocommerce-payments'
+													'poocommerce-payments'
 												) }
 											</h4>
 											{ /* eslint-disable jsx-a11y/no-onchange */ }
@@ -417,7 +417,7 @@ const SingleCurrencySettings = () => {
 												{ sprintf(
 													__(
 														"Make your %s prices consistent by rounding them up after they're converted.",
-														'woocommerce-payments'
+														'poocommerce-payments'
 													),
 													targetCurrency.code
 												) }
@@ -426,14 +426,14 @@ const SingleCurrencySettings = () => {
 													onClick={ () => {
 														open(
 															/* eslint-disable-next-line max-len */
-															'https://woocommerce.com/document/woopayments/currencies/multi-currency-setup/#price-rounding',
+															'https://poocommerce.com/document/woopayments/currencies/multi-currency-setup/#price-rounding',
 															'_blank'
 														);
 													} }
 												>
 													{ __(
 														'Learn more',
-														'woocommerce-payments'
+														'poocommerce-payments'
 													) }
 												</Button>
 											</p>
@@ -442,7 +442,7 @@ const SingleCurrencySettings = () => {
 											<h4>
 												{ __(
 													'Charm pricing',
-													'woocommerce-payments'
+													'poocommerce-payments'
 												) }
 											</h4>
 											{ /* eslint-disable jsx-a11y/no-onchange */ }
@@ -485,21 +485,21 @@ const SingleCurrencySettings = () => {
 											>
 												{ __(
 													'Reduce the converted price for a specific amount',
-													'woocommerce-payments'
+													'poocommerce-payments'
 												) }
 												<Button
 													isLink
 													onClick={ () => {
 														open(
 															/* eslint-disable-next-line max-len */
-															'https://woocommerce.com/document/woopayments/currencies/multi-currency-setup/#charm-pricing',
+															'https://poocommerce.com/document/woopayments/currencies/multi-currency-setup/#charm-pricing',
 															'_blank'
 														);
 													} }
 												>
 													{ __(
 														'Learn more',
-														'woocommerce-payments'
+														'poocommerce-payments'
 													) }
 												</Button>
 											</p>
@@ -535,7 +535,7 @@ const SingleCurrencySettings = () => {
 						disabled={ isSaving || ! isDirty }
 						onClick={ saveSingleCurrencySettings }
 					>
-						{ __( 'Save changes', 'woocommerce-payments' ) }
+						{ __( 'Save changes', 'poocommerce-payments' ) }
 					</Button>
 				</SettingsSection>
 			</SettingsLayout>

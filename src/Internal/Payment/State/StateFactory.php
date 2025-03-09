@@ -2,7 +2,7 @@
 /**
  * Class StateFactory
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Internal\Payment\State;
@@ -52,7 +52,7 @@ class StateFactory {
 				esc_html(
 					sprintf(
 					// Translators: %1$s is the PHP class for a new payment state, %1$s is the state base class.
-						__( 'The class %1$s is not a subclass of %2$s', 'woocommerce-payments' ),
+						__( 'The class %1$s is not a subclass of %2$s', 'poocommerce-payments' ),
 						$state_class,
 						AbstractPaymentState::class
 					)

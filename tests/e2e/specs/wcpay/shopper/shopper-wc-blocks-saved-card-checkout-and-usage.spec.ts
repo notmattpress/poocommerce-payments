@@ -32,7 +32,7 @@ import { addWCBCheckoutPage } from '../../../utils/merchant';
 import { config } from '../../../config/default';
 
 describeif( shouldRunWCBlocksTests )(
-	'WooCommerce Blocks > Saved cards',
+	'PooCommerce Blocks > Saved cards',
 	{ tag: '@critical' },
 	() => {
 		let shopperPage: Page;

@@ -2,7 +2,7 @@
 /**
  * Class Change
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Internal\Payment;

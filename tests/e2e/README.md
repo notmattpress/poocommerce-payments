@@ -111,13 +111,13 @@ SKIP_WC_BLOCKS_TESTS=1
 ---
 
 <details>
-<summary><strong>Using a specific version of WordPress or WooCommerce</strong></summary>
+<summary><strong>Using a specific version of WordPress or PooCommerce</strong></summary>
 <p>
 
-To use a specific version of WordPress or WooCommerce for testing, the following env variables need to be added to your `local.env`.
+To use a specific version of WordPress or PooCommerce for testing, the following env variables need to be added to your `local.env`.
 ```
 E2E_WP_VERSION='<wordpress_version>'
-E2E_WC_VERSION='<woocommerce_version>'
+E2E_WC_VERSION='<poocommerce_version>'
 ```
 
 </p>
