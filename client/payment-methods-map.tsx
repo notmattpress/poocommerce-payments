@@ -47,10 +47,10 @@ const PaymentMethodInformationObject: Record<
 > = {
 	card: {
 		id: 'card',
-		label: __( 'Credit / Debit Cards', 'woocommerce-payments' ),
+		label: __( 'Credit / Debit Cards', 'poocommerce-payments' ),
 		description: __(
 			'Let your customers pay with major credit and debit cards without leaving your store.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		icon: CreditCardIcon,
 		currencies: [],
@@ -61,10 +61,10 @@ const PaymentMethodInformationObject: Record<
 	},
 	alipay: {
 		id: 'alipay',
-		label: __( 'Alipay', 'woocommerce-payments' ),
+		label: __( 'Alipay', 'poocommerce-payments' ),
 		description: __(
 			'Alipay is a popular wallet in China, operated by Ant Financial Services Group, a financial services provider affiliated with Alibaba.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		icon: AlipayIcon,
 		currencies: [],
@@ -75,10 +75,10 @@ const PaymentMethodInformationObject: Record<
 	},
 	au_becs_debit: {
 		id: 'au_becs_debit',
-		label: __( 'BECS Direct Debit', 'woocommerce-payments' ),
+		label: __( 'BECS Direct Debit', 'poocommerce-payments' ),
 		description: __(
 			'Bulk Electronic Clearing System — Accept secure bank transfer from Australia.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		icon: BankDebitIcon,
 		currencies: [ 'AUD' ],
@@ -89,10 +89,10 @@ const PaymentMethodInformationObject: Record<
 	},
 	bancontact: {
 		id: 'bancontact',
-		label: __( 'Bancontact', 'woocommerce-payments' ),
+		label: __( 'Bancontact', 'poocommerce-payments' ),
 		description: __(
 			'Bancontact is a bank redirect payment method offered by more than 80% of online businesses in Belgium.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		icon: BancontactIcon,
 		currencies: [ 'EUR' ],
@@ -103,10 +103,10 @@ const PaymentMethodInformationObject: Record<
 	},
 	eps: {
 		id: 'eps',
-		label: __( 'EPS', 'woocommerce-payments' ),
+		label: __( 'EPS', 'poocommerce-payments' ),
 		description: __(
 			'Accept your payment with EPS — a common payment method in Austria.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		icon: EpsIcon,
 		currencies: [ 'EUR' ],
@@ -117,10 +117,10 @@ const PaymentMethodInformationObject: Record<
 	},
 	giropay: {
 		id: 'giropay',
-		label: __( 'giropay', 'woocommerce-payments' ),
+		label: __( 'giropay', 'poocommerce-payments' ),
 		description: __(
 			'Expand your business with giropay — Germany’s second most popular payment system.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		icon: GiropayIcon,
 		currencies: [ 'EUR' ],
@@ -131,10 +131,10 @@ const PaymentMethodInformationObject: Record<
 	},
 	ideal: {
 		id: 'ideal',
-		label: __( 'iDEAL', 'woocommerce-payments' ),
+		label: __( 'iDEAL', 'poocommerce-payments' ),
 		description: __(
 			'Expand your business with iDEAL — Netherlands’s most popular payment method.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		icon: IdealIcon,
 		currencies: [ 'EUR' ],
@@ -145,10 +145,10 @@ const PaymentMethodInformationObject: Record<
 	},
 	p24: {
 		id: 'p24',
-		label: __( 'Przelewy24 (P24)', 'woocommerce-payments' ),
+		label: __( 'Przelewy24 (P24)', 'poocommerce-payments' ),
 		description: __(
 			'Accept payments with Przelewy24 (P24), the most popular payment method in Poland.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		icon: P24Icon,
 		currencies: [ 'EUR', 'PLN' ],
@@ -159,10 +159,10 @@ const PaymentMethodInformationObject: Record<
 	},
 	sepa_debit: {
 		id: 'sepa_debit',
-		label: __( 'SEPA Direct Debit', 'woocommerce-payments' ),
+		label: __( 'SEPA Direct Debit', 'poocommerce-payments' ),
 		description: __(
 			'Reach 500 million customers and over 20 million businesses across the European Union.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		icon: SepaIcon,
 		currencies: [ 'EUR' ],
@@ -173,10 +173,10 @@ const PaymentMethodInformationObject: Record<
 	},
 	sofort: {
 		id: 'sofort',
-		label: __( 'Sofort', 'woocommerce-payments' ),
+		label: __( 'Sofort', 'poocommerce-payments' ),
 		description: __(
 			'Accept secure bank transfers from Austria, Belgium, Germany, Italy, Netherlands, and Spain.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		icon: SofortIcon,
 		currencies: [ 'EUR' ],
@@ -187,10 +187,10 @@ const PaymentMethodInformationObject: Record<
 	},
 	affirm: {
 		id: 'affirm',
-		label: __( 'Affirm', 'woocommerce-payments' ),
+		label: __( 'Affirm', 'poocommerce-payments' ),
 		description: __(
 			'Allow customers to pay over time with Affirm.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		icon: AffirmIcon,
 		currencies: [ 'USD', 'CAD' ],
@@ -203,17 +203,17 @@ const PaymentMethodInformationObject: Record<
 		id: 'afterpay_clearpay',
 		label:
 			'GB' === accountCountry
-				? __( 'Clearpay', 'woocommerce-payments' )
-				: __( 'Afterpay', 'woocommerce-payments' ),
+				? __( 'Clearpay', 'poocommerce-payments' )
+				: __( 'Afterpay', 'poocommerce-payments' ),
 		description:
 			'GB' === accountCountry
 				? __(
 						'Allow customers to pay over time with Clearpay.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 				  )
 				: __(
 						'Allow customers to pay over time with Afterpay.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 				  ),
 		icon: 'GB' === accountCountry ? ClearpayIcon : AfterpayIcon,
 		currencies: [ 'USD', 'AUD', 'CAD', 'NZD', 'GBP' ],
@@ -224,10 +224,10 @@ const PaymentMethodInformationObject: Record<
 	},
 	jcb: {
 		id: 'jcb',
-		label: __( 'JCB', 'woocommerce-payments' ),
+		label: __( 'JCB', 'poocommerce-payments' ),
 		description: __(
 			'Let your customers pay with JCB, the only international payment brand based in Japan.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		icon: JCBIcon,
 		currencies: [ 'JPY' ],
@@ -238,10 +238,10 @@ const PaymentMethodInformationObject: Record<
 	},
 	klarna: {
 		id: 'klarna',
-		label: __( 'Klarna', 'woocommerce-payments' ),
+		label: __( 'Klarna', 'poocommerce-payments' ),
 		description: __(
 			'Allow customers to pay over time or pay now with Klarna.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		icon: KlarnaIcon,
 		currencies: [ 'EUR', 'GBP', 'USD', 'DKK', 'NOK', 'SEK' ],
@@ -252,10 +252,10 @@ const PaymentMethodInformationObject: Record<
 	},
 	grabpay: {
 		id: 'grabpay',
-		label: __( 'GrabPay', 'woocommerce-payments' ),
+		label: __( 'GrabPay', 'poocommerce-payments' ),
 		description: __(
 			'A popular digital wallet for cashless payments in Singapore.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		icon: GrabPayIcon,
 		currencies: [ 'SGD' ],
@@ -266,10 +266,10 @@ const PaymentMethodInformationObject: Record<
 	},
 	wechat_pay: {
 		id: 'wechat_pay',
-		label: __( 'WeChat Pay', 'woocommerce-payments' ),
+		label: __( 'WeChat Pay', 'poocommerce-payments' ),
 		description: __(
 			'A digital wallet popular with customers from China.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		icon: WeChatPayIcon,
 		currencies: [

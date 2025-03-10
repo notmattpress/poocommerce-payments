@@ -140,19 +140,19 @@ jQuery( ( $ ) => {
 		abortPayment: ( message ) => {
 			onAbortPaymentHandler();
 
-			$( '.woocommerce-error' ).remove();
+			$( '.poocommerce-error' ).remove();
 
-			const $container = $( '.woocommerce-notices-wrapper' ).first();
+			const $container = $( '.poocommerce-notices-wrapper' ).first();
 
 			if ( $container.length ) {
 				$container.append(
-					$( '<div class="woocommerce-error" />' ).text( message )
+					$( '<div class="poocommerce-error" />' ).text( message )
 				);
 
 				$( 'html, body' ).animate(
 					{
 						scrollTop: $container
-							.find( '.woocommerce-error' )
+							.find( '.poocommerce-error' )
 							.offset().top,
 					},
 					600
@@ -222,14 +222,14 @@ jQuery( ( $ ) => {
 									?.i18n_unavailable_text ||
 									__(
 										'Sorry, this product is unavailable. Please choose a different combination.',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									)
 							);
 						} else {
 							window.alert(
 								__(
 									'Please select your product options before proceeding.',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								)
 							);
 						}
@@ -256,7 +256,7 @@ jQuery( ( $ ) => {
 									id: 'pending',
 									displayName: __(
 										'Pending',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									),
 									amount: 0,
 								},

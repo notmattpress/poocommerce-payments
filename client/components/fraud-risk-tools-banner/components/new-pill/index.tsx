@@ -12,7 +12,7 @@ import Pill from '../../../pill';
 const NewPill: React.FC = () => {
 	return (
 		<Pill className={ 'discoverability-card__new-feature-pill' }>
-			{ __( 'New', 'woocommerce-payments' ) }
+			{ __( 'New', 'poocommerce-payments' ) }
 		</Pill>
 	);
 };

@@ -12,8 +12,8 @@ import { __ } from '@wordpress/i18n';
 import type { DepositStatus } from 'wcpay/types/deposits';
 
 export const displayType = {
-	deposit: __( 'Payout', 'woocommerce-payments' ),
-	withdrawal: __( 'Withdrawal', 'woocommerce-payments' ),
+	deposit: __( 'Payout', 'poocommerce-payments' ),
+	withdrawal: __( 'Withdrawal', 'poocommerce-payments' ),
 };
 
 /**
@@ -25,10 +25,10 @@ export const depositStatusLabels: Record<
 	DepositStatus | 'deducted',
 	string
 > = {
-	paid: __( 'Completed (paid)', 'woocommerce-payments' ),
-	deducted: __( 'Completed (deducted)', 'woocommerce-payments' ),
-	pending: __( 'Pending', 'woocommerce-payments' ),
-	in_transit: __( 'In transit', 'woocommerce-payments' ),
-	canceled: __( 'Canceled', 'woocommerce-payments' ),
-	failed: __( 'Failed', 'woocommerce-payments' ),
+	paid: __( 'Completed (paid)', 'poocommerce-payments' ),
+	deducted: __( 'Completed (deducted)', 'poocommerce-payments' ),
+	pending: __( 'Pending', 'poocommerce-payments' ),
+	in_transit: __( 'In transit', 'poocommerce-payments' ),
+	canceled: __( 'Canceled', 'poocommerce-payments' ),
+	failed: __( 'Failed', 'poocommerce-payments' ),
 };

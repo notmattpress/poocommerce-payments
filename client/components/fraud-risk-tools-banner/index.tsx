@@ -61,7 +61,7 @@ const FRTDiscoverabilityBanner: React.FC = () => {
 				<h3 className="discoverability-card__header">
 					{ __(
 						'Enhanced fraud protection for your store',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 				</h3>
 				<BannerBody />

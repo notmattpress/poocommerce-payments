@@ -9,7 +9,7 @@ source "$DIR/common.sh"
 # Check if the --local flag is provided which means the tests should run against the development build
 ZIP_FILE=""
 if echo "$@" | grep -q -- "--local"; then
-  ZIP_FILE="$WCP_ROOT/woocommerce-payments.zip"
+  ZIP_FILE="$WCP_ROOT/poocommerce-payments.zip"
 
   # Check if the zip file exists
   if [[ ! -f "$ZIP_FILE" ]]; then

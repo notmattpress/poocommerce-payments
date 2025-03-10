@@ -16,7 +16,7 @@ import {
 	restoreCurrencies,
 	setDefaultCurrency,
 } from '../../../utils/merchant';
-import { goToWooCommerceSettings } from '../../../utils/merchant-navigation';
+import { goToPooCommerceSettings } from '../../../utils/merchant-navigation';
 import * as shopper from '../../../utils/shopper';
 import * as navigation from '../../../utils/shopper-navigation';
 
@@ -63,7 +63,7 @@ test.describe( 'Multi-currency checkout', () => {
 					async () => {
 						await expect(
 							shopperPage.locator(
-								'.woocommerce-order-overview__total'
+								'.poocommerce-order-overview__total'
 							)
 						).toHaveText( new RegExp( currency ) );
 					}
@@ -78,7 +78,7 @@ test.describe( 'Multi-currency checkout', () => {
 						);
 						await expect(
 							shopperPage.locator(
-								'.woocommerce-table--order-details tfoot tr:last-child td'
+								'.poocommerce-table--order-details tfoot tr:last-child td'
 							)
 						).toHaveText( new RegExp( currency ) );
 					}
@@ -109,9 +109,9 @@ test.describe( 'Multi-currency checkout', () => {
 		let originalCurrency = 'USD';
 
 		test.beforeAll( async () => {
-			await goToWooCommerceSettings( merchantPage, 'general' );
+			await goToPooCommerceSettings( merchantPage, 'general' );
 			originalCurrency = await merchantPage
-				.locator( '#woocommerce_currency' )
+				.locator( '#poocommerce_currency' )
 				.inputValue();
 
 			await enablePaymentMethods( merchantPage, [ 'bancontact' ] );

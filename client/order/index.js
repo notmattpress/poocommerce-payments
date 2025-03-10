@@ -27,23 +27,23 @@ function disableWooOrderRefundButton( disputeStatus ) {
 	if ( isAwaitingResponse( disputeStatus ) ) {
 		tooltipText = __(
 			'Refunds and order editing are disabled during disputes.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		);
 	} else if ( isUnderReview( disputeStatus ) ) {
 		tooltipText = __(
 			'Refunds and order editing are disabled during an active dispute.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		);
 	} else if ( disputeStatus === 'lost' ) {
 		tooltipText = __(
 			'Refunds and order editing have been disabled as a result of a lost dispute.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		);
 	}
 
 	jQuery( refundButton )
 		.parent()
-		.find( '.woocommerce-help-tip' )
+		.find( '.poocommerce-help-tip' )
 		.attr( {
 			// jQuery.tipTip uses the title attribute to generate the tooltip.
 			title: tooltipText,
@@ -64,7 +64,7 @@ jQuery( function ( $ ) {
 
 	maybeShowOrderNotices();
 
-	$( '#woocommerce-order-items' ).on(
+	$( '#poocommerce-order-items' ).on(
 		'click',
 		'button.refund-items',
 		function () {
@@ -91,7 +91,7 @@ jQuery( function ( $ ) {
 		let originalStatus =
 			$( 'input#original_post_status' ).val() ||
 			$( 'input#original_order_status' ).val();
-		//TODO: Remove this after https://github.com/woocommerce/woocommerce/issues/40871 is fixed.
+		//TODO: Remove this after https://github.com/poocommerce/poocommerce/issues/40871 is fixed.
 		if ( originalStatus && ! originalStatus.startsWith( 'wc-' ) ) {
 			originalStatus = 'wc-' + originalStatus;
 		}

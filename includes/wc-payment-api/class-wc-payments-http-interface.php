@@ -2,7 +2,7 @@
 /**
  * WC_Payments_Http_Interface class.
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 defined( 'ABSPATH' ) || exit;

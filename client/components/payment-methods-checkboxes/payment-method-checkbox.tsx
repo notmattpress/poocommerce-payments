@@ -43,7 +43,7 @@ const PaymentMethodDescription: React.FC< PaymentMethodProps > = ( {
 				<VisuallyHidden>
 					{ __(
 						'Information about the payment method, click to expand',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 				</VisuallyHidden>
 				<Icon icon="info-outline" />
@@ -127,7 +127,7 @@ const PaymentMethodCheckbox: React.FC< PaymentMethodCheckboxProps > = ( {
 				setupTooltip={ setupTooltip }
 				isAllowingManualCapture={ paymentMethod.allows_manual_capture }
 			/>
-			<div className={ 'woocommerce-payments__payment-method-icon' }>
+			<div className={ 'poocommerce-payments__payment-method-icon' }>
 				{ paymentMethod.icon( {} ) }
 			</div>
 			<div className={ 'payment-method-checkbox__pills' }>
@@ -136,7 +136,7 @@ const PaymentMethodCheckbox: React.FC< PaymentMethodCheckboxProps > = ( {
 						{ paymentMethod.label }
 						{ required && (
 							<span className="payment-method-checkbox__required-label">
-								{ __( 'Required', 'woocommerce-payments' ) }
+								{ __( 'Required', 'poocommerce-payments' ) }
 							</span>
 						) }
 					</span>
@@ -144,7 +144,7 @@ const PaymentMethodCheckbox: React.FC< PaymentMethodCheckboxProps > = ( {
 						<HoverTooltip
 							content={ __(
 								'This payment method is pending approval. Once approved, you will be able to use it.',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 						>
 							<Pill
@@ -152,7 +152,7 @@ const PaymentMethodCheckbox: React.FC< PaymentMethodCheckboxProps > = ( {
 							>
 								{ __(
 									'Pending approval',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								) }
 							</Pill>
 						</HoverTooltip>
@@ -163,7 +163,7 @@ const PaymentMethodCheckbox: React.FC< PaymentMethodCheckboxProps > = ( {
 								__(
 									"%s won't be visible to your customers until you provide the required " +
 										'information. Follow the instructions sent by our partner Stripe to %s.',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								),
 								paymentMethod.label,
 								wcpaySettings?.accountEmail ?? ''
@@ -176,7 +176,7 @@ const PaymentMethodCheckbox: React.FC< PaymentMethodCheckboxProps > = ( {
 							>
 								{ __(
 									'Pending activation',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								) }
 							</Pill>
 						</HoverTooltip>
@@ -186,7 +186,7 @@ const PaymentMethodCheckbox: React.FC< PaymentMethodCheckboxProps > = ( {
 							<Pill className={ 'payment-status-' + status }>
 								{ __(
 									'More information needed',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								) }
 							</Pill>
 						</PaymentMethodDisabledTooltip>
@@ -203,7 +203,7 @@ const PaymentMethodCheckbox: React.FC< PaymentMethodCheckboxProps > = ( {
 							aria-label={ sprintf(
 								__(
 									'Base transaction fees: %s',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								),
 								fees
 							) }
