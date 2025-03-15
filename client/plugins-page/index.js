@@ -4,7 +4,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch } from '@wordpress/data';
 import ReactDOM from 'react-dom';
-import { OPTIONS_STORE_NAME } from '@woocommerce/data';
+import { OPTIONS_STORE_NAME } from '@poocommerce/data';
 
 /**
  * Internal dependencies
@@ -18,7 +18,7 @@ const PluginsPage = () => {
 		window.wcpayPluginsSettings?.exitSurveyLastShown ?? null;
 
 	const deactivationLink = document.querySelector(
-		'#deactivate-woocommerce-payments, #deactivate-woocommerce-payments-dev'
+		'#deactivate-poocommerce-payments, #deactivate-poocommerce-payments-dev'
 	); // ID set by WP on the deactivation link.
 
 	const deactivatePlugin = useCallback( () => {

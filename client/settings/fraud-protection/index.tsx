@@ -22,7 +22,7 @@ const FraudProtection: React.FC = () => {
 						<span id="fraud-protection-card-title">
 							{ __(
 								'Set your payment risk level',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 						</span>
 					</h4>

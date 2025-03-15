@@ -20,11 +20,11 @@ const JetpackIdcNotice = () => {
 			>
 				{ __(
 					'Your site is currently in Safe Mode.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				) }
 				<span>&nbsp;</span>
 				<a href={ getPaymentSettingsUrl() }>
-					{ __( 'Please take action', 'woocommerce-payments' ) }
+					{ __( 'Please take action', 'poocommerce-payments' ) }
 				</a>
 			</Notice>
 		)

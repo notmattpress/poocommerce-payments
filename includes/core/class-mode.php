@@ -2,7 +2,7 @@
 /**
  * Class file for WCPay\Core\Mode.
  *
- * @package WooCommerce Payments
+ * @package PooCommerce Payments
  */
 
 namespace WCPay\Core;
@@ -76,7 +76,7 @@ class Mode {
 		/**
 		 * Allows WooPayments to enter dev (aka sandbox) mode.
 		 *
-		 * @see https://woocommerce.com/document/woopayments/testing-and-troubleshooting/sandbox-mode/
+		 * @see https://poocommerce.com/document/woopayments/testing-and-troubleshooting/sandbox-mode/
 		 * @param bool $dev_mode Whether to enter WooPayments in dev mode.
 		 */
 		$this->dev_mode = (bool) apply_filters( 'wcpay_dev_mode', $dev_mode );
@@ -97,7 +97,7 @@ class Mode {
 			$test_mode = true;
 		} else {
 			// Getting the gateway settings directly from the database so the gateway doesn't need to be initialized.
-			$settings_option_name = 'woocommerce_' . WC_Payment_Gateway_WCPay::GATEWAY_ID . '_settings';
+			$settings_option_name = 'poocommerce_' . WC_Payment_Gateway_WCPay::GATEWAY_ID . '_settings';
 			$wcpay_settings       = get_option( $settings_option_name );
 			$test_mode            = 'yes' === ( $wcpay_settings['test_mode'] ?? false );
 		}
@@ -105,7 +105,7 @@ class Mode {
 		/**
 		 * Allows WooPayments to process payments in test mode.
 		 *
-		 * @see https://woocommerce.com/document/woopayments/testing-and-troubleshooting/testing/#enabling-test-mode
+		 * @see https://poocommerce.com/document/woopayments/testing-and-troubleshooting/testing/#enabling-test-mode
 		 * @param bool $test_mode Whether to process payments in test mode.
 		 */
 		$this->test_mode = (bool) apply_filters( 'wcpay_test_mode', $test_mode );

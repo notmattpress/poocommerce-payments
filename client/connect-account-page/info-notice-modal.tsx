@@ -93,7 +93,7 @@ const InfoNoticeModal: React.FC = () => {
 					<hr />
 					<div className="connect-account-page__info-modal__footer">
 						<Button variant="primary" onClick={ handleModalClose }>
-							{ __( 'Got it', 'woocommerce-payments' ) }
+							{ __( 'Got it', 'poocommerce-payments' ) }
 						</Button>
 					</div>
 				</Modal>

@@ -2,7 +2,7 @@
 /**
  * Class SavedPaymentMethodTest
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Tests\Internal\Payment\PaymentMethod;

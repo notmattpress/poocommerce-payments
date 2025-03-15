@@ -2,7 +2,7 @@
 /**
  * Class WC_REST_Payments_Reader_Controller_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use PHPUnit\Framework\MockObject\MockObject;
