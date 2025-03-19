@@ -23,6 +23,7 @@
 * Fix - Manual capture fails in the transaction detail screen with a customized order number
 * Fix - Properly extract styles when using the site editor.
 * Fix - Renamed function parameters to avoid reserved keyword conflicts
+* Fix - Resolved an issue on stores that had the Stripe Billing feature enabled (US-only) and then changed their store location to an ineligible country.
 * Fix - Scoped CSS selectors for WP components to prevent unintended styling on other pages
 * Fix - Show Express Checkout button previews in template editor
 * Fix - Skip email input search in pay for order flow and use email provided in order data for WooPay iframe.
