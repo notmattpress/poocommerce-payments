@@ -20,17 +20,17 @@ const DismissConfirmationModal: React.FC< DismissConfirmationModalProps > = ( {
 	const buttonContent = (
 		<>
 			<Button isSecondary onClick={ onClose }>
-				{ __( 'Cancel', 'woocommerce-payments' ) }
+				{ __( 'Cancel', 'poocommerce-payments' ) }
 			</Button>
 			<Button isPrimary onClick={ onSubmit }>
-				{ __( 'Yes, continue', 'woocommerce-payments' ) }
+				{ __( 'Yes, continue', 'poocommerce-payments' ) }
 			</Button>
 		</>
 	);
 
 	return (
 		<ConfirmationModal
-			title={ __( 'Remove', 'woocommerce-payments' ) + ' ' + label }
+			title={ __( 'Remove', 'poocommerce-payments' ) + ' ' + label }
 			isDismissible={ false }
 			className="dismiss-confirmation-modal"
 			onRequestClose={ onClose }
@@ -42,7 +42,7 @@ const DismissConfirmationModal: React.FC< DismissConfirmationModalProps > = ( {
 					__(
 						'Choosing to continue will remove the option to accept %s cards from your customers. ' +
 							'The option to enable %s will not appear again.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					label,
 					label

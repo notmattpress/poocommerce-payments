@@ -24,7 +24,7 @@ const DownloadButton: React.FunctionComponent< DownloadButtonProps > = ( {
 	onClick,
 } ) => (
 	<Button
-		className="woocommerce-table__download-button"
+		className="poocommerce-table__download-button"
 		disabled={ isDisabled }
 		onClick={ onClick }
 		isBusy={ isBusy }
@@ -44,8 +44,8 @@ const DownloadButton: React.FunctionComponent< DownloadButtonProps > = ( {
 				fill="none"
 			/>
 		</svg>
-		<span className="woocommerce-table__download-button__label">
-			{ __( 'Export', 'woocommerce-payments' ) }
+		<span className="poocommerce-table__download-button__label">
+			{ __( 'Export', 'poocommerce-payments' ) }
 		</span>
 	</Button>
 );

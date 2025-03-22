@@ -70,7 +70,7 @@ const PaymentDetailsPaymentMethod = ( { charge = {}, isLoading } ) => {
 			<CardHeader>
 				<Loadable
 					isLoading={ isLoading }
-					value={ __( 'Payment method', 'woocommerce-payments' ) }
+					value={ __( 'Payment method', 'poocommerce-payments' ) }
 				/>
 			</CardHeader>
 			<CardBody>

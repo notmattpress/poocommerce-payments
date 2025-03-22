@@ -66,7 +66,7 @@ const ProgressiveOnboardingEligibilityModal: React.FC = () => {
 		<Modal
 			title={ __(
 				"You're ready to accept payments!",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			) }
 			className="wcpay-progressive-onboarding-eligibility-modal"
 			onRequestClose={ handleDismiss }
@@ -77,7 +77,7 @@ const ProgressiveOnboardingEligibilityModal: React.FC = () => {
 					mixedString: sprintf(
 						__(
 							'Great news — your %s account has been activated. You can now start accepting payments on your store, subject to {{restrictionsLink}}certain restrictions{{/restrictionsLink}}.',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						),
 						'WooPayments'
 					),
@@ -87,7 +87,7 @@ const ProgressiveOnboardingEligibilityModal: React.FC = () => {
 							<a
 								rel="external noopener noreferrer"
 								target="_blank"
-								href="https://woocommerce.com/document/woopayments/startup-guide/gradual-signup/"
+								href="https://poocommerce.com/document/woopayments/startup-guide/gradual-signup/"
 							/>
 						),
 					},
@@ -100,12 +100,12 @@ const ProgressiveOnboardingEligibilityModal: React.FC = () => {
 						<h3 className="wcpay-progressive-onboarding-eligibility-modal__benefits__subtitle">
 							{ __(
 								'Start selling instantly',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 						</h3>
 						{ __(
 							'You have 30 days from your first transaction or until you reach $5,000 in sales to verify your information and set up payouts.',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 					</div>
 				</div>
@@ -115,22 +115,22 @@ const ProgressiveOnboardingEligibilityModal: React.FC = () => {
 						<h3 className="wcpay-progressive-onboarding-eligibility-modal__benefits__subtitle">
 							{ __(
 								'Start receiving payouts',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 						</h3>
 						{ __(
 							'Provide some additional details about your business so you can continue accepting payments and begin receiving payouts without restrictions.',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 					</div>
 				</div>
 			</div>
 			<div className="wcpay-progressive-onboarding-eligibility-modal__footer">
 				<Button variant="secondary" onClick={ handleSetup }>
-					{ __( 'Set up payouts', 'woocommerce-payments' ) }
+					{ __( 'Set up payouts', 'poocommerce-payments' ) }
 				</Button>
 				<Button variant="primary" onClick={ handlePaymentsOnly }>
-					{ __( 'Start selling', 'woocommerce-payments' ) }
+					{ __( 'Start selling', 'poocommerce-payments' ) }
 				</Button>
 			</div>
 		</Modal>
