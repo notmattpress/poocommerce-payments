@@ -3,7 +3,7 @@
 exports[`ToS modal should render ToS modal 1`] = `
 <div
   aria-labelledby="components-modal-header-0"
-  class="components-modal__frame woocommerce-payments__tos-modal"
+  class="components-modal__frame poocommerce-payments__tos-modal"
   role="dialog"
   tabindex="-1"
 >
@@ -26,10 +26,10 @@ exports[`ToS modal should render ToS modal 1`] = `
       </div>
     </div>
     <div
-      class="woocommerce-payments__tos-wrapper"
+      class="poocommerce-payments__tos-wrapper"
     >
       <div
-        class="woocommerce-payments__tos-modal-message"
+        class="poocommerce-payments__tos-modal-message"
       >
         To continue using WooPayments, please review and agree to our 
         <a
@@ -43,7 +43,7 @@ exports[`ToS modal should render ToS modal 1`] = `
         . By clicking “Accept” you agree to the Terms of Service.
       </div>
       <div
-        class="woocommerce-payments__tos-footer"
+        class="poocommerce-payments__tos-footer"
       >
         <button
           class="components-button is-secondary"
@@ -66,7 +66,7 @@ exports[`ToS modal should render ToS modal 1`] = `
 exports[`ToS modal should render disable plugin modal on decline 1`] = `
 <div
   aria-labelledby="components-modal-header-3"
-  class="components-modal__frame woocommerce-payments__tos-modal"
+  class="components-modal__frame poocommerce-payments__tos-modal"
   role="dialog"
   tabindex="-1"
 >
@@ -89,10 +89,10 @@ exports[`ToS modal should render disable plugin modal on decline 1`] = `
       </div>
     </div>
     <div
-      class="woocommerce-payments__tos-wrapper"
+      class="poocommerce-payments__tos-wrapper"
     >
       <div
-        class="woocommerce-payments__tos-modal-message"
+        class="poocommerce-payments__tos-modal-message"
       >
         By declining our 
         <a
@@ -106,7 +106,7 @@ exports[`ToS modal should render disable plugin modal on decline 1`] = `
         , you’ll no longer be able to capture credit card payments using WooPayments. Your previous transaction and payout data will still be available.
       </div>
       <div
-        class="woocommerce-payments__tos-footer"
+        class="poocommerce-payments__tos-footer"
       >
         <button
           class="components-button is-tertiary"

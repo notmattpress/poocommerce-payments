@@ -32,7 +32,7 @@ export const PositiveFeedbackModal: React.FC< PositiveFeedbackModalProps > = ( {
 
 	return (
 		<Modal
-			title={ __( 'Share your feedback', 'woocommerce-payments' ) }
+			title={ __( 'Share your feedback', 'poocommerce-payments' ) }
 			className="wcpay-merchant-feedback-positive-modal"
 			isDismissible
 			shouldCloseOnClickOutside
@@ -47,14 +47,14 @@ export const PositiveFeedbackModal: React.FC< PositiveFeedbackModalProps > = ( {
 			<p>
 				{ __(
 					'Thanks for sharing your feedback on WooPayments! Would you mind leaving us a 5-star rating and a quick review on WordPress.org?',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				) }
 			</p>
 			<p>
 				<strong>
 					{ __(
 						`Here's why your review matters:`,
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 				</strong>
 			</p>
@@ -69,14 +69,14 @@ export const PositiveFeedbackModal: React.FC< PositiveFeedbackModalProps > = ( {
 						<strong>
 							{ __(
 								'Help other businesses succeed',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 						</strong>
 					</p>
 					<p>
 						{ __(
 							'Your insights guide others in choosing the right payment solution.',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 					</p>
 				</FlexItem>
@@ -92,14 +92,14 @@ export const PositiveFeedbackModal: React.FC< PositiveFeedbackModalProps > = ( {
 						<strong>
 							{ __(
 								'Shape our roadmap',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 						</strong>
 					</p>
 					<p>
 						{ __(
 							'Your feedback inspires us to create new features and refine existing ones to better serve you.',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 					</p>
 				</FlexItem>
@@ -114,15 +114,15 @@ export const PositiveFeedbackModal: React.FC< PositiveFeedbackModalProps > = ( {
 					<p>
 						<strong>
 							{ __(
-								'Supporting the WooCommerce community',
-								'woocommerce-payments'
+								'Supporting the PooCommerce community',
+								'poocommerce-payments'
 							) }
 						</strong>
 					</p>
 					<p>
 						{ __(
 							'Sharing your experience strengthens the tools that empower your fellow entrepreneurs.',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 					</p>
 				</FlexItem>
@@ -137,11 +137,11 @@ export const PositiveFeedbackModal: React.FC< PositiveFeedbackModalProps > = ( {
 						onRequestClose();
 					} }
 				>
-					{ __( 'Close', 'woocommerce-payments' ) }
+					{ __( 'Close', 'poocommerce-payments' ) }
 				</Button>
 				<Button
 					variant="primary"
-					href="https://wordpress.org/support/plugin/woocommerce-payments/reviews/#new-post"
+					href="https://wordpress.org/support/plugin/poocommerce-payments/reviews/#new-post"
 					target="_blank"
 					onClick={ () => {
 						recordEvent(
@@ -149,7 +149,7 @@ export const PositiveFeedbackModal: React.FC< PositiveFeedbackModalProps > = ( {
 						);
 					} }
 				>
-					{ __( 'Leave a review', 'woocommerce-payments' ) }&nbsp;
+					{ __( 'Leave a review', 'poocommerce-payments' ) }&nbsp;
 					<Icon icon={ external } size={ 16 } />
 				</Button>
 			</Flex>

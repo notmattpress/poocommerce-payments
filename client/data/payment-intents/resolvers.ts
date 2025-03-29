@@ -25,7 +25,7 @@ export function* getPaymentIntent( id: string ): Generator< unknown > {
 		yield controls.dispatch(
 			'core/notices',
 			'createErrorNotice',
-			__( 'Error retrieving transaction.', 'woocommerce-payments' )
+			__( 'Error retrieving transaction.', 'poocommerce-payments' )
 		);
 		yield updateErrorForPaymentIntent( id, e as ApiError );
 	}

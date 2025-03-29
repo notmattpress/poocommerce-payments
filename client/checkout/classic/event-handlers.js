@@ -111,7 +111,7 @@ jQuery( function ( $ ) {
 	document.addEventListener( 'change', function ( event ) {
 		if (
 			event.target &&
-			event.target.id === 'wc-woocommerce_payments-new-payment-method'
+			event.target.id === 'wc-poocommerce_payments-new-payment-method'
 		) {
 			renderTerms( event );
 		}
@@ -129,7 +129,7 @@ jQuery( function ( $ ) {
 		if (
 			$addPaymentMethodForm
 				.find( "input:checked[name='payment_method']" )
-				.val() !== 'woocommerce_payments'
+				.val() !== 'poocommerce_payments'
 		) {
 			return;
 		}
@@ -164,7 +164,7 @@ jQuery( function ( $ ) {
 
 	async function injectStripePMMEContainers() {
 		const bnplMethods = [ 'affirm', 'afterpay_clearpay', 'klarna' ];
-		const labelBase = 'payment_method_woocommerce_payments_';
+		const labelBase = 'payment_method_poocommerce_payments_';
 		const paymentMethods = getUPEConfig( 'paymentMethodsConfig' );
 		const paymentMethodsKeys = Object.keys( paymentMethods );
 		const cartData = await api.pmmeGetCartData();
@@ -246,7 +246,7 @@ jQuery( function ( $ ) {
 
 	async function injectPaymentMethodLogos() {
 		const cardLabel = document.querySelector(
-			'label[for="payment_method_woocommerce_payments"]'
+			'label[for="payment_method_poocommerce_payments"]'
 		);
 		if ( ! cardLabel ) return;
 
@@ -274,7 +274,7 @@ jQuery( function ( $ ) {
 
 		function getMaxElements() {
 			const paymentMethodElement = document.querySelector(
-				'.payment_method_woocommerce_payments'
+				'.payment_method_poocommerce_payments'
 			);
 			if ( ! paymentMethodElement ) {
 				return 4; // Default fallback

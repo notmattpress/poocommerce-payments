@@ -46,9 +46,9 @@ declare const global: {
 		admin: {
 			preloadSettings: {
 				general: {
-					woocommerce_allowed_countries: string;
-					woocommerce_all_except_countries: string[];
-					woocommerce_specific_allowed_countries: string[];
+					poocommerce_allowed_countries: string;
+					poocommerce_all_except_countries: string[];
+					poocommerce_specific_allowed_countries: string[];
 				};
 			};
 		};
@@ -116,9 +116,9 @@ describe( 'Advanced fraud protection settings', () => {
 			admin: {
 				preloadSettings: {
 					general: {
-						woocommerce_allowed_countries: 'specific',
-						woocommerce_all_except_countries: [],
-						woocommerce_specific_allowed_countries: [ 'CA', 'US' ],
+						poocommerce_allowed_countries: 'specific',
+						poocommerce_all_except_countries: [],
+						poocommerce_specific_allowed_countries: [ 'CA', 'US' ],
 					},
 				},
 			},
@@ -199,8 +199,8 @@ describe( 'Advanced fraud protection settings', () => {
 		] );
 		container = render(
 			<div>
-				<div className="woocommerce-layout__header-wrapper">
-					<div className="woocommerce-layout__header-heading"></div>
+				<div className="poocommerce-layout__header-wrapper">
+					<div className="poocommerce-layout__header-heading"></div>
 				</div>
 				<FraudProtectionAdvancedSettingsPage />
 			</div>
@@ -252,8 +252,8 @@ describe( 'Advanced fraud protection settings', () => {
 
 		container = render(
 			<div>
-				<div className="woocommerce-layout__header-wrapper">
-					<div className="woocommerce-layout__header-heading"></div>
+				<div className="poocommerce-layout__header-wrapper">
+					<div className="poocommerce-layout__header-heading"></div>
 				</div>
 				<FraudProtectionAdvancedSettingsPage />
 			</div>
@@ -305,8 +305,8 @@ describe( 'Advanced fraud protection settings', () => {
 		] );
 		container = render(
 			<div>
-				<div className="woocommerce-layout__header-wrapper">
-					<div className="woocommerce-layout__header-heading"></div>
+				<div className="poocommerce-layout__header-wrapper">
+					<div className="poocommerce-layout__header-heading"></div>
 				</div>
 				<FraudProtectionAdvancedSettingsPage />
 			</div>
@@ -372,8 +372,8 @@ describe( 'Advanced fraud protection settings', () => {
 		] );
 		container = render(
 			<div>
-				<div className="woocommerce-layout__header-wrapper">
-					<div className="woocommerce-layout__header-heading"></div>
+				<div className="poocommerce-layout__header-wrapper">
+					<div className="poocommerce-layout__header-heading"></div>
 				</div>
 				<FraudProtectionAdvancedSettingsPage />
 			</div>
@@ -443,8 +443,8 @@ describe( 'Advanced fraud protection settings', () => {
 		] );
 		container = render(
 			<div>
-				<div className="woocommerce-layout__header-wrapper">
-					<div className="woocommerce-layout__header-heading"></div>
+				<div className="poocommerce-layout__header-wrapper">
+					<div className="poocommerce-layout__header-heading"></div>
 				</div>
 				<FraudProtectionAdvancedSettingsPage />
 			</div>
@@ -497,8 +497,8 @@ describe( 'Advanced fraud protection settings', () => {
 		] );
 		container = render(
 			<div>
-				<div className="woocommerce-layout__header-wrapper">
-					<div className="woocommerce-layout__header-heading"></div>
+				<div className="poocommerce-layout__header-wrapper">
+					<div className="poocommerce-layout__header-heading"></div>
 				</div>
 				<FraudProtectionAdvancedSettingsPage />
 			</div>

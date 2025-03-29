@@ -20,7 +20,7 @@ use Jetpack_Options;
 class WooPay_Utilities {
 	use WC_Payments_Subscriptions_Utilities;
 
-	const AVAILABLE_COUNTRIES_OPTION_NAME = 'woocommerce_woocommerce_payments_woopay_available_countries';
+	const AVAILABLE_COUNTRIES_OPTION_NAME = 'poocommerce_poocommerce_payments_woopay_available_countries';
 	const AVAILABLE_COUNTRIES_DEFAULT     = '["US"]';
 
 	const DEFAULT_WOOPAY_URL = 'https://pay.woo.com';
@@ -47,7 +47,7 @@ class WooPay_Utilities {
 	 * @return bool  True if WooPay should be enabled, false otherwise.
 	 */
 	public function should_enable_woopay_on_cart_or_checkout(): bool {
-		if ( ! is_checkout() && ! has_block( 'woocommerce/checkout' ) && ! is_cart() && ! has_block( 'woocommerce/cart' ) ) {
+		if ( ! is_checkout() && ! has_block( 'poocommerce/checkout' ) && ! is_cart() && ! has_block( 'poocommerce/cart' ) ) {
 			// Wrong usage, this should only be called for the checkout or cart page.
 			return false;
 		}
@@ -236,7 +236,7 @@ class WooPay_Utilities {
 	 * @return bool  True if guest checkout is enabled, false otherwise.
 	 */
 	public function is_guest_checkout_enabled(): bool {
-		return 'yes' === get_option( 'woocommerce_enable_guest_checkout', 'no' );
+		return 'yes' === get_option( 'poocommerce_enable_guest_checkout', 'no' );
 	}
 
 	/**
@@ -274,7 +274,7 @@ class WooPay_Utilities {
 			// Has a defined dev blog token secret: Use it.
 			return DEV_BLOG_TOKEN_SECRET;
 		} else {
-			Logger::log( __( 'WooPay blog_token is currently misconfigured.', 'woocommerce-payments' ) );
+			Logger::log( __( 'WooPay blog_token is currently misconfigured.', 'poocommerce-payments' ) );
 			return '';
 		}
 	}

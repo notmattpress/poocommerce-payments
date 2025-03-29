@@ -3,25 +3,25 @@ export const config = {
 		admin: {
 			username: 'admin',
 			password: 'password',
-			email: 'e2e-wcpay-admin@woocommerce.com',
+			email: 'e2e-wcpay-admin@poocommerce.com',
 		},
 		customer: {
 			username: 'customer',
 			password: 'password',
-			email: 'e2e-wcpay-customer@woocommerce.com',
+			email: 'e2e-wcpay-customer@poocommerce.com',
 		},
 		'subscriptions-customer': {
 			username: 'subscriptions-customer',
 			password: 'password',
-			email: 'e2e-wcpay-customer@woocommerce.com',
+			email: 'e2e-wcpay-customer@poocommerce.com',
 		},
 		guest: {
-			email: 'e2e-wcpay-guest@woocommerce.com',
+			email: 'e2e-wcpay-guest@poocommerce.com',
 		},
 		editor: {
 			username: 'editor',
 			password: 'password',
-			email: 'e2e-wcpay-editor@woocommerce.com',
+			email: 'e2e-wcpay-editor@poocommerce.com',
 		},
 	},
 	products: {
@@ -80,7 +80,7 @@ export const config = {
 				city: 'San Francisco',
 				state: 'CA',
 				postcode: '94110',
-				email: 'e2e-wcpay-subscriptions-customer@woocommerce.com',
+				email: 'e2e-wcpay-subscriptions-customer@poocommerce.com',
 			},
 		},
 		customer: {
@@ -96,7 +96,7 @@ export const config = {
 				state: 'CA',
 				postcode: '94110',
 				phone: '123456789',
-				email: 'e2e-wcpay-customer@woocommerce.com',
+				email: 'e2e-wcpay-customer@poocommerce.com',
 			},
 			shipping: {
 				firstname: 'I am',
@@ -110,7 +110,7 @@ export const config = {
 				state: 'CA',
 				postcode: '94110',
 				phone: '123456789',
-				email: 'e2e-wcpay-customer@woocommerce.com',
+				email: 'e2e-wcpay-customer@poocommerce.com',
 			},
 		},
 		'upe-customer': {
@@ -126,7 +126,7 @@ export const config = {
 					city: 'Bruxelles',
 					postcode: '1000',
 					phone: '123456789',
-					email: 'e2e-wcpay-customer@woocommerce.com',
+					email: 'e2e-wcpay-customer@poocommerce.com',
 				},
 				de: {
 					firstname: 'I am',
@@ -140,7 +140,7 @@ export const config = {
 					postcode: '80809',
 					state: 'DE-BY',
 					phone: '123456789',
-					email: 'e2e-wcpay-customer@woocommerce.com',
+					email: 'e2e-wcpay-customer@poocommerce.com',
 				},
 			},
 		},
@@ -157,7 +157,7 @@ export const config = {
 				state: 'CA',
 				postcode: '94110',
 				phone: '123456789',
-				email: 'e2e-wcpay-subscriptions-customer@woocommerce.com',
+				email: 'e2e-wcpay-subscriptions-customer@poocommerce.com',
 			},
 			shipping: {
 				firstname: 'I am',
@@ -171,7 +171,7 @@ export const config = {
 				state: 'CA',
 				postcode: '94110',
 				phone: '123456789',
-				email: 'e2e-wcpay-subscriptions-customer@woocommerce.com',
+				email: 'e2e-wcpay-subscriptions-customer@poocommerce.com',
 			},
 		},
 	},
