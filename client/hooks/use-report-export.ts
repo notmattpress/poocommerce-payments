@@ -165,7 +165,7 @@ export const useReportExport = () => {
 				'error',
 				__(
 					'There was a problem generating your export.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				)
 			);
 		}

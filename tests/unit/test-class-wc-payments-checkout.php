@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Checkout_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\WC_Payments_Checkout;
@@ -19,7 +19,7 @@ use WCPay\Payment_Methods\P24_Payment_Method;
 /**
  * Class WC_Payments_Checkout_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 class WC_Payments_Checkout_Test extends WP_UnitTestCase {
 
@@ -103,7 +103,7 @@ class WC_Payments_Checkout_Test extends WP_UnitTestCase {
 			)
 			->disableOriginalConstructor()
 			->getMock();
-		$this->mock_wcpay_gateway->id = 'woocommerce_payments';
+		$this->mock_wcpay_gateway->id = 'poocommerce_payments';
 		$this->mock_wcpay_gateway
 			->method( 'get_account_domestic_currency' )
 			->willReturn( 'USD' );
@@ -393,7 +393,7 @@ class WC_Payments_Checkout_Test extends WP_UnitTestCase {
 					'darkIcon'               => $dark_icon_url,
 					'showSaveOption'         => true,
 					'countries'              => [],
-					'testingInstructions'    => 'Use test card <button type="button" class="js-woopayments-copy-test-number" aria-label="Click to copy the test number to clipboard" title="Copy to clipboard"><i></i><span>4242 4242 4242 4242</button> or refer to our <a href="https://woocommerce.com/document/woopayments/testing-and-troubleshooting/testing/#test-cards" target="_blank">testing guide</a>.',
+					'testingInstructions'    => 'Use test card <button type="button" class="js-woopayments-copy-test-number" aria-label="Click to copy the test number to clipboard" title="Copy to clipboard"><i></i><span>4242 4242 4242 4242</button> or refer to our <a href="https://poocommerce.com/document/woopayments/testing-and-troubleshooting/testing/#test-cards" target="_blank">testing guide</a>.',
 					'forceNetworkSavedCards' => false,
 				],
 				'link' => [
@@ -608,7 +608,7 @@ class WC_Payments_Checkout_Test extends WP_UnitTestCase {
 		$config = $this->system_under_test->get_payment_fields_js_config();
 
 		$expected_instructions = sprintf(
-			'Use test card <button type="button" class="js-woopayments-copy-test-number" aria-label="Click to copy the test number to clipboard" title="Copy to clipboard"><i></i><span>%s</button> or refer to our <a href="https://woocommerce.com/document/woopayments/testing-and-troubleshooting/testing/#test-cards" target="_blank">testing guide</a>.',
+			'Use test card <button type="button" class="js-woopayments-copy-test-number" aria-label="Click to copy the test number to clipboard" title="Copy to clipboard"><i></i><span>%s</button> or refer to our <a href="https://poocommerce.com/document/woopayments/testing-and-troubleshooting/testing/#test-cards" target="_blank">testing guide</a>.',
 			$expected_card
 		);
 

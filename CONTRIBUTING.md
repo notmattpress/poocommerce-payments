@@ -1,6 +1,6 @@
-# Contributing to WooCommerce Payments
+# Contributing to PooCommerce Payments
 
-We follow the [WooCommerce contribution guidelines](https://github.com/woocommerce/woocommerce/blob/trunk/.github/CONTRIBUTING.md#coding-guidelines).
+We follow the [PooCommerce contribution guidelines](https://github.com/poocommerce/poocommerce/blob/trunk/.github/CONTRIBUTING.md#coding-guidelines).
 
 ## Setting up linting
 
@@ -15,7 +15,7 @@ $ composer install
 Once it's done, you can run PHPCS from the command line, like this:
 
 ```
-$ ./vendor/bin/phpcs woocommerce-payments.php
+$ ./vendor/bin/phpcs poocommerce-payments.php
 ```
 
 You can also set up linting hints in your editor. Here are some useful instructions for [VS Code](https://marketplace.visualstudio.com/items?itemName=ikappas.phpcs), [Atom](https://atom.io/packages/linter-phpcs), and [PhpStorm](https://hackernoon.com/how-to-setup-php-code-sniffer-in-phpstorm-d8ad7fc0cc08).
@@ -32,7 +32,7 @@ After cloning the repo, install dependencies using `npm install`. You can build 
 - `$ npm run watch`: Build a development version, and watch for file changes
 - `$ npm run hmr`: Instantiate a webpack server with HMR in development mode. Requires WordPress +6.0. If you see errors trying to connect to the HMR server, try trusting the generated SSL certificate.
 
-When enqueuing the app JavaScript, `wordpress` and `woocommerce` dependencies are handled by `@wordpress/dependency-extraction-webpack-plugin`. WordPress dependencies don't need to be added manually anywhere, including the `$deps` parameter in `wp_enqueue_script` or in `webpack.config`.
+When enqueuing the app JavaScript, `wordpress` and `poocommerce` dependencies are handled by `@wordpress/dependency-extraction-webpack-plugin`. WordPress dependencies don't need to be added manually anywhere, including the `$deps` parameter in `wp_enqueue_script` or in `webpack.config`.
 
 We add each package as a dev dependency in `package.json`, though, since it enables auto-completion in our IDEs.
 
@@ -41,12 +41,12 @@ Dependencies not handled by `@wordpress/dependency-extraction-webpack-plugin` sh
 ```
 new WordPressExternalDependenciesPlugin( {
     requestToExternal( request ) {
-        if (  request === '@woocommerce/components'  ) {
+        if (  request === '@poocommerce/components'  ) {
             return [ 'wc', 'components' ];
         }
     },
     requestToHandle( request ) {
-        if ( request === '@woocommerce/components' ) {
+        if ( request === '@poocommerce/components' ) {
             return 'wc-components';
         }
     },
@@ -96,5 +96,5 @@ IDE setup:
 * Adding `docker/wordpress` to your IDE's PHP include path will allow it to provide hinting for WordPress functions etc.
 * The WordPress container has xdebug setup. Add the following path mappings to your IDE so it can find the correct code:
 
-   * `<project folder>/ -> /var/www/html/wp-content/plugins/woocommerce-payments`
+   * `<project folder>/ -> /var/www/html/wp-content/plugins/poocommerce-payments`
    * `<project folder>/docker/wordpress -> /var/www/html`

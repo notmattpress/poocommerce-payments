@@ -25,7 +25,7 @@ import './style.scss';
 const PaymentActivityEmptyState: React.FC = () => (
 	<Card>
 		<CardHeader>
-			{ __( 'Your payment activity', 'woocommerce-payments' ) }
+			{ __( 'Your payment activity', 'poocommerce-payments' ) }
 		</CardHeader>
 		<CardBody className="wcpay-payment-activity__card__body">
 			<div className="wcpay-payment-activity__card__body__empty-state-wrapper">
@@ -43,7 +43,7 @@ const PaymentActivityEmptyState: React.FC = () => (
 				<p>
 					{ __(
 						"Once your first order comes in, you'll start seeing your payment activity right here.",
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 				</p>
 			</div>
@@ -109,7 +109,7 @@ const PaymentActivity: React.FC = () => {
 	return (
 		<Card>
 			<CardHeader className="wcpay-payment-activity__card__header">
-				{ __( 'Your payment activity', 'woocommerce-payments' ) }
+				{ __( 'Your payment activity', 'poocommerce-payments' ) }
 				<InlineLabelSelect
 					label="Period"
 					options={ options }

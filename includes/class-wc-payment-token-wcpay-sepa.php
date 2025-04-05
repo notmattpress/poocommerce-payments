@@ -2,7 +2,7 @@
 /**
  * Class WC_Payment_Token_WCPay_SEPA
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * WooCommerce Stripe SEPA Direct Debit Payment Token.
+ * PooCommerce Stripe SEPA Direct Debit Payment Token.
  *
  * Representation of a payment token for SEPA.
  *
@@ -44,13 +44,13 @@ class WC_Payment_Token_WCPay_SEPA extends WC_Payment_Token {
 	/**
 	 * Get type to display to user.
 	 *
-	 * @param  string $deprecated Deprecated since WooCommerce 3.0.
+	 * @param  string $deprecated Deprecated since PooCommerce 3.0.
 	 * @return string
 	 */
 	public function get_display_name( $deprecated = '' ) {
 		$display = sprintf(
 			/* translators: last 4 digits of IBAN account */
-			__( 'SEPA IBAN ending in %s', 'woocommerce-payments' ),
+			__( 'SEPA IBAN ending in %s', 'poocommerce-payments' ),
 			$this->get_last4()
 		);
 
@@ -61,7 +61,7 @@ class WC_Payment_Token_WCPay_SEPA extends WC_Payment_Token {
 	 * Hook prefix.
 	 */
 	protected function get_hook_prefix() {
-		return 'woocommerce_payments_token_wcpay_sepa_get_';
+		return 'poocommerce_payments_token_wcpay_sepa_get_';
 	}
 
 	/**
