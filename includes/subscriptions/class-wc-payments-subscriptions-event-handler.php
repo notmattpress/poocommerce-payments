@@ -5,9 +5,11 @@
  * @package WooCommerce\Payments
  */
 
-use WCPay\Logger;
+use WCPay\Core\Server\Request\Get_Charge;
+use WCPay\Exceptions\API_Exception;
 use WCPay\Exceptions\Invalid_Webhook_Data_Exception;
 use WCPay\Exceptions\Order_Not_Found_Exception;
+use WCPay\Logger;
 
 /**
  * Subscriptions Event/Webhook Handler class
@@ -231,6 +233,24 @@ class WC_Payments_Subscriptions_Event_Handler {
 			throw new Invalid_Webhook_Data_Exception( __( 'Cannot find subscription for the incoming "invoice.payment_failed" event.', 'woocommerce-payments' ) );
 		}
 
+		$charge = null;
+		if ( isset( $event_object['charge'] ) ) {
+			try {
+				$charge = Get_Charge::create( $event_object['charge'] );
+				$charge = $charge->send();
+			} catch ( API_Exception $e ) {
+				Logger::error( sprintf( 'Unable to retrieve charge data for invoice.payment_failed webhook. Charge ID: %s; Error: %s', $event_object['charge'], $e->getMessage() ) );
+			}
+		}
+		$error_details = '';
+		$error_code    = '';
+		if ( $charge ) {
+			if ( isset( $charge['outcome'] ) && isset( $charge['outcome']['seller_message'] ) ) {
+				$error_details = $charge['outcome']['seller_message'];
+				$error_code    = $charge['failure_code'];
+			}
+		}
+
 		$order = wc_get_order( WC_Payments_Invoice_Service::get_order_id_by_invoice_id( $wcpay_invoice_id ) );
 
 		if ( ! $order ) {
@@ -244,8 +264,36 @@ class WC_Payments_Subscriptions_Event_Handler {
 			}
 		}
 
-		// Translators: %d Number of failed renewal attempts.
-		$subscription->add_order_note( sprintf( _n( 'WCPay subscription renewal attempt %d failed.', 'WCPay subscription renewal attempt %d failed.', $attempts, 'woocommerce-payments' ), $attempts ) );
+		if ( $error_details ) {
+			$subscription->add_order_note(
+				sprintf(
+					// Translators: %1$d Number of failed renewal attempts. %2$s contains failure message, %3$s contains error code.
+					_n(
+						'WCPay subscription renewal attempt %1$d failed with the following message "%2$s" and failure code <code>%3$s</code>',
+						'WCPay subscription renewal attempt %1$d failed with the following message "%2$s" and failure code <code>%3$s</code>',
+						$attempts,
+						'woocommerce-payments'
+					),
+					$attempts,
+					$error_details,
+					$error_code
+				)
+			);
+			$order->add_order_note(
+				sprintf(
+					// Translators: %1$s contains failure message. %2$s contains error code.
+					__(
+						'Payment for the order failed with the following message: "%1$s" and failure code <code>%2$s</code>',
+						'woocommerce-payments'
+					),
+					$error_details,
+					$error_code
+				)
+			);
+		} else {
+			// Translators: %d Number of failed renewal attempts.
+			$subscription->add_order_note( sprintf( _n( 'WCPay subscription renewal attempt %d failed.', 'WCPay subscription renewal attempt %d failed.', $attempts, 'woocommerce-payments' ), $attempts ) );
+		}
 
 		if ( self::MAX_RETRIES > $attempts ) {
 			remove_action( 'woocommerce_subscription_status_on-hold', [ $this->subscription_service, 'handle_subscription_status_on_hold' ] );
