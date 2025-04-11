@@ -131,7 +131,7 @@ const ContinueButton = ( { paymentMethodsState } ) => {
 			onClick={ handleContinueClick }
 			isPrimary
 		>
-			{ __( 'Continue', 'woocommerce-payments' ) }
+			{ __( 'Continue', 'poocommerce-payments' ) }
 		</Button>
 	);
 };
@@ -274,7 +274,7 @@ const AddPaymentMethodsTask = () => {
 			className="add-payment-methods-task"
 			title={ __(
 				'Enable additional payment methods',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			) }
 			index={ 1 }
 		>
@@ -284,12 +284,12 @@ const AddPaymentMethodsTask = () => {
 						mixedString: __(
 							'Increase your store’s conversion by offering your customers' +
 								' preferred and convenient payment methods on checkout.',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						),
 						components: {
 							learnMoreLink: (
 								// eslint-disable-next-line max-len
-								<ExternalLink href="https://woocommerce.com/document/woopayments/payment-methods/additional-payment-methods/" />
+								<ExternalLink href="https://poocommerce.com/document/woopayments/payment-methods/additional-payment-methods/" />
 							),
 						},
 					} ) }
@@ -304,18 +304,18 @@ const AddPaymentMethodsTask = () => {
 						<span>
 							{ __(
 								'Some payment methods cannot be enabled because more information is needed about your account. ',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 						</span>
 						<a
 							// eslint-disable-next-line max-len
-							href="https://woocommerce.com/document/woopayments/payment-methods/additional-payment-methods/#method-cant-be-enabled"
+							href="https://poocommerce.com/document/woopayments/payment-methods/additional-payment-methods/#method-cant-be-enabled"
 							target="_blank"
 							rel="external noreferrer noopener"
 						>
 							{ __(
 								'Learn more about enabling additional payment methods.',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 						</a>
 					</Notice>
@@ -330,7 +330,7 @@ const AddPaymentMethodsTask = () => {
 						<p className="add-payment-methods-task__payment-selector-title wcpay-wizard-task__description-element">
 							{ __(
 								'Popular in your country',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 						</p>
 						<LoadableBlock numLines={ 10 } isLoading={ ! isActive }>
@@ -362,7 +362,7 @@ const AddPaymentMethodsTask = () => {
 								<p className="add-payment-methods-task__payment-selector-title wcpay-wizard-task__description-element">
 									{ __(
 										'Buy Now, Pay Later',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									) }
 								</p>
 								<LoadableBlock

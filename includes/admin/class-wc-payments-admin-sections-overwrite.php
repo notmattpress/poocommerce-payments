@@ -1,8 +1,8 @@
 <?php
 /**
- * Overwrites the default payment settings sections in WooCommerce
+ * Overwrites the default payment settings sections in PooCommerce
  *
- * @package WooCommerce\Payments\Admin
+ * @package PooCommerce\Payments\Admin
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -33,7 +33,7 @@ class WC_Payments_Admin_Sections_Overwrite {
 	 * @return void
 	 */
 	public function init_hooks() {
-		add_filter( 'woocommerce_get_sections_checkout', [ $this, 'add_checkout_sections' ] );
+		add_filter( 'poocommerce_get_sections_checkout', [ $this, 'add_checkout_sections' ] );
 	}
 
 	/**
@@ -45,8 +45,8 @@ class WC_Payments_Admin_Sections_Overwrite {
 	 */
 	public function add_checkout_sections( array $default_sections ): array {
 		$sections_to_render                         = [];
-		$sections_to_render['woocommerce_payments'] = 'WooPayments';
-		$sections_to_render['']                     = __( 'All payment methods', 'woocommerce-payments' );
+		$sections_to_render['poocommerce_payments'] = 'WooPayments';
+		$sections_to_render['']                     = __( 'All payment methods', 'poocommerce-payments' );
 
 		return $sections_to_render;
 	}

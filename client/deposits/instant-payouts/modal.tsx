@@ -32,14 +32,14 @@ const InstantPayoutModal: React.FC< InstantPayoutModalProps > = ( {
 	inProgress,
 } ) => {
 	const learnMoreHref =
-		'https://woocommerce.com/document/woopayments/payouts/instant-payouts/';
+		'https://poocommerce.com/document/woopayments/payouts/instant-payouts/';
 	const feePercentage = `${ percentage }%`;
 	const description = createInterpolateElement(
 		/* translators: %s: amount representing the fee percentage, <a>: instant payout doc URL */
 		sprintf(
 			__(
 				'Need cash in a hurry? Instant payouts are available within 30 minutes for a nominal %s service fee. <a>Learn more</a>',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			feePercentage
 		),
@@ -57,7 +57,7 @@ const InstantPayoutModal: React.FC< InstantPayoutModalProps > = ( {
 
 	return (
 		<Modal
-			title={ __( 'Instant payout', 'woocommerce-payments' ) }
+			title={ __( 'Instant payout', 'poocommerce-payments' ) }
 			onRequestClose={ onClose }
 			className="wcpay-instant-payout-modal"
 		>
@@ -66,27 +66,27 @@ const InstantPayoutModal: React.FC< InstantPayoutModalProps > = ( {
 				<li className="wcpay-instant-payout-modal__balance">
 					{ __(
 						'Balance available for instant payout: ',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 					<span>{ formatCurrency( amount ) }</span>
 				</li>
 				<li className="wcpay-instant-payout-modal__fee">
 					{ sprintf(
 						/* translators: %s - amount representing the fee percentage */
-						__( '%s service fee: ', 'woocommerce-payments' ),
+						__( '%s service fee: ', 'poocommerce-payments' ),
 						feePercentage
 					) }
 					<span>-{ formatCurrency( fee ) }</span>
 				</li>
 				<li className="wcpay-instant-payout-modal__net">
-					{ __( 'Net payout amount: ', 'woocommerce-payments' ) }
+					{ __( 'Net payout amount: ', 'poocommerce-payments' ) }
 					<span>{ formatExplicitCurrency( net ) }</span>
 				</li>
 			</ul>
 
 			<div className="wcpay-instant-payout-modal__footer">
 				<Button isSecondary onClick={ onClose }>
-					{ __( 'Cancel', 'woocommerce-payments' ) }
+					{ __( 'Cancel', 'poocommerce-payments' ) }
 				</Button>
 				<Button
 					isPrimary
@@ -96,7 +96,7 @@ const InstantPayoutModal: React.FC< InstantPayoutModalProps > = ( {
 				>
 					{ sprintf(
 						/* translators: %s: Monetary amount to pay out */
-						__( 'Pay out %s now', 'woocommerce-payments' ),
+						__( 'Pay out %s now', 'poocommerce-payments' ),
 						formatExplicitCurrency( net )
 					) }
 				</Button>

@@ -2,7 +2,7 @@
 /**
  * Class Utils
  *
- * @package WooCommerce\Payments\Utils
+ * @package PooCommerce\Payments\Utils
  */
 
 namespace WCPay\MultiCurrency;
@@ -95,7 +95,7 @@ class Utils {
 	 * @return bool True if the request is a Store API batch request, false otherwise.
 	 */
 	public static function is_store_batch_request(): bool {
-		// @TODO We should move to a more robust way of getting to the route, like WC is doing in the StoreAPI library. https://github.com/woocommerce/woocommerce/blob/9ac48232a944baa2dbfaa7dd47edf9027cca9519/plugins/woocommerce/src/StoreApi/Authentication.php#L15-L15
+		// @TODO We should move to a more robust way of getting to the route, like WC is doing in the StoreAPI library. https://github.com/poocommerce/poocommerce/blob/9ac48232a944baa2dbfaa7dd47edf9027cca9519/plugins/poocommerce/src/StoreApi/Authentication.php#L15-L15
 		if ( isset( $_REQUEST['rest_route'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification
 			$rest_route = sanitize_text_field( $_REQUEST['rest_route'] ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.NonceVerification
 		} else {

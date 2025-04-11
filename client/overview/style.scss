@@ -1,22 +1,22 @@
-@import '@woocommerce/experimental/build-style/style.css';
-.woocommerce-inbox-message__wrapper {
-	.woocommerce-inbox-message__content {
+@import '@poocommerce/experimental/build-style/style.css';
+.poocommerce-inbox-message__wrapper {
+	.poocommerce-inbox-message__content {
 		padding-bottom: 24px;
 	}
-	.woocommerce-inbox-message__actions {
+	.poocommerce-inbox-message__actions {
 		padding-top: 16px;
 	}
 }
 
-// Adapted from woocommerce-admin:client/homescreen/style.scss
-.wcpay-task-list.woocommerce-experimental-list {
+// Adapted from poocommerce-admin:client/homescreen/style.scss
+.wcpay-task-list.poocommerce-experimental-list {
 	position: relative;
 
-	.woocommerce-experimental-list__item {
+	.poocommerce-experimental-list__item {
 		position: relative;
 	}
 
-	.woocommerce-task-list__item[data-key^='dispute-resolution-task'] {
+	.poocommerce-task-list__item[data-key^='dispute-resolution-task'] {
 		// Hide the dispute resolution task tooltip / popover as it is irrelevant.
 		.components-popover {
 			display: none;
@@ -69,7 +69,7 @@
 			grid-column-gap: $gap-largest;
 			margin: $gap $gap-small;
 			text-align: center;
-			fill: $studio-woocommerce-purple-50;
+			fill: $studio-poocommerce-purple-50;
 
 			@media ( max-width: 783px ) {
 				grid-template-columns: 1fr;

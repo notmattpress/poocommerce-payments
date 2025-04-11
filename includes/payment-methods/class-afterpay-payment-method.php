@@ -47,14 +47,14 @@ class Afterpay_Payment_Method extends UPE_Payment_Method {
 	 */
 	public function get_title( ?string $account_country = null, $payment_details = false ) {
 		if ( Country_Code::UNITED_KINGDOM === $account_country ) {
-			return __( 'Clearpay', 'woocommerce-payments' );
+			return __( 'Clearpay', 'poocommerce-payments' );
 		}
 
 		if ( Country_Code::UNITED_STATES === $account_country ) {
-			return __( 'Cash App Afterpay', 'woocommerce-payments' );
+			return __( 'Cash App Afterpay', 'poocommerce-payments' );
 		}
 
-		return __( 'Afterpay', 'woocommerce-payments' );
+		return __( 'Afterpay', 'poocommerce-payments' );
 	}
 
 	/**
@@ -114,13 +114,13 @@ class Afterpay_Payment_Method extends UPE_Payment_Method {
 		if ( Country_Code::UNITED_KINGDOM === $account_country ) {
 			return __(
 				'Allow customers to pay over time with Clearpay.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			);
 		}
 
 		return __(
 			'Allow customers to pay over time with Afterpay.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		);
 	}
 

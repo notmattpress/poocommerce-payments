@@ -7,12 +7,12 @@ export const switchToNewPaymentTokenElement = () => {
 	// Switch to card payment method before enabling new payment token element
 	document
 		.querySelector(
-			'input[name="payment_method"][value="woocommerce_payments"]'
+			'input[name="payment_method"][value="poocommerce_payments"]'
 		)
 		?.click();
 
 	const newPaymentTokenElement = document.getElementById(
-		'wc-woocommerce_payments-payment-token-new'
+		'wc-poocommerce_payments-payment-token-new'
 	);
 	if ( newPaymentTokenElement && ! newPaymentTokenElement.checked ) {
 		newPaymentTokenElement.checked = true;

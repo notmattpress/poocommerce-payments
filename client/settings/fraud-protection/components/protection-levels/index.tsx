@@ -134,7 +134,7 @@ const ProtectionLevels: React.FC = () => {
 				>
 					{ __(
 						'There was an error retrieving your fraud protection settings. Please refresh the page to try again.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 				</InlineNotice>
 			) }
@@ -163,13 +163,13 @@ const ProtectionLevels: React.FC = () => {
 								className="fraud-protection-radio-wrapper__item"
 								htmlFor="fraud-protection__basic-level"
 							>
-								{ __( 'Basic', 'woocommerce-payments' ) }
+								{ __( 'Basic', 'poocommerce-payments' ) }
 							</label>
 							<HelpOutlineIcon
 								size={ 18 }
 								title={ __(
 									'Basic level help icon',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								) }
 								className="fraud-protection__help-icon"
 								onClick={ handleBasicModalOpen }
@@ -202,7 +202,7 @@ const ProtectionLevels: React.FC = () => {
 									) }
 								/>
 								<p className="fraud-protection-radio-wrapper__item">
-									{ __( 'Advanced', 'woocommerce-payments' ) }
+									{ __( 'Advanced', 'poocommerce-payments' ) }
 								</p>
 							</div>
 							<FraudProtectionHelpText
@@ -222,8 +222,8 @@ const ProtectionLevels: React.FC = () => {
 							}
 						>
 							{ isAdvancedSettingsConfigured
-								? __( 'Edit', 'woocommerce-payments' )
-								: __( 'Configure', 'woocommerce-payments' ) }
+								? __( 'Edit', 'poocommerce-payments' )
+								: __( 'Configure', 'poocommerce-payments' ) }
 						</Button>
 					</li>
 				</ul>
