@@ -45,7 +45,7 @@ class Grabpay_Payment_Method extends UPE_Payment_Method {
 	 * @return string
 	 */
 	public function get_title( ?string $account_country = null, $payment_details = false ) {
-		return __( 'GrabPay', 'woocommerce-payments' );
+		return __( 'GrabPay', 'poocommerce-payments' );
 	}
 
 	/**
@@ -68,7 +68,7 @@ class Grabpay_Payment_Method extends UPE_Payment_Method {
 	public function get_description( ?string $account_country = null ) {
 		return __(
 			'A popular digital wallet for cashless payments in Singapore.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		);
 	}
 }

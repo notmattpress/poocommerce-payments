@@ -46,7 +46,7 @@ jest.mock( '@wordpress/data', () => ( {
 } ) );
 
 const mockHistoryReplace = jest.fn();
-jest.mock( '@woocommerce/navigation', () => ( {
+jest.mock( '@poocommerce/navigation', () => ( {
 	getQuery: () => {
 		return {
 			status_is: '',
@@ -59,7 +59,7 @@ jest.mock( '@woocommerce/navigation', () => ( {
 	addHistoryListener: jest.fn(),
 } ) );
 
-jest.mock( '@woocommerce/data', () => ( {
+jest.mock( '@poocommerce/data', () => ( {
 	useUserPreferences: jest.fn( () => ( {
 		updateUserPreferences: jest.fn(),
 		wc_payments_wporg_review_2025_prompt_dismissed: false,
