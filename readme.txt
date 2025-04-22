@@ -88,6 +88,7 @@ You can read our Terms of Service and other policies [here](https://woocommerce.
 == Changelog ==
 
 = 9.2.1 - 2025-04-22 =
+* Update - Update account session creation route definition to use POST rather than GET.
 
 
 = 9.2.0 - 2025-04-09 =

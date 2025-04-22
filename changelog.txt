@@ -1,6 +1,7 @@
 *** WooPayments Changelog ***
 
 = 9.2.1 - 2025-04-22 =
+* Update - Update account session creation route definition to use POST rather than GET.
 
 = 9.2.0 - 2025-04-09 =
 * Add - Add back button for tertiary+ level pages in WooPayments settings.
