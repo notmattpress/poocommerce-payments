@@ -2122,31 +2122,6 @@ class WC_Payments_API_Client implements MultiCurrencyApiClientInterface {
 	}
 
 	/**
-	 * Check if the merchant is eligible for Progressive Onboarding based on self-assessment information.
-	 *
-	 * @param array $business_info   Business information.
-	 * @param array $store_info      Store information.
-	 * @param array $woo_store_stats Optional. Stats about the WooCommerce store to given more context to the PO eligibility decision.
-	 *
-	 * @return array HTTP response on success.
-	 *
-	 * @throws API_Exception - If not connected to server or request failed.
-	 */
-	public function get_onboarding_po_eligible( array $business_info, array $store_info, array $woo_store_stats = [] ): array {
-		return $this->request(
-			[
-				'business'        => $business_info,
-				'store'           => $store_info,
-				'woo_store_stats' => $woo_store_stats,
-			],
-			self::ONBOARDING_API . '/router/po_eligible',
-			self::POST,
-			true,
-			true
-		);
-	}
-
-	/**
 	 * Sends the compatibility data to the server to be saved to the account.
 	 *
 	 * @param array $compatibility_data The array containing the data.
@@ -2275,15 +2250,12 @@ class WC_Payments_API_Client implements MultiCurrencyApiClientInterface {
 
 			$log_request_id = uniqid();
 
-			Logger::log(
-				Logger::format_object(
-					'REQUEST_' . $log_request_id,
-					array_merge(
-						$request_args,
-						[ 'url' => $redacted_url ],
-						null !== $body ? [ 'body' => $redacted_params ] : []
-					)
-				)
+			Logger::info(
+				sprintf( 'API REQUEST (%s): %s %s', $log_request_id, $method, $redacted_url ),
+				[
+					'request' => $request_args,
+					null !== $body ? [ 'body' => $redacted_params ] : [],
+				]
 			);
 
 			try {
@@ -2316,11 +2288,11 @@ class WC_Payments_API_Client implements MultiCurrencyApiClientInterface {
 			$response_body = $response;
 		}
 
-		Logger::log(
-			Logger::format_object(
-				'RESPONSE_' . $log_request_id,
-				WC_Payments_Utils::redact_array( $response_body, self::API_KEYS_TO_REDACT )
-			)
+		Logger::info(
+			sprintf( 'API RESPONSE (%s): %s %s', $log_request_id, $method, $redacted_url ),
+			[
+				'body' => WC_Payments_Utils::redact_array( $response_body, self::API_KEYS_TO_REDACT ),
+			]
 		);
 
 		return $response_body;

@@ -72,6 +72,9 @@ class WC_Payments_Onboarding_Service {
 	const FROM_STRIPE_EMBEDDED  = 'STRIPE_EMBEDDED';
 	const FROM_REFERRAL         = 'REFERRAL';
 
+	const TRACKS_EVENT_ONBOARDING_RESET           = 'wcpay_onboarding_flow_reset';
+	const TRACKS_EVENT_TEST_DRIVE_ACCOUNT_DISABLE = 'wcpay_onboarding_test_account_disable';
+
 	/**
 	 * Client for making requests to the WooCommerce Payments API
 	 *
@@ -604,14 +607,16 @@ class WC_Payments_Onboarding_Service {
 	 *
 	 * Note: This is a subset of the WC_Payments_Account::maybe_handle_onboarding method.
 	 *
-	 * @param array $capabilities Optional. List keyed by capabilities IDs (payment methods) with boolean values
-	 *                            indicating whether the capability should be requested when the account is created
-	 *                            and enabled in the settings.
+	 * @param string $country      The country code to use for the account.
+	 *                             This is a ISO 3166-1 alpha-2 country code.
+	 * @param array  $capabilities Optional. List keyed by capabilities IDs (payment methods) with boolean values
+	 *                             indicating whether the capability should be requested when the account is created
+	 *                             and enabled in the settings.
 	 *
 	 * @return bool Whether the account was created.
 	 * @throws API_Exception When the API request fails.
 	 */
-	public function init_test_drive_account( array $capabilities = [] ): bool {
+	public function init_test_drive_account( string $country, array $capabilities = [] ): bool {
 		// Since there should be no Stripe KYC needed, make sure we start with a clean state.
 		delete_transient( WC_Payments_Account::ONBOARDING_STATE_TRANSIENT );
 		delete_option( WC_Payments_Account::EMBEDDED_KYC_IN_PROGRESS_OPTION );
@@ -622,6 +627,11 @@ class WC_Payments_Onboarding_Service {
 		// because we delete it after we initiate the onboarding.
 		set_transient( WC_Payments_Account::ONBOARDING_STARTED_TRANSIENT, true, MINUTE_IN_SECONDS );
 
+		$current_user = get_userdata( get_current_user_id() );
+
+		// Make sure the onboarding test mode DB flag is set.
+		self::set_test_mode( true );
+
 		$site_data    = [
 			'site_username' => wp_get_current_user()->user_login,
 			'site_locale'   => get_locale(),
@@ -629,7 +639,14 @@ class WC_Payments_Onboarding_Service {
 		$user_data    = $this->get_onboarding_user_data();
 		$account_data = $this->get_account_data(
 			'test_drive',
-			[],
+			[
+				'business_type' => 'individual',
+				'country'       => $country,
+				'individual'    => [
+					'first_name' => $current_user->first_name ?? null,
+					'last_name'  => $current_user->last_name ?? null,
+				],
+			],
 			$capabilities
 		);
 
@@ -680,6 +697,132 @@ class WC_Payments_Onboarding_Service {
 		WC_Payments::get_account_service()->clear_cache();
 
 		return $account_created;
+	}
+
+	/**
+	 * Reset the current onboarding state.
+	 *
+	 * This means:
+	 * - delete the currently connected Stripe account - if possible!
+	 * - reset the onboarding flags, options, and caches.
+	 *
+	 * @param array $context Context for the reset onboarding request.
+	 *              - 'from' (string) The source of the request.
+	 *              - 'source' (string) The source of the onboarding flow.
+	 *
+	 * @return bool Whether the onboarding was reset successfully.
+	 *
+	 * @throws API_Exception When the platform API request fails or is not successful.
+	 */
+	public function reset_onboarding( array $context ): bool {
+		if ( ! $this->payments_api_client->is_server_connected() ) {
+			return false;
+		}
+
+		// Delete the currently connected Stripe account, in the onboarding mode we are currently in.
+		$test_mode_onboarding = self::is_test_mode_enabled();
+		$result               = $this->payments_api_client->delete_account( $test_mode_onboarding );
+		if ( ! isset( $result['result'] ) || 'success' !== $result['result'] ) {
+			throw new API_Exception( __( 'Failed to delete account.', 'woocommerce-payments' ), 'wcpay-onboarding-account-error', 400 );
+		}
+
+		$this->cleanup_on_account_reset();
+		delete_transient( WC_Payments_Account::ONBOARDING_TEST_DRIVE_SETTINGS_FOR_LIVE_ACCOUNT );
+
+		// Track onboarding reset.
+		$event_properties = [
+			'mode'   => $test_mode_onboarding ? 'test' : 'live',
+			'from'   => ! empty( $context['from'] ) ? sanitize_text_field( $context['from'] ) : '',
+			'source' => ! empty( $context['source'] ) ? sanitize_text_field( $context['source'] ) : '',
+		];
+
+		$this->tracks_event(
+			self::TRACKS_EVENT_ONBOARDING_RESET,
+			$event_properties
+		);
+
+		return true;
+	}
+
+	/**
+	 * Disable the Test Drive account.
+	 *
+	 * This means:
+	 * - preserve the currently connected Stripe test drive account settings.
+	 * - delete the currently connected Stripe test drive account.
+	 * - cleanup the gateway state for a fresh onboarding flow.
+	 *
+	 * @param array $context Context for the disable test drive account request.
+	 *              - 'from' (string) The source of the request.
+	 *              - 'source' (string) The source of the onboarding flow.
+	 *
+	 * @return bool Whether the test drive account was disabled successfully.
+	 *
+	 * @throws API_Exception When the platform API request fails or is not successful.
+	 */
+	public function disable_test_drive_account( array $context ): bool {
+		if ( ! $this->payments_api_client->is_server_connected() ) {
+			return false;
+		}
+
+		// If the test mode onboarding is not enabled, we don't need to do anything.
+		if ( ! self::is_test_mode_enabled() ) {
+			return false;
+		}
+
+		// If the test mode onboarding is enabled:
+		// - Delete the current account;
+		// - Cleanup the gateway state for a fresh onboarding flow.
+		try {
+			// If we're in test mode and dealing with a test-drive account,
+			// we need to collect the test drive settings before we delete the test-drive account,
+			// and apply those settings to the live account.
+			WC_Payments::get_account_service()->save_test_drive_settings();
+
+			// Delete the currently connected Stripe account.
+			$this->payments_api_client->delete_account( true );
+		} catch ( API_Exception $e ) {
+			throw new API_Exception( __( 'Failed to disable test drive account.', 'woocommerce-payments' ), 'wcpay-onboarding-account-error', 400 );
+		}
+
+		$this->cleanup_on_account_reset();
+
+		// Track disabling test drive account.
+		$event_properties = [
+			'mode'   => self::is_test_mode_enabled() ? 'test' : 'live',
+			'from'   => ! empty( $context['from'] ) ? sanitize_text_field( $context['from'] ) : '',
+			'source' => ! empty( $context['source'] ) ? sanitize_text_field( $context['source'] ) : '',
+		];
+
+		$this->tracks_event(
+			self::TRACKS_EVENT_TEST_DRIVE_ACCOUNT_DISABLE,
+			$event_properties
+		);
+
+		return true;
+	}
+
+	/**
+	 * Sets things up for a fresh onboarding flow.
+	 *
+	 * @return void
+	 */
+	public function cleanup_on_account_reset() {
+		$gateway = WC_Payments::get_gateway();
+		$gateway->update_option( 'enabled', 'no' );
+		$gateway->update_option( 'test_mode', 'no' );
+
+		update_option( '_wcpay_onboarding_stripe_connected', [] );
+		update_option( self::TEST_MODE_OPTION, 'no' );
+
+		// Discard any ongoing onboarding session.
+		delete_transient( WC_Payments_Account::ONBOARDING_STATE_TRANSIENT );
+		delete_transient( WC_Payments_Account::ONBOARDING_STARTED_TRANSIENT );
+		delete_option( WC_Payments_Account::EMBEDDED_KYC_IN_PROGRESS_OPTION );
+		delete_transient( WC_Payments_Account::WOOPAY_ENABLED_BY_DEFAULT_TRANSIENT );
+
+		// Clear the cache to avoid stale data.
+		WC_Payments::get_account_service()->clear_cache();
 	}
 
 	/**
@@ -1217,7 +1360,7 @@ class WC_Payments_Onboarding_Service {
 		}
 
 		// Update gateway option with the Apple/Google Pay capability.
-		if ( ! empty( $capabilities['apple_google'] ) ) {
+		if ( ! empty( $capabilities['apple_google'] ) || ( ! empty( $capabilities['apple_pay'] ) || ! empty( $capabilities['google_pay'] ) ) ) {
 			$gateway->update_option( 'payment_request', 'yes' );
 		} else {
 			$gateway->update_option( 'payment_request', 'no' );
@@ -1276,5 +1419,40 @@ class WC_Payments_Onboarding_Service {
 				return ! in_array( $payment_method, $excluded_methods, true );
 			}
 		);
+	}
+
+	/**
+	 * Send a Tracks event.
+	 *
+	 * By default Woo adds `url`, `blog_lang`, `blog_id`, `store_id`, `products_count`, and `wc_version`
+	 * properties to every event.
+	 *
+	 * @todo This is a duplicate of the one in the WC_Payments_Account class. When we refactor the onboarding logic out of the WC_Payments_Account class we should consider a proper place for this method.
+	 *
+	 * @param string $name       The event name.
+	 * @param array  $properties Optional. The event custom properties.
+	 *
+	 * @return void
+	 */
+	private function tracks_event( string $name, array $properties = [] ) {
+		if ( ! function_exists( 'wc_admin_record_tracks_event' ) ) {
+			return;
+		}
+
+		// Add default properties to every event.
+		$properties = array_merge(
+			$properties,
+			[
+				'is_test_mode'      => WC_Payments::mode()->is_test(),
+				'jetpack_connected' => $this->payments_api_client->is_server_connected(),
+				'wcpay_version'     => WCPAY_VERSION_NUMBER,
+				'woo_country_code'  => WC()->countries->get_base_country(),
+			],
+			WC_Payments::get_account_service()->get_tracking_info() ?? []
+		);
+
+		wc_admin_record_tracks_event( $name, $properties );
+
+		Logger::info( 'Tracks event: ' . $name . ' with data: ' . wp_json_encode( WC_Payments_Utils::redact_array( $properties, [ 'woo_country_code' ] ) ) );
 	}
 }
