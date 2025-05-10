@@ -2,7 +2,7 @@
 /**
  * Class OrderService
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Internal\Service;
@@ -89,7 +89,7 @@ class OrderService {
 	 * to legacy (`includes`) services, which are not adapted to work
 	 * with order IDs yet.
 	 *
-	 * @see https://github.com/Automattic/woocommerce-payments/issues/7367
+	 * @see https://github.com/Automattic/poocommerce-payments/issues/7367
 	 * @param int $order_id ID of the order.
 	 * @return WC_Order Order object.
 	 * @throws Order_Not_Found_Exception If the order could not be found.
@@ -281,7 +281,7 @@ class OrderService {
 		$order = $this->get_order( $order_id );
 
 		// This is a good example of something, which should be a service.
-		$currency_store   = $this->legacy_proxy->call_function( 'get_option', 'woocommerce_currency' );
+		$currency_store   = $this->legacy_proxy->call_function( 'get_option', 'poocommerce_currency' );
 		$currency_store   = strtolower( $currency_store );
 		$currency_order   = strtolower( $order->get_currency() );
 		$currency_account = strtolower( $this->account->get_account_default_currency() );
@@ -435,7 +435,7 @@ class OrderService {
 				/* translators: %1: the failed payment amount */
 				__(
 					'A payment of %1$s <strong>failed</strong> to complete because of too many failed transactions. A rate limiter was enabled for the user to prevent more attempts temporarily.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				[
 					'strong' => '<strong>',
@@ -481,7 +481,7 @@ class OrderService {
 				esc_html(
 					sprintf(
 					// Translators: %d is the ID of an order.
-						__( 'The requested order (ID %d) was not found.', 'woocommerce-payments' ),
+						__( 'The requested order (ID %d) was not found.', 'poocommerce-payments' ),
 						$order_id
 					)
 				),

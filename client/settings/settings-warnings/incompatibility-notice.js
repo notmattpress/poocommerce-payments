@@ -15,7 +15,7 @@ const IncompatibilityNotice = ( { message, learnMoreLinkHref } ) => (
 		{ interpolateComponents( {
 			mixedString: __(
 				'{{learnMoreLink}}Learn More{{/learnMoreLink}}',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			components: {
 				learnMoreLink: (
@@ -35,8 +35,8 @@ export const WooPayIncompatibilityNotice = () => (
 	<IncompatibilityNotice
 		message={ __(
 			'One or more of your extensions are incompatible with WooPay.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		) }
-		learnMoreLinkHref="https://woocommerce.com/document/woopay-merchant-documentation/#compatibility"
+		learnMoreLinkHref="https://poocommerce.com/document/woopay-merchant-documentation/#compatibility"
 	/>
 );

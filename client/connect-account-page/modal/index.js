@@ -8,14 +8,14 @@ import interpolateComponents from '@automattic/interpolate-components';
  */
 import { Button, Modal } from '@wordpress/components';
 import { __, sprintf } from '@wordpress/i18n';
-import { Link, List } from '@woocommerce/components';
+import { Link, List } from '@poocommerce/components';
 import { useState } from '@wordpress/element';
 import './style.scss';
 
 const LearnMoreLink = ( props ) => (
 	<Link
 		{ ...props }
-		href="https://woocommerce.com/document/woopayments/compatibility/countries/"
+		href="https://poocommerce.com/document/woopayments/compatibility/countries/"
 		target="_blank"
 		rel="noopener noreferrer"
 		type="external"
@@ -54,7 +54,7 @@ const OnboardingLocationCheckModal = ( {
 					'In order to complete the set up of %1$s, your store is required to have a business ' +
 					'entity in one of the following countries: {{list /}} ' +
 					'{{link}}Learn more{{/link}} about setting up business entities in foreign countries.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			'WooPayments'
 		),
@@ -71,19 +71,19 @@ const OnboardingLocationCheckModal = ( {
 			shouldCloseOnClickOutside={ true }
 			shouldCloseOnEsc={ true }
 			onRequestClose={ handleDeclinedRequest }
-			className="woocommerce-payments__onboarding_location_check-modal"
+			className="poocommerce-payments__onboarding_location_check-modal"
 		>
-			<div className="woocommerce-payments__onboarding_location_check-wrapper">
-				<div className="woocommerce-payments__onboarding_location_check-modal-message">
+			<div className="poocommerce-payments__onboarding_location_check-wrapper">
+				<div className="poocommerce-payments__onboarding_location_check-modal-message">
 					{ message }
 				</div>
-				<div className="woocommerce-payments__onboarding_location_check-footer">
+				<div className="poocommerce-payments__onboarding_location_check-footer">
 					<Button
 						isSecondary
 						onClick={ handleConfirmedRequest }
 						isBusy={ isProcessingContinue }
 					>
-						{ __( 'Continue', 'woocommerce-payments' ) }
+						{ __( 'Continue', 'poocommerce-payments' ) }
 					</Button>
 
 					<Button
@@ -91,7 +91,7 @@ const OnboardingLocationCheckModal = ( {
 						onClick={ handleDeclinedRequest }
 						disabled={ isProcessingContinue }
 					>
-						{ __( 'Cancel', 'woocommerce-payments' ) }
+						{ __( 'Cancel', 'poocommerce-payments' ) }
 					</Button>
 				</div>
 			</div>

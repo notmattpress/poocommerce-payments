@@ -39,7 +39,7 @@ const MissingOrderNotice: React.FC< MissingOrderNoticeProps > = ( {
 								isSmall={ false }
 								onClick={ onButtonClick }
 							>
-								{ __( 'Refund', 'woocommerce-payments' ) }
+								{ __( 'Refund', 'poocommerce-payments' ) }
 							</Button>
 						) : (
 							<></>
@@ -48,16 +48,16 @@ const MissingOrderNotice: React.FC< MissingOrderNoticeProps > = ( {
 				>
 					{ __(
 						'This transaction is not connected to order. ',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 					{ charge.refunded
 						? __(
 								'It has been refunded and is not a subject for disputes.',
-								'woocommerce-payments'
+								'poocommerce-payments'
 						  )
 						: __(
 								'Investigate this purchase and refund the transaction as needed.',
-								'woocommerce-payments'
+								'poocommerce-payments'
 						  ) }
 				</CardNotice>
 			</Loadable>

@@ -13,14 +13,14 @@ export const formatFeeType = (
 	isDiscounted?: boolean
 ): string => {
 	const feeTypes: Record< string, string | Record< string, string > > = {
-		total: __( 'Total', 'woocommerce-payments' ),
-		base: __( 'Base fee', 'woocommerce-payments' ),
+		total: __( 'Total', 'poocommerce-payments' ),
+		base: __( 'Base fee', 'poocommerce-payments' ),
 		additional: {
 			international: __(
 				'International payment fee',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
-			fx: __( 'Currency conversion fee', 'woocommerce-payments' ),
+			fx: __( 'Currency conversion fee', 'poocommerce-payments' ),
 		},
 	};
 
@@ -30,12 +30,12 @@ export const formatFeeType = (
 		const additionalFees = feeTypes.additional as Record< string, string >;
 		return (
 			( additionalFees[ additionalType ] ||
-				__( 'Fee', 'woocommerce-payments' ) ) + suffix
+				__( 'Fee', 'poocommerce-payments' ) ) + suffix
 		);
 	}
 
 	const baseType = feeTypes[ type ];
 	return typeof baseType === 'string'
 		? baseType + suffix
-		: __( 'Fee', 'woocommerce-payments' ) + suffix;
+		: __( 'Fee', 'poocommerce-payments' ) + suffix;
 };

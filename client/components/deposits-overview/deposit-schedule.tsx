@@ -36,7 +36,7 @@ const DepositScheduleSummary: React.FC< DepositScheduleProps > = ( {
 					/** translators: {{strong}}: placeholders are opening and closing strong tags. */
 					__(
 						'Available funds are automatically dispatched {{strong}}every day{{/strong}}.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					)
 				),
 				components: {
@@ -55,7 +55,7 @@ const DepositScheduleSummary: React.FC< DepositScheduleProps > = ( {
 					/** translators: %1$s: is the day of the week. eg "Friday". {{strong}}: placeholders are opening and closing strong tags. */
 					__(
 						'Available funds are automatically dispatched {{strong}}every %1$s{{/strong}}.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					dayOfWeek
 				),
@@ -73,7 +73,7 @@ const DepositScheduleSummary: React.FC< DepositScheduleProps > = ( {
 						/** translators: {{strong}}: placeholders are opening and closing strong tags. */
 						__(
 							'Available funds are automatically dispatched {{strong}}on the last day of every month{{/strong}}.',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						)
 					),
 					components: {
@@ -87,7 +87,7 @@ const DepositScheduleSummary: React.FC< DepositScheduleProps > = ( {
 					/** translators: {{strong}}: placeholders are opening and closing strong tags. %1$s: is the day of the month. eg "31st". */
 					__(
 						'Available funds are automatically dispatched {{strong}}on the %1$s of every month{{/strong}}.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					getDepositMonthlyAnchorLabel( {
 						monthlyAnchor: monthlyAnchor,
@@ -121,7 +121,7 @@ const DepositSchedule: React.FC< DepositScheduleProps > = ( {
 			{ interpolateComponents( {
 				mixedString: __(
 					'The timing and amount of your payouts may vary due to several factors. Check out our {{link}}payout schedule guide{{/link}} for details.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				components: {
 					link: (
@@ -130,7 +130,7 @@ const DepositSchedule: React.FC< DepositScheduleProps > = ( {
 							rel="external noopener noreferrer"
 							target="_blank"
 							href={
-								'https://woocommerce.com/document/woopayments/payouts/payout-schedule/'
+								'https://poocommerce.com/document/woopayments/payouts/payout-schedule/'
 							}
 						/>
 					),

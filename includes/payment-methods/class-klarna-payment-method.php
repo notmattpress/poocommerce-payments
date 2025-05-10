@@ -45,7 +45,7 @@ class Klarna_Payment_Method extends UPE_Payment_Method {
 	 * @return string
 	 */
 	public function get_title( ?string $account_country = null, $payment_details = false ) {
-		return __( 'Klarna', 'woocommerce-payments' );
+		return __( 'Klarna', 'poocommerce-payments' );
 	}
 
 	/**
@@ -68,7 +68,7 @@ class Klarna_Payment_Method extends UPE_Payment_Method {
 
 		// If the merchant is in the EEA, UK, or Switzerland, only the countries that have the same domestic currency as the store currency will be supported.
 		if ( in_array( $account_country, $eea_countries, true ) ) {
-			$store_currency = strtoupper( get_woocommerce_currency() );
+			$store_currency = strtoupper( get_poocommerce_currency() );
 
 			// if the store is set to an EU country, but the currency used is not set as a valid EU currency, I guess Klarna shouldn't be eligible.
 			if ( ! isset( $this->limits_per_currency[ $store_currency ] ) ) {
@@ -103,7 +103,7 @@ class Klarna_Payment_Method extends UPE_Payment_Method {
 	public function get_description( ?string $account_country = null ) {
 		return __(
 			'Allow customers to pay over time or pay now with Klarna.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		);
 	}
 
