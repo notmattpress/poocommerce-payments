@@ -32,7 +32,7 @@ const DisputeNotice: React.FC< DisputeNoticeProps > = ( {
 		reasons[ dispute.reason ]?.claim ??
 		__(
 			'The cardholder claims this is an unrecognized charge.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		);
 
 	/* translators: <a> link to dispute documentation. %s is the clients claim for the dispute, eg "The cardholder claims this is an unrecognized charge." */
@@ -40,29 +40,29 @@ const DisputeNotice: React.FC< DisputeNoticeProps > = ( {
 		'<strong>%s</strong> Challenge the dispute if you believe the claim is invalid, ' +
 			'or accept to forfeit the funds and pay the dispute fee. ' +
 			'Non-response will result in an automatic loss. <a>Learn more about responding to disputes</a>',
-		'woocommerce-payments'
+		'poocommerce-payments'
 	);
 	let learnMoreDocsUrl =
-		'https://woocommerce.com/document/woopayments/fraud-and-disputes/managing-disputes/#responding';
+		'https://poocommerce.com/document/woopayments/fraud-and-disputes/managing-disputes/#responding';
 
 	if ( isInquiry( dispute.status ) ) {
 		/* translators: <a> link to dispute inquiry documentation. %s is the clients claim for the dispute, eg "The cardholder claims this is an unrecognized charge." */
 		noticeText = __(
 			'<strong>%s</strong> You can challenge their claim if you believe it’s invalid. ' +
 				'Not responding will result in an automatic loss. <a>Learn more about payment inquiries</a>',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		);
 		learnMoreDocsUrl =
-			'https://woocommerce.com/document/woopayments/fraud-and-disputes/managing-disputes/#inquiries';
+			'https://poocommerce.com/document/woopayments/fraud-and-disputes/managing-disputes/#inquiries';
 
 		if ( paymentMethod === 'klarna' ) {
 			noticeText = __(
 				'Klarna inquiries may mean that the customer is trying to return their item(s). ' +
 					'<a>Please see this document for more information</a>',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			);
 			learnMoreDocsUrl =
-				'https://woocommerce.com/document/woopayments/payment-methods/buy-now-pay-later/#klarna-inquiries-returns';
+				'https://poocommerce.com/document/woopayments/payment-methods/buy-now-pay-later/#klarna-inquiries-returns';
 		}
 	}
 

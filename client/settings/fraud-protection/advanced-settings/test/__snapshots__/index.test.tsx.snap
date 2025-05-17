@@ -32,10 +32,10 @@ exports[`Advanced fraud protection settings doesn't save when there's a validati
     <div>
       <div>
         <div
-          class="woocommerce-layout__header-wrapper"
+          class="poocommerce-layout__header-wrapper"
         >
           <div
-            class="woocommerce-layout__header-heading"
+            class="poocommerce-layout__header-heading"
           />
         </div>
         <h2
@@ -45,7 +45,7 @@ exports[`Advanced fraud protection settings doesn't save when there's a validati
           <small>
             <a
               data-link-type="wp-admin"
-              href="admin.php?page=wc-settings&tab=checkout&section=woocommerce_payments"
+              href="admin.php?page=wc-settings&tab=checkout&section=poocommerce_payments"
             >
               ⤴︎
             </a>
@@ -864,7 +864,7 @@ exports[`Advanced fraud protection settings doesn't save when there's a validati
                             For security, this filter is enabled and cannot be modified. Payments failing CVC verification will be blocked. 
                             <a
                               data-link-type="external"
-                              href="https://woocommerce.com/document/woopayments/fraud-and-disputes/fraud-protection/#advanced-configuration"
+                              href="https://poocommerce.com/document/woopayments/fraud-and-disputes/fraud-protection/#advanced-configuration"
                               target="_blank"
                             >
                               Learn more
@@ -920,10 +920,10 @@ exports[`Advanced fraud protection settings doesn't save when there's a validati
   "container": <div>
     <div>
       <div
-        class="woocommerce-layout__header-wrapper"
+        class="poocommerce-layout__header-wrapper"
       >
         <div
-          class="woocommerce-layout__header-heading"
+          class="poocommerce-layout__header-heading"
         />
       </div>
       <h2
@@ -933,7 +933,7 @@ exports[`Advanced fraud protection settings doesn't save when there's a validati
         <small>
           <a
             data-link-type="wp-admin"
-            href="admin.php?page=wc-settings&tab=checkout&section=woocommerce_payments"
+            href="admin.php?page=wc-settings&tab=checkout&section=poocommerce_payments"
           >
             ⤴︎
           </a>
@@ -1752,7 +1752,7 @@ exports[`Advanced fraud protection settings doesn't save when there's a validati
                           For security, this filter is enabled and cannot be modified. Payments failing CVC verification will be blocked. 
                           <a
                             data-link-type="external"
-                            href="https://woocommerce.com/document/woopayments/fraud-and-disputes/fraud-protection/#advanced-configuration"
+                            href="https://poocommerce.com/document/woopayments/fraud-and-disputes/fraud-protection/#advanced-configuration"
                             target="_blank"
                           >
                             Learn more
@@ -1890,10 +1890,10 @@ exports[`Advanced fraud protection settings renders an error message when settin
     <div>
       <div>
         <div
-          class="woocommerce-layout__header-wrapper"
+          class="poocommerce-layout__header-wrapper"
         >
           <div
-            class="woocommerce-layout__header-heading"
+            class="poocommerce-layout__header-heading"
           />
         </div>
         <h2
@@ -1903,7 +1903,7 @@ exports[`Advanced fraud protection settings renders an error message when settin
           <small>
             <a
               data-link-type="wp-admin"
-              href="admin.php?page=wc-settings&tab=checkout&section=woocommerce_payments"
+              href="admin.php?page=wc-settings&tab=checkout&section=poocommerce_payments"
             >
               ⤴︎
             </a>
@@ -2575,7 +2575,7 @@ exports[`Advanced fraud protection settings renders an error message when settin
                             For security, this filter is enabled and cannot be modified. Payments failing CVC verification will be blocked. 
                             <a
                               data-link-type="external"
-                              href="https://woocommerce.com/document/woopayments/fraud-and-disputes/fraud-protection/#advanced-configuration"
+                              href="https://poocommerce.com/document/woopayments/fraud-and-disputes/fraud-protection/#advanced-configuration"
                               target="_blank"
                             >
                               Learn more
@@ -2632,10 +2632,10 @@ exports[`Advanced fraud protection settings renders an error message when settin
   "container": <div>
     <div>
       <div
-        class="woocommerce-layout__header-wrapper"
+        class="poocommerce-layout__header-wrapper"
       >
         <div
-          class="woocommerce-layout__header-heading"
+          class="poocommerce-layout__header-heading"
         />
       </div>
       <h2
@@ -2645,7 +2645,7 @@ exports[`Advanced fraud protection settings renders an error message when settin
         <small>
           <a
             data-link-type="wp-admin"
-            href="admin.php?page=wc-settings&tab=checkout&section=woocommerce_payments"
+            href="admin.php?page=wc-settings&tab=checkout&section=poocommerce_payments"
           >
             ⤴︎
           </a>
@@ -3317,7 +3317,7 @@ exports[`Advanced fraud protection settings renders an error message when settin
                           For security, this filter is enabled and cannot be modified. Payments failing CVC verification will be blocked. 
                           <a
                             data-link-type="external"
-                            href="https://woocommerce.com/document/woopayments/fraud-and-disputes/fraud-protection/#advanced-configuration"
+                            href="https://poocommerce.com/document/woopayments/fraud-and-disputes/fraud-protection/#advanced-configuration"
                             target="_blank"
                           >
                             Learn more
@@ -3461,7 +3461,7 @@ exports[`Advanced fraud protection settings renders correctly 1`] = `
         <small>
           <a
             data-link-type="wp-admin"
-            href="admin.php?page=wc-settings&tab=checkout&section=woocommerce_payments"
+            href="admin.php?page=wc-settings&tab=checkout&section=poocommerce_payments"
           >
             ⤴︎
           </a>
@@ -4117,7 +4117,7 @@ exports[`Advanced fraud protection settings renders correctly 1`] = `
                           For security, this filter is enabled and cannot be modified. Payments failing CVC verification will be blocked. 
                           <a
                             data-link-type="external"
-                            href="https://woocommerce.com/document/woopayments/fraud-and-disputes/fraud-protection/#advanced-configuration"
+                            href="https://poocommerce.com/document/woopayments/fraud-and-disputes/fraud-protection/#advanced-configuration"
                             target="_blank"
                           >
                             Learn more
@@ -4178,7 +4178,7 @@ exports[`Advanced fraud protection settings renders correctly 1`] = `
       <small>
         <a
           data-link-type="wp-admin"
-          href="admin.php?page=wc-settings&tab=checkout&section=woocommerce_payments"
+          href="admin.php?page=wc-settings&tab=checkout&section=poocommerce_payments"
         >
           ⤴︎
         </a>
@@ -4834,7 +4834,7 @@ exports[`Advanced fraud protection settings renders correctly 1`] = `
                         For security, this filter is enabled and cannot be modified. Payments failing CVC verification will be blocked. 
                         <a
                           data-link-type="external"
-                          href="https://woocommerce.com/document/woopayments/fraud-and-disputes/fraud-protection/#advanced-configuration"
+                          href="https://poocommerce.com/document/woopayments/fraud-and-disputes/fraud-protection/#advanced-configuration"
                           target="_blank"
                         >
                           Learn more
@@ -4972,10 +4972,10 @@ exports[`Advanced fraud protection settings saves settings when there are no val
     <div>
       <div>
         <div
-          class="woocommerce-layout__header-wrapper"
+          class="poocommerce-layout__header-wrapper"
         >
           <div
-            class="woocommerce-layout__header-heading"
+            class="poocommerce-layout__header-heading"
           />
         </div>
         <h2
@@ -4985,7 +4985,7 @@ exports[`Advanced fraud protection settings saves settings when there are no val
           <small>
             <a
               data-link-type="wp-admin"
-              href="admin.php?page=wc-settings&tab=checkout&section=woocommerce_payments"
+              href="admin.php?page=wc-settings&tab=checkout&section=poocommerce_payments"
             >
               ⤴︎
             </a>
@@ -5722,7 +5722,7 @@ exports[`Advanced fraud protection settings saves settings when there are no val
                             For security, this filter is enabled and cannot be modified. Payments failing CVC verification will be blocked. 
                             <a
                               data-link-type="external"
-                              href="https://woocommerce.com/document/woopayments/fraud-and-disputes/fraud-protection/#advanced-configuration"
+                              href="https://poocommerce.com/document/woopayments/fraud-and-disputes/fraud-protection/#advanced-configuration"
                               target="_blank"
                             >
                               Learn more
@@ -5779,10 +5779,10 @@ exports[`Advanced fraud protection settings saves settings when there are no val
   "container": <div>
     <div>
       <div
-        class="woocommerce-layout__header-wrapper"
+        class="poocommerce-layout__header-wrapper"
       >
         <div
-          class="woocommerce-layout__header-heading"
+          class="poocommerce-layout__header-heading"
         />
       </div>
       <h2
@@ -5792,7 +5792,7 @@ exports[`Advanced fraud protection settings saves settings when there are no val
         <small>
           <a
             data-link-type="wp-admin"
-            href="admin.php?page=wc-settings&tab=checkout&section=woocommerce_payments"
+            href="admin.php?page=wc-settings&tab=checkout&section=poocommerce_payments"
           >
             ⤴︎
           </a>
@@ -6529,7 +6529,7 @@ exports[`Advanced fraud protection settings saves settings when there are no val
                           For security, this filter is enabled and cannot be modified. Payments failing CVC verification will be blocked. 
                           <a
                             data-link-type="external"
-                            href="https://woocommerce.com/document/woopayments/fraud-and-disputes/fraud-protection/#advanced-configuration"
+                            href="https://poocommerce.com/document/woopayments/fraud-and-disputes/fraud-protection/#advanced-configuration"
                             target="_blank"
                           >
                             Learn more

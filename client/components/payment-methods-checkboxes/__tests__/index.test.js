@@ -15,7 +15,7 @@ import PaymentMethodsCheckbox from '../payment-method-checkbox';
 import { upeCapabilityStatuses } from '../../../additional-methods-setup/constants';
 import WCPaySettingsContext from 'wcpay/settings/wcpay-settings-context';
 
-jest.mock( '@woocommerce/components', () => {
+jest.mock( '@poocommerce/components', () => {
 	return {
 		Pill: ( { className, children } ) => (
 			<span className={ className }>{ children }</span>
@@ -255,7 +255,7 @@ describe( 'PaymentMethodsCheckboxes', () => {
 
 		// Test that the Contact support pill content isn't shown
 		expect(
-			screen.queryByText( 'Contact WooCommerce Support' )
+			screen.queryByText( 'Contact PooCommerce Support' )
 		).not.toBeInTheDocument();
 	} );
 } );

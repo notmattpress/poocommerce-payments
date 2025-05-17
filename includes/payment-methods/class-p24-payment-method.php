@@ -53,7 +53,7 @@ class P24_Payment_Method extends UPE_Payment_Method {
 	public function get_description( ?string $account_country = null ) {
 		return __(
 			'Accept payments with Przelewy24 (P24), the most popular payment method in Poland.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		);
 	}
 }
