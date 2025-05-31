@@ -10,105 +10,105 @@ import { includes } from 'lodash';
 const sections = [
 	{
 		key: 'general',
-		title: __( 'General evidence', 'woocommerce-payments' ),
+		title: __( 'General evidence', 'poocommerce-payments' ),
 		description: __(
 			'Provide general evidence about the customer and the order.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		fields: [
 			{
 				key: 'product_description',
-				label: __( 'Product description', 'woocommerce-payments' ),
+				label: __( 'Product description', 'poocommerce-payments' ),
 				maxLength: 20000,
 				type: 'textarea',
 				description: __(
 					'A description of the product or service and any relevant details on how this was presented to the customer at the time of purchase.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 			},
 			{
 				key: 'customer_name',
-				label: __( 'Customer name', 'woocommerce-payments' ),
+				label: __( 'Customer name', 'poocommerce-payments' ),
 				type: 'text',
 			},
 			{
 				key: 'customer_email_address',
-				label: __( 'Customer email', 'woocommerce-payments' ),
+				label: __( 'Customer email', 'poocommerce-payments' ),
 				type: 'text',
 			},
 			{
 				key: 'customer_signature',
-				label: __( 'Customer signature', 'woocommerce-payments' ),
+				label: __( 'Customer signature', 'poocommerce-payments' ),
 				type: 'file',
 				description: __(
 					"A relevant document or contract showing the customer's signature (if available).",
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 			},
 			{
 				key: 'billing_address',
-				label: __( 'Customer billing address', 'woocommerce-payments' ),
+				label: __( 'Customer billing address', 'poocommerce-payments' ),
 				type: 'textarea',
 			},
 			{
 				key: 'customer_purchase_ip',
-				label: __( 'Customer IP address', 'woocommerce-payments' ),
+				label: __( 'Customer IP address', 'poocommerce-payments' ),
 				type: 'text',
 			},
 			{
 				key: 'receipt',
-				label: __( 'Receipt', 'woocommerce-payments' ),
+				label: __( 'Receipt', 'poocommerce-payments' ),
 				type: 'file',
 				description: __(
 					'Any receipt or message sent to the customer notifying them of the charge. This field will be automatically filled with a Stripe generated email receipt if any such receipt was sent.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 			},
 			{
 				key: 'customer_communication',
-				label: __( 'Customer communication', 'woocommerce-payments' ),
+				label: __( 'Customer communication', 'poocommerce-payments' ),
 				type: 'file',
 				description: __(
 					'Any communication with the customer that you feel is relevant to your case (e.g. emails proving that they received the product or service, or demonstrating their use of or satisfaction with the product or service).',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 			},
 		],
 	},
 	{
 		key: 'refund_policy_info',
-		title: __( 'Refund policy info', 'woocommerce-payments' ),
+		title: __( 'Refund policy info', 'poocommerce-payments' ),
 		fields: [
 			{
 				key: 'refund_policy',
-				label: __( 'Refund policy', 'woocommerce-payments' ),
+				label: __( 'Refund policy', 'poocommerce-payments' ),
 				type: 'file',
 				description: __(
 					'Your refund policy, as shown or provided to the customer.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 			},
 			{
 				key: 'refund_policy_disclosure',
-				label: __( 'Refund policy disclosure', 'woocommerce-payments' ),
+				label: __( 'Refund policy disclosure', 'poocommerce-payments' ),
 				maxLength: 20000,
 				type: 'textarea',
 				description: __(
 					'An explanation of how and when the customer was shown or provided your refund policy prior to purchase.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 			},
 			{
 				key: 'refund_refusal_explanation',
 				label: __(
 					'Refund refusal explanation',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				maxLength: 20000,
 				type: 'textarea',
 				description: __(
 					'Your explanation for why the customer is not entitled to a refund.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 			},
 		],
@@ -116,60 +116,60 @@ const sections = [
 	},
 	{
 		key: 'duplicate_charge_info',
-		title: __( 'Duplicate charge info', 'woocommerce-payments' ),
+		title: __( 'Duplicate charge info', 'poocommerce-payments' ),
 		fields: [
 			{
 				key: 'duplicate_charge_id',
-				label: __( 'Duplicate charge ID', 'woocommerce-payments' ),
+				label: __( 'Duplicate charge ID', 'poocommerce-payments' ),
 				type: 'text',
 				description: __(
 					'The charge ID for the previous payment that appears to be a duplicate of the one that is disputed.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 			},
 			{
 				key: 'duplicate_charge_explanation',
 				label: __(
 					'Explanation of duplicate charge',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				maxLength: 20000,
 				type: 'textarea',
 				description: __(
 					'An explanation of the difference between the disputed payment and the prior one that appears to be a duplicate.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 			},
 			{
 				key: 'duplicate_charge_documentation',
 				label: __(
 					'Duplicate charge documentation',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				type: 'file',
 				description: __(
 					'Upload documentation for the prior payment that can uniquely identify it, such as a separate receipt. This document should be paired with a similar document from the disputed payment that proves the two are separate. This should also include a separate shipping label or receipt for the other payment. If multiple products were shipped together, provide a packing list that shows each purchase.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 			},
 			{
 				key: 'shipping_documentation',
-				label: __( 'Shipping documentation', 'woocommerce-payments' ),
+				label: __( 'Shipping documentation', 'poocommerce-payments' ),
 				type: 'file',
 				description: __(
 					'A shipping label or receipt for the disputed payment.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				denormalized: true,
 				productType: 'physical_product',
 			},
 			{
 				key: 'service_documentation',
-				label: __( 'Service documentation', 'woocommerce-payments' ),
+				label: __( 'Service documentation', 'poocommerce-payments' ),
 				type: 'file',
 				description: __(
 					'A copy of a service agreement or documentation for the disputed payment.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				denormalized: true,
 				productType: 'offline_service',
@@ -179,51 +179,51 @@ const sections = [
 	},
 	{
 		key: 'shipping_information',
-		title: __( 'Shipping information', 'woocommerce-payments' ),
+		title: __( 'Shipping information', 'poocommerce-payments' ),
 		fields: [
 			{
 				key: 'shipping_carrier',
-				label: __( 'Shipping carrier', 'woocommerce-payments' ),
+				label: __( 'Shipping carrier', 'poocommerce-payments' ),
 				type: 'text',
 				description: __(
 					'The delivery service that shipped a physical product, such as Fedex, UPS, USPS, etc. If multiple carriers were used for this purchase, please separate them with commas.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 			},
 			{
 				key: 'shipping_tracking_number',
-				label: __( 'Tracking number', 'woocommerce-payments' ),
+				label: __( 'Tracking number', 'poocommerce-payments' ),
 				type: 'text',
 				description: __(
 					'The tracking number (if available) for a physical product, obtained from the delivery service. If multiple tracking numbers were generated for this purchase, please separate them with commas. When we compile your evidence into a single document, these tracking numbers will be expanded to include detailed delivery information from the carrier.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 			},
 			{
 				key: 'shipping_documentation',
-				label: __( 'Proof of shipping', 'woocommerce-payments' ),
+				label: __( 'Proof of shipping', 'poocommerce-payments' ),
 				type: 'file',
 				description: __(
 					'Provide documentation as proof that a product was shipped to the cardholder at the same address the cardholder provided to you. This could include a copy of the shipment receipt or label, and show the full shipping address of the cardholder, if possible.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 			},
 			{
 				key: 'shipping_date',
-				label: __( 'Date of shipment', 'woocommerce-payments' ),
+				label: __( 'Date of shipment', 'poocommerce-payments' ),
 				type: 'date',
 				description: __(
 					'The date on which a physical product began its route to the shipping address. This date should be prior to the date of the dispute.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 			},
 			{
 				key: 'shipping_address',
-				label: __( 'Shipping address', 'woocommerce-payments' ),
+				label: __( 'Shipping address', 'poocommerce-payments' ),
 				type: 'textarea',
 				description: __(
 					'The address to which a physical product was shipped. The shipping address must match a billing address verified with AVS. (A signature is not required as evidence of delivery).',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 			},
 		],
@@ -237,38 +237,38 @@ const sections = [
 	},
 	{
 		key: 'cancellation_policy_info',
-		title: __( 'Cancellation policy info', 'woocommerce-payments' ),
+		title: __( 'Cancellation policy info', 'poocommerce-payments' ),
 		fields: [
 			{
 				key: 'cancellation_policy',
-				label: __( 'Cancellation policy', 'woocommerce-payments' ),
+				label: __( 'Cancellation policy', 'poocommerce-payments' ),
 				type: 'file',
 				description: __(
 					'Your subscription cancellation policy, as shown to the customer.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 			},
 			{
 				key: 'cancellation_policy_disclosure',
 				label: __(
 					'Cancellation policy disclosure',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				maxLength: 20000,
 				type: 'textarea',
 				description: __(
 					'An explanation of how and when the customer was shown your cancellation policy prior to purchase.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 			},
 			{
 				key: 'cancellation_rebuttal',
-				label: __( 'Cancellation rebuttal', 'woocommerce-payments' ),
+				label: __( 'Cancellation rebuttal', 'poocommerce-payments' ),
 				maxLength: 20000,
 				type: 'textarea',
 				description: __(
 					"A justification for why the customer's subscription was not canceled.",
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 			},
 		],
@@ -276,7 +276,7 @@ const sections = [
 	},
 	{
 		key: 'download_and_activity_logs',
-		title: __( 'Download and activity logs', 'woocommerce-payments' ),
+		title: __( 'Download and activity logs', 'poocommerce-payments' ),
 		fields: [
 			{
 				key: 'access_activity_log',
@@ -284,31 +284,31 @@ const sections = [
 				description: [
 					__(
 						'Provide at least two of the following pieces of information:',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					__(
 						"• Customer's IP address and their device's geographical location at the time of purchase",
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					__(
 						'• Device ID and name of the device',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					__(
 						'• Customer name and email address linked to their customer profile',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					__(
 						'• Evidence that the customer logged into their account for your business before the transaction date',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					__(
 						'• Evidence that your website or app was accessed by the cardholder for purchase or services on or after the transaction date',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					__(
 						'• Evidence that the same device and card used in the disputed payment was used in a previous payment that was not disputed',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 				],
 			},
@@ -318,14 +318,14 @@ const sections = [
 	},
 	{
 		key: 'download_and_activity_logs',
-		title: __( 'Download and activity logs', 'woocommerce-payments' ),
+		title: __( 'Download and activity logs', 'poocommerce-payments' ),
 		fields: [
 			{
 				key: 'access_activity_log',
 				type: 'file',
 				description: __(
 					'Any server or activity logs showing proof that the cardholder accessed or downloaded the purchased digital product. This information should include IP addresses, corresponding timestamps, and any detailed recorded activity.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 			},
 		],
@@ -339,24 +339,24 @@ const sections = [
 	},
 	{
 		key: 'service_details',
-		title: __( 'Service details', 'woocommerce-payments' ),
+		title: __( 'Service details', 'poocommerce-payments' ),
 		fields: [
 			{
 				key: 'service_date',
-				label: __( 'Service date', 'woocommerce-payments' ),
+				label: __( 'Service date', 'poocommerce-payments' ),
 				type: 'date',
 				description: __(
 					'The date on which the cardholder received or began receiving the purchased service.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 			},
 			{
 				key: 'service_documentation',
-				label: __( 'Proof of service', 'woocommerce-payments' ),
+				label: __( 'Proof of service', 'poocommerce-payments' ),
 				type: 'file',
 				description: __(
 					'Documentation showing proof that a service was provided to the cardholder. This could include a copy of a signed contract, work order, or other form of written agreement.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 			},
 		],
@@ -371,21 +371,21 @@ const sections = [
 	},
 	{
 		key: 'uncategorized',
-		title: __( 'Additional details', 'woocommerce-payments' ),
+		title: __( 'Additional details', 'poocommerce-payments' ),
 		description: __(
 			"Provide any extra evidence or statements you'd like the bank to see, either as text or by uploading a document.",
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		fields: [
 			{
 				key: 'uncategorized_text',
-				label: __( 'Additional details', 'woocommerce-payments' ),
+				label: __( 'Additional details', 'poocommerce-payments' ),
 				maxLength: 20000,
 				type: 'textarea',
 			},
 			{
 				key: 'uncategorized_file',
-				label: __( 'Additional document', 'woocommerce-payments' ),
+				label: __( 'Additional document', 'poocommerce-payments' ),
 				type: 'file',
 			},
 		],

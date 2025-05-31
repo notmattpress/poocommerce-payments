@@ -1,8 +1,8 @@
 <?php
 /**
- * WooCommerce Payments Multi-Currency Backend Currencies
+ * PooCommerce Payments Multi-Currency Backend Currencies
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\MultiCurrency;
@@ -76,7 +76,7 @@ class BackendCurrencies {
 	 * @return string The store currency code
 	 */
 	public function get_store_currency(): string {
-		return get_woocommerce_currency();
+		return get_poocommerce_currency();
 	}
 
 	/**
@@ -141,7 +141,7 @@ class BackendCurrencies {
 	 *
 	 * @return string The currency format.
 	 */
-	public function get_woocommerce_price_format( $currency_code ): string {
+	public function get_poocommerce_price_format( $currency_code ): string {
 		$currency_pos = $this->localization_service->get_currency_format( $currency_code )['currency_pos'];
 
 		switch ( $currency_pos ) {
@@ -174,7 +174,7 @@ class BackendCurrencies {
 				'decimal_separator'  => $this->get_price_decimal_separator( $this->get_store_currency() ),
 				'thousand_separator' => $this->get_price_thousand_separator( $this->get_store_currency() ),
 				'decimals'           => $this->is_zero_decimal_currency( $currency_code ) ? 0 : $this->get_price_decimals( $currency_code ),
-				'price_format'       => $this->get_woocommerce_price_format( $currency_code ),
+				'price_format'       => $this->get_poocommerce_price_format( $currency_code ),
 			],
 			$args
 		);

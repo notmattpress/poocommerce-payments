@@ -25,11 +25,11 @@ export const filterActions = {
 
 const radioOptions = [
 	{
-		label: __( 'Authorize and hold for review', 'woocommerce-payments' ),
+		label: __( 'Authorize and hold for review', 'poocommerce-payments' ),
 		value: filterActions.REVIEW,
 	},
 	{
-		label: __( 'Block Payment', 'woocommerce-payments' ),
+		label: __( 'Block Payment', 'poocommerce-payments' ),
 		value: filterActions.BLOCK,
 	},
 ];
@@ -107,7 +107,7 @@ const FraudProtectionRuleToggle: React.FC< FraudProtectionRuleToggleProps > = ( 
 							<strong>
 								{ __(
 									'Filter action',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								) }
 							</strong>
 
