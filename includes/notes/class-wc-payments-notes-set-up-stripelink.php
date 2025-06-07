@@ -1,12 +1,12 @@
 <?php
 /**
- * Set up Stripe Link note for WooCommerce inbox.
+ * Set up Stripe Link note for PooCommerce inbox.
  *
- * @package WooCommerce\Payments\Admin
+ * @package PooCommerce\Payments\Admin
  */
 
-use Automattic\WooCommerce\Admin\Notes\Note;
-use Automattic\WooCommerce\Admin\Notes\NoteTraits;
+use Automattic\PooCommerce\Admin\Notes\Note;
+use Automattic\PooCommerce\Admin\Notes\NoteTraits;
 use WCPay\Payment_Methods\Link_Payment_Method;
 use WCPay\Payment_Methods\CC_Payment_Method;
 
@@ -27,7 +27,7 @@ class WC_Payments_Notes_Set_Up_StripeLink {
 	/**
 	 * CTA button link
 	 */
-	const NOTE_DOCUMENTATION_URL = 'https://woocommerce.com/document/woopayments/payment-methods/link-by-stripe/';
+	const NOTE_DOCUMENTATION_URL = 'https://poocommerce.com/document/woopayments/payment-methods/link-by-stripe/';
 
 	/**
 	 * The account service instance.
@@ -69,15 +69,15 @@ class WC_Payments_Notes_Set_Up_StripeLink {
 
 		$note = new Note();
 
-		$note->set_title( __( 'Increase conversion at checkout', 'woocommerce-payments' ) );
-		$note->set_content( __( 'Reduce cart abandonment and create a frictionless checkout experience with Link by Stripe. Link autofills your customer’s payment and shipping details, so they can check out in just six seconds with the Link optimized experience.', 'woocommerce-payments' ) );
+		$note->set_title( __( 'Increase conversion at checkout', 'poocommerce-payments' ) );
+		$note->set_content( __( 'Reduce cart abandonment and create a frictionless checkout experience with Link by Stripe. Link autofills your customer’s payment and shipping details, so they can check out in just six seconds with the Link optimized experience.', 'poocommerce-payments' ) );
 		$note->set_content_data( (object) [] );
 		$note->set_type( Note::E_WC_ADMIN_NOTE_INFORMATIONAL );
 		$note->set_name( self::NOTE_NAME );
-		$note->set_source( 'woocommerce-payments' );
+		$note->set_source( 'poocommerce-payments' );
 		$note->add_action(
 			self::NOTE_NAME,
-			__( 'Set up now', 'woocommerce-payments' ),
+			__( 'Set up now', 'poocommerce-payments' ),
 			self::NOTE_DOCUMENTATION_URL,
 			'unactioned',
 			true

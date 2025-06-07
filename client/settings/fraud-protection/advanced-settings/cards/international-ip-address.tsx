@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import { __ } from '@wordpress/i18n';
-import { Link } from '@woocommerce/components';
+import { Link } from '@poocommerce/components';
 import interpolateComponents from '@automattic/interpolate-components';
 
 /**
@@ -22,14 +22,14 @@ const InternationalIPAddressRuleCard: React.FC = () => {
 
 	return (
 		<FraudProtectionRuleCard
-			title={ __( 'International IP Address', 'woocommerce-payments' ) }
+			title={ __( 'International IP Address', 'poocommerce-payments' ) }
 			id="international-ip-address-card"
 		>
 			{ supportsAllCountries && (
 				<FraudProtectionRuleCardNotice type={ 'warning' }>
 					{ __(
 						"This filter is disabled because you're currently selling to all countries.",
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 				</FraudProtectionRuleCardNotice>
 			) }
@@ -38,13 +38,13 @@ const InternationalIPAddressRuleCard: React.FC = () => {
 					setting={ 'international_ip_address' }
 					label={ __(
 						'Enable International IP Address filter',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 					description={ interpolateComponents( {
 						mixedString: __(
 							'This filter screens for {{ipAddressLink}}IP addresses{{/ipAddressLink}} outside of your ' +
 								'{{supportedCountriesLink}}supported countries{{/supportedCountriesLink}}. When enabled the payment will be blocked.',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						),
 						components: {
 							ipAddressLink: (
@@ -71,7 +71,7 @@ const InternationalIPAddressRuleCard: React.FC = () => {
 				{ __(
 					'You should be especially wary when a customer has an international IP address but uses domestic billing and ' +
 						'shipping information. Fraudsters often pretend to live in one location, but live and shop from another.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				) }
 			</FraudProtectionRuleDescription>
 			{ ! supportsAllCountries && (

@@ -29,7 +29,7 @@ interface CompletionOption {
  */
 export default {
 	name: 'transactions',
-	className: 'woocommerce-search__transactions-result',
+	className: 'poocommerce-search__transactions-result',
 	options( term: string ): Promise< CompletionOption[] > {
 		const query = term ? { search_term: term } : {};
 		return apiFetch( {
@@ -51,11 +51,11 @@ export default {
 		value: { label: string };
 	}[] {
 		const label = (
-			<span key="name" className="woocommerce-search__result-name">
+			<span key="name" className="poocommerce-search__result-name">
 				{ interpolateComponents( {
 					mixedString: __(
 						'All transactions with customer names or billing emails that include {{query /}}',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					components: {
 						query: (
@@ -81,7 +81,7 @@ export default {
 		return (
 			<span
 				key="name"
-				className="woocommerce-search__result-name"
+				className="poocommerce-search__result-name"
 				aria-label={ option.label }
 			>
 				{ match?.suggestionBeforeMatch }

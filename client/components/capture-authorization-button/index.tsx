@@ -50,7 +50,7 @@ const CaptureAuthorizationButton: React.FC< CaptureAuthorizationButtonProps > = 
 			isBusy={ isLoading && isCaptureRequested } // Button should be in busy state when the capture is requested
 			disabled={ ( isLoading && isCaptureRequested ) || isRequesting } // Button should be disabled when the capture is requested
 		>
-			{ children || __( 'Capture', 'woocommerce-payments' ) }
+			{ children || __( 'Capture', 'poocommerce-payments' ) }
 		</Button>
 	);
 };

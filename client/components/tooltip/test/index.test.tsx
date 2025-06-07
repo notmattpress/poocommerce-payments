@@ -245,7 +245,7 @@ describe( 'ClickTooltip', () => {
 				content={
 					// Tooltip content includes a link element which should be navigable via keyboard
 					<span>
-						Tooltip content <a href="woocommerce.com">Link</a>
+						Tooltip content <a href="poocommerce.com">Link</a>
 					</span>
 				}
 				onHide={ handleHideMock }

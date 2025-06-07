@@ -2,7 +2,7 @@
 /**
  * Class WCPay_Multi_Currency_Backend_Currencies_Tests
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\MultiCurrency\BackendCurrencies;
@@ -55,9 +55,9 @@ class WCPay_Multi_Currency_Backend_Currencies_Tests extends WCPAY_UnitTestCase {
 	}
 
 	/**
-	 * @dataProvider woocommerce_filter_provider
+	 * @dataProvider poocommerce_filter_provider
 	 */
-	public function test_registers_woocommerce_filter_with_one_enabled_currency( $filter, $function_name ) {
+	public function test_registers_poocommerce_filter_with_one_enabled_currency( $filter, $function_name ) {
 		$this->mock_multi_currency
 			->method( 'has_additional_currencies_enabled' )
 			->willReturn( false );
@@ -69,9 +69,9 @@ class WCPay_Multi_Currency_Backend_Currencies_Tests extends WCPAY_UnitTestCase {
 	}
 
 	/**
-	 * @dataProvider woocommerce_filter_provider
+	 * @dataProvider poocommerce_filter_provider
 	 */
-	public function test_registers_woocommerce_filter_with_multiple_enabled_currencies( $filter, $function_name ) {
+	public function test_registers_poocommerce_filter_with_multiple_enabled_currencies( $filter, $function_name ) {
 		$this->mock_multi_currency
 			->method( 'has_additional_currencies_enabled' )
 			->willReturn( true );
@@ -86,9 +86,9 @@ class WCPay_Multi_Currency_Backend_Currencies_Tests extends WCPAY_UnitTestCase {
 	}
 
 	/**
-	 * @dataProvider woocommerce_filter_provider
+	 * @dataProvider poocommerce_filter_provider
 	 */
-	public function test_doesnt_register_woocommerce_filter_on_frontend( $filter, $function_name ) {
+	public function test_doesnt_register_poocommerce_filter_on_frontend( $filter, $function_name ) {
 
 		$this->tear_down();
 		$this->backend_currencies = new BackendCurrencies( $this->mock_multi_currency, $this->mock_localization_service );
@@ -100,14 +100,14 @@ class WCPay_Multi_Currency_Backend_Currencies_Tests extends WCPAY_UnitTestCase {
 		);
 	}
 
-	public function woocommerce_filter_provider() {
+	public function poocommerce_filter_provider() {
 		return [
 			[ 'wc_price_args', 'build_wc_price_args' ],
 		];
 	}
 
 	public function test_get_price_currency_with_no_currency_argument() {
-		$store_currency = get_option( 'woocommerce_currency' );
+		$store_currency = get_option( 'poocommerce_currency' );
 		$this->assertSame( $store_currency, $this->backend_currencies->get_price_currency( [] ) );
 	}
 
@@ -145,20 +145,20 @@ class WCPay_Multi_Currency_Backend_Currencies_Tests extends WCPAY_UnitTestCase {
 		$this->assertEquals( ',', $this->backend_currencies->get_price_thousand_separator( 'EUR' ) );
 	}
 
-	public function test_get_woocommerce_price_format_returns_format_for_currency_pos() {
+	public function test_get_poocommerce_price_format_returns_format_for_currency_pos() {
 		$this->mock_localization_service->method( 'get_currency_format' )->with( 'EUR' )->willReturn( [ 'currency_pos' => 'left' ] );
 
-		$this->assertEquals( '%1$s%2$s', $this->backend_currencies->get_woocommerce_price_format( 'EUR' ) );
+		$this->assertEquals( '%1$s%2$s', $this->backend_currencies->get_poocommerce_price_format( 'EUR' ) );
 	}
 
 	/**
 	 * @dataProvider currency_format_provider
 	 */
-	public function test_get_woocommerce_price_format_outputs_right_format( $currency_pos, $expected_format ) {
+	public function test_get_poocommerce_price_format_outputs_right_format( $currency_pos, $expected_format ) {
 
 		$this->mock_localization_service->method( 'get_currency_format' )->with( 'EUR' )->willReturn( [ 'currency_pos' => $currency_pos ] );
 
-		$this->assertEquals( $expected_format, $this->backend_currencies->get_woocommerce_price_format( 'EUR' ) );
+		$this->assertEquals( $expected_format, $this->backend_currencies->get_poocommerce_price_format( 'EUR' ) );
 	}
 
 	public function currency_format_provider() {
