@@ -185,7 +185,7 @@ export default ( { query }: { query: { id: string } } ) => {
 			createInfoNotice(
 				__(
 					'Please wait until file upload is finished',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				)
 			);
 			return;
@@ -200,19 +200,19 @@ export default ( { query }: { query: { id: string } } ) => {
 
 			createSuccessNotice(
 				submit
-					? __( 'Evidence submitted!', 'woocommerce-payments' )
-					: __( 'Evidence saved!', 'woocommerce-payments' ),
+					? __( 'Evidence submitted!', 'poocommerce-payments' )
+					: __( 'Evidence saved!', 'poocommerce-payments' ),
 				{
 					actions: [
 						{
 							label: submit
 								? __(
 										'View submitted evidence',
-										'woocommerce-payments'
+										'poocommerce-payments'
 								  )
 								: __(
 										'Return to evidence submission',
-										'woocommerce-payments'
+										'poocommerce-payments'
 								  ),
 							url: getAdminUrl( {
 								page: 'wc-admin',
@@ -284,9 +284,9 @@ export default ( { query }: { query: { id: string } } ) => {
 			const message = submit
 				? __(
 						'Failed to submit evidence. (%s)',
-						'woocommerce-payments'
+						'poocommerce-payments'
 				  )
-				: __( 'Failed to save evidence. (%s)', 'woocommerce-payments' );
+				: __( 'Failed to save evidence. (%s)', 'poocommerce-payments' );
 			createErrorNotice(
 				sprintf(
 					message,
@@ -370,7 +370,7 @@ export default ( { query }: { query: { id: string } } ) => {
 					"The files you've attached to this dispute as evidence will exceed the limit for a " +
 						"dispute's total size. Try using smaller files as evidence. Hint: if you've attached " +
 						'images, you might want to try providing them in lower resolutions.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				)
 			);
 			return true;
@@ -451,7 +451,7 @@ export default ( { query }: { query: { id: string } } ) => {
 		if ( pristine || redirectAfterSave ) return;
 		return __(
 			'There are unsaved changes on this page. Are you sure you want to leave and discard the unsaved changes?',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		);
 	} );
 	useEffect( () => {
@@ -464,14 +464,14 @@ export default ( { query }: { query: { id: string } } ) => {
 		const disputeReasonSummary = reasons[ dispute.reason ]?.summary || [];
 		return [
 			{
-				title: __( 'Dispute Amount', 'woocommerce-payments' ),
+				title: __( 'Dispute Amount', 'poocommerce-payments' ),
 				content: formatExplicitCurrency(
 					dispute.amount,
 					dispute.currency
 				),
 			},
 			{
-				title: __( 'Disputed On', 'woocommerce-payments' ),
+				title: __( 'Disputed On', 'poocommerce-payments' ),
 				content: dispute.created
 					? formatDateTimeFromTimestamp( dispute.created, {
 							separator: ', ',
@@ -480,7 +480,7 @@ export default ( { query }: { query: { id: string } } ) => {
 					: '–',
 			},
 			{
-				title: __( 'Reason', 'woocommerce-payments' ),
+				title: __( 'Reason', 'poocommerce-payments' ),
 				content: (
 					<>
 						{ reasons[ dispute.reason ]?.display || dispute.reason }
@@ -488,7 +488,7 @@ export default ( { query }: { query: { id: string } } ) => {
 							<ClickTooltip
 								buttonLabel={ __(
 									'Learn more',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								) }
 								content={
 									<div className="dispute-reason-tooltip">
@@ -501,13 +501,13 @@ export default ( { query }: { query: { id: string } } ) => {
 										</Paragraphs>
 										<p>
 											<a
-												href="https://woocommerce.com/document/woopayments/fraud-and-disputes/managing-disputes/"
+												href="https://poocommerce.com/document/woopayments/fraud-and-disputes/managing-disputes/"
 												target="_blank"
 												rel="noopener noreferrer"
 											>
 												{ __(
 													'Learn more',
-													'woocommerce-payments'
+													'poocommerce-payments'
 												) }
 											</a>
 										</p>
@@ -519,7 +519,7 @@ export default ( { query }: { query: { id: string } } ) => {
 				),
 			},
 			{
-				title: __( 'Respond By', 'woocommerce-payments' ),
+				title: __( 'Respond By', 'poocommerce-payments' ),
 				content: (
 					<DisputeDueByDate
 						dueBy={ dispute.evidence_details?.due_by }
@@ -527,7 +527,7 @@ export default ( { query }: { query: { id: string } } ) => {
 				),
 			},
 			{
-				title: __( 'Order', 'woocommerce-payments' ),
+				title: __( 'Order', 'poocommerce-payments' ),
 				content: <OrderLink order={ dispute.order } />,
 			},
 		];
@@ -537,28 +537,28 @@ export default ( { query }: { query: { id: string } } ) => {
 	const recommendedDocumentFields = [
 		{
 			key: 'receipt',
-			label: __( 'Order receipt', 'woocommerce-payments' ),
+			label: __( 'Order receipt', 'poocommerce-payments' ),
 		},
 		{
 			key: 'customer_communication',
-			label: __( 'Customer communication', 'woocommerce-payments' ),
+			label: __( 'Customer communication', 'poocommerce-payments' ),
 		},
 		{
 			key: 'customer_signature',
-			label: __( 'Customer signature', 'woocommerce-payments' ),
+			label: __( 'Customer signature', 'poocommerce-payments' ),
 		},
 		{
 			key: 'refund_policy',
 			label: __(
 				'Copy of the store refund policy',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 		},
 		{
 			key: 'uncategorized_file',
 			label: __(
 				'Any additional documents you think will support the case',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 		},
 	];
@@ -567,7 +567,7 @@ export default ( { query }: { query: { id: string } } ) => {
 	const recommendedShippingDocumentFields = [
 		{
 			key: 'shipping_documentation',
-			label: __( 'Proof of shipping', 'woocommerce-payments' ),
+			label: __( 'Proof of shipping', 'poocommerce-payments' ),
 		},
 	];
 
@@ -615,13 +615,13 @@ export default ( { query }: { query: { id: string } } ) => {
 					? sprintf(
 							__(
 								'<strong>WooPayments does not determine the outcome of the dispute process</strong> and is not liable for any chargebacks. <strong>%1$s</strong> makes the decision in this process.',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							bankNameValue
 					  )
 					: __(
 							"<strong>WooPayments does not determine the outcome of the dispute process</strong> and is not liable for any chargebacks. The cardholder's bank makes the decision in this process.",
-							'woocommerce-payments'
+							'poocommerce-payments'
 					  ),
 				{
 					strong: <strong />,
@@ -706,7 +706,7 @@ export default ( { query }: { query: { id: string } } ) => {
 						>
 							{ __(
 								'The cover letter has been manually edited and will not be automatically updated with new evidence.',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 						</InlineNotice>
 					) }
@@ -744,14 +744,14 @@ export default ( { query }: { query: { id: string } } ) => {
 							} ) )
 						}
 					>
-						{ __( 'Cancel', 'woocommerce-payments' ) }
+						{ __( 'Cancel', 'poocommerce-payments' ) }
 					</Button>
 					<div className="wcpay-dispute-evidence-new__button-group-right">
 						<Button
 							variant="tertiary"
 							onClick={ () => doSave( false ) }
 						>
-							{ __( 'Save for later', 'woocommerce-payments' ) }
+							{ __( 'Save for later', 'poocommerce-payments' ) }
 						</Button>
 						<Button
 							variant="primary"
@@ -759,7 +759,7 @@ export default ( { query }: { query: { id: string } } ) => {
 								handleStepChange( currentStep + 1 )
 							}
 						>
-							{ __( 'Next', 'woocommerce-payments' ) }
+							{ __( 'Next', 'poocommerce-payments' ) }
 						</Button>
 					</div>
 				</div>
@@ -772,14 +772,14 @@ export default ( { query }: { query: { id: string } } ) => {
 						variant="secondary"
 						onClick={ () => setCurrentStep( ( s ) => s - 1 ) }
 					>
-						{ __( 'Back', 'woocommerce-payments' ) }
+						{ __( 'Back', 'poocommerce-payments' ) }
 					</Button>
 					<div className="wcpay-dispute-evidence-new__button-group-right">
 						<Button
 							variant="tertiary"
 							onClick={ () => doSave( false ) }
 						>
-							{ __( 'Save for later', 'woocommerce-payments' ) }
+							{ __( 'Save for later', 'poocommerce-payments' ) }
 						</Button>
 						<Button
 							variant="primary"
@@ -787,7 +787,7 @@ export default ( { query }: { query: { id: string } } ) => {
 								handleStepChange( currentStep + 1 )
 							}
 						>
-							{ __( 'Next', 'woocommerce-payments' ) }
+							{ __( 'Next', 'poocommerce-payments' ) }
 						</Button>
 					</div>
 				</div>
@@ -799,17 +799,17 @@ export default ( { query }: { query: { id: string } } ) => {
 					variant="secondary"
 					onClick={ () => setCurrentStep( ( s ) => s - 1 ) }
 				>
-					{ __( 'Back', 'woocommerce-payments' ) }
+					{ __( 'Back', 'poocommerce-payments' ) }
 				</Button>
 				<div className="wcpay-dispute-evidence-new__button-group-right">
 					<Button
 						variant="tertiary"
 						onClick={ () => doSave( false ) }
 					>
-						{ __( 'Save for later', 'woocommerce-payments' ) }
+						{ __( 'Save for later', 'poocommerce-payments' ) }
 					</Button>
 					<Button variant="primary" onClick={ () => doSave( true ) }>
-						{ __( 'Submit', 'woocommerce-payments' ) }
+						{ __( 'Submit', 'poocommerce-payments' ) }
 					</Button>
 				</div>
 			</div>

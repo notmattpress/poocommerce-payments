@@ -187,31 +187,31 @@ install_db() {
 	mysqladmin create $DB_NAME $MYSQLADMIN_FLAGS
 }
 
-install_woocommerce() {
+install_poocommerce() {
 	WC_INSTALL_EXTRA=''
-	INSTALLED_WC_VERSION=$(wp plugin get woocommerce --field=version)
+	INSTALLED_WC_VERSION=$(wp plugin get poocommerce --field=version)
 
 	if [[ $WC_VERSION == 'beta' ]]; then
 		# Get the latest non-trunk version number from the .org repo. This will usually be the latest release, beta, or rc.
-		WC_VERSION=$(curl https://api.wordpress.org/plugins/info/1.0/woocommerce.json | jq -r '.versions | with_entries(select(.key|match("beta";"i"))) | keys[-1]' --sort-keys)
+		WC_VERSION=$(curl https://api.wordpress.org/plugins/info/1.0/poocommerce.json | jq -r '.versions | with_entries(select(.key|match("beta";"i"))) | keys[-1]' --sort-keys)
 	fi
 
 	if [[ -n $INSTALLED_WC_VERSION ]] && [[ $WC_VERSION == 'latest' ]]; then
-		# WooCommerce is already installed, we just must update it to the latest stable version
-		wp plugin update woocommerce
-		wp plugin activate woocommerce
+		# PooCommerce is already installed, we just must update it to the latest stable version
+		wp plugin update poocommerce
+		wp plugin activate poocommerce
 	else
 		if [[ $INSTALLED_WC_VERSION != $WC_VERSION ]]; then
-			# WooCommerce is installed but it's the wrong version, overwrite the installed version
+			# PooCommerce is installed but it's the wrong version, overwrite the installed version
 			WC_INSTALL_EXTRA+=" --force"
 		fi
 		if [[ $WC_VERSION != 'latest' ]] && [[ $WC_VERSION != 'beta' ]]; then
 			WC_INSTALL_EXTRA+=" --version=$WC_VERSION"
 		fi
-		wp plugin install woocommerce --activate$WC_INSTALL_EXTRA
+		wp plugin install poocommerce --activate$WC_INSTALL_EXTRA
 
 		# Work around to get database tables installed for WC 6.4.0-beta
-		# See https://github.com/woocommerce/woocommerce-admin/pull/8384
+		# See https://github.com/poocommerce/poocommerce-admin/pull/8384
 		wp cron event run --due-now
 	fi
 }
@@ -242,4 +242,4 @@ install_db
 configure_wp
 install_test_suite
 install_gutenberg
-install_woocommerce
+install_poocommerce

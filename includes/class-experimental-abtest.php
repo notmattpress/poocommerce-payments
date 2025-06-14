@@ -9,7 +9,7 @@
  *
  * This class should not be used externally.
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  * @link https://packagist.org/packages/automattic/jetpack-abtest
  */
 
@@ -40,7 +40,7 @@ final class Experimental_Abtest {
 	 *
 	 * @var string
 	 */
-	private $platform = 'woocommerce';
+	private $platform = 'poocommerce';
 
 	/**
 	 * Whether trcking consent is given.
@@ -154,7 +154,7 @@ final class Experimental_Abtest {
 		$args = [
 			'experiment_name'  => $test_name,
 			'anon_id'          => $this->anon_id,
-			'woo_country_code' => get_option( 'woocommerce_default_country' ),
+			'woo_country_code' => get_option( 'poocommerce_default_country' ),
 		];
 
 		$url = add_query_arg(

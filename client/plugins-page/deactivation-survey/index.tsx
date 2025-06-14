@@ -29,7 +29,7 @@ const PluginDisableSurvey = ( {
 			title={
 				<img
 					src={ WooPaymentsIcon }
-					alt={ __( 'WooPayments Logo', 'woocommerce-payments' ) }
+					alt={ __( 'WooPayments Logo', 'poocommerce-payments' ) }
 					className="woopayments-disable-survey-logo"
 				/>
 			}
@@ -43,7 +43,7 @@ const PluginDisableSurvey = ( {
 				<iframe
 					title={ __(
 						'WooPayments Disable Survey',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 					src="https://automattic.survey.fm/woopayments-exit-feedback"
 					className="woopayments-disable-survey-iframe"
