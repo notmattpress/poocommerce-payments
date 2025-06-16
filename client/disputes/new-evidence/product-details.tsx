@@ -30,14 +30,14 @@ const ProductDetails: React.FC< ProductDetailsProps > = ( {
 	return (
 		<section className="wcpay-dispute-evidence-product-details">
 			<h3 className="wcpay-dispute-evidence-product-details__heading">
-				{ __( 'Product details', 'woocommerce-payments' ) }
+				{ __( 'Product details', 'poocommerce-payments' ) }
 			</h3>
 			<div className="wcpay-dispute-evidence-product-details__field-group">
 				<SelectControl
-					label={ __( 'PRODUCT TYPE', 'woocommerce-payments' ) }
+					label={ __( 'PRODUCT TYPE', 'poocommerce-payments' ) }
 					help={ __(
 						'First select the kind of product you fulfilled.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 					value={ productType }
 					onChange={ onProductTypeChange }
@@ -45,28 +45,28 @@ const ProductDetails: React.FC< ProductDetailsProps > = ( {
 						{
 							label: __(
 								'Physical products',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							value: 'physical_product',
 						},
 						{
 							label: __(
 								'Digital products',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							value: 'digital_product_or_service',
 						},
 						{
 							label: __(
 								'Offline service',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							value: 'offline_service',
 						},
 						{
 							label: __(
 								'Multiple product types',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							value: 'multiple',
 						},
@@ -78,11 +78,11 @@ const ProductDetails: React.FC< ProductDetailsProps > = ( {
 				<TextareaControl
 					label={ __(
 						'PRODUCT DESCRIPTION',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 					help={ __(
 						'Please make sure this is an accurate description of the product.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 					value={ productDescription }
 					onChange={ onProductDescriptionChange }

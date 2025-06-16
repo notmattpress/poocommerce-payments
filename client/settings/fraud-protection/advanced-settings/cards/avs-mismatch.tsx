@@ -14,19 +14,19 @@ import FraudProtectionRuleToggle from '../rule-toggle';
 const AVSMismatchRuleCard: React.FC = () => {
 	return (
 		<FraudProtectionRuleCard
-			title={ __( 'AVS Mismatch', 'woocommerce-payments' ) }
+			title={ __( 'AVS Mismatch', 'poocommerce-payments' ) }
 			id="avs-mismatch-card"
 		>
 			<FraudProtectionRuleToggle
 				setting="avs_verification"
 				label={ __(
 					'Enable AVS Mismatch filter',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				) }
 				description={ __(
 					'This filter compares the street number and the post code submitted by the customer against the data on ' +
 						'file with the card issuer. When enabled the payment will be blocked.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				) }
 			/>
 
@@ -34,7 +34,7 @@ const AVSMismatchRuleCard: React.FC = () => {
 				{ __(
 					'Buyers who can provide the street number and post code on file with the issuing bank ' +
 						'are more likely to be the actual account holder. AVS matches, however, are not a guarantee.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				) }
 			</FraudProtectionRuleDescription>
 		</FraudProtectionRuleCard>

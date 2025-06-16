@@ -76,7 +76,7 @@ const PaymentDetailsPaymentMethod = ( { charge = {}, isLoading } ) => {
 			<CardHeader useBundledComponent={ shouldUseBundledComponents }>
 				<Loadable
 					isLoading={ isLoading }
-					value={ __( 'Payment method', 'woocommerce-payments' ) }
+					value={ __( 'Payment method', 'poocommerce-payments' ) }
 				/>
 			</CardHeader>
 			<CardBody useBundledComponent={ shouldUseBundledComponents }>

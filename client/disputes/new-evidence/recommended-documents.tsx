@@ -32,12 +32,12 @@ const RecommendedDocuments: React.FC< RecommendedDocumentsProps > = ( {
 	return (
 		<section className="wcpay-dispute-evidence-recommended-documents">
 			<h3 className="wcpay-dispute-evidence-recommended-documents__heading">
-				{ __( 'Recommended documents', 'woocommerce-payments' ) }
+				{ __( 'Recommended documents', 'poocommerce-payments' ) }
 			</h3>
 			<div className="wcpay-dispute-evidence-recommended-documents__subheading">
 				{ __(
 					'We recommend providing the following documents. All fields are optional.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				) }
 			</div>
 			<ul className="wcpay-dispute-evidence-recommended-documents__list">

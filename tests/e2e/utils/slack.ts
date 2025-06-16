@@ -13,8 +13,8 @@ import {
 } from '@slack/web-api';
 
 /**
- * This integration was adapted from @woocommerce/e2e-environment.
- * https://github.com/woocommerce/woocommerce/blob/trunk/packages/js/e2e-environment/src/slack/reporter.js
+ * This integration was adapted from @poocommerce/e2e-environment.
+ * https://github.com/poocommerce/poocommerce/blob/trunk/packages/js/e2e-environment/src/slack/reporter.js
  */
 
 const {

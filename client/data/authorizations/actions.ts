@@ -2,7 +2,7 @@
 /**
  * External Dependencies
  */
-import { Query } from '@woocommerce/navigation';
+import { Query } from '@poocommerce/navigation';
 import { apiFetch } from '@wordpress/data-controls';
 import { controls } from '@wordpress/data';
 import { sprintf, __ } from '@wordpress/i18n';
@@ -42,7 +42,7 @@ const getErrorMessage = ( apiError: WCPayError ): string => {
 		) {
 			return __(
 				'The payment amount is too small to be processed.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			);
 		}
 
@@ -56,7 +56,7 @@ const getErrorMessage = ( apiError: WCPayError ): string => {
 			/* translators: %1$s: minimum amount, %2$s: currency code */
 			__(
 				'The minimum amount that can be processed is %1$s %2$s.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			amount,
 			currency.toUpperCase()
@@ -69,19 +69,19 @@ const getErrorMessage = ( apiError: WCPayError ): string => {
 	> = {
 		wcpay_missing_order: __(
 			'The order could not be found.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		wcpay_refunded_order_uncapturable: __(
 			'Payment cannot be processed for partially or fully refunded orders.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		wcpay_intent_order_mismatch: __(
 			'The payment cannot be processed due to a mismatch with order details.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		wcpay_payment_uncapturable: __(
 			'This payment cannot be processed in its current state.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		// eslint-disable-next-line @typescript-eslint/naming-convention
 		wcpay_capture_error: ( error: WCPayError ): string => {
@@ -90,16 +90,16 @@ const getErrorMessage = ( apiError: WCPayError ): string => {
 			}
 			return __(
 				'The payment capture failed to complete.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			);
 		},
 		wcpay_cancel_error: __(
 			'The payment cancellation failed to complete.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		wcpay_server_error: __(
 			'An unexpected error occurred. Please try again later.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 	};
 
@@ -111,7 +111,7 @@ const getErrorMessage = ( apiError: WCPayError ): string => {
 		errorHandler ??
 		__(
 			'Unable to process the payment. Please try again later.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		)
 	);
 };
@@ -263,7 +263,7 @@ export function* submitCaptureAuthorization(
 				// translators: %s Order id
 				__(
 					'Payment for order #%s captured successfully.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				orderId
 			)
@@ -273,7 +273,7 @@ export function* submitCaptureAuthorization(
 			// translators: %s Order id
 			__(
 				'There has been an error capturing the payment for order #%s.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			orderId
 		);
@@ -393,7 +393,7 @@ export function* submitCancelAuthorization(
 				// translators: %s Order id
 				__(
 					'Payment for order #%s canceled successfully.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				orderId
 			)
@@ -403,7 +403,7 @@ export function* submitCancelAuthorization(
 			// translators: %s Order id
 			__(
 				'There has been an error canceling the payment for order #%s.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			orderId
 		);
