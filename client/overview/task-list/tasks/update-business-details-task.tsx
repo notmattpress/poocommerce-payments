@@ -43,7 +43,7 @@ export const getUpdateBusinessDetailsTask = (
 			/* translators: %s - formatted requirements current deadline (date) */
 			__(
 				'Update by %s to avoid a disruption in payouts.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			formatDateTimeFromTimestamp( currentDeadline, {
 				customFormat: 'ga M j, Y',
@@ -69,14 +69,14 @@ export const getUpdateBusinessDetailsTask = (
 				/* translators: <a> - dashboard login URL */
 				__(
 					'Payments and payouts are disabled for this account until setup is completed.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				);
 		} else {
 			accountDetailsTaskDescription =
 				/* translators: <a> - dashboard login URL */
 				__(
 					'Payments and payouts are disabled for this account until missing business information is updated.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				);
 		}
 	}
@@ -136,11 +136,11 @@ export const getUpdateBusinessDetailsTask = (
 	let actionLabel;
 
 	if ( hasMultipleErrors ) {
-		actionLabel = __( 'More details', 'woocommerce-payments' );
+		actionLabel = __( 'More details', 'poocommerce-payments' );
 	} else if ( ! detailsSubmitted ) {
-		actionLabel = __( 'Finish setup', 'woocommerce-payments' );
+		actionLabel = __( 'Finish setup', 'poocommerce-payments' );
 	} else {
-		actionLabel = __( 'Update', 'woocommerce-payments' );
+		actionLabel = __( 'Update', 'poocommerce-payments' );
 	}
 
 	return {
@@ -149,12 +149,12 @@ export const getUpdateBusinessDetailsTask = (
 		title: ! detailsSubmitted
 			? sprintf(
 					/* translators: %s: WooPayments */
-					__( 'Finish setting up %s', 'woocommerce-payments' ),
+					__( 'Finish setting up %s', 'poocommerce-payments' ),
 					'WooPayments'
 			  )
 			: sprintf(
 					/* translators: %s: WooPayments */
-					__( 'Update %s business details', 'woocommerce-payments' ),
+					__( 'Update %s business details', 'poocommerce-payments' ),
 					'WooPayments'
 			  ),
 		content: accountDetailsTaskDescription,

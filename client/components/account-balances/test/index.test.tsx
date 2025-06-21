@@ -235,7 +235,7 @@ describe( 'AccountBalances', () => {
 		} );
 		expect( within( tooltip ).getByRole( 'link' ) ).toHaveAttribute(
 			'href',
-			'https://woocommerce.com/document/woopayments/payouts/payout-schedule/'
+			'https://poocommerce.com/document/woopayments/payouts/payout-schedule/'
 		);
 	} );
 
@@ -254,7 +254,7 @@ describe( 'AccountBalances', () => {
 		} );
 		expect( within( tooltip ).getAllByRole( 'link' )[ 1 ] ).toHaveAttribute(
 			'href',
-			'https://woocommerce.com/document/woopayments/fees-and-debits/account-showing-negative-balance/'
+			'https://poocommerce.com/document/woopayments/fees-and-debits/account-showing-negative-balance/'
 		);
 	} );
 
@@ -273,7 +273,7 @@ describe( 'AccountBalances', () => {
 		} );
 		expect( within( tooltip ).getAllByRole( 'link' )[ 1 ] ).toHaveAttribute(
 			'href',
-			'https://woocommerce.com/document/woopayments/fees-and-debits/account-showing-negative-balance/'
+			'https://poocommerce.com/document/woopayments/fees-and-debits/account-showing-negative-balance/'
 		);
 	} );
 
@@ -293,7 +293,7 @@ describe( 'AccountBalances', () => {
 		} );
 		expect( within( tooltip ).getByRole( 'link' ) ).toHaveAttribute(
 			'href',
-			'https://woocommerce.com/document/woopayments/payouts/payout-schedule/'
+			'https://poocommerce.com/document/woopayments/payouts/payout-schedule/'
 		);
 	} );
 

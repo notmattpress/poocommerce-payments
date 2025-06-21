@@ -1,6 +1,6 @@
 # `Get_Setup_Intention` request class
 
-[ℹ️ This document is a part of __WooCommerce Payments Server Requests__](../README.md)
+[ℹ️ This document is a part of __PooCommerce Payments Server Requests__](../README.md)
 
 ## Description
 

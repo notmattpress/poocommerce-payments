@@ -73,7 +73,7 @@ const addFooterCartEventListener = () => {
 const maybeObserveMiniCart = () => {
 	// Check if the widget is available on the page.
 	if (
-		! document.querySelector( '[data-block-name="woocommerce/mini-cart"]' )
+		! document.querySelector( '[data-block-name="poocommerce/mini-cart"]' )
 	) {
 		return;
 	}
@@ -125,7 +125,7 @@ const shouldPrefetchEncryptedSessionData = async () => {
 
 /**
  * The callback function to be called when an item is added to the cart.
- * Note: the 'experimental__woocommerce_blocks-cart-add-item' hook is triggered
+ * Note: the 'experimental__poocommerce_blocks-cart-add-item' hook is triggered
  * after an item is added to the cart. So, no special handling is needed here.
  *
  * @return {Promise<void>} A promise that resolves when the callback is complete.
@@ -233,19 +233,19 @@ window.addEventListener( 'load', async () => {
 	// Note, although the following hooks are prefixed with 'experimental__', they will be
 	// graduated to stable in the near future (it'll include the 'experimental__' prefix).
 	addAction(
-		'experimental__woocommerce_blocks-cart-add-item',
+		'experimental__poocommerce_blocks-cart-add-item',
 		'wcpay_woopay_direct_checkout',
 		addItemCallback
 	);
 
 	addAction(
-		'experimental__woocommerce_blocks-cart-set-item-quantity',
+		'experimental__poocommerce_blocks-cart-set-item-quantity',
 		'wcpay_woopay_direct_checkout',
 		debounceSetItemQtyCallback
 	);
 
 	addAction(
-		'experimental__woocommerce_blocks-cart-remove-item',
+		'experimental__poocommerce_blocks-cart-remove-item',
 		'wcpay_woopay_direct_checkout',
 		removeItemCallback
 	);

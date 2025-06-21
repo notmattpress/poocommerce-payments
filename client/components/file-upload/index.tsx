@@ -102,7 +102,7 @@ export const FileUploadControl = ( {
 							) => handleButtonClick( event, openFileDialog ) }
 						>
 							{ uploadButtonLabel ||
-								__( 'Upload file', 'woocommerce-payments' ) }
+								__( 'Upload file', 'poocommerce-payments' ) }
 						</Button>
 					) }
 				></FormFileUpload>
@@ -121,7 +121,7 @@ export const FileUploadControl = ( {
 						className="delete-uploaded-file-button"
 						aria-label={ __(
 							'Remove file',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 						icon={ <TrashIcon size={ 18 } /> }
 						onClick={ () => onFileRemove( field.key ) }
@@ -149,7 +149,7 @@ export const UploadedReadOnly = ( {
 						? `: ${ fileName }`
 						: __(
 								': Evidence file was not uploaded',
-								'woocommerce-payments'
+								'poocommerce-payments'
 						  )
 				}
 				showPreview={ showPreview }

@@ -34,7 +34,7 @@ const DisputeNotice: React.FC< DisputeNoticeProps > = ( {
 		reasons[ dispute.reason ]?.claim ??
 		__(
 			'The cardholder claims this is an unauthorized charge.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		);
 
 	// Format the deadline date
@@ -53,7 +53,7 @@ const DisputeNotice: React.FC< DisputeNoticeProps > = ( {
 	if ( paymentMethod === 'klarna' && isInquiry( dispute.status ) ) {
 		noticeText = __(
 			'Klarna inquiries may mean that the customer is trying to return their item(s).',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		);
 	}
 	// Handle regular inquiries
@@ -63,7 +63,7 @@ const DisputeNotice: React.FC< DisputeNoticeProps > = ( {
 			? sprintf(
 					__(
 						'<strong>%1$s</strong> Submit the evidence to <strong>%2$s</strong> by <strong>%3$s</strong> if you believe the claim to be invalid, or issue a refund.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					shopperDisputeReason,
 					bankName,
@@ -72,7 +72,7 @@ const DisputeNotice: React.FC< DisputeNoticeProps > = ( {
 			: sprintf(
 					__(
 						"<strong>%1$s</strong> Submit the evidence to <strong>Cardholder's bank</strong> by <strong>%2$s</strong> if you believe the claim to be invalid, or issue a refund.",
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					shopperDisputeReason,
 					dueByDate
@@ -85,7 +85,7 @@ const DisputeNotice: React.FC< DisputeNoticeProps > = ( {
 			? sprintf(
 					__(
 						'<strong>%1$s</strong> Challenge the dispute with <strong>%2$s</strong> by <strong>%3$s</strong> if you believe the claim to be invalid, or accept to forfeit the funds and pay the dispute fee.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					shopperDisputeReason,
 					bankName,
@@ -94,7 +94,7 @@ const DisputeNotice: React.FC< DisputeNoticeProps > = ( {
 			: sprintf(
 					__(
 						"<strong>%1$s</strong> Challenge the dispute with <strong>Cardholder's bank</strong> by <strong>%2$s</strong> if you believe the claim to be invalid, or accept to forfeit the funds and pay the dispute fee.",
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					shopperDisputeReason,
 					dueByDate
