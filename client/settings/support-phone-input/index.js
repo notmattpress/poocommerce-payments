@@ -31,20 +31,20 @@ const SupportPhoneInput = ( { setInputVallid } ) => {
 	if ( supportPhone === '' ) {
 		supportPhoneError = __(
 			'Support phone number cannot be empty.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		);
 	}
 	if ( ! isTestPhoneValid && ! isPhoneValid && ! isEmptyPhoneValid ) {
 		supportPhoneError = __(
 			'Please enter a valid phone number.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		);
 	}
 
 	if ( supportPhone === '' && currentPhone !== '' ) {
 		supportPhoneError = __(
 			'Support phone number cannot be empty once it has been set before, please specify.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		);
 	}
 
@@ -54,11 +54,11 @@ const SupportPhoneInput = ( { setInputVallid } ) => {
 		}
 	}, [ supportPhoneError, setInputVallid ] );
 
-	let labelText = __( 'Support phone number', 'woocommerce-payments' );
+	let labelText = __( 'Support phone number', 'poocommerce-payments' );
 	if ( isTestModeOnboarding ) {
 		labelText += __(
 			' (+1 0000000000 can be used in sandbox mode)',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		);
 	}
 	return (
@@ -72,7 +72,7 @@ const SupportPhoneInput = ( { setInputVallid } ) => {
 				className="settings__account-business-support-phone-input no-top-margin"
 				help={ __(
 					'This may be visible on receipts, invoices, and automated emails from your store.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				) }
 				label={ labelText }
 				id="account-business-support-phone-input"

@@ -909,7 +909,7 @@ exports[`Dispute evidence page renders correctly 1`] = `
 
 <div>
   <div
-    class="wcpay-dispute-evidence woocommerce-payments-page is-narrow"
+    class="wcpay-dispute-evidence poocommerce-payments-page is-narrow"
     id=""
   >
     <div

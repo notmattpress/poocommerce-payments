@@ -1,8 +1,8 @@
 <?php
 /**
- * WooCommerce Payments Multi-Currency User Settings
+ * PooCommerce Payments Multi-Currency User Settings
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\MultiCurrency;
@@ -38,8 +38,8 @@ class UserSettings {
 	public function init_hooks() {
 		// Only show currency selector if more than one currency is enabled.
 		if ( 1 < count( $this->multi_currency->get_enabled_currencies() ) ) {
-			add_action( 'woocommerce_edit_account_form', [ $this, 'add_presentment_currency_switch' ] );
-			add_action( 'woocommerce_save_account_details', [ $this, 'save_presentment_currency' ] );
+			add_action( 'poocommerce_edit_account_form', [ $this, 'add_presentment_currency_switch' ] );
+			add_action( 'poocommerce_save_account_details', [ $this, 'save_presentment_currency' ] );
 		}
 	}
 
@@ -50,8 +50,8 @@ class UserSettings {
 	 */
 	public function add_presentment_currency_switch() {
 		?>
-		<p class="woocommerce-form-row woocommerce-form-row--first form-row form-row-first">
-			<label for="wcpay_selected_currency"><?php esc_html_e( 'Default currency', 'woocommerce-payments' ); ?></label>
+		<p class="poocommerce-form-row poocommerce-form-row--first form-row form-row-first">
+			<label for="wcpay_selected_currency"><?php esc_html_e( 'Default currency', 'poocommerce-payments' ); ?></label>
 			<select
 				name="wcpay_selected_currency"
 				id="wcpay_selected_currency"
@@ -66,7 +66,7 @@ class UserSettings {
 				}
 				?>
 			</select>
-			<span><em><?php esc_html_e( 'Select your preferred currency for shopping and payments.', 'woocommerce-payments' ); ?></em></span>
+			<span><em><?php esc_html_e( 'Select your preferred currency for shopping and payments.', 'poocommerce-payments' ); ?></em></span>
 		</p>
 		<div class="clear"></div>
 		<?php

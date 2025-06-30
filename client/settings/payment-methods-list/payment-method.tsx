@@ -62,7 +62,7 @@ const PaymentMethodLabel = ( {
 			{ label }
 			{ PAYMENT_METHOD_IDS.CARD === id && (
 				<span className="payment-method__required-label">
-					{ '(' + __( 'Required', 'woocommerce-payments' ) + ')' }
+					{ '(' + __( 'Required', 'poocommerce-payments' ) + ')' }
 				</span>
 			) }
 			{ chip && <Chip message={ chip } type={ chipType } /> }
@@ -176,7 +176,7 @@ const PaymentMethod = ( {
 										aria-label={ sprintf(
 											__(
 												'Base transaction fees: %s',
-												'woocommerce-payments'
+												'poocommerce-payments'
 											),
 											formatMethodFeesDescription(
 												accountFees[ id ]
