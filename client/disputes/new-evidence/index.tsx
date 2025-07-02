@@ -7,6 +7,11 @@ import React, { useState, useEffect, useMemo } from 'react';
 import apiFetch from '@wordpress/api-fetch';
 import { __, sprintf } from '@wordpress/i18n';
 import { useDispatch } from '@wordpress/data';
+import { chevronLeft, chevronRight } from '@wordpress/icons';
+
+/**
+ * Internal dependencies.
+ */
 import useConfirmNavigation from 'utils/use-confirm-navigation';
 import { recordEvent } from 'tracks';
 import { TestModeNotice } from 'components/test-mode-notice';
@@ -21,16 +26,17 @@ import { HorizontalList } from 'components/horizontal-list';
 import { formatExplicitCurrency } from 'multi-currency/interface/functions';
 import { formatDateTimeFromTimestamp } from 'wcpay/utils/date-time';
 import { getBankName } from 'utils/charge';
+import {
+	generateCoverLetter,
+	getBusinessDetails,
+} from './cover-letter-generator';
+import { useGetSettings } from 'wcpay/data';
 import CustomerDetails from './customer-details';
 import ProductDetails from './product-details';
 import RecommendedDocuments from './recommended-documents';
 import InlineNotice from 'components/inline-notice';
 import ShippingDetails from './shipping-details';
 import CoverLetter from './cover-letter';
-
-/**
- * Internal dependencies.
- */
 import { Button, HorizontalRule } from 'wcpay/components/wp-components-wrapped';
 import { getAdminUrl } from 'wcpay/utils';
 import { StepperPanel } from 'wcpay/components/stepper';
@@ -40,9 +46,15 @@ import {
 	AccordionRow,
 } from 'wcpay/components/accordion';
 import Page from 'wcpay/components/page';
+import { createInterpolateElement } from '@wordpress/element';
+import {
+	DOCUMENT_FIELD_KEYS,
+	getRecommendedDocumentFields,
+	getRecommendedShippingDocumentFields,
+} from './recommended-document-fields';
+import { RecommendedDocument } from './types';
 
 import './style.scss';
-import { createInterpolateElement } from '@wordpress/element';
 
 // --- Utility: Determine if shipping is required for a given reason ---
 const ReasonsNeedShipping = [
@@ -62,16 +74,17 @@ const steps = [
 	{
 		heading: "Let's gather the basics",
 		subheading:
-			'To make a stronger case, please provide as much info as possible. We prefilled some fields for you, please double check and upload all the necessary documents.',
+			"The more info you can provide, the stronger your case will be. To speed things up, we've prefilled some fields for you — please check for accuracy and upload any relevant documents.",
 	},
 	{
-		heading: 'Shipping details',
-		subheading: 'Please make sure all the shipping information is correct.',
-	},
-	{
-		heading: 'Review the cover letter',
+		heading: 'Add your shipping details',
 		subheading:
-			'Please review the cover letter that will be submitted to the bank based on the information you provided. You can make changes to it or add additional details.',
+			"We've prefilled some of this for you — please check that it's correct and upload the recommended document.",
+	},
+	{
+		heading: 'Review your cover letter',
+		subheading:
+			"Using the information you've provided, we've automatically generated a cover letter for you. Before submitting to your customer's bank, please check all of the details are correct and make any required changes.",
 	},
 ];
 
@@ -112,11 +125,17 @@ export default ( { query }: { query: { id: string } } ) => {
 	const [ fileSizes, setFileSizes ] = useState< Record< string, number > >(
 		{}
 	);
+	// This is used to display the file name in the UI.
+	const [ uploadedFiles, setUploadedFiles ] = useState<
+		Record< string, string >
+	>( {} );
 	const {
 		createSuccessNotice,
 		createErrorNotice,
 		createInfoNotice,
 	} = useDispatch( 'core/notices' );
+	const settings = useGetSettings();
+	const bankName = dispute?.charge ? getBankName( dispute.charge ) : null;
 
 	// --- Data loading ---
 	useEffect( () => {
@@ -126,8 +145,14 @@ export default ( { query }: { query: { id: string } } ) => {
 				setDispute( d );
 				// fallback to multiple if no product type is set
 				setProductType( d.metadata?.__product_type || '' );
-				// Load saved product description from evidence
-				setProductDescription( d.evidence?.product_description || '' );
+				// Load saved product description from evidence or level3 line items
+				const level3ProductNames = d.charge?.level3?.line_items
+					?.map( ( item: any ) => item.product_description )
+					.filter( Boolean )
+					.join( ', ' );
+				setProductDescription(
+					d.evidence?.product_description || level3ProductNames || ''
+				);
 				// Load saved shipping details from evidence
 				setShippingCarrier( d.evidence?.shipping_carrier || '' );
 				setShippingDate( d.evidence?.shipping_date || '' );
@@ -154,21 +179,108 @@ export default ( { query }: { query: { id: string } } ) => {
 					uncategorized_file: d.evidence?.uncategorized_file || '',
 				} ) );
 
-				// Set cover letter from saved evidence
-				setCoverLetter( d.evidence?.uncategorized_text || '' );
+				// Set cover letter from saved evidence or generate new one
+				const savedCoverLetter = d.evidence?.uncategorized_text;
+				if ( savedCoverLetter ) {
+					setCoverLetter( savedCoverLetter );
+					// Only mark as manually edited if it differs from what would be auto-generated
+					const generatedContent = generateCoverLetter(
+						d,
+						getBusinessDetails(),
+						settings,
+						bankName
+					);
+					setIsCoverLetterManuallyEdited(
+						savedCoverLetter !== generatedContent
+					);
+				} else {
+					// Generate new cover letter
+					const generatedCoverLetter = generateCoverLetter(
+						d,
+						getBusinessDetails(),
+						settings,
+						bankName
+					);
+					setCoverLetter( generatedCoverLetter );
+					setIsCoverLetterManuallyEdited( false );
+				}
 			} catch ( error ) {
 				createErrorNotice( String( error ) );
 			}
 		};
 		fetchDispute();
-	}, [ path, createErrorNotice ] );
+	}, [ path, createErrorNotice, settings, bankName ] );
+
+	// --- File name display logic ---
+	useEffect( () => {
+		const fetchFile = async () => {
+			const allFileKeys = Object.values( DOCUMENT_FIELD_KEYS );
+			// Filter out the file keys that are not in the dispute evidence.
+			const fileKeys = allFileKeys.filter(
+				( fileKey ) => dispute?.evidence?.[ fileKey ]
+			);
+			// If we don't have any file keys, return.
+			if ( fileKeys.length === 0 ) return;
+			// If we already loaded the file details, return.
+			if ( Object.keys( uploadedFiles ).length > 0 ) return;
+			// Build the URLS to bulk fetch the file details.
+			const fileDetails = await Promise.all(
+				fileKeys.map( async ( fileKey ) => {
+					const fileId = dispute?.evidence?.[ fileKey ];
+					if ( ! fileId ) return null;
+					const file: any = await apiFetch( {
+						path: `/wc/v3/payments/file/${ fileId }/details`,
+					} );
+					return { fileKey: fileKey, filename: file.filename };
+				} )
+			);
+			const filteredFileDetails = fileDetails.filter(
+				( fileDetail ) => fileDetail !== null
+			);
+			setUploadedFiles( ( prev ) => ( {
+				...prev,
+				...Object.fromEntries(
+					filteredFileDetails.map( ( fileDetail ) => [
+						fileDetail?.fileKey,
+						fileDetail?.filename,
+					] )
+				),
+			} ) );
+		};
+		fetchFile();
+		// eslint-disable-next-line react-hooks/exhaustive-deps -- We only want to fetch the file details when uploadedFiles changes.
+	}, [ dispute?.evidence ] );
+
+	// Update cover letter when evidence changes
+	useEffect( () => {
+		if ( ! dispute || ! settings || isCoverLetterManuallyEdited ) return;
+
+		const generatedCoverLetter = generateCoverLetter(
+			dispute,
+			getBusinessDetails(),
+			settings,
+			bankName
+		);
+		setCoverLetter( generatedCoverLetter );
+	}, [
+		dispute,
+		settings,
+		bankName,
+		isCoverLetterManuallyEdited,
+		evidence,
+		productDescription,
+		shippingCarrier,
+		shippingDate,
+		shippingTrackingNumber,
+		shippingAddress,
+	] );
 
 	// --- Step logic ---
 	const disputeReason = dispute?.reason;
 	const hasShipping = needsShipping( disputeReason );
 	const panelHeadings = hasShipping
-		? [ 'General evidence', 'Shipping information', 'Review' ]
-		: [ 'General evidence', 'Review' ];
+		? [ 'Purchase info', 'Shipping details', 'Review' ]
+		: [ 'Purchase info', 'Review' ];
 
 	useEffect( () => {
 		setIsAccordionOpen( currentStep === 0 );
@@ -203,24 +315,21 @@ export default ( { query }: { query: { id: string } } ) => {
 					? __( 'Evidence submitted!', 'woocommerce-payments' )
 					: __( 'Evidence saved!', 'woocommerce-payments' ),
 				{
-					actions: [
-						{
-							label: submit
-								? __(
+					actions: submit
+						? [
+								{
+									label: __(
 										'View submitted evidence',
 										'woocommerce-payments'
-								  )
-								: __(
-										'Return to evidence submission',
-										'woocommerce-payments'
-								  ),
-							url: getAdminUrl( {
-								page: 'wc-admin',
-								path: '/payments/disputes/challenge',
-								id: query.id,
-							} ),
-						},
-					],
+									),
+									url: getAdminUrl( {
+										page: 'wc-admin',
+										path: '/payments/disputes/challenge',
+										id: query.id,
+									} ),
+								},
+						  ]
+						: [],
 				}
 			);
 
@@ -246,6 +355,7 @@ export default ( { query }: { query: { id: string } } ) => {
 					shipping_date: shippingDate,
 					shipping_tracking_number: shippingTrackingNumber,
 					shipping_address: shippingAddress,
+					customer_purchase_ip: dispute.order?.ip_address,
 				} ).filter( ( [ value ] ) => value && value !== '' )
 			);
 
@@ -296,20 +406,23 @@ export default ( { query }: { query: { id: string } } ) => {
 		}
 	};
 
-	// --- Handle step changes ---
-	const handleStepChange = async ( newStep: number ) => {
-		// // Save current evidence before changing step
-		await doSave( false );
-
-		// Update step
-		setCurrentStep( newStep );
-	};
-
 	// --- Read-only logic ---
 	const readOnly =
 		dispute &&
 		dispute.status !== 'needs_response' &&
 		dispute.status !== 'warning_needs_response';
+
+	// --- Handle step changes ---
+	const handleStepChange = async ( newStep: number ) => {
+		// Only save if not in readOnly mode
+		if ( ! readOnly ) {
+			await doSave( false );
+		}
+		// Update step
+		setCurrentStep( newStep );
+		// Scroll to top of page
+		window.scrollTo( { top: 0, behavior: 'smooth' } );
+	};
 
 	const updateProductType = ( newType: string ) => {
 		recordEvent( 'wcpay_dispute_product_selected', { selection: newType } );
@@ -409,6 +522,11 @@ export default ( { query }: { query: { id: string } } ) => {
 
 			// Store uploaded file name in metadata to display in submitted evidence or saved for later form.
 			setEvidence( ( e: any ) => ( { ...e, [ key ]: uploadedFile.id } ) );
+			// Store uploaded file name to avoid fetching the file details again.
+			setUploadedFiles( ( prev ) => ( {
+				...prev,
+				[ key ]: uploadedFile.filename,
+			} ) );
 			setFileSizes( ( prev ) => ( {
 				...prev,
 				[ key ]: uploadedFile.size,
@@ -438,6 +556,8 @@ export default ( { query }: { query: { id: string } } ) => {
 		setEvidence( ( e: any ) => ( { ...e, [ key ]: '' } ) );
 		setUploadingErrors( ( prev ) => ( { ...prev, [ key ]: '' } ) );
 		setFileSizes( ( prev ) => ( { ...prev, [ key ]: 0 } ) );
+		// Remove the file name from the uploaded files.
+		setUploadedFiles( ( prev ) => ( { ...prev, [ key ]: '' } ) );
 	};
 
 	// --- Navigation warning ---
@@ -448,7 +568,7 @@ export default ( { query }: { query: { id: string } } ) => {
 		[ evidence, dispute ]
 	);
 	const confirmationNavigationCallback = useConfirmNavigation( () => {
-		if ( pristine || redirectAfterSave ) return;
+		if ( pristine || redirectAfterSave || readOnly ) return;
 		return __(
 			'There are unsaved changes on this page. Are you sure you want to leave and discard the unsaved changes?',
 			'woocommerce-payments'
@@ -456,7 +576,12 @@ export default ( { query }: { query: { id: string } } ) => {
 	} );
 	useEffect( () => {
 		confirmationNavigationCallback();
-	}, [ pristine, confirmationNavigationCallback, redirectAfterSave ] );
+	}, [
+		pristine,
+		confirmationNavigationCallback,
+		redirectAfterSave,
+		readOnly,
+	] );
 
 	// --- Accordion summary content ---
 	const summaryItems = useMemo( () => {
@@ -534,74 +659,54 @@ export default ( { query }: { query: { id: string } } ) => {
 	}, [ dispute ] );
 
 	// --- Recommended documents ---
-	const recommendedDocumentFields = [
-		{
-			key: 'receipt',
-			label: __( 'Order receipt', 'woocommerce-payments' ),
-		},
-		{
-			key: 'customer_communication',
-			label: __( 'Customer communication', 'woocommerce-payments' ),
-		},
-		{
-			key: 'customer_signature',
-			label: __( 'Customer signature', 'woocommerce-payments' ),
-		},
-		{
-			key: 'refund_policy',
-			label: __(
-				'Copy of the store refund policy',
-				'woocommerce-payments'
-			),
-		},
-		{
-			key: 'uncategorized_file',
-			label: __(
-				'Any additional documents you think will support the case',
-				'woocommerce-payments'
-			),
-		},
-	];
+	const recommendedDocumentFields = getRecommendedDocumentFields(
+		disputeReason
+	);
 
-	// --- Recommended shipping documents ---
-	const recommendedShippingDocumentFields = [
-		{
-			key: 'shipping_documentation',
-			label: __( 'Proof of shipping', 'woocommerce-payments' ),
-		},
-	];
-
+	const recommendedShippingDocumentFields = getRecommendedShippingDocumentFields();
 	const recommendedDocumentsFields = recommendedDocumentFields.map(
-		( field ) => ( {
+		( field: RecommendedDocument ) => ( {
 			key: field.key,
 			label: field.label,
-			fileName: evidence[ field.key ] || '',
+			description: field.description,
+			fileName: uploadedFiles[ field.key ] || evidence[ field.key ] || '',
 			uploaded: !! evidence[ field.key ],
 			isLoading: isUploading[ field.key ] || false,
 			error: uploadingErrors[ field.key ] || '',
 			onFileChange: ( key: string, file: File ) =>
-				Promise.resolve( doUploadFile( field.key, file ) ),
-			onFileRemove: () => Promise.resolve( doRemoveFile( field.key ) ),
+				readOnly
+					? Promise.resolve()
+					: Promise.resolve( doUploadFile( field.key, file ) ),
+			onFileRemove: () =>
+				readOnly
+					? Promise.resolve()
+					: Promise.resolve( doRemoveFile( field.key ) ),
 			isBusy: isUploading[ field.key ] || false,
+			readOnly: readOnly,
 		} )
 	);
 
 	const recommendedShippingDocumentsFields = recommendedShippingDocumentFields.map(
-		( field ) => ( {
+		( field: RecommendedDocument ) => ( {
 			key: field.key,
 			label: field.label,
+			description: field.description,
 			fileName: evidence[ field.key ] || '',
 			uploaded: !! evidence[ field.key ],
 			isLoading: isUploading[ field.key ] || false,
 			error: uploadingErrors[ field.key ] || '',
 			onFileChange: ( key: string, file: File ) =>
-				Promise.resolve( doUploadFile( field.key, file ) ),
-			onFileRemove: () => Promise.resolve( doRemoveFile( field.key ) ),
+				readOnly
+					? Promise.resolve()
+					: Promise.resolve( doUploadFile( field.key, file ) ),
+			onFileRemove: () =>
+				readOnly
+					? Promise.resolve()
+					: Promise.resolve( doRemoveFile( field.key ) ),
 			isBusy: isUploading[ field.key ] || false,
+			readOnly: readOnly,
 		} )
 	);
-
-	const bankName = dispute?.charge ? getBankName( dispute.charge ) : null;
 
 	const inlineNotice = ( bankNameValue: string | null ) => (
 		<InlineNotice
@@ -652,6 +757,7 @@ export default ( { query }: { query: { id: string } } ) => {
 					/>
 					<RecommendedDocuments
 						fields={ recommendedDocumentsFields }
+						readOnly={ readOnly }
 					/>
 					{ inlineNotice( bankName ) }
 				</>
@@ -681,6 +787,7 @@ export default ( { query }: { query: { id: string } } ) => {
 					/>
 					<RecommendedDocuments
 						fields={ recommendedShippingDocumentsFields }
+						readOnly={ readOnly }
 					/>
 					{ inlineNotice( bankName ) }
 				</>
@@ -705,21 +812,44 @@ export default ( { query }: { query: { id: string } } ) => {
 							className="wcpay-dispute-evidence-new__cover-letter-warning"
 						>
 							{ __(
-								'The cover letter has been manually edited and will not be automatically updated with new evidence.',
+								"You've made some manual edits to your cover letter. If you update your evidence again, those changes won't be reflected here automatically — but you can always make further edits yourself.",
 								'woocommerce-payments'
 							) }
 						</InlineNotice>
 					) }
 					<CoverLetter
 						value={ coverLetter }
-						onChange={ ( value, isManualEdit ) => {
-							setCoverLetter( value );
+						onChange={ ( newValue: string ) => {
+							if ( readOnly ) {
+								return;
+							}
+
+							// If the value is empty, regenerate the content
+							if ( newValue.trim() === '' ) {
+								const generatedContent = generateCoverLetter(
+									dispute,
+									getBusinessDetails(),
+									settings,
+									bankName
+								);
+								setCoverLetter( generatedContent );
+								setIsCoverLetterManuallyEdited( false );
+								return;
+							}
+
+							// Compare with what would be auto-generated
+							const generatedContent = generateCoverLetter(
+								dispute,
+								getBusinessDetails(),
+								settings,
+								bankName
+							);
+							setCoverLetter( newValue );
 							setIsCoverLetterManuallyEdited(
-								isManualEdit || false
+								newValue !== generatedContent
 							);
 						} }
-						dispute={ dispute }
-						bankName={ bankName }
+						readOnly={ readOnly }
 					/>
 					{ inlineNotice( bankName ) }
 				</>
@@ -747,17 +877,24 @@ export default ( { query }: { query: { id: string } } ) => {
 						{ __( 'Cancel', 'woocommerce-payments' ) }
 					</Button>
 					<div className="wcpay-dispute-evidence-new__button-group-right">
-						<Button
-							variant="tertiary"
-							onClick={ () => doSave( false ) }
-						>
-							{ __( 'Save for later', 'woocommerce-payments' ) }
-						</Button>
+						{ ! readOnly && (
+							<Button
+								variant="tertiary"
+								onClick={ () => doSave( false ) }
+							>
+								{ __(
+									'Save for later',
+									'woocommerce-payments'
+								) }
+							</Button>
+						) }
 						<Button
 							variant="primary"
 							onClick={ () =>
 								handleStepChange( currentStep + 1 )
 							}
+							icon={ chevronRight }
+							iconPosition="right"
 						>
 							{ __( 'Next', 'woocommerce-payments' ) }
 						</Button>
@@ -771,18 +908,27 @@ export default ( { query }: { query: { id: string } } ) => {
 					<Button
 						variant="secondary"
 						onClick={ () => setCurrentStep( ( s ) => s - 1 ) }
+						icon={ chevronLeft }
+						iconPosition="left"
 					>
 						{ __( 'Back', 'woocommerce-payments' ) }
 					</Button>
 					<div className="wcpay-dispute-evidence-new__button-group-right">
-						<Button
-							variant="tertiary"
-							onClick={ () => doSave( false ) }
-						>
-							{ __( 'Save for later', 'woocommerce-payments' ) }
-						</Button>
+						{ ! readOnly && (
+							<Button
+								variant="tertiary"
+								onClick={ () => doSave( false ) }
+							>
+								{ __(
+									'Save for later',
+									'woocommerce-payments'
+								) }
+							</Button>
+						) }
 						<Button
 							variant="primary"
+							icon={ chevronRight }
+							iconPosition="right"
 							onClick={ () =>
 								handleStepChange( currentStep + 1 )
 							}
@@ -797,21 +943,28 @@ export default ( { query }: { query: { id: string } } ) => {
 			<div className="wcpay-dispute-evidence-new__button-row">
 				<Button
 					variant="secondary"
+					icon={ chevronLeft }
+					iconPosition="left"
 					onClick={ () => setCurrentStep( ( s ) => s - 1 ) }
 				>
 					{ __( 'Back', 'woocommerce-payments' ) }
 				</Button>
-				<div className="wcpay-dispute-evidence-new__button-group-right">
-					<Button
-						variant="tertiary"
-						onClick={ () => doSave( false ) }
-					>
-						{ __( 'Save for later', 'woocommerce-payments' ) }
-					</Button>
-					<Button variant="primary" onClick={ () => doSave( true ) }>
-						{ __( 'Submit', 'woocommerce-payments' ) }
-					</Button>
-				</div>
+				{ ! readOnly && (
+					<div className="wcpay-dispute-evidence-new__button-group-right">
+						<Button
+							variant="tertiary"
+							onClick={ () => doSave( false ) }
+						>
+							{ __( 'Save for later', 'woocommerce-payments' ) }
+						</Button>
+						<Button
+							variant="primary"
+							onClick={ () => doSave( true ) }
+						>
+							{ __( 'Submit', 'woocommerce-payments' ) }
+						</Button>
+					</div>
+				) }
 			</div>
 		);
 	};
@@ -856,6 +1009,9 @@ export default ( { query }: { query: { id: string } } ) => {
 						<StepperPanel
 							steps={ panelHeadings }
 							currentStep={ currentStep }
+							onStepClick={ ( stepIndex ) => {
+								handleStepChange( stepIndex );
+							} }
 						/>
 						<HorizontalRule className="wcpay-dispute-evidence-new__stepper-divider" />
 						<div className="wcpay-dispute-evidence-new__stepper-content">
