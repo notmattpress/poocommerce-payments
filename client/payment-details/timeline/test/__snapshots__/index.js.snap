@@ -122,29 +122,29 @@ exports[`PaymentDetailsTimeline renders correctly (with a mocked Timeline compon
         data-wp-component="CardBody"
       >
         <div
-          class="woocommerce-timeline"
+          class="poocommerce-timeline"
         >
           <ul>
             <li
-              class="woocommerce-timeline-group"
+              class="poocommerce-timeline-group"
             >
               <p
-                class="woocommerce-timeline-group__title"
+                class="poocommerce-timeline-group__title"
               >
                 April 4, 2020
               </p>
               <ul>
                 <li
-                  class="woocommerce-timeline-item"
+                  class="poocommerce-timeline-item"
                 >
                   <div
-                    class="woocommerce-timeline-item__top-border"
+                    class="poocommerce-timeline-item__top-border"
                   />
                   <div
-                    class="woocommerce-timeline-item__title"
+                    class="poocommerce-timeline-item__title"
                   >
                     <div
-                      class="woocommerce-timeline-item__headline"
+                      class="poocommerce-timeline-item__headline"
                     >
                       <svg
                         class="gridicon gridicons-sync"
@@ -168,26 +168,26 @@ exports[`PaymentDetailsTimeline renders correctly (with a mocked Timeline compon
                       </span>
                     </div>
                     <span
-                      class="woocommerce-timeline-item__timestamp"
+                      class="poocommerce-timeline-item__timestamp"
                     >
                       10:56pm
                     </span>
                   </div>
                   <div
-                    class="woocommerce-timeline-item__body"
+                    class="poocommerce-timeline-item__body"
                   />
                 </li>
                 <li
-                  class="woocommerce-timeline-item"
+                  class="poocommerce-timeline-item"
                 >
                   <div
-                    class="woocommerce-timeline-item__top-border"
+                    class="poocommerce-timeline-item__top-border"
                   />
                   <div
-                    class="woocommerce-timeline-item__title"
+                    class="poocommerce-timeline-item__title"
                   >
                     <div
-                      class="woocommerce-timeline-item__headline"
+                      class="poocommerce-timeline-item__headline"
                     >
                       <svg
                         class="gridicon gridicons-cross is-error"
@@ -214,26 +214,26 @@ exports[`PaymentDetailsTimeline renders correctly (with a mocked Timeline compon
                       </span>
                     </div>
                     <span
-                      class="woocommerce-timeline-item__timestamp"
+                      class="poocommerce-timeline-item__timestamp"
                     >
                       10:56pm
                     </span>
                   </div>
                   <div
-                    class="woocommerce-timeline-item__body"
+                    class="poocommerce-timeline-item__body"
                   />
                 </li>
                 <li
-                  class="woocommerce-timeline-item"
+                  class="poocommerce-timeline-item"
                 >
                   <div
-                    class="woocommerce-timeline-item__top-border"
+                    class="poocommerce-timeline-item__top-border"
                   />
                   <div
-                    class="woocommerce-timeline-item__title"
+                    class="poocommerce-timeline-item__title"
                   >
                     <div
-                      class="woocommerce-timeline-item__headline"
+                      class="poocommerce-timeline-item__headline"
                     >
                       <svg
                         class="gridicon gridicons-sync"
@@ -257,26 +257,26 @@ exports[`PaymentDetailsTimeline renders correctly (with a mocked Timeline compon
                       </span>
                     </div>
                     <span
-                      class="woocommerce-timeline-item__timestamp"
+                      class="poocommerce-timeline-item__timestamp"
                     >
                       12:20pm
                     </span>
                   </div>
                   <div
-                    class="woocommerce-timeline-item__body"
+                    class="poocommerce-timeline-item__body"
                   />
                 </li>
                 <li
-                  class="woocommerce-timeline-item"
+                  class="poocommerce-timeline-item"
                 >
                   <div
-                    class="woocommerce-timeline-item__top-border"
+                    class="poocommerce-timeline-item__top-border"
                   />
                   <div
-                    class="woocommerce-timeline-item__title"
+                    class="poocommerce-timeline-item__title"
                   >
                     <div
-                      class="woocommerce-timeline-item__headline"
+                      class="poocommerce-timeline-item__headline"
                     >
                       <svg
                         class="gridicon gridicons-plus"
@@ -303,13 +303,13 @@ exports[`PaymentDetailsTimeline renders correctly (with a mocked Timeline compon
                       </span>
                     </div>
                     <span
-                      class="woocommerce-timeline-item__timestamp"
+                      class="poocommerce-timeline-item__timestamp"
                     >
                       12:20pm
                     </span>
                   </div>
                   <div
-                    class="woocommerce-timeline-item__body"
+                    class="poocommerce-timeline-item__body"
                   >
                     <span>
                       Dispute reversal: $100.00
@@ -320,16 +320,16 @@ exports[`PaymentDetailsTimeline renders correctly (with a mocked Timeline compon
                   </div>
                 </li>
                 <li
-                  class="woocommerce-timeline-item"
+                  class="poocommerce-timeline-item"
                 >
                   <div
-                    class="woocommerce-timeline-item__top-border"
+                    class="poocommerce-timeline-item__top-border"
                   />
                   <div
-                    class="woocommerce-timeline-item__title"
+                    class="poocommerce-timeline-item__title"
                   >
                     <div
-                      class="woocommerce-timeline-item__headline"
+                      class="poocommerce-timeline-item__headline"
                     >
                       <svg
                         class="gridicon gridicons-notice-outline is-success"
@@ -349,26 +349,26 @@ exports[`PaymentDetailsTimeline renders correctly (with a mocked Timeline compon
                       </span>
                     </div>
                     <span
-                      class="woocommerce-timeline-item__timestamp"
+                      class="poocommerce-timeline-item__timestamp"
                     >
                       12:20pm
                     </span>
                   </div>
                   <div
-                    class="woocommerce-timeline-item__body"
+                    class="poocommerce-timeline-item__body"
                   />
                 </li>
                 <li
-                  class="woocommerce-timeline-item"
+                  class="poocommerce-timeline-item"
                 >
                   <div
-                    class="woocommerce-timeline-item__top-border"
+                    class="poocommerce-timeline-item__top-border"
                   />
                   <div
-                    class="woocommerce-timeline-item__title"
+                    class="poocommerce-timeline-item__title"
                   >
                     <div
-                      class="woocommerce-timeline-item__headline"
+                      class="poocommerce-timeline-item__headline"
                     >
                       <svg
                         class="gridicon gridicons-sync"
@@ -392,26 +392,26 @@ exports[`PaymentDetailsTimeline renders correctly (with a mocked Timeline compon
                       </span>
                     </div>
                     <span
-                      class="woocommerce-timeline-item__timestamp"
+                      class="poocommerce-timeline-item__timestamp"
                     >
                       9:51am
                     </span>
                   </div>
                   <div
-                    class="woocommerce-timeline-item__body"
+                    class="poocommerce-timeline-item__body"
                   />
                 </li>
                 <li
-                  class="woocommerce-timeline-item"
+                  class="poocommerce-timeline-item"
                 >
                   <div
-                    class="woocommerce-timeline-item__top-border"
+                    class="poocommerce-timeline-item__top-border"
                   />
                   <div
-                    class="woocommerce-timeline-item__title"
+                    class="poocommerce-timeline-item__title"
                   >
                     <div
-                      class="woocommerce-timeline-item__headline"
+                      class="poocommerce-timeline-item__headline"
                     >
                       <svg
                         class="gridicon gridicons-minus"
@@ -431,26 +431,26 @@ exports[`PaymentDetailsTimeline renders correctly (with a mocked Timeline compon
                       </span>
                     </div>
                     <span
-                      class="woocommerce-timeline-item__timestamp"
+                      class="poocommerce-timeline-item__timestamp"
                     >
                       9:51am
                     </span>
                   </div>
                   <div
-                    class="woocommerce-timeline-item__body"
+                    class="poocommerce-timeline-item__body"
                   />
                 </li>
                 <li
-                  class="woocommerce-timeline-item"
+                  class="poocommerce-timeline-item"
                 >
                   <div
-                    class="woocommerce-timeline-item__top-border"
+                    class="poocommerce-timeline-item__top-border"
                   />
                   <div
-                    class="woocommerce-timeline-item__title"
+                    class="poocommerce-timeline-item__title"
                   >
                     <div
-                      class="woocommerce-timeline-item__headline"
+                      class="poocommerce-timeline-item__headline"
                     >
                       <svg
                         class="gridicon gridicons-checkmark is-success"
@@ -470,13 +470,13 @@ exports[`PaymentDetailsTimeline renders correctly (with a mocked Timeline compon
                       </span>
                     </div>
                     <span
-                      class="woocommerce-timeline-item__timestamp"
+                      class="poocommerce-timeline-item__timestamp"
                     >
                       9:51am
                     </span>
                   </div>
                   <div
-                    class="woocommerce-timeline-item__body"
+                    class="poocommerce-timeline-item__body"
                   >
                     <span />
                     <span />
@@ -486,25 +486,25 @@ exports[`PaymentDetailsTimeline renders correctly (with a mocked Timeline compon
               <hr />
             </li>
             <li
-              class="woocommerce-timeline-group"
+              class="poocommerce-timeline-group"
             >
               <p
-                class="woocommerce-timeline-group__title"
+                class="poocommerce-timeline-group__title"
               >
                 April 3, 2020
               </p>
               <ul>
                 <li
-                  class="woocommerce-timeline-item"
+                  class="poocommerce-timeline-item"
                 >
                   <div
-                    class="woocommerce-timeline-item__top-border"
+                    class="poocommerce-timeline-item__top-border"
                   />
                   <div
-                    class="woocommerce-timeline-item__title"
+                    class="poocommerce-timeline-item__title"
                   >
                     <div
-                      class="woocommerce-timeline-item__headline"
+                      class="poocommerce-timeline-item__headline"
                     >
                       <svg
                         class="gridicon gridicons-sync"
@@ -528,26 +528,26 @@ exports[`PaymentDetailsTimeline renders correctly (with a mocked Timeline compon
                       </span>
                     </div>
                     <span
-                      class="woocommerce-timeline-item__timestamp"
+                      class="poocommerce-timeline-item__timestamp"
                     >
                       2:58pm
                     </span>
                   </div>
                   <div
-                    class="woocommerce-timeline-item__body"
+                    class="poocommerce-timeline-item__body"
                   />
                 </li>
                 <li
-                  class="woocommerce-timeline-item"
+                  class="poocommerce-timeline-item"
                 >
                   <div
-                    class="woocommerce-timeline-item__top-border"
+                    class="poocommerce-timeline-item__top-border"
                   />
                   <div
-                    class="woocommerce-timeline-item__title"
+                    class="poocommerce-timeline-item__title"
                   >
                     <div
-                      class="woocommerce-timeline-item__headline"
+                      class="poocommerce-timeline-item__headline"
                     >
                       <svg
                         class="gridicon gridicons-minus"
@@ -567,26 +567,26 @@ exports[`PaymentDetailsTimeline renders correctly (with a mocked Timeline compon
                       </span>
                     </div>
                     <span
-                      class="woocommerce-timeline-item__timestamp"
+                      class="poocommerce-timeline-item__timestamp"
                     >
                       2:58pm
                     </span>
                   </div>
                   <div
-                    class="woocommerce-timeline-item__body"
+                    class="poocommerce-timeline-item__body"
                   />
                 </li>
                 <li
-                  class="woocommerce-timeline-item"
+                  class="poocommerce-timeline-item"
                 >
                   <div
-                    class="woocommerce-timeline-item__top-border"
+                    class="poocommerce-timeline-item__top-border"
                   />
                   <div
-                    class="woocommerce-timeline-item__title"
+                    class="poocommerce-timeline-item__title"
                   >
                     <div
-                      class="woocommerce-timeline-item__headline"
+                      class="poocommerce-timeline-item__headline"
                     >
                       <svg
                         class="gridicon gridicons-checkmark is-success"
@@ -606,13 +606,13 @@ exports[`PaymentDetailsTimeline renders correctly (with a mocked Timeline compon
                       </span>
                     </div>
                     <span
-                      class="woocommerce-timeline-item__timestamp"
+                      class="poocommerce-timeline-item__timestamp"
                     >
                       2:58pm
                     </span>
                   </div>
                   <div
-                    class="woocommerce-timeline-item__body"
+                    class="poocommerce-timeline-item__body"
                   >
                     <span />
                     <span />
@@ -622,25 +622,25 @@ exports[`PaymentDetailsTimeline renders correctly (with a mocked Timeline compon
               <hr />
             </li>
             <li
-              class="woocommerce-timeline-group"
+              class="poocommerce-timeline-group"
             >
               <p
-                class="woocommerce-timeline-group__title"
+                class="poocommerce-timeline-group__title"
               >
                 April 2, 2020
               </p>
               <ul>
                 <li
-                  class="woocommerce-timeline-item"
+                  class="poocommerce-timeline-item"
                 >
                   <div
-                    class="woocommerce-timeline-item__top-border"
+                    class="poocommerce-timeline-item__top-border"
                   />
                   <div
-                    class="woocommerce-timeline-item__title"
+                    class="poocommerce-timeline-item__title"
                   >
                     <div
-                      class="woocommerce-timeline-item__headline"
+                      class="poocommerce-timeline-item__headline"
                     >
                       <svg
                         class="gridicon gridicons-sync"
@@ -664,26 +664,26 @@ exports[`PaymentDetailsTimeline renders correctly (with a mocked Timeline compon
                       </span>
                     </div>
                     <span
-                      class="woocommerce-timeline-item__timestamp"
+                      class="poocommerce-timeline-item__timestamp"
                     >
                       4:26pm
                     </span>
                   </div>
                   <div
-                    class="woocommerce-timeline-item__body"
+                    class="poocommerce-timeline-item__body"
                   />
                 </li>
                 <li
-                  class="woocommerce-timeline-item"
+                  class="poocommerce-timeline-item"
                 >
                   <div
-                    class="woocommerce-timeline-item__top-border"
+                    class="poocommerce-timeline-item__top-border"
                   />
                   <div
-                    class="woocommerce-timeline-item__title"
+                    class="poocommerce-timeline-item__title"
                   >
                     <div
-                      class="woocommerce-timeline-item__headline"
+                      class="poocommerce-timeline-item__headline"
                     >
                       <svg
                         class="gridicon gridicons-checkmark is-success"
@@ -703,38 +703,38 @@ exports[`PaymentDetailsTimeline renders correctly (with a mocked Timeline compon
                       </span>
                     </div>
                     <span
-                      class="woocommerce-timeline-item__timestamp"
+                      class="poocommerce-timeline-item__timestamp"
                     >
                       4:26pm
                     </span>
                   </div>
                   <div
-                    class="woocommerce-timeline-item__body"
+                    class="poocommerce-timeline-item__body"
                   />
                 </li>
               </ul>
               <hr />
             </li>
             <li
-              class="woocommerce-timeline-group"
+              class="poocommerce-timeline-group"
             >
               <p
-                class="woocommerce-timeline-group__title"
+                class="poocommerce-timeline-group__title"
               >
                 April 1, 2020
               </p>
               <ul>
                 <li
-                  class="woocommerce-timeline-item"
+                  class="poocommerce-timeline-item"
                 >
                   <div
-                    class="woocommerce-timeline-item__top-border"
+                    class="poocommerce-timeline-item__top-border"
                   />
                   <div
-                    class="woocommerce-timeline-item__title"
+                    class="poocommerce-timeline-item__title"
                   >
                     <div
-                      class="woocommerce-timeline-item__headline"
+                      class="poocommerce-timeline-item__headline"
                     >
                       <svg
                         class="gridicon gridicons-sync"
@@ -758,26 +758,26 @@ exports[`PaymentDetailsTimeline renders correctly (with a mocked Timeline compon
                       </span>
                     </div>
                     <span
-                      class="woocommerce-timeline-item__timestamp"
+                      class="poocommerce-timeline-item__timestamp"
                     >
                       10:06pm
                     </span>
                   </div>
                   <div
-                    class="woocommerce-timeline-item__body"
+                    class="poocommerce-timeline-item__body"
                   />
                 </li>
                 <li
-                  class="woocommerce-timeline-item"
+                  class="poocommerce-timeline-item"
                 >
                   <div
-                    class="woocommerce-timeline-item__top-border"
+                    class="poocommerce-timeline-item__top-border"
                   />
                   <div
-                    class="woocommerce-timeline-item__title"
+                    class="poocommerce-timeline-item__title"
                   >
                     <div
-                      class="woocommerce-timeline-item__headline"
+                      class="poocommerce-timeline-item__headline"
                     >
                       <svg
                         class="gridicon gridicons-minus"
@@ -797,13 +797,13 @@ exports[`PaymentDetailsTimeline renders correctly (with a mocked Timeline compon
                       </span>
                     </div>
                     <span
-                      class="woocommerce-timeline-item__timestamp"
+                      class="poocommerce-timeline-item__timestamp"
                     >
                       10:06pm
                     </span>
                   </div>
                   <div
-                    class="woocommerce-timeline-item__body"
+                    class="poocommerce-timeline-item__body"
                   >
                     <span>
                       Disputed amount: $95.00
@@ -815,16 +815,16 @@ exports[`PaymentDetailsTimeline renders correctly (with a mocked Timeline compon
                   </div>
                 </li>
                 <li
-                  class="woocommerce-timeline-item"
+                  class="poocommerce-timeline-item"
                 >
                   <div
-                    class="woocommerce-timeline-item__top-border"
+                    class="poocommerce-timeline-item__top-border"
                   />
                   <div
-                    class="woocommerce-timeline-item__title"
+                    class="poocommerce-timeline-item__title"
                   >
                     <div
-                      class="woocommerce-timeline-item__headline"
+                      class="poocommerce-timeline-item__headline"
                     >
                       <svg
                         class="gridicon gridicons-cross is-error"
@@ -844,26 +844,26 @@ exports[`PaymentDetailsTimeline renders correctly (with a mocked Timeline compon
                       </span>
                     </div>
                     <span
-                      class="woocommerce-timeline-item__timestamp"
+                      class="poocommerce-timeline-item__timestamp"
                     >
                       10:06pm
                     </span>
                   </div>
                   <div
-                    class="woocommerce-timeline-item__body"
+                    class="poocommerce-timeline-item__body"
                   />
                 </li>
                 <li
-                  class="woocommerce-timeline-item"
+                  class="poocommerce-timeline-item"
                 >
                   <div
-                    class="woocommerce-timeline-item__top-border"
+                    class="poocommerce-timeline-item__top-border"
                   />
                   <div
-                    class="woocommerce-timeline-item__title"
+                    class="poocommerce-timeline-item__title"
                   >
                     <div
-                      class="woocommerce-timeline-item__headline"
+                      class="poocommerce-timeline-item__headline"
                     >
                       <svg
                         class="gridicon gridicons-sync"
@@ -887,26 +887,26 @@ exports[`PaymentDetailsTimeline renders correctly (with a mocked Timeline compon
                       </span>
                     </div>
                     <span
-                      class="woocommerce-timeline-item__timestamp"
+                      class="poocommerce-timeline-item__timestamp"
                     >
                       10:37am
                     </span>
                   </div>
                   <div
-                    class="woocommerce-timeline-item__body"
+                    class="poocommerce-timeline-item__body"
                   />
                 </li>
                 <li
-                  class="woocommerce-timeline-item"
+                  class="poocommerce-timeline-item"
                 >
                   <div
-                    class="woocommerce-timeline-item__top-border"
+                    class="poocommerce-timeline-item__top-border"
                   />
                   <div
-                    class="woocommerce-timeline-item__title"
+                    class="poocommerce-timeline-item__title"
                   >
                     <div
-                      class="woocommerce-timeline-item__headline"
+                      class="poocommerce-timeline-item__headline"
                     >
                       <svg
                         class="gridicon gridicons-plus"
@@ -933,26 +933,26 @@ exports[`PaymentDetailsTimeline renders correctly (with a mocked Timeline compon
                       </span>
                     </div>
                     <span
-                      class="woocommerce-timeline-item__timestamp"
+                      class="poocommerce-timeline-item__timestamp"
                     >
                       10:37am
                     </span>
                   </div>
                   <div
-                    class="woocommerce-timeline-item__body"
+                    class="poocommerce-timeline-item__body"
                   />
                 </li>
                 <li
-                  class="woocommerce-timeline-item"
+                  class="poocommerce-timeline-item"
                 >
                   <div
-                    class="woocommerce-timeline-item__top-border"
+                    class="poocommerce-timeline-item__top-border"
                   />
                   <div
-                    class="woocommerce-timeline-item__title"
+                    class="poocommerce-timeline-item__title"
                   >
                     <div
-                      class="woocommerce-timeline-item__headline"
+                      class="poocommerce-timeline-item__headline"
                     >
                       <svg
                         class="gridicon gridicons-checkmark is-success"
@@ -972,13 +972,13 @@ exports[`PaymentDetailsTimeline renders correctly (with a mocked Timeline compon
                       </span>
                     </div>
                     <span
-                      class="woocommerce-timeline-item__timestamp"
+                      class="poocommerce-timeline-item__timestamp"
                     >
                       10:37am
                     </span>
                   </div>
                   <div
-                    class="woocommerce-timeline-item__body"
+                    class="poocommerce-timeline-item__body"
                   >
                     <span>
                       Fee: $3.50
@@ -992,25 +992,25 @@ exports[`PaymentDetailsTimeline renders correctly (with a mocked Timeline compon
               <hr />
             </li>
             <li
-              class="woocommerce-timeline-group"
+              class="poocommerce-timeline-group"
             >
               <p
-                class="woocommerce-timeline-group__title"
+                class="poocommerce-timeline-group__title"
               >
                 March 31, 2020
               </p>
               <ul>
                 <li
-                  class="woocommerce-timeline-item"
+                  class="poocommerce-timeline-item"
                 >
                   <div
-                    class="woocommerce-timeline-item__top-border"
+                    class="poocommerce-timeline-item__top-border"
                   />
                   <div
-                    class="woocommerce-timeline-item__title"
+                    class="poocommerce-timeline-item__title"
                   >
                     <div
-                      class="woocommerce-timeline-item__headline"
+                      class="poocommerce-timeline-item__headline"
                     >
                       <svg
                         class="gridicon gridicons-sync"
@@ -1034,26 +1034,26 @@ exports[`PaymentDetailsTimeline renders correctly (with a mocked Timeline compon
                       </span>
                     </div>
                     <span
-                      class="woocommerce-timeline-item__timestamp"
+                      class="poocommerce-timeline-item__timestamp"
                     >
                       11:35pm
                     </span>
                   </div>
                   <div
-                    class="woocommerce-timeline-item__body"
+                    class="poocommerce-timeline-item__body"
                   />
                 </li>
                 <li
-                  class="woocommerce-timeline-item"
+                  class="poocommerce-timeline-item"
                 >
                   <div
-                    class="woocommerce-timeline-item__top-border"
+                    class="poocommerce-timeline-item__top-border"
                   />
                   <div
-                    class="woocommerce-timeline-item__title"
+                    class="poocommerce-timeline-item__title"
                   >
                     <div
-                      class="woocommerce-timeline-item__headline"
+                      class="poocommerce-timeline-item__headline"
                     >
                       <svg
                         class="gridicon gridicons-cross is-error"
@@ -1073,26 +1073,26 @@ exports[`PaymentDetailsTimeline renders correctly (with a mocked Timeline compon
                       </span>
                     </div>
                     <span
-                      class="woocommerce-timeline-item__timestamp"
+                      class="poocommerce-timeline-item__timestamp"
                     >
                       11:35pm
                     </span>
                   </div>
                   <div
-                    class="woocommerce-timeline-item__body"
+                    class="poocommerce-timeline-item__body"
                   />
                 </li>
                 <li
-                  class="woocommerce-timeline-item"
+                  class="poocommerce-timeline-item"
                 >
                   <div
-                    class="woocommerce-timeline-item__top-border"
+                    class="poocommerce-timeline-item__top-border"
                   />
                   <div
-                    class="woocommerce-timeline-item__title"
+                    class="poocommerce-timeline-item__title"
                   >
                     <div
-                      class="woocommerce-timeline-item__headline"
+                      class="poocommerce-timeline-item__headline"
                     >
                       <svg
                         class="gridicon gridicons-sync"
@@ -1116,26 +1116,26 @@ exports[`PaymentDetailsTimeline renders correctly (with a mocked Timeline compon
                       </span>
                     </div>
                     <span
-                      class="woocommerce-timeline-item__timestamp"
+                      class="poocommerce-timeline-item__timestamp"
                     >
                       5:58pm
                     </span>
                   </div>
                   <div
-                    class="woocommerce-timeline-item__body"
+                    class="poocommerce-timeline-item__body"
                   />
                 </li>
                 <li
-                  class="woocommerce-timeline-item"
+                  class="poocommerce-timeline-item"
                 >
                   <div
-                    class="woocommerce-timeline-item__top-border"
+                    class="poocommerce-timeline-item__top-border"
                   />
                   <div
-                    class="woocommerce-timeline-item__title"
+                    class="poocommerce-timeline-item__title"
                   >
                     <div
-                      class="woocommerce-timeline-item__headline"
+                      class="poocommerce-timeline-item__headline"
                     >
                       <svg
                         class="gridicon gridicons-cross is-error"
@@ -1155,26 +1155,26 @@ exports[`PaymentDetailsTimeline renders correctly (with a mocked Timeline compon
                       </span>
                     </div>
                     <span
-                      class="woocommerce-timeline-item__timestamp"
+                      class="poocommerce-timeline-item__timestamp"
                     >
                       5:58pm
                     </span>
                   </div>
                   <div
-                    class="woocommerce-timeline-item__body"
+                    class="poocommerce-timeline-item__body"
                   />
                 </li>
                 <li
-                  class="woocommerce-timeline-item"
+                  class="poocommerce-timeline-item"
                 >
                   <div
-                    class="woocommerce-timeline-item__top-border"
+                    class="poocommerce-timeline-item__top-border"
                   />
                   <div
-                    class="woocommerce-timeline-item__title"
+                    class="poocommerce-timeline-item__title"
                   >
                     <div
-                      class="woocommerce-timeline-item__headline"
+                      class="poocommerce-timeline-item__headline"
                     >
                       <svg
                         class="gridicon gridicons-sync"
@@ -1198,26 +1198,26 @@ exports[`PaymentDetailsTimeline renders correctly (with a mocked Timeline compon
                       </span>
                     </div>
                     <span
-                      class="woocommerce-timeline-item__timestamp"
+                      class="poocommerce-timeline-item__timestamp"
                     >
                       6:57am
                     </span>
                   </div>
                   <div
-                    class="woocommerce-timeline-item__body"
+                    class="poocommerce-timeline-item__body"
                   />
                 </li>
                 <li
-                  class="woocommerce-timeline-item"
+                  class="poocommerce-timeline-item"
                 >
                   <div
-                    class="woocommerce-timeline-item__top-border"
+                    class="poocommerce-timeline-item__top-border"
                   />
                   <div
-                    class="woocommerce-timeline-item__title"
+                    class="poocommerce-timeline-item__title"
                   >
                     <div
-                      class="woocommerce-timeline-item__headline"
+                      class="poocommerce-timeline-item__headline"
                     >
                       <svg
                         class="gridicon gridicons-checkmark is-warning"
@@ -1237,38 +1237,38 @@ exports[`PaymentDetailsTimeline renders correctly (with a mocked Timeline compon
                       </span>
                     </div>
                     <span
-                      class="woocommerce-timeline-item__timestamp"
+                      class="poocommerce-timeline-item__timestamp"
                     >
                       6:57am
                     </span>
                   </div>
                   <div
-                    class="woocommerce-timeline-item__body"
+                    class="poocommerce-timeline-item__body"
                   />
                 </li>
               </ul>
               <hr />
             </li>
             <li
-              class="woocommerce-timeline-group"
+              class="poocommerce-timeline-group"
             >
               <p
-                class="woocommerce-timeline-group__title"
+                class="poocommerce-timeline-group__title"
               >
                 March 30, 2020
               </p>
               <ul>
                 <li
-                  class="woocommerce-timeline-item"
+                  class="poocommerce-timeline-item"
                 >
                   <div
-                    class="woocommerce-timeline-item__top-border"
+                    class="poocommerce-timeline-item__top-border"
                   />
                   <div
-                    class="woocommerce-timeline-item__title"
+                    class="poocommerce-timeline-item__title"
                   >
                     <div
-                      class="woocommerce-timeline-item__headline"
+                      class="poocommerce-timeline-item__headline"
                     >
                       <svg
                         class="gridicon gridicons-sync"
@@ -1292,26 +1292,26 @@ exports[`PaymentDetailsTimeline renders correctly (with a mocked Timeline compon
                       </span>
                     </div>
                     <span
-                      class="woocommerce-timeline-item__timestamp"
+                      class="poocommerce-timeline-item__timestamp"
                     >
                       1:33pm
                     </span>
                   </div>
                   <div
-                    class="woocommerce-timeline-item__body"
+                    class="poocommerce-timeline-item__body"
                   />
                 </li>
                 <li
-                  class="woocommerce-timeline-item"
+                  class="poocommerce-timeline-item"
                 >
                   <div
-                    class="woocommerce-timeline-item__top-border"
+                    class="poocommerce-timeline-item__top-border"
                   />
                   <div
-                    class="woocommerce-timeline-item__title"
+                    class="poocommerce-timeline-item__title"
                   >
                     <div
-                      class="woocommerce-timeline-item__headline"
+                      class="poocommerce-timeline-item__headline"
                     >
                       <svg
                         class="gridicon gridicons-checkmark is-warning"
@@ -1331,13 +1331,13 @@ exports[`PaymentDetailsTimeline renders correctly (with a mocked Timeline compon
                       </span>
                     </div>
                     <span
-                      class="woocommerce-timeline-item__timestamp"
+                      class="poocommerce-timeline-item__timestamp"
                     >
                       1:33pm
                     </span>
                   </div>
                   <div
-                    class="woocommerce-timeline-item__body"
+                    class="poocommerce-timeline-item__body"
                   />
                 </li>
               </ul>
@@ -1809,29 +1809,29 @@ exports[`PaymentDetailsTimeline renders subscription fee correctly 1`] = `
         data-wp-component="CardBody"
       >
         <div
-          class="woocommerce-timeline"
+          class="poocommerce-timeline"
         >
           <ul>
             <li
-              class="woocommerce-timeline-group"
+              class="poocommerce-timeline-group"
             >
               <p
-                class="woocommerce-timeline-group__title"
+                class="poocommerce-timeline-group__title"
               >
                 October 4, 2021
               </p>
               <ul>
                 <li
-                  class="woocommerce-timeline-item"
+                  class="poocommerce-timeline-item"
                 >
                   <div
-                    class="woocommerce-timeline-item__top-border"
+                    class="poocommerce-timeline-item__top-border"
                   />
                   <div
-                    class="woocommerce-timeline-item__title"
+                    class="poocommerce-timeline-item__title"
                   >
                     <div
-                      class="woocommerce-timeline-item__headline"
+                      class="poocommerce-timeline-item__headline"
                     >
                       <svg
                         class="gridicon gridicons-sync"
@@ -1855,26 +1855,26 @@ exports[`PaymentDetailsTimeline renders subscription fee correctly 1`] = `
                       </span>
                     </div>
                     <span
-                      class="woocommerce-timeline-item__timestamp"
+                      class="poocommerce-timeline-item__timestamp"
                     >
                       3:18pm
                     </span>
                   </div>
                   <div
-                    class="woocommerce-timeline-item__body"
+                    class="poocommerce-timeline-item__body"
                   />
                 </li>
                 <li
-                  class="woocommerce-timeline-item"
+                  class="poocommerce-timeline-item"
                 >
                   <div
-                    class="woocommerce-timeline-item__top-border"
+                    class="poocommerce-timeline-item__top-border"
                   />
                   <div
-                    class="woocommerce-timeline-item__title"
+                    class="poocommerce-timeline-item__title"
                   >
                     <div
-                      class="woocommerce-timeline-item__headline"
+                      class="poocommerce-timeline-item__headline"
                     >
                       <svg
                         class="gridicon gridicons-plus"
@@ -1894,26 +1894,26 @@ exports[`PaymentDetailsTimeline renders subscription fee correctly 1`] = `
                       </span>
                     </div>
                     <span
-                      class="woocommerce-timeline-item__timestamp"
+                      class="poocommerce-timeline-item__timestamp"
                     >
                       3:18pm
                     </span>
                   </div>
                   <div
-                    class="woocommerce-timeline-item__body"
+                    class="poocommerce-timeline-item__body"
                   />
                 </li>
                 <li
-                  class="woocommerce-timeline-item"
+                  class="poocommerce-timeline-item"
                 >
                   <div
-                    class="woocommerce-timeline-item__top-border"
+                    class="poocommerce-timeline-item__top-border"
                   />
                   <div
-                    class="woocommerce-timeline-item__title"
+                    class="poocommerce-timeline-item__title"
                   >
                     <div
-                      class="woocommerce-timeline-item__headline"
+                      class="poocommerce-timeline-item__headline"
                     >
                       <svg
                         class="gridicon gridicons-checkmark is-success"
@@ -1933,13 +1933,13 @@ exports[`PaymentDetailsTimeline renders subscription fee correctly 1`] = `
                       </span>
                     </div>
                     <span
-                      class="woocommerce-timeline-item__timestamp"
+                      class="poocommerce-timeline-item__timestamp"
                     >
                       3:18pm
                     </span>
                   </div>
                   <div
-                    class="woocommerce-timeline-item__body"
+                    class="poocommerce-timeline-item__body"
                   >
                     <span>
                       Fee (3.9% + $0.30): -$0.34
@@ -1964,16 +1964,16 @@ exports[`PaymentDetailsTimeline renders subscription fee correctly 1`] = `
                   </div>
                 </li>
                 <li
-                  class="woocommerce-timeline-item"
+                  class="poocommerce-timeline-item"
                 >
                   <div
-                    class="woocommerce-timeline-item__top-border"
+                    class="poocommerce-timeline-item__top-border"
                   />
                   <div
-                    class="woocommerce-timeline-item__title"
+                    class="poocommerce-timeline-item__title"
                   >
                     <div
-                      class="woocommerce-timeline-item__headline"
+                      class="poocommerce-timeline-item__headline"
                     >
                       <svg
                         class="gridicon gridicons-sync"
@@ -1997,26 +1997,26 @@ exports[`PaymentDetailsTimeline renders subscription fee correctly 1`] = `
                       </span>
                     </div>
                     <span
-                      class="woocommerce-timeline-item__timestamp"
+                      class="poocommerce-timeline-item__timestamp"
                     >
                       3:18pm
                     </span>
                   </div>
                   <div
-                    class="woocommerce-timeline-item__body"
+                    class="poocommerce-timeline-item__body"
                   />
                 </li>
                 <li
-                  class="woocommerce-timeline-item"
+                  class="poocommerce-timeline-item"
                 >
                   <div
-                    class="woocommerce-timeline-item__top-border"
+                    class="poocommerce-timeline-item__top-border"
                   />
                   <div
-                    class="woocommerce-timeline-item__title"
+                    class="poocommerce-timeline-item__title"
                   >
                     <div
-                      class="woocommerce-timeline-item__headline"
+                      class="poocommerce-timeline-item__headline"
                     >
                       <svg
                         class="gridicon gridicons-checkmark is-warning"
@@ -2036,13 +2036,13 @@ exports[`PaymentDetailsTimeline renders subscription fee correctly 1`] = `
                       </span>
                     </div>
                     <span
-                      class="woocommerce-timeline-item__timestamp"
+                      class="poocommerce-timeline-item__timestamp"
                     >
                       3:18pm
                     </span>
                   </div>
                   <div
-                    class="woocommerce-timeline-item__body"
+                    class="poocommerce-timeline-item__body"
                   />
                 </li>
               </ul>

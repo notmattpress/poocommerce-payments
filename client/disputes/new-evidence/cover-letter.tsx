@@ -25,7 +25,7 @@ const CoverLetter: React.FC< CoverLetterProps > = ( {
 			<html>
 			<head>
 				<meta charset="UTF-8">
-				<title>${ __( 'Cover Letter', 'woocommerce-payments' ) }</title>
+				<title>${ __( 'Cover Letter', 'poocommerce-payments' ) }</title>
 				<style>
 					body {
 						font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
@@ -83,7 +83,7 @@ const CoverLetter: React.FC< CoverLetterProps > = ( {
 						border-radius: 4px;
 						cursor: pointer;
 					">
-						${ __( 'Print Cover Letter', 'woocommerce-payments' ) }
+						${ __( 'Print Cover Letter', 'poocommerce-payments' ) }
 					</button>
 				</div>
 			</body>
@@ -105,7 +105,7 @@ const CoverLetter: React.FC< CoverLetterProps > = ( {
 	return (
 		<section className="wcpay-dispute-evidence-cover-letter">
 			<TextareaControl
-				label={ __( 'COVER LETTER', 'woocommerce-payments' ) }
+				label={ __( 'COVER LETTER', 'poocommerce-payments' ) }
 				value={ value }
 				onChange={ onChange }
 				rows={ 30 }
@@ -120,7 +120,7 @@ const CoverLetter: React.FC< CoverLetterProps > = ( {
 				iconSize={ 24 }
 				icon={ external }
 			>
-				{ __( 'Preview cover letter', 'woocommerce-payments' ) }
+				{ __( 'Preview cover letter', 'poocommerce-payments' ) }
 			</Button>
 		</section>
 	);

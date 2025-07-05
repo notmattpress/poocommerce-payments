@@ -35,17 +35,17 @@ const ShippingDetails: React.FC< ShippingDetailsProps > = ( {
 	return (
 		<section className="wcpay-dispute-evidence-shipping-details">
 			<h3 className="wcpay-dispute-evidence-shipping-details__heading">
-				{ __( 'Delivery details', 'woocommerce-payments' ) }
+				{ __( 'Delivery details', 'poocommerce-payments' ) }
 			</h3>
 			<div className="wcpay-dispute-evidence-shipping-details__subheading">
 				{ __(
 					'Please check that all of the prefilled information is accurate and complete any empty fields.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				) }
 			</div>
 			<div className="wcpay-dispute-evidence-shipping-details__field-group">
 				<TextControl
-					label={ __( 'SHIPPING CARRIER', 'woocommerce-payments' ) }
+					label={ __( 'SHIPPING CARRIER', 'poocommerce-payments' ) }
 					onChange={ onShippingCarrierChange }
 					value={ shippingCarrier }
 					disabled={ readOnly }
@@ -53,7 +53,7 @@ const ShippingDetails: React.FC< ShippingDetailsProps > = ( {
 			</div>
 			<div className="wcpay-dispute-evidence-shipping-details__field-group">
 				<TextControl
-					label={ __( 'SHIPPING DATE', 'woocommerce-payments' ) }
+					label={ __( 'SHIPPING DATE', 'poocommerce-payments' ) }
 					onChange={ onShippingDateChange }
 					type="date"
 					value={
@@ -68,7 +68,7 @@ const ShippingDetails: React.FC< ShippingDetailsProps > = ( {
 			</div>
 			<div className="wcpay-dispute-evidence-shipping-details__field-group">
 				<TextControl
-					label={ __( 'TRACKING NUMBER', 'woocommerce-payments' ) }
+					label={ __( 'TRACKING NUMBER', 'poocommerce-payments' ) }
 					onChange={ onShippingTrackingNumberChange }
 					value={ shippingTrackingNumber }
 					disabled={ readOnly }
@@ -76,7 +76,7 @@ const ShippingDetails: React.FC< ShippingDetailsProps > = ( {
 			</div>
 			<div className="wcpay-dispute-evidence-shipping-details__field-group">
 				<TextControl
-					label={ __( 'SHIPPING ADDRESS', 'woocommerce-payments' ) }
+					label={ __( 'SHIPPING ADDRESS', 'poocommerce-payments' ) }
 					onChange={ onShippingAddressChange }
 					value={ shippingAddress.replace( /\n/g, ' ' ) }
 					disabled={ readOnly }

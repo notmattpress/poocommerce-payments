@@ -2,7 +2,7 @@
 /**
  * Class Compatibility
  *
- * @package WooCommerce\Payments\Compatibility
+ * @package PooCommerce\Payments\Compatibility
  */
 
 namespace WCPay\MultiCurrency;
@@ -10,15 +10,15 @@ namespace WCPay\MultiCurrency;
 use WC_Order;
 use WC_Order_Refund;
 use WCPay\MultiCurrency\Compatibility\BaseCompatibility;
-use WCPay\MultiCurrency\Compatibility\WooCommerceBookings;
-use WCPay\MultiCurrency\Compatibility\WooCommerceFedEx;
-use WCPay\MultiCurrency\Compatibility\WooCommerceNameYourPrice;
-use WCPay\MultiCurrency\Compatibility\WooCommercePreOrders;
-use WCPay\MultiCurrency\Compatibility\WooCommerceProductAddOns;
-use WCPay\MultiCurrency\Compatibility\WooCommerceSubscriptions;
-use WCPay\MultiCurrency\Compatibility\WooCommerceUPS;
-use WCPay\MultiCurrency\Compatibility\WooCommerceDeposits;
-use WCPay\MultiCurrency\Compatibility\WooCommercePointsAndRewards;
+use WCPay\MultiCurrency\Compatibility\PooCommerceBookings;
+use WCPay\MultiCurrency\Compatibility\PooCommerceFedEx;
+use WCPay\MultiCurrency\Compatibility\PooCommerceNameYourPrice;
+use WCPay\MultiCurrency\Compatibility\PooCommercePreOrders;
+use WCPay\MultiCurrency\Compatibility\PooCommerceProductAddOns;
+use WCPay\MultiCurrency\Compatibility\PooCommerceSubscriptions;
+use WCPay\MultiCurrency\Compatibility\PooCommerceUPS;
+use WCPay\MultiCurrency\Compatibility\PooCommerceDeposits;
+use WCPay\MultiCurrency\Compatibility\PooCommercePointsAndRewards;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -43,7 +43,7 @@ class Compatibility extends BaseCompatibility {
 		add_action( 'init', [ $this, 'init_compatibility_classes' ], 11 );
 
 		if ( defined( 'DOING_CRON' ) ) {
-			add_filter( 'woocommerce_admin_sales_record_milestone_enabled', [ $this, 'attach_order_modifier' ] );
+			add_filter( 'poocommerce_admin_sales_record_milestone_enabled', [ $this, 'attach_order_modifier' ] );
 		}
 	}
 
@@ -54,15 +54,15 @@ class Compatibility extends BaseCompatibility {
 	 */
 	public function init_compatibility_classes() {
 		if ( 1 < count( $this->multi_currency->get_enabled_currencies() ) ) {
-			$this->compatibility_classes[] = new WooCommerceBookings( $this->multi_currency, $this->utils, $this->multi_currency->get_frontend_currencies() );
-			$this->compatibility_classes[] = new WooCommerceFedEx( $this->multi_currency, $this->utils );
-			$this->compatibility_classes[] = new WooCommerceNameYourPrice( $this->multi_currency, $this->utils );
-			$this->compatibility_classes[] = new WooCommercePreOrders( $this->multi_currency, $this->utils );
-			$this->compatibility_classes[] = new WooCommerceProductAddOns( $this->multi_currency, $this->utils );
-			$this->compatibility_classes[] = new WooCommerceSubscriptions( $this->multi_currency, $this->utils );
-			$this->compatibility_classes[] = new WooCommerceUPS( $this->multi_currency, $this->utils );
-			$this->compatibility_classes[] = new WooCommerceDeposits( $this->multi_currency, $this->utils );
-			$this->compatibility_classes[] = new WooCommercePointsAndRewards( $this->multi_currency, $this->utils );
+			$this->compatibility_classes[] = new PooCommerceBookings( $this->multi_currency, $this->utils, $this->multi_currency->get_frontend_currencies() );
+			$this->compatibility_classes[] = new PooCommerceFedEx( $this->multi_currency, $this->utils );
+			$this->compatibility_classes[] = new PooCommerceNameYourPrice( $this->multi_currency, $this->utils );
+			$this->compatibility_classes[] = new PooCommercePreOrders( $this->multi_currency, $this->utils );
+			$this->compatibility_classes[] = new PooCommerceProductAddOns( $this->multi_currency, $this->utils );
+			$this->compatibility_classes[] = new PooCommerceSubscriptions( $this->multi_currency, $this->utils );
+			$this->compatibility_classes[] = new PooCommerceUPS( $this->multi_currency, $this->utils );
+			$this->compatibility_classes[] = new PooCommerceDeposits( $this->multi_currency, $this->utils );
+			$this->compatibility_classes[] = new PooCommercePointsAndRewards( $this->multi_currency, $this->utils );
 		}
 	}
 
@@ -105,7 +105,7 @@ class Compatibility extends BaseCompatibility {
 		/**
 		 * If the pay_for_order parameter is set, we disable currency switching.
 		 *
-		 * WooCommerce itself handles all the heavy lifting and verification on the Order Pay page, we just need to
+		 * PooCommerce itself handles all the heavy lifting and verification on the Order Pay page, we just need to
 		 * make sure the currency switchers are not displayed. This is due to once the order is created, the currency
 		 * itself should remain static.
 		 */
@@ -172,7 +172,7 @@ class Compatibility extends BaseCompatibility {
 	 */
 	public function attach_order_modifier( $arg ) {
 		// Attach our filter to modify the order prices.
-		add_filter( 'woocommerce_order_query', [ $this, 'convert_order_prices' ] );
+		add_filter( 'poocommerce_order_query', [ $this, 'convert_order_prices' ] );
 
 		// This will be a bool value indication whether the best day logic should be run. Let's just return it as is.
 		return $arg;
@@ -188,8 +188,8 @@ class Compatibility extends BaseCompatibility {
 	 */
 	public function convert_order_prices( $results ) {
 		$backtrace_calls = [
-			'Automattic\WooCommerce\Admin\Notes\NewSalesRecord::sum_sales_for_date',
-			'Automattic\WooCommerce\Admin\Notes\NewSalesRecord::possibly_add_note',
+			'Automattic\PooCommerce\Admin\Notes\NewSalesRecord::sum_sales_for_date',
+			'Automattic\PooCommerce\Admin\Notes\NewSalesRecord::possibly_add_note',
 		];
 
 		// If the results are not an array, or if the call we're expecting isn't in the backtrace, then just do nothing and return the results.
@@ -215,7 +215,7 @@ class Compatibility extends BaseCompatibility {
 			$order->set_total( number_format( $order->get_total() * ( 1 / $exchange_rate ), wc_get_price_decimals() ) );
 		}
 
-		remove_filter( 'woocommerce_order_query', [ $this, 'convert_order_prices' ] );
+		remove_filter( 'poocommerce_order_query', [ $this, 'convert_order_prices' ] );
 
 		return $results;
 	}
