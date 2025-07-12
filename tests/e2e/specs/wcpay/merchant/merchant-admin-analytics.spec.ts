@@ -42,7 +42,7 @@ test.describe( 'Admin order analytics', () => {
 		await tableDataHasLoaded( merchantPage );
 		await waitAndSkipTourComponent(
 			merchantPage,
-			'.woocommerce-revenue-report-date-tour'
+			'.poocommerce-revenue-report-date-tour'
 		);
 
 		const ordersTitle = merchantPage.getByRole( 'heading', {
@@ -63,7 +63,7 @@ test.describe( 'Admin order analytics', () => {
 		await tableDataHasLoaded( merchantPage );
 		await waitAndSkipTourComponent(
 			merchantPage,
-			'.woocommerce-revenue-report-date-tour'
+			'.poocommerce-revenue-report-date-tour'
 		);
 
 		const columnToggle = merchantPage.getByTitle(

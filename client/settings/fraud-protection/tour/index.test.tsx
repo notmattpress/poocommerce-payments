@@ -17,7 +17,7 @@ declare const global: {
 	};
 };
 
-jest.mock( '@woocommerce/components', () => ( {
+jest.mock( '@poocommerce/components', () => ( {
 	TourKit: () => <div data-testid="tour-kit" />,
 } ) );
 

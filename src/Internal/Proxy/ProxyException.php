@@ -2,7 +2,7 @@
 /**
  * Class ProxyException
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Internal\Proxy;
