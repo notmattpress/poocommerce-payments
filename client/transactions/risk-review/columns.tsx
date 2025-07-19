@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import { __ } from '@wordpress/i18n';
-import { TableCardColumn, TableCardBodyColumn } from '@woocommerce/components';
+import { TableCardColumn, TableCardBodyColumn } from '@poocommerce/components';
 import { Button } from '@wordpress/components';
 
 /**
@@ -31,8 +31,8 @@ export const getRiskReviewListColumns = (): Column[] =>
 	[
 		{
 			key: 'created',
-			label: __( 'Date / Time', 'woocommerce-payments' ),
-			screenReaderLabel: __( 'Date / Time', 'woocommerce-payments' ),
+			label: __( 'Date / Time', 'poocommerce-payments' ),
+			screenReaderLabel: __( 'Date / Time', 'poocommerce-payments' ),
 			required: true,
 			isLeftAligned: true,
 			defaultOrder: 'desc',
@@ -42,22 +42,22 @@ export const getRiskReviewListColumns = (): Column[] =>
 		},
 		{
 			key: 'amount',
-			label: __( 'Amount', 'woocommerce-payments' ),
-			screenReaderLabel: __( 'Amount', 'woocommerce-payments' ),
+			label: __( 'Amount', 'poocommerce-payments' ),
+			screenReaderLabel: __( 'Amount', 'poocommerce-payments' ),
 			isNumeric: true,
 			isSortable: true,
 		},
 		{
 			key: 'customer',
-			label: __( 'Customer', 'woocommerce-payments' ),
-			screenReaderLabel: __( 'Customer', 'woocommerce-payments' ),
+			label: __( 'Customer', 'poocommerce-payments' ),
+			screenReaderLabel: __( 'Customer', 'poocommerce-payments' ),
 			visible: true,
 			isLeftAligned: true,
 		},
 		{
 			key: 'status',
-			label: __( 'Status', 'woocommerce-payments' ),
-			screenReaderLabel: __( 'Status', 'woocommerce-payments' ),
+			label: __( 'Status', 'poocommerce-payments' ),
+			screenReaderLabel: __( 'Status', 'poocommerce-payments' ),
 			visible: true,
 			isLeftAligned: true,
 		},

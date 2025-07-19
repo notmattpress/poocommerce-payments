@@ -2,7 +2,7 @@
 /**
  * Trait file for WCPay\Core\Server\Request\Use_Test_Mode_Only_When_Test_Mode_Onboarding.
  *
- * @package WooCommerce Payments
+ * @package PooCommerce Payments
  */
 
 namespace WCPay\Core\Server\Request;

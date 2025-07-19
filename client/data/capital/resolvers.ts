@@ -35,7 +35,7 @@ export function* getActiveLoanSummary(): unknown {
 			'createErrorNotice',
 			__(
 				'Error retrieving the active loan summary.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			)
 		);
 		yield updateErrorForActiveLoanSummary( e as ApiError );
@@ -57,7 +57,7 @@ export function* getLoans(): unknown {
 			'createErrorNotice',
 			__(
 				'Error retrieving the active loan summary.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			)
 		);
 		yield updateErrorForLoans( e as ApiError );

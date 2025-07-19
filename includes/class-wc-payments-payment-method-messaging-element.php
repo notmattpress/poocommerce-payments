@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Payment_Method_Messaging_Element
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 use WCPay\Constants\Payment_Method;
@@ -53,7 +53,7 @@ class WC_Payments_Payment_Method_Messaging_Element {
 		}
 
 		global $product;
-		$currency_code      = get_woocommerce_currency();
+		$currency_code      = get_poocommerce_currency();
 		$store_country      = WC()->countries->get_base_country();
 		$billing_country    = WC()->customer->get_billing_country();
 		$cart_total         = WC()->cart->total;
@@ -67,7 +67,7 @@ class WC_Payments_Payment_Method_Messaging_Element {
 				if (
 					wc_prices_include_tax() &&
 					(
-						get_option( 'woocommerce_tax_display_shop' ) !== 'incl' ||
+						get_option( 'poocommerce_tax_display_shop' ) !== 'incl' ||
 						WC()->customer->get_is_vat_exempt()
 					)
 				) {
@@ -75,7 +75,7 @@ class WC_Payments_Payment_Method_Messaging_Element {
 						return wc_get_price_excluding_tax( $product );
 					};
 				} elseif (
-					get_option( 'woocommerce_tax_display_shop' ) === 'incl'
+					get_option( 'poocommerce_tax_display_shop' ) === 'incl'
 					&& ! WC()->customer->get_is_vat_exempt()
 				) {
 					$get_price_fn = function ( $product ) {

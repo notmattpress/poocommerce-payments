@@ -2,7 +2,7 @@
  * External dependencies
  */
 import React, { useEffect, useState } from 'react';
-import { TourKit } from '@woocommerce/components';
+import { TourKit } from '@poocommerce/components';
 
 /**
  * Internal dependencies

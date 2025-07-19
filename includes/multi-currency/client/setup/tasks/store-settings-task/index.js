@@ -94,7 +94,7 @@ const StoreSettingsTask = () => {
 			title={ interpolateComponents( {
 				mixedString: __(
 					'{{wrapper}}Review store settings{{/wrapper}}',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				components: {
 					wrapper: <span />,
@@ -102,7 +102,7 @@ const StoreSettingsTask = () => {
 			} ) }
 			visibleDescription={ __(
 				'These settings can be changed any time by visiting the Multi-Currency settings',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			) }
 			index={ 2 }
 		>
@@ -110,7 +110,7 @@ const StoreSettingsTask = () => {
 				<p className="wcpay-wizard-task__description-element is-muted-color">
 					{ __(
 						'These settings can be changed any time by visiting the Multi-Currency settings',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 				</p>
 				<Card className="multi-currency-settings-task__wrapper">
@@ -121,13 +121,13 @@ const StoreSettingsTask = () => {
 							data-testid={ 'enable_auto_currency' }
 							label={ __(
 								'Automatically switch customers to their local currency if it has been enabled',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 						/>
 						<div className="multi-currency-settings-task__description">
 							{ __(
 								'Customers will be notified via store alert banner.',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 						</div>
 						{ storeSettings.site_theme === 'Storefront' ? (
@@ -140,13 +140,13 @@ const StoreSettingsTask = () => {
 									data-testid={ 'enable_storefront_switcher' }
 									label={ __(
 										'Add a currency switcher to the Storefront theme on breadcrumb section.',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									) }
 								/>
 								<div className="multi-currency-settings-task__description">
 									{ __(
 										'A currency switcher is also available in your widgets.',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									) }
 								</div>
 							</>
@@ -159,7 +159,7 @@ const StoreSettingsTask = () => {
 					onClick={ handleContinueClick }
 					variant="primary"
 				>
-					{ __( 'Continue', 'woocommerce-payments' ) }
+					{ __( 'Continue', 'poocommerce-payments' ) }
 				</Button>
 				<Button
 					isBusy={ isPending || isSaving }
@@ -168,7 +168,7 @@ const StoreSettingsTask = () => {
 					className={ 'multi-currency-setup-preview-button' }
 					variant="tertiary"
 				>
-					{ __( 'Preview', 'woocommerce-payments' ) }
+					{ __( 'Preview', 'poocommerce-payments' ) }
 				</Button>
 				<PreviewModal
 					isPreviewModalOpen={ isPreviewModalOpen }

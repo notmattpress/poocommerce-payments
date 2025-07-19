@@ -11,23 +11,23 @@ import { DOCUMENT_FIELD_KEYS } from './recommended-document-fields';
 export const getBusinessDetails = (): AccountDetails => {
 	const wcStoreCountry =
 		wcSettings?.admin?.preloadSettings?.general
-			?.woocommerce_default_country || ':';
+			?.poocommerce_default_country || ':';
 	const [ storeCountry, storeState ] = wcStoreCountry.split( ':' );
 	return {
 		name: wcSettings?.siteTitle || '<Your Business Name>',
 		support_address_city:
 			wcSettings?.admin?.preloadSettings?.general
-				?.woocommerce_store_city || '',
+				?.poocommerce_store_city || '',
 		support_address_country: storeCountry,
 		support_address_line1:
 			wcSettings?.admin?.preloadSettings?.general
-				?.woocommerce_store_address || '',
+				?.poocommerce_store_address || '',
 		support_address_line2:
 			wcSettings?.admin?.preloadSettings?.general
-				?.woocommerce_store_address_2 || '',
+				?.poocommerce_store_address_2 || '',
 		support_address_postal_code:
 			wcSettings?.admin?.preloadSettings?.general
-				?.woocommerce_store_postcode || '',
+				?.poocommerce_store_postcode || '',
 		support_address_state: storeState,
 	};
 };
@@ -42,7 +42,7 @@ export const formatDeliveryDate = (
 	dateString: string | undefined
 ): string => {
 	if ( ! dateString )
-		return __( '<Delivery/Service Date>', 'woocommerce-payments' );
+		return __( '<Delivery/Service Date>', 'poocommerce-payments' );
 
 	const unixTimestamp = Math.floor( new Date( dateString ).getTime() / 1000 );
 	return formatDateTimeFromTimestamp( unixTimestamp, {
@@ -67,39 +67,39 @@ export const generateAttachments = ( dispute: ExtendedDispute ): string => {
 	const standardAttachments = [
 		{
 			key: DOCUMENT_FIELD_KEYS.RECEIPT,
-			label: __( 'Order receipt', 'woocommerce-payments' ),
+			label: __( 'Order receipt', 'poocommerce-payments' ),
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.CUSTOMER_COMMUNICATION,
-			label: __( 'Customer communication', 'woocommerce-payments' ),
+			label: __( 'Customer communication', 'poocommerce-payments' ),
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.CUSTOMER_SIGNATURE,
-			label: __( "Customer's signature", 'woocommerce-payments' ),
+			label: __( "Customer's signature", 'poocommerce-payments' ),
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.REFUND_POLICY,
-			label: __( 'Store refund policy', 'woocommerce-payments' ),
+			label: __( 'Store refund policy', 'poocommerce-payments' ),
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.SHIPPING_DOCUMENTATION,
-			label: __( 'Proof of shipping', 'woocommerce-payments' ),
+			label: __( 'Proof of shipping', 'poocommerce-payments' ),
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.SERVICE_DOCUMENTATION,
-			label: __( 'Item condition', 'woocommerce-payments' ),
+			label: __( 'Item condition', 'poocommerce-payments' ),
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.CANCELLATION_POLICY,
-			label: __( 'Cancellation policy', 'woocommerce-payments' ),
+			label: __( 'Cancellation policy', 'poocommerce-payments' ),
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.ACCESS_ACTIVITY_LOG,
-			label: __( 'Proof of active subscription', 'woocommerce-payments' ),
+			label: __( 'Proof of active subscription', 'poocommerce-payments' ),
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.UNCATEGORIZED_FILE,
-			label: __( 'Other documents', 'woocommerce-payments' ),
+			label: __( 'Other documents', 'poocommerce-payments' ),
 		},
 	] as const;
 
@@ -110,7 +110,7 @@ export const generateAttachments = ( dispute: ExtendedDispute ): string => {
 			attachments.push(
 				`• ${ label } (${ __(
 					'Attachment',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				) } ${ String.fromCharCode( 64 + attachmentCount ) })`
 			);
 		}
@@ -120,11 +120,11 @@ export const generateAttachments = ( dispute: ExtendedDispute ): string => {
 	if ( attachments.length === 0 ) {
 		return `• ${ __(
 			'<Attachment description>',
-			'woocommerce-payments'
-		) } (${ __( 'Attachment', 'woocommerce-payments' ) } A)
-• ${ __( '<Attachment description>', 'woocommerce-payments' ) } (${ __(
+			'poocommerce-payments'
+		) } (${ __( 'Attachment', 'poocommerce-payments' ) } A)
+• ${ __( '<Attachment description>', 'poocommerce-payments' ) } (${ __(
 			'Attachment',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		) } B)`;
 	}
 
@@ -142,11 +142,11 @@ ${ data.today }`;
 };
 
 export const generateRecipient = ( data: CoverLetterData ): string => {
-	return `${ __( 'To:', 'woocommerce-payments' ) } ${ data.acquiringBank }
-${ __( 'Subject:', 'woocommerce-payments' ) } ${ __(
+	return `${ __( 'To:', 'poocommerce-payments' ) } ${ data.acquiringBank }
+${ __( 'Subject:', 'poocommerce-payments' ) } ${ __(
 		'Chargeback Dispute',
-		'woocommerce-payments'
-	) } – ${ __( 'Case', 'woocommerce-payments' ) } #${ data.caseNumber }`;
+		'poocommerce-payments'
+	) } – ${ __( 'Case', 'poocommerce-payments' ) } #${ data.caseNumber }`;
 };
 
 export const generateBody = (
@@ -157,100 +157,100 @@ export const generateBody = (
 	if ( dispute.reason === 'product_not_received' ) {
 		return `${ __(
 			'We are submitting evidence in response to chargeback',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		) } #${ data.caseNumber } ${ __(
 			'for transaction',
-			'woocommerce-payments'
-		) } #${ data.transactionId } ${ __( 'on', 'woocommerce-payments' ) } ${
+			'poocommerce-payments'
+		) } #${ data.transactionId } ${ __( 'on', 'poocommerce-payments' ) } ${
 			data.transactionDate
 		}.
 
-${ __( 'Our records indicate that the customer,', 'woocommerce-payments' ) } ${
+${ __( 'Our records indicate that the customer,', 'poocommerce-payments' ) } ${
 			data.customerName
-		}, ${ __( 'ordered', 'woocommerce-payments' ) } ${ data.product } ${ __(
+		}, ${ __( 'ordered', 'poocommerce-payments' ) } ${ data.product } ${ __(
 			'on',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		) } ${ data.orderDate } ${ __(
 			'and received it on',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		) } ${ data.deliveryDate }.
 
 ${ __(
 	'To support our case, we are providing the following documentation:',
-	'woocommerce-payments'
+	'poocommerce-payments'
 ) }
 ${ attachmentsList }
 
 ${ __(
 	'Based on this information, we respectfully request that the chargeback be reversed. Please let us know if any further details are required.',
-	'woocommerce-payments'
+	'poocommerce-payments'
 ) }`;
 	}
 
 	if ( dispute.reason === 'product_unacceptable' ) {
 		return `${ __(
 			'We are submitting evidence in response to chargeback',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		) } #${ data.caseNumber } ${ __(
 			'for transaction',
-			'woocommerce-payments'
-		) } #${ data.transactionId } ${ __( 'on', 'woocommerce-payments' ) } ${
+			'poocommerce-payments'
+		) } #${ data.transactionId } ${ __( 'on', 'poocommerce-payments' ) } ${
 			data.transactionDate
 		}.
 
-${ __( 'Our records indicate that the customer,', 'woocommerce-payments' ) } ${
+${ __( 'Our records indicate that the customer,', 'poocommerce-payments' ) } ${
 			data.customerName
-		}, ${ __( 'ordered', 'woocommerce-payments' ) } ${ data.product } ${ __(
+		}, ${ __( 'ordered', 'poocommerce-payments' ) } ${ data.product } ${ __(
 			'on',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		) } ${ data.orderDate }. ${ __(
 			'The product matched the description provided at the time of sale, and we did not receive any indication from the customer that it was defective or not as described.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		) }
 
 ${ __(
 	'To support our case, we are providing the following documentation:',
-	'woocommerce-payments'
+	'poocommerce-payments'
 ) }
 ${ attachmentsList }
 
 ${ __(
 	'Based on this information, we respectfully request that the chargeback be reversed. Please let us know if any further details are required.',
-	'woocommerce-payments'
+	'poocommerce-payments'
 ) }`;
 	}
 
 	return `${ __(
 		'We are submitting evidence in response to chargeback',
-		'woocommerce-payments'
+		'poocommerce-payments'
 	) } #${ data.caseNumber } ${ __(
 		'for transaction',
-		'woocommerce-payments'
-	) } #${ data.transactionId } ${ __( 'on', 'woocommerce-payments' ) } ${
+		'poocommerce-payments'
+	) } #${ data.transactionId } ${ __( 'on', 'poocommerce-payments' ) } ${
 		data.transactionDate
 	}.
 
 ${ __(
 	'Our records indicate that the customer and legitimate cardholder,',
-	'woocommerce-payments'
-) } ${ data.customerName }, ${ __( 'ordered', 'woocommerce-payments' ) } ${
+	'poocommerce-payments'
+) } ${ data.customerName }, ${ __( 'ordered', 'poocommerce-payments' ) } ${
 		data.product
-	} ${ __( 'on', 'woocommerce-payments' ) } ${ data.orderDate }.
+	} ${ __( 'on', 'poocommerce-payments' ) } ${ data.orderDate }.
 
 ${ __(
 	'To support our case, we are providing the following documentation:',
-	'woocommerce-payments'
+	'poocommerce-payments'
 ) }
 ${ attachmentsList }
 
 ${ __(
 	'Based on this information, we respectfully request that the chargeback be reversed. Please let me know if any further details are required.',
-	'woocommerce-payments'
+	'poocommerce-payments'
 ) }`;
 };
 
 export const generateClosing = ( data: CoverLetterData ): string => {
-	return `${ __( 'Thank you,', 'woocommerce-payments' ) }
+	return `${ __( 'Thank you,', 'poocommerce-payments' ) }
 ${ data.merchantName }`;
 };
 
@@ -272,26 +272,26 @@ export const generateCoverLetter = (
 		merchantName: accountDetails.name,
 		merchantEmail:
 			settings?.account_business_support_email ||
-			__( '<business@email.com>', 'woocommerce-payments' ),
+			__( '<business@email.com>', 'poocommerce-payments' ),
 		merchantPhone:
 			settings?.account_business_support_phone ||
-			__( '<Business Phone Number>', 'woocommerce-payments' ),
+			__( '<Business Phone Number>', 'poocommerce-payments' ),
 		today: todayFormatted,
-		acquiringBank: bankName || __( '<Bank Name>', 'woocommerce-payments' ),
+		acquiringBank: bankName || __( '<Bank Name>', 'poocommerce-payments' ),
 		caseNumber:
-			dispute?.id || __( '<Case Number>', 'woocommerce-payments' ),
+			dispute?.id || __( '<Case Number>', 'poocommerce-payments' ),
 		transactionId:
 			dispute?.charge?.id ||
-			__( '<Transaction ID>', 'woocommerce-payments' ),
+			__( '<Transaction ID>', 'poocommerce-payments' ),
 		transactionDate: dispute?.created
 			? formatDateTimeFromTimestamp( dispute.created, {
 					separator: ', ',
 					includeTime: true,
 			  } )
-			: __( '<Transaction Date>', 'woocommerce-payments' ),
+			: __( '<Transaction Date>', 'poocommerce-payments' ),
 		customerName:
 			dispute?.charge?.billing_details?.name ||
-			__( '<Customer Name>', 'woocommerce-payments' ),
+			__( '<Customer Name>', 'poocommerce-payments' ),
 		product:
 			dispute?.evidence?.product_description &&
 			isEvidenceString( dispute.evidence.product_description )
@@ -300,13 +300,13 @@ export const generateCoverLetter = (
 						?.map( ( item: any ) => item.product_description )
 						.filter( Boolean )
 						.join( ', ' ) ||
-				  __( '<Product>', 'woocommerce-payments' ),
+				  __( '<Product>', 'poocommerce-payments' ),
 		orderDate: dispute?.charge?.created
 			? formatDateTimeFromTimestamp( dispute.charge.created, {
 					separator: ', ',
 					includeTime: true,
 			  } )
-			: __( '<Order Date>', 'woocommerce-payments' ),
+			: __( '<Order Date>', 'poocommerce-payments' ),
 		deliveryDate: formatDeliveryDate(
 			dispute?.evidence?.shipping_date &&
 				isEvidenceString( dispute.evidence.shipping_date )
@@ -320,7 +320,7 @@ export const generateCoverLetter = (
 	const recipient = generateRecipient( data );
 	const greeting = __(
 		'Dear Dispute Resolution Team,',
-		'woocommerce-payments'
+		'poocommerce-payments'
 	);
 	const body = generateBody( data, dispute, attachmentsList );
 	const closing = generateClosing( data );

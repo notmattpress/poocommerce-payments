@@ -46,7 +46,7 @@ class Affirm_Payment_Method extends UPE_Payment_Method {
 	 * @return string
 	 */
 	public function get_title( ?string $account_country = null, $payment_details = false ) {
-		return __( 'Affirm', 'woocommerce-payments' );
+		return __( 'Affirm', 'poocommerce-payments' );
 	}
 
 	/**
@@ -69,7 +69,7 @@ class Affirm_Payment_Method extends UPE_Payment_Method {
 	public function get_description( ?string $account_country = null ) {
 		return __(
 			'Allow customers to pay over time with Affirm.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		);
 	}
 

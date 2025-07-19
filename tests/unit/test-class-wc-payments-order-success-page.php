@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Order_Success_Page_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\Payment_Methods\UPE_Payment_Method;
@@ -28,7 +28,7 @@ class WC_Payments_Order_Success_Page_Test extends WCPAY_UnitTestCase {
 
 	public function test_show_card_payment_method_name_without_card_brand() {
 		$order = WC_Helper_Order::create_order();
-		$order->set_payment_method( 'woocommerce_payments' );
+		$order->set_payment_method( 'poocommerce_payments' );
 		$order->save();
 
 		$payment_method = $this->getMockBuilder( '\WCPay\Payment_Methods\UPE_Payment_Method' )
@@ -45,7 +45,7 @@ class WC_Payments_Order_Success_Page_Test extends WCPAY_UnitTestCase {
 		$order = WC_Helper_Order::create_order();
 		$order->add_meta_data( '_card_brand', 'visa' );
 		$order->add_meta_data( 'last4', '4242' );
-		$order->set_payment_method( 'woocommerce_payments' );
+		$order->set_payment_method( 'poocommerce_payments' );
 		$order->save();
 
 		$payment_method = $this->getMockBuilder( '\WCPay\Payment_Methods\UPE_Payment_Method' )
@@ -64,7 +64,7 @@ class WC_Payments_Order_Success_Page_Test extends WCPAY_UnitTestCase {
 	public function test_show_card_payment_method_name_with_brand_only() {
 		$order = WC_Helper_Order::create_order();
 		$order->add_meta_data( '_card_brand', 'mastercard' );
-		$order->set_payment_method( 'woocommerce_payments' );
+		$order->set_payment_method( 'poocommerce_payments' );
 		$order->save();
 
 		$payment_method = $this->getMockBuilder( '\WCPay\Payment_Methods\UPE_Payment_Method' )
@@ -82,7 +82,7 @@ class WC_Payments_Order_Success_Page_Test extends WCPAY_UnitTestCase {
 
 	public function test_show_woopay_payment_method_name_empty_order() {
 		$method_name = 'Credit card';
-		$result      = $this->payments_order_success_page->show_woocommerce_payments_payment_method_name( $method_name, null );
+		$result      = $this->payments_order_success_page->show_poocommerce_payments_payment_method_name( $method_name, null );
 
 		$this->assertSame( $method_name, $result );
 	}
@@ -92,7 +92,7 @@ class WC_Payments_Order_Success_Page_Test extends WCPAY_UnitTestCase {
 		$order->save();
 
 		$method_name = 'Credit card';
-		$result      = $this->payments_order_success_page->show_woocommerce_payments_payment_method_name( $method_name, $order );
+		$result      = $this->payments_order_success_page->show_poocommerce_payments_payment_method_name( $method_name, $order );
 
 		$this->assertSame( $method_name, $result );
 	}
@@ -131,7 +131,7 @@ class WC_Payments_Order_Success_Page_Test extends WCPAY_UnitTestCase {
 	public function test_replace_order_received_text_for_failed_orders_with_failed_status() {
 		$order = WC_Helper_Order::create_order();
 		$order->set_status( 'failed' );
-		$order->set_payment_method( 'woocommerce_payments' );
+		$order->set_payment_method( 'poocommerce_payments' );
 		$order->set_total( 50 ); // Ensure order needs payment.
 		$order->save();
 
@@ -148,7 +148,7 @@ class WC_Payments_Order_Success_Page_Test extends WCPAY_UnitTestCase {
 
 	public function test_replace_order_received_text_for_failed_orders_with_redirect_payment_failed_intent() {
 		$order = WC_Helper_Order::create_order();
-		$order->set_payment_method( 'woocommerce_payments_wechat_pay' );
+		$order->set_payment_method( 'poocommerce_payments_wechat_pay' );
 		$order->set_total( 50 ); // Ensure order needs payment.
 		$order->add_meta_data( '_intent_id', 'pi_123' );
 		$order->save();

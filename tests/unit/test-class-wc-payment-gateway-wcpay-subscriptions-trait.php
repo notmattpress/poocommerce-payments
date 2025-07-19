@@ -2,7 +2,7 @@
 /**
  * Class WC_Payment_Gateway_WCPay_Subscriptions_Trait_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 /**
@@ -34,7 +34,7 @@ class WC_Payment_Gateway_WCPay_Subscriptions_Trait_Test extends WCPAY_UnitTestCa
 		);
 
 		$this->mock_wcpay_subscriptions_trait->supports = [];
-		$this->mock_wcpay_subscriptions_trait->id       = 'woocommerce_payments';
+		$this->mock_wcpay_subscriptions_trait->id       = 'poocommerce_payments';
 	}
 
 	public function test_maybe_init_subscriptions_with_subscriptions_disabled() {

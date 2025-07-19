@@ -2,7 +2,7 @@
 /**
  * Class WC_REST_Payments_Payment_Intents_Controller
  *
- * @package WooCommerce\Payments\Admin
+ * @package PooCommerce\Payments\Admin
  */
 
 use WCPay\Core\Server\Request\Create_And_Confirm_Intention;
@@ -76,8 +76,8 @@ class WC_REST_Payments_Payment_Intents_Controller extends WC_Payments_REST_Contr
 	/**
 	 * WC_REST_Payments_Payment_Intents_Controller constructor.
 	 *
-	 * @param WC_Payments_API_Client   $api_client       WooCommerce Payments API client.
-	 * @param WC_Payment_Gateway_WCPay $gateway          WooCommerce Payments payment gateway.
+	 * @param WC_Payments_API_Client   $api_client       PooCommerce Payments API client.
+	 * @param WC_Payment_Gateway_WCPay $gateway          PooCommerce Payments payment gateway.
 	 * @param OrderService             $order_service    The new order service.
 	 * @param Level3Service            $level3_service   Level3 service instance.
 	 */
@@ -118,7 +118,7 @@ class WC_REST_Payments_Payment_Intents_Controller extends WC_Payments_REST_Contr
 			$order_id = $request->get_param( 'order_id' );
 			$order    = wc_get_order( $order_id );
 			if ( ! $order ) {
-				throw new Rest_Request_Exception( __( 'Order not found', 'woocommerce-payments' ) );
+				throw new Rest_Request_Exception( __( 'Order not found', 'poocommerce-payments' ) );
 			}
 
 			$wcpay_server_request = Create_And_Confirm_Intention::create();
@@ -163,37 +163,37 @@ class WC_REST_Payments_Payment_Intents_Controller extends WC_Payments_REST_Contr
 			'type'       => 'object',
 			'properties' => [
 				'id'       => [
-					'description' => __( 'ID for the payment intent.', 'woocommerce-payments' ),
+					'description' => __( 'ID for the payment intent.', 'poocommerce-payments' ),
 					'type'        => 'string',
 					'context'     => [ 'view' ],
 				],
 				'amount'   => [
-					'description' => __( 'The amount of the transaction.', 'woocommerce-payments' ),
+					'description' => __( 'The amount of the transaction.', 'poocommerce-payments' ),
 					'type'        => 'integer',
 					'context'     => [ 'view' ],
 				],
 				'currency' => [
-					'description' => __( 'The currency of the transaction.', 'woocommerce-payments' ),
+					'description' => __( 'The currency of the transaction.', 'poocommerce-payments' ),
 					'type'        => 'string',
 					'context'     => [ 'view' ],
 				],
 				'created'  => [
-					'description' => __( 'The date when the payment intent was created.', 'woocommerce-payments' ),
+					'description' => __( 'The date when the payment intent was created.', 'poocommerce-payments' ),
 					'type'        => 'string',
 					'context'     => [ 'view' ],
 				],
 				'customer' => [
-					'description' => __( 'The customer id of the intent', 'woocommerce-payments' ),
+					'description' => __( 'The customer id of the intent', 'poocommerce-payments' ),
 					'type'        => 'string',
 					'context'     => [ 'view' ],
 				],
 				'status'   => [
-					'description' => __( 'The status of the payment intent.', 'woocommerce-payments' ),
+					'description' => __( 'The status of the payment intent.', 'poocommerce-payments' ),
 					'type'        => 'string',
 					'context'     => [ 'view' ],
 				],
 				'charge'   => [
-					'description' => __( 'Charge object associated with this payment intention.', 'woocommerce-payments' ),
+					'description' => __( 'Charge object associated with this payment intention.', 'poocommerce-payments' ),
 					'type'        => 'object',
 					'context'     => [ 'view' ],
 					'properties'  => [
@@ -252,60 +252,60 @@ class WC_REST_Payments_Payment_Intents_Controller extends WC_Payments_REST_Contr
 							],
 						],
 						'billing_details'        => [
-							'description' => __( 'Billing details for the payment method.', 'woocommerce-payments' ),
+							'description' => __( 'Billing details for the payment method.', 'poocommerce-payments' ),
 							'type'        => 'object',
 							'context'     => [ 'view' ],
 							'properties'  => [
 								'address' => [
-									'description' => __( 'Address associated with the billing details.', 'woocommerce-payments' ),
+									'description' => __( 'Address associated with the billing details.', 'poocommerce-payments' ),
 									'type'        => 'object',
 									'context'     => [ 'view' ],
 									'properties'  => [
 										'city'        => [
-											'description' => __( 'City of the billing address.', 'woocommerce-payments' ),
+											'description' => __( 'City of the billing address.', 'poocommerce-payments' ),
 											'type'        => 'string',
 											'context'     => [ 'view' ],
 										],
 										'country'     => [
-											'description' => __( 'Country of the billing address.', 'woocommerce-payments' ),
+											'description' => __( 'Country of the billing address.', 'poocommerce-payments' ),
 											'type'        => 'string',
 											'context'     => [ 'view' ],
 										],
 										'line1'       => [
-											'description' => __( 'Line 1 of the billing address.', 'woocommerce-payments' ),
+											'description' => __( 'Line 1 of the billing address.', 'poocommerce-payments' ),
 											'type'        => 'string',
 											'context'     => [ 'view' ],
 										],
 										'line2'       => [
-											'description' => __( 'Line 2 of the billing address.', 'woocommerce-payments' ),
+											'description' => __( 'Line 2 of the billing address.', 'poocommerce-payments' ),
 											'type'        => 'string',
 											'context'     => [ 'view' ],
 										],
 										'postal_code' => [
-											'description' => __( 'Postal code of the billing address.', 'woocommerce-payments' ),
+											'description' => __( 'Postal code of the billing address.', 'poocommerce-payments' ),
 											'type'        => 'string',
 											'context'     => [ 'view' ],
 										],
 										'state'       => [
-											'description' => __( 'State of the billing address.', 'woocommerce-payments' ),
+											'description' => __( 'State of the billing address.', 'poocommerce-payments' ),
 											'type'        => 'string',
 											'context'     => [ 'view' ],
 										],
 									],
 								],
 								'email'   => [
-									'description' => __( 'Email associated with the billing details.', 'woocommerce-payments' ),
+									'description' => __( 'Email associated with the billing details.', 'poocommerce-payments' ),
 									'type'        => 'string',
 									'format'      => 'email',
 									'context'     => [ 'view' ],
 								],
 								'name'    => [
-									'description' => __( 'Name associated with the billing details.', 'woocommerce-payments' ),
+									'description' => __( 'Name associated with the billing details.', 'poocommerce-payments' ),
 									'type'        => 'string',
 									'context'     => [ 'view' ],
 								],
 								'phone'   => [
-									'description' => __( 'Phone number associated with the billing details.', 'woocommerce-payments' ),
+									'description' => __( 'Phone number associated with the billing details.', 'poocommerce-payments' ),
 									'type'        => 'string',
 									'context'     => [ 'view' ],
 								],

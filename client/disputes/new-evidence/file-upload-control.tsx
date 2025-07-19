@@ -41,7 +41,7 @@ const FileUploadControl: React.FC< FileUploadControlProps > = ( {
 								disabled={ disabled }
 								aria-label={ __(
 									'Remove file',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								) }
 								variant="tertiary"
 							/>
@@ -75,7 +75,7 @@ const FileUploadControl: React.FC< FileUploadControlProps > = ( {
 							isBusy={ isBusy }
 							aria-label={ __(
 								'Upload file',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 							variant="primary"
 						/>

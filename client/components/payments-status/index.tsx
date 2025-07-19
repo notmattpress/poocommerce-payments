@@ -22,7 +22,7 @@ const PaymentsStatusEnabled = ( { iconSize }: PaymentsStatusProps ) => {
 	return (
 		<span className={ 'account-status__info__green' }>
 			<GridiconCheckmarkCircle size={ iconSize } />
-			{ __( 'Enabled', 'woocommerce-payments' ) }
+			{ __( 'Enabled', 'poocommerce-payments' ) }
 		</span>
 	);
 };
@@ -31,7 +31,7 @@ const PaymentsStatusDisabled = ( { iconSize }: PaymentsStatusProps ) => {
 	return (
 		<span className={ 'account-status__info__red' }>
 			<GridiconNotice size={ iconSize } />
-			{ __( 'Disabled', 'woocommerce-payments' ) }
+			{ __( 'Disabled', 'poocommerce-payments' ) }
 		</span>
 	);
 };
@@ -40,7 +40,7 @@ const PaymentsStatusPending = ( { iconSize }: PaymentsStatusProps ) => {
 	return (
 		<span className={ 'account-status__info__gray' }>
 			<GridiconNotice size={ iconSize } />
-			{ __( 'Pending verification', 'woocommerce-payments' ) }
+			{ __( 'Pending verification', 'poocommerce-payments' ) }
 		</span>
 	);
 };

@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import { __, sprintf } from '@wordpress/i18n';
-import { Link } from '@woocommerce/components';
+import { Link } from '@poocommerce/components';
 import { createInterpolateElement } from '@wordpress/element';
 import {
 	Button,
@@ -42,7 +42,7 @@ const DisputeUnderReviewFooter: React.FC< {
 									/* Translators: %1$s - bank name, %2$s - formatted date, <a> - link to documentation page */
 									__(
 										'You submitted evidence for this dispute on %1$s. <strong>%2$s</strong> is reviewing the case, which can take 60 days or more. You will be alerted when they make their final decision. <a>Learn more about the dispute process</a>.',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									),
 									submissionDateFormatted,
 									bankName
@@ -51,7 +51,7 @@ const DisputeUnderReviewFooter: React.FC< {
 									/* Translators: %s - formatted date, <a> - link to documentation page */
 									__(
 										'You submitted evidence for this dispute on %s. The <strong>cardholder’s bank</strong> is reviewing the case, which can take 60 days or more. You will be alerted when they make their final decision. <a>Learn more about the dispute process</a>.',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									),
 									submissionDateFormatted
 							  ),
@@ -61,7 +61,7 @@ const DisputeUnderReviewFooter: React.FC< {
 								<a
 									target="_blank"
 									rel="noopener noreferrer"
-									href="https://woocommerce.com/document/woopayments/fraud-and-disputes/"
+									href="https://poocommerce.com/document/woopayments/fraud-and-disputes/"
 								/>
 							),
 							strong: <strong />,
@@ -90,7 +90,7 @@ const DisputeUnderReviewFooter: React.FC< {
 						>
 							{ __(
 								'View submitted evidence',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 						</Button>
 					</Link>
@@ -120,7 +120,7 @@ const DisputeWonFooter: React.FC< {
 									/* Translators: %1$s - bank name, %2$s - formatted date, <a> - link to documentation page */
 									__(
 										'Good news! <strong>%1$s</strong> decided that you won the dispute on %2$s. The disputed amount and the dispute fee have been credited back to your account. <a>Learn more about preventing disputes</a>.',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									),
 									bankName,
 									closedDateFormatted
@@ -129,7 +129,7 @@ const DisputeWonFooter: React.FC< {
 									/* Translators: %s - formatted date, <a> - link to documentation page */
 									__(
 										'Good news! The <strong>cardholder’s bank</strong> decided that you won the dispute on %s. The disputed amount and the dispute fee have been credited back to your account. <a>Learn more about preventing disputes</a>.',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									),
 									closedDateFormatted
 							  ),
@@ -139,7 +139,7 @@ const DisputeWonFooter: React.FC< {
 								<a
 									target="_blank"
 									rel="noopener noreferrer"
-									href="https://woocommerce.com/document/woopayments/fraud-and-disputes/"
+									href="https://poocommerce.com/document/woopayments/fraud-and-disputes/"
 								/>
 							),
 							strong: <strong />,
@@ -168,7 +168,7 @@ const DisputeWonFooter: React.FC< {
 						>
 							{ __(
 								'View dispute details',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 						</Button>
 					</Link>
@@ -199,7 +199,7 @@ const DisputeLostFooter: React.FC< {
 		/* Translators: %1$s - formatted date */
 		__(
 			'This dispute was lost on %1$s due to non-response.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		closedDateFormatted
 	);
@@ -209,7 +209,7 @@ const DisputeLostFooter: React.FC< {
 			/* Translators: %1$s - formatted date */
 			__(
 				'This dispute was accepted and lost on %1$s.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			closedDateFormatted
 		);
@@ -218,7 +218,7 @@ const DisputeLostFooter: React.FC< {
 	if ( isSubmitted ) {
 		messagePrefix = sprintf(
 			/* Translators: %1$s - formatted date */
-			__( 'This dispute was lost on %1$s.', 'woocommerce-payments' ),
+			__( 'This dispute was lost on %1$s.', 'poocommerce-payments' ),
 			closedDateFormatted
 		);
 	}
@@ -229,7 +229,7 @@ const DisputeLostFooter: React.FC< {
 				/* Translators: %1$s - bank name, %2$s - formatted date */
 				__(
 					'<strong>%1$s</strong> decided that you lost the dispute on %2$s.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				bankName,
 				closedDateFormatted
@@ -239,7 +239,7 @@ const DisputeLostFooter: React.FC< {
 				/* Translators: %s - formatted date */
 				__(
 					'The <strong>cardholder’s bank</strong> decided that you lost the dispute on %s',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				closedDateFormatted
 			);
@@ -258,7 +258,7 @@ const DisputeLostFooter: React.FC< {
 							/* Translators: %1$s – the formatted dispute fee amount, <a> - link to documentation page */
 							__(
 								'The %1$s fee has been deducted from your account, and the disputed amount returned to the cardholder. <a>Learn more about preventing disputes</a>.',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							disputeFeeFormatted
 						),
@@ -268,7 +268,7 @@ const DisputeLostFooter: React.FC< {
 								<a
 									target="_blank"
 									rel="noopener noreferrer"
-									href="https://woocommerce.com/document/woopayments/fraud-and-disputes/"
+									href="https://poocommerce.com/document/woopayments/fraud-and-disputes/"
 								/>
 							),
 						}
@@ -298,7 +298,7 @@ const DisputeLostFooter: React.FC< {
 							>
 								{ __(
 									'View dispute details',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								) }
 							</Button>
 						</Link>
@@ -329,7 +329,7 @@ const InquiryUnderReviewFooter: React.FC< {
 									/* Translators: %1$s - bank name, %2$s - formatted date, <a> - link to documentation page */
 									__(
 										'You submitted evidence for this inquiry on %1$s. <strong>%2$s</strong> is reviewing the case, which can take 120 days or more. You will be alerted when they make their final decision. <a>Learn more</a>.',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									),
 									submissionDateFormatted,
 									bankName
@@ -338,7 +338,7 @@ const InquiryUnderReviewFooter: React.FC< {
 									/* Translators: %s - formatted date, <a> - link to documentation page */
 									__(
 										'You submitted evidence for this inquiry on %s. The <strong>cardholder’s bank</strong> is reviewing the case, which can take 120 days or more. You will be alerted when they make their final decision. <a>Learn more</a>.',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									),
 									submissionDateFormatted
 							  ),
@@ -348,7 +348,7 @@ const InquiryUnderReviewFooter: React.FC< {
 								<a
 									target="_blank"
 									rel="noopener noreferrer"
-									href="https://woocommerce.com/document/woopayments/fraud-and-disputes/managing-disputes/#inquiries"
+									href="https://poocommerce.com/document/woopayments/fraud-and-disputes/managing-disputes/#inquiries"
 								/>
 							),
 							strong: <strong />,
@@ -377,7 +377,7 @@ const InquiryUnderReviewFooter: React.FC< {
 						>
 							{ __(
 								'View submitted evidence',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 						</Button>
 					</Link>
@@ -406,7 +406,7 @@ const InquiryClosedFooter: React.FC< {
 							/* Translators: %s - formatted date, <a> - link to documentation page */
 							__(
 								'This inquiry was closed on %s. <a>Learn more about preventing disputes</a>.',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							closedDateFormatted
 						),
@@ -416,7 +416,7 @@ const InquiryClosedFooter: React.FC< {
 								<a
 									target="_blank"
 									rel="noopener noreferrer"
-									href="https://woocommerce.com/document/woopayments/fraud-and-disputes/"
+									href="https://poocommerce.com/document/woopayments/fraud-and-disputes/"
 								/>
 							),
 						}
@@ -446,7 +446,7 @@ const InquiryClosedFooter: React.FC< {
 							>
 								{ __(
 									'View submitted evidence',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								) }
 							</Button>
 						</Link>
