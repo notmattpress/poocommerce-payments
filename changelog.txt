@@ -16,6 +16,7 @@
 * Fix - Enable WooPay Direct Checkout on mini-cart.
 * Fix - Fix - Remove unwanted animations and improve styling consistency on dispute evidence pages.
 * Fix - Fix: Allow multiple authorization cancellations on the same order.
+* Fix - Fix: Google Pay 3D Secure authentication being bypassed due to redirect URL extraction issue
 * Fix - fix: remove BNPLs from PMME when BNPL method is not active
 * Fix - Fix border color of some items.
 * Fix - Fix copy for the documents section and fix the font size of the content inside the accordion on top.
