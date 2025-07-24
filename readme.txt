@@ -87,7 +87,7 @@ You can read our Terms of Service and other policies [here](https://woocommerce.
 
 == Changelog ==
 
-= 9.7.0 - 2025-07-23 =
+= 9.7.0 - 2025-07-24 =
 * Add - Add a confirmation screen to the new flow for submitting dispute evidence.
 * Add - Add Credit not processed logic for the new evidence submission form.
 * Add - Add external help link to the recomended documents section.
@@ -105,10 +105,12 @@ You can read our Terms of Service and other policies [here](https://woocommerce.
 * Fix - Fix: Allow multiple authorization cancellations on the same order.
 * Fix - Fix: Google Pay 3D Secure authentication being bypassed due to redirect URL extraction issue
 * Fix - fix: remove BNPLs from PMME when BNPL method is not active
+* Fix - Fix: Spinner alignment issues in cart checkout button and checkout address form email field.
 * Fix - Fix border color of some items.
 * Fix - Fix copy for the documents section and fix the font size of the content inside the accordion on top.
 * Fix - Fix filename issue on the new evidence submission form.
 * Fix - Fix margin of the shipping details title on the evidence submission form.
+* Fix - Fix order notes after subscriptions' payment method gets changed.
 * Fix - Fix spacings on the envidence submission form
 * Fix - Fix vertical UI shift when uploading a file
 * Fix - Fix WooPay button spinner on some themes.
