@@ -4,11 +4,13 @@
 import React, { useState, useRef } from 'react';
 import clsx from 'clsx';
 import { noop } from 'lodash';
-import { Icon } from '@wordpress/components';
+// eslint-disable-next-line no-restricted-syntax
+import type { Icon as IconType } from '@wordpress/components';
 
 /**
  * Internal dependencies
  */
+import { Icon } from 'wcpay/components/wp-components-wrapped/components/icon';
 import TooltipBase, { TooltipBaseProps } from './tooltip-base';
 
 type TooltipProps = TooltipBaseProps & {
@@ -17,7 +19,7 @@ type TooltipProps = TooltipBaseProps & {
 	/**
 	 * An icon that will be used as the tooltip button. Replaces the component children.
 	 */
-	buttonIcon?: Icon.IconType< unknown >;
+	buttonIcon?: IconType.IconType< unknown >;
 	/**
 	 * A label for the tooltip button, visible to screen readers.
 	 */

@@ -4,16 +4,6 @@
  * External dependencies
  */
 import { __ } from '@wordpress/i18n';
-import {
-	CardDivider,
-	DropdownMenu,
-	MenuGroup,
-	MenuItem,
-	Card,
-	CardBody,
-	Flex,
-	CardNotice,
-} from 'wcpay/components/wp-components-wrapped';
 import { moreVertical } from '@wordpress/icons';
 import moment from 'moment';
 import React, { useContext, useState } from 'react';
@@ -24,6 +14,14 @@ import _ from 'lodash';
 /**
  * Internal dependencies.
  */
+import { CardDivider } from 'wcpay/components/wp-components-wrapped/components/card-divider';
+import { DropdownMenu } from 'wcpay/components/wp-components-wrapped/components/dropdown-menu';
+import { MenuGroup } from 'wcpay/components/wp-components-wrapped/components/menu-group';
+import { MenuItem } from 'wcpay/components/wp-components-wrapped/components/menu-item';
+import { Card } from 'wcpay/components/wp-components-wrapped/components/card';
+import { CardBody } from 'wcpay/components/wp-components-wrapped/components/card-body';
+import { Flex } from 'wcpay/components/wp-components-wrapped/components/flex';
+import { CardNotice } from 'wcpay/components/wp-components-wrapped/components/card-notice';
 import {
 	getChargeAmounts,
 	getChargeStatus,
@@ -68,6 +66,7 @@ import {
 	formatDateTimeFromString,
 	formatDateTimeFromTimestamp,
 } from 'wcpay/utils/date-time';
+import { ExternalLink } from 'wcpay/components/wp-components-wrapped/components/external-link';
 
 declare const window: any;
 
@@ -88,7 +87,7 @@ const placeholderValues = {
 };
 
 const isTapToPay = ( model: string ) => {
-	return model === 'COTS_DEVICE';
+	return model === 'COTS_DEVICE' || model === 'TAP_TO_PAY_DEVICE';
 };
 
 const getTapToPayChannel = ( platform: string ) => {
@@ -132,6 +131,60 @@ const composePaymentSummaryItems = ( {
 						  ) }
 				</span>
 			),
+		},
+		{
+			title: __( 'Customer', 'woocommerce-payments' ),
+			content: (
+				<CustomerLink
+					billing_details={ charge.billing_details }
+					order_details={ charge.order }
+				/>
+			),
+		},
+		{
+			title: __( 'Order', 'woocommerce-payments' ),
+			content: <OrderLink order={ charge.order } />,
+		},
+		wcpaySettings.isSubscriptionsActive && {
+			title: __( 'Subscription', 'woocommerce-payments' ),
+			content: charge.order?.subscriptions?.length ? (
+				charge.order.subscriptions.map( ( subscription, i, all ) => [
+					<OrderLink key={ i } order={ subscription } />,
+					i !== all.length - 1 && ', ',
+				] )
+			) : (
+				<OrderLink order={ null } />
+			),
+		},
+		{
+			title: __( 'Payment method', 'woocommerce-payments' ),
+			content: (
+				<PaymentMethodDetails
+					payment={ charge.payment_method_details }
+				/>
+			),
+		},
+		{
+			title: __( 'Risk evaluation', 'woocommerce-payments' ),
+			content: charge.outcome?.risk_level
+				? riskMappings[ charge.outcome.risk_level ]
+				: '–',
+		},
+	].filter( isValueTruthy );
+
+const composePaymentSummaryItemsForDispute = ( {
+	charge = {} as Charge,
+}: {
+	charge: Charge;
+} ): HorizontalListItem[] =>
+	[
+		{
+			title: __( 'Date', 'woocommerce-payments' ),
+			content: charge.created
+				? formatDateTimeFromTimestamp( charge.created, {
+						customFormat: 'F j, Y g:i A',
+				  } )
+				: '–',
 		},
 		{
 			title: __( 'Customer', 'woocommerce-payments' ),
@@ -257,17 +310,11 @@ const PaymentDetailsSummary: React.FC< PaymentDetailsSummaryProps > = ( {
 
 	const [ isRefundModalOpen, setIsRefundModalOpen ] = useState( false );
 
-	const shouldUseBundledComponents = ! charge?.dispute;
-
 	const bankName = getBankName( charge );
 	return (
-		<Card useBundledComponent={ shouldUseBundledComponents }>
-			<CardBody useBundledComponent={ shouldUseBundledComponents }>
-				<Flex
-					direction="row"
-					align="start"
-					useBundledComponent={ shouldUseBundledComponents }
-				>
+		<Card>
+			<CardBody>
+				<Flex direction="row" align="start">
 					<div className="payment-details-summary">
 						<div className="payment-details-summary__section">
 							<div className="payment-details-summary__amount-wrapper">
@@ -560,9 +607,6 @@ const PaymentDetailsSummary: React.FC< PaymentDetailsSummaryProps > = ( {
 								placeholder={ moreVertical }
 							>
 								<DropdownMenu
-									useBundledComponent={
-										shouldUseBundledComponents
-									}
 									icon={ moreVertical }
 									label={ __(
 										'Transaction actions',
@@ -574,16 +618,9 @@ const PaymentDetailsSummary: React.FC< PaymentDetailsSummaryProps > = ( {
 									className="refund-controls__dropdown-menu"
 								>
 									{ ( { onClose } ) => (
-										<MenuGroup
-											useBundledComponent={
-												shouldUseBundledComponents
-											}
-										>
+										<MenuGroup>
 											{ ! isPartiallyRefunded && (
 												<MenuItem
-													useBundledComponent={
-														shouldUseBundledComponents
-													}
 													onClick={ () => {
 														setIsRefundModalOpen(
 															true
@@ -606,9 +643,6 @@ const PaymentDetailsSummary: React.FC< PaymentDetailsSummaryProps > = ( {
 											) }
 											{ isPartiallyRefundable && (
 												<MenuItem
-													useBundledComponent={
-														shouldUseBundledComponents
-													}
 													onClick={ () => {
 														recordEvent(
 															'payments_transactions_details_partial_refund',
@@ -638,14 +672,20 @@ const PaymentDetailsSummary: React.FC< PaymentDetailsSummaryProps > = ( {
 					</div>
 				</Flex>
 			</CardBody>
-			<CardDivider useBundledComponent={ shouldUseBundledComponents } />
-			<CardBody useBundledComponent={ shouldUseBundledComponents }>
+			<CardDivider />
+			<CardBody>
 				<LoadableBlock isLoading={ isLoading } numLines={ 4 }>
 					<HorizontalList
-						items={ composePaymentSummaryItems( {
-							charge,
-							metadata,
-						} ) }
+						items={
+							charge.dispute
+								? composePaymentSummaryItemsForDispute( {
+										charge,
+								  } )
+								: composePaymentSummaryItems( {
+										charge,
+										metadata,
+								  } )
+						}
 					/>
 				</LoadableBlock>
 			</CardBody>
@@ -698,7 +738,6 @@ const PaymentDetailsSummary: React.FC< PaymentDetailsSummaryProps > = ( {
 				! authorization.captured && (
 					<Loadable isLoading={ isLoading } placeholder="">
 						<CardNotice
-							useBundledComponent={ shouldUseBundledComponents }
 							actions={
 								! isFraudOutcomeReview ? (
 									<CaptureAuthorizationButton
@@ -730,12 +769,7 @@ const PaymentDetailsSummary: React.FC< PaymentDetailsSummaryProps > = ( {
 								),
 								{
 									a: (
-										// eslint-disable-next-line jsx-a11y/anchor-has-content, react/jsx-no-target-blank
-										<a
-											href="https://woocommerce.com/document/woopayments/settings-guide/authorize-and-capture/#capturing-authorized-orders"
-											target="_blank"
-											rel="noreferer"
-										/>
+										<ExternalLink href="https://woocommerce.com/document/woopayments/settings-guide/authorize-and-capture/#capturing-authorized-orders" />
 									),
 								}
 							) }{ ' ' }

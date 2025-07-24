@@ -3,7 +3,6 @@
  */
 import React, { useEffect } from 'react';
 import { __ } from '@wordpress/i18n';
-import { Button, Flex, FlexItem, Modal } from '@wordpress/components';
 import {
 	Icon,
 	commentContent,
@@ -15,6 +14,10 @@ import {
 /**
  * Internal dependencies
  */
+import { Modal } from 'wcpay/components/wp-components-wrapped/components/modal';
+import { Button } from 'wcpay/components/wp-components-wrapped/components/button';
+import { Flex } from 'wcpay/components/wp-components-wrapped/components/flex';
+import { FlexItem } from 'wcpay/components/wp-components-wrapped/components/flex-item';
 import { recordEvent } from 'wcpay/tracks';
 import './style.scss';
 

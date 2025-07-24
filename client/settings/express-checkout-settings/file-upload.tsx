@@ -8,14 +8,15 @@ import apiFetch from '@wordpress/api-fetch';
 import { __ } from '@wordpress/i18n';
 import { useDispatch } from '@wordpress/data';
 import { useState } from '@wordpress/element';
-import { BaseControl, Button } from '@wordpress/components';
 import TrashIcon from 'gridicons/dist/trash';
 import clsx from 'clsx';
 
 /**
  * Internal dependencies
  */
-import { FileUploadControl } from 'components/file-upload';
+import { BaseControl } from 'wcpay/components/wp-components-wrapped/components/base-control';
+import { Button } from 'wcpay/components/wp-components-wrapped/components/button';
+import { FileUploadControl } from 'wcpay/components/file-upload';
 
 interface WooPayFileUploadProps {
 	fieldKey: string;
@@ -187,7 +188,7 @@ const WooPayFileUpload: React.FunctionComponent< WooPayFileUploadProps > = ( {
 				</div>
 			</div>
 
-			<BaseControl id={ 'test' } help={ help }>
+			<BaseControl id="test" help={ help } __nextHasNoMarginBottom>
 				{ ' ' }
 			</BaseControl>
 		</div>

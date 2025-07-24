@@ -8,11 +8,14 @@ import { closeSmall, cloudUpload } from '@wordpress/icons';
 /**
  * Internal dependencies
  */
-import { Button, FormFileUpload } from 'wcpay/components/wp-components-wrapped';
+import { Button } from 'wcpay/components/wp-components-wrapped/components/button';
+import { FormFileUpload } from 'wcpay/components/wp-components-wrapped/components/form-file-upload';
 import { FileUploadControlProps } from './types';
+import { formatFileNameWithSize } from './utils';
 
 const FileUploadControl: React.FC< FileUploadControlProps > = ( {
 	fileName = '',
+	fileSize,
 	description,
 	onFileChange,
 	onFileRemove,
@@ -32,7 +35,28 @@ const FileUploadControl: React.FC< FileUploadControlProps > = ( {
 					{ isDone && fileName ? (
 						<div className="wcpay-dispute-evidence-file-upload-control__chip">
 							<span className="wcpay-dispute-evidence-file-upload-control__chip-filename">
-								{ fileName }
+								{ fileSize ? (
+									<>
+										<div className="wcpay-dispute-evidence-file-upload-control__chip-filename-name">
+											{
+												formatFileNameWithSize(
+													fileName,
+													fileSize
+												).namePart
+											}
+										</div>
+										<div className="wcpay-dispute-evidence-file-upload-control__chip-filename-extension">
+											{
+												formatFileNameWithSize(
+													fileName,
+													fileSize
+												).extensionSizePart
+											}
+										</div>
+									</>
+								) : (
+									fileName
+								) }
 							</span>
 							<Button
 								className="wcpay-dispute-evidence-file-upload-control__chip-action"

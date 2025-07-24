@@ -3,12 +3,13 @@
  */
 import React, { useContext } from 'react';
 import { __, sprintf } from '@wordpress/i18n';
-import { CheckboxControl, ExternalLink } from '@wordpress/components';
 import interpolateComponents from '@automattic/interpolate-components';
 
 /**
  * Internal dependencies
  */
+import { CheckboxControl } from 'wcpay/components/wp-components-wrapped/components/checkbox-control';
+import { ExternalLink } from 'wcpay/components/wp-components-wrapped/components/external-link';
 import StripeBillingMigrationNoticeContext from './stripe-billing-notices/context';
 
 interface Props {
@@ -61,6 +62,7 @@ const StripeBillingToggle: React.FC< Props > = ( { onChange } ) => {
 				},
 			} ) }
 			data-testid={ 'stripe-billing-toggle' }
+			__nextHasNoMarginBottom
 		/>
 	);
 };

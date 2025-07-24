@@ -3,16 +3,16 @@
 /**
  * External dependencies
  */
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import apiFetch from '@wordpress/api-fetch';
 import { __, sprintf } from '@wordpress/i18n';
 import { useDispatch } from '@wordpress/data';
 import { chevronLeft, chevronRight } from '@wordpress/icons';
+import HelpOutlineIcon from 'gridicons/dist/help-outline';
 
 /**
  * Internal dependencies.
  */
-import useConfirmNavigation from 'utils/use-confirm-navigation';
 import { recordEvent } from 'tracks';
 import { TestModeNotice } from 'components/test-mode-notice';
 import ErrorBoundary from 'components/error-boundary';
@@ -30,14 +30,15 @@ import {
 	generateCoverLetter,
 	getBusinessDetails,
 } from './cover-letter-generator';
-import { useGetSettings } from 'wcpay/data';
+import { useGetSettings, useDisputeEvidence } from 'wcpay/data';
 import CustomerDetails from './customer-details';
 import ProductDetails from './product-details';
 import RecommendedDocuments from './recommended-documents';
 import InlineNotice from 'components/inline-notice';
 import ShippingDetails from './shipping-details';
 import CoverLetter from './cover-letter';
-import { Button, HorizontalRule } from 'wcpay/components/wp-components-wrapped';
+import { Button } from 'wcpay/components/wp-components-wrapped/components/button';
+import { HorizontalRule } from 'wcpay/components/wp-components-wrapped/components/horizontal-rule';
 import { getAdminUrl } from 'wcpay/utils';
 import { StepperPanel } from 'wcpay/components/stepper';
 import {
@@ -55,11 +56,15 @@ import {
 import { RecommendedDocument } from './types';
 
 import './style.scss';
+import RefundStatus from './refund-status';
+import DuplicateStatus from './duplicate-status';
+import ConfirmationScreen from './confirmation-screen';
 
 // --- Utility: Determine if shipping is required for a given reason ---
 const ReasonsNeedShipping = [
 	'product_unacceptable',
 	'product_not_received',
+	'general',
 	'fraudulent',
 ];
 
@@ -103,7 +108,6 @@ export default ( { query }: { query: { id: string } } ) => {
 	const [ productType, setProductType ] = useState< string >( '' );
 	const [ currentStep, setCurrentStep ] = useState( 0 );
 	const [ isAccordionOpen, setIsAccordionOpen ] = useState( true );
-	const [ redirectAfterSave, setRedirectAfterSave ] = useState( false );
 	const [ productDescription, setProductDescription ] = useState( '' );
 	const [ coverLetter, setCoverLetter ] = useState( '' );
 	const [
@@ -119,9 +123,6 @@ export default ( { query }: { query: { id: string } } ) => {
 	const [ isUploading, setIsUploading ] = useState<
 		Record< string, boolean >
 	>( {} );
-	const [ uploadingErrors, setUploadingErrors ] = useState<
-		Record< string, string >
-	>( {} );
 	const [ fileSizes, setFileSizes ] = useState< Record< string, number > >(
 		{}
 	);
@@ -134,8 +135,19 @@ export default ( { query }: { query: { id: string } } ) => {
 		createErrorNotice,
 		createInfoNotice,
 	} = useDispatch( 'core/notices' );
+	const { updateDispute: updateDisputeInStore } = useDisputeEvidence();
 	const settings = useGetSettings();
 	const bankName = dispute?.charge ? getBankName( dispute.charge ) : null;
+	const [ refundStatus, setRefundStatus ] = useState(
+		'refund_has_been_issued'
+	);
+	const [ duplicateStatus, setDuplicateStatus ] = useState( 'is_duplicate' );
+
+	// Refs for heading elements to focus on step navigation
+	const stepHeadingRefs = useRef< {
+		[ key: number ]: HTMLHeadingElement | null;
+	} >( {} );
+	const [ showConfirmation, setShowConfirmation ] = useState( false );
 
 	// --- Data loading ---
 	useEffect( () => {
@@ -183,12 +195,49 @@ export default ( { query }: { query: { id: string } } ) => {
 				const savedCoverLetter = d.evidence?.uncategorized_text;
 				if ( savedCoverLetter ) {
 					setCoverLetter( savedCoverLetter );
+					// Create a dispute object with current evidence state for comparison
+					const disputeWithCurrentEvidence = {
+						...d,
+						evidence: {
+							...d.evidence,
+							product_description:
+								d.evidence?.product_description || '',
+							receipt: d.evidence?.receipt || '',
+							customer_communication:
+								d.evidence?.customer_communication || '',
+							customer_signature:
+								d.evidence?.customer_signature || '',
+							refund_policy: d.evidence?.refund_policy || '',
+							duplicate_charge_documentation:
+								d.evidence?.duplicate_charge_documentation ||
+								'',
+							shipping_documentation:
+								d.evidence?.shipping_documentation || '',
+							service_documentation:
+								d.evidence?.service_documentation || '',
+							cancellation_policy:
+								d.evidence?.cancellation_policy || '',
+							access_activity_log:
+								d.evidence?.access_activity_log || '',
+							uncategorized_file:
+								d.evidence?.uncategorized_file || '',
+							shipping_carrier:
+								d.evidence?.shipping_carrier || '',
+							shipping_date: d.evidence?.shipping_date || '',
+							shipping_tracking_number:
+								d.evidence?.shipping_tracking_number || '',
+							shipping_address:
+								d.evidence?.shipping_address || '',
+						},
+					};
 					// Only mark as manually edited if it differs from what would be auto-generated
 					const generatedContent = generateCoverLetter(
-						d,
+						disputeWithCurrentEvidence,
 						getBusinessDetails(),
 						settings,
-						bankName
+						bankName,
+						refundStatus,
+						duplicateStatus
 					);
 					setIsCoverLetterManuallyEdited(
 						savedCoverLetter !== generatedContent
@@ -199,7 +248,9 @@ export default ( { query }: { query: { id: string } } ) => {
 						d,
 						getBusinessDetails(),
 						settings,
-						bankName
+						bankName,
+						refundStatus,
+						duplicateStatus
 					);
 					setCoverLetter( generatedCoverLetter );
 					setIsCoverLetterManuallyEdited( false );
@@ -209,7 +260,14 @@ export default ( { query }: { query: { id: string } } ) => {
 			}
 		};
 		fetchDispute();
-	}, [ path, createErrorNotice, settings, bankName ] );
+	}, [
+		path,
+		createErrorNotice,
+		settings,
+		bankName,
+		refundStatus,
+		duplicateStatus,
+	] );
 
 	// --- File name display logic ---
 	useEffect( () => {
@@ -231,7 +289,11 @@ export default ( { query }: { query: { id: string } } ) => {
 					const file: any = await apiFetch( {
 						path: `/wc/v3/payments/file/${ fileId }/details`,
 					} );
-					return { fileKey: fileKey, filename: file.filename };
+					return {
+						fileKey: fileKey,
+						filename: file.filename,
+						size: file.size,
+					};
 				} )
 			);
 			const filteredFileDetails = fileDetails.filter(
@@ -246,6 +308,16 @@ export default ( { query }: { query: { id: string } } ) => {
 					] )
 				),
 			} ) );
+			// Also set the file sizes
+			setFileSizes( ( prev ) => ( {
+				...prev,
+				...Object.fromEntries(
+					filteredFileDetails.map( ( fileDetail ) => [
+						fileDetail?.fileKey,
+						fileDetail?.size,
+					] )
+				),
+			} ) );
 		};
 		fetchFile();
 		// eslint-disable-next-line react-hooks/exhaustive-deps -- We only want to fetch the file details when uploadedFiles changes.
@@ -253,15 +325,49 @@ export default ( { query }: { query: { id: string } } ) => {
 
 	// Update cover letter when evidence changes
 	useEffect( () => {
-		if ( ! dispute || ! settings || isCoverLetterManuallyEdited ) return;
+		if ( ! dispute || ! settings ) return;
+
+		// Create a dispute object with current evidence state for generation
+		const disputeWithCurrentEvidence = {
+			...dispute,
+			evidence: {
+				...dispute.evidence,
+				product_description: productDescription,
+				receipt: evidence.receipt,
+				customer_communication: evidence.customer_communication,
+				customer_signature: evidence.customer_signature,
+				refund_policy: evidence.refund_policy,
+				duplicate_charge_documentation:
+					evidence.duplicate_charge_documentation,
+				shipping_documentation: evidence.shipping_documentation,
+				service_documentation: evidence.service_documentation,
+				cancellation_policy: evidence.cancellation_policy,
+				access_activity_log: evidence.access_activity_log,
+				uncategorized_file: evidence.uncategorized_file,
+				shipping_carrier: shippingCarrier,
+				shipping_date: shippingDate,
+				shipping_tracking_number: shippingTrackingNumber,
+				shipping_address: shippingAddress,
+			},
+		};
 
 		const generatedCoverLetter = generateCoverLetter(
-			dispute,
+			disputeWithCurrentEvidence,
 			getBusinessDetails(),
 			settings,
-			bankName
+			bankName,
+			refundStatus,
+			duplicateStatus
 		);
-		setCoverLetter( generatedCoverLetter );
+
+		// Only auto-update if not manually edited, or if the current content matches what was previously generated
+		if (
+			! isCoverLetterManuallyEdited ||
+			coverLetter === generatedCoverLetter
+		) {
+			setCoverLetter( generatedCoverLetter );
+			setIsCoverLetterManuallyEdited( false );
+		}
 	}, [
 		dispute,
 		settings,
@@ -273,6 +379,9 @@ export default ( { query }: { query: { id: string } } ) => {
 		shippingDate,
 		shippingTrackingNumber,
 		shippingAddress,
+		refundStatus,
+		duplicateStatus,
+		coverLetter,
 	] );
 
 	// --- Step logic ---
@@ -291,7 +400,48 @@ export default ( { query }: { query: { id: string } } ) => {
 		Object.values( isUploading ).some( Boolean );
 
 	// --- Save/submit logic ---
-	const doSave = async ( submit: boolean ) => {
+	const handleSaveSuccess = ( submit: boolean ) => {
+		const message = submit
+			? __( 'Evidence submitted!', 'woocommerce-payments' )
+			: __( 'Evidence saved!', 'woocommerce-payments' );
+
+		recordEvent(
+			submit
+				? 'wcpay_dispute_submit_evidence_success'
+				: 'wcpay_dispute_save_evidence_success'
+		);
+
+		createSuccessNotice( message, {
+			id: submit
+				? 'evidence-submitted'
+				: `evidence-saved-${ dispute.id }`,
+		} );
+
+		// Show confirmation screen for submissions
+		if ( submit ) {
+			setShowConfirmation( true );
+		}
+	};
+
+	const handleSaveError = ( err: any, submit: boolean ) => {
+		recordEvent(
+			submit
+				? 'wcpay_dispute_submit_evidence_failed'
+				: 'wcpay_dispute_save_evidence_failed'
+		);
+
+		const message = submit
+			? __( 'Failed to submit evidence. (%s)', 'woocommerce-payments' )
+			: __( 'Failed to save evidence. (%s)', 'woocommerce-payments' );
+		createErrorNotice(
+			sprintf(
+				message,
+				err instanceof Error ? err.message : String( err )
+			)
+		);
+	};
+
+	const doSave = async ( submit: boolean, notify = true ) => {
 		// Prevent submit if upload is in progress
 		if ( isUploadingEvidence() ) {
 			createInfoNotice(
@@ -308,29 +458,6 @@ export default ( { query }: { query: { id: string } } ) => {
 				submit
 					? 'wcpay_dispute_submit_evidence_clicked'
 					: 'wcpay_dispute_save_evidence_clicked'
-			);
-
-			createSuccessNotice(
-				submit
-					? __( 'Evidence submitted!', 'woocommerce-payments' )
-					: __( 'Evidence saved!', 'woocommerce-payments' ),
-				{
-					actions: submit
-						? [
-								{
-									label: __(
-										'View submitted evidence',
-										'woocommerce-payments'
-									),
-									url: getAdminUrl( {
-										page: 'wc-admin',
-										path: '/payments/disputes/challenge',
-										id: query.id,
-									} ),
-								},
-						  ]
-						: [],
-				}
 			);
 
 			// Only include file keys in the evidence object if they have a non-empty value
@@ -376,33 +503,16 @@ export default ( { query }: { query: { id: string } } ) => {
 			} );
 
 			setDispute( updatedDispute );
+			if ( notify ) {
+				handleSaveSuccess( submit );
+			}
+			updateDisputeInStore( updatedDispute as any );
 
-			recordEvent(
-				submit
-					? 'wcpay_dispute_submit_evidence_success'
-					: 'wcpay_dispute_save_evidence_success'
-			);
-
-			setRedirectAfterSave( true );
+			if ( submit ) {
+				setEvidence( {} );
+			}
 		} catch ( err ) {
-			recordEvent(
-				submit
-					? 'wcpay_dispute_submit_evidence_failed'
-					: 'wcpay_dispute_save_evidence_failed'
-			);
-
-			const message = submit
-				? __(
-						'Failed to submit evidence. (%s)',
-						'woocommerce-payments'
-				  )
-				: __( 'Failed to save evidence. (%s)', 'woocommerce-payments' );
-			createErrorNotice(
-				sprintf(
-					message,
-					err instanceof Error ? err.message : String( err )
-				)
-			);
+			handleSaveError( err, submit );
 		}
 	};
 
@@ -416,13 +526,32 @@ export default ( { query }: { query: { id: string } } ) => {
 	const handleStepChange = async ( newStep: number ) => {
 		// Only save if not in readOnly mode
 		if ( ! readOnly ) {
-			await doSave( false );
+			await doSave( false, false );
 		}
 		// Update step
 		setCurrentStep( newStep );
 		// Scroll to top of page
 		window.scrollTo( { top: 0, behavior: 'smooth' } );
 	};
+
+	const handleStepBack = ( step: number ) => {
+		setCurrentStep( step );
+		// Scroll to top of page
+		window.scrollTo( { top: 0, behavior: 'smooth' } );
+	};
+
+	// Focus on heading when step changes
+	useEffect( () => {
+		// Use setTimeout to ensure the DOM has updated with the new step content
+		const timeoutId = setTimeout( () => {
+			const headingRef = stepHeadingRefs.current[ currentStep ];
+			if ( headingRef ) {
+				headingRef.focus();
+			}
+		}, 100 );
+
+		return () => clearTimeout( timeoutId );
+	}, [ currentStep ] );
 
 	const updateProductType = ( newType: string ) => {
 		recordEvent( 'wcpay_dispute_product_selected', { selection: newType } );
@@ -508,7 +637,6 @@ export default ( { query }: { query: { id: string } } ) => {
 
 		// Set request status for UI.
 		setIsUploading( ( prev ) => ( { ...prev, [ key ]: true } ) );
-		setUploadingErrors( ( prev ) => ( { ...prev, [ key ]: '' } ) );
 
 		// Force reload evidence components.
 		setEvidence( ( e: any ) => ( { ...e, [ key ]: '' } ) );
@@ -540,10 +668,13 @@ export default ( { query }: { query: { id: string } } ) => {
 				message: err instanceof Error ? err.message : String( err ),
 			} );
 
-			setUploadingErrors( ( prev ) => ( {
-				...prev,
-				[ key ]: err instanceof Error ? err.message : String( err ),
-			} ) );
+			// Display error as WordPress admin notice
+			createErrorNotice(
+				sprintf(
+					__( 'Failed to upload file. (%s)', 'woocommerce-payments' ),
+					err instanceof Error ? err.message : String( err )
+				)
+			);
 
 			// Force reload evidence components.
 			setEvidence( ( e: any ) => ( { ...e, [ key ]: '' } ) );
@@ -554,39 +685,15 @@ export default ( { query }: { query: { id: string } } ) => {
 
 	const doRemoveFile = ( key: string ) => {
 		setEvidence( ( e: any ) => ( { ...e, [ key ]: '' } ) );
-		setUploadingErrors( ( prev ) => ( { ...prev, [ key ]: '' } ) );
 		setFileSizes( ( prev ) => ( { ...prev, [ key ]: 0 } ) );
 		// Remove the file name from the uploaded files.
 		setUploadedFiles( ( prev ) => ( { ...prev, [ key ]: '' } ) );
 	};
 
-	// --- Navigation warning ---
-	const pristine = useMemo(
-		() =>
-			JSON.stringify( evidence ) ===
-			JSON.stringify( dispute?.evidence || {} ),
-		[ evidence, dispute ]
-	);
-	const confirmationNavigationCallback = useConfirmNavigation( () => {
-		if ( pristine || redirectAfterSave || readOnly ) return;
-		return __(
-			'There are unsaved changes on this page. Are you sure you want to leave and discard the unsaved changes?',
-			'woocommerce-payments'
-		);
-	} );
-	useEffect( () => {
-		confirmationNavigationCallback();
-	}, [
-		pristine,
-		confirmationNavigationCallback,
-		redirectAfterSave,
-		readOnly,
-	] );
-
 	// --- Accordion summary content ---
 	const summaryItems = useMemo( () => {
 		if ( ! dispute ) return [];
-		const disputeReasonSummary = reasons[ dispute.reason ]?.summary || [];
+		const disputeReasonSummary = reasons[ disputeReason ]?.summary || [];
 		return [
 			{
 				title: __( 'Dispute Amount', 'woocommerce-payments' ),
@@ -600,7 +707,7 @@ export default ( { query }: { query: { id: string } } ) => {
 				content: dispute.created
 					? formatDateTimeFromTimestamp( dispute.created, {
 							separator: ', ',
-							includeTime: true,
+							includeTime: false,
 					  } )
 					: '–',
 			},
@@ -608,9 +715,10 @@ export default ( { query }: { query: { id: string } } ) => {
 				title: __( 'Reason', 'woocommerce-payments' ),
 				content: (
 					<>
-						{ reasons[ dispute.reason ]?.display || dispute.reason }
+						{ reasons[ disputeReason ]?.display || disputeReason }
 						{ disputeReasonSummary.length > 0 && (
 							<ClickTooltip
+								buttonIcon={ <HelpOutlineIcon /> }
 								buttonLabel={ __(
 									'Learn more',
 									'woocommerce-payments'
@@ -618,8 +726,8 @@ export default ( { query }: { query: { id: string } } ) => {
 								content={
 									<div className="dispute-reason-tooltip">
 										<p>
-											{ reasons[ dispute.reason ]
-												?.display || dispute.reason }
+											{ reasons[ disputeReason ]
+												?.display || disputeReason }
 										</p>
 										<Paragraphs>
 											{ disputeReasonSummary }
@@ -656,11 +764,13 @@ export default ( { query }: { query: { id: string } } ) => {
 				content: <OrderLink order={ dispute.order } />,
 			},
 		];
-	}, [ dispute ] );
+	}, [ dispute, disputeReason ] );
 
 	// --- Recommended documents ---
 	const recommendedDocumentFields = getRecommendedDocumentFields(
-		disputeReason
+		disputeReason,
+		disputeReason === 'credit_not_processed' ? refundStatus : undefined,
+		disputeReason === 'duplicate' ? duplicateStatus : undefined
 	);
 
 	const recommendedShippingDocumentFields = getRecommendedShippingDocumentFields();
@@ -670,9 +780,9 @@ export default ( { query }: { query: { id: string } } ) => {
 			label: field.label,
 			description: field.description,
 			fileName: uploadedFiles[ field.key ] || evidence[ field.key ] || '',
+			fileSize: fileSizes[ field.key ] || 0,
 			uploaded: !! evidence[ field.key ],
 			isLoading: isUploading[ field.key ] || false,
-			error: uploadingErrors[ field.key ] || '',
 			onFileChange: ( key: string, file: File ) =>
 				readOnly
 					? Promise.resolve()
@@ -691,10 +801,10 @@ export default ( { query }: { query: { id: string } } ) => {
 			key: field.key,
 			label: field.label,
 			description: field.description,
-			fileName: evidence[ field.key ] || '',
+			fileName: uploadedFiles[ field.key ] || evidence[ field.key ] || '',
+			fileSize: fileSizes[ field.key ] || 0,
 			uploaded: !! evidence[ field.key ],
 			isLoading: isUploading[ field.key ] || false,
-			error: uploadingErrors[ field.key ] || '',
 			onFileChange: ( key: string, file: File ) =>
 				readOnly
 					? Promise.resolve()
@@ -719,13 +829,13 @@ export default ( { query }: { query: { id: string } } ) => {
 				bankNameValue
 					? sprintf(
 							__(
-								'<strong>WooPayments does not determine the outcome of the dispute process</strong> and is not liable for any chargebacks. <strong>%1$s</strong> makes the decision in this process.',
+								'<strong>The outcome of this dispute will be determined by %1$s.</strong> WooPayments has no influence over the decision and is not liable for any chargebacks.',
 								'woocommerce-payments'
 							),
 							bankNameValue
 					  )
 					: __(
-							"<strong>WooPayments does not determine the outcome of the dispute process</strong> and is not liable for any chargebacks. The cardholder's bank makes the decision in this process.",
+							"<strong>The outcome of this dispute will be determined by the cardholder's bank.</strong> WooPayments has no influence over the decision and is not liable for any chargebacks.",
 							'woocommerce-payments'
 					  ),
 				{
@@ -741,7 +851,11 @@ export default ( { query }: { query: { id: string } } ) => {
 		if ( currentStep === 0 ) {
 			return (
 				<>
-					<h2 className="wcpay-dispute-evidence-new__stepper-title">
+					<h2
+						className="wcpay-dispute-evidence-new__stepper-title"
+						ref={ ( el ) => ( stepHeadingRefs.current[ 0 ] = el ) }
+						tabIndex={ -1 }
+					>
 						{ steps[ 0 ].heading }
 					</h2>
 					<p className="wcpay-dispute-evidence-new__stepper-subheading">
@@ -755,6 +869,26 @@ export default ( { query }: { query: { id: string } } ) => {
 						onProductDescriptionChange={ updateProductDescription }
 						readOnly={ readOnly }
 					/>
+					{ /* only show if the dispute reason is credit_not_processed */ }
+					{ disputeReason === 'credit_not_processed' && (
+						<RefundStatus
+							refundStatus={ refundStatus }
+							onRefundStatusChange={
+								setRefundStatus as ( value: string ) => void
+							}
+							readOnly={ readOnly }
+						/>
+					) }
+					{ /* only show if the dispute reason is duplicate */ }
+					{ disputeReason === 'duplicate' && (
+						<DuplicateStatus
+							duplicateStatus={ duplicateStatus }
+							onDuplicateStatusChange={
+								setDuplicateStatus as ( value: string ) => void
+							}
+							readOnly={ readOnly }
+						/>
+					) }
 					<RecommendedDocuments
 						fields={ recommendedDocumentsFields }
 						readOnly={ readOnly }
@@ -766,7 +900,11 @@ export default ( { query }: { query: { id: string } } ) => {
 		if ( hasShipping && currentStep === 1 ) {
 			return (
 				<>
-					<h2 className="wcpay-dispute-evidence-new__stepper-title">
+					<h2
+						className="wcpay-dispute-evidence-new__stepper-title"
+						ref={ ( el ) => ( stepHeadingRefs.current[ 1 ] = el ) }
+						tabIndex={ -1 }
+					>
 						{ steps[ 1 ].heading }
 					</h2>
 					<p className="wcpay-dispute-evidence-new__stepper-subheading">
@@ -798,7 +936,13 @@ export default ( { query }: { query: { id: string } } ) => {
 		if ( currentStep === reviewStep ) {
 			return (
 				<>
-					<h2 className="wcpay-dispute-evidence-new__stepper-title">
+					<h2
+						className="wcpay-dispute-evidence-new__stepper-title"
+						ref={ ( el ) =>
+							( stepHeadingRefs.current[ reviewStep ] = el )
+						}
+						tabIndex={ -1 }
+					>
 						{ steps[ reviewStep ].heading }
 					</h2>
 					<p className="wcpay-dispute-evidence-new__stepper-subheading">
@@ -824,13 +968,46 @@ export default ( { query }: { query: { id: string } } ) => {
 								return;
 							}
 
+							// Create a dispute object with current evidence state for generation
+							const disputeWithCurrentEvidence = {
+								...dispute,
+								evidence: {
+									...dispute.evidence,
+									product_description: productDescription,
+									receipt: evidence.receipt,
+									customer_communication:
+										evidence.customer_communication,
+									customer_signature:
+										evidence.customer_signature,
+									refund_policy: evidence.refund_policy,
+									duplicate_charge_documentation:
+										evidence.duplicate_charge_documentation,
+									shipping_documentation:
+										evidence.shipping_documentation,
+									service_documentation:
+										evidence.service_documentation,
+									cancellation_policy:
+										evidence.cancellation_policy,
+									access_activity_log:
+										evidence.access_activity_log,
+									uncategorized_file:
+										evidence.uncategorized_file,
+									shipping_carrier: shippingCarrier,
+									shipping_date: shippingDate,
+									shipping_tracking_number: shippingTrackingNumber,
+									shipping_address: shippingAddress,
+								},
+							};
+
 							// If the value is empty, regenerate the content
 							if ( newValue.trim() === '' ) {
 								const generatedContent = generateCoverLetter(
-									dispute,
+									disputeWithCurrentEvidence,
 									getBusinessDetails(),
 									settings,
-									bankName
+									bankName,
+									refundStatus,
+									duplicateStatus
 								);
 								setCoverLetter( generatedContent );
 								setIsCoverLetterManuallyEdited( false );
@@ -839,10 +1016,12 @@ export default ( { query }: { query: { id: string } } ) => {
 
 							// Compare with what would be auto-generated
 							const generatedContent = generateCoverLetter(
-								dispute,
+								disputeWithCurrentEvidence,
 								getBusinessDetails(),
 								settings,
-								bankName
+								bankName,
+								refundStatus,
+								duplicateStatus
 							);
 							setCoverLetter( newValue );
 							setIsCoverLetterManuallyEdited(
@@ -873,6 +1052,7 @@ export default ( { query }: { query: { id: string } } ) => {
 								id: dispute?.id,
 							} ) )
 						}
+						__next40pxDefaultSize
 					>
 						{ __( 'Cancel', 'woocommerce-payments' ) }
 					</Button>
@@ -881,6 +1061,7 @@ export default ( { query }: { query: { id: string } } ) => {
 							<Button
 								variant="tertiary"
 								onClick={ () => doSave( false ) }
+								__next40pxDefaultSize
 							>
 								{ __(
 									'Save for later',
@@ -895,6 +1076,7 @@ export default ( { query }: { query: { id: string } } ) => {
 							}
 							icon={ chevronRight }
 							iconPosition="right"
+							__next40pxDefaultSize
 						>
 							{ __( 'Next', 'woocommerce-payments' ) }
 						</Button>
@@ -907,9 +1089,10 @@ export default ( { query }: { query: { id: string } } ) => {
 				<div className="wcpay-dispute-evidence-new__button-row">
 					<Button
 						variant="secondary"
-						onClick={ () => setCurrentStep( ( s ) => s - 1 ) }
+						onClick={ () => handleStepBack( currentStep - 1 ) }
 						icon={ chevronLeft }
 						iconPosition="left"
+						__next40pxDefaultSize
 					>
 						{ __( 'Back', 'woocommerce-payments' ) }
 					</Button>
@@ -918,6 +1101,7 @@ export default ( { query }: { query: { id: string } } ) => {
 							<Button
 								variant="tertiary"
 								onClick={ () => doSave( false ) }
+								__next40pxDefaultSize
 							>
 								{ __(
 									'Save for later',
@@ -932,6 +1116,7 @@ export default ( { query }: { query: { id: string } } ) => {
 							onClick={ () =>
 								handleStepChange( currentStep + 1 )
 							}
+							__next40pxDefaultSize
 						>
 							{ __( 'Next', 'woocommerce-payments' ) }
 						</Button>
@@ -945,7 +1130,8 @@ export default ( { query }: { query: { id: string } } ) => {
 					variant="secondary"
 					icon={ chevronLeft }
 					iconPosition="left"
-					onClick={ () => setCurrentStep( ( s ) => s - 1 ) }
+					onClick={ () => handleStepBack( currentStep - 1 ) }
+					__next40pxDefaultSize
 				>
 					{ __( 'Back', 'woocommerce-payments' ) }
 				</Button>
@@ -954,12 +1140,26 @@ export default ( { query }: { query: { id: string } } ) => {
 						<Button
 							variant="tertiary"
 							onClick={ () => doSave( false ) }
+							__next40pxDefaultSize
 						>
 							{ __( 'Save for later', 'woocommerce-payments' ) }
 						</Button>
 						<Button
 							variant="primary"
-							onClick={ () => doSave( true ) }
+							onClick={ () => {
+								// Show browser confirmation dialog first
+								const confirmed = window.confirm(
+									__(
+										"Are you sure you're ready to submit this evidence? Evidence submissions are final.",
+										'woocommerce-payments'
+									)
+								);
+
+								if ( confirmed ) {
+									doSave( true );
+								}
+							} }
+							__next40pxDefaultSize
 						>
 							{ __( 'Submit', 'woocommerce-payments' ) }
 						</Button>
@@ -987,11 +1187,7 @@ export default ( { query }: { query: { id: string } } ) => {
 									{ dispute && (
 										<DisputeNotice
 											dispute={ dispute }
-											isUrgent={
-												dispute.evidence_details
-													?.due_by <
-												Date.now() / 1000
-											}
+											isUrgent={ true }
 											paymentMethod={
 												dispute.payment_method_details
 													?.type || null
@@ -1004,21 +1200,28 @@ export default ( { query }: { query: { id: string } } ) => {
 							</AccordionRow>
 						</AccordionBody>
 					</Accordion>
-					{ /* Section 2: Stepper */ }
-					<div className="wcpay-dispute-evidence-new__stepper-section">
-						<StepperPanel
-							steps={ panelHeadings }
-							currentStep={ currentStep }
-							onStepClick={ ( stepIndex ) => {
-								handleStepChange( stepIndex );
-							} }
+					{ /* Section 2: Stepper or Confirmation */ }
+					{ showConfirmation ? (
+						<ConfirmationScreen
+							disputeId={ query.id }
+							bankName={ bankName }
 						/>
-						<HorizontalRule className="wcpay-dispute-evidence-new__stepper-divider" />
-						<div className="wcpay-dispute-evidence-new__stepper-content">
-							{ renderStepContent() }
-							{ renderButtons() }
+					) : (
+						<div className="wcpay-dispute-evidence-new__stepper-section">
+							<StepperPanel
+								steps={ panelHeadings }
+								currentStep={ currentStep }
+								onStepClick={ ( stepIndex ) => {
+									handleStepChange( stepIndex );
+								} }
+							/>
+							<HorizontalRule className="wcpay-dispute-evidence-new__stepper-divider" />
+							<div className="wcpay-dispute-evidence-new__stepper-content">
+								{ renderStepContent() }
+								{ renderButtons() }
+							</div>
 						</div>
-					</div>
+					) }
 				</div>
 			</ErrorBoundary>
 		</Page>

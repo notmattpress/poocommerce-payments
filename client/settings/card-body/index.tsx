@@ -2,7 +2,7 @@
  * External dependencies
  */
 import React, { useContext } from 'react';
-import { CardBody as BundledWordPressComponentsCardBody } from '@wordpress/components';
+import { CardBody as BundledWordPressComponentsCardBody } from 'wcpay/components/wp-components-wrapped/components/card-body';
 import clsx from 'clsx';
 
 /**

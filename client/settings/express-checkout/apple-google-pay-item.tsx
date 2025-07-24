@@ -2,13 +2,14 @@
  * External dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { Button, CheckboxControl } from '@wordpress/components';
 import interpolateComponents from '@automattic/interpolate-components';
 import React, { useContext } from 'react';
 
 /**
  * Internal dependencies
  */
+import { Button } from 'wcpay/components/wp-components-wrapped/components/button';
+import { CheckboxControl } from 'wcpay/components/wp-components-wrapped/components/checkbox-control';
 import { getPaymentMethodSettingsUrl } from '../../utils';
 import { usePaymentRequestEnabledSettings } from 'wcpay/data';
 import { ApplePayIcon, GooglePayIcon } from 'wcpay/payment-methods-icons';
@@ -45,6 +46,7 @@ const AppleGooglePayExpressCheckoutItem = (): React.ReactElement => {
 						) }
 						checked={ isPaymentRequestEnabled }
 						onChange={ updateIsPaymentRequestEnabled }
+						__nextHasNoMarginBottom
 					/>
 				</div>
 				<div className="express-checkout__text-container">

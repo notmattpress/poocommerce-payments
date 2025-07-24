@@ -4,7 +4,6 @@
 
 import React from 'react';
 import { __ } from '@wordpress/i18n';
-import { Button, CheckboxControl } from '@wordpress/components';
 import interpolateComponents from '@automattic/interpolate-components';
 import { getPaymentMethodSettingsUrl } from '../../utils';
 import { useContext } from '@wordpress/element';
@@ -12,6 +11,8 @@ import { useContext } from '@wordpress/element';
 /**
  * Internal dependencies
  */
+import { Button } from 'wcpay/components/wp-components-wrapped/components/button';
+import { CheckboxControl } from 'wcpay/components/wp-components-wrapped/components/checkbox-control';
 import {
 	useEnabledPaymentMethodIds,
 	useWooPayEnabledSettings,
@@ -54,6 +55,7 @@ const WooPayExpressCheckoutItem = (): React.ReactElement | null => {
 						disabled={ isStripeLinkEnabled }
 						onChange={ updateIsWooPayEnabled }
 						data-testid="woopay-toggle"
+						__nextHasNoMarginBottom
 					/>
 				</div>
 				<div className="express-checkout__text-container">

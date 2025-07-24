@@ -2,7 +2,7 @@
  * External dependencies
  */
 import React from 'react';
-import { Button } from '@wordpress/components';
+import { Button } from 'wcpay/components/wp-components-wrapped/components/button';
 import { isEmpty, mapValues } from 'lodash';
 
 /**

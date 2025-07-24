@@ -2,7 +2,6 @@
  * External dependencies
  */
 import React from 'react';
-import { CardHeader, Flex, FlexItem } from '@wordpress/components';
 import { __, sprintf } from '@wordpress/i18n';
 
 /**
@@ -11,6 +10,9 @@ import { __, sprintf } from '@wordpress/i18n';
 import { useAllDepositsOverviews } from 'data';
 import { useCurrentWpUser } from './hooks';
 import { CurrencySelect } from './currency-select';
+import { CardHeader } from 'wcpay/components/wp-components-wrapped/components/card-header';
+import { Flex } from 'wcpay/components/wp-components-wrapped/components/flex';
+import { FlexItem } from 'wcpay/components/wp-components-wrapped/components/flex-item';
 import './style.scss';
 
 type TimeOfDay = 'morning' | 'afternoon' | 'evening';

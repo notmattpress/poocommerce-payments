@@ -4,12 +4,13 @@
  */
 import React from 'react';
 import { __ } from '@wordpress/i18n';
-import { Card, CheckboxControl } from '@wordpress/components';
 
 /**
  * Internal dependencies
  */
 import CardBody from '../card-body';
+import { Card } from 'wcpay/components/wp-components-wrapped/components/card';
+import { CheckboxControl } from 'wcpay/components/wp-components-wrapped/components/checkbox-control';
 import GeneralPaymentRequestButtonSettings from './general-payment-request-button-settings';
 import {
 	usePaymentRequestEnabledSettings,
@@ -44,7 +45,7 @@ const PaymentRequestSettings = ( { section } ) => {
 	return (
 		<Card>
 			{ section === 'enable' && (
-				<CardBody>
+				<CardBody className="wcpay-card-body">
 					<GooglePayTestModeCompatibilityNotice />
 					<CheckboxControl
 						checked={ isPaymentRequestEnabled }
@@ -58,6 +59,7 @@ const PaymentRequestSettings = ( { section } ) => {
 								'will be able to pay with their respective choice of Wallet.',
 							'woocommerce-payments'
 						) }
+						__nextHasNoMarginBottom
 					/>
 					<h4>
 						{ __(
@@ -82,6 +84,7 @@ const PaymentRequestSettings = ( { section } ) => {
 									'Checkout Page',
 									'woocommerce-payments'
 								) }
+								__nextHasNoMarginBottom
 							/>
 						</li>
 						<li>
@@ -100,6 +103,7 @@ const PaymentRequestSettings = ( { section } ) => {
 									'Product Page',
 									'woocommerce-payments'
 								) }
+								__nextHasNoMarginBottom
 							/>
 						</li>
 						<li>
@@ -114,6 +118,7 @@ const PaymentRequestSettings = ( { section } ) => {
 									'Cart Page',
 									'woocommerce-payments'
 								) }
+								__nextHasNoMarginBottom
 							/>
 						</li>
 					</ul>

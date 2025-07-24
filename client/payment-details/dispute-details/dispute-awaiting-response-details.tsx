@@ -9,19 +9,17 @@ import { backup, edit, lock, arrowRight } from '@wordpress/icons';
 import { useDispatch } from '@wordpress/data';
 import { createInterpolateElement } from '@wordpress/element';
 import { Link } from '@woocommerce/components';
-import {
-	Button,
-	ExternalLink,
-	Flex,
-	FlexItem,
-	Icon,
-	Modal,
-	HorizontalRule,
-} from 'wcpay/components/wp-components-wrapped';
 
 /**
  * Internal dependencies
  */
+import { Button } from 'wcpay/components/wp-components-wrapped/components/button';
+import { ExternalLink } from 'wcpay/components/wp-components-wrapped/components/external-link';
+import { Flex } from 'wcpay/components/wp-components-wrapped/components/flex';
+import { FlexItem } from 'wcpay/components/wp-components-wrapped/components/flex-item';
+import { Icon } from 'wcpay/components/wp-components-wrapped/components/icon';
+import { Modal } from 'wcpay/components/wp-components-wrapped/components/modal';
+import { HorizontalRule } from 'wcpay/components/wp-components-wrapped/components/horizontal-rule';
 import type { Dispute } from 'wcpay/types/disputes';
 import type { ChargeBillingDetails } from 'wcpay/types/charges';
 import { recordEvent } from 'tracks';
@@ -239,9 +237,17 @@ const DisputeAwaitingResponseDetails: React.FC< Props > = ( {
 		isDisputeAcceptRequestPending,
 	} );
 
+	/**
+	 * The following cases cannot be defended:
+	 * - Klarna inquiries
+	 * - Visa Compliance disputes (require confirmation of a specific fee)
+	 */
 	const isDefendable = ! (
-		paymentMethod === 'klarna' && isInquiry( dispute.status )
-	); // Only Klarna inquires are not defendable
+		( paymentMethod === 'klarna' && isInquiry( dispute.status ) ) ||
+		( dispute?.enhanced_eligibility_types || [] ).includes(
+			'visa_compliance'
+		)
+	);
 
 	const challengeButtonDefaultText = isInquiry( dispute.status )
 		? __( 'Submit evidence', 'woocommerce-payments' )
