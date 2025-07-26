@@ -41,7 +41,7 @@ const TextEvidence: React.FC< {
 		>
 			{
 				/* translators: Default filename for issuer evidence on a dispute */
-				__( 'Evidence.txt', 'woocommerce-payments' )
+				__( 'Evidence.txt', 'poocommerce-payments' )
 			}
 		</Button>
 	);
@@ -74,7 +74,7 @@ const FileEvidence: React.FC< {
 		} catch ( exception ) {
 			createNotice(
 				'error',
-				__( 'Error downloading file', 'woocommerce-payments' )
+				__( 'Error downloading file', 'poocommerce-payments' )
 			);
 		}
 		setIsDownloading( false );
@@ -83,7 +83,7 @@ const FileEvidence: React.FC< {
 	return (
 		<Loadable
 			isLoading={ isLoading }
-			placeholder={ __( 'Loading', 'woocommerce-payments' ) }
+			placeholder={ __( 'Loading', 'poocommerce-payments' ) }
 		>
 			{ file && file.id ? (
 				<Button
@@ -120,7 +120,7 @@ const IssuerEvidenceList: React.FC< Props > = ( { issuerEvidence } ) => {
 	return (
 		<PanelBody
 			className="dispute-evidence"
-			title={ __( 'Issuer evidence', 'woocommerce' ) }
+			title={ __( 'Issuer evidence', 'poocommerce' ) }
 			initialOpen={ false }
 		>
 			<ul className="dispute-evidence__list">

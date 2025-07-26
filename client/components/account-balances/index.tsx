@@ -166,7 +166,7 @@ const AccountBalances: React.FC = () => {
 									__(
 										/* translators: %$1$s: Available instant payout amount, %2$s: Instant payout fee percentage */
 										'Get %1$s via instant payout. Funds are typically in your bank account within 30 mins. Fee: %2$s%%.',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									),
 									formatCurrency(
 										selectedOverview.instantBalance.amount,
@@ -189,7 +189,7 @@ const AccountBalances: React.FC = () => {
 									buttonIcon={ <HelpOutlineIcon /> }
 									buttonLabel={ __(
 										'Learn more about instant payouts',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									) }
 									content={
 										/* 'With instant payout you can receive requested funds in your bank account within 30 mins for a 1.5% fee. Learn more' */
@@ -199,7 +199,7 @@ const AccountBalances: React.FC = () => {
 												__(
 													/* translators: %s: Instant payout fee percentage */
 													'With {{strong}}instant payout{{/strong}} you can receive requested funds in your bank account within 30 mins for a %s%% fee. {{learnMoreLink}}Learn more{{/learnMoreLink}}',
-													'woocommerce-payments'
+													'poocommerce-payments'
 												),
 												selectedOverview.instantBalance
 													.fee_percentage
@@ -209,7 +209,7 @@ const AccountBalances: React.FC = () => {
 												learnMoreLink: (
 													<ExternalLink
 														href={
-															'https://woocommerce.com/document/woopayments/payouts/instant-payouts/'
+															'https://poocommerce.com/document/woopayments/payouts/instant-payouts/'
 														}
 													/>
 												),

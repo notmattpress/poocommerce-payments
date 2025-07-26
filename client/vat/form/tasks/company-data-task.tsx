@@ -92,18 +92,18 @@ export const CompanyDataTask = ( {
 			index={ 2 }
 			title={ __(
 				'Confirm your business details',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			) }
 		>
 			<CollapsibleBody>
 				<TextControl
-					label={ __( 'Business name', 'woocommerce-payments' ) }
+					label={ __( 'Business name', 'poocommerce-payments' ) }
 					value={ companyName }
 					onChange={ setCompanyName }
 				/>
 
 				<TextareaControl
-					label={ __( 'Address', 'woocommerce-payments' ) }
+					label={ __( 'Address', 'poocommerce-payments' ) }
 					value={ companyAddress }
 					onChange={ setCompanyAddress }
 				/>
@@ -114,7 +114,7 @@ export const CompanyDataTask = ( {
 					isBusy={ isLoading }
 					onClick={ submit }
 				>
-					{ __( 'Confirm', 'woocommerce-payments' ) }
+					{ __( 'Confirm', 'poocommerce-payments' ) }
 				</Button>
 
 				{ saveDetailsError && (

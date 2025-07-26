@@ -21,7 +21,7 @@ const FraudProtection: React.FC = () => {
 					<h4>
 						{ __(
 							'Set your payment risk level',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 					</h4>
 					<ProtectionLevels />

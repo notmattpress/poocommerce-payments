@@ -38,7 +38,7 @@ const ConversionIndicator = ( {
 		<Tooltip
 			text={ sprintf(
 				/* translators: %s is a monetary amount */
-				__( 'Converted from %s', 'woocommerce-payments' ),
+				__( 'Converted from %s', 'poocommerce-payments' ),
 				formatExplicitCurrency( amount, currency, false, baseCurrency )
 			) }
 			position="bottom center"

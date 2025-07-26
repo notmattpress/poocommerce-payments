@@ -71,10 +71,10 @@ const ContinueButton = ( {
 	const renderText = () => {
 		if ( selectedCurrencyCodesLength === 0 ) {
 			if ( enabledCurrencyCodes.length > 1 ) {
-				return __( 'Continue', 'woocommerce-payments' );
+				return __( 'Continue', 'poocommerce-payments' );
 			}
 
-			return __( 'Add currencies', 'woocommerce-payments' );
+			return __( 'Add currencies', 'poocommerce-payments' );
 		}
 
 		return sprintf(
@@ -82,7 +82,7 @@ const ContinueButton = ( {
 				'Add %s currency',
 				'Add %s currencies',
 				selectedCurrencyCodesLength,
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			selectedCurrencyCodesLength
 		);
@@ -189,13 +189,13 @@ const AddCurrenciesTask = () => {
 	return (
 		<WizardTaskItem
 			className="add-currencies-task"
-			title={ __( 'Add currencies', 'woocommerce-payments' ) }
+			title={ __( 'Add currencies', 'poocommerce-payments' ) }
 			visibleDescription={ sprintf(
 				_n(
 					'%s currency added',
 					'%s currencies added',
 					selectedCurrencyCodesLength,
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				selectedCurrencyCodesLength < 10
 					? _.capitalize( numberWords[ selectedCurrencyCodesLength ] )
@@ -210,7 +210,7 @@ const AddCurrenciesTask = () => {
 							mixedString: __(
 								"Add currencies so international customers can shop and pay in their local currency. Your store's " +
 									'default currency is {{storeCurrencyText /}}.',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							components: {
 								storeCurrencyText: (
@@ -228,7 +228,7 @@ const AddCurrenciesTask = () => {
 						{ interpolateComponents( {
 							mixedString: __(
 								"You've already added {{enabledCurrenciesText /}} to your store.",
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							components: {
 								enabledCurrenciesText: (
@@ -253,7 +253,7 @@ const AddCurrenciesTask = () => {
 								onChange={ setSearchText }
 								placeholder={ __(
 									'Search currencies',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								) }
 							/>
 						</div>
@@ -264,7 +264,7 @@ const AddCurrenciesTask = () => {
 								{ sprintf(
 									__(
 										'Search results (%1$d currencies)',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									),
 									filteredCurrencyCodes.length
 								) }
@@ -283,7 +283,7 @@ const AddCurrenciesTask = () => {
 												<h4>
 													{ __(
 														'Recommended currencies',
-														'woocommerce-payments'
+														'poocommerce-payments'
 													) }
 												</h4>
 											</li>
@@ -308,7 +308,7 @@ const AddCurrenciesTask = () => {
 											<h4>
 												{ __(
 													'All currencies',
-													'woocommerce-payments'
+													'poocommerce-payments'
 												) }
 											</h4>
 										</li>

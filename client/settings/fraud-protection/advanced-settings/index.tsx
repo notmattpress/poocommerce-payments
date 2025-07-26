@@ -4,7 +4,7 @@
 import React, { useEffect, useState, useRef, EffectCallback } from 'react';
 import { isMatchWith } from 'lodash';
 import { sprintf, __ } from '@wordpress/i18n';
-import { Link } from '@woocommerce/components';
+import { Link } from '@poocommerce/components';
 import { LoadableBlock } from 'wcpay/components/loadable';
 import { Button } from 'wcpay/components/wp-components-wrapped/components/button';
 import { Notice } from 'wcpay/components/wp-components-wrapped/components/notice';
@@ -61,11 +61,11 @@ const observerEventMapping: Record< string, string > = {
 
 const AdvancedFraudSettingsDescription = () => (
 	<>
-		<h2>{ __( 'Filter configuration', 'woocommerce-payments' ) }</h2>
+		<h2>{ __( 'Filter configuration', 'poocommerce-payments' ) }</h2>
 		<p>
 			{ __(
 				'Set up advanced fraud filters. Enable at least one filter to activate advanced protection.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			) }
 		</p>
 	</>
@@ -87,7 +87,7 @@ const Breadcrumb = ( props: BreadcrumbProps ): JSX.Element => {
 							href={ getAdminUrl( {
 								page: 'wc-settings',
 								tab: 'checkout',
-								section: 'woocommerce_payments',
+								section: 'poocommerce_payments',
 							} ) }
 						>
 							<span className="dashicons dashicons-arrow-left-alt2"></span>
@@ -95,7 +95,7 @@ const Breadcrumb = ( props: BreadcrumbProps ): JSX.Element => {
 					</small>
 					{ __(
 						'Advanced fraud protection',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 				</h2>
 			) }
@@ -103,7 +103,7 @@ const Breadcrumb = ( props: BreadcrumbProps ): JSX.Element => {
 				<h2 className="fraud-protection-header-breadcrumb-old">
 					{ __(
 						'Advanced fraud protection',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 					<small>
 						<Link
@@ -111,7 +111,7 @@ const Breadcrumb = ( props: BreadcrumbProps ): JSX.Element => {
 							href={ getAdminUrl( {
 								page: 'wc-settings',
 								tab: 'checkout',
-								section: 'woocommerce_payments',
+								section: 'poocommerce_payments',
 							} ) }
 						>
 							&#x2934;&#xfe0e;
@@ -190,7 +190,7 @@ const FraudProtectionAdvancedSettingsPage: React.FC = () => {
 				dispatch( 'core/notices' ).createErrorNotice(
 					__(
 						'At least one risk filter needs to be enabled for advanced protection.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					)
 				);
 				return;
@@ -296,7 +296,7 @@ const FraudProtectionAdvancedSettingsPage: React.FC = () => {
 		// Source: https://stackoverflow.com/a/68637899
 		return __(
 			'There are unsaved changes on this page. Are you sure you want to leave and discard the unsaved changes?',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		);
 	} ) as EffectCallback;
 
@@ -318,7 +318,7 @@ const FraudProtectionAdvancedSettingsPage: React.FC = () => {
 				! isDirty
 			}
 		>
-			{ __( 'Save changes', 'woocommerce-payments' ) }
+			{ __( 'Save changes', 'poocommerce-payments' ) }
 		</Button>
 	);
 
@@ -355,7 +355,7 @@ const FraudProtectionAdvancedSettingsPage: React.FC = () => {
 										'%s %s',
 										__(
 											'Settings were not saved.',
-											'woocommerce-payments'
+											'poocommerce-payments'
 										),
 										validationError
 									) }
@@ -368,7 +368,7 @@ const FraudProtectionAdvancedSettingsPage: React.FC = () => {
 									{ __(
 										'There was an error retrieving your fraud protection settings.' +
 											' Please refresh the page to try again.',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									) }
 								</Notice>
 							</div>

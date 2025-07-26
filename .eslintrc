@@ -6,7 +6,7 @@
 		"wpcalypso/react",
 		"plugin:jsx-a11y/recommended",
 		"prettier",
-		"plugin:@woocommerce/eslint-plugin/recommended"
+		"plugin:@poocommerce/eslint-plugin/recommended"
 	],
 	"plugins": [ "jsx-a11y", "jest", "jsdoc-alignment" ],
 	"env": {
@@ -75,7 +75,7 @@
 				"definedTags": [ "format" ]
 			}
 		],
-		/* partially disable rules to get @woocommerce/eslint-plugin integration done */
+		/* partially disable rules to get @poocommerce/eslint-plugin integration done */
 		"jsdoc/no-undefined-types": "off",
 		"jsdoc/require-param": "off",
 		"jsdoc/check-param-names": "off",
@@ -84,7 +84,7 @@
 		"@wordpress/no-unused-vars-before-return": "off",
 		"@wordpress/i18n-translator-comments": "off",
 		"@wordpress/valid-sprintf": "off",
-		"@woocommerce/dependency-group": "off",
+		"@poocommerce/dependency-group": "off",
 		"react-hooks/exhaustive-deps": "error",
 		"react-hooks/rules-of-hooks": "error",
 		"jest/no-conditional-expect": "off",
