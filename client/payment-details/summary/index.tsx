@@ -92,14 +92,14 @@ const isTapToPay = ( model: string ) => {
 
 const getTapToPayChannel = ( platform: string ) => {
 	if ( platform === 'ios' ) {
-		return __( 'Tap to Pay on iPhone', 'woocommerce-payments' );
+		return __( 'Tap to Pay on iPhone', 'poocommerce-payments' );
 	}
 
 	if ( platform === 'android' ) {
-		return __( 'Tap to Pay on Android', 'woocommerce-payments' );
+		return __( 'Tap to Pay on Android', 'poocommerce-payments' );
 	}
 
-	return __( 'Tap to Pay', 'woocommerce-payments' );
+	return __( 'Tap to Pay', 'poocommerce-payments' );
 };
 
 const composePaymentSummaryItems = ( {
@@ -111,7 +111,7 @@ const composePaymentSummaryItems = ( {
 } ): HorizontalListItem[] =>
 	[
 		{
-			title: __( 'Date', 'woocommerce-payments' ),
+			title: __( 'Date', 'poocommerce-payments' ),
 			content: charge.created
 				? formatDateTimeFromTimestamp( charge.created, {
 						separator: ', ',
@@ -120,7 +120,7 @@ const composePaymentSummaryItems = ( {
 				: '–',
 		},
 		{
-			title: __( 'Sales channel', 'woocommerce-payments' ),
+			title: __( 'Sales channel', 'poocommerce-payments' ),
 			content: (
 				<span>
 					{ isTapToPay( metadata?.reader_model )
@@ -133,7 +133,7 @@ const composePaymentSummaryItems = ( {
 			),
 		},
 		{
-			title: __( 'Customer', 'woocommerce-payments' ),
+			title: __( 'Customer', 'poocommerce-payments' ),
 			content: (
 				<CustomerLink
 					billing_details={ charge.billing_details }
@@ -142,11 +142,11 @@ const composePaymentSummaryItems = ( {
 			),
 		},
 		{
-			title: __( 'Order', 'woocommerce-payments' ),
+			title: __( 'Order', 'poocommerce-payments' ),
 			content: <OrderLink order={ charge.order } />,
 		},
 		wcpaySettings.isSubscriptionsActive && {
-			title: __( 'Subscription', 'woocommerce-payments' ),
+			title: __( 'Subscription', 'poocommerce-payments' ),
 			content: charge.order?.subscriptions?.length ? (
 				charge.order.subscriptions.map( ( subscription, i, all ) => [
 					<OrderLink key={ i } order={ subscription } />,
@@ -157,7 +157,7 @@ const composePaymentSummaryItems = ( {
 			),
 		},
 		{
-			title: __( 'Payment method', 'woocommerce-payments' ),
+			title: __( 'Payment method', 'poocommerce-payments' ),
 			content: (
 				<PaymentMethodDetails
 					payment={ charge.payment_method_details }
@@ -165,7 +165,7 @@ const composePaymentSummaryItems = ( {
 			),
 		},
 		{
-			title: __( 'Risk evaluation', 'woocommerce-payments' ),
+			title: __( 'Risk evaluation', 'poocommerce-payments' ),
 			content: charge.outcome?.risk_level
 				? riskMappings[ charge.outcome.risk_level ]
 				: '–',
@@ -179,7 +179,7 @@ const composePaymentSummaryItemsForDispute = ( {
 } ): HorizontalListItem[] =>
 	[
 		{
-			title: __( 'Date', 'woocommerce-payments' ),
+			title: __( 'Date', 'poocommerce-payments' ),
 			content: charge.created
 				? formatDateTimeFromTimestamp( charge.created, {
 						customFormat: 'F j, Y g:i A',
@@ -187,7 +187,7 @@ const composePaymentSummaryItemsForDispute = ( {
 				: '–',
 		},
 		{
-			title: __( 'Customer', 'woocommerce-payments' ),
+			title: __( 'Customer', 'poocommerce-payments' ),
 			content: (
 				<CustomerLink
 					billing_details={ charge.billing_details }
@@ -196,11 +196,11 @@ const composePaymentSummaryItemsForDispute = ( {
 			),
 		},
 		{
-			title: __( 'Order', 'woocommerce-payments' ),
+			title: __( 'Order', 'poocommerce-payments' ),
 			content: <OrderLink order={ charge.order } />,
 		},
 		wcpaySettings.isSubscriptionsActive && {
-			title: __( 'Subscription', 'woocommerce-payments' ),
+			title: __( 'Subscription', 'poocommerce-payments' ),
 			content: charge.order?.subscriptions?.length ? (
 				charge.order.subscriptions.map( ( subscription, i, all ) => [
 					<OrderLink key={ i } order={ subscription } />,
@@ -211,7 +211,7 @@ const composePaymentSummaryItemsForDispute = ( {
 			),
 		},
 		{
-			title: __( 'Payment method', 'woocommerce-payments' ),
+			title: __( 'Payment method', 'poocommerce-payments' ),
 			content: (
 				<PaymentMethodDetails
 					payment={ charge.payment_method_details }
@@ -219,7 +219,7 @@ const composePaymentSummaryItemsForDispute = ( {
 			),
 		},
 		{
-			title: __( 'Risk evaluation', 'woocommerce-payments' ),
+			title: __( 'Risk evaluation', 'poocommerce-payments' ),
 			content: charge.outcome?.risk_level
 				? riskMappings[ charge.outcome.risk_level ]
 				: '–',
@@ -291,14 +291,14 @@ const PaymentDetailsSummary: React.FC< PaymentDetailsSummaryProps > = ( {
 	// WP translation strings are injected into Moment.js for relative time terms, since Moment's own translation library increases the bundle size significantly.
 	moment.updateLocale( 'en', {
 		relativeTime: {
-			s: __( 'a second', 'woocommerce-payments' ),
-			ss: __( '%d seconds', 'woocommerce-payments' ),
-			m: __( 'a minute', 'woocommerce-payments' ),
-			mm: __( '%d minutes', 'woocommerce-payments' ),
-			h: __( 'an hour', 'woocommerce-payments' ),
-			hh: __( '%d hours', 'woocommerce-payments' ),
-			d: __( 'a day', 'woocommerce-payments' ),
-			dd: __( '%d days', 'woocommerce-payments' ),
+			s: __( 'a second', 'poocommerce-payments' ),
+			ss: __( '%d seconds', 'poocommerce-payments' ),
+			m: __( 'a minute', 'poocommerce-payments' ),
+			mm: __( '%d minutes', 'poocommerce-payments' ),
+			h: __( 'an hour', 'poocommerce-payments' ),
+			hh: __( '%d hours', 'poocommerce-payments' ),
+			d: __( 'a day', 'poocommerce-payments' ),
+			dd: __( '%d days', 'poocommerce-payments' ),
 		},
 	} );
 
@@ -323,7 +323,7 @@ const PaymentDetailsSummary: React.FC< PaymentDetailsSummaryProps > = ( {
 										isLoading={ isLoading }
 										placeholder={ __(
 											'Amount placeholder',
-											'woocommerce-payments'
+											'poocommerce-payments'
 										) }
 									>
 										{ formattedAmount }
@@ -363,11 +363,11 @@ const PaymentDetailsSummary: React.FC< PaymentDetailsSummaryProps > = ( {
 											disputeFee
 												? __(
 														'Deducted',
-														'woocommerce-payments'
+														'poocommerce-payments'
 												  )
 												: __(
 														'Refunded',
-														'woocommerce-payments'
+														'poocommerce-payments'
 												  )
 										}: ` }
 										{ formatExplicitCurrency(
@@ -383,12 +383,12 @@ const PaymentDetailsSummary: React.FC< PaymentDetailsSummaryProps > = ( {
 										isLoading={ isLoading }
 										placeholder={ __(
 											'Fee amount',
-											'woocommerce-payments'
+											'poocommerce-payments'
 										) }
 									>
 										{ `${ __(
 											'Fees',
-											'woocommerce-payments'
+											'poocommerce-payments'
 										) }: ` }
 										{ formatCurrency(
 											-balance.fee,
@@ -402,7 +402,7 @@ const PaymentDetailsSummary: React.FC< PaymentDetailsSummaryProps > = ( {
 												}
 												buttonLabel={ __(
 													'Fee breakdown',
-													'woocommerce-payments'
+													'poocommerce-payments'
 												) }
 												content={
 													<>
@@ -410,13 +410,13 @@ const PaymentDetailsSummary: React.FC< PaymentDetailsSummaryProps > = ( {
 															<label>
 																{ __(
 																	'Transaction fee',
-																	'woocommerce-payments'
+																	'poocommerce-payments'
 																) }
 															</label>
 															<span
 																aria-label={ __(
 																	'Transaction fee',
-																	'woocommerce-payments'
+																	'poocommerce-payments'
 																) }
 															>
 																{ formatCurrency(
@@ -429,13 +429,13 @@ const PaymentDetailsSummary: React.FC< PaymentDetailsSummaryProps > = ( {
 															<label>
 																{ __(
 																	'Dispute fee',
-																	'woocommerce-payments'
+																	'poocommerce-payments'
 																) }
 															</label>
 															<span
 																aria-label={ __(
 																	'Dispute fee',
-																	'woocommerce-payments'
+																	'poocommerce-payments'
 																) }
 															>
 																{ disputeFee }
@@ -445,13 +445,13 @@ const PaymentDetailsSummary: React.FC< PaymentDetailsSummaryProps > = ( {
 															<label>
 																{ __(
 																	'Total fees',
-																	'woocommerce-payments'
+																	'poocommerce-payments'
 																) }
 															</label>
 															<span
 																aria-label={ __(
 																	'Total fees',
-																	'woocommerce-payments'
+																	'poocommerce-payments'
 																) }
 															>
 																{ formatCurrency(
@@ -470,7 +470,7 @@ const PaymentDetailsSummary: React.FC< PaymentDetailsSummaryProps > = ( {
 									<p>
 										{ `${ __(
 											'Loan repayment',
-											'woocommerce-payments'
+											'poocommerce-payments'
 										) }: ` }
 										{ formatExplicitCurrency(
 											charge.paydown.amount,
@@ -485,12 +485,12 @@ const PaymentDetailsSummary: React.FC< PaymentDetailsSummaryProps > = ( {
 										isLoading={ isLoading }
 										placeholder={ __(
 											'Net amount',
-											'woocommerce-payments'
+											'poocommerce-payments'
 										) }
 									>
 										{ `${ __(
 											'Net',
-											'woocommerce-payments'
+											'poocommerce-payments'
 										) }: ` }
 										{ formatExplicitCurrency(
 											charge.paydown
@@ -560,7 +560,7 @@ const PaymentDetailsSummary: React.FC< PaymentDetailsSummaryProps > = ( {
 									>
 										{ __(
 											'Approve Transaction',
-											'woocommerce-payments'
+											'poocommerce-payments'
 										) }
 									</CaptureAuthorizationButton>
 								</div>
@@ -575,7 +575,7 @@ const PaymentDetailsSummary: React.FC< PaymentDetailsSummaryProps > = ( {
 											<span className="payment-details-summary__id_label">
 												{ `${ __(
 													'Payment ID',
-													'woocommerce-payments'
+													'poocommerce-payments'
 												) }: ` }
 											</span>
 											<span className="payment-details-summary__id_value">
@@ -588,7 +588,7 @@ const PaymentDetailsSummary: React.FC< PaymentDetailsSummaryProps > = ( {
 											<span className="payment-details-summary__id_label">
 												{ `${ __(
 													'Charge ID',
-													'woocommerce-payments'
+													'poocommerce-payments'
 												) }: ` }
 											</span>
 											<span className="payment-details-summary__id_value">
@@ -610,7 +610,7 @@ const PaymentDetailsSummary: React.FC< PaymentDetailsSummaryProps > = ( {
 									icon={ moreVertical }
 									label={ __(
 										'Transaction actions',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									) }
 									popoverProps={ {
 										position: 'bottom left',
@@ -637,7 +637,7 @@ const PaymentDetailsSummary: React.FC< PaymentDetailsSummaryProps > = ( {
 												>
 													{ __(
 														'Refund in full',
-														'woocommerce-payments'
+														'poocommerce-payments'
 													) }
 												</MenuItem>
 											) }
@@ -660,7 +660,7 @@ const PaymentDetailsSummary: React.FC< PaymentDetailsSummaryProps > = ( {
 												>
 													{ __(
 														'Partial refund',
-														'woocommerce-payments'
+														'poocommerce-payments'
 													) }
 												</MenuItem>
 											) }
@@ -765,11 +765,11 @@ const PaymentDetailsSummary: React.FC< PaymentDetailsSummaryProps > = ( {
 							{ createInterpolateElement(
 								__(
 									'You must <a>capture</a> this charge within the next',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								),
 								{
 									a: (
-										<ExternalLink href="https://woocommerce.com/document/woopayments/settings-guide/authorize-and-capture/#capturing-authorized-orders" />
+										<ExternalLink href="https://poocommerce.com/document/woopayments/settings-guide/authorize-and-capture/#capturing-authorized-orders" />
 									),
 								}
 							) }{ ' ' }
@@ -793,7 +793,7 @@ const PaymentDetailsSummary: React.FC< PaymentDetailsSummaryProps > = ( {
 							{ isFraudOutcomeReview &&
 								`. ${ __(
 									'Approving this transaction will capture the charge.',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								) }` }
 						</CardNotice>
 					</Loadable>

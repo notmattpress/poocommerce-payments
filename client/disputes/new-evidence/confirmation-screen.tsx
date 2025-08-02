@@ -39,7 +39,7 @@ const ConfirmationScreen: React.FC< ConfirmationScreenProps > = ( {
 							src={ DisputeEvidenceSubmittedIllustration }
 							alt={ __(
 								'Evidence submitted successfully',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 							className="wcpay-dispute-evidence-confirmation__illustration-image"
 						/>
@@ -49,34 +49,34 @@ const ConfirmationScreen: React.FC< ConfirmationScreenProps > = ( {
 					<h2 className="wcpay-dispute-evidence-confirmation__title">
 						{ __(
 							'Thanks for sharing your response!',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 					</h2>
 
 					<p className="wcpay-dispute-evidence-confirmation__subtitle">
 						{ __(
 							"Your evidence has been sent to the cardholder's bank for review.",
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 					</p>
 
 					{ /* What's next section */ }
 					<div className="wcpay-dispute-evidence-confirmation__next-steps">
 						<h3>
-							{ __( 'What’s next?', 'woocommerce-payments' ) }
+							{ __( 'What’s next?', 'poocommerce-payments' ) }
 						</h3>
 						<ul>
 							<li>
 								{ __(
 									'The cardholder’s bank will review your response. Please be patient — this usually takes a few weeks, but in some cases it can take up to 3 months.',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								) }
 							</li>
 							<li>
 								{ createInterpolateElement(
 									__(
 										"You'll be informed of any updates via email, or you can check the status of your case at any time in your <disputesPageLink>Disputes area</disputesPageLink>.",
-										'woocommerce-payments'
+										'poocommerce-payments'
 									),
 									{
 										disputesPageLink: (
@@ -88,7 +88,7 @@ const ConfirmationScreen: React.FC< ConfirmationScreenProps > = ( {
 											>
 												{ __(
 													'Disputes page',
-													'woocommerce-payments'
+													'poocommerce-payments'
 												) }
 											</a>
 										),
@@ -99,14 +99,14 @@ const ConfirmationScreen: React.FC< ConfirmationScreenProps > = ( {
 								{ createInterpolateElement(
 									__(
 										'Want to know more about how disputes work? <learnMoreLink>Check out our resources</learnMoreLink>',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									),
 									{
 										learnMoreLink: (
-											<ExternalLink href="https://woocommerce.com/document/payments/disputes/">
+											<ExternalLink href="https://poocommerce.com/document/payments/disputes/">
 												{ __(
 													'Learn more about disputes',
-													'woocommerce-payments'
+													'poocommerce-payments'
 												) }
 											</ExternalLink>
 										),
@@ -128,13 +128,13 @@ const ConfirmationScreen: React.FC< ConfirmationScreenProps > = ( {
 								? sprintf(
 										__(
 											'<strong>The outcome of this dispute will be determined by %1$s.</strong> WooPayments has no influence over the decision and is not liable for any chargebacks.',
-											'woocommerce-payments'
+											'poocommerce-payments'
 										),
 										bankName
 								  )
 								: __(
 										"<strong>The outcome of this dispute will be determined by the cardholder's bank.</strong> WooPayments has no influence over the decision and is not liable for any chargebacks.",
-										'woocommerce-payments'
+										'poocommerce-payments'
 								  ),
 							{
 								strong: <strong />,
@@ -155,7 +155,7 @@ const ConfirmationScreen: React.FC< ConfirmationScreenProps > = ( {
 						>
 							{ __(
 								'Return to disputes',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 						</Button>
 						<Button
@@ -170,7 +170,7 @@ const ConfirmationScreen: React.FC< ConfirmationScreenProps > = ( {
 						>
 							{ __(
 								'View submitted dispute',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 						</Button>
 					</div>

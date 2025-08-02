@@ -8,5 +8,5 @@ const { registerPlugin } = window.wp.plugins;
 
 registerPlugin( 'bnpl-site-messaging', {
 	render: renderBNPLCartMessaging,
-	scope: 'woocommerce-checkout',
+	scope: 'poocommerce-checkout',
 } );

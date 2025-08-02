@@ -35,12 +35,12 @@ const CustomerDetails: React.FC< CustomerDetailsProps > = ( { dispute } ) => {
 	return (
 		<section className="wcpay-dispute-evidence-customer-details">
 			<h3 className="wcpay-dispute-evidence-customer-details__heading">
-				{ __( 'Customer details', 'woocommerce-payments' ) }
+				{ __( 'Customer details', 'poocommerce-payments' ) }
 			</h3>
 			<div className="wcpay-dispute-evidence-customer-details__row">
 				<div>
 					<div className="wcpay-dispute-evidence-customer-details__label">
-						{ __( 'NAME', 'woocommerce-payments' ) }
+						{ __( 'NAME', 'poocommerce-payments' ) }
 					</div>
 					{ name !== '-' ? (
 						<CustomerLink
@@ -53,13 +53,13 @@ const CustomerDetails: React.FC< CustomerDetailsProps > = ( { dispute } ) => {
 				</div>
 				<div>
 					<div className="wcpay-dispute-evidence-customer-details__label">
-						{ __( 'PHONE', 'woocommerce-payments' ) }
+						{ __( 'PHONE', 'poocommerce-payments' ) }
 					</div>
 					<span>{ phone }</span>
 				</div>
 				<div>
 					<div className="wcpay-dispute-evidence-customer-details__label">
-						{ __( 'EMAIL', 'woocommerce-payments' ) }
+						{ __( 'EMAIL', 'poocommerce-payments' ) }
 					</div>
 					{ email !== '-' ? (
 						<a
@@ -74,14 +74,14 @@ const CustomerDetails: React.FC< CustomerDetailsProps > = ( { dispute } ) => {
 				</div>
 				<div>
 					<div className="wcpay-dispute-evidence-customer-details__label">
-						{ __( 'IP ADDRESS', 'woocommerce-payments' ) }
+						{ __( 'IP ADDRESS', 'poocommerce-payments' ) }
 					</div>
 					<span>{ ip }</span>
 				</div>
 			</div>
 			<div className="wcpay-dispute-evidence-customer-details__billing">
 				<div className="wcpay-dispute-evidence-customer-details__billing-label">
-					{ __( 'BILLING ADDRESS', 'woocommerce-payments' ) }
+					{ __( 'BILLING ADDRESS', 'poocommerce-payments' ) }
 				</div>
 				<div className="wcpay-dispute-evidence-customer-details__billing-value">
 					{ billingAddress }

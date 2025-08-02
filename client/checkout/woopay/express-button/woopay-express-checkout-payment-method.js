@@ -52,9 +52,9 @@ const wooPayExpressCheckoutPaymentMethod = () => ( {
 	title: 'WooPayments - WooPay',
 	description: __(
 		'A one-click, high-converting, secure checkout built for Woo — themed to your brand.',
-		'woocommerce-payments'
+		'poocommerce-payments'
 	),
-	gatewayId: 'woocommerce_payments',
+	gatewayId: 'poocommerce_payments',
 	content: <WooPayExpressCheckoutButtonContainer />,
 	edit: (
 		<WoopayExpressCheckoutButton

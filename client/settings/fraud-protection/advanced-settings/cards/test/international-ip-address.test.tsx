@@ -14,9 +14,9 @@ declare const global: {
 		admin: {
 			preloadSettings: {
 				general: {
-					woocommerce_allowed_countries: string;
-					woocommerce_all_except_countries: string[];
-					woocommerce_specific_allowed_countries: string[];
+					poocommerce_allowed_countries: string;
+					poocommerce_all_except_countries: string[];
+					poocommerce_specific_allowed_countries: string[];
 				};
 			};
 		};
@@ -48,9 +48,9 @@ describe( 'International IP address card', () => {
 		admin: {
 			preloadSettings: {
 				general: {
-					woocommerce_allowed_countries: 'all',
-					woocommerce_all_except_countries: [],
-					woocommerce_specific_allowed_countries: [],
+					poocommerce_allowed_countries: 'all',
+					poocommerce_all_except_countries: [],
+					poocommerce_specific_allowed_countries: [],
 				},
 			},
 		},
@@ -62,7 +62,7 @@ describe( 'International IP address card', () => {
 	global.wcpaySettings = {
 		isFRTReviewFeatureActive: false,
 	};
-	test( 'renders correctly when woocommerce_allowed_countries is all', () => {
+	test( 'renders correctly when poocommerce_allowed_countries is all', () => {
 		const { container } = render(
 			<FraudPreventionSettingsContext.Provider value={ contextValue }>
 				<InternationalIPAddressRuleCard />
@@ -70,10 +70,10 @@ describe( 'International IP address card', () => {
 		);
 		expect( container ).toMatchSnapshot();
 	} );
-	test( 'renders correctly when woocommerce_allowed_countries is specific', () => {
-		global.wcSettings.admin.preloadSettings.general.woocommerce_allowed_countries =
+	test( 'renders correctly when poocommerce_allowed_countries is specific', () => {
+		global.wcSettings.admin.preloadSettings.general.poocommerce_allowed_countries =
 			'specific';
-		global.wcSettings.admin.preloadSettings.general.woocommerce_specific_allowed_countries = [
+		global.wcSettings.admin.preloadSettings.general.poocommerce_specific_allowed_countries = [
 			'CA',
 			'US',
 		];
@@ -84,10 +84,10 @@ describe( 'International IP address card', () => {
 		);
 		expect( container ).toMatchSnapshot();
 	} );
-	test( 'renders correctly when woocommerce_allowed_countries is all_except', () => {
-		global.wcSettings.admin.preloadSettings.general.woocommerce_allowed_countries =
+	test( 'renders correctly when poocommerce_allowed_countries is all_except', () => {
+		global.wcSettings.admin.preloadSettings.general.poocommerce_allowed_countries =
 			'all_except';
-		global.wcSettings.admin.preloadSettings.general.woocommerce_all_except_countries = [
+		global.wcSettings.admin.preloadSettings.general.poocommerce_all_except_countries = [
 			'CA',
 			'US',
 		];
@@ -99,9 +99,9 @@ describe( 'International IP address card', () => {
 		expect( container ).toMatchSnapshot();
 	} );
 	test( 'renders correctly when enabled', () => {
-		global.wcSettings.admin.preloadSettings.general.woocommerce_allowed_countries =
+		global.wcSettings.admin.preloadSettings.general.poocommerce_allowed_countries =
 			'specific';
-		global.wcSettings.admin.preloadSettings.general.woocommerce_specific_allowed_countries = [
+		global.wcSettings.admin.preloadSettings.general.poocommerce_specific_allowed_countries = [
 			'CA',
 			'US',
 		];
@@ -114,9 +114,9 @@ describe( 'International IP address card', () => {
 		expect( container ).toMatchSnapshot();
 	} );
 	test( 'renders correctly when enabled and checked', () => {
-		global.wcSettings.admin.preloadSettings.general.woocommerce_allowed_countries =
+		global.wcSettings.admin.preloadSettings.general.poocommerce_allowed_countries =
 			'specific';
-		global.wcSettings.admin.preloadSettings.general.woocommerce_specific_allowed_countries = [
+		global.wcSettings.admin.preloadSettings.general.poocommerce_specific_allowed_countries = [
 			'CA',
 			'US',
 		];
@@ -130,9 +130,9 @@ describe( 'International IP address card', () => {
 		expect( container ).toMatchSnapshot();
 	} );
 	test( 'renders like disabled when checked, but not enabled', () => {
-		global.wcSettings.admin.preloadSettings.general.woocommerce_allowed_countries =
+		global.wcSettings.admin.preloadSettings.general.poocommerce_allowed_countries =
 			'specific';
-		global.wcSettings.admin.preloadSettings.general.woocommerce_specific_allowed_countries = [
+		global.wcSettings.admin.preloadSettings.general.poocommerce_specific_allowed_countries = [
 			'CA',
 			'US',
 		];

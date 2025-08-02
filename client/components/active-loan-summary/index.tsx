@@ -41,27 +41,27 @@ const ActiveLoanSummaryLoading = (): JSX.Element => {
 		<Card>
 			<CardHeader size="medium" className="wcpay-loan-summary-header">
 				<FlexItem>
-					{ __( 'Active loan overview', 'woocommerce-payments' ) }
+					{ __( 'Active loan overview', 'poocommerce-payments' ) }
 				</FlexItem>
 			</CardHeader>
 			<CardBody className="wcpay-loan-summary-body">
 				<Flex align="normal" className="wcpay-loan-summary-row">
 					<Block
-						title={ __( 'Total repaid', 'woocommerce-payments' ) }
+						title={ __( 'Total repaid', 'poocommerce-payments' ) }
 					>
 						<Loadable
 							isLoading={ true }
 							display="inline"
 							placeholder={ __(
 								'Total repaid placeholder',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 						/>
 					</Block>
 					<Block
 						title={ __(
 							'Repaid this period',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 					>
 						<Loadable
@@ -69,7 +69,7 @@ const ActiveLoanSummaryLoading = (): JSX.Element => {
 							display="inline"
 							placeholder={ __(
 								'Repaid this period placeholder',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 						/>
 					</Block>
@@ -79,7 +79,7 @@ const ActiveLoanSummaryLoading = (): JSX.Element => {
 					className="wcpay-loan-summary-row is-bottom-row"
 				>
 					<Block
-						title={ __( 'Loan disbursed', 'woocommerce-payments' ) }
+						title={ __( 'Loan disbursed', 'poocommerce-payments' ) }
 					>
 						<Loadable
 							isLoading={ true }
@@ -88,7 +88,7 @@ const ActiveLoanSummaryLoading = (): JSX.Element => {
 						/>
 					</Block>
 					<Block
-						title={ __( 'Loan amount', 'woocommerce-payments' ) }
+						title={ __( 'Loan amount', 'poocommerce-payments' ) }
 					>
 						<Loadable
 							isLoading={ true }
@@ -96,7 +96,7 @@ const ActiveLoanSummaryLoading = (): JSX.Element => {
 							placeholder="Loan amount"
 						/>
 					</Block>
-					<Block title={ __( 'Fixed fee', 'woocommerce-payments' ) }>
+					<Block title={ __( 'Fixed fee', 'poocommerce-payments' ) }>
 						<Loadable
 							isLoading={ true }
 							display="inline"
@@ -104,7 +104,7 @@ const ActiveLoanSummaryLoading = (): JSX.Element => {
 						/>
 					</Block>
 					<Block
-						title={ __( 'Withhold rate', 'woocommerce-payments' ) }
+						title={ __( 'Withhold rate', 'poocommerce-payments' ) }
 					>
 						<Loadable
 							isLoading={ true }
@@ -113,14 +113,14 @@ const ActiveLoanSummaryLoading = (): JSX.Element => {
 						/>
 					</Block>
 					<Block
-						title={ __( 'First paydown', 'woocommerce-payments' ) }
+						title={ __( 'First paydown', 'poocommerce-payments' ) }
 					>
 						<Loadable
 							isLoading={ true }
 							display="inline"
 							placeholder={ __(
 								'First paydown',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 						/>
 					</Block>
@@ -155,7 +155,7 @@ const ActiveLoanSummary = (): JSX.Element => {
 		<Card>
 			<CardHeader size="medium" className="wcpay-loan-summary-header">
 				<FlexItem>
-					{ __( 'Active loan overview', 'woocommerce-payments' ) }
+					{ __( 'Active loan overview', 'poocommerce-payments' ) }
 				</FlexItem>
 				<FlexItem>
 					{ getActiveLoanId() && (
@@ -171,7 +171,7 @@ const ActiveLoanSummary = (): JSX.Element => {
 						>
 							{ __(
 								'View transactions',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 						</Button>
 					) }
@@ -180,13 +180,13 @@ const ActiveLoanSummary = (): JSX.Element => {
 			<CardBody className="wcpay-loan-summary-body">
 				<Flex align="normal" className="wcpay-loan-summary-row">
 					<Block
-						title={ __( 'Total repaid', 'woocommerce-payments' ) }
+						title={ __( 'Total repaid', 'poocommerce-payments' ) }
 					>
 						{ createInterpolateElement(
 							sprintf(
 								__(
 									'<big>%s</big> of %s',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								),
 								formatExplicitCurrency(
 									details.paid_amount,
@@ -206,7 +206,7 @@ const ActiveLoanSummary = (): JSX.Element => {
 						title={ sprintf(
 							__(
 								'Repaid this period (until %s)',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							formatDateTimeFromTimestamp(
 								details.current_repayment_interval.due_at
@@ -217,7 +217,7 @@ const ActiveLoanSummary = (): JSX.Element => {
 							sprintf(
 								__(
 									'<big>%s</big> of %s minimum',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								),
 								formatExplicitCurrency(
 									details.current_repayment_interval
@@ -243,33 +243,33 @@ const ActiveLoanSummary = (): JSX.Element => {
 					className="wcpay-loan-summary-row is-bottom-row"
 				>
 					<Block
-						title={ __( 'Loan disbursed', 'woocommerce-payments' ) }
+						title={ __( 'Loan disbursed', 'poocommerce-payments' ) }
 					>
 						{ formatDateTimeFromTimestamp(
 							details.advance_paid_out_at
 						) }
 					</Block>
 					<Block
-						title={ __( 'Loan amount', 'woocommerce-payments' ) }
+						title={ __( 'Loan amount', 'poocommerce-payments' ) }
 					>
 						{ formatExplicitCurrency(
 							details.advance_amount,
 							details.currency
 						) }
 					</Block>
-					<Block title={ __( 'Fixed fee', 'woocommerce-payments' ) }>
+					<Block title={ __( 'Fixed fee', 'poocommerce-payments' ) }>
 						{ formatExplicitCurrency(
 							details.fee_amount,
 							details.currency
 						) }
 					</Block>
 					<Block
-						title={ __( 'Withhold rate', 'woocommerce-payments' ) }
+						title={ __( 'Withhold rate', 'poocommerce-payments' ) }
 					>
 						{ details.withhold_rate * 100 }%
 					</Block>
 					<Block
-						title={ __( 'First paydown', 'woocommerce-payments' ) }
+						title={ __( 'First paydown', 'poocommerce-payments' ) }
 					>
 						{ formatDateTimeFromTimestamp(
 							details.repayments_begin_at

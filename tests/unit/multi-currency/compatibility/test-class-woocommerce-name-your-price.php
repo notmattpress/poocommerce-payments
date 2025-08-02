@@ -1,19 +1,19 @@
 <?php
 /**
- * Class WCPay_Multi_Currency_WooCommerceNameYourPrice_Tests
+ * Class WCPay_Multi_Currency_PooCommerceNameYourPrice_Tests
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
-use WCPay\MultiCurrency\Compatibility\WooCommerceNameYourPrice;
+use WCPay\MultiCurrency\Compatibility\PooCommerceNameYourPrice;
 use WCPay\MultiCurrency\MultiCurrency;
 use WCPay\MultiCurrency\Utils;
 use WCPay\MultiCurrency\Currency;
 
 /**
- * WCPay\MultiCurrency\Compatibility\WooCommerceNameYourPrice unit tests.
+ * WCPay\MultiCurrency\Compatibility\PooCommerceNameYourPrice unit tests.
  */
-class WCPay_Multi_Currency_WooCommerceNameYourPrice_Tests extends WCPAY_UnitTestCase {
+class WCPay_Multi_Currency_PooCommerceNameYourPrice_Tests extends WCPAY_UnitTestCase {
 
 	const NYP_CURRENCY = '_wcpay_multi_currency_nyp_currency';
 
@@ -32,11 +32,11 @@ class WCPay_Multi_Currency_WooCommerceNameYourPrice_Tests extends WCPAY_UnitTest
 	private $mock_utils;
 
 	/**
-	 * WCPay\MultiCurrency\Compatibility\WooCommerceNameYourPrice instance.
+	 * WCPay\MultiCurrency\Compatibility\PooCommerceNameYourPrice instance.
 	 *
-	 * @var WCPay\MultiCurrency\Compatibility\WooCommerceNameYourPrice
+	 * @var WCPay\MultiCurrency\Compatibility\PooCommerceNameYourPrice
 	 */
-	private $woocommerce_nyp;
+	private $poocommerce_nyp;
 
 	/**
 	 * WC_Payments_Localization_Service.
@@ -54,7 +54,7 @@ class WCPay_Multi_Currency_WooCommerceNameYourPrice_Tests extends WCPAY_UnitTest
 		// Create the class instances needed for testing.
 		$this->mock_multi_currency  = $this->createMock( MultiCurrency::class );
 		$this->mock_utils           = $this->createMock( Utils::class );
-		$this->woocommerce_nyp      = new WooCommerceNameYourPrice( $this->mock_multi_currency, $this->mock_utils );
+		$this->poocommerce_nyp      = new PooCommerceNameYourPrice( $this->mock_multi_currency, $this->mock_utils );
 		$this->localization_service = new WC_Payments_Localization_Service();
 
 		// Set is_nyp to return false by default.
@@ -72,10 +72,10 @@ class WCPay_Multi_Currency_WooCommerceNameYourPrice_Tests extends WCPAY_UnitTest
 			->willReturn( $price * 2 );
 
 		// Assert: Check that null is returned if null is passed.
-		$this->assertEquals( null, $this->woocommerce_nyp->get_nyp_prices( null ) );
+		$this->assertEquals( null, $this->poocommerce_nyp->get_nyp_prices( null ) );
 
 		// Assert: Check that the expected value is returned based on the price.
-		$this->assertEquals( $price * 2, $this->woocommerce_nyp->get_nyp_prices( $price ) );
+		$this->assertEquals( $price * 2, $this->poocommerce_nyp->get_nyp_prices( $price ) );
 	}
 
 	// Unmodified cart item should be returned if `is_nyp` returns false.
@@ -87,7 +87,7 @@ class WCPay_Multi_Currency_WooCommerceNameYourPrice_Tests extends WCPAY_UnitTest
 		$this->set_is_nyp( false );
 
 		// Assert: Confirm the cart_item has been returned unmodified.
-		$this->assertSame( $cart_item, $this->woocommerce_nyp->add_initial_currency( $cart_item, 42, null ) );
+		$this->assertSame( $cart_item, $this->poocommerce_nyp->add_initial_currency( $cart_item, 42, null ) );
 	}
 
 	// Unmodified cart item should be returned if `nyp` is not in the cart item.
@@ -97,7 +97,7 @@ class WCPay_Multi_Currency_WooCommerceNameYourPrice_Tests extends WCPAY_UnitTest
 		$this->set_is_nyp( true );
 
 		// Assert: Confirm the cart_item has been returned unmodified.
-		$this->assertSame( $cart_item, $this->woocommerce_nyp->add_initial_currency( $cart_item, 42, null ) );
+		$this->assertSame( $cart_item, $this->poocommerce_nyp->add_initial_currency( $cart_item, 42, null ) );
 	}
 
 	// Check to make sure the proper elements are added to the cart_item array.
@@ -124,7 +124,7 @@ class WCPay_Multi_Currency_WooCommerceNameYourPrice_Tests extends WCPAY_UnitTest
 			->willReturn( $currency );
 
 		// Assert: Check that the expected cart_item is returned.
-		$this->assertSame( $expected_cart_item, $this->woocommerce_nyp->add_initial_currency( $cart_item, 42, null ) );
+		$this->assertSame( $expected_cart_item, $this->poocommerce_nyp->add_initial_currency( $cart_item, 42, null ) );
 	}
 
 	// Check to see that an unmodified cart item is returned if checks do not return true.
@@ -132,21 +132,21 @@ class WCPay_Multi_Currency_WooCommerceNameYourPrice_Tests extends WCPAY_UnitTest
 		// Arrange: Set up the cart_item.
 		$cart_item = [];
 		// Assert: Confirm the cart_item is returned unmodified.
-		$this->assertSame( $cart_item, $this->woocommerce_nyp->convert_cart_currency( $cart_item, null ) );
+		$this->assertSame( $cart_item, $this->poocommerce_nyp->convert_cart_currency( $cart_item, null ) );
 
 		// Arrange: Set up the cart_item.
 		$cart_item = [
 			'nyp_original' => 12.34,
 		];
 		// Assert: Confirm the cart_item is returned unmodified.
-		$this->assertSame( $cart_item, $this->woocommerce_nyp->convert_cart_currency( $cart_item, null ) );
+		$this->assertSame( $cart_item, $this->poocommerce_nyp->convert_cart_currency( $cart_item, null ) );
 
 		// Arrange: Set up the cart_item.
 		$cart_item = [
 			'nyp_currency' => 'EUR',
 		];
 		// Assert: Confirm the cart_item is returned unmodified.
-		$this->assertSame( $cart_item, $this->woocommerce_nyp->convert_cart_currency( $cart_item, null ) );
+		$this->assertSame( $cart_item, $this->poocommerce_nyp->convert_cart_currency( $cart_item, null ) );
 	}
 
 	// If the selected currency matches the currency of the item, then it should just return the item.
@@ -170,10 +170,10 @@ class WCPay_Multi_Currency_WooCommerceNameYourPrice_Tests extends WCPAY_UnitTest
 			->willReturn( $currency );
 
 		// Act: Attempt to convert the cart item amount.
-		$cart_item = $this->woocommerce_nyp->convert_cart_currency( $cart_item, null );
+		$cart_item = $this->poocommerce_nyp->convert_cart_currency( $cart_item, null );
 
 		// Assert: Confirm the cart item currency meta matches the selected currency.
-		$this->assertSame( $cart_item['data']->get_meta( WooCommerceNameYourPrice::NYP_CURRENCY ), $currency->get_code() );
+		$this->assertSame( $cart_item['data']->get_meta( PooCommerceNameYourPrice::NYP_CURRENCY ), $currency->get_code() );
 
 		// Assert: Confirm the cart value is unmodified.
 		$this->assertEquals( $nyp_value, $cart_item['nyp'] );
@@ -210,10 +210,10 @@ class WCPay_Multi_Currency_WooCommerceNameYourPrice_Tests extends WCPAY_UnitTest
 			->willReturn( $expected_value );
 
 		// Act: Attempt to convert the cart item amount.
-		$cart_item = $this->woocommerce_nyp->convert_cart_currency( $cart_item, null );
+		$cart_item = $this->poocommerce_nyp->convert_cart_currency( $cart_item, null );
 
 		// Assert: Confirm the cart_item nyp_currency value is unmodified.
-		$this->assertSame( $cart_item['data']->get_meta( WooCommerceNameYourPrice::NYP_CURRENCY ), $item_currency->get_code() );
+		$this->assertSame( $cart_item['data']->get_meta( PooCommerceNameYourPrice::NYP_CURRENCY ), $item_currency->get_code() );
 
 		// Assert: Confirm the cart_item value matches the expected value.
 		$this->assertEquals( $expected_value, $cart_item['nyp'] );
@@ -250,10 +250,10 @@ class WCPay_Multi_Currency_WooCommerceNameYourPrice_Tests extends WCPAY_UnitTest
 			->willReturn( $expected_value );
 
 		// Act: Attempt to convert the cart item amount.
-		$cart_item = $this->woocommerce_nyp->convert_cart_currency( $cart_item, null );
+		$cart_item = $this->poocommerce_nyp->convert_cart_currency( $cart_item, null );
 
 		// Assert: Confirm the cart_item nyp_currency value is unmodified.
-		$this->assertSame( $cart_item['data']->get_meta( WooCommerceNameYourPrice::NYP_CURRENCY ), $item_currency->get_code() );
+		$this->assertSame( $cart_item['data']->get_meta( PooCommerceNameYourPrice::NYP_CURRENCY ), $item_currency->get_code() );
 
 		// Assert: Confirm the cart_item value matches the expected value.
 		$this->assertEquals( $expected_value, $cart_item['nyp'] );
@@ -262,7 +262,7 @@ class WCPay_Multi_Currency_WooCommerceNameYourPrice_Tests extends WCPAY_UnitTest
 	// If the method is passed false it should return false.
 	public function test_should_convert_product_price_returns_false_when_passed_false() {
 		// Assert: Confirm false is returned if false is passed.
-		$this->assertFalse( $this->woocommerce_nyp->should_convert_product_price( false, null ) );
+		$this->assertFalse( $this->poocommerce_nyp->should_convert_product_price( false, null ) );
 	}
 
 	// If the meta value is already set on the product, the method should return false.
@@ -272,7 +272,7 @@ class WCPay_Multi_Currency_WooCommerceNameYourPrice_Tests extends WCPAY_UnitTest
 
 		// Arrange: Set up the product, and add the meta data to it.
 		$product = WC_Helper_Product::create_simple_product();
-		$product->update_meta_data( WooCommerceNameYourPrice::NYP_CURRENCY, $selected_currency->get_code() );
+		$product->update_meta_data( PooCommerceNameYourPrice::NYP_CURRENCY, $selected_currency->get_code() );
 
 		// Arrange: Set up the mock_multi_currency method mock.
 		$this->mock_multi_currency
@@ -284,7 +284,7 @@ class WCPay_Multi_Currency_WooCommerceNameYourPrice_Tests extends WCPAY_UnitTest
 		$this->set_is_nyp( false );
 
 		// Assert: Confirm false is returned.
-		$this->assertFalse( $this->woocommerce_nyp->should_convert_product_price( true, $product ) );
+		$this->assertFalse( $this->poocommerce_nyp->should_convert_product_price( true, $product ) );
 	}
 
 	// If the product is tagged a a nyp product, false should be returned.
@@ -303,7 +303,7 @@ class WCPay_Multi_Currency_WooCommerceNameYourPrice_Tests extends WCPAY_UnitTest
 		$this->set_is_nyp( true );
 
 		// Assert: Confirm false is returned.
-		$this->assertFalse( $this->woocommerce_nyp->should_convert_product_price( true, $product ) );
+		$this->assertFalse( $this->poocommerce_nyp->should_convert_product_price( true, $product ) );
 	}
 
 	// If no tests return true, method should return true.
@@ -322,7 +322,7 @@ class WCPay_Multi_Currency_WooCommerceNameYourPrice_Tests extends WCPAY_UnitTest
 		$this->set_is_nyp( false );
 
 		// Assert: Confirm true is returned.
-		$this->assertTrue( $this->woocommerce_nyp->should_convert_product_price( true, $product ) );
+		$this->assertTrue( $this->poocommerce_nyp->should_convert_product_price( true, $product ) );
 	}
 
 	public function test_edit_in_cart_args() {
@@ -336,7 +336,7 @@ class WCPay_Multi_Currency_WooCommerceNameYourPrice_Tests extends WCPAY_UnitTest
 			->willReturn( $selected_currency );
 
 		// Act: Edit the in cart args.
-		$result = $this->woocommerce_nyp->edit_in_cart_args( [], [] );
+		$result = $this->poocommerce_nyp->edit_in_cart_args( [], [] );
 
 		// Assert: Confirm that the currency code was added to the arg array.
 		$this->assertSame( $selected_currency->get_code(), $result['nyp_currency'] );
@@ -386,7 +386,7 @@ class WCPay_Multi_Currency_WooCommerceNameYourPrice_Tests extends WCPAY_UnitTest
 		}
 
 		// Act: Get the initial price.
-		$result = $this->woocommerce_nyp->get_initial_price( $initial_price, '', $suffix );
+		$result = $this->poocommerce_nyp->get_initial_price( $initial_price, '', $suffix );
 
 		// Assert: Confirm the initial price is returned.
 		$this->assertSame( $expected_price, $result );

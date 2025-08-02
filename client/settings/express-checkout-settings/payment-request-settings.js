@@ -52,19 +52,19 @@ const PaymentRequestSettings = ( { section } ) => {
 						onChange={ updateIsPaymentRequestEnabled }
 						label={ __(
 							'Enable Apple Pay / Google Pay',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 						help={ __(
 							'When enabled, customers who have configured Apple Pay or Google Pay enabled devices ' +
 								'will be able to pay with their respective choice of Wallet.',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 						__nextHasNoMarginBottom
 					/>
 					<h4>
 						{ __(
 							'Enable Apple Pay and Google Pay on selected pages',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 					</h4>
 					<ul className="payment-request-settings__location">
@@ -82,7 +82,7 @@ const PaymentRequestSettings = ( { section } ) => {
 								) }
 								label={ __(
 									'Checkout Page',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								) }
 								__nextHasNoMarginBottom
 							/>
@@ -101,7 +101,7 @@ const PaymentRequestSettings = ( { section } ) => {
 								) }
 								label={ __(
 									'Product Page',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								) }
 								__nextHasNoMarginBottom
 							/>
@@ -116,7 +116,7 @@ const PaymentRequestSettings = ( { section } ) => {
 								onChange={ makeLocationChangeHandler( 'cart' ) }
 								label={ __(
 									'Cart Page',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								) }
 								__nextHasNoMarginBottom
 							/>

@@ -53,7 +53,7 @@ class Giropay_Payment_Method extends UPE_Payment_Method {
 	public function get_description( ?string $account_country = null ) {
 		return __(
 			'Expand your business with giropay — Germany’s second most popular payment system.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		);
 	}
 }

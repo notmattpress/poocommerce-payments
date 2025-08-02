@@ -21,14 +21,14 @@ import PAYMENT_METHOD_IDS from 'wcpay/constants/payment-method';
 const PaymentMethodsDescription = () => (
 	<>
 		<h2>
-			{ __( 'Payments accepted on checkout', 'woocommerce-payments' ) }
+			{ __( 'Payments accepted on checkout', 'poocommerce-payments' ) }
 		</h2>
 		<p>
 			{ __(
 				'Add and edit payments available to customers at checkout. ' +
 					'Based on their device type, location, and purchase history, ' +
 					'your customers will only see the most relevant payment methods.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			) }
 		</p>
 	</>
