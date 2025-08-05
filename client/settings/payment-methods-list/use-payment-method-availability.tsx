@@ -77,7 +77,6 @@ const usePaymentMethodAvailability = ( id: string ) => {
 				),
 				components: {
 					learnMoreLink: (
-						// eslint-disable-next-line jsx-a11y/anchor-has-content
 						<ExternalLink
 							title={ __(
 								'Learn more about enabling payment methods',
@@ -158,7 +157,6 @@ const usePaymentMethodAvailability = ( id: string ) => {
 				),
 				components: {
 					contactSupportLink: (
-						// eslint-disable-next-line jsx-a11y/anchor-has-content
 						<ExternalLink
 							title={ __(
 								'Contact Support',
