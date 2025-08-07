@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { BaseControl, Notice } from '@wordpress/components';
+import { BaseControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import { useState, useEffect, useRef } from 'react';
 
@@ -14,6 +14,8 @@ import {
 	useTestModeOnboarding,
 } from 'wcpay/data';
 import PhoneNumberInput from 'wcpay/settings/phone-input';
+import InlineNotice from 'wcpay/components/inline-notice';
+import './styles.scss';
 
 const SupportPhoneInput = ( { setInputVallid } ) => {
 	const [ supportPhone, setSupportPhone ] = useAccountBusinessSupportPhone();
@@ -58,9 +60,9 @@ const SupportPhoneInput = ( { setInputVallid } ) => {
 	return (
 		<>
 			{ supportPhoneError && (
-				<Notice status="error" isDismissible={ false }>
+				<InlineNotice status="error" isDismissible={ false }>
 					<span>{ supportPhoneError }</span>
-				</Notice>
+				</InlineNotice>
 			) }
 			<BaseControl
 				className="settings__account-business-support-phone-input no-top-margin"
@@ -86,6 +88,7 @@ const SupportPhoneInput = ( { setInputVallid } ) => {
 				__nextHasNoMarginBottom
 			>
 				<PhoneNumberInput
+					id="account-business-support-phone-input"
 					onValueChange={ setSupportPhone }
 					value={ supportPhone }
 					onValidationChange={ setPhoneValidity }
