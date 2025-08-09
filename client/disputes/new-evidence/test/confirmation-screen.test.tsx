@@ -168,7 +168,7 @@ describe( 'ConfirmationScreen', () => {
 			expect( learnMoreLink ).toBeInTheDocument();
 			expect( learnMoreLink ).toHaveAttribute(
 				'href',
-				'https://woocommerce.com/document/payments/disputes/'
+				'https://poocommerce.com/document/payments/disputes/'
 			);
 			expect( learnMoreLink ).toHaveAttribute( 'target', '_blank' );
 			expect( learnMoreLink ).toHaveAttribute(

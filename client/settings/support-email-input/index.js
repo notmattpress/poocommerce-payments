@@ -21,7 +21,7 @@ const SupportEmailInput = ( { setInputVallid } ) => {
 	if ( supportEmail === '' && currentEmail !== '' ) {
 		supportEmailError = __(
 			'Support email cannot be empty once it has been set before, please specify.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		);
 	}
 
@@ -43,9 +43,9 @@ const SupportEmailInput = ( { setInputVallid } ) => {
 				className="settings__account-business-support-email-input"
 				help={ __(
 					'This may be visible on receipts, invoices, and automated emails from your store.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				) }
-				label={ __( 'Support email', 'woocommerce-payments' ) }
+				label={ __( 'Support email', 'poocommerce-payments' ) }
 				value={ supportEmail }
 				onChange={ setSupportEmail }
 				data-testid={ 'account-business-support-email-input' }

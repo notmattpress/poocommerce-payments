@@ -1,8 +1,8 @@
 <?php
 /**
- * Jetpack Changelogger Formatter for WooCommerce Payments
+ * Jetpack Changelogger Formatter for PooCommerce Payments
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 use Automattic\Jetpack\Changelog\Changelog;
@@ -11,7 +11,7 @@ use Automattic\Jetpack\Changelogger\FormatterPlugin;
 use Automattic\Jetpack\Changelogger\PluginTrait;
 
 /**
- * Jetpack Changelogger Formatter for WooCommerce Payments
+ * Jetpack Changelogger Formatter for PooCommerce Payments
  *
  * Class WCPay_Changelog_Formatter
  */

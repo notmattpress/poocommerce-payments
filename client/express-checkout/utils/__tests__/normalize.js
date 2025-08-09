@@ -196,7 +196,7 @@ describe( 'Express checkout normalization', () => {
 				shipping_postcode: '10001',
 				shipping_method: [ 'rate_1' ],
 				order_comments: '',
-				payment_method: 'woocommerce_payments',
+				payment_method: 'poocommerce_payments',
 				ship_to_different_address: 1,
 				terms: 1,
 				'wcpay-payment-method': paymentMethodId,
@@ -238,7 +238,7 @@ describe( 'Express checkout normalization', () => {
 				shipping_postcode: '',
 				shipping_method: [ null ],
 				order_comments: '',
-				payment_method: 'woocommerce_payments',
+				payment_method: 'poocommerce_payments',
 				ship_to_different_address: 1,
 				terms: 1,
 				'wcpay-payment-method': paymentMethodId,
@@ -284,7 +284,7 @@ describe( 'Express checkout normalization', () => {
 				shipping_postcode: '',
 				shipping_method: [ null ],
 				order_comments: '',
-				payment_method: 'woocommerce_payments',
+				payment_method: 'poocommerce_payments',
 				ship_to_different_address: 1,
 				terms: 1,
 				'wcpay-payment-method': paymentMethodId,
@@ -335,7 +335,7 @@ describe( 'Express checkout normalization', () => {
 			};
 
 			expect( normalizePayForOrderData( event, 'pm_123456' ) ).toEqual( {
-				payment_method: 'woocommerce_payments',
+				payment_method: 'poocommerce_payments',
 				'wcpay-payment-method': 'pm_123456',
 				'wcpay-fraud-prevention-token': 'token123',
 				express_payment_type: 'express',
@@ -349,7 +349,7 @@ describe( 'Express checkout normalization', () => {
 			expect(
 				normalizePayForOrderData( event, paymentMethodId )
 			).toEqual( {
-				payment_method: 'woocommerce_payments',
+				payment_method: 'poocommerce_payments',
 				'wcpay-payment-method': '',
 				'wcpay-fraud-prevention-token': 'token123',
 				express_payment_type: undefined,

@@ -28,7 +28,7 @@ export const NegativeFeedbackModal: React.FC< NegativeFeedbackModalProps > = ( {
 
 	return (
 		<Modal
-			title={ __( 'Share your feedback', 'woocommerce-payments' ) }
+			title={ __( 'Share your feedback', 'poocommerce-payments' ) }
 			className="wcpay-merchant-feedback-negative-modal"
 			isDismissible={ true }
 			shouldCloseOnClickOutside={ false } // Should be false because of the iframe.
@@ -44,13 +44,13 @@ export const NegativeFeedbackModal: React.FC< NegativeFeedbackModalProps > = ( {
 				<p>
 					{ __(
 						'Thanks for sharing your feedback on WooPayments! Your feedback helps us to continue to improve and deliver the best tools for your business.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 				</p>
 				<p className="wcpay-merchant-feedback-negative-modal__question">
 					{ __(
 						'Would you mind sharing more about why you chose that option?',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 				</p>
 				<textarea
@@ -58,16 +58,16 @@ export const NegativeFeedbackModal: React.FC< NegativeFeedbackModalProps > = ( {
 					className="wcpay-merchant-feedback-negative-modal__textarea"
 					placeholder={ __(
 						'Share your feedback here…',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 				/>
 				<p className="wcpay-merchant-feedback-negative-modal__privacy">
 					{ __(
-						'Your feedback will be sent to the WooCommerce team. Your personal information is secure and will not be shared with third parties. For more details, please see our ',
-						'woocommerce-payments'
+						'Your feedback will be sent to the PooCommerce team. Your personal information is secure and will not be shared with third parties. For more details, please see our ',
+						'poocommerce-payments'
 					) }
 					<a href="https://automattic.com/privacy/">
-						{ __( 'privacy policy', 'woocommerce-payments' ) }
+						{ __( 'privacy policy', 'poocommerce-payments' ) }
 					</a>
 					.
 				</p>
@@ -76,14 +76,14 @@ export const NegativeFeedbackModal: React.FC< NegativeFeedbackModalProps > = ( {
 						// translators: {{a}}: placeholders are opening and closing anchor tags.
 						mixedString: __(
 							`Need help with a specific issue? {{a}}Contact our support team{{/a}} for personalized assistance.`,
-							'woocommerce-payments'
+							'poocommerce-payments'
 						),
 						components: {
 							a: (
 								// eslint-disable-next-line jsx-a11y/anchor-has-content -- content is provided in the mixedString property above.
 								<a
-									// Link to the WooCommerce support form with WooPayments selected.
-									href="https://woocommerce.com/my-account/contact-support/?select=5278104"
+									// Link to the PooCommerce support form with WooPayments selected.
+									href="https://poocommerce.com/my-account/contact-support/?select=5278104"
 									target="_blank"
 									rel="noreferrer noopener"
 									onClick={ () => {
@@ -106,7 +106,7 @@ export const NegativeFeedbackModal: React.FC< NegativeFeedbackModalProps > = ( {
 							onRequestClose();
 						} }
 					>
-						{ __( 'Close', 'woocommerce-payments' ) }
+						{ __( 'Close', 'poocommerce-payments' ) }
 					</button>
 					<button
 						className="components-button is-primary"
@@ -118,13 +118,13 @@ export const NegativeFeedbackModal: React.FC< NegativeFeedbackModalProps > = ( {
 							dispatch( 'core/notices' ).createSuccessNotice(
 								__(
 									'Thank you for your feedback!',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								)
 							);
 							onRequestClose();
 						} }
 					>
-						{ __( 'Send', 'woocommerce-payments' ) }
+						{ __( 'Send', 'poocommerce-payments' ) }
 					</button>
 				</div>
 			</div>
