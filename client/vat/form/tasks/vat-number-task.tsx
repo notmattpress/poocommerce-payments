@@ -4,16 +4,18 @@
  * External dependencies
  */
 import { __, sprintf } from '@wordpress/i18n';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import apiFetch from '@wordpress/api-fetch';
 
 /**
  * Internal dependencies
  */
-import { Button } from 'wcpay/components/wp-components-wrapped/components/button';
-import { CheckboxControl } from 'wcpay/components/wp-components-wrapped/components/checkbox-control';
-import { Notice } from 'wcpay/components/wp-components-wrapped/components/notice';
-import { TextControl } from 'wcpay/components/wp-components-wrapped/components/text-control';
+import {
+	Button,
+	CheckboxControl,
+	Notice,
+	TextControl,
+} from '@wordpress/components';
 import CollapsibleBody from 'wcpay/components/wizard/collapsible-body';
 import WizardTaskItem from 'wcpay/components/wizard/task-item';
 import WizardTaskContext from 'wcpay/components/wizard/task/context';
@@ -153,10 +155,15 @@ export const VatNumberTask = ( {
 	const isVatButtonDisabled =
 		isVatRegistered && vatNumber.trimEnd() === vatNumberPrefix.trimEnd();
 
-	// Reset VAT number to default value if prefix is changed.
-	if ( ! vatNumber.startsWith( vatNumberPrefix ) ) {
-		setVatNumber( vatNumberPrefix );
-	}
+	// Initialize VAT number with prefix when VAT registration is enabled
+	useEffect( () => {
+		if ( isVatRegistered && vatNumber === '' ) {
+			setVatNumber( vatNumberPrefix );
+		}
+		if ( ! isVatRegistered && vatNumber !== '' ) {
+			setVatNumber( '' );
+		}
+	}, [ isVatRegistered, vatNumber, vatNumberPrefix ] );
 
 	const submit = async () => {
 		const normalizedVatNumber = isVatRegistered
@@ -218,6 +225,7 @@ export const VatNumberTask = ( {
 
 			<CollapsibleBody>
 				<CheckboxControl
+					className="wcpay-vat-number-task__checkbox"
 					checked={ isVatRegistered }
 					onChange={ setVatRegistered }
 					label={ sprintf(
@@ -229,23 +237,38 @@ export const VatNumberTask = ( {
 						getVatTaxIDName()
 					) }
 					help={ getVatTaxIDRequirementHint() }
+					__nextHasNoMarginBottom
 				/>
 				{ isVatRegistered && (
 					// Note: this TextControl is heavily parameterised to support different regions (VAT vs GST vs Corporate Number).
 					// Long term, if we implement a dedicated WizardTaskItem component for each tax region, then this component will be simpler.
 					<TextControl
+						className="wcpay-vat-number-task__text-control"
 						label={ getVatTaxIDName() }
 						help={ getVatTaxIDValidationHint() }
 						value={ vatNumber }
-						onChange={ setVatNumber }
+						onChange={ ( value ) => {
+							const prefix = vatNumberPrefix.trim();
+							const trimmedValue = value.trim();
+
+							// If the user deletes the prefix, re-add it
+							if ( ! trimmedValue.startsWith( prefix ) ) {
+								setVatNumber( prefix );
+							} else {
+								setVatNumber( value );
+							}
+						} }
+						__nextHasNoMarginBottom
+						__next40pxDefaultSize
 					/>
 				) }
 
 				<Button
-					isPrimary
+					variant="primary"
 					disabled={ isVatButtonDisabled || isLoading }
 					isBusy={ isLoading }
 					onClick={ submit }
+					__next40pxDefaultSize
 				>
 					{ __( 'Continue', 'woocommerce-payments' ) }
 				</Button>

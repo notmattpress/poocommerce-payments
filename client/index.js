@@ -31,7 +31,6 @@ import OnboardingPage from 'onboarding';
 import OnboardingKycPage from 'onboarding/kyc';
 import FraudProtectionAdvancedSettingsPage from './settings/fraud-protection/advanced-settings';
 import { getTasks } from 'overview/task-list/tasks';
-import { WordPressComponentsContext } from 'wcpay/wordpress-components-context/context';
 
 addFilter(
 	'woocommerce_admin_pages_list',
@@ -85,11 +84,7 @@ addFilter(
 		} );
 
 		pages.push( {
-			container: () => (
-				<WordPressComponentsContext.Provider value={ wp.components }>
-					<OverviewPage />
-				</WordPressComponentsContext.Provider>
-			),
+			container: OverviewPage,
 			path: '/payments/overview',
 			wpOpenMenu: menuID,
 			breadcrumbs: [ rootLink, __( 'Overview', 'woocommerce-payments' ) ],
@@ -100,11 +95,7 @@ addFilter(
 		} );
 
 		pages.push( {
-			container: ( { query } ) => (
-				<WordPressComponentsContext.Provider value={ wp.components }>
-					<DepositsPage query={ query } />
-				</WordPressComponentsContext.Provider>
-			),
+			container: DepositsPage,
 			path: '/payments/payouts',
 			wpOpenMenu: menuID,
 			breadcrumbs: [ rootLink, __( 'Payouts', 'woocommerce-payments' ) ],
@@ -114,11 +105,7 @@ addFilter(
 			capability: 'manage_woocommerce',
 		} );
 		pages.push( {
-			container: ( { query } ) => (
-				<WordPressComponentsContext.Provider value={ wp.components }>
-					<DepositDetailsPage query={ query } />
-				</WordPressComponentsContext.Provider>
-			),
+			container: DepositDetailsPage,
 			path: '/payments/payouts/details',
 			wpOpenMenu: menuID,
 			breadcrumbs: [
@@ -136,11 +123,7 @@ addFilter(
 			capability: 'manage_woocommerce',
 		} );
 		pages.push( {
-			container: () => (
-				<WordPressComponentsContext.Provider value={ wp.components }>
-					<TransactionsPage />
-				</WordPressComponentsContext.Provider>
-			),
+			container: TransactionsPage,
 			path: '/payments/transactions',
 			wpOpenMenu: menuID,
 			breadcrumbs: [
@@ -153,11 +136,7 @@ addFilter(
 			capability: 'manage_woocommerce',
 		} );
 		pages.push( {
-			container: ( { query } ) => (
-				<WordPressComponentsContext.Provider value={ wp.components }>
-					<PaymentDetailsPage query={ query } />
-				</WordPressComponentsContext.Provider>
-			),
+			container: PaymentDetailsPage,
 			path: '/payments/transactions/details',
 			wpOpenMenu: menuID,
 			breadcrumbs: [
@@ -175,11 +154,7 @@ addFilter(
 			capability: 'manage_woocommerce',
 		} );
 		pages.push( {
-			container: ( { query } ) => (
-				<WordPressComponentsContext.Provider value={ wp.components }>
-					<DisputesPage query={ query } />
-				</WordPressComponentsContext.Provider>
-			),
+			container: DisputesPage,
 			path: '/payments/disputes',
 			wpOpenMenu: menuID,
 			breadcrumbs: [ rootLink, __( 'Disputes', 'woocommerce-payments' ) ],
@@ -190,11 +165,7 @@ addFilter(
 		} );
 
 		pages.push( {
-			container: ( { query } ) => (
-				<WordPressComponentsContext.Provider value={ wp.components }>
-					<RedirectToTransactionDetails query={ query } />
-				</WordPressComponentsContext.Provider>
-			),
+			container: RedirectToTransactionDetails,
 			path: '/payments/disputes/details',
 			wpOpenMenu: menuID,
 			breadcrumbs: [
@@ -213,11 +184,7 @@ addFilter(
 		} );
 
 		pages.push( {
-			container: ( { query } ) => (
-				<WordPressComponentsContext.Provider value={ wp.components }>
-					<DisputeNewEvidencePage query={ query } />
-				</WordPressComponentsContext.Provider>
-			),
+			container: DisputeNewEvidencePage,
 			path: '/payments/disputes/challenge',
 			wpOpenMenu: menuID,
 			breadcrumbs: [
@@ -236,11 +203,7 @@ addFilter(
 		} );
 
 		pages.push( {
-			container: () => (
-				<WordPressComponentsContext.Provider value={ wp.components }>
-					<MultiCurrencySetupPage />
-				</WordPressComponentsContext.Provider>
-			),
+			container: MultiCurrencySetupPage,
 			path: '/payments/multi-currency-setup',
 			wpOpenMenu: menuID,
 			breadcrumbs: [
@@ -250,11 +213,7 @@ addFilter(
 			capability: 'manage_woocommerce',
 		} );
 		pages.push( {
-			container: () => (
-				<WordPressComponentsContext.Provider value={ wp.components }>
-					<CardReadersPage />
-				</WordPressComponentsContext.Provider>
-			),
+			container: CardReadersPage,
 			path: '/payments/card-readers',
 			wpOpenMenu: menuID,
 			breadcrumbs: [
