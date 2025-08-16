@@ -104,7 +104,7 @@ export const FileUploadControl = ( {
 							__next40pxDefaultSize
 						>
 							{ uploadButtonLabel ||
-								__( 'Upload file', 'woocommerce-payments' ) }
+								__( 'Upload file', 'poocommerce-payments' ) }
 						</Button>
 					) }
 				></FormFileUpload>
@@ -123,7 +123,7 @@ export const FileUploadControl = ( {
 						className="delete-uploaded-file-button"
 						aria-label={ __(
 							'Remove file',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 						icon={ <TrashIcon size={ 18 } /> }
 						onClick={ () => onFileRemove( field.key ) }

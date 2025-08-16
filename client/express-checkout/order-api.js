@@ -33,7 +33,7 @@ export default class ExpressCheckoutOrderApi {
 
 	/**
 	 * Creates an order from the cart object.
-	 * See https://github.com/woocommerce/woocommerce/blob/trunk/plugins/woocommerce/src/StoreApi/docs/checkout-order.md
+	 * See https://github.com/poocommerce/poocommerce/blob/trunk/plugins/poocommerce/src/StoreApi/docs/checkout-order.md
 	 *
 	 * @param {{
 	 *          billing_address: Object,
@@ -63,7 +63,7 @@ export default class ExpressCheckoutOrderApi {
 
 	/**
 	 * Returns the customer's order object.
-	 * See https://github.com/woocommerce/woocommerce/blob/trunk/plugins/woocommerce/src/StoreApi/docs/order.md
+	 * See https://github.com/poocommerce/poocommerce/blob/trunk/plugins/poocommerce/src/StoreApi/docs/order.md
 	 *
 	 * @return {Promise} Cart response object.
 	 */

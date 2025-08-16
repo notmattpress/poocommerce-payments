@@ -2,7 +2,7 @@
 /**
  * Class WC_REST_Payments_Settings_Option_Controller_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 /**
@@ -46,8 +46,8 @@ class WC_REST_Payments_Settings_Option_Controller_Test extends WCPAY_UnitTestCas
 				'wcpay_multi_currency_setup_completed',
 				true,
 			],
-			'valid option: woocommerce_dismissed_todo_tasks' => [
-				'woocommerce_dismissed_todo_tasks',
+			'valid option: poocommerce_dismissed_todo_tasks' => [
+				'poocommerce_dismissed_todo_tasks',
 				true,
 			],
 			'valid option: wcpay_fraud_protection_welcome_tour_dismissed' => [

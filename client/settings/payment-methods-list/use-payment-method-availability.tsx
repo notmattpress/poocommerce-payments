@@ -22,9 +22,9 @@ import { ChipType } from 'wcpay/components/chip';
 
 const documentationTypeMap = {
 	DEFAULT:
-		'https://woocommerce.com/document/woopayments/payment-methods/additional-payment-methods/#method-cant-be-enabled',
+		'https://poocommerce.com/document/woopayments/payment-methods/additional-payment-methods/#method-cant-be-enabled',
 	BNPLS:
-		'https://woocommerce.com/document/woopayments/payment-methods/buy-now-pay-later/#contact-support',
+		'https://poocommerce.com/document/woopayments/payment-methods/buy-now-pay-later/#contact-support',
 };
 
 const getDocumentationUrlForDisabledPaymentMethod = (
@@ -67,20 +67,20 @@ const usePaymentMethodAvailability = ( id: string ) => {
 	if ( upeCapabilityStatuses.INACTIVE === status ) {
 		return {
 			isActionable: false,
-			chip: __( 'More information needed', 'woocommerce-payments' ),
+			chip: __( 'More information needed', 'poocommerce-payments' ),
 			notice: interpolateComponents( {
 				// translators: {{learnMoreLink}}: placeholders are opening and closing anchor tags.
 				mixedString: __(
 					'We need more information from you to enable this method. ' +
 						'{{learnMoreLink}}Learn more{{/learnMoreLink}}',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				components: {
 					learnMoreLink: (
 						<ExternalLink
 							title={ __(
 								'Learn more about enabling payment methods',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 							href={ getDocumentationUrlForDisabledPaymentMethod(
 								id
@@ -100,18 +100,18 @@ const usePaymentMethodAvailability = ( id: string ) => {
 
 		return {
 			isActionable: false,
-			chip: __( 'Approval pending', 'woocommerce-payments' ),
+			chip: __( 'Approval pending', 'poocommerce-payments' ),
 			notice: paymentMethodsWithDelayedApproval.includes( id )
 				? sprintf(
 						__(
 							'%s requires your store to be live and fully functional before it can be reviewed for use with their service. This approval process usually takes 2-3 days.',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						),
 						label
 				  )
 				: __(
 						'This payment method is pending approval. Once approved, you will be able to use it.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 				  ),
 		};
 	}
@@ -119,13 +119,13 @@ const usePaymentMethodAvailability = ( id: string ) => {
 	if ( upeCapabilityStatuses.PENDING_VERIFICATION === status ) {
 		return {
 			isActionable: false,
-			chip: __( 'Pending verification', 'woocommerce-payments' ),
+			chip: __( 'Pending verification', 'poocommerce-payments' ),
 			notice: wcpaySettings?.accountEmail
 				? sprintf(
 						__(
 							"%s won't be visible to your customers until you provide the required " +
 								'information. Follow the instructions sent by our partner Stripe to %s.',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						),
 						label,
 						wcpaySettings?.accountEmail
@@ -134,7 +134,7 @@ const usePaymentMethodAvailability = ( id: string ) => {
 						__(
 							"%s won't be visible to your customers until you provide the required " +
 								'information. Follow the instructions sent by our partner Stripe to your email.',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						),
 						label
 				  ),
@@ -144,14 +144,14 @@ const usePaymentMethodAvailability = ( id: string ) => {
 	if ( upeCapabilityStatuses.REJECTED === status ) {
 		return {
 			isActionable: false,
-			chip: __( 'Rejected', 'woocommerce-payments' ),
+			chip: __( 'Rejected', 'poocommerce-payments' ),
 			chipType: 'alert' as ChipType,
 			notice: interpolateComponents( {
 				// translators: {{learnMoreLink}}: placeholders are opening and closing anchor tags.
 				mixedString: sprintf(
 					__(
 						'Your application to use %s has been rejected, please check your email for more information. Need help? {{contactSupportLink}}Contact support{{/contactSupportLink}}',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					label
 				),
@@ -160,10 +160,10 @@ const usePaymentMethodAvailability = ( id: string ) => {
 						<ExternalLink
 							title={ __(
 								'Contact Support',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 							href={
-								'https://woocommerce.com/my-account/contact-support/'
+								'https://poocommerce.com/my-account/contact-support/'
 							}
 						/>
 					),
@@ -180,7 +180,7 @@ const usePaymentMethodAvailability = ( id: string ) => {
 				/* translators: %s: a payment method name. */
 				__(
 					'%s is not available to your customers when the "manual capture" setting is enabled.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				label
 			),

@@ -2,7 +2,7 @@
  * External dependencies
  */
 import { __, _x } from '@wordpress/i18n';
-import { getSetting } from '@woocommerce/settings';
+import { getSetting } from '@poocommerce/settings';
 
 /**
  * Internal dependencies
@@ -43,7 +43,7 @@ export const disputeUnderReviewStatuses = [
 
 export const filters: [ DisputesFilterType, DisputesFilterType ] = [
 	{
-		label: __( 'Dispute currency', 'woocommerce-payments' ),
+		label: __( 'Dispute currency', 'poocommerce-payments' ),
 		param: 'store_currency_is',
 		staticParams: [
 			'paged',
@@ -61,7 +61,7 @@ export const filters: [ DisputesFilterType, DisputesFilterType ] = [
 		showFilters: () => false,
 		filters: [
 			{
-				label: __( 'All currencies', 'woocommerce-payments' ),
+				label: __( 'All currencies', 'poocommerce-payments' ),
 				value: '---',
 			},
 			// Other values are getting injected later, taking values from store.
@@ -69,7 +69,7 @@ export const filters: [ DisputesFilterType, DisputesFilterType ] = [
 		defaultValue: '---',
 	},
 	{
-		label: __( 'Show', 'woocommerce-payments' ),
+		label: __( 'Show', 'poocommerce-payments' ),
 		param: 'filter',
 		staticParams: [
 			'paged',
@@ -82,22 +82,22 @@ export const filters: [ DisputesFilterType, DisputesFilterType ] = [
 		showFilters: () => true,
 		filters: [
 			{
-				label: __( 'Needs response', 'woocommerce-payments' ),
+				label: __( 'Needs response', 'poocommerce-payments' ),
 				value: 'awaiting_response',
 			},
 			{
-				label: __( 'All disputes', 'woocommerce-payments' ),
+				label: __( 'All disputes', 'poocommerce-payments' ),
 				value: 'all',
 			},
 			{
-				label: __( 'Advanced filters', 'woocommerce-payments' ),
+				label: __( 'Advanced filters', 'poocommerce-payments' ),
 				value: 'advanced',
 			},
 		],
 	},
 ];
 
-// TODO: Remove this and all the checks once we drop support of WooCommerce 7.7 and below.
+// TODO: Remove this and all the checks once we drop support of PooCommerce 7.7 and below.
 const wooCommerceVersionString = getSetting( 'wcVersion' );
 const wooCommerceVersion = parseFloat( wooCommerceVersionString ); // This will parse 7.7.1 to 7.7, but it's fine for this purpose
 
@@ -108,46 +108,46 @@ export const advancedFilters = {
 		wooCommerceVersion < 7.8
 			? __(
 					'Disputes match {{select /}} filters',
-					'woocommerce-payments'
+					'poocommerce-payments'
 			  )
-			: __( 'Disputes match <select /> filters', 'woocommerce-payments' ),
+			: __( 'Disputes match <select /> filters', 'poocommerce-payments' ),
 	filters: {
 		date: {
 			labels: {
-				add: __( 'Disputed on date', 'woocommerce-payments' ),
+				add: __( 'Disputed on date', 'poocommerce-payments' ),
 				remove: __(
 					'Remove dispute date filter',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				rule: __(
 					'Select a dispute date filter match',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				/* translators: A sentence describing a Dispute date filter. */
 				title:
 					wooCommerceVersion < 7.8
 						? __(
 								'{{title}}Date{{/title}} {{rule /}} {{filter /}}',
-								'woocommerce-payments'
+								'poocommerce-payments'
 						  )
 						: __(
 								'<title>Date</title> <rule /> <filter />',
-								'woocommerce-payments'
+								'poocommerce-payments'
 						  ),
-				filter: __( 'Select a dispute date', 'woocommerce-payments' ),
+				filter: __( 'Select a dispute date', 'poocommerce-payments' ),
 			},
 			rules: [
 				{
 					value: 'before',
-					label: __( 'Before', 'woocommerce-payments' ),
+					label: __( 'Before', 'poocommerce-payments' ),
 				},
 				{
 					value: 'after',
-					label: __( 'After', 'woocommerce-payments' ),
+					label: __( 'After', 'poocommerce-payments' ),
 				},
 				{
 					value: 'between',
-					label: __( 'Between', 'woocommerce-payments' ),
+					label: __( 'Between', 'poocommerce-payments' ),
 				},
 			],
 			input: {
@@ -156,33 +156,33 @@ export const advancedFilters = {
 		},
 		status: {
 			labels: {
-				add: __( 'Status', 'woocommerce-payments' ),
+				add: __( 'Status', 'poocommerce-payments' ),
 				remove: __(
 					'Remove dispute status filter',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				rule: __(
 					'Select a dispute status filter match',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				/* translators: A sentence describing a Dispute status filter. */
 				title:
 					wooCommerceVersion < 7.8
 						? __(
 								'{{title}}Status{{/title}} {{rule /}} {{filter /}}',
-								'woocommerce-payments'
+								'poocommerce-payments'
 						  )
 						: __(
 								'<title>Status</title> <rule /> <filter />',
-								'woocommerce-payments'
+								'poocommerce-payments'
 						  ),
-				filter: __( 'Select a dispute status', 'woocommerce-payments' ),
+				filter: __( 'Select a dispute status', 'poocommerce-payments' ),
 			},
 			rules: [
 				{
 					value: 'is',
 					/* translators: Sentence fragment, logical, "Is" refers to searching for disputes matching a chosen dispute status. */
-					label: _x( 'Is', 'dispute status', 'woocommerce-payments' ),
+					label: _x( 'Is', 'dispute status', 'poocommerce-payments' ),
 				},
 				{
 					value: 'is_not',
@@ -190,7 +190,7 @@ export const advancedFilters = {
 					label: _x(
 						'Is not',
 						'dispute status',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 				},
 			],

@@ -49,14 +49,14 @@ const EnableWooPaymentsCheckbox = () => {
 				onChange={ handleCheckboxClick }
 				label={ sprintf(
 					/* translators: %s: WooPayments */
-					__( 'Enable %s', 'woocommerce-payments' ),
+					__( 'Enable %s', 'poocommerce-payments' ),
 					'WooPayments'
 				) }
 				help={ sprintf(
 					/* translators: %s: WooPayments */
 					__(
 						'When enabled, payment methods powered by %s will appear on checkout.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					'WooPayments'
 				) }
