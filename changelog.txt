@@ -5,6 +5,7 @@
 * Fix - fix: prevent Stripe Link to be shown on the checkout form
 * Fix - Fix checks for the billing details for the BNPL methods on the Pay for Order page.
 * Fix - Fixed WooPay terms and conditions text for merchants using blocks checkout.
+* Fix - Fix margins for phone number input and add styling to match other inputs
 * Fix - Fix VAT setup modal for unsupported merchants
 * Fix - Generate payment method details in WooPayments instead of Woo core, cache them for performance improvements.
 * Fix - Ignore webhooks whenever the order key in their body does not match the local order.
