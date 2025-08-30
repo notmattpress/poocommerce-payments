@@ -53,7 +53,7 @@ class Eps_Payment_Method extends UPE_Payment_Method {
 	public function get_description( ?string $account_country = null ) {
 		return __(
 			'Accept your payment with EPS — a common payment method in Austria.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		);
 	}
 }

@@ -5,7 +5,7 @@
  */
 import { act, render, screen } from '@testing-library/react';
 import { userEvent as user } from 'jest-utils/user-event-timers';
-import { getQuery, updateQueryString } from '@woocommerce/navigation';
+import { getQuery, updateQueryString } from '@poocommerce/navigation';
 
 /**
  * Internal dependencies
@@ -13,8 +13,8 @@ import { getQuery, updateQueryString } from '@woocommerce/navigation';
 import { DepositsFilters } from '../';
 
 // TODO: this is a bit of a hack as we're mocking an old version of WC, we should relook at this.
-jest.mock( '@woocommerce/settings', () => ( {
-	...jest.requireActual( '@woocommerce/settings' ),
+jest.mock( '@poocommerce/settings', () => ( {
+	...jest.requireActual( '@poocommerce/settings' ),
 	getSetting: jest.fn( ( key ) => ( key === 'wcVersion' ? 7.8 : '' ) ),
 } ) );
 

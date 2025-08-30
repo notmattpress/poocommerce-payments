@@ -4,7 +4,7 @@
  */
 import { render, waitFor } from '@testing-library/react';
 import apiFetch from '@wordpress/api-fetch';
-import { useUserPreferences } from '@woocommerce/data';
+import { useUserPreferences } from '@poocommerce/data';
 import userEvent from '@testing-library/user-event';
 
 /**
@@ -43,8 +43,8 @@ jest.mock( 'data/index', () => ( {
 	useSettings: jest.fn(),
 } ) );
 
-jest.mock( '@woocommerce/data', () => {
-	const actualModule = jest.requireActual( '@woocommerce/data' );
+jest.mock( '@poocommerce/data', () => {
+	const actualModule = jest.requireActual( '@poocommerce/data' );
 
 	return {
 		...actualModule,

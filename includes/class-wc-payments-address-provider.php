@@ -2,28 +2,28 @@
 /**
  * Class WC_Payments_Address_Provider
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-if ( ! class_exists( 'Automattic\\WooCommerce\\Internal\\AddressProvider\\AbstractAutomatticAddressProvider' ) ) {
+if ( ! class_exists( 'Automattic\\PooCommerce\\Internal\\AddressProvider\\AbstractAutomatticAddressProvider' ) ) {
 	return;
 }
 
-use Automattic\WooCommerce\Internal\AddressProvider\AbstractAutomatticAddressProvider;
+use Automattic\PooCommerce\Internal\AddressProvider\AbstractAutomatticAddressProvider;
 use WCPay\Logger;
 
 /**
- * Address provider implementation for WooCommerce Payments.
+ * Address provider implementation for PooCommerce Payments.
  *
  * @psalm-suppress UndefinedClass
  */
 class WC_Payments_Address_Provider extends AbstractAutomatticAddressProvider {
 	/**
-	 * Client for making requests to the WooCommerce Payments API
+	 * Client for making requests to the PooCommerce Payments API
 	 *
 	 * @var WC_Payments_API_Client
 	 */
@@ -35,8 +35,8 @@ class WC_Payments_Address_Provider extends AbstractAutomatticAddressProvider {
 	 * @param WC_Payments_API_Client $payments_api_client The API client for making requests.
 	 */
 	public function __construct( WC_Payments_API_Client $payments_api_client ) {
-		$this->id                  = 'woocommerce_payments';
-		$this->name                = __( 'WooCommerce Payments', 'woocommerce-payments' );
+		$this->id                  = 'poocommerce_payments';
+		$this->name                = __( 'PooCommerce Payments', 'poocommerce-payments' );
 		$this->payments_api_client = $payments_api_client;
 		parent::__construct();
 	}

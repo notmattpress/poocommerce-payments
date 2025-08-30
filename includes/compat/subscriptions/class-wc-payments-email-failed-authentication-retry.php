@@ -6,7 +6,7 @@
  * with the `authentication_needed` error, and a retry rule has been applied to retry the payment in the future.
  *
  * @extends     WC_Email_Failed_Order
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 use WCPay\Logger;
@@ -22,17 +22,17 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @extends WC_Email_Failed_Order
  *
- * @filter woocommerce_email_preview_dummy_order
+ * @filter poocommerce_email_preview_dummy_order
  *     Filters the dummy order object used for email previews.
  *     @param WC_Order|bool $order The order object or false.
  *     @return WC_Order The filtered order object.
  *
- * @filter woocommerce_email_preview_dummy_retry
+ * @filter poocommerce_email_preview_dummy_retry
  *     Filters the dummy retry object used for email previews.
  *     @param WCS_Retry|bool $retry The retry object or false.
  *     @return WCS_Retry|null The filtered retry object or null if WCS_Retry class doesn't exist.
  *
- * @filter woocommerce_email_preview_placeholders
+ * @filter poocommerce_email_preview_placeholders
  *     Filters the email preview placeholders.
  *     @param array $placeholders Array of email preview placeholders.
  *     @return array Modified array of placeholders.
@@ -51,11 +51,11 @@ class WC_Payments_Email_Failed_Authentication_Retry extends WC_Email_Failed_Orde
 	 */
 	public function __construct() {
 		$this->id          = 'failed_authentication_requested';
-		$this->title       = __( 'Payment authentication requested email', 'woocommerce-payments' );
-		$this->description = __( 'Payment authentication requested emails are sent to chosen recipient(s) when an attempt to automatically process a subscription renewal payment fails because the transaction requires an SCA verification, the customer is requested to authenticate the payment, and a retry rule has been applied to notify the customer again within a certain time period.', 'woocommerce-payments' );
+		$this->title       = __( 'Payment authentication requested email', 'poocommerce-payments' );
+		$this->description = __( 'Payment authentication requested emails are sent to chosen recipient(s) when an attempt to automatically process a subscription renewal payment fails because the transaction requires an SCA verification, the customer is requested to authenticate the payment, and a retry rule has been applied to notify the customer again within a certain time period.', 'poocommerce-payments' );
 
-		$this->heading = __( 'Automatic renewal payment failed due to authentication required', 'woocommerce-payments' );
-		$this->subject = __( '[{site_title}] Automatic payment failed for {order_number}. Customer asked to authenticate payment and will be notified again {retry_time}', 'woocommerce-payments' );
+		$this->heading = __( 'Automatic renewal payment failed due to authentication required', 'poocommerce-payments' );
+		$this->subject = __( '[{site_title}] Automatic payment failed for {order_number}. Customer asked to authenticate payment and will be notified again {retry_time}', 'poocommerce-payments' );
 
 		$this->template_html  = 'failed-renewal-authentication-requested.php';
 		$this->template_plain = 'plain/failed-renewal-authentication-requested.php';
@@ -67,9 +67,9 @@ class WC_Payments_Email_Failed_Authentication_Retry extends WC_Email_Failed_Orde
 		WC_Email::__construct();
 
 		// Add email preview filters.
-		add_filter( 'woocommerce_email_preview_dummy_order', [ $this, 'get_preview_order' ], 10, 1 );
-		add_filter( 'woocommerce_email_preview_dummy_retry', [ $this, 'get_preview_retry' ], 10, 1 );
-		add_filter( 'woocommerce_email_preview_placeholders', [ $this, 'get_preview_placeholders' ], 10, 1 );
+		add_filter( 'poocommerce_email_preview_dummy_order', [ $this, 'get_preview_order' ], 10, 1 );
+		add_filter( 'poocommerce_email_preview_dummy_retry', [ $this, 'get_preview_retry' ], 10, 1 );
+		add_filter( 'poocommerce_email_preview_placeholders', [ $this, 'get_preview_placeholders' ], 10, 1 );
 	}
 
 	/**

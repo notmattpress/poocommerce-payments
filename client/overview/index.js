@@ -4,7 +4,7 @@
  * External dependencies
  */
 import React, { useEffect, useState } from 'react';
-import { getQuery } from '@woocommerce/navigation';
+import { getQuery } from '@poocommerce/navigation';
 import { __, sprintf } from '@wordpress/i18n';
 import { dispatch } from '@wordpress/data';
 import interpolateComponents from '@automattic/interpolate-components';
@@ -52,7 +52,7 @@ const OverviewPageError = () => {
 			{ wcpaySettings.errorMessage ||
 				__(
 					'There was a problem redirecting you to the account dashboard. Please try again.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				) }
 		</BannerNotice>
 	);
@@ -166,7 +166,7 @@ const OverviewPage = () => {
 		dispatch( 'core/notices' ).createSuccessNotice(
 			__(
 				'Success! You can start using WooPayments in test mode.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			)
 		);
 
@@ -205,12 +205,12 @@ const OverviewPage = () => {
 				dispatch( 'core/notices' ).createSuccessNotice(
 					__(
 						'Updates take a moment to appear. Please refresh the page in a minute.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					{
 						actions: [
 							{
-								label: __( 'Refresh', 'woocommerce-payments' ),
+								label: __( 'Refresh', 'poocommerce-payments' ),
 								url: getAdminUrl( {
 									page: 'wc-admin',
 									path: '/payments/overview',
@@ -250,7 +250,7 @@ const OverviewPage = () => {
 				<Notice status="error" isDismissible={ false }>
 					{ __(
 						'There was a problem redirecting you to the loan offer. Please check that it is not expired and try again.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 				</Notice>
 			) }
@@ -258,7 +258,7 @@ const OverviewPage = () => {
 				<Notice status="error" isDismissible={ false }>
 					{ __(
 						'There was a problem redirecting you to the requested link. Please check that it is valid and try again.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 				</Notice>
 			) }
@@ -266,7 +266,7 @@ const OverviewPage = () => {
 				<Notice status="error" isDismissible={ false }>
 					{ __(
 						'There was a problem resetting your account. Please wait a few seconds and try again.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 				</Notice>
 			) }
@@ -295,7 +295,7 @@ const OverviewPage = () => {
 								__(
 									// eslint-disable-next-line max-len
 									'Some account related notifications require HTTPS and cannot be displayed. View them on our financial partner’s website. {{seeDetailsLink}}See details{{/seeDetailsLink}}',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								)
 							),
 							components: {
@@ -303,7 +303,7 @@ const OverviewPage = () => {
 									// eslint-disable-next-line jsx-a11y/anchor-has-content
 									<ExternalLink
 										href={
-											'https://woocommerce.com/document/woopayments/startup-guide/#requirements'
+											'https://poocommerce.com/document/woopayments/startup-guide/#requirements'
 										}
 									/>
 								),
