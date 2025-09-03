@@ -88,6 +88,7 @@ You can read our Terms of Service and other policies [here](https://woocommerce.
 == Changelog ==
 
 = 9.9.0 - 2025-09-03 =
+* Fix - Conditionally set Stripe Link wallet option based on payment method configuration
 * Fix - fix: adding some missing i18n wrappers
 * Fix - Fix checks for the billing details for the BNPL methods on the Pay for Order page.
 * Fix - Fixed WooPay terms and conditions text for merchants using blocks checkout.
