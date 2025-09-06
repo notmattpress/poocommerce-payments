@@ -53,7 +53,7 @@ class Ideal_Payment_Method extends UPE_Payment_Method {
 	public function get_description( ?string $account_country = null ) {
 		return __(
 			'Expand your business with iDEAL — Netherlands’s most popular payment method.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		);
 	}
 }
