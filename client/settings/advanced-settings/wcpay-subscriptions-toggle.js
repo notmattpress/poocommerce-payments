@@ -30,7 +30,7 @@ const WCPaySubscriptionsToggle = () => {
 		<CheckboxControl
 			label={ sprintf(
 				/* translators: %s: WooPayments */
-				__( 'Enable Subscriptions with %s', 'woocommerce-payments' ),
+				__( 'Enable Subscriptions with %s', 'poocommerce-payments' ),
 				'WooPayments'
 			) }
 			help={ interpolateComponents( {
@@ -38,7 +38,7 @@ const WCPaySubscriptionsToggle = () => {
 					/* translators: %s: WooPayments */
 					__(
 						'Sell subscription products and services with %s. {{learnMoreLink}}Learn more{{/learnMoreLink}}',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					'WooPayments'
 				),
@@ -46,7 +46,7 @@ const WCPaySubscriptionsToggle = () => {
 					learnMoreLink: (
 						// eslint-disable-next-line max-len
 						// @ts-expect-error: children is provided when interpolating the component
-						<ExternalLink href="https://woocommerce.com/document/woopayments/subscriptions/" />
+						<ExternalLink href="https://poocommerce.com/document/woopayments/subscriptions/" />
 					),
 				},
 			} ) }

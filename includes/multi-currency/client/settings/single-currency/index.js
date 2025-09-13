@@ -43,13 +43,13 @@ import interpolateComponents from '@automattic/interpolate-components';
 
 const CurrencySettingsDescription = () => (
 	<>
-		<h2>{ __( 'Currency settings', 'woocommerce-payments' ) }</h2>
+		<h2>{ __( 'Currency settings', 'poocommerce-payments' ) }</h2>
 		<p>
 			{ __(
 				'Choose between automatic or manual exchange ' +
 					'rates and modify formatting rules to refine the ' +
 					'display of your prices.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			) }
 		</p>
 	</>
@@ -136,7 +136,7 @@ const SingleCurrencySettings = () => {
 		: '';
 	const CurrencyPreviewDescription = () => (
 		<>
-			<h2>{ __( 'Preview', 'woocommerce-payments' ) }</h2>
+			<h2>{ __( 'Preview', 'poocommerce-payments' ) }</h2>
 			<p>
 				{ ! isLoading
 					? sprintf(
@@ -144,7 +144,7 @@ const SingleCurrencySettings = () => {
 								'Enter a price in your default currency (%s) to ' +
 									'see it converted to %s using the ' +
 									'exchange rate and formatting rules above.',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							storeCurrency.name,
 							targetCurrency.name
@@ -185,7 +185,7 @@ const SingleCurrencySettings = () => {
 						}
 						__next40pxDefaultSize
 					>
-						{ __( 'Enabled currencies', 'woocommerce-payments' ) }
+						{ __( 'Enabled currencies', 'poocommerce-payments' ) }
 					</Button>{ ' ' }
 					&gt; { targetCurrency.name } ({ targetCurrency.code }){ ' ' }
 					{ targetCurrency.flag }
@@ -197,7 +197,7 @@ const SingleCurrencySettings = () => {
 								<h4>
 									{ __(
 										'Exchange rate',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									) }
 								</h4>
 
@@ -224,7 +224,7 @@ const SingleCurrencySettings = () => {
 															? sprintf(
 																	__(
 																		'Current rate: 1 %s = %s %s (Last updated: %s)',
-																		'woocommerce-payments'
+																		'poocommerce-payments'
 																	),
 																	storeCurrency.code,
 																	targetCurrency.rate,
@@ -233,22 +233,22 @@ const SingleCurrencySettings = () => {
 															  )
 															: __(
 																	'Error - Unable to fetch automatic rate for this currency',
-																	'woocommerce-payments'
+																	'poocommerce-payments'
 															  ),
 														label: __(
 															'Fetch rates automatically',
-															'woocommerce-payments'
+															'poocommerce-payments'
 														),
 														value: 'automatic',
 													},
 													{
 														description: __(
 															'Enter your fixed rate of exchange',
-															'woocommerce-payments'
+															'poocommerce-payments'
 														),
 														label: __(
 															'Manual',
-															'woocommerce-payments'
+															'poocommerce-payments'
 														),
 														value: 'manual',
 													},
@@ -262,11 +262,11 @@ const SingleCurrencySettings = () => {
 													data-testid="manual_rate_input"
 													label={ __(
 														'Manual Rate',
-														'woocommerce-payments'
+														'poocommerce-payments'
 													) }
 													help={ __(
 														'Enter the manual rate you would like to use. Must be a positive number.',
-														'woocommerce-payments'
+														'poocommerce-payments'
 													) }
 													value={
 														manualRate
@@ -292,7 +292,7 @@ const SingleCurrencySettings = () => {
 								<h4>
 									{ __(
 										'Formatting rules',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									) }
 								</h4>
 								<fieldset>
@@ -302,20 +302,20 @@ const SingleCurrencySettings = () => {
 												data-testid="price_rounding"
 												label={ __(
 													'Price rounding',
-													'woocommerce-payments'
+													'poocommerce-payments'
 												) }
 												help={ interpolateComponents( {
 													mixedString: sprintf(
 														__(
 															"Make your %s prices consistent by rounding them up after they're converted. {{learnMoreLink}}Learn more{{/learnMoreLink}}",
-															'woocommerce-payments'
+															'poocommerce-payments'
 														),
 														targetCurrency.code
 													),
 													components: {
 														learnMoreLink: (
 															// @ts-expect-error: children is provided when interpolating the component
-															<ExternalLink href="https://woocommerce.com/document/woopayments/currencies/multi-currency-setup/#price-rounding" />
+															<ExternalLink href="https://poocommerce.com/document/woopayments/currencies/multi-currency-setup/#price-rounding" />
 														),
 													},
 												} ) }
@@ -346,20 +346,20 @@ const SingleCurrencySettings = () => {
 												data-testid="price_charm"
 												label={ __(
 													'Charm pricing',
-													'woocommerce-payments'
+													'poocommerce-payments'
 												) }
 												help={ interpolateComponents( {
 													mixedString: sprintf(
 														__(
 															'Reduce the converted price for a specific amount. {{learnMoreLink}}Learn more{{/learnMoreLink}}',
-															'woocommerce-payments'
+															'poocommerce-payments'
 														),
 														targetCurrency.code
 													),
 													components: {
 														learnMoreLink: (
 															// @ts-expect-error: children is provided when interpolating the component
-															<ExternalLink href="https://woocommerce.com/document/woopayments/currencies/multi-currency-setup/#charm-pricing" />
+															<ExternalLink href="https://poocommerce.com/document/woopayments/currencies/multi-currency-setup/#charm-pricing" />
 														),
 													},
 												} ) }
@@ -413,7 +413,7 @@ const SingleCurrencySettings = () => {
 						onClick={ saveSingleCurrencySettings }
 						__next40pxDefaultSize
 					>
-						{ __( 'Save changes', 'woocommerce-payments' ) }
+						{ __( 'Save changes', 'poocommerce-payments' ) }
 					</Button>
 				</SettingsSection>
 			</SettingsLayout>

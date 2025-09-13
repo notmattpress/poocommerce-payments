@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Account
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -40,10 +40,10 @@ class WC_Payments_Account implements MultiCurrencyAccountInterface {
 	const TRACKS_EVENT_ACCOUNT_CONNECT_FINISHED                 = 'wcpay_account_connect_finished';
 	const TRACKS_EVENT_KYC_REMINDER_MERCHANT_RETURNED           = 'wcpay_kyc_reminder_merchant_returned';
 	const TRACKS_EVENT_ACCOUNT_REFERRAL                         = 'wcpay_account_referral';
-	const NOX_PROFILE_OPTION_KEY                                = 'woocommerce_woopayments_nox_profile';
+	const NOX_PROFILE_OPTION_KEY                                = 'poocommerce_woopayments_nox_profile';
 
 	/**
-	 * Client for making requests to the WooCommerce Payments API
+	 * Client for making requests to the PooCommerce Payments API
 	 *
 	 * @var WC_Payments_API_Client
 	 */
@@ -121,15 +121,15 @@ class WC_Payments_Account implements MultiCurrencyAccountInterface {
 		add_action( 'admin_init', [ $this, 'maybe_redirect_from_overview_page' ], 15 );
 
 		// Add handlers for inbox notes and reminders.
-		add_action( 'woocommerce_payments_account_refreshed', [ $this, 'handle_instant_deposits_inbox_note' ] );
-		add_action( 'woocommerce_payments_account_refreshed', [ $this, 'handle_loan_approved_inbox_note' ] );
+		add_action( 'poocommerce_payments_account_refreshed', [ $this, 'handle_instant_deposits_inbox_note' ] );
+		add_action( 'poocommerce_payments_account_refreshed', [ $this, 'handle_loan_approved_inbox_note' ] );
 		add_action( self::INSTANT_DEPOSITS_REMINDER_ACTION, [ $this, 'handle_instant_deposits_inbox_reminder' ] );
 
 		// Add all other hooks.
 		add_filter( 'allowed_redirect_hosts', [ $this, 'allowed_redirect_hosts' ] );
 		add_action( 'jetpack_site_registered', [ $this, 'clear_cache' ] );
 		add_action( 'updated_option', [ $this, 'possibly_update_wcpay_account_locale' ], 10, 3 );
-		add_action( 'woocommerce_woocommerce_payments_updated', [ $this, 'clear_cache' ] );
+		add_action( 'poocommerce_poocommerce_payments_updated', [ $this, 'clear_cache' ] );
 	}
 
 	/**
@@ -236,7 +236,7 @@ class WC_Payments_Account implements MultiCurrencyAccountInterface {
 	public function try_is_stripe_connected(): bool {
 		$account = $this->get_cached_account_data();
 		if ( false === $account ) {
-			throw new Exception( esc_html__( 'Failed to detect connection status', 'woocommerce-payments' ) );
+			throw new Exception( esc_html__( 'Failed to detect connection status', 'poocommerce-payments' ) );
 		}
 
 		// The empty array indicates that account is not connected yet.
@@ -254,7 +254,7 @@ class WC_Payments_Account implements MultiCurrencyAccountInterface {
 	 * Card_payments capability is crucial for account to function properly. If it is unrequested, we shouldn't show
 	 * any other options for the merchants since it'll lead to various errors.
 	 *
-	 * @see https://github.com/Automattic/woocommerce-payments/issues/5275
+	 * @see https://github.com/Automattic/poocommerce-payments/issues/5275
 	 *
 	 * @return bool True if the account is a valid Stripe account, false otherwise.
 	 */
@@ -634,7 +634,7 @@ class WC_Payments_Account implements MultiCurrencyAccountInterface {
 
 	/**
 	 * List of countries enabled for Stripe platform account. See also this URL:
-	 * https://woocommerce.com/document/woopayments/compatibility/countries/#supported-countries
+	 * https://poocommerce.com/document/woopayments/compatibility/countries/#supported-countries
 	 *
 	 * @return array
 	 */
@@ -723,7 +723,7 @@ class WC_Payments_Account implements MultiCurrencyAccountInterface {
 	 */
 	public function maybe_redirect_by_get_param() {
 		// Safety check to prevent non-admin users to be redirected to the view offer page.
-		if ( wp_doing_ajax() || ! current_user_can( 'manage_woocommerce' ) ) {
+		if ( wp_doing_ajax() || ! current_user_can( 'manage_poocommerce' ) ) {
 			return;
 		}
 
@@ -802,7 +802,7 @@ class WC_Payments_Account implements MultiCurrencyAccountInterface {
 	 * @return bool True if the redirection happened.
 	 */
 	public function maybe_redirect_after_plugin_activation(): bool {
-		if ( wp_doing_ajax() || ! current_user_can( 'manage_woocommerce' ) ) {
+		if ( wp_doing_ajax() || ! current_user_can( 'manage_poocommerce' ) ) {
 			return false;
 		}
 
@@ -844,7 +844,7 @@ class WC_Payments_Account implements MultiCurrencyAccountInterface {
 	 * @return void
 	 */
 	public function maybe_redirect_onboarding_referral(): void {
-		if ( ! is_admin() || wp_doing_ajax() || ! current_user_can( 'manage_woocommerce' ) ) {
+		if ( ! is_admin() || wp_doing_ajax() || ! current_user_can( 'manage_poocommerce' ) ) {
 			return;
 		}
 
@@ -884,19 +884,19 @@ class WC_Payments_Account implements MultiCurrencyAccountInterface {
 	 * Redirects WooPayments settings to the connect page when there is no account or an invalid account.
 	 *
 	 * Every WooPayments page except connect are already hidden, but merchants can still access
-	 * it through WooCommerce settings.
+	 * it through PooCommerce settings.
 	 *
 	 * @return bool True if a redirection happened, false otherwise.
 	 */
 	public function maybe_redirect_from_settings_page(): bool {
-		if ( wp_doing_ajax() || ! current_user_can( 'manage_woocommerce' ) ) {
+		if ( wp_doing_ajax() || ! current_user_can( 'manage_poocommerce' ) ) {
 			return false;
 		}
 
 		$params = [
 			'page'    => 'wc-settings',
 			'tab'     => 'checkout',
-			'section' => 'woocommerce_payments',
+			'section' => 'poocommerce_payments',
 		];
 
 		// We're not in the WooPayments settings page, don't redirect.
@@ -926,7 +926,7 @@ class WC_Payments_Account implements MultiCurrencyAccountInterface {
 	 * @return bool True if the redirection happened, false otherwise.
 	 */
 	public function maybe_redirect_from_onboarding_wizard_page(): bool {
-		if ( wp_doing_ajax() || ! current_user_can( 'manage_woocommerce' ) ) {
+		if ( wp_doing_ajax() || ! current_user_can( 'manage_poocommerce' ) ) {
 			return false;
 		}
 
@@ -1013,7 +1013,7 @@ class WC_Payments_Account implements MultiCurrencyAccountInterface {
 	 * @return bool True if the redirection happened, false otherwise.
 	 */
 	public function maybe_redirect_from_connect_page(): bool {
-		if ( wp_doing_ajax() || ! current_user_can( 'manage_woocommerce' ) ) {
+		if ( wp_doing_ajax() || ! current_user_can( 'manage_poocommerce' ) ) {
 			return false;
 		}
 
@@ -1095,7 +1095,7 @@ class WC_Payments_Account implements MultiCurrencyAccountInterface {
 	 * @return bool True if the redirection happened, false otherwise.
 	 */
 	public function maybe_redirect_from_overview_page(): bool {
-		if ( wp_doing_ajax() || ! current_user_can( 'manage_woocommerce' ) ) {
+		if ( wp_doing_ajax() || ! current_user_can( 'manage_poocommerce' ) ) {
 			return false;
 		}
 
@@ -1137,7 +1137,7 @@ class WC_Payments_Account implements MultiCurrencyAccountInterface {
 	 * Handle onboarding (login/init/redirect) routes
 	 */
 	public function maybe_handle_onboarding() {
-		if ( ! is_admin() || ! current_user_can( 'manage_woocommerce' ) ) {
+		if ( ! is_admin() || ! current_user_can( 'manage_poocommerce' ) ) {
 			return;
 		}
 
@@ -1442,7 +1442,7 @@ class WC_Payments_Account implements MultiCurrencyAccountInterface {
 					$this->redirect_service->redirect_to_connect_page(
 						sprintf(
 						/* translators: %s: WooPayments */
-							__( 'Connection to WordPress.com failed. Please connect to WordPress.com to start using %s.', 'woocommerce-payments' ),
+							__( 'Connection to WordPress.com failed. Please connect to WordPress.com to start using %s.', 'poocommerce-payments' ),
 							'WooPayments'
 						),
 						WC_Payments_Onboarding_Service::FROM_WPCOM_CONNECTION,
@@ -1507,7 +1507,7 @@ class WC_Payments_Account implements MultiCurrencyAccountInterface {
 				$this->redirect_service->redirect_to_connect_page(
 					! empty( $_GET['wcpay-connection-error'] ) ? sprintf(
 					/* translators: 1: WooPayments. */
-						__( 'Please <b>complete your %1$s setup</b> to process transactions.', 'woocommerce-payments' ),
+						__( 'Please <b>complete your %1$s setup</b> to process transactions.', 'poocommerce-payments' ),
 						'WooPayments'
 					) : null,
 					null, // Do not carry over the `from` value to avoid redirect loops.
@@ -1557,7 +1557,7 @@ class WC_Payments_Account implements MultiCurrencyAccountInterface {
 				Logger::error( 'Init Jetpack connection failed. ' . $e->getMessage() );
 				$this->redirect_service->redirect_to_connect_page(
 				/* translators: %s: error message. */
-					sprintf( __( 'There was a problem connecting your store to WordPress.com: "%s"', 'woocommerce-payments' ), $e->getMessage() ),
+					sprintf( __( 'There was a problem connecting your store to WordPress.com: "%s"', 'poocommerce-payments' ), $e->getMessage() ),
 					WC_Payments_Onboarding_Service::FROM_WPCOM_CONNECTION,
 					[
 						'source' => $onboarding_source,
@@ -1600,7 +1600,7 @@ class WC_Payments_Account implements MultiCurrencyAccountInterface {
 				if ( $this->onboarding_service->is_onboarding_init_in_progress() ) {
 					Logger::warning( 'Duplicate onboarding attempt detected.' );
 					$this->redirect_service->redirect_to_connect_page(
-						__( 'There was a duplicate attempt to initiate account setup. Please wait a few seconds and try again.', 'woocommerce-payments' )
+						__( 'There was a duplicate attempt to initiate account setup. Please wait a few seconds and try again.', 'poocommerce-payments' )
 					);
 					return;
 				}
@@ -1656,7 +1656,7 @@ class WC_Payments_Account implements MultiCurrencyAccountInterface {
 					$this->redirect_service->redirect_to_connect_page(
 						sprintf(
 						/* translators: 1: anchor opening markup 2: closing anchor markup */
-							__( 'Another account setup session is already in progress. Please finish it or %1$sclick here to start again%2$s.', 'woocommerce-payments' ),
+							__( 'Another account setup session is already in progress. Please finish it or %1$sclick here to start again%2$s.', 'poocommerce-payments' ),
 							'<a href="' . esc_url( $confirmation_url ) . '">',
 							'</a>'
 						)
@@ -1706,7 +1706,7 @@ class WC_Payments_Account implements MultiCurrencyAccountInterface {
 				$this->redirect_service->redirect_to_connect_page(
 					sprintf(
 					/* translators: %s: WooPayments. */
-						__( 'There was a problem setting up your %s account. Please try again.', 'woocommerce-payments' ),
+						__( 'There was a problem setting up your %s account. Please try again.', 'poocommerce-payments' ),
 						'WooPayments'
 					),
 					null,
@@ -2178,7 +2178,7 @@ class WC_Payments_Account implements MultiCurrencyAccountInterface {
 		// with a new secret, etc.).
 		if ( get_transient( self::ONBOARDING_STATE_TRANSIENT ) !== $state ) {
 			$this->redirect_service->redirect_to_connect_page(
-				__( 'There was a problem processing your account data. Please try again.', 'woocommerce-payments' ),
+				__( 'There was a problem processing your account data. Please try again.', 'poocommerce-payments' ),
 				null, // No need to specify any from as we will carry over the once in the additional args, if present.
 				$additional_args
 			);
@@ -2307,7 +2307,7 @@ class WC_Payments_Account implements MultiCurrencyAccountInterface {
 			 *
 			 * @since 4.3.0
 			 */
-			do_action( 'woocommerce_payments_account_refreshed', $account );
+			do_action( 'poocommerce_payments_account_refreshed', $account );
 		}
 
 		return $account;
@@ -2464,7 +2464,7 @@ class WC_Payments_Account implements MultiCurrencyAccountInterface {
 
 				$this->database_cache->add( Database_Cache::ACCOUNT_KEY, $updated_account );
 			} catch ( Exception $e ) {
-				Logger::error( __( 'Failed to update Account locale. ', 'woocommerce-payments' ) . $e );
+				Logger::error( __( 'Failed to update Account locale. ', 'poocommerce-payments' ) . $e );
 			}
 		}
 	}

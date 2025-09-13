@@ -2,7 +2,7 @@
  * External dependencies
  */
 import { __, _x } from '@wordpress/i18n';
-import { getSetting } from '@woocommerce/settings';
+import { getSetting } from '@poocommerce/settings';
 
 /**
  * Internal dependencies
@@ -33,24 +33,24 @@ const documentTypesOptions = Object.entries( displayType )
 
 export const filters: [ DocumentsFilterType ] = [
 	{
-		label: __( 'Show', 'woocommerce-payments' ),
+		label: __( 'Show', 'poocommerce-payments' ),
 		param: 'filter',
 		staticParams: [ 'paged', 'per_page', 'orderby', 'order' ],
 		showFilters: () => true,
 		filters: [
 			{
-				label: __( 'All documents', 'woocommerce-payments' ),
+				label: __( 'All documents', 'poocommerce-payments' ),
 				value: 'all',
 			},
 			{
-				label: __( 'Advanced filters', 'woocommerce-payments' ),
+				label: __( 'Advanced filters', 'poocommerce-payments' ),
 				value: 'advanced',
 			},
 		],
 	},
 ];
 
-// TODO: Remove this and all the checks once we drop support of WooCommerce 7.7 and below.
+// TODO: Remove this and all the checks once we drop support of PooCommerce 7.7 and below.
 const wooCommerceVersionString = getSetting( 'wcVersion' );
 const wooCommerceVersion = parseFloat( wooCommerceVersionString ); // This will parse 7.7.1 to 7.7, but it's fine for this purpose
 
@@ -61,49 +61,49 @@ export const advancedFilters = {
 		wooCommerceVersion < 7.8
 			? __(
 					'Documents match {{select /}} filters',
-					'woocommerce-payments'
+					'poocommerce-payments'
 			  )
 			: __(
 					'Documents match <select /> filters',
-					'woocommerce-payments'
+					'poocommerce-payments'
 			  ),
 	filters: {
 		date: {
 			labels: {
-				add: __( 'Date', 'woocommerce-payments' ),
+				add: __( 'Date', 'poocommerce-payments' ),
 				remove: __(
 					'Remove document date filter',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				rule: __(
 					'Select a document date filter match',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				/* translators: A sentence describing a Document date filter. */
 				title:
 					wooCommerceVersion < 7.8
 						? __(
 								'{{title}}Date{{/title}} {{rule /}} {{filter /}}',
-								'woocommerce-payments'
+								'poocommerce-payments'
 						  )
 						: __(
 								'<title>Date</title> <rule /> <filter />',
-								'woocommerce-payments'
+								'poocommerce-payments'
 						  ),
-				filter: __( 'Select a document date', 'woocommerce-payments' ),
+				filter: __( 'Select a document date', 'poocommerce-payments' ),
 			},
 			rules: [
 				{
 					value: 'before',
-					label: __( 'Before', 'woocommerce-payments' ),
+					label: __( 'Before', 'poocommerce-payments' ),
 				},
 				{
 					value: 'after',
-					label: __( 'After', 'woocommerce-payments' ),
+					label: __( 'After', 'poocommerce-payments' ),
 				},
 				{
 					value: 'between',
-					label: __( 'Between', 'woocommerce-payments' ),
+					label: __( 'Between', 'poocommerce-payments' ),
 				},
 			],
 			input: {
@@ -112,33 +112,33 @@ export const advancedFilters = {
 		},
 		type: {
 			labels: {
-				add: __( 'Type', 'woocommerce-payments' ),
+				add: __( 'Type', 'poocommerce-payments' ),
 				remove: __(
 					'Remove document type filter',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				rule: __(
 					'Select a document type filter match',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				/* translators: A sentence describing a Document type filter. */
 				title:
 					wooCommerceVersion < 7.8
 						? __(
 								'{{title}}Type{{/title}} {{rule /}} {{filter /}}',
-								'woocommerce-payments'
+								'poocommerce-payments'
 						  )
 						: __(
 								'<title>Type</title> <rule /> <filter />',
-								'woocommerce-payments'
+								'poocommerce-payments'
 						  ),
-				filter: __( 'Select a document type', 'woocommerce-payments' ),
+				filter: __( 'Select a document type', 'poocommerce-payments' ),
 			},
 			rules: [
 				{
 					value: 'is',
 					/* translators: Sentence fragment, logical, "Is" refers to searching for documents matching a chosen document type. */
-					label: _x( 'Is', 'document type', 'woocommerce-payments' ),
+					label: _x( 'Is', 'document type', 'poocommerce-payments' ),
 				},
 				{
 					value: 'is_not',
@@ -146,7 +146,7 @@ export const advancedFilters = {
 					label: _x(
 						'Is not',
 						'document type',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 				},
 			],
