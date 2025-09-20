@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Onboarding_Service_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use PHPUnit\Framework\MockObject\MockObject;
@@ -311,7 +311,7 @@ class WC_Payments_Onboarding_Service_Test extends WCPAY_UnitTestCase {
 	public function test_add_admin_body_classes_when_onboarding() {
 		$_GET['path'] = '/payments/onboarding';
 
-		$this->assertEquals( ' woocommerce-admin-is-loading', $this->onboarding_service->add_admin_body_classes() );
+		$this->assertEquals( ' poocommerce-admin-is-loading', $this->onboarding_service->add_admin_body_classes() );
 	}
 
 	public function test_set_test_mode() {

@@ -2,7 +2,7 @@
 /**
  * Class file for WCPay\Core\Server\Request\Capture_Intention.
  *
- * @package WooCommerce Payments
+ * @package PooCommerce Payments
  */
 
 namespace WCPay\Core\Server\Request;

@@ -41,7 +41,7 @@ const AppleGooglePayExpressCheckoutItem = (): React.ReactElement => {
 					<CheckboxControl
 						label={ __(
 							'Apple Pay / Google Pay',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 						checked={ isPaymentRequestEnabled }
 						onChange={ updateIsPaymentRequestEnabled }
@@ -55,13 +55,13 @@ const AppleGooglePayExpressCheckoutItem = (): React.ReactElement => {
 								<ApplePayIcon />
 							</div>
 							<div className="express-checkout__label express-checkout__label-mobile">
-								{ __( 'Apple Pay', 'woocommerce-payments' ) }
+								{ __( 'Apple Pay', 'poocommerce-payments' ) }
 							</div>
 							<div className="express-checkout__label-container">
 								<div className="express-checkout__label express-checkout__label-desktop">
 									{ __(
 										'Apple Pay',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									) }
 								</div>
 								<div className="express-checkout__description">
@@ -70,7 +70,7 @@ const AppleGooglePayExpressCheckoutItem = (): React.ReactElement => {
 										isPaymentRequestEnabled
 											? __(
 													'Apple Pay is an easy and secure way for customers to pay on your store.',
-													'woocommerce-payments'
+													'poocommerce-payments'
 											  )
 											: interpolateComponents( {
 													mixedString: __(
@@ -79,7 +79,7 @@ const AppleGooglePayExpressCheckoutItem = (): React.ReactElement => {
 															/* eslint-disable-next-line max-len */
 															'By enabling this feature, you agree to {{stripeLink}}Stripe{{/stripeLink}} and' +
 															"{{appleLink}} Apple{{/appleLink}}'s terms of use.",
-														'woocommerce-payments'
+														'poocommerce-payments'
 													),
 													components: {
 														stripeLink: (
@@ -110,13 +110,13 @@ const AppleGooglePayExpressCheckoutItem = (): React.ReactElement => {
 								<GooglePayIcon />
 							</div>
 							<div className="express-checkout__label express-checkout__label-mobile">
-								{ __( 'Google Pay', 'woocommerce-payments' ) }
+								{ __( 'Google Pay', 'poocommerce-payments' ) }
 							</div>
 							<div className="express-checkout__label-container">
 								<div className="express-checkout__label express-checkout__label-desktop">
 									{ __(
 										'Google Pay',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									) }
 								</div>
 								<div className="express-checkout__description">
@@ -125,7 +125,7 @@ const AppleGooglePayExpressCheckoutItem = (): React.ReactElement => {
 										isPaymentRequestEnabled
 											? __(
 													'Offer customers a fast, secure checkout experience with Google Pay.',
-													'woocommerce-payments'
+													'poocommerce-payments'
 											  )
 											: interpolateComponents( {
 													mixedString: __(
@@ -134,7 +134,7 @@ const AppleGooglePayExpressCheckoutItem = (): React.ReactElement => {
 															/* eslint-disable-next-line max-len */
 															'By enabling this feature, you agree to {{stripeLink}}Stripe{{/stripeLink}}, ' +
 															"and {{googleLink}}Google{{/googleLink}}'s terms of use.",
-														'woocommerce-payments'
+														'poocommerce-payments'
 													),
 													components: {
 														stripeLink: (
@@ -167,7 +167,7 @@ const AppleGooglePayExpressCheckoutItem = (): React.ReactElement => {
 							) }
 							isSecondary
 						>
-							{ __( 'Customize', 'woocommerce-payments' ) }
+							{ __( 'Customize', 'poocommerce-payments' ) }
 						</Button>
 					</div>
 				</div>

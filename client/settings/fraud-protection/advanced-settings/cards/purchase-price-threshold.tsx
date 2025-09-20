@@ -84,14 +84,14 @@ const PurchasePriceThresholdCustomForm: React.FC< PurchasePriceThresholdCustomFo
 
 	return (
 		<div className="fraud-protection-rule-toggle-children-container">
-			<strong>{ __( 'Limits', 'woocommerce-components' ) }</strong>
+			<strong>{ __( 'Limits', 'poocommerce-components' ) }</strong>
 			<div className="fraud-protection-rule-toggle-children-horizontal-form">
 				<div className="fraud-protection-rule-toggle-children-vertical-form">
 					<AmountInput
 						id="fraud-protection-purchase-price-minimum"
 						label={ __(
 							'Minimum purchase price',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 						prefix={ currencySymbol }
 						placeholder="0.00"
@@ -99,7 +99,7 @@ const PurchasePriceThresholdCustomForm: React.FC< PurchasePriceThresholdCustomFo
 						onChange={ handleAmountInputChange( 'min_amount' ) }
 						help={ __(
 							'Leave blank for no limit',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 					/>
 				</div>
@@ -108,7 +108,7 @@ const PurchasePriceThresholdCustomForm: React.FC< PurchasePriceThresholdCustomFo
 						id="fraud-protection-purchase-price-maximum"
 						label={ __(
 							'Maximum purchase price',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 						prefix={ currencySymbol }
 						placeholder="0.00"
@@ -116,7 +116,7 @@ const PurchasePriceThresholdCustomForm: React.FC< PurchasePriceThresholdCustomFo
 						onChange={ handleAmountInputChange( 'max_amount' ) }
 						help={ __(
 							'Leave blank for no limit',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 					/>
 				</div>
@@ -126,7 +126,7 @@ const PurchasePriceThresholdCustomForm: React.FC< PurchasePriceThresholdCustomFo
 					<FraudProtectionRuleCardNotice type="warning">
 						{ __(
 							'A price range must be set for this filter to take effect.',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 					</FraudProtectionRuleCardNotice>
 				</div>
@@ -136,7 +136,7 @@ const PurchasePriceThresholdCustomForm: React.FC< PurchasePriceThresholdCustomFo
 					<FraudProtectionRuleCardNotice type="error">
 						{ __(
 							'Maximum purchase price must be greater than the minimum purchase price.',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 					</FraudProtectionRuleCardNotice>
 				</div>
@@ -147,19 +147,19 @@ const PurchasePriceThresholdCustomForm: React.FC< PurchasePriceThresholdCustomFo
 
 const PurchasePriceThresholdRuleCard: React.FC = () => (
 	<FraudProtectionRuleCard
-		title={ __( 'Purchase Price Threshold', 'woocommerce-payments' ) }
+		title={ __( 'Purchase Price Threshold', 'poocommerce-payments' ) }
 		id="purchase-price-threshold-card"
 	>
 		<FraudProtectionRuleToggle
 			setting="purchase_price_threshold"
 			label={ __(
 				'Enable Purchase Price Threshold filter',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			) }
 			description={ __(
 				'This filter compares the purchase price of an order to the minimum and maximum purchase amounts that you specify. ' +
 					'When enabled the payment will be blocked.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			) }
 		>
 			<PurchasePriceThresholdCustomForm setting="purchase_price_threshold" />
@@ -169,7 +169,7 @@ const PurchasePriceThresholdRuleCard: React.FC = () => (
 			{ __(
 				'An unusually high purchase amount, compared to the average for your business, ' +
 					'can indicate potential fraudulent activity.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			) }
 		</FraudProtectionRuleDescription>
 	</FraudProtectionRuleCard>
@@ -189,7 +189,7 @@ export const PurchasePriceThresholdValidation = (
 			setValidationError(
 				__(
 					'A price range must be set for the "Purchase Price threshold" filter.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				)
 			);
 			return false;
@@ -199,7 +199,7 @@ export const PurchasePriceThresholdValidation = (
 			setValidationError(
 				__(
 					'Maximum purchase price must be greater than the minimum purchase price.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				)
 			);
 			return false;
