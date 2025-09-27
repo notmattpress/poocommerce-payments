@@ -4,7 +4,7 @@
 /**
  * Command line script for merging two .pot files.
  *
- * @package WooCommerce\Admin
+ * @package PooCommerce\Admin
  */
 
 /**
@@ -38,7 +38,7 @@ if ( isset( $argv[3] ) && 0 === stripos( $argv[3], 'lang=' ) ) {
  * @param string $file_name Pot file name.
  * @return array
  */
-function woocommerce_admin_parse_pot( $file_name ) {
+function poocommerce_admin_parse_pot( $file_name ) {
 	$fh         = fopen( $file_name, 'r' );
 	$originals  = [];
 	$references = [];
@@ -102,7 +102,7 @@ function load_js_transpiling_source_maps(): array {
 		}
 
 		foreach ( $file_json[ 'sources' ] as $source ) {
-			$source = preg_replace( '%^webpack://woocommerce-payments/\./(client/.*)$%', '${1}', $source );
+			$source = preg_replace( '%^webpack://poocommerce-payments/\./(client/.*)$%', '${1}', $source );
 			if ( 'webpack' !== substr( $source, 0, 7 ) ) {
 				$mappings[ $source ][] = $file_json[ 'file' ];
 			}
@@ -151,8 +151,8 @@ function add_transpiled_filepath_reference_to_comments( array $js_mappings, arra
 }
 
 // Read the translation files.
-$originals_1 = woocommerce_admin_parse_pot( $argv[1] );
-$originals_2 = woocommerce_admin_parse_pot( $argv[2] );
+$originals_1 = poocommerce_admin_parse_pot( $argv[1] );
+$originals_2 = poocommerce_admin_parse_pot( $argv[2] );
 
 // For transpiled JS client files, we need to add a reference to the generated dist file.
 $js_source_maps = load_js_transpiling_source_maps();

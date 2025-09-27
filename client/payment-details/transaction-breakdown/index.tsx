@@ -95,7 +95,7 @@ const PaymentTransactionBreakdown: React.FC< PaymentTransactionBreakdownProps > 
 					isLoading={ isLoading }
 					value={ __(
 						'Transaction breakdown',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 				/>
 			</CardHeader>
@@ -106,7 +106,7 @@ const PaymentTransactionBreakdown: React.FC< PaymentTransactionBreakdownProps > 
 							<FlexItem>
 								{ __(
 									'Authorized payment',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								) }
 							</FlexItem>
 							<FlexItem className="wcpay-transaction-breakdown__authorized_payment_amount">
@@ -129,7 +129,7 @@ const PaymentTransactionBreakdown: React.FC< PaymentTransactionBreakdownProps > 
 							<FlexItem>
 								{ __(
 									'Total transaction fee',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								) }
 							</FlexItem>
 							<FlexItem className="wcpay-transaction-breakdown__total_transaction_fee_amount">
@@ -153,7 +153,7 @@ const PaymentTransactionBreakdown: React.FC< PaymentTransactionBreakdownProps > 
 				<LoadableBlock isLoading={ isLoading } numLines={ 1 }>
 					<Flex className="wcpay-transaction-breakdown__footer">
 						<FlexItem>
-							{ __( 'Net deposit', 'woocommerce-payments' ) }
+							{ __( 'Net deposit', 'poocommerce-payments' ) }
 						</FlexItem>
 						<FlexItem className="wcpay-transaction-breakdown__footer_amount">
 							{ formatCurrency(

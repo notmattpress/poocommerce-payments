@@ -48,7 +48,7 @@ jest.mock( 'wcpay/tracks', () => ( {
 let preferences = {
 	wc_payments_wporg_review_2025_prompt_dismissed: undefined,
 };
-jest.mock( '@woocommerce/data', () => {
+jest.mock( '@poocommerce/data', () => {
 	return {
 		useUserPreferences: jest.fn( () => ( {
 			...preferences,
@@ -100,7 +100,7 @@ describe( 'MerchantFeedbackPrompt', () => {
 
 		// Create a mock footer element for the portal
 		portalRoot = document.createElement( 'div' );
-		portalRoot.className = 'woocommerce-layout__footer';
+		portalRoot.className = 'poocommerce-layout__footer';
 		document.body.appendChild( portalRoot );
 	} );
 
