@@ -26,7 +26,7 @@ export const normalizeLineItems = ( displayItems ) => {
  * @param {Object} event Stripe's event object.
  * @param {string} paymentMethodId Stripe's payment method id.
  *
- * @return {Object} Order object in the format WooCommerce expects.
+ * @return {Object} Order object in the format PooCommerce expects.
  */
 export const normalizeOrderData = ( event, paymentMethodId ) => {
 	const name = event?.billingDetails?.name;
@@ -67,7 +67,7 @@ export const normalizeOrderData = ( event, paymentMethodId ) => {
 		shipping_postcode: shipping?.address?.postal_code ?? '',
 		shipping_method: [ event?.shippingRate?.id ?? null ],
 		order_comments: '',
-		payment_method: 'woocommerce_payments',
+		payment_method: 'poocommerce_payments',
 		ship_to_different_address: 1,
 		terms: 1,
 		'wcpay-payment-method': paymentMethodId,
@@ -83,11 +83,11 @@ export const normalizeOrderData = ( event, paymentMethodId ) => {
  * @param {Object} event Stripe's event object.
  * @param {string} paymentMethodId Stripe's payment method id.
  *
- * @return {Object} Order object in the format WooCommerce expects.
+ * @return {Object} Order object in the format PooCommerce expects.
  */
 export const normalizePayForOrderData = ( event, paymentMethodId ) => {
 	return {
-		payment_method: 'woocommerce_payments',
+		payment_method: 'poocommerce_payments',
 		'wcpay-payment-method': paymentMethodId,
 		express_payment_type: event?.expressPaymentType,
 		'wcpay-fraud-prevention-token': window.wcpayFraudPreventionToken ?? '',

@@ -26,7 +26,7 @@ const AccountDetailsCard = ( props: AccountDetailsCardProps ) => {
 	const { title, children, value } = props;
 	return (
 		<Card size="medium">
-			<CardHeader className="woocommerce-account-details__header">
+			<CardHeader className="poocommerce-account-details__header">
 				{ title }
 			</CardHeader>
 			<CardBody>{ children || value || null }</CardBody>
@@ -35,10 +35,10 @@ const AccountDetailsCard = ( props: AccountDetailsCardProps ) => {
 };
 
 const AccountDetailsError = () => {
-	const cardTitle = __( 'Account details', 'woocommerce-payments' );
+	const cardTitle = __( 'Account details', 'poocommerce-payments' );
 	return (
 		<AccountDetailsCard title={ cardTitle }>
-			{ __( 'Error loading account details.', 'woocommerce-payments' ) }
+			{ __( 'Error loading account details.', 'poocommerce-payments' ) }
 		</AccountDetailsCard>
 	);
 };
@@ -51,7 +51,7 @@ const AccountDetailsContent = ( {
 	const cardTitle = (
 		<>
 			<FlexItem className={ 'account-details-title' }>
-				{ __( 'Account details', 'woocommerce-payments' ) }
+				{ __( 'Account details', 'poocommerce-payments' ) }
 			</FlexItem>
 		</>
 	);

@@ -7,7 +7,7 @@ import React from 'react';
 import { __ } from '@wordpress/i18n';
 import interpolateComponents from '@automattic/interpolate-components';
 import { ExternalLink } from '@wordpress/components';
-import { Link } from '@woocommerce/components';
+import { Link } from '@poocommerce/components';
 import InfoOutlineIcon from 'gridicons/dist/info-outline';
 
 /**
@@ -39,17 +39,17 @@ const Deposit: React.FC< DepositProps > = ( { depositId, dateAvailable } ) => {
 	// Show an icon with a tooltip to communicate that the payout will be available in the future.
 	return (
 		<>
-			{ __( 'Future payout', 'woocommerce-payments' ) }
+			{ __( 'Future payout', 'poocommerce-payments' ) }
 			<ClickTooltip
 				content={ interpolateComponents( {
 					mixedString: __(
 						'This transaction will be included in an upcoming automated payout. The date of the payout will be displayed here once it is scheduled. {{learnMoreLink}}Learn more{{/learnMoreLink}}',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					components: {
 						learnMoreLink: (
 							// @ts-expect-error: children is provided when interpolating the component
-							<ExternalLink href="https://woocommerce.com/document/woopayments/payouts/payout-schedule/#pending-funds" />
+							<ExternalLink href="https://poocommerce.com/document/woopayments/payouts/payout-schedule/#pending-funds" />
 						),
 					},
 				} ) }
