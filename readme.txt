@@ -95,6 +95,8 @@ You can read our Terms of Service and other policies [here](https://woocommerce.
 * Fix - Fix _load_textdomain_just_in_time error when loading a non-existing payment method
 * Fix - Handle dispute counts for menu items between live and test mode
 * Fix - Single use coupons issues on WooPay.
+* Fix - Use Woo custom cap `pay_for_order` for validating the owner of order
+* Update - Show message about bundled subscriptions until 10.2.0.
 * Dev - Comment: Skip SSL verification when running the PHP tests locally.
 * Dev - Removed clear_cache method from the mutli-currency interface
 
