@@ -1,8 +1,8 @@
 <?php
 /**
- * WooCommerce Payments WC_Payments_Localization_Service Class
+ * PooCommerce Payments WC_Payments_Localization_Service Class
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 use WCPay\MultiCurrency\Interfaces\MultiCurrencyLocalizationInterface;
@@ -97,7 +97,7 @@ class WC_Payments_Localization_Service implements MultiCurrencyLocalizationInter
 	}
 
 	/**
-	 * Loads locale data from WooCommerce core (/i18n/locale-info.php) and maps it
+	 * Loads locale data from PooCommerce core (/i18n/locale-info.php) and maps it
 	 * to be used by currency.
 	 *
 	 * @return void

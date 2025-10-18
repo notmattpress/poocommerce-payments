@@ -1,8 +1,8 @@
 export const PAYMENT_METHOD_NAME_EXPRESS_CHECKOUT_ELEMENT =
-	'woocommerce_payments_express_checkout';
+	'poocommerce_payments_express_checkout';
 export const PAYMENT_METHOD_NAME_WOOPAY_EXPRESS_CHECKOUT =
-	'woocommerce_payments_woopay_express_checkout';
-export const PAYMENT_METHOD_ERROR = 'woocommerce_payments_payment_method_error';
+	'poocommerce_payments_woopay_express_checkout';
+export const PAYMENT_METHOD_ERROR = 'poocommerce_payments_payment_method_error';
 export const WC_STORE_CART = 'wc/store/cart';
 
 export const SHORTCODE_SHIPPING_ADDRESS_FIELDS = {

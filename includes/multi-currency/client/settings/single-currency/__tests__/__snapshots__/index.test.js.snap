@@ -541,7 +541,7 @@ exports[`Single currency settings screen Page renders correctly 1`] = `
                           Make your EUR prices consistent by rounding them up after they're converted. 
                           <a
                             class="components-external-link"
-                            href="https://woocommerce.com/document/woopayments/currencies/multi-currency-setup/#price-rounding"
+                            href="https://poocommerce.com/document/woopayments/currencies/multi-currency-setup/#price-rounding"
                             rel="external noreferrer noopener"
                             target="_blank"
                           >
@@ -651,7 +651,7 @@ exports[`Single currency settings screen Page renders correctly 1`] = `
                           Reduce the converted price for a specific amount. 
                           <a
                             class="components-external-link"
-                            href="https://woocommerce.com/document/woopayments/currencies/multi-currency-setup/#charm-pricing"
+                            href="https://poocommerce.com/document/woopayments/currencies/multi-currency-setup/#charm-pricing"
                             rel="external noreferrer noopener"
                             target="_blank"
                           >

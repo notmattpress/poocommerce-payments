@@ -206,13 +206,13 @@ cli wp rewrite structure '/%postname%/'
 echo "Installing and activating WordPress Importer..."
 cli wp plugin install wordpress-importer --activate
 
-# Install WooCommerce
+# Install PooCommerce
 if [[ -n "$E2E_WC_VERSION" && $E2E_WC_VERSION != 'latest' ]]; then
-	echo "Installing and activating specified WooCommerce version..."
-	cli wp plugin install woocommerce --version="$E2E_WC_VERSION" --activate
+	echo "Installing and activating specified PooCommerce version..."
+	cli wp plugin install poocommerce --version="$E2E_WC_VERSION" --activate
 else
-	echo "Installing and activating latest WooCommerce version..."
-	cli wp plugin install woocommerce --activate
+	echo "Installing and activating latest PooCommerce version..."
+	cli wp plugin install poocommerce --activate
 fi
 
 echo "Installing basic auth plugin for interfacing with the API"
@@ -222,27 +222,27 @@ echo "Installing and activating Storefront theme..."
 cli wp theme install storefront --activate
 cli wp theme install twentytwentyfour
 
-echo "Adding basic WooCommerce settings..."
-cli wp option set woocommerce_store_address "60 29th Street"
-cli wp option set woocommerce_store_address_2 "#343"
-cli wp option set woocommerce_store_city "San Francisco"
-cli wp option set woocommerce_default_country "US:CA"
-cli wp option set woocommerce_store_postcode "94110"
-cli wp option set woocommerce_currency "USD"
-cli wp option set woocommerce_product_type "both"
-cli wp option set woocommerce_allow_tracking "no"
-cli wp option set woocommerce_enable_signup_and_login_from_checkout "yes"
+echo "Adding basic PooCommerce settings..."
+cli wp option set poocommerce_store_address "60 29th Street"
+cli wp option set poocommerce_store_address_2 "#343"
+cli wp option set poocommerce_store_city "San Francisco"
+cli wp option set poocommerce_default_country "US:CA"
+cli wp option set poocommerce_store_postcode "94110"
+cli wp option set poocommerce_currency "USD"
+cli wp option set poocommerce_product_type "both"
+cli wp option set poocommerce_allow_tracking "no"
+cli wp option set poocommerce_enable_signup_and_login_from_checkout "yes"
 
-echo "Deactivating Coming Soon mode in WooCommerce..."
-cli wp option set woocommerce_coming_soon "no"
+echo "Deactivating Coming Soon mode in PooCommerce..."
+cli wp option set poocommerce_coming_soon "no"
 
 echo "Enabling company field as an optional parameter in checkout form..."
-cli wp option set woocommerce_checkout_company_field "optional"
+cli wp option set poocommerce_checkout_company_field "optional"
 
-echo "Importing WooCommerce shop pages..."
+echo "Importing PooCommerce shop pages..."
 cli wp wc --user=admin tool run install_pages
 
-INSTALLED_WC_VERSION=$(cli_debug wp plugin get woocommerce --field=version)
+INSTALLED_WC_VERSION=$(cli_debug wp plugin get poocommerce --field=version)
 
 # Start - Workaround for > WC 8.3 compatibility by updating cart & checkout pages to use shortcode.
 # To be removed when WooPayments L-2 support is >= WC 8.3
@@ -251,13 +251,13 @@ IS_WORKAROUND_REQUIRED=$(cli_debug wp eval "echo version_compare(\"$INSTALLED_WC
 if [[ "$IS_WORKAROUND_REQUIRED" = "1" ]]; then
 	echo "Updating cart & checkout pages for WC > 8.3 compatibility..."
 	# Get cart & checkout page IDs.
-	CART_PAGE_ID=$(cli_debug wp option get woocommerce_cart_page_id)
-	CHECKOUT_PAGE_ID=$(cli_debug wp option get woocommerce_checkout_page_id)
+	CART_PAGE_ID=$(cli_debug wp option get poocommerce_cart_page_id)
+	CHECKOUT_PAGE_ID=$(cli_debug wp option get poocommerce_checkout_page_id)
 
-	CART_SHORTCODE="<!-- wp:shortcode -->[woocommerce_cart]<!-- /wp:shortcode -->"
-	CHECKOUT_SHORTCODE="<!-- wp:shortcode -->[woocommerce_checkout]<!-- /wp:shortcode -->"
+	CART_SHORTCODE="<!-- wp:shortcode -->[poocommerce_cart]<!-- /wp:shortcode -->"
+	CHECKOUT_SHORTCODE="<!-- wp:shortcode -->[poocommerce_checkout]<!-- /wp:shortcode -->"
 
-	# Ensuring that a "checkout-wcb" page exists, which is the one that will contain the "WooCommerce Blocks" checkout
+	# Ensuring that a "checkout-wcb" page exists, which is the one that will contain the "PooCommerce Blocks" checkout
 	cli wp post create --from-post="$CHECKOUT_PAGE_ID" --post_type="page" --post_title="Checkout WCB" --post_status="publish" --post_name="checkout-wcb"
 	CHECKOUT_WCB_PAGE_ID=$(cli_debug wp post url-to-id checkout-wcb)
 
@@ -272,7 +272,7 @@ fi
 # End - Workaround for > WC 8.3 compatibility by updating cart & checkout pages to use shortcode.
 
 echo "Importing some sample data..."
-cli wp import wp-content/plugins/woocommerce/sample-data/sample_products.xml --authors=skip
+cli wp import wp-content/plugins/poocommerce/sample-data/sample_products.xml --authors=skip
 
 echo "Removing customer account if present ..."
 cli wp user delete "$WC_CUSTOMER_EMAIL" --yes
@@ -289,23 +289,23 @@ cli wp user create "$WP_EDITOR" "$WP_EDITOR_EMAIL" --role=editor --user_pass="$W
 # TODO: Build a zip and use it to install plugin to make sure production build is under test.
 if [[ "$WCPAY_USE_BUILD_ARTIFACT" = true ]]; then
 	echo "Creating WooPayments zip file from GitHub artifact..."
-	mv "$WCPAY_ARTIFACT_DIRECTORY"/woocommerce-payments "$WCPAY_ARTIFACT_DIRECTORY"/woocommerce-payments-build
-    cd "$WCPAY_ARTIFACT_DIRECTORY" && zip -r "$cwd"/woocommerce-payments-build.zip . && cd "$cwd"
+	mv "$WCPAY_ARTIFACT_DIRECTORY"/poocommerce-payments "$WCPAY_ARTIFACT_DIRECTORY"/poocommerce-payments-build
+    cd "$WCPAY_ARTIFACT_DIRECTORY" && zip -r "$cwd"/poocommerce-payments-build.zip . && cd "$cwd"
 
 	echo "Installing & activating the WooPayments plugin using the zip file created..."
-	cli wp plugin install wp-content/plugins/woocommerce-payments/woocommerce-payments-build.zip --activate
+	cli wp plugin install wp-content/plugins/poocommerce-payments/poocommerce-payments-build.zip --activate
 else
 	echo "Activating the WooPayments plugin..."
-	cli wp plugin activate woocommerce-payments
+	cli wp plugin activate poocommerce-payments
 fi
 
 echo "Setting up WooPayments..."
-if [[ "0" == "$(cli wp option list --search=woocommerce_woocommerce_payments_settings --format=count)" ]]; then
+if [[ "0" == "$(cli wp option list --search=poocommerce_poocommerce_payments_settings --format=count)" ]]; then
 	echo "Creating WooPayments settings"
-	cli wp option set woocommerce_woocommerce_payments_settings --format=json '{"enabled":"yes"}'
+	cli wp option set poocommerce_poocommerce_payments_settings --format=json '{"enabled":"yes"}'
 else
 	echo "Updating WooPayments settings"
-	cli wp option set woocommerce_woocommerce_payments_settings --format=json '{"enabled":"yes"}'
+	cli wp option set poocommerce_poocommerce_payments_settings --format=json '{"enabled":"yes"}'
 fi
 
 echo "Activating dev tools plugin"
@@ -333,7 +333,7 @@ else
 fi
 
 if [[ ! ${SKIP_WC_SUBSCRIPTIONS_TESTS} ]]; then
-	echo "Install and activate the latest release of WooCommerce Subscriptions"
+	echo "Install and activate the latest release of PooCommerce Subscriptions"
 	cd "$E2E_ROOT"/deps
 
 	LATEST_RELEASE_ASSET_ID=$(curl -H "Authorization: token $E2E_GH_TOKEN" https://api.github.com/repos/"$WC_SUBSCRIPTIONS_REPO"/releases/latest | jq -r '.assets[0].id')
@@ -341,23 +341,23 @@ if [[ ! ${SKIP_WC_SUBSCRIPTIONS_TESTS} ]]; then
 	curl -LJ \
 		-H "Authorization: token $E2E_GH_TOKEN" \
 		-H "Accept: application/octet-stream" \
-		--output woocommerce-subscriptions.zip \
+		--output poocommerce-subscriptions.zip \
 		https://api.github.com/repos/"$WC_SUBSCRIPTIONS_REPO"/releases/assets/"$LATEST_RELEASE_ASSET_ID"
 
-	unzip -qq woocommerce-subscriptions.zip -d woocommerce-subscriptions-source
+	unzip -qq poocommerce-subscriptions.zip -d poocommerce-subscriptions-source
 
 	echo "Moving the unzipped plugin files..."
-	sudo mv woocommerce-subscriptions-source/woocommerce-subscriptions/* woocommerce-subscriptions
+	sudo mv poocommerce-subscriptions-source/poocommerce-subscriptions/* poocommerce-subscriptions
 
-	cli wp plugin activate woocommerce-subscriptions
+	cli wp plugin activate poocommerce-subscriptions
 
-	rm -rf woocommerce-subscriptions-source
+	rm -rf poocommerce-subscriptions-source
 
-	echo "Import WooCommerce Subscription products"
-	cli wp import wp-content/plugins/woocommerce-payments/tests/e2e/env/wc-subscription-products.xml --authors=skip
+	echo "Import PooCommerce Subscription products"
+	cli wp import wp-content/plugins/poocommerce-payments/tests/e2e/env/wc-subscription-products.xml --authors=skip
 
 else
-	echo "Skipping install of WooCommerce Subscriptions"
+	echo "Skipping install of PooCommerce Subscriptions"
 fi
 
 if [[ ! ${SKIP_WC_ACTION_SCHEDULER_TESTS} ]]; then
@@ -367,8 +367,8 @@ else
 	echo "Skipping install of Action Scheduler"
 fi
 
-echo "Removing some WooCommerce Core 'tour' options so they don't interfere with tests"
-cli wp option set woocommerce_orders_report_date_tour_shown yes
+echo "Removing some PooCommerce Core 'tour' options so they don't interfere with tests"
+cli wp option set poocommerce_orders_report_date_tour_shown yes
 
 echo "Creating screenshots directory"
 mkdir -p $WCP_ROOT/screenshots
@@ -386,7 +386,7 @@ cli wp db query "DELETE p, m FROM wp_posts p LEFT JOIN wp_postmeta m ON p.ID = m
 echo "Setting up a coupon for E2E tests"
 cli wp wc --user=admin shop_coupon create --code=free --amount=100 --discount_type=percent --individual_use=true --free_shipping=true
 
-# HPOS was officially released in WooCommerce 8.2.0, so we need to check if we should sync COT or HPOS data.
+# HPOS was officially released in PooCommerce 8.2.0, so we need to check if we should sync COT or HPOS data.
 IS_HPOS_AVAILABLE=$(cli_debug wp eval "echo version_compare(\"$INSTALLED_WC_VERSION\", \"8.2\", \">=\");")
 
 if [[ ${IS_HPOS_AVAILABLE} ]]; then
@@ -408,13 +408,13 @@ echo "WordPress version:"
 cli_debug wp core version
 
 echo
-echo "WooCommerce version:"
-cli_debug wp plugin get woocommerce --field=version
+echo "PooCommerce version:"
+cli_debug wp plugin get poocommerce --field=version
 
 if [[ ! ${SKIP_WC_SUBSCRIPTIONS_TESTS} ]]; then
 	echo
-    echo "WooCommerce Subscriptions version:"
-	cli_debug wp plugin get woocommerce-subscriptions --field=version
+    echo "PooCommerce Subscriptions version:"
+	cli_debug wp plugin get poocommerce-subscriptions --field=version
 fi
 
 echo
