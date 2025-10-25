@@ -20,11 +20,11 @@
 		}
 	}
 
-	.woocommerce-cart & {
+	.poocommerce-cart & {
 		margin-bottom: 0;
 	}
 
-	.woocommerce-checkout & {
+	.poocommerce-checkout & {
 		#wcpay-express-checkout-element.is-ready:first-child {
 			margin-top: 4px;
 		}
@@ -35,7 +35,7 @@
 	}
 
 	// Add spacing for product pages and shortcode cart
-	.woocommerce .type-product &,
+	.poocommerce .type-product &,
 	.wp-block-add-to-cart-form &,
 	.wc-proceed-to-checkout & {
 		margin-top: 1em;

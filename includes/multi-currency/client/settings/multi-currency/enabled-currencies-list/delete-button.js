@@ -55,7 +55,7 @@ const DeleteButton = ( { code, label, symbol, onClick, className } ) => {
 						__(
 							/* translators: %1: Name of the currency being removed */
 							'Remove %1$s',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						),
 						label
 					) }
@@ -68,13 +68,13 @@ const DeleteButton = ( { code, label, symbol, onClick, className } ) => {
 								isPrimary
 								isDestructive
 							>
-								{ __( 'Remove', 'woocommerce-payments' ) }
+								{ __( 'Remove', 'poocommerce-payments' ) }
 							</Button>
 							<Button
 								onClick={ handleDeleteCancelClick }
 								isSecondary
 							>
-								{ __( 'Cancel', 'woocommerce-payments' ) }
+								{ __( 'Cancel', 'poocommerce-payments' ) }
 							</Button>
 						</>
 					}
@@ -87,7 +87,7 @@ const DeleteButton = ( { code, label, symbol, onClick, className } ) => {
 									'Are you sure you want to remove {{strong}}%s (%s){{/strong}}? ' +
 										'Your customers will no longer be able to pay in this currency and ' +
 										'use payment methods listed below.',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								),
 								label,
 								code === symbol
@@ -117,7 +117,7 @@ const DeleteButton = ( { code, label, symbol, onClick, className } ) => {
 						{ sprintf(
 							__(
 								'You can add %s (%s) again at any time in Multi-Currency settings.',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							label,
 							code === symbol
@@ -133,7 +133,7 @@ const DeleteButton = ( { code, label, symbol, onClick, className } ) => {
 					__(
 						/* translators: %1: Name of the currency being removed */
 						'Remove %1$s as an enabled currency',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					label
 				) }

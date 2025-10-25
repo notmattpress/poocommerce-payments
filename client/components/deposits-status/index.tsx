@@ -30,11 +30,11 @@ const getIntervalType = ( interval: DepositsIntervals ): string => {
 		case 'daily':
 		case 'weekly':
 		case 'monthly':
-			return __( 'Automatic', 'woocommerce-payments' );
+			return __( 'Automatic', 'poocommerce-payments' );
 		case 'manual':
-			return __( 'Manual', 'woocommerce-payments' );
+			return __( 'Manual', 'poocommerce-payments' );
 		default:
-			return __( 'Unknown', 'woocommerce-payments' );
+			return __( 'Unknown', 'poocommerce-payments' );
 	}
 };
 
@@ -57,7 +57,7 @@ const DepositsStatusDisabled: React.FC< DepositsStatusProps > = ( {
 	return (
 		<span className={ 'account-status__info__red' }>
 			<GridiconNotice size={ iconSize } />
-			{ __( 'Disabled', 'woocommerce-payments' ) }
+			{ __( 'Disabled', 'poocommerce-payments' ) }
 		</span>
 	);
 };
@@ -67,7 +67,7 @@ const DepositsStatusSuspended: React.FC< DepositsStatusProps > = ( {
 } ) => {
 	const description =
 		/* translators: <a> - suspended accounts FAQ URL */
-		__( 'Under Review', 'woocommerce-payments' );
+		__( 'Under Review', 'poocommerce-payments' );
 
 	return (
 		<span className={ 'account-status__info__yellow' }>
@@ -78,7 +78,7 @@ const DepositsStatusSuspended: React.FC< DepositsStatusProps > = ( {
 				buttonIcon={ <HelpOutlineIcon /> }
 				buttonLabel={ __(
 					'Learn more about payouts suspended',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				) }
 				content={ interpolateComponents( {
 					mixedString: sprintf(
@@ -86,7 +86,7 @@ const DepositsStatusSuspended: React.FC< DepositsStatusProps > = ( {
 						__(
 							// eslint-disable-next-line max-len
 							'While the account is under review payouts may remain suspended. {{learnMoreLink}}Learn more{{/learnMoreLink}}',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						),
 						'WooPayments'
 					),
@@ -96,7 +96,7 @@ const DepositsStatusSuspended: React.FC< DepositsStatusProps > = ( {
 							<a
 								href={
 									// eslint-disable-next-line max-len
-									'https://woocommerce.com/document/woopayments/payouts/why-payouts-suspended/'
+									'https://poocommerce.com/document/woopayments/payouts/why-payouts-suspended/'
 								}
 								target="_blank"
 								rel="noreferrer"
@@ -116,7 +116,7 @@ const DepositsStatusPending: React.FC< DepositsStatusProps > = ( {
 	return (
 		<span className={ 'account-status__info__gray' }>
 			<GridiconNotice size={ iconSize } />
-			{ __( 'Pending verification', 'woocommerce-payments' ) }
+			{ __( 'Pending verification', 'poocommerce-payments' ) }
 		</span>
 	);
 };

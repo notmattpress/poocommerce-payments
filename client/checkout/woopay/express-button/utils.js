@@ -36,7 +36,7 @@ export const showErrorMessage = ( context, errorMessage ) => {
 				if ( response.success ) {
 					// We need to manually add the notice to the page.
 					const noticesWrapper = document.querySelector(
-						'.woocommerce-notices-wrapper'
+						'.poocommerce-notices-wrapper'
 					);
 					const wrapper = document.createElement( 'div' );
 					wrapper.innerHTML = response.data.notice;

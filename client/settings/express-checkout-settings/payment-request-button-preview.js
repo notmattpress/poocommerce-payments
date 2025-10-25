@@ -62,7 +62,7 @@ const PreviewRequirementsNotice = () => (
 				'ensure your store uses HTTPS on a publicly available domain, ' +
 				"and you're viewing this page in a Safari or Chrome browser. " +
 				'Your device must be configured to use Apple Pay or Google Pay.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		) }
 	</InlineNotice>
 );
@@ -82,7 +82,7 @@ const PaymentRequestButtonPreview = () => {
 				{ __(
 					'To preview the express checkout buttons, ' +
 						'activate at least one express checkout.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				) }
 			</InlineNotice>
 		);
