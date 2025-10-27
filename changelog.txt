@@ -1,5 +1,7 @@
 *** WooPayments Changelog ***
 
+= 10.1.1 - 2025-10-27 =
+
 = 10.1.0 - 2025-10-15 =
 * Add - Disputes - Add a loading state to the “Challenge dispute” flow
 * Add - Pre-fill product type in dispute evidence form based on order products.
