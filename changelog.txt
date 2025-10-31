@@ -3,7 +3,10 @@
 = 10.2.0 - 2025-11-05 =
 * Add - Add WooCommerce Tool to delete test orders.
 * Add - Sync store setup details with the Transact Platform.
+* Fix - Comment: fix JCB logo.
+* Fix - Fix - WCPay Subscriptions setting not persisting when unchecked
 * Fix - Fix missing payment method logos (JCB, CUP, CB) in checkout.
+* Fix - Fix payment method logos overflow in shortcode checkout after adding JCB and UnionPay logos.
 * Fix - Only show WooPay error messages for connection errors in available countries.
 * Fix - Prevent Express Checkout from being disabled on product page when updating quantity of variable products.
 * Fix - Prevent WooPayments-specific styles for the Checkout block to leak to other payment methods
