@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Subscription_Change_Payment_Method
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -22,19 +22,19 @@ class WC_Payments_Subscription_Change_Payment_Method_Handler {
 
 		// Add an "Update card" action to all WCPay billing subscriptions with a failed renewal order.
 		add_filter( 'wcs_view_subscription_actions', [ $this, 'update_subscription_change_payment_button' ], 15, 2 );
-		add_filter( 'woocommerce_can_subscription_be_updated_to_new-payment-method', [ $this, 'can_update_payment_method' ], 15, 2 );
+		add_filter( 'poocommerce_can_subscription_be_updated_to_new-payment-method', [ $this, 'can_update_payment_method' ], 15, 2 );
 
 		// Override the pay for order link on the order to redirect to a change payment method page.
-		add_filter( 'woocommerce_my_account_my_orders_actions', [ $this, 'update_order_pay_button' ], 15, 2 );
+		add_filter( 'poocommerce_my_account_my_orders_actions', [ $this, 'update_order_pay_button' ], 15, 2 );
 
 		// Filter elements/messaging on the "Change payment method" page to reflect updating a WCPay billing card.
-		add_filter( 'woocommerce_subscriptions_change_payment_method_page_title', [ $this, 'change_payment_method_page_title' ], 10, 2 );
-		add_filter( 'woocommerce_subscriptions_change_payment_method_page_notice_message', [ $this, 'change_payment_method_page_notice' ], 10, 2 );
+		add_filter( 'poocommerce_subscriptions_change_payment_method_page_title', [ $this, 'change_payment_method_page_title' ], 10, 2 );
+		add_filter( 'poocommerce_subscriptions_change_payment_method_page_notice_message', [ $this, 'change_payment_method_page_notice' ], 10, 2 );
 
 		// Fallback to redirecting all pay for order pages for WCPay billing invoices to the update card page.
 		add_action( 'template_redirect', [ $this, 'redirect_pay_for_order_to_update_payment_method' ] );
 
-		add_filter( 'woocommerce_change_payment_button_text', [ $this, 'change_payment_method_form_submit_text' ] );
+		add_filter( 'poocommerce_change_payment_button_text', [ $this, 'change_payment_method_form_submit_text' ] );
 	}
 
 	/**
@@ -50,7 +50,7 @@ class WC_Payments_Subscription_Change_Payment_Method_Handler {
 			// Override any existing button on $actions['change_payment_method'] to show "Update Card" button.
 			$actions['change_payment_method'] = [
 				'url'  => $this->get_subscription_update_payment_url( $subscription ),
-				'name' => __( 'Update payment method', 'woocommerce-payments' ),
+				'name' => __( 'Update payment method', 'poocommerce-payments' ),
 			];
 		}
 
@@ -156,7 +156,7 @@ class WC_Payments_Subscription_Change_Payment_Method_Handler {
 	 */
 	public function change_payment_method_page_title( string $title, WC_Subscription $subscription ) {
 		if ( $this->does_subscription_need_payment_updated( $subscription ) ) {
-			$title = __( 'Update payment details', 'woocommerce-payments' );
+			$title = __( 'Update payment details', 'poocommerce-payments' );
 		}
 
 		return $title;
@@ -172,7 +172,7 @@ class WC_Payments_Subscription_Change_Payment_Method_Handler {
 	 */
 	public function change_payment_method_page_notice( string $message, WC_Subscription $subscription ) {
 		if ( $this->does_subscription_need_payment_updated( $subscription ) ) {
-			$message = __( "Your subscription's last renewal failed payment. Please update your payment details so we can reattempt payment.", 'woocommerce-payments' );
+			$message = __( "Your subscription's last renewal failed payment. Please update your payment details so we can reattempt payment.", 'poocommerce-payments' );
 		}
 
 		return $message;
@@ -223,7 +223,7 @@ class WC_Payments_Subscription_Change_Payment_Method_Handler {
 			$subscription = wcs_get_subscription( wc_clean( wp_unslash( $_GET['change_payment_method'] ) ) ); // phpcs:ignore WordPress.Security.NonceVerification
 
 			if ( $subscription && $this->does_subscription_need_payment_updated( $subscription ) ) {
-				$button_text = __( 'Update and retry payment', 'woocommerce-payments' );
+				$button_text = __( 'Update and retry payment', 'poocommerce-payments' );
 			}
 		}
 

@@ -39,7 +39,7 @@ class Link_Payment_Method extends UPE_Payment_Method {
 	 * @return string
 	 */
 	public function get_title( ?string $account_country = null, $payment_details = false ) {
-		return __( 'Link', 'woocommerce-payments' );
+		return __( 'Link', 'poocommerce-payments' );
 	}
 
 	/**

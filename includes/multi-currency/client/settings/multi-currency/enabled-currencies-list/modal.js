@@ -135,7 +135,7 @@ const EnabledCurrenciesModal = ( { className } ) => {
 				<ConfirmationModal
 					title={ __(
 						'Add enabled currencies',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 					onRequestClose={ handleAddSelectedCancelClick }
 					className="add-enabled-currencies-modal"
@@ -146,7 +146,7 @@ const EnabledCurrenciesModal = ( { className } ) => {
 								onClick={ handleAddSelectedCancelClick }
 								__next40pxDefaultSize
 							>
-								{ __( 'Cancel', 'woocommerce-payments' ) }
+								{ __( 'Cancel', 'poocommerce-payments' ) }
 							</Button>
 							<Button
 								isPrimary
@@ -155,7 +155,7 @@ const EnabledCurrenciesModal = ( { className } ) => {
 							>
 								{ __(
 									'Update selected',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								) }
 							</Button>
 						</>
@@ -168,7 +168,7 @@ const EnabledCurrenciesModal = ( { className } ) => {
 							onChange={ setSearchText }
 							placeholder={ __(
 								'Search currencies',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 						/>
 					</div>
@@ -178,11 +178,11 @@ const EnabledCurrenciesModal = ( { className } ) => {
 							  sprintf(
 									__(
 										'Search results (%1$d currencies)',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									),
 									filteredCurrencyCodes.length
 							  )
-							: __( 'All currencies', 'woocommerce-payments' ) }
+							: __( 'All currencies', 'poocommerce-payments' ) }
 					</h3>
 					<div
 						className="add-enabled-currencies-modal__content"
@@ -211,7 +211,7 @@ const EnabledCurrenciesModal = ( { className } ) => {
 				data-testid="enabled-currencies-add-button"
 				__next40pxDefaultSize
 			>
-				{ __( 'Add/remove currencies', 'woocommerce-payments' ) }
+				{ __( 'Add/remove currencies', 'poocommerce-payments' ) }
 			</Button>
 		</>
 	);
