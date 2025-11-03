@@ -100,6 +100,7 @@ You can read our Terms of Service and other policies [here](https://woocommerce.
 * Fix - Use Woo custom cap `pay_for_order` for validating the owner of order
 * Update - Avoid loading shipping zones when adjusting currencies for free shipping methods.
 * Update - Hide bundled subscription management UI while preserving renewal processing functionality
+* Update - Minor copy update to the delete test orders tool.
 * Update - Show message about bundled subscriptions until 10.2.0.
 * Dev - Add CLAUDE.md file to improve AI code assistance.
 * Dev - Bump WC tested up to version to 10.3.0.
