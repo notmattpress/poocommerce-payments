@@ -1,19 +1,19 @@
 #!/bin/bash
 
-# Script to dynamically generate WooCommerce version matrix for L-1 policy
+# Script to dynamically generate PooCommerce version matrix for L-1 policy
 # This script fetches the latest WC version and calculates the L-1 version
 
 set -e
 
-# Function to get the latest WooCommerce version from WordPress.org API
+# Function to get the latest PooCommerce version from WordPress.org API
 get_latest_wc_version() {
-    curl -s https://api.wordpress.org/plugins/info/1.0/woocommerce.json | jq -r '.version'
+    curl -s https://api.wordpress.org/plugins/info/1.0/poocommerce.json | jq -r '.version'
 }
 
 # Function to get the latest stable version for a specific major version
 get_latest_stable_for_major() {
     local major_version=$1
-    curl -s https://api.wordpress.org/plugins/info/1.0/woocommerce.json | \
+    curl -s https://api.wordpress.org/plugins/info/1.0/poocommerce.json | \
     jq -r --arg major "$major_version" '.versions | with_entries(select(.key | startswith($major + ".") and (contains("-") | not))) | keys | sort_by( . | split(".") | map(tonumber) ) | last'
 }
 
@@ -48,7 +48,7 @@ get_major_versions_latest() {
 
 # Function to get the latest RC version from WordPress.org API
 get_latest_rc_version() {
-    curl -s https://api.wordpress.org/plugins/info/1.0/woocommerce.json | \
+    curl -s https://api.wordpress.org/plugins/info/1.0/poocommerce.json | \
     jq -r '.versions | with_entries(select(.key|match("rc";"i"))) | keys | sort_by( . | split("-")[0] | split(".") | map(tonumber) ) | last'
 }
 
@@ -56,12 +56,12 @@ get_latest_rc_version() {
 get_latest_beta_version() {
     local latest_version=$1
     local major_version=$(echo "$latest_version" | cut -d. -f1)
-    curl -s https://api.wordpress.org/plugins/info/1.0/woocommerce.json | \
+    curl -s https://api.wordpress.org/plugins/info/1.0/poocommerce.json | \
     jq -r --arg major "$major_version" '.versions | with_entries(select(.key | startswith($major + ".") and contains("beta"))) | keys | sort_by( . | split("-")[0] | split(".") | map(tonumber) ) | last'
 }
 
-# Get the latest WooCommerce version
-echo "Fetching latest WooCommerce version..." >&2
+# Get the latest PooCommerce version
+echo "Fetching latest PooCommerce version..." >&2
 LATEST_WC_VERSION=$(get_latest_wc_version)
 echo "Latest WC version: $LATEST_WC_VERSION" >&2
 

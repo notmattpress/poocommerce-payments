@@ -18,7 +18,7 @@ export const getMissingCurrenciesTooltipMessage = (
 			'%1$s requires the %2$s currency. In order to enable the payment method, you must add this currency to your store.',
 			'%1$s requires the %2$s currencies. In order to enable the payment method, you must add these currencies to your store.',
 			missingCurrencies.length,
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		paymentMethodLabel,
 		formatListOfItems( missingCurrencies )
