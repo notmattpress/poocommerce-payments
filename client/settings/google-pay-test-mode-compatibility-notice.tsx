@@ -37,12 +37,12 @@ const GooglePayTestModeCompatibilityNotice = () => {
 			{ interpolateComponents( {
 				mixedString: __(
 					'Google Pay is incompatible with test mode. {{learnMore}}Learn more{{/learnMore}}.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				components: {
 					learnMore: (
 						// @ts-expect-error: children is provided when interpolating the component
-						<ExternalLink href="https://woocommerce.com/document/woopayments/payment-methods/google-pay/#testing" />
+						<ExternalLink href="https://poocommerce.com/document/woopayments/payment-methods/google-pay/#testing" />
 					),
 				},
 			} ) }

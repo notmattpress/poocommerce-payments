@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_In_Person_Payment_Print_Receipt_Service
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 defined( 'ABSPATH' ) || exit;
