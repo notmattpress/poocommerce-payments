@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Payment_Request_Session_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 /**
@@ -53,14 +53,14 @@ class WC_Payments_Payment_Request_Session_Test extends WCPAY_UnitTestCase {
 		$session = new WC_Payments_Payment_Request_Session();
 		$session->init();
 
-		// need to manually call this method, because otherwise WooCommerce hasn't instantiated the session when the request is made.
+		// need to manually call this method, because otherwise PooCommerce hasn't instantiated the session when the request is made.
 		WC()->initialize_session();
 
 		$response = rest_do_request( $request );
 		// manually calling 'rest_post_dispatch' because it is not called within the context of unit tests.
 		$response = apply_filters( 'rest_post_dispatch', $response, rest_get_server(), $request );
 
-		$this->assertNotNull( apply_filters( 'woocommerce_session_handler', null ) );
+		$this->assertNotNull( apply_filters( 'poocommerce_session_handler', null ) );
 		$this->assertIsString( $response->get_headers()['X-WooPayments-Tokenized-Cart-Session'] );
 	}
 
@@ -76,14 +76,14 @@ class WC_Payments_Payment_Request_Session_Test extends WCPAY_UnitTestCase {
 		$session = new WC_Payments_Payment_Request_Session();
 		$session->init();
 
-		// need to manually call this method, because otherwise WooCommerce hasn't instantiated the session when the request is made.
+		// need to manually call this method, because otherwise PooCommerce hasn't instantiated the session when the request is made.
 		WC()->initialize_session();
 
 		$response = rest_do_request( $request );
 		// manually calling 'rest_post_dispatch' because it is not called within the context of unit tests.
 		$response = apply_filters( 'rest_post_dispatch', $response, rest_get_server(), $request );
 
-		$this->assertNull( apply_filters( 'woocommerce_session_handler', null ) );
+		$this->assertNull( apply_filters( 'poocommerce_session_handler', null ) );
 		$this->assertNotContains( 'X-WooPayments-Tokenized-Cart-Session', array_keys( $response->get_headers() ) );
 	}
 
@@ -99,7 +99,7 @@ class WC_Payments_Payment_Request_Session_Test extends WCPAY_UnitTestCase {
 		$session = new WC_Payments_Payment_Request_Session();
 		$session->init();
 
-		$this->assertNull( apply_filters( 'woocommerce_session_handler', null ) );
+		$this->assertNull( apply_filters( 'poocommerce_session_handler', null ) );
 	}
 
 	public function test_uses_custom_session_handler() {
@@ -114,7 +114,7 @@ class WC_Payments_Payment_Request_Session_Test extends WCPAY_UnitTestCase {
 		$session = new WC_Payments_Payment_Request_Session();
 		$session->init();
 
-		// need to manually call this method, because otherwise WooCommerce hasn't instantiated the session when the request is made.
+		// need to manually call this method, because otherwise PooCommerce hasn't instantiated the session when the request is made.
 		WC()->initialize_session();
 
 		WC()->cart->add_to_cart( WC_Helper_Product::create_simple_product()->get_id(), 1 );
@@ -124,7 +124,7 @@ class WC_Payments_Payment_Request_Session_Test extends WCPAY_UnitTestCase {
 
 		rest_do_request( $request );
 
-		$this->assertNotNull( apply_filters( 'woocommerce_session_handler', null ) );
+		$this->assertNotNull( apply_filters( 'poocommerce_session_handler', null ) );
 
 		$this->assertInstanceOf( WC_Payments_Payment_Request_Session_Handler::class, WC()->session );
 		// cart contents are not cleared.
@@ -144,7 +144,7 @@ class WC_Payments_Payment_Request_Session_Test extends WCPAY_UnitTestCase {
 		$session = new WC_Payments_Payment_Request_Session();
 		$session->init();
 
-		// need to manually call this method, because otherwise WooCommerce hasn't instantiated the session when the request is made.
+		// need to manually call this method, because otherwise PooCommerce hasn't instantiated the session when the request is made.
 		WC()->initialize_session();
 
 		WC()->cart->add_to_cart( WC_Helper_Product::create_simple_product()->get_id(), 1 );

@@ -44,7 +44,7 @@ export const DisputeSteps: React.FC< Props > = ( {
 			// Translators: %1$s is the store name, %2$s is the charge date.
 			__(
 				`Problem with your purchase from %1$s on %2$s?`,
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			wcpaySettings.storeName,
 			chargeDate
@@ -56,7 +56,7 @@ export const DisputeSteps: React.FC< Props > = ( {
 				`Hello %1$s,\n\n` +
 					`We noticed that on %2$s, you disputed a %3$s charge on %4$s. We wanted to contact you to make sure everything was all right with your purchase and see if there's anything else we can do to resolve any problems you might have had.\n\n` +
 					`Alternatively, if the dispute was a mistake, you can easily withdraw it by calling the number on the back of your card. Thank you so much - we appreciate your business and look forward to working with you.`,
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			customerName,
 			disputeDate,
@@ -73,10 +73,10 @@ export const DisputeSteps: React.FC< Props > = ( {
 			<Accordion>
 				<AccordionBody
 					lg
-					title={ __( 'Steps you can take', 'woocommerce-payments' ) }
+					title={ __( 'Steps you can take', 'poocommerce-payments' ) }
 					subtitle={ __(
 						'We recommend reviewing your options before responding by the deadline. ',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 				>
 					<AccordionRow>
@@ -91,13 +91,13 @@ export const DisputeSteps: React.FC< Props > = ( {
 										<div className="dispute-steps__item-name">
 											{ __(
 												'Contact your customer',
-												'woocommerce-payments'
+												'poocommerce-payments'
 											) }
 										</div>
 										<div className="dispute-steps__item-description">
 											{ __(
 												'Identify the issue and work towards a resolution where possible.',
-												'woocommerce-payments'
+												'poocommerce-payments'
 											) }
 										</div>
 									</div>
@@ -111,7 +111,7 @@ export const DisputeSteps: React.FC< Props > = ( {
 											>
 												{ __(
 													'Email customer',
-													'woocommerce-payments'
+													'poocommerce-payments'
 												) }
 											</Button>
 										) : null }
@@ -127,26 +127,26 @@ export const DisputeSteps: React.FC< Props > = ( {
 										<div className="dispute-steps__item-name">
 											{ __(
 												'Ask for the dispute to be withdrawn',
-												'woocommerce-payments'
+												'poocommerce-payments'
 											) }
 										</div>
 										<div className="dispute-steps__item-description">
 											{ __(
 												"If you've managed to resolve the issue with your customer, help them with the withdrawal of their dispute.",
-												'woocommerce-payments'
+												'poocommerce-payments'
 											) }
 										</div>
 									</div>
 									<div className="dispute-steps__item-action">
 										<Button
 											variant="secondary"
-											href="https://woocommerce.com/document/woopayments/fraud-and-disputes/managing-disputes/#withdrawals"
+											href="https://poocommerce.com/document/woopayments/fraud-and-disputes/managing-disputes/#withdrawals"
 											target="_blank"
 											rel="noopener noreferrer"
 										>
 											{ __(
 												'Learn more',
-												'woocommerce-payments'
+												'poocommerce-payments'
 											) }
 										</Button>
 									</div>
@@ -161,13 +161,13 @@ export const DisputeSteps: React.FC< Props > = ( {
 										<div className="dispute-steps__item-name">
 											{ __(
 												'Challenge or accept the dispute',
-												'woocommerce-payments'
+												'poocommerce-payments'
 											) }
 										</div>
 										<div className="dispute-steps__item-description">
 											{ __(
 												"Disagree with the dispute? You can challenge it with the customer's bank. Otherwise, accept it to close the case — the order amount and dispute fee won't be refunded.",
-												'woocommerce-payments'
+												'poocommerce-payments'
 											) }
 										</div>
 									</div>
@@ -187,13 +187,13 @@ export const DisputeSteps: React.FC< Props > = ( {
 											? sprintf(
 													__(
 														'<strong>The outcome of this dispute will be determined by %1$s.</strong> WooPayments has no influence over the decision and is not liable for any chargebacks.',
-														'woocommerce-payments'
+														'poocommerce-payments'
 													),
 													bankName
 											  )
 											: __(
 													"<strong>The outcome of this dispute will be determined by the cardholder's bank.</strong> WooPayments has no influence over the decision and is not liable for any chargebacks.",
-													'woocommerce-payments'
+													'poocommerce-payments'
 											  ),
 										{
 											strong: <strong />,
@@ -227,7 +227,7 @@ export const InquirySteps: React.FC< Props > = ( {
 			// Translators: %1$s is the store name, %2$s is the charge date.
 			__(
 				`Problem with your purchase from %1$s on %2$s?`,
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			wcpaySettings.storeName,
 			chargeDate
@@ -239,7 +239,7 @@ export const InquirySteps: React.FC< Props > = ( {
 				`Hello %1$s,\n\n` +
 					`We noticed that on %2$s, you raised a question with your payment provider about a %3$s charge made on %4$s. We wanted to reach out to ensure everything is all right with your purchase and to see if there's anything we can do to resolve any problems you might have had.\n\n` +
 					`Alternatively, if this was a mistake, please contact your payment provider to resolve it. Thank you so much - we appreciate your business and look forward to working with you.`,
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			customerName,
 			disputeDate,
@@ -256,10 +256,10 @@ export const InquirySteps: React.FC< Props > = ( {
 			<Accordion>
 				<AccordionBody
 					lg
-					title={ __( 'Steps you can take', 'woocommerce-payments' ) }
+					title={ __( 'Steps you can take', 'poocommerce-payments' ) }
 					subtitle={ __(
 						'We recommend reviewing your options before responding by the deadline. ',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 				>
 					<AccordionRow>
@@ -274,13 +274,13 @@ export const InquirySteps: React.FC< Props > = ( {
 										<div className="dispute-steps__item-name">
 											{ __(
 												'Contact your customer',
-												'woocommerce-payments'
+												'poocommerce-payments'
 											) }
 										</div>
 										<div className="dispute-steps__item-description">
 											{ __(
 												'Identify the issue and work towards a resolution where possible.',
-												'woocommerce-payments'
+												'poocommerce-payments'
 											) }
 										</div>
 									</div>
@@ -294,7 +294,7 @@ export const InquirySteps: React.FC< Props > = ( {
 											>
 												{ __(
 													'Email customer',
-													'woocommerce-payments'
+													'poocommerce-payments'
 												) }
 											</Button>
 										) : null }
@@ -310,26 +310,26 @@ export const InquirySteps: React.FC< Props > = ( {
 										<div className="dispute-steps__item-name">
 											{ __(
 												'Submit evidence or issue a refund',
-												'woocommerce-payments'
+												'poocommerce-payments'
 											) }
 										</div>
 										<div className="dispute-steps__item-description">
 											{ __(
 												"Disagree with the claim? You can challenge it by submitting evidence to the customer's bank. Otherwise, you can settle the inquiry by issuing a refund.",
-												'woocommerce-payments'
+												'poocommerce-payments'
 											) }
 										</div>
 									</div>
 									<div className="dispute-steps__item-action">
 										<Button
 											variant="secondary"
-											href="https://woocommerce.com/document/woopayments/fraud-and-disputes/managing-disputes/#inquiries"
+											href="https://poocommerce.com/document/woopayments/fraud-and-disputes/managing-disputes/#inquiries"
 											target="_blank"
 											rel="noopener noreferrer"
 										>
 											{ __(
 												'Learn more',
-												'woocommerce-payments'
+												'poocommerce-payments'
 											) }
 										</Button>
 									</div>
@@ -349,13 +349,13 @@ export const InquirySteps: React.FC< Props > = ( {
 											? sprintf(
 													__(
 														'<strong>The outcome of this dispute will be determined by %1$s.</strong> WooPayments has no influence over the decision and is not liable for any chargebacks.',
-														'woocommerce-payments'
+														'poocommerce-payments'
 													),
 													bankName
 											  )
 											: __(
 													"<strong>The outcome of this dispute will be determined by the cardholder's bank.</strong> WooPayments has no influence over the decision and is not liable for any chargebacks.",
-													'woocommerce-payments'
+													'poocommerce-payments'
 											  ),
 										{
 											strong: <strong />,
@@ -389,7 +389,7 @@ export const NotDefendableInquirySteps: React.FC< Props > = ( {
 			// Translators: %1$s is the store name, %2$s is the charge date.
 			__(
 				`Problem with your purchase from %1$s on %2$s?`,
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			wcpaySettings.storeName,
 			chargeDate
@@ -401,7 +401,7 @@ export const NotDefendableInquirySteps: React.FC< Props > = ( {
 				`Hello %1$s,\n\n` +
 					`We noticed that on %2$s, you raised a question with your payment provider about a %3$s charge made on %4$s. We wanted to reach out to ensure everything is all right with your purchase and to see if there's anything we can do to resolve any problems you might have had.\n\n` +
 					`Alternatively, if this was a mistake, please contact your payment provider to resolve it. Thank you so much - we appreciate your business and look forward to working with you.`,
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			customerName,
 			disputeDate,
@@ -418,10 +418,10 @@ export const NotDefendableInquirySteps: React.FC< Props > = ( {
 			<Accordion>
 				<AccordionBody
 					lg
-					title={ __( 'Steps you can take', 'woocommerce-payments' ) }
+					title={ __( 'Steps you can take', 'poocommerce-payments' ) }
 					subtitle={ __(
 						'We recommend reviewing your options before responding by the deadline. ',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 				>
 					<AccordionRow>
@@ -436,13 +436,13 @@ export const NotDefendableInquirySteps: React.FC< Props > = ( {
 										<div className="dispute-steps__item-name">
 											{ __(
 												'Contact your customer',
-												'woocommerce-payments'
+												'poocommerce-payments'
 											) }
 										</div>
 										<div className="dispute-steps__item-description">
 											{ __(
 												"Reach out to the customer to check if they're returning the item(s).",
-												'woocommerce-payments'
+												'poocommerce-payments'
 											) }
 										</div>
 									</div>
@@ -456,7 +456,7 @@ export const NotDefendableInquirySteps: React.FC< Props > = ( {
 											>
 												{ __(
 													'Email customer',
-													'woocommerce-payments'
+													'poocommerce-payments'
 												) }
 											</Button>
 										) : null }
@@ -472,13 +472,13 @@ export const NotDefendableInquirySteps: React.FC< Props > = ( {
 										<div className="dispute-steps__item-name">
 											{ __(
 												'Issue a refund',
-												'woocommerce-payments'
+												'poocommerce-payments'
 											) }
 										</div>
 										<div className="dispute-steps__item-description">
 											{ __(
 												"Once you've received the item(s), refund the customer before the deadline to prevent this escalating to a dispute.",
-												'woocommerce-payments'
+												'poocommerce-payments'
 											) }
 										</div>
 									</div>
@@ -493,26 +493,26 @@ export const NotDefendableInquirySteps: React.FC< Props > = ( {
 										<div className="dispute-steps__item-name">
 											{ __(
 												'Challenge the dispute',
-												'woocommerce-payments'
+												'poocommerce-payments'
 											) }
 										</div>
 										<div className="dispute-steps__item-description">
 											{ __(
 												"Didn't receive the returned item(s)? Once the inquiry has automatically escalated to a dispute after 21 days, you can submit evidence and challenge the dispute.",
-												'woocommerce-payments'
+												'poocommerce-payments'
 											) }
 										</div>
 									</div>
 									<div className="dispute-steps__item-action">
 										<Button
 											variant="secondary"
-											href="https://woocommerce.com/document/woopayments/payment-methods/buy-now-pay-later/#klarna-inquiries-returns"
+											href="https://poocommerce.com/document/woopayments/payment-methods/buy-now-pay-later/#klarna-inquiries-returns"
 											target="_blank"
 											rel="noopener noreferrer"
 										>
 											{ __(
 												'Learn more',
-												'woocommerce-payments'
+												'poocommerce-payments'
 											) }
 										</Button>
 									</div>
@@ -532,13 +532,13 @@ export const NotDefendableInquirySteps: React.FC< Props > = ( {
 											? sprintf(
 													__(
 														'<strong>The outcome of this dispute will be determined by %1$s.</strong> WooPayments has no influence over the decision and is not liable for any chargebacks.',
-														'woocommerce-payments'
+														'poocommerce-payments'
 													),
 													bankName
 											  )
 											: __(
 													"<strong>The outcome of this dispute will be determined by the cardholder's bank.</strong> WooPayments has no influence over the decision and is not liable for any chargebacks.",
-													'woocommerce-payments'
+													'poocommerce-payments'
 											  ),
 										{
 											strong: <strong />,

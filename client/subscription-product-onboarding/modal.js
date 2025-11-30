@@ -38,7 +38,7 @@ const FinishSetupButton = () => {
 			} }
 			__next40pxDefaultSize
 		>
-			{ __( 'Finish setup', 'woocommerce-payments' ) }
+			{ __( 'Finish setup', 'poocommerce-payments' ) }
 		</Button>
 	);
 };
@@ -66,7 +66,7 @@ const SubscriptionProductOnboardingModalContent = ( {
 			<p className="wcpay-subscription-product-modal__title">
 				{ __(
 					'One more step to accept recurring payments',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				) }
 			</p>
 			<p>
@@ -74,7 +74,7 @@ const SubscriptionProductOnboardingModalContent = ( {
 					/* translators: %s: WooPayments */
 					__(
 						'Verify your business details with %s to accept recurring payments for this subscription product.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					'WooPayments'
 				) }
@@ -83,7 +83,7 @@ const SubscriptionProductOnboardingModalContent = ( {
 				{ createInterpolateElement(
 					__(
 						'By clicking "Finish setup", you agree to the <a>Terms of Service</a>',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					{
 						// @ts-expect-error: children is provided when interpolating the component
@@ -97,7 +97,7 @@ const SubscriptionProductOnboardingModalContent = ( {
 					<p>
 						{ __(
 							'We’ve saved your product as a draft.',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 					</p>
 				</div>

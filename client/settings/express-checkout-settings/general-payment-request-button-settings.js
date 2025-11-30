@@ -49,7 +49,7 @@ const buttonSizeOptions = [
 		label: makeButtonSizeText(
 			__(
 				'Small {{helpText}}(40 px){{/helpText}}',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			)
 		),
 		value: 'small',
@@ -58,7 +58,7 @@ const buttonSizeOptions = [
 		label: makeButtonSizeText(
 			__(
 				'Medium {{helpText}}(48 px){{/helpText}}',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			)
 		),
 		value: 'medium',
@@ -67,7 +67,7 @@ const buttonSizeOptions = [
 		label: makeButtonSizeText(
 			__(
 				'Large {{helpText}}(55 px){{/helpText}}',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			)
 		),
 		value: 'large',
@@ -76,46 +76,46 @@ const buttonSizeOptions = [
 
 const buttonActionOptions = [
 	{
-		label: __( 'Only icon', 'woocommerce-payments' ),
+		label: __( 'Only icon', 'poocommerce-payments' ),
 		value: 'default',
 	},
 	{
-		label: __( 'Buy with', 'woocommerce-payments' ),
+		label: __( 'Buy with', 'poocommerce-payments' ),
 		value: 'buy',
 	},
 	{
-		label: __( 'Donate with', 'woocommerce-payments' ),
+		label: __( 'Donate with', 'poocommerce-payments' ),
 		value: 'donate',
 	},
 	{
-		label: __( 'Book with', 'woocommerce-payments' ),
+		label: __( 'Book with', 'poocommerce-payments' ),
 		value: 'book',
 	},
 ];
 
 const buttonThemeOptions = [
 	{
-		label: __( 'Dark', 'woocommerce-payments' ),
+		label: __( 'Dark', 'poocommerce-payments' ),
 		value: 'dark',
 		description: __(
 			'Recommended for white or light-colored backgrounds with high contrast.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 	},
 	{
-		label: __( 'Light', 'woocommerce-payments' ),
+		label: __( 'Light', 'poocommerce-payments' ),
 		value: 'light',
 		description: __(
 			'Recommended for dark or colored backgrounds with high contrast.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 	},
 	{
-		label: __( 'Outline', 'woocommerce-payments' ),
+		label: __( 'Outline', 'poocommerce-payments' ),
 		value: 'light-outline',
 		description: __(
 			'Recommended for white or light-colored backgrounds with insufficient contrast.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 	},
 ];
@@ -141,8 +141,8 @@ const GeneralPaymentRequestButtonSettings = ( { type } ) => {
 
 	const otherButtons =
 		type === 'woopay'
-			? __( 'Apple Pay / Google Pay buttons', 'woocommerce-payments' )
-			: __( 'WooPay button', 'woocommerce-payments' );
+			? __( 'Apple Pay / Google Pay buttons', 'poocommerce-payments' )
+			: __( 'WooPay button', 'poocommerce-payments' );
 
 	const showWarning =
 		isWooPayEnabled &&
@@ -162,7 +162,7 @@ const GeneralPaymentRequestButtonSettings = ( { type } ) => {
 							/* translators: %s type of button to which the settings will be applied */
 							__(
 								'These settings will also apply to the %s on your store.',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							otherButtons
 						) }
@@ -180,10 +180,10 @@ const GeneralPaymentRequestButtonSettings = ( { type } ) => {
 			) }
 			<SelectControl
 				className="payment-method-settings__cta-selection"
-				label={ __( 'Call to action', 'woocommerce-payments' ) }
+				label={ __( 'Call to action', 'poocommerce-payments' ) }
 				help={ __(
 					'Select a button label that fits best with the flow of purchase or payment experience on your store.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				) }
 				value={ buttonType }
 				options={ buttonActionOptions }
@@ -192,23 +192,23 @@ const GeneralPaymentRequestButtonSettings = ( { type } ) => {
 				__next40pxDefaultSize
 			/>
 			<RadioControl
-				label={ __( 'Button size', 'woocommerce-payments' ) }
+				label={ __( 'Button size', 'poocommerce-payments' ) }
 				selected={ size }
 				options={ buttonSizeOptions }
 				onChange={ setSize }
 			/>
 			<RadioControl
-				label={ __( 'Theme', 'woocommerce-payments' ) }
+				label={ __( 'Theme', 'poocommerce-payments' ) }
 				selected={ theme }
 				options={ buttonThemeOptions }
 				onChange={ setTheme }
 			/>
 			<BaseControl
 				id="wcpay-payment-request-settings-border-radius"
-				label={ __( 'Border radius', 'woocommerce-payments' ) }
+				label={ __( 'Border radius', 'poocommerce-payments' ) }
 				help={ __(
 					'Controls the corner roundness of express payment buttons.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				) }
 				__next40pxDefaultSize
 				__nextHasNoMarginBottom
@@ -218,7 +218,7 @@ const GeneralPaymentRequestButtonSettings = ( { type } ) => {
 						label={ __(
 							/* translators: Label for a number input, hidden from view. Intended for accessibility. */
 							'Border radius, number input',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 						id="wcpay-payment-request-settings-border-radius"
 						hideLabelFromVision
@@ -245,7 +245,7 @@ const GeneralPaymentRequestButtonSettings = ( { type } ) => {
 						label={ __(
 							/* translators: Label for an input slider, hidden from view. Intended for accessibility. */
 							'Border radius, slider',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 						hideLabelFromVision
 						className="payment-method-settings__border-radius__slider"
@@ -261,14 +261,14 @@ const GeneralPaymentRequestButtonSettings = ( { type } ) => {
 			</BaseControl>
 			{ /* eslint-disable-next-line @wordpress/no-base-control-with-label-without-id */ }
 			<BaseControl
-				label={ __( 'Preview', 'woocommerce-payments' ) }
+				label={ __( 'Preview', 'poocommerce-payments' ) }
 				__next40pxDefaultSize
 				__nextHasNoMarginBottom
 			>
 				<div className="payment-method-settings__option-help-text">
 					{ __(
 						'See the preview of enabled express payment buttons.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 				</div>
 				<Elements stripe={ stripePromise }>
