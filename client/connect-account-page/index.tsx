@@ -6,7 +6,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import apiFetch from '@wordpress/api-fetch';
 import { addQueryArgs } from '@wordpress/url';
-import { Loader } from '@woocommerce/onboarding';
+import { Loader } from '@poocommerce/onboarding';
 import { __ } from '@wordpress/i18n';
 import {
 	Button,
@@ -64,7 +64,7 @@ const TestDriveLoader: React.FunctionComponent< {
 			</Loader.Illustration>
 
 			<Loader.Title>
-				{ __( 'Finishing payments setup', 'woocommerce-payments' ) }
+				{ __( 'Finishing payments setup', 'poocommerce-payments' ) }
 			</Loader.Title>
 			<Loader.ProgressBar progress={ progress ?? 0 } />
 			<Loader.Sequence interval={ 0 }>
@@ -436,7 +436,7 @@ const ConnectAccountPage: React.FC = () => {
 		setErrorMessage(
 			__(
 				'An error occurred while setting up your sandbox account. Please try again!',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			)
 		);
 	}

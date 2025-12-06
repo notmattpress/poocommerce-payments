@@ -5,7 +5,7 @@
  */
 import React from 'react';
 import { __ } from '@wordpress/i18n';
-import { CollapsibleList, TaskItem } from '@woocommerce/experimental';
+import { CollapsibleList, TaskItem } from '@poocommerce/experimental';
 import { useDispatch } from '@wordpress/data';
 import { useCallback, useEffect, useState } from '@wordpress/element';
 
@@ -71,7 +71,7 @@ const TaskList = ( { overviewTasksVisibility, tasks } ) => {
 		createNotice( 'success', noticeMessage, {
 			actions: [
 				{
-					label: __( 'Undo', 'woocommerce-payments' ),
+					label: __( 'Undo', 'poocommerce-payments' ),
 					onClick: () =>
 						undoDismissTask( key, dismissedTasks, optionName ),
 				},
@@ -90,18 +90,18 @@ const TaskList = ( { overviewTasksVisibility, tasks } ) => {
 						dismissedTasks: dismissedTodoTasks,
 						noticeMessage: __(
 							'Task dismissed',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						),
-						optionName: 'woocommerce_dismissed_todo_tasks',
+						optionName: 'poocommerce_dismissed_todo_tasks',
 				  }
 				: {
 						task,
 						dismissedTasks: deletedTodoTasks,
 						noticeMessage: __(
 							'Task deleted',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						),
-						optionName: 'woocommerce_deleted_todo_tasks',
+						optionName: 'poocommerce_deleted_todo_tasks',
 				  };
 		dismissSelectedTask( params );
 	};
@@ -117,7 +117,7 @@ const TaskList = ( { overviewTasksVisibility, tasks } ) => {
 		setVisibleTasks( getVisibleTasks() );
 
 		saveOption(
-			'woocommerce_remind_me_later_todo_tasks',
+			'poocommerce_remind_me_later_todo_tasks',
 			updatedRemindMeLaterTasks
 		);
 	};
@@ -127,18 +127,18 @@ const TaskList = ( { overviewTasksVisibility, tasks } ) => {
 		remindMeLaterTodoTasks[ key ] = dismissTime;
 		setVisibleTasks( getVisibleTasks() );
 
-		saveOption( 'woocommerce_remind_me_later_todo_tasks', {
+		saveOption( 'poocommerce_remind_me_later_todo_tasks', {
 			...remindMeLaterTodoTasks,
 			[ key ]: dismissTime,
 		} );
 
 		createNotice(
 			'success',
-			__( 'Task postponed until tomorrow', 'woocommerce-payments' ),
+			__( 'Task postponed until tomorrow', 'poocommerce-payments' ),
 			{
 				actions: [
 					{
-						label: __( 'Undo', 'woocommerce-payments' ),
+						label: __( 'Undo', 'poocommerce-payments' ),
 						onClick: () => undoRemindTaskLater( key ),
 					},
 				],
@@ -158,8 +158,8 @@ const TaskList = ( { overviewTasksVisibility, tasks } ) => {
 			className={ 'wcpay-task-list' }
 			collapsed={ false }
 			show={ 5 }
-			collapseLabel={ __( 'Hide tasks', 'woocommerce-payments' ) }
-			expandLabel={ __( 'Show tasks', 'woocommerce-payments' ) }
+			collapseLabel={ __( 'Hide tasks', 'poocommerce-payments' ) }
+			expandLabel={ __( 'Show tasks', 'poocommerce-payments' ) }
 		>
 			{ visibleTasks.map( ( task ) => (
 				<TaskItem

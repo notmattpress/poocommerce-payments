@@ -6,7 +6,7 @@ import { capitalize, partial } from 'lodash';
 import moment from 'moment';
 import { dateI18n } from '@wordpress/date';
 import { NAMESPACE } from 'wcpay/data/constants';
-import { numberFormat } from '@woocommerce/number';
+import { numberFormat } from '@poocommerce/number';
 
 /**
  * Returns whether a value is an object.
@@ -174,7 +174,7 @@ export const getPaymentSettingsUrl = () => {
 	return getAdminUrl( {
 		page: 'wc-settings',
 		tab: 'checkout',
-		section: 'woocommerce_payments',
+		section: 'poocommerce_payments',
 	} );
 };
 
@@ -189,7 +189,7 @@ export const getPaymentMethodSettingsUrl = ( method ) => {
 	return getAdminUrl( {
 		page: 'wc-settings',
 		tab: 'checkout',
-		section: 'woocommerce_payments',
+		section: 'poocommerce_payments',
 		method,
 	} );
 };

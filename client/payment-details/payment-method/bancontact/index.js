@@ -75,21 +75,21 @@ const BancontactDetails = ( { charge = {}, isLoading } ) => {
 			<div className="payment-method-details__column">
 				<Detail
 					isLoading={ isLoading }
-					label={ __( 'Bank name', 'woocommerce-payments' ) }
+					label={ __( 'Bank name', 'poocommerce-payments' ) }
 				>
 					{ bankName }
 				</Detail>
 
 				<Detail
 					isLoading={ isLoading }
-					label={ __( 'BIC', 'woocommerce-payments' ) }
+					label={ __( 'BIC', 'poocommerce-payments' ) }
 				>
 					{ bic }
 				</Detail>
 
 				<Detail
 					isLoading={ isLoading }
-					label={ __( 'ID', 'woocommerce-payments' ) }
+					label={ __( 'ID', 'poocommerce-payments' ) }
 				>
 					{ id }
 				</Detail>
@@ -98,28 +98,28 @@ const BancontactDetails = ( { charge = {}, isLoading } ) => {
 			<div className="payment-method-details__column">
 				<Detail
 					isLoading={ isLoading }
-					label={ __( 'Verified name', 'woocommerce-payments' ) }
+					label={ __( 'Verified name', 'poocommerce-payments' ) }
 				>
 					{ verifiedName }
 				</Detail>
 
 				<Detail
 					isLoading={ isLoading }
-					label={ __( 'Owner', 'woocommerce-payments' ) }
+					label={ __( 'Owner', 'poocommerce-payments' ) }
 				>
 					{ name }
 				</Detail>
 
 				<Detail
 					isLoading={ isLoading }
-					label={ __( 'Owner email', 'woocommerce-payments' ) }
+					label={ __( 'Owner email', 'poocommerce-payments' ) }
 				>
 					{ email }
 				</Detail>
 
 				<Detail
 					isLoading={ isLoading }
-					label={ __( 'Address', 'woocommerce-payments' ) }
+					label={ __( 'Address', 'poocommerce-payments' ) }
 				>
 					<span
 						dangerouslySetInnerHTML={ {
