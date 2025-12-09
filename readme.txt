@@ -87,11 +87,15 @@ You can read our Terms of Service and other policies [here](https://woocommerce.
 
 == Changelog ==
 
-= 10.3.0 - 2025-11-26 =
+= 10.3.0 - 2025-12-09 =
 * Add - Add backend support for additional dispute evidence types (event, booking, other) behind feature flag.
+* Add - Adding ability to support payment method promotional campaigns (spotlight and badge treatments).
 * Add - Allow non-reusable payment methods to be used for the manually renewed subscriptions.
 * Add - chore: add amazon pay feature flag.
 * Add - Handling of the Visa Compliance disputes with attention to a specific dispute fee.
+* Fix - Comment: Update links to the WooPayments fees documentation.
+* Fix - fix: ensuring that the Express Checkout Buttons show the correct amounts for currencies formatted in unusual ways (e.g.: USD with zero decimals)
+* Fix - fix: payment method logos compatibility with WooCommerce Blocks in WC>=10.4
 * Fix - fix: text color of payment method icons on checkout page when a dark background is used
 * Fix - Fix deprecation warning about usage of `parent` in callables.
 * Fix - Fix styling of the WooPay button to make sure that the spinner is visible when loading.
@@ -99,6 +103,8 @@ You can read our Terms of Service and other policies [here](https://woocommerce.
 * Fix - Refunds and fees should not be tracked for canceled authorizations
 * Fix - WooPay component spacing issues on blocks and classic checkout.
 * Update - Change payout texts for  New Account Waiting Period to be consistent with new Account Details
+* Update - chore: update account fees docs URL
+* Update - Update “WooPayments” to “WooCommerce” mobile application in the Card Readers page.
 
 = 10.2.0 - 2025-11-06 =
 * Add - Add WooCommerce Tool to delete test orders.
