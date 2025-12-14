@@ -2,13 +2,13 @@
 /**
  * Notify merchant that Multi-Currency is available.
  *
- * @package WooCommerce\Payments\MultiCurrency
+ * @package PooCommerce\Payments\MultiCurrency
  */
 
 namespace WCPay\MultiCurrency\Notes;
 
-use Automattic\WooCommerce\Admin\Notes\Note;
-use Automattic\WooCommerce\Admin\Notes\NoteTraits;
+use Automattic\PooCommerce\Admin\Notes\Note;
+use Automattic\PooCommerce\Admin\Notes\NoteTraits;
 use WCPay\MultiCurrency\Interfaces\MultiCurrencyAccountInterface;
 
 defined( 'ABSPATH' ) || exit;
@@ -43,15 +43,15 @@ class NoteMultiCurrencyAvailable {
 	public static function get_note() {
 		$note = new Note();
 
-		$note->set_title( __( 'Sell worldwide in multiple currencies', 'woocommerce-payments' ) );
-		$note->set_content( __( 'Boost your international sales by allowing your customers to shop and pay in their local currency.', 'woocommerce-payments' ) );
+		$note->set_title( __( 'Sell worldwide in multiple currencies', 'poocommerce-payments' ) );
+		$note->set_content( __( 'Boost your international sales by allowing your customers to shop and pay in their local currency.', 'poocommerce-payments' ) );
 		$note->set_content_data( (object) [] );
 		$note->set_type( Note::E_WC_ADMIN_NOTE_INFORMATIONAL );
 		$note->set_name( self::NOTE_NAME );
-		$note->set_source( 'woocommerce-payments' );
+		$note->set_source( 'poocommerce-payments' );
 		$note->add_action(
 			self::NOTE_NAME,
-			__( 'Set up now', 'woocommerce-payments' ),
+			__( 'Set up now', 'poocommerce-payments' ),
 			self::NOTE_SETUP_URL,
 			'unactioned',
 			true

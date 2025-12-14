@@ -33,7 +33,7 @@ const EnabledCurrenciesListItem = ( {
 			: Number.parseFloat( rate ).toFixed( 2 );
 
 		if ( isDefault ) {
-			return __( 'Default currency', 'woocommerce-payments' );
+			return __( 'Default currency', 'poocommerce-payments' );
 		}
 
 		return isDefaultZeroDecimal
@@ -72,14 +72,14 @@ const EnabledCurrenciesListItem = ( {
 							__(
 								/* translators: %1: Currency to be edited. */
 								'Edit %1$s',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							name
 						) }
 						className="enabled-currency__action edit"
 						__next40pxDefaultSize
 					>
-						{ __( 'manage', 'woocommerce-payments' ) }
+						{ __( 'manage', 'poocommerce-payments' ) }
 					</Button>
 				) }
 				{ onDeleteClick && (

@@ -2,7 +2,7 @@
 /**
  * WC_Payments_API_Client class
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -16,7 +16,7 @@ use WCPay\Exceptions\Connection_Exception;
 use WCPay\Fraud_Prevention\Fraud_Prevention_Service;
 use WCPay\Fraud_Prevention\Buyer_Fingerprinting_Service;
 use WCPay\Logger;
-use Automattic\WooCommerce\Admin\API\Reports\Customers\DataStore;
+use Automattic\PooCommerce\Admin\API\Reports\Customers\DataStore;
 use WCPay\Constants\Currency_Code;
 use WCPay\Database_Cache;
 use WCPay\Core\Server\Request;
@@ -25,7 +25,7 @@ use WCPay\Exceptions\Cannot_Combine_Currencies_Exception;
 use WCPay\MultiCurrency\Interfaces\MultiCurrencyApiClientInterface;
 
 /**
- * Communicates with WooCommerce Payments API.
+ * Communicates with PooCommerce Payments API.
  */
 class WC_Payments_API_Client implements MultiCurrencyApiClientInterface {
 
@@ -242,7 +242,7 @@ class WC_Payments_API_Client implements MultiCurrencyApiClientInterface {
 	public function get_intent( $intent_id ) {
 		if ( ! preg_match( '/^\w+$/', $intent_id ) ) {
 			throw new API_Exception(
-				__( 'Route param validation failed.', 'woocommerce-payments' ),
+				__( 'Route param validation failed.', 'poocommerce-payments' ),
 				'wcpay_route_validation_failure',
 				400
 			);
@@ -394,9 +394,9 @@ class WC_Payments_API_Client implements MultiCurrencyApiClientInterface {
 
 		if ( $order ) {
 			if ( function_exists( 'wcs_is_subscription' ) && wcs_is_subscription( $order ) ) {
-				$prefix = __( 'Subscription #', 'woocommerce-payments' );
+				$prefix = __( 'Subscription #', 'poocommerce-payments' );
 			} else {
-				$prefix = __( 'Order #', 'woocommerce-payments' );
+				$prefix = __( 'Order #', 'poocommerce-payments' );
 			}
 
 			array_unshift(
@@ -535,7 +535,7 @@ class WC_Payments_API_Client implements MultiCurrencyApiClientInterface {
 			Logger::error( 'HTTP_REQUEST_ERROR ' . var_export( $response, true ) ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_var_export
 			$message = sprintf(
 			// translators: %1: original error message.
-				__( 'Http request failed. Reason: %1$s', 'woocommerce-payments' ),
+				__( 'Http request failed. Reason: %1$s', 'poocommerce-payments' ),
 				$response->get_error_message()
 			);
 			throw new API_Exception( $message, 'wcpay_http_request_failed', 500 );
@@ -563,7 +563,7 @@ class WC_Payments_API_Client implements MultiCurrencyApiClientInterface {
 	public function get_transaction( $transaction_id ) {
 		if ( ! preg_match( '/^\w+$/', $transaction_id ) ) {
 			throw new API_Exception(
-				__( 'Route param validation failed.', 'woocommerce-payments' ),
+				__( 'Route param validation failed.', 'poocommerce-payments' ),
 				'wcpay_route_validation_failure',
 				400
 			);
@@ -599,9 +599,9 @@ class WC_Payments_API_Client implements MultiCurrencyApiClientInterface {
 
 		if ( $order ) {
 			if ( function_exists( 'wcs_is_subscription' ) && wcs_is_subscription( $order ) ) {
-				$prefix = __( 'Subscription #', 'woocommerce-payments' );
+				$prefix = __( 'Subscription #', 'poocommerce-payments' );
 			} else {
-				$prefix = __( 'Order #', 'woocommerce-payments' );
+				$prefix = __( 'Order #', 'poocommerce-payments' );
 			}
 			array_unshift( $results, [ 'label' => $prefix . $search_term ] );
 		}
@@ -642,7 +642,7 @@ class WC_Payments_API_Client implements MultiCurrencyApiClientInterface {
 	public function get_dispute( $dispute_id ) {
 		if ( ! preg_match( '/^\w+$/', $dispute_id ) ) {
 			throw new API_Exception(
-				__( 'Route param validation failed.', 'woocommerce-payments' ),
+				__( 'Route param validation failed.', 'poocommerce-payments' ),
 				'wcpay_route_validation_failure',
 				400
 			);
@@ -672,7 +672,7 @@ class WC_Payments_API_Client implements MultiCurrencyApiClientInterface {
 	public function update_dispute( $dispute_id, $evidence, $submit, $metadata ) {
 		if ( ! preg_match( '/^\w+$/', $dispute_id ) ) {
 			throw new API_Exception(
-				__( 'Route param validation failed.', 'woocommerce-payments' ),
+				__( 'Route param validation failed.', 'poocommerce-payments' ),
 				'wcpay_route_validation_failure',
 				400
 			);
@@ -725,7 +725,7 @@ class WC_Payments_API_Client implements MultiCurrencyApiClientInterface {
 	public function close_dispute( $dispute_id ) {
 		if ( ! preg_match( '/^\w+$/', $dispute_id ) ) {
 			throw new API_Exception(
-				__( 'Route param validation failed.', 'woocommerce-payments' ),
+				__( 'Route param validation failed.', 'poocommerce-payments' ),
 				'wcpay_route_validation_failure',
 				400
 			);
@@ -808,7 +808,7 @@ class WC_Payments_API_Client implements MultiCurrencyApiClientInterface {
 		if ( $file_error ) {
 			// TODO - Add better error message by specifiying which limit is reached (host or Stripe).
 			throw new API_Exception(
-				__( 'Max file size exceeded.', 'woocommerce-payments' ),
+				__( 'Max file size exceeded.', 'poocommerce-payments' ),
 				'wcpay_evidence_file_max_size',
 				400
 			);
@@ -851,7 +851,7 @@ class WC_Payments_API_Client implements MultiCurrencyApiClientInterface {
 		try {
 			if ( ! preg_match( '/^\w+$/', $file_id ) ) {
 				throw new API_Exception(
-					__( 'Route param validation failed.', 'woocommerce-payments' ),
+					__( 'Route param validation failed.', 'poocommerce-payments' ),
 					'wcpay_route_validation_failure',
 					400
 				);
@@ -876,7 +876,7 @@ class WC_Payments_API_Client implements MultiCurrencyApiClientInterface {
 	public function get_file( string $file_id, bool $as_account = true ): array {
 		if ( ! preg_match( '/^\w+$/', $file_id ) ) {
 			throw new API_Exception(
-				__( 'Route param validation failed.', 'woocommerce-payments' ),
+				__( 'Route param validation failed.', 'poocommerce-payments' ),
 				'wcpay_route_validation_failure',
 				400
 			);
@@ -909,7 +909,7 @@ class WC_Payments_API_Client implements MultiCurrencyApiClientInterface {
 	public function get_timeline( $id ) {
 		if ( ! preg_match( '/^\w+$/', $id ) ) {
 			throw new API_Exception(
-				__( 'Route param validation failed.', 'woocommerce-payments' ),
+				__( 'Route param validation failed.', 'poocommerce-payments' ),
 				'wcpay_route_validation_failure',
 				400
 			);
@@ -977,7 +977,7 @@ class WC_Payments_API_Client implements MultiCurrencyApiClientInterface {
 	public function get_currency_rates( string $currency_from, $currencies_to = null ): array {
 		if ( empty( $currency_from ) ) {
 			throw new API_Exception(
-				__( 'Currency From parameter is required', 'woocommerce-payments' ),
+				__( 'Currency From parameter is required', 'poocommerce-payments' ),
 				'wcpay_mandatory_currency_from_missing',
 				400
 			);
@@ -1205,7 +1205,7 @@ class WC_Payments_API_Client implements MultiCurrencyApiClientInterface {
 
 		if ( ! is_array( $fields_data ) ) {
 			throw new API_Exception(
-				__( 'Onboarding field data could not be retrieved', 'woocommerce-payments' ),
+				__( 'Onboarding field data could not be retrieved', 'poocommerce-payments' ),
 				'wcpay_onboarding_fields_data_error',
 				400
 			);
@@ -1249,7 +1249,7 @@ class WC_Payments_API_Client implements MultiCurrencyApiClientInterface {
 	public function get_link( array $args ) {
 		if ( ! isset( $args['type'] ) && ! in_array( $args['type'], [ 'login_link', 'complete_kyc_link' ], true ) ) {
 			throw new API_Exception(
-				__( 'Link type is required', 'woocommerce-payments' ),
+				__( 'Link type is required', 'poocommerce-payments' ),
 				'wcpay_unknown_link_type',
 				400
 			);
@@ -1293,7 +1293,7 @@ class WC_Payments_API_Client implements MultiCurrencyApiClientInterface {
 	public function update_customer( $customer_id, $customer_data = [] ) {
 		if ( null === $customer_id || '' === trim( $customer_id ) ) {
 			throw new API_Exception(
-				__( 'Customer ID is required', 'woocommerce-payments' ),
+				__( 'Customer ID is required', 'poocommerce-payments' ),
 				'wcpay_mandatory_customer_id_missing',
 				400
 			);
@@ -1301,7 +1301,7 @@ class WC_Payments_API_Client implements MultiCurrencyApiClientInterface {
 
 		if ( ! preg_match( '/^\w+$/', $customer_id ) ) {
 			throw new API_Exception(
-				__( 'Route param validation failed.', 'woocommerce-payments' ),
+				__( 'Route param validation failed.', 'poocommerce-payments' ),
 				'wcpay_route_validation_failure',
 				400
 			);
@@ -1361,7 +1361,7 @@ class WC_Payments_API_Client implements MultiCurrencyApiClientInterface {
 	public function update_product( string $product_id, array $product_data = [] ): array {
 		if ( null === $product_id || '' === trim( $product_id ) ) {
 			throw new API_Exception(
-				__( 'Product ID is required', 'woocommerce-payments' ),
+				__( 'Product ID is required', 'poocommerce-payments' ),
 				'wcpay_mandatory_product_id_missing',
 				400
 			);
@@ -1369,7 +1369,7 @@ class WC_Payments_API_Client implements MultiCurrencyApiClientInterface {
 
 		if ( ! preg_match( '/^\w+$/', $product_id ) ) {
 			throw new API_Exception(
-				__( 'Route param validation failed.', 'woocommerce-payments' ),
+				__( 'Route param validation failed.', 'poocommerce-payments' ),
 				'wcpay_route_validation_failure',
 				400
 			);
@@ -1393,7 +1393,7 @@ class WC_Payments_API_Client implements MultiCurrencyApiClientInterface {
 	public function update_price( string $price_id, array $price_data = [] ) {
 		if ( null === $price_id || '' === trim( $price_id ) ) {
 			throw new API_Exception(
-				__( 'Price ID is required', 'woocommerce-payments' ),
+				__( 'Price ID is required', 'poocommerce-payments' ),
 				'wcpay_mandatory_price_id_missing',
 				400
 			);
@@ -1401,7 +1401,7 @@ class WC_Payments_API_Client implements MultiCurrencyApiClientInterface {
 
 		if ( ! preg_match( '/^\w+$/', $price_id ) ) {
 			throw new API_Exception(
-				__( 'Route param validation failed.', 'woocommerce-payments' ),
+				__( 'Route param validation failed.', 'poocommerce-payments' ),
 				'wcpay_route_validation_failure',
 				400
 			);
@@ -1426,7 +1426,7 @@ class WC_Payments_API_Client implements MultiCurrencyApiClientInterface {
 	public function get_invoice( string $invoice_id ) {
 		if ( ! preg_match( '/^\w+$/', $invoice_id ) ) {
 			throw new API_Exception(
-				__( 'Route param validation failed.', 'woocommerce-payments' ),
+				__( 'Route param validation failed.', 'poocommerce-payments' ),
 				'wcpay_route_validation_failure',
 				400
 			);
@@ -1453,7 +1453,7 @@ class WC_Payments_API_Client implements MultiCurrencyApiClientInterface {
 	public function charge_invoice( string $invoice_id, array $data = [] ) {
 		if ( ! preg_match( '/^\w+$/', $invoice_id ) ) {
 			throw new API_Exception(
-				__( 'Route param validation failed.', 'woocommerce-payments' ),
+				__( 'Route param validation failed.', 'poocommerce-payments' ),
 				'wcpay_route_validation_failure',
 				400
 			);
@@ -1478,7 +1478,7 @@ class WC_Payments_API_Client implements MultiCurrencyApiClientInterface {
 	public function update_invoice( string $invoice_id, array $data = [] ) {
 		if ( ! preg_match( '/^\w+$/', $invoice_id ) ) {
 			throw new API_Exception(
-				__( 'Route param validation failed.', 'woocommerce-payments' ),
+				__( 'Route param validation failed.', 'poocommerce-payments' ),
 				'wcpay_route_validation_failure',
 				400
 			);
@@ -1503,7 +1503,7 @@ class WC_Payments_API_Client implements MultiCurrencyApiClientInterface {
 	public function update_charge( string $charge_id, array $data = [] ) {
 		if ( ! preg_match( '/^\w+$/', $charge_id ) ) {
 			throw new API_Exception(
-				__( 'Route param validation failed.', 'woocommerce-payments' ),
+				__( 'Route param validation failed.', 'poocommerce-payments' ),
 				'wcpay_route_validation_failure',
 				400
 			);
@@ -1527,7 +1527,7 @@ class WC_Payments_API_Client implements MultiCurrencyApiClientInterface {
 	public function get_charge( string $charge_id ) {
 		if ( ! preg_match( '/^\w+$/', $charge_id ) ) {
 			throw new API_Exception(
-				__( 'Route param validation failed.', 'woocommerce-payments' ),
+				__( 'Route param validation failed.', 'poocommerce-payments' ),
 				'wcpay_route_validation_failure',
 				400
 			);
@@ -1552,7 +1552,7 @@ class WC_Payments_API_Client implements MultiCurrencyApiClientInterface {
 	public function update_transaction( string $transaction_id, array $data = [] ) {
 		if ( ! preg_match( '/^\w+$/', $transaction_id ) ) {
 			throw new API_Exception(
-				__( 'Route param validation failed.', 'woocommerce-payments' ),
+				__( 'Route param validation failed.', 'poocommerce-payments' ),
 				'wcpay_route_validation_failure',
 				400
 			);
@@ -1577,7 +1577,7 @@ class WC_Payments_API_Client implements MultiCurrencyApiClientInterface {
 	public function get_subscription( string $wcpay_subscription_id ) {
 		if ( ! preg_match( '/^\w+$/', $wcpay_subscription_id ) ) {
 			throw new API_Exception(
-				__( 'Route param validation failed.', 'woocommerce-payments' ),
+				__( 'Route param validation failed.', 'poocommerce-payments' ),
 				'wcpay_route_validation_failure',
 				400
 			);
@@ -1620,7 +1620,7 @@ class WC_Payments_API_Client implements MultiCurrencyApiClientInterface {
 	public function update_subscription( $wcpay_subscription_id, $data ) {
 		if ( ! preg_match( '/^\w+$/', $wcpay_subscription_id ) ) {
 			throw new API_Exception(
-				__( 'Route param validation failed.', 'woocommerce-payments' ),
+				__( 'Route param validation failed.', 'poocommerce-payments' ),
 				'wcpay_route_validation_failure',
 				400
 			);
@@ -1645,7 +1645,7 @@ class WC_Payments_API_Client implements MultiCurrencyApiClientInterface {
 	public function cancel_subscription( string $wcpay_subscription_id ) {
 		if ( ! preg_match( '/^\w+$/', $wcpay_subscription_id ) ) {
 			throw new API_Exception(
-				__( 'Route param validation failed.', 'woocommerce-payments' ),
+				__( 'Route param validation failed.', 'poocommerce-payments' ),
 				'wcpay_route_validation_failure',
 				400
 			);
@@ -1671,7 +1671,7 @@ class WC_Payments_API_Client implements MultiCurrencyApiClientInterface {
 	public function update_subscription_item( $wcpay_subscription_item_id, $data ) {
 		if ( ! preg_match( '/^\w+$/', $wcpay_subscription_item_id ) ) {
 			throw new API_Exception(
-				__( 'Route param validation failed.', 'woocommerce-payments' ),
+				__( 'Route param validation failed.', 'poocommerce-payments' ),
 				'wcpay_route_validation_failure',
 				400
 			);
@@ -1696,7 +1696,7 @@ class WC_Payments_API_Client implements MultiCurrencyApiClientInterface {
 	public function get_payment_method( $payment_method_id ) {
 		if ( ! preg_match( '/^\w+$/', $payment_method_id ) ) {
 			throw new API_Exception(
-				__( 'Route param validation failed.', 'woocommerce-payments' ),
+				__( 'Route param validation failed.', 'poocommerce-payments' ),
 				'wcpay_route_validation_failure',
 				400
 			);
@@ -1722,7 +1722,7 @@ class WC_Payments_API_Client implements MultiCurrencyApiClientInterface {
 	public function update_payment_method( $payment_method_id, $payment_method_data = [] ) {
 		if ( ! preg_match( '/^\w+$/', $payment_method_id ) ) {
 			throw new API_Exception(
-				__( 'Route param validation failed.', 'woocommerce-payments' ),
+				__( 'Route param validation failed.', 'poocommerce-payments' ),
 				'wcpay_route_validation_failure',
 				400
 			);
@@ -1749,7 +1749,7 @@ class WC_Payments_API_Client implements MultiCurrencyApiClientInterface {
 	public function get_payment_methods( $customer_id, $type, $limit = 100 ) {
 		if ( ! preg_match( '/^\w+$/', $customer_id ) ) {
 			throw new API_Exception(
-				__( 'Route param validation failed.', 'woocommerce-payments' ),
+				__( 'Route param validation failed.', 'poocommerce-payments' ),
 				'wcpay_route_validation_failure',
 				400
 			);
@@ -1778,7 +1778,7 @@ class WC_Payments_API_Client implements MultiCurrencyApiClientInterface {
 	public function detach_payment_method( $payment_method_id ) {
 		if ( ! preg_match( '/^\w+$/', $payment_method_id ) ) {
 			throw new API_Exception(
-				__( 'Route param validation failed.', 'woocommerce-payments' ),
+				__( 'Route param validation failed.', 'poocommerce-payments' ),
 				'wcpay_route_validation_failure',
 				400
 			);
@@ -1914,7 +1914,7 @@ class WC_Payments_API_Client implements MultiCurrencyApiClientInterface {
 	public function create_terminal_location( $display_name, $address, $metadata = [] ) {
 		if ( ! isset( $address['country'], $address['line1'] ) ) {
 			throw new API_Exception(
-				__( 'Address country and line 1 are required.', 'woocommerce-payments' ),
+				__( 'Address country and line 1 are required.', 'poocommerce-payments' ),
 				'wcpay_invalid_terminal_location_request',
 				400
 			);
@@ -1957,7 +1957,7 @@ class WC_Payments_API_Client implements MultiCurrencyApiClientInterface {
 	public function update_terminal_location( $location_id, $display_name, $address ) {
 		if ( ! preg_match( '/^\w+$/', $location_id ) ) {
 			throw new API_Exception(
-				__( 'Route param validation failed.', 'woocommerce-payments' ),
+				__( 'Route param validation failed.', 'poocommerce-payments' ),
 				'wcpay_route_validation_failure',
 				400
 			);
@@ -1989,7 +1989,7 @@ class WC_Payments_API_Client implements MultiCurrencyApiClientInterface {
 	public function delete_terminal_location( $location_id ) {
 		if ( ! preg_match( '/^\w+$/', $location_id ) ) {
 			throw new API_Exception(
-				__( 'Route param validation failed.', 'woocommerce-payments' ),
+				__( 'Route param validation failed.', 'poocommerce-payments' ),
 				'wcpay_route_validation_failure',
 				400
 			);
@@ -2033,7 +2033,7 @@ class WC_Payments_API_Client implements MultiCurrencyApiClientInterface {
 	public function get_document( $document_id ) {
 		if ( ! preg_match( '/^[\w-]+$/', $document_id ) ) {
 			throw new API_Exception(
-				__( 'Route param validation failed.', 'woocommerce-payments' ),
+				__( 'Route param validation failed.', 'poocommerce-payments' ),
 				'wcpay_route_validation_failure',
 				400
 			);
@@ -2119,7 +2119,7 @@ class WC_Payments_API_Client implements MultiCurrencyApiClientInterface {
 	public function get_latest_fraud_outcome( $id ) {
 		if ( ! preg_match( '/^\w+$/', $id ) ) {
 			throw new API_Exception(
-				__( 'Route param validation failed.', 'woocommerce-payments' ),
+				__( 'Route param validation failed.', 'poocommerce-payments' ),
 				'wcpay_route_validation_failure',
 				400
 			);
@@ -2293,7 +2293,7 @@ class WC_Payments_API_Client implements MultiCurrencyApiClientInterface {
 		$created->setTimestamp( $intention_array['created'] );
 
 		// Metadata can be an empty stdClass object, so we need to check array type too.
-		// See https://github.com/Automattic/woocommerce-payments/pull/419/commits/c2c8438c3ed7be6d604435e059209fb87fb6d0c4.
+		// See https://github.com/Automattic/poocommerce-payments/pull/419/commits/c2c8438c3ed7be6d604435e059209fb87fb6d0c4.
 		$raw_metadata           = $intention_array['metadata'];
 		$metadata               = is_array( $raw_metadata ) && ! empty( $raw_metadata )
 			? $raw_metadata
@@ -2345,7 +2345,7 @@ class WC_Payments_API_Client implements MultiCurrencyApiClientInterface {
 		$created->setTimestamp( $intention_array['created'] );
 
 		// Metadata can be an empty stdClass object, so we need to check array type too.
-		// See https://github.com/Automattic/woocommerce-payments/pull/419/commits/c2c8438c3ed7be6d604435e059209fb87fb6d0c4.
+		// See https://github.com/Automattic/poocommerce-payments/pull/419/commits/c2c8438c3ed7be6d604435e059209fb87fb6d0c4.
 		$raw_metadata           = $intention_array['metadata'];
 		$metadata               = is_array( $raw_metadata ) && ! empty( $raw_metadata )
 			? $raw_metadata
@@ -2405,7 +2405,7 @@ class WC_Payments_API_Client implements MultiCurrencyApiClientInterface {
 	public function get_currency_minimum_recurring_amount( $currency ) {
 		if ( ! preg_match( '/^\w+$/', $currency ) ) {
 			throw new API_Exception(
-				__( 'Route param validation failed.', 'woocommerce-payments' ),
+				__( 'Route param validation failed.', 'poocommerce-payments' ),
 				'wcpay_route_validation_failure',
 				400
 			);
@@ -2439,7 +2439,7 @@ class WC_Payments_API_Client implements MultiCurrencyApiClientInterface {
 	public function get_authorization( string $payment_intent_id ) {
 		if ( ! preg_match( '/^\w+$/', $payment_intent_id ) ) {
 			throw new API_Exception(
-				__( 'Route param validation failed.', 'woocommerce-payments' ),
+				__( 'Route param validation failed.', 'poocommerce-payments' ),
 				'wcpay_route_validation_failure',
 				400
 			);
@@ -2510,7 +2510,7 @@ class WC_Payments_API_Client implements MultiCurrencyApiClientInterface {
 	}
 
 	/**
-	 * Send the request to the WooCommerce Payment API
+	 * Send the request to the PooCommerce Payment API
 	 *
 	 * @param array  $params           - Request parameters to send as either JSON or GET string. Defaults to test_mode=1 if either in dev or test mode, 0 otherwise.
 	 * @param string $api              - The API endpoint to call.
@@ -2563,7 +2563,7 @@ class WC_Payments_API_Client implements MultiCurrencyApiClientInterface {
 			$body                       = wp_json_encode( $params );
 			if ( ! $body ) {
 				throw new API_Exception(
-					__( 'Unable to encode body for request to WooCommerce Payments API.', 'woocommerce-payments' ),
+					__( 'Unable to encode body for request to PooCommerce Payments API.', 'poocommerce-payments' ),
 					'wcpay_client_unable_to_encode_json',
 					0
 				);
@@ -2680,7 +2680,7 @@ class WC_Payments_API_Client implements MultiCurrencyApiClientInterface {
 		$response_body_json = wp_remote_retrieve_body( $response );
 		$response_body      = json_decode( $response_body_json, true );
 		if ( null === $response_body && $this->is_json_response( $response ) ) {
-			$message = __( 'Unable to decode response from WooCommerce Payments API', 'woocommerce-payments' );
+			$message = __( 'Unable to decode response from PooCommerce Payments API', 'poocommerce-payments' );
 			Logger::error( $message );
 			throw new API_Exception(
 				$message,
@@ -2711,7 +2711,7 @@ class WC_Payments_API_Client implements MultiCurrencyApiClientInterface {
 				if ( 'amount_too_large' === $response_body_error_code && Intent_Status::REQUIRES_CAPTURE === $payment_intent_status ) {
 					throw new Amount_Too_Large_Exception(
 						// translators: This is an error API response.
-						__( 'Error: The payment could not be captured because the requested capture amount is greater than the amount you can capture for this charge.', 'woocommerce-payments' ),
+						__( 'Error: The payment could not be captured because the requested capture amount is greater than the amount you can capture for this charge.', 'poocommerce-payments' ),
 						$response_code
 					);
 				}
@@ -2748,12 +2748,12 @@ class WC_Payments_API_Client implements MultiCurrencyApiClientInterface {
 				$error_message = $response_body['message'];
 			} else {
 				$error_code    = 'wcpay_client_error_code_missing';
-				$error_message = __( 'Server error. Please try again.', 'woocommerce-payments' );
+				$error_message = __( 'Server error. Please try again.', 'poocommerce-payments' );
 			}
 
 			$message = sprintf(
 				// translators: This is an error API response.
-				_x( 'Error: %1$s', 'API error message to throw as Exception', 'woocommerce-payments' ),
+				_x( 'Error: %1$s', 'API error message to throw as Exception', 'poocommerce-payments' ),
 				$error_message
 			);
 

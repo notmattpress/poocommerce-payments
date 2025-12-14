@@ -32,7 +32,7 @@ const AccountStatusCard = ( props ) => {
 	return (
 		<Card isMedium>
 			<CardHeader
-				className={ 'woocommerce-account-status__header' }
+				className={ 'poocommerce-account-status__header' }
 				direction={ 'row' }
 				align={ 'center' }
 				justify={ 'left' }
@@ -47,12 +47,12 @@ const AccountStatusCard = ( props ) => {
 };
 
 const AccountStatusError = () => {
-	const cardTitle = __( 'Account details', 'woocommerce-payments' );
+	const cardTitle = __( 'Account details', 'poocommerce-payments' );
 	return (
 		<AccountStatusCard title={ cardTitle }>
 			{ __(
 				'Error determining the connection status.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			) }
 		</AccountStatusCard>
 	);
@@ -69,7 +69,7 @@ const AccountStatusDetails = ( props ) => {
 	const cardTitle = (
 		<>
 			<FlexItem className={ 'account-details' }>
-				{ __( 'Account details', 'woocommerce-payments' ) }
+				{ __( 'Account details', 'poocommerce-payments' ) }
 			</FlexItem>
 			<FlexBlock className={ 'account-status' }>
 				<StatusChip accountStatus={ accountStatus.status } />
@@ -88,7 +88,7 @@ const AccountStatusDetails = ( props ) => {
 						target={ '_blank' }
 						__next40pxDefaultSize
 					>
-						{ __( 'Edit details', 'woocommerce-payments' ) }
+						{ __( 'Edit details', 'poocommerce-payments' ) }
 					</Button>
 				</FlexItem>
 			) }
@@ -98,7 +98,7 @@ const AccountStatusDetails = ( props ) => {
 	return (
 		<AccountStatusCard title={ cardTitle }>
 			<AccountStatusItem
-				label={ __( 'Payments:', 'woocommerce-payments' ) }
+				label={ __( 'Payments:', 'poocommerce-payments' ) }
 			>
 				<PaymentsStatus
 					paymentsEnabled={ accountStatus.paymentsEnabled }
@@ -107,7 +107,7 @@ const AccountStatusDetails = ( props ) => {
 				/>
 			</AccountStatusItem>
 			<AccountStatusItem
-				label={ __( 'Payouts:', 'woocommerce-payments' ) }
+				label={ __( 'Payouts:', 'poocommerce-payments' ) }
 			>
 				<DepositsStatus
 					status={ accountStatus.deposits?.status }

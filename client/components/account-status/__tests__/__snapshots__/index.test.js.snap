@@ -162,7 +162,7 @@ exports[`AccountStatus does not render edit details when no account link 1`] = `
       class="emotion-2 emotion-1"
     >
       <div
-        class="components-flex components-card__header components-card-header woocommerce-account-status__header emotion-4 emotion-1"
+        class="components-flex components-card__header components-card-header poocommerce-account-status__header emotion-4 emotion-1"
         data-wp-c16t="true"
         data-wp-component="CardHeader"
       >
@@ -191,7 +191,7 @@ exports[`AccountStatus does not render edit details when no account link 1`] = `
         data-wp-component="CardBody"
       >
         <div
-          class="components-flex woocommerce-account-status-item emotion-12 emotion-1"
+          class="components-flex poocommerce-account-status-item emotion-12 emotion-1"
           data-wp-c16t="true"
           data-wp-component="Flex"
         >
@@ -228,7 +228,7 @@ exports[`AccountStatus does not render edit details when no account link 1`] = `
           </div>
         </div>
         <div
-          class="components-flex woocommerce-account-status-item emotion-12 emotion-1"
+          class="components-flex poocommerce-account-status-item emotion-12 emotion-1"
           data-wp-c16t="true"
           data-wp-component="Flex"
         >
@@ -468,7 +468,7 @@ exports[`AccountStatus renders account tools 1`] = `
       class="emotion-2 emotion-1"
     >
       <div
-        class="components-flex components-card__header components-card-header woocommerce-account-status__header emotion-4 emotion-1"
+        class="components-flex components-card__header components-card-header poocommerce-account-status__header emotion-4 emotion-1"
         data-wp-c16t="true"
         data-wp-component="CardHeader"
       >
@@ -510,7 +510,7 @@ exports[`AccountStatus renders account tools 1`] = `
         data-wp-component="CardBody"
       >
         <div
-          class="components-flex woocommerce-account-status-item emotion-14 emotion-1"
+          class="components-flex poocommerce-account-status-item emotion-14 emotion-1"
           data-wp-c16t="true"
           data-wp-component="Flex"
         >
@@ -547,7 +547,7 @@ exports[`AccountStatus renders account tools 1`] = `
           </div>
         </div>
         <div
-          class="components-flex woocommerce-account-status-item emotion-14 emotion-1"
+          class="components-flex poocommerce-account-status-item emotion-14 emotion-1"
           data-wp-c16t="true"
           data-wp-component="Flex"
         >
@@ -759,7 +759,7 @@ exports[`AccountStatus renders error status 1`] = `
       class="emotion-2 emotion-1"
     >
       <div
-        class="components-flex components-card__header components-card-header woocommerce-account-status__header emotion-4 emotion-1"
+        class="components-flex components-card__header components-card-header poocommerce-account-status__header emotion-4 emotion-1"
         data-wp-c16t="true"
         data-wp-component="CardHeader"
       >
@@ -951,7 +951,7 @@ exports[`AccountStatus renders normal status 1`] = `
       class="emotion-2 emotion-1"
     >
       <div
-        class="components-flex components-card__header components-card-header woocommerce-account-status__header emotion-4 emotion-1"
+        class="components-flex components-card__header components-card-header poocommerce-account-status__header emotion-4 emotion-1"
         data-wp-c16t="true"
         data-wp-component="CardHeader"
       >
@@ -993,7 +993,7 @@ exports[`AccountStatus renders normal status 1`] = `
         data-wp-component="CardBody"
       >
         <div
-          class="components-flex woocommerce-account-status-item emotion-14 emotion-1"
+          class="components-flex poocommerce-account-status-item emotion-14 emotion-1"
           data-wp-c16t="true"
           data-wp-component="Flex"
         >
@@ -1030,7 +1030,7 @@ exports[`AccountStatus renders normal status 1`] = `
           </div>
         </div>
         <div
-          class="components-flex woocommerce-account-status-item emotion-14 emotion-1"
+          class="components-flex poocommerce-account-status-item emotion-14 emotion-1"
           data-wp-c16t="true"
           data-wp-component="Flex"
         >

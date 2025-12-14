@@ -4,7 +4,7 @@
  *
  * This script loads QIT command class and checks Jetpack connection status.
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 if ( ! defined( 'WP_CLI' ) || ! WP_CLI ) {

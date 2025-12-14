@@ -6,8 +6,8 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import user from '@testing-library/user-event';
-import { getQuery, updateQueryString } from '@woocommerce/navigation';
-import { useUserPreferences } from '@woocommerce/data';
+import { getQuery, updateQueryString } from '@poocommerce/navigation';
+import { useUserPreferences } from '@poocommerce/data';
 
 /**
  * Internal dependencies
@@ -40,8 +40,8 @@ jest.mock( 'wcpay/data', () => ( {
 	} ) ),
 } ) );
 
-jest.mock( '@woocommerce/data', () => {
-	const actualModule = jest.requireActual( '@woocommerce/data' );
+jest.mock( '@poocommerce/data', () => {
+	const actualModule = jest.requireActual( '@poocommerce/data' );
 
 	return {
 		...actualModule,
@@ -238,7 +238,7 @@ describe( 'Authorizations list', () => {
 
 			( { container } = render( <Authorizations /> ) );
 			let tableSummaryIsLoading = container.querySelector(
-				'.woocommerce-table__summary.is-loading'
+				'.poocommerce-table__summary.is-loading'
 			);
 			expect( tableSummaryIsLoading ).toBeInTheDocument();
 
@@ -254,11 +254,11 @@ describe( 'Authorizations list', () => {
 
 			( { container } = render( <Authorizations /> ) );
 			tableSummaryIsLoading = container.querySelector(
-				'.woocommerce-table__summary.is-loading'
+				'.poocommerce-table__summary.is-loading'
 			);
 			expect( tableSummaryIsLoading ).not.toBeInTheDocument();
 			const tableSummary = container.querySelectorAll(
-				'.woocommerce-table__summary'
+				'.poocommerce-table__summary'
 			);
 
 			expect( tableSummary ).toHaveLength( 1 );

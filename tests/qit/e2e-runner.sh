@@ -44,7 +44,7 @@ compute_build_signature() {
         package-lock.json \
         composer.json \
         composer.lock \
-        woocommerce-payments.php \
+        poocommerce-payments.php \
         changelog.txt \
         readme.txt \
         SECURITY.md \
@@ -57,7 +57,7 @@ compute_build_signature() {
     return 0
 }
 
-BUILD_HASH_FILE="$WCP_ROOT/woocommerce-payments.zip.hash"
+BUILD_HASH_FILE="$WCP_ROOT/poocommerce-payments.zip.hash"
 
 CURRENT_SIG="$(compute_build_signature)"
 
@@ -66,7 +66,7 @@ if [[ -n "${WCP_FORCE_BUILD:-}" ]]; then
     echo "WCP_FORCE_BUILD set; forcing build of WooPayments plugin..."
     npm run build:release
     echo "$CURRENT_SIG" > "$BUILD_HASH_FILE"
-elif [[ -f "woocommerce-payments.zip" && -f "$BUILD_HASH_FILE" ]]; then
+elif [[ -f "poocommerce-payments.zip" && -f "$BUILD_HASH_FILE" ]]; then
     LAST_SIG="$(cat "$BUILD_HASH_FILE" 2>/dev/null || true)"
     if [[ "$CURRENT_SIG" == "$LAST_SIG" && -n "$CURRENT_SIG" ]]; then
         echo "No relevant changes detected since last build; skipping build."
@@ -106,11 +106,11 @@ fi
 # Run our QIT E2E tests (qit.yml automatically loaded from current directory)
 echo "Running QIT E2E tests with Jetpack functionality..."
 if [ ${#env_args[@]} -eq 0 ]; then
-    "$QIT_CMD" run:e2e woocommerce-payments ./e2e \
-        --source "$WCP_ROOT/woocommerce-payments.zip"
+    "$QIT_CMD" run:e2e poocommerce-payments ./e2e \
+        --source "$WCP_ROOT/poocommerce-payments.zip"
 else
-    "$QIT_CMD" run:e2e woocommerce-payments ./e2e \
-        --source "$WCP_ROOT/woocommerce-payments.zip" \
+    "$QIT_CMD" run:e2e poocommerce-payments ./e2e \
+        --source "$WCP_ROOT/poocommerce-payments.zip" \
         "${env_args[@]}"
 fi
 

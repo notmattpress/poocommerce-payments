@@ -60,7 +60,7 @@ export default ( { api, title, iconLight, iconDark, upeName } ) => {
 			<span className="payment-method-label__label">{ title }</span>
 			{ isTestMode && (
 				<span className="test-mode badge">
-					{ __( 'Test Mode', 'woocommerce-payments' ) }
+					{ __( 'Test Mode', 'poocommerce-payments' ) }
 				</span>
 			) }
 			{ upeName === 'card' ? (

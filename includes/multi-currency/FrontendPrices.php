@@ -1,8 +1,8 @@
 <?php
 /**
- * WooCommerce Payments Multi-Currency Frontend Prices
+ * PooCommerce Payments Multi-Currency Frontend Prices
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\MultiCurrency;
@@ -51,30 +51,30 @@ class FrontendPrices {
 		}
 
 		// Simple product price hooks.
-		add_filter( 'woocommerce_product_get_price', [ $this, 'get_product_price_string' ], 99, 2 );
-		add_filter( 'woocommerce_product_get_regular_price', [ $this, 'get_product_price_string' ], 99, 2 );
-		add_filter( 'woocommerce_product_get_sale_price', [ $this, 'get_product_price_string' ], 99, 2 );
+		add_filter( 'poocommerce_product_get_price', [ $this, 'get_product_price_string' ], 99, 2 );
+		add_filter( 'poocommerce_product_get_regular_price', [ $this, 'get_product_price_string' ], 99, 2 );
+		add_filter( 'poocommerce_product_get_sale_price', [ $this, 'get_product_price_string' ], 99, 2 );
 
 		// Variation price hooks.
-		add_filter( 'woocommerce_product_variation_get_price', [ $this, 'get_product_price_string' ], 99, 2 );
-		add_filter( 'woocommerce_product_variation_get_regular_price', [ $this, 'get_product_price_string' ], 99, 2 );
-		add_filter( 'woocommerce_product_variation_get_sale_price', [ $this, 'get_product_price_string' ], 99, 2 );
+		add_filter( 'poocommerce_product_variation_get_price', [ $this, 'get_product_price_string' ], 99, 2 );
+		add_filter( 'poocommerce_product_variation_get_regular_price', [ $this, 'get_product_price_string' ], 99, 2 );
+		add_filter( 'poocommerce_product_variation_get_sale_price', [ $this, 'get_product_price_string' ], 99, 2 );
 
 		// Variation price range hooks.
-		add_filter( 'woocommerce_variation_prices', [ $this, 'get_variation_price_range' ], 99 );
-		add_filter( 'woocommerce_get_variation_prices_hash', [ $this, 'add_exchange_rate_to_variation_prices_hash' ], 99 );
+		add_filter( 'poocommerce_variation_prices', [ $this, 'get_variation_price_range' ], 99 );
+		add_filter( 'poocommerce_get_variation_prices_hash', [ $this, 'add_exchange_rate_to_variation_prices_hash' ], 99 );
 
 		// Shipping methods hooks.
-		add_filter( 'woocommerce_shipping_zone_shipping_methods', [ $this, 'convert_free_shipping_method_min_amount' ], 99 );
-		add_filter( 'woocommerce_shipping_method_add_rate_args', [ $this, 'convert_shipping_method_rate_cost' ], 99 );
+		add_filter( 'poocommerce_shipping_zone_shipping_methods', [ $this, 'convert_free_shipping_method_min_amount' ], 99 );
+		add_filter( 'poocommerce_shipping_method_add_rate_args', [ $this, 'convert_shipping_method_rate_cost' ], 99 );
 
 		// Coupon hooks.
-		add_filter( 'woocommerce_coupon_get_amount', [ $this, 'get_coupon_amount' ], 99, 2 );
-		add_filter( 'woocommerce_coupon_get_minimum_amount', [ $this, 'get_coupon_min_max_amount' ], 99 );
-		add_filter( 'woocommerce_coupon_get_maximum_amount', [ $this, 'get_coupon_min_max_amount' ], 99 );
+		add_filter( 'poocommerce_coupon_get_amount', [ $this, 'get_coupon_amount' ], 99, 2 );
+		add_filter( 'poocommerce_coupon_get_minimum_amount', [ $this, 'get_coupon_min_max_amount' ], 99 );
+		add_filter( 'poocommerce_coupon_get_maximum_amount', [ $this, 'get_coupon_min_max_amount' ], 99 );
 
 		// Order hooks.
-		add_filter( 'woocommerce_new_order', [ $this, 'add_order_meta' ], 99, 2 );
+		add_filter( 'poocommerce_new_order', [ $this, 'add_order_meta' ], 99, 2 );
 
 		// Price Filter Hooks.
 		add_filter( 'rest_post_dispatch', [ $this, 'maybe_modify_price_ranges_rest_response' ], 10, 3 );
@@ -281,7 +281,7 @@ class FrontendPrices {
 			/**
 			 * We need to keep the `cost` structure intact when applying
 			 * multi-currency conversions, because downstream it is important
-			 * for WooCommerce to keep the taxes flow consistent.
+			 * for PooCommerce to keep the taxes flow consistent.
 			 */
 			if ( is_array( $args['cost'] ) ) {
 				$args['cost'] = array_map(

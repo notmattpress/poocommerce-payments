@@ -25,13 +25,13 @@ wp post meta update $PRODUCT_ID _regular_price "10.00"
 wp post meta update $PRODUCT_ID _virtual "yes"
 wp post meta update $PRODUCT_ID _manage_stock "no"
 
-# Ensure WooCommerce checkout page exists and is properly configured
-wp option update woocommerce_checkout_page_id $(wp post list --post_type=page --post_name=checkout --field=ID --format=ids)
+# Ensure PooCommerce checkout page exists and is properly configured
+wp option update poocommerce_checkout_page_id $(wp post list --post_type=page --post_name=checkout --field=ID --format=ids)
 
-# Configure WooCommerce for testing
-wp option update woocommerce_currency "USD"
-wp option update woocommerce_enable_guest_checkout "yes"
-wp option update woocommerce_force_ssl_checkout "no"
+# Configure PooCommerce for testing
+wp option update poocommerce_currency "USD"
+wp option update poocommerce_enable_guest_checkout "yes"
+wp option update poocommerce_force_ssl_checkout "no"
 
 # Create a test customer
 wp user create testcustomer test@example.com \
@@ -45,7 +45,7 @@ echo "Setting up WooPayments configuration..."
 
 # Enable WooPayments settings (same as main E2E tests)
 echo "Creating/updating WooPayments settings"
-wp option set woocommerce_woocommerce_payments_settings --format=json '{"enabled":"yes"}'
+wp option set poocommerce_poocommerce_payments_settings --format=json '{"enabled":"yes"}'
 
 # Check required environment variables for basic Jetpack authentication
 if [ -n "${E2E_JP_SITE_ID:-}" ] && [ -n "${E2E_JP_BLOG_TOKEN:-}" ] && [ -n "${E2E_JP_USER_TOKEN:-}" ]; then

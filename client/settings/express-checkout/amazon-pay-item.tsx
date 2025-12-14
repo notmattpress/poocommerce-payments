@@ -20,7 +20,7 @@ const AmazonPayExpressCheckoutItem = (): React.ReactElement => {
 			<div className="express-checkout__row">
 				<div className="express-checkout__checkbox">
 					<CheckboxControl
-						label={ __( 'Amazon Pay', 'woocommerce-payments' ) }
+						label={ __( 'Amazon Pay', 'poocommerce-payments' ) }
 						checked={ isAmazonPayEnabled }
 						onChange={ setIsAmazonPayEnabled }
 						data-testid="amazon-pay-toggle"
@@ -34,13 +34,13 @@ const AmazonPayExpressCheckoutItem = (): React.ReactElement => {
 								<AmazonPayIcon />
 							</div>
 							<div className="express-checkout__label express-checkout__label-mobile">
-								{ __( 'Amazon Pay', 'woocommerce-payments' ) }
+								{ __( 'Amazon Pay', 'poocommerce-payments' ) }
 							</div>
 							<div className="express-checkout__label-container">
 								<div className="express-checkout__label express-checkout__label-desktop">
 									{ __(
 										'Amazon Pay',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									) }
 								</div>
 								<div className="express-checkout__description">
@@ -51,7 +51,7 @@ const AmazonPayExpressCheckoutItem = (): React.ReactElement => {
 												'By activating this feature, you accept ' +
 												'{{stripeLink}}Stripe{{/stripeLink}} and ' +
 												"{{amazonLink}}Amazon{{/amazonLink}}'s terms of use. ",
-											'woocommerce-payments'
+											'poocommerce-payments'
 										),
 										/* eslint-disable jsx-a11y/anchor-has-content */
 										components: {
@@ -81,7 +81,7 @@ const AmazonPayExpressCheckoutItem = (): React.ReactElement => {
 							href={ getPaymentMethodSettingsUrl( 'amazon_pay' ) }
 							isSecondary
 						>
-							{ __( 'Customize', 'woocommerce-payments' ) }
+							{ __( 'Customize', 'poocommerce-payments' ) }
 						</Button>
 					</div>
 				</div>
