@@ -87,7 +87,8 @@ You can read our Terms of Service and other policies [here](https://woocommerce.
 
 == Changelog ==
 
-= 10.3.1 - 2025-12-24 =
+= 10.3.1 - 2025-12-22 =
+* Fix - Fix fatal error on WooCommerce Settings Payments tab caused by missing hook in Get_PM_Promotions request class
 
 
 = 10.3.0 - 2025-12-10 =
