@@ -20,7 +20,7 @@ test.describe( 'WooPayments Connection Status', () => {
 
 		// Navigate directly to WooPayments settings
 		await page.goto(
-			'/wp-admin/admin.php?page=wc-settings&tab=checkout&section=woocommerce_payments'
+			'/wp-admin/admin.php?page=wc-settings&tab=checkout&section=poocommerce_payments'
 		);
 
 		const pageContent = await page.textContent( 'body' );

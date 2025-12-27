@@ -49,17 +49,17 @@ test( 'Access WooPayments as admin', async ( { page } ) => {
 } );
 
 /**
- * Test plugin activation and basic WooCommerce functionality
+ * Test plugin activation and basic PooCommerce functionality
  */
-test( 'Verify WooCommerce Payments plugin activation', async ( { page } ) => {
+test( 'Verify PooCommerce Payments plugin activation', async ( { page } ) => {
 	await qit.loginAsAdmin( page );
 
-	// Check plugins page to verify WooCommerce Payments is active
+	// Check plugins page to verify PooCommerce Payments is active
 	await page.goto( '/wp-admin/plugins.php' );
 
-	// Look for the WooCommerce Payments plugin row (exclude update row)
+	// Look for the PooCommerce Payments plugin row (exclude update row)
 	const pluginRow = page.locator(
-		'tr[data-plugin*="woocommerce-payments"]:not(.plugin-update-tr)'
+		'tr[data-plugin*="poocommerce-payments"]:not(.plugin-update-tr)'
 	);
 	await expect( pluginRow ).toBeVisible();
 

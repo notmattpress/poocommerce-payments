@@ -16,8 +16,8 @@ module.exports = {
 		'^multi-currency(.*)$': '<rootDir>/includes/multi-currency/client$1',
 		'^iti/utils$': '<rootDir>/node_modules/intl-tel-input/build/js/utils',
 		'^assets(.*?)(\\?.*)?$': '<rootDir>/assets$1',
-		'^@woocommerce/blocks-registry$':
-			'<rootDir>/tests/js/woocommerce-blocks-registry',
+		'^@poocommerce/blocks-registry$':
+			'<rootDir>/tests/js/poocommerce-blocks-registry',
 		'^uuid$': require.resolve( 'uuid' ),
 		'^jest-utils(.*)$': '<rootDir>/tests/js/utilities$1',
 	},
@@ -68,7 +68,7 @@ module.exports = {
 		'^.+\\.(jpg|svg|png|gif)(\\?.*)?$': '<rootDir>/tests/js/fileMock.js',
 	},
 	transformIgnorePatterns: [
-		'node_modules/(?!(@woocommerce/.+)|gridicons|@automattic/components/|@automattic/material-design-icons/)',
+		'node_modules/(?!(@poocommerce/.+)|gridicons|@automattic/components/|@automattic/material-design-icons/)',
 	],
 	snapshotSerializers: [ '@emotion/jest/serializer' ],
 	verbose: true,

@@ -2,7 +2,7 @@
 # This configuration defines how QIT runs custom E2E tests for WooPayments
 
 # Extension to test (System Under Test)
-woo_extension: woocommerce-payments
+woo_extension: poocommerce-payments
 
 # Test against various WC versions for compatibility
 woo: "stable"
@@ -11,7 +11,7 @@ php_version: "8.3"
 
 # Dependencies and additional plugins for compatibility testing
 plugin:
-  - "woocommerce"
+  - "poocommerce"
   - "jetpack"
 
 # Mount bootstrap directory for easier access in setup scripts.

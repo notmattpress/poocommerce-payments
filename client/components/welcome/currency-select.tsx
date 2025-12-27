@@ -88,7 +88,7 @@ export const CurrencySelect: React.FC< {
 
 	return (
 		<InlineLabelSelect
-			label={ __( 'Currency', 'woocommerce-payments' ) }
+			label={ __( 'Currency', 'poocommerce-payments' ) }
 			value={ currencyOptions.find(
 				( option ) => option.key === selectedCurrency
 			) }

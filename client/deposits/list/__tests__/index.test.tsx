@@ -5,9 +5,9 @@
  */
 import React, { act } from 'react';
 import { render, waitFor } from '@testing-library/react';
-import { updateQueryString } from '@woocommerce/navigation';
+import { updateQueryString } from '@poocommerce/navigation';
 import apiFetch from '@wordpress/api-fetch';
-import { useUserPreferences } from '@woocommerce/data';
+import { useUserPreferences } from '@poocommerce/data';
 
 /**
  * Internal dependencies
@@ -27,8 +27,8 @@ jest.mock( 'wcpay/data', () => ( {
 
 jest.mock( '@wordpress/api-fetch', () => jest.fn() );
 
-jest.mock( '@woocommerce/data', () => {
-	const actualModule = jest.requireActual( '@woocommerce/data' );
+jest.mock( '@poocommerce/data', () => {
+	const actualModule = jest.requireActual( '@poocommerce/data' );
 
 	return {
 		...actualModule,
@@ -202,7 +202,7 @@ describe( 'Deposits list', () => {
 
 		let { container } = render( <DepositsList /> );
 		let tableSummary = container.querySelectorAll(
-			'.woocommerce-table__summary'
+			'.poocommerce-table__summary'
 		);
 
 		expect( tableSummary ).toHaveLength( 0 );
@@ -217,7 +217,7 @@ describe( 'Deposits list', () => {
 
 		( { container } = render( <DepositsList /> ) );
 		tableSummary = container.querySelectorAll(
-			'.woocommerce-table__summary'
+			'.poocommerce-table__summary'
 		);
 
 		expect( tableSummary ).toHaveLength( 1 );
