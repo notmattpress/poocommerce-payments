@@ -87,7 +87,7 @@ You can read our Terms of Service and other policies [here](https://woocommerce.
 
 == Changelog ==
 
-= 10.4.0 - 2025-12-31 =
+= 10.4.0 - 2026-01-07 =
 * Add - Add duplicate charge documentation field for "Not Duplicate" dispute scenario.
 * Add - Adding ability to support payment method promotional campaigns (spotlight and badge treatments).
 * Add - feat: add Amazon Pay payment gateway class
@@ -123,9 +123,11 @@ You can read our Terms of Service and other policies [here](https://woocommerce.
 * Update - update: usage of WP best practices
 * Update - Update dispute evidence fields and cover letter for Booking/Reservation duplicate disputes
 * Update - Update suggested evidence for the Subscription Cancelled dispute reason.
+* Update - Update wording on promo rate information tooltip
 * Update - Update “WooPayments” to “WooCommerce” mobile application in the Card Readers page.
 * Dev - chore: remove CC_Payment_Gateway class in favor of WC_Payment_Gateway_WCPay
 * Dev - Cleanup unneeded asset.
+* Dev - Fix failing E2E tests
 * Dev - Log exceptions during the payment process.
 * Dev - Migrate remaining shopper E2E specs to QIT (my account, multicurrency, alternative payment methods)
 * Dev - refactor: add Apple Pay and Google Pay payment definitions
