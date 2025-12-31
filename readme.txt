@@ -93,6 +93,7 @@ You can read our Terms of Service and other policies [here](https://woocommerce.
 * Add - feat: add Amazon Pay payment gateway class
 * Add - Open up new Account Details in the Overview page by enabling the feature flag by default
 * Add - When editing subscriptions, load payment methods whenever the customer is changed.
+* Fix - Add order note when WooPay checkout fails.
 * Fix - Attempt to fix when items remain in the cart after successful checkout (Affirm).
 * Fix - Avoid race conditions while capturing payments.
 * Fix - Comment: Update links to the WooPayments fees documentation.
@@ -107,6 +108,7 @@ You can read our Terms of Service and other policies [here](https://woocommerce.
 * Fix - Fix number format when converting order prices.
 * Fix - Implemented amount mismatch detection for an already paid order.
 * Fix - refactor: remove Stripe Link autofill modal button from checkout
+* Fix - Resolve JavaScript errors in WooPay Direct Checkout on sites with WooCommerce 10.4+
 * Fix - Respect merchant tracking preferences for shopper events
 * Fix - Update wording related to the Visa Compliance disputes.
 * Update - chore: remove unused `wcBlocksCheckoutData` constant
@@ -125,6 +127,8 @@ You can read our Terms of Service and other policies [here](https://woocommerce.
 * Update - Update suggested evidence for the Subscription Cancelled dispute reason.
 * Update - Update wording on promo rate information tooltip
 * Update - Update “WooPayments” to “WooCommerce” mobile application in the Card Readers page.
+* Dev - Add validation to prevent Request classes from using empty hook names, which could cause fatal errors on PHP 8.0+
+* Dev - Bump WC tested up to version to 10.4.0
 * Dev - chore: remove CC_Payment_Gateway class in favor of WC_Payment_Gateway_WCPay
 * Dev - Cleanup unneeded asset.
 * Dev - Fix failing E2E tests
