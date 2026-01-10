@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Order_Service_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\Constants\Fraud_Meta_Box_Type;
@@ -285,7 +285,7 @@ class WC_Payments_Order_Service_Test extends WCPAY_UnitTestCase {
 	 * Tests that the "charged" note is not added when a "captured" note already exists.
 	 * This prevents duplicate notes due to race conditions between manual capture and webhooks.
 	 *
-	 * @see https://github.com/Automattic/woocommerce-payments/issues/XXXXX
+	 * @see https://github.com/Automattic/poocommerce-payments/issues/XXXXX
 	 */
 	public function test_mark_payment_completed_skips_when_capture_note_exists() {
 		// Arrange: Create a succeeded intent (simulating what webhook receives).
@@ -845,7 +845,7 @@ class WC_Payments_Order_Service_Test extends WCPAY_UnitTestCase {
 		// Arrange: Create the intent, get the proper order status variations. Set the fraud outcome status.
 		$intent            = WC_Helper_Intention::create_intention( $intent_args ); // Stripe uses single 'l'.
 		$order_status      = Order_Status::CANCELLED; // WCPay uses double 'l'.
-		$wc_order_statuses = wc_get_order_statuses(); // WooCommerce uses single 'l' for US English.
+		$wc_order_statuses = wc_get_order_statuses(); // PooCommerce uses single 'l' for US English.
 		if ( $order_fraud_outcome ) {
 			$this->order_service->set_fraud_outcome_status_for_order( $this->order, Rule::FRAUD_OUTCOME_REVIEW );
 		}
@@ -1534,7 +1534,7 @@ class WC_Payments_Order_Service_Test extends WCPAY_UnitTestCase {
 		$this->assertStringContainsString( $refund_id, $order_note, 'Order note does not contain expected refund id' );
 		$this->assertStringContainsString( $refund_reason, $order_note, 'Order note does not contain expected refund reason' );
 		$this->assertStringContainsString( 'is pending', $order_note, 'Order note should indicate pending status' );
-		$this->assertStringContainsString( 'https://woocommerce.com/document/woopayments/managing-money/#pending-refunds', $order_note, 'Order note should contain link to pending refunds documentation' );
+		$this->assertStringContainsString( 'https://poocommerce.com/document/woopayments/managing-money/#pending-refunds', $order_note, 'Order note should contain link to pending refunds documentation' );
 
 		$this->assertSame( Refund_Status::PENDING, $order->get_meta( WC_Payments_Order_Service::WCPAY_REFUND_STATUS_META_KEY, true ) );
 		$this->assertSame( $refund_id, $wc_refund->get_meta( WC_Payments_Order_Service::WCPAY_REFUND_ID_META_KEY, true ) );

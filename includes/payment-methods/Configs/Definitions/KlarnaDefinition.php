@@ -54,7 +54,7 @@ class KlarnaDefinition implements PaymentMethodDefinitionInterface {
 	 * @return string
 	 */
 	public static function get_title( ?string $account_country = null ): string {
-		return __( 'Klarna', 'woocommerce-payments' );
+		return __( 'Klarna', 'poocommerce-payments' );
 	}
 
 	/**
@@ -75,7 +75,7 @@ class KlarnaDefinition implements PaymentMethodDefinitionInterface {
 	 * @return string
 	 */
 	public static function get_description( ?string $account_country = null ): string {
-		return __( 'Allow customers to pay over time or pay now with Klarna.', 'woocommerce-payments' );
+		return __( 'Allow customers to pay over time or pay now with Klarna.', 'poocommerce-payments' );
 	}
 
 	/**
@@ -148,7 +148,7 @@ class KlarnaDefinition implements PaymentMethodDefinitionInterface {
 		}
 
 		// Merchant is in EEA/UK/Switzerland - apply cross-border currency logic.
-		$store_currency = strtoupper( \get_woocommerce_currency() );
+		$store_currency = strtoupper( \get_poocommerce_currency() );
 		$limits         = self::get_limits_per_currency();
 
 		// If the store currency is not supported by Klarna, return no countries.

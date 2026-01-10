@@ -53,7 +53,7 @@ class MultibancoDefinition implements PaymentMethodDefinitionInterface {
 	 * @return string
 	 */
 	public static function get_title( ?string $account_country = null ): string {
-		return __( 'Multibanco', 'woocommerce-payments' );
+		return __( 'Multibanco', 'poocommerce-payments' );
 	}
 
 	/**
@@ -76,7 +76,7 @@ class MultibancoDefinition implements PaymentMethodDefinitionInterface {
 	public static function get_description( ?string $account_country = null ): string {
 		return __(
 			'A voucher based payment method for your customers in Portugal.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		);
 	}
 

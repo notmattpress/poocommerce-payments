@@ -164,11 +164,11 @@ exports[`Authorizations list renders correctly 1`] = `
 
 <div>
   <div
-    class=" woocommerce-payments-page"
+    class=" poocommerce-payments-page"
     id=""
   >
     <div
-      class="components-surface components-card woocommerce-table authorizations-list woocommerce-report-table has-search has-menu emotion-0 emotion-1"
+      class="components-surface components-card poocommerce-table authorizations-list poocommerce-report-table has-search has-menu emotion-0 emotion-1"
       data-wp-c16t="true"
       data-wp-component="Card"
     >
@@ -188,10 +188,10 @@ exports[`Authorizations list renders correctly 1`] = `
             Uncaptured transactions
           </h2>
           <div
-            class="woocommerce-table__actions"
+            class="poocommerce-table__actions"
           />
           <div
-            class="woocommerce-ellipsis-menu"
+            class="poocommerce-ellipsis-menu"
           >
             <div
               class="components-dropdown"
@@ -199,7 +199,7 @@ exports[`Authorizations list renders correctly 1`] = `
             >
               <button
                 aria-expanded="false"
-                class="components-button woocommerce-ellipsis-menu__toggle"
+                class="components-button poocommerce-ellipsis-menu__toggle"
                 title="Choose which values to display"
                 type="button"
               >
@@ -227,12 +227,12 @@ exports[`Authorizations list renders correctly 1`] = `
         >
           <div
             aria-labelledby="caption-0"
-            class="woocommerce-table__table"
+            class="poocommerce-table__table"
             role="group"
           >
             <table>
               <caption
-                class="woocommerce-table__caption screen-reader-text"
+                class="poocommerce-table__caption screen-reader-text"
                 id="caption-0"
               >
                 Uncaptured transactions
@@ -241,7 +241,7 @@ exports[`Authorizations list renders correctly 1`] = `
                 <tr>
                   <th
                     aria-sort="ascending"
-                    class="woocommerce-table__header date-time is-left-aligned is-sortable is-sorted"
+                    class="poocommerce-table__header date-time is-left-aligned is-sortable is-sorted"
                     role="columnheader"
                     scope="col"
                   >
@@ -282,7 +282,7 @@ exports[`Authorizations list renders correctly 1`] = `
                   </th>
                   <th
                     aria-sort="none"
-                    class="woocommerce-table__header date-time is-left-aligned is-sortable"
+                    class="poocommerce-table__header date-time is-left-aligned is-sortable"
                     role="columnheader"
                     scope="col"
                   >
@@ -322,7 +322,7 @@ exports[`Authorizations list renders correctly 1`] = `
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-left-aligned"
+                    class="poocommerce-table__header is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -338,7 +338,7 @@ exports[`Authorizations list renders correctly 1`] = `
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-left-aligned"
+                    class="poocommerce-table__header is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -355,7 +355,7 @@ exports[`Authorizations list renders correctly 1`] = `
                   </th>
                   <th
                     aria-sort="none"
-                    class="woocommerce-table__header is-sortable is-numeric"
+                    class="poocommerce-table__header is-sortable is-numeric"
                     role="columnheader"
                     scope="col"
                   >
@@ -395,7 +395,7 @@ exports[`Authorizations list renders correctly 1`] = `
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-left-aligned"
+                    class="poocommerce-table__header is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -413,11 +413,11 @@ exports[`Authorizations list renders correctly 1`] = `
                 </tr>
                 <tr>
                   <th
-                    class="woocommerce-table__item date-time is-left-aligned is-sorted"
+                    class="poocommerce-table__item date-time is-left-aligned is-sorted"
                     scope="row"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_4242"
                       tabindex="-1"
@@ -426,10 +426,10 @@ exports[`Authorizations list renders correctly 1`] = `
                     </a>
                   </th>
                   <td
-                    class="woocommerce-table__item date-time is-left-aligned"
+                    class="poocommerce-table__item date-time is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_4242"
                       tabindex="-1"
@@ -438,10 +438,10 @@ exports[`Authorizations list renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_4242"
                       tabindex="-1"
@@ -450,16 +450,16 @@ exports[`Authorizations list renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_4242"
                       tabindex="-1"
                     >
                       <span
-                        class="components-truncate components-text woocommerce-pill wcpay-pill__danger emotion-10 emotion-1"
+                        class="components-truncate components-text poocommerce-pill wcpay-pill__danger emotion-10 emotion-1"
                         data-wp-c16t="true"
                         data-wp-component="Text"
                       >
@@ -468,10 +468,10 @@ exports[`Authorizations list renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_4242"
                       tabindex="-1"
@@ -480,7 +480,7 @@ exports[`Authorizations list renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <button
                       class="components-button is-next-40px-default-size is-secondary"
@@ -492,11 +492,11 @@ exports[`Authorizations list renders correctly 1`] = `
                 </tr>
                 <tr>
                   <th
-                    class="woocommerce-table__item date-time is-left-aligned is-sorted"
+                    class="poocommerce-table__item date-time is-left-aligned is-sorted"
                     scope="row"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_4243"
                       tabindex="-1"
@@ -505,10 +505,10 @@ exports[`Authorizations list renders correctly 1`] = `
                     </a>
                   </th>
                   <td
-                    class="woocommerce-table__item date-time is-left-aligned"
+                    class="poocommerce-table__item date-time is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_4243"
                       tabindex="-1"
@@ -517,10 +517,10 @@ exports[`Authorizations list renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_4243"
                       tabindex="-1"
@@ -529,16 +529,16 @@ exports[`Authorizations list renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_4243"
                       tabindex="-1"
                     >
                       <span
-                        class="components-truncate components-text woocommerce-pill wcpay-pill__success emotion-10 emotion-1"
+                        class="components-truncate components-text poocommerce-pill wcpay-pill__success emotion-10 emotion-1"
                         data-wp-c16t="true"
                         data-wp-component="Text"
                       >
@@ -547,10 +547,10 @@ exports[`Authorizations list renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_4243"
                       tabindex="-1"
@@ -559,7 +559,7 @@ exports[`Authorizations list renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <button
                       class="components-button is-next-40px-default-size is-secondary"
@@ -579,33 +579,33 @@ exports[`Authorizations list renders correctly 1`] = `
           data-wp-component="CardFooter"
         >
           <ul
-            class="woocommerce-table__summary"
+            class="poocommerce-table__summary"
             role="complementary"
           >
             <li
-              class="woocommerce-table__summary-item"
+              class="poocommerce-table__summary-item"
             >
               <span
-                class="woocommerce-table__summary-value"
+                class="poocommerce-table__summary-value"
               >
                 3
               </span>
               <span
-                class="woocommerce-table__summary-label"
+                class="poocommerce-table__summary-label"
               >
                 authorization(s)
               </span>
             </li>
             <li
-              class="woocommerce-table__summary-item"
+              class="poocommerce-table__summary-item"
             >
               <span
-                class="woocommerce-table__summary-value"
+                class="poocommerce-table__summary-value"
               >
                 $3.00
               </span>
               <span
-                class="woocommerce-table__summary-label"
+                class="poocommerce-table__summary-label"
               >
                 total
               </span>

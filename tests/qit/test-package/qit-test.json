@@ -1,8 +1,8 @@
 {
     "$schema": "https://qit.woo.com/json-schema/test-package",
-    "package": "woocommerce-payments/woopayments-e2e-tests",
+    "package": "poocommerce-payments/woopayments-e2e-tests",
     "test_type": "e2e",
-    "description": "WooCommerce Payments E2E tests for checkout flows, payment methods, and Jetpack integration",
+    "description": "PooCommerce Payments E2E tests for checkout flows, payment methods, and Jetpack integration",
     "tags": ["woopayments", "checkout", "jetpack", "payments"],
     "requires": {
         "network": true,
@@ -11,7 +11,7 @@
             "E2E_JP_BLOG_TOKEN",
             "E2E_JP_USER_TOKEN"
         ],
-        "plugins": ["woocommerce", "jetpack"]
+        "plugins": ["poocommerce", "jetpack"]
     },
     "test": {
         "phases": {
@@ -35,7 +35,7 @@
         }
     },
     "subpackages": {
-        "woocommerce-payments/shopper": {
+        "poocommerce-payments/shopper": {
             "description": "Shopper checkout flow tests for WooPayments",
             "tags": ["woopayments", "shopper", "checkout", "critical"],
             "test": {
@@ -44,7 +44,7 @@
                 }
             }
         },
-        "woocommerce-payments/merchant": {
+        "poocommerce-payments/merchant": {
             "description": "Merchant admin tests for WooPayments",
             "tags": ["woopayments", "merchant", "admin"],
             "test": {

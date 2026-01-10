@@ -53,7 +53,7 @@ class WechatPayDefinition implements PaymentMethodDefinitionInterface {
 	 * @return string
 	 */
 	public static function get_title( ?string $account_country = null ): string {
-		return __( 'WeChat Pay', 'woocommerce-payments' );
+		return __( 'WeChat Pay', 'poocommerce-payments' );
 	}
 
 	/**
@@ -74,7 +74,7 @@ class WechatPayDefinition implements PaymentMethodDefinitionInterface {
 	 * @return string
 	 */
 	public static function get_description( ?string $account_country = null ): string {
-		return __( 'A digital wallet popular with customers from China.', 'woocommerce-payments' );
+		return __( 'A digital wallet popular with customers from China.', 'poocommerce-payments' );
 	}
 
 	/**

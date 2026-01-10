@@ -13,7 +13,7 @@ import * as shopperNavigation from '../../../utils/shopper-navigation';
 import * as devtools from '../../../utils/devtools';
 
 // TODO: Card testing protection via WP-CLI doesn't work the same as the Dev Tools plugin.
-// The Dev Tools plugin uses filters/hooks (option_wcpay_account_data, woocommerce_payments_account_refreshed)
+// The Dev Tools plugin uses filters/hooks (option_wcpay_account_data, poocommerce_payments_account_refreshed)
 // that aren't available in the QIT environment. The cardTestingPreventionEnabled: true case needs
 // the QIT devtools implementation to be updated to properly simulate the Dev Tools plugin behavior.
 const cardTestingPreventionStates = [
@@ -77,7 +77,7 @@ test.describe(
 
 					await shopperNavigation.goToOrders( shopperPage );
 					const payForOrderButton = shopperPage
-						.locator( '.woocommerce-button.button.pay', {
+						.locator( '.poocommerce-button.button.pay', {
 							hasText: 'Pay',
 						} )
 						.first();

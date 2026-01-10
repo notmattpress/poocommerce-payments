@@ -53,7 +53,7 @@ class P24Definition implements PaymentMethodDefinitionInterface {
 	 * @return string
 	 */
 	public static function get_title( ?string $account_country = null ): string {
-		return __( 'Przelewy24 (P24)', 'woocommerce-payments' );
+		return __( 'Przelewy24 (P24)', 'poocommerce-payments' );
 	}
 
 	/**
@@ -74,7 +74,7 @@ class P24Definition implements PaymentMethodDefinitionInterface {
 	 * @return string
 	 */
 	public static function get_description( ?string $account_country = null ): string {
-		return __( 'Accept payments with Przelewy24 (P24), the most popular payment method in Poland.', 'woocommerce-payments' );
+		return __( 'Accept payments with Przelewy24 (P24), the most popular payment method in Poland.', 'poocommerce-payments' );
 	}
 
 	/**

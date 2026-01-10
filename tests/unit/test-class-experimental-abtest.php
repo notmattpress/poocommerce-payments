@@ -2,7 +2,7 @@
 /**
  * Class Experimental_Abtest_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 /**
@@ -10,7 +10,7 @@
  */
 class Experimental_Abtest_Test extends WCPAY_UnitTestCase {
 	public function test_get_variation_returns_control_if_consent_is_false() {
-		$abtest = new \WCPay\Experimental_Abtest( '', 'woocommerce', false );
+		$abtest = new \WCPay\Experimental_Abtest( '', 'poocommerce', false );
 
 		$result = $abtest->get_variation( 'test_name' );
 
@@ -18,7 +18,7 @@ class Experimental_Abtest_Test extends WCPAY_UnitTestCase {
 	}
 
 	public function test_get_variation_returns_control_if_test_name_is_empty() {
-		$abtest = new \WCPay\Experimental_Abtest( '', 'woocommerce', false );
+		$abtest = new \WCPay\Experimental_Abtest( '', 'poocommerce', false );
 
 		$result = $abtest->get_variation( '' );
 
@@ -26,7 +26,7 @@ class Experimental_Abtest_Test extends WCPAY_UnitTestCase {
 	}
 
 	public function test_get_variation_returns_control_if_test_name_is_invalid() {
-		$abtest = new \WCPay\Experimental_Abtest( '', 'woocommerce', false );
+		$abtest = new \WCPay\Experimental_Abtest( '', 'poocommerce', false );
 
 		$result = $abtest->get_variation( 'invalid_test_name' );
 

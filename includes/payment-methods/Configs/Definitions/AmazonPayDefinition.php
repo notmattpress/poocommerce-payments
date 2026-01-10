@@ -51,7 +51,7 @@ class AmazonPayDefinition implements PaymentMethodDefinitionInterface {
 	 * @return string
 	 */
 	public static function get_title( ?string $account_country = null ): string {
-		return __( 'Amazon Pay', 'woocommerce-payments' );
+		return __( 'Amazon Pay', 'poocommerce-payments' );
 	}
 
 	/**
@@ -72,7 +72,7 @@ class AmazonPayDefinition implements PaymentMethodDefinitionInterface {
 	 * @return string
 	 */
 	public static function get_description( ?string $account_country = null ): string {
-		return __( 'Offer customers a fast, secure checkout experience with Amazon Pay.', 'woocommerce-payments' );
+		return __( 'Offer customers a fast, secure checkout experience with Amazon Pay.', 'poocommerce-payments' );
 	}
 
 	/**

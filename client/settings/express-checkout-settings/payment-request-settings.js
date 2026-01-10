@@ -54,12 +54,12 @@ const PaymentRequestSettings = ( { section } ) => {
 								}
 								label={ __(
 									'Enable Apple Pay / Google Pay as options in the payment methods list',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								) }
 								help={ __(
 									'Customers with Apple Pay or Google Pay enabled will be able to pay with ' +
 										'their preferred wallet as options in the payment methods list.',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								) }
 								__nextHasNoMarginBottom
 							/>
@@ -70,12 +70,12 @@ const PaymentRequestSettings = ( { section } ) => {
 							onChange={ updateIsPaymentRequestEnabled }
 							label={ __(
 								'Enable Apple Pay / Google Pay as express payment buttons',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 							help={ __(
 								'Show express payment buttons on store pages for faster purchases. ' +
 									'Customers with Apple Pay or Google Pay enabled will be able to pay with their preferred wallet.',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 							__nextHasNoMarginBottom
 						/>
@@ -99,7 +99,7 @@ const PaymentRequestSettings = ( { section } ) => {
 										) }
 										label={ __(
 											'Show on product page',
-											'woocommerce-payments'
+											'poocommerce-payments'
 										) }
 										__nextHasNoMarginBottom
 									/>
@@ -118,7 +118,7 @@ const PaymentRequestSettings = ( { section } ) => {
 										) }
 										label={ __(
 											'Show on cart page',
-											'woocommerce-payments'
+											'poocommerce-payments'
 										) }
 										__nextHasNoMarginBottom
 									/>
@@ -137,7 +137,7 @@ const PaymentRequestSettings = ( { section } ) => {
 										) }
 										label={ __(
 											'Show on checkout page',
-											'woocommerce-payments'
+											'poocommerce-payments'
 										) }
 										__nextHasNoMarginBottom
 									/>
