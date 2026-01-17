@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Order_Success_Page
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 use WCPay\Constants\Payment_Method;
@@ -28,16 +28,16 @@ class WC_Payments_Order_Success_Page {
 	 * Constructor.
 	 */
 	public function __construct() {
-		add_filter( 'woocommerce_order_received_verify_known_shoppers', [ $this, 'determine_woopay_order_received_verify_known_shoppers' ], 11 );
-		add_action( 'woocommerce_before_thankyou', [ $this, 'register_payment_method_override' ] );
-		add_action( 'woocommerce_before_thankyou', [ $this, 'maybe_render_multibanco_payment_instructions' ] );
-		add_action( 'woocommerce_order_details_before_order_table', [ $this, 'unregister_payment_method_override' ] );
-		add_action( 'woocommerce_order_details_before_order_table', [ $this, 'maybe_render_multibanco_payment_instructions' ] );
-		add_filter( 'woocommerce_thankyou_order_received_text', [ $this, 'add_notice_previous_paid_order' ], 11 );
-		add_filter( 'woocommerce_thankyou_order_received_text', [ $this, 'add_notice_previous_successful_intent' ], 11 );
-		add_filter( 'woocommerce_thankyou_order_received_text', [ $this, 'replace_order_received_text_for_failed_orders' ], 11 );
+		add_filter( 'poocommerce_order_received_verify_known_shoppers', [ $this, 'determine_woopay_order_received_verify_known_shoppers' ], 11 );
+		add_action( 'poocommerce_before_thankyou', [ $this, 'register_payment_method_override' ] );
+		add_action( 'poocommerce_before_thankyou', [ $this, 'maybe_render_multibanco_payment_instructions' ] );
+		add_action( 'poocommerce_order_details_before_order_table', [ $this, 'unregister_payment_method_override' ] );
+		add_action( 'poocommerce_order_details_before_order_table', [ $this, 'maybe_render_multibanco_payment_instructions' ] );
+		add_filter( 'poocommerce_thankyou_order_received_text', [ $this, 'add_notice_previous_paid_order' ], 11 );
+		add_filter( 'poocommerce_thankyou_order_received_text', [ $this, 'add_notice_previous_successful_intent' ], 11 );
+		add_filter( 'poocommerce_thankyou_order_received_text', [ $this, 'replace_order_received_text_for_failed_orders' ], 11 );
 		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
-		add_action( 'woocommerce_email_order_details', [ $this, 'add_multibanco_payment_instructions_to_order_on_hold_email' ], 10, 4 );
+		add_action( 'poocommerce_email_order_details', [ $this, 'add_multibanco_payment_instructions_to_order_on_hold_email' ], 10, 4 );
 		add_action( 'wp_footer', [ $this, 'output_footer_scripts' ] );
 	}
 
@@ -46,7 +46,7 @@ class WC_Payments_Order_Success_Page {
 	 */
 	public function register_payment_method_override() {
 		// Override the payment method title on the order received page.
-		add_filter( 'woocommerce_order_get_payment_method_title', [ $this, 'show_woocommerce_payments_payment_method_name' ], 10, 2 );
+		add_filter( 'poocommerce_order_get_payment_method_title', [ $this, 'show_poocommerce_payments_payment_method_name' ], 10, 2 );
 	}
 
 	/**
@@ -55,14 +55,14 @@ class WC_Payments_Order_Success_Page {
 	 * @param int $order_id The order ID.
 	 */
 	public function maybe_render_multibanco_payment_instructions( $order_id ) {
-		if ( is_order_received_page() && current_filter() === 'woocommerce_order_details_before_order_table' ) {
+		if ( is_order_received_page() && current_filter() === 'poocommerce_order_details_before_order_table' ) {
 			// Prevent rendering twice on order received page.
 			return;
 		}
 
 		$order = wc_get_order( $order_id );
 
-		if ( ! $order || $order->get_payment_method() !== 'woocommerce_payments_' . Payment_Method::MULTIBANCO || 'on-hold' !== $order->get_status() ) {
+		if ( ! $order || $order->get_payment_method() !== 'poocommerce_payments_' . Payment_Method::MULTIBANCO || 'on-hold' !== $order->get_status() ) {
 			return;
 		}
 
@@ -73,7 +73,7 @@ class WC_Payments_Order_Success_Page {
 		$days_remaining        = max( 0, floor( ( $unix_expiry - time() ) / DAY_IN_SECONDS ) );
 		$formatted_order_total = $order->get_formatted_order_total();
 		wc_print_notice(
-			__( 'Your order is on hold until payment is received. Please follow the payment instructions by the expiry date.', 'woocommerce-payments' ),
+			__( 'Your order is on hold until payment is received. Please follow the payment instructions by the expiry date.', 'poocommerce-payments' ),
 			'notice'
 		);
 		?>
@@ -81,13 +81,13 @@ class WC_Payments_Order_Success_Page {
 			<div class="card">
 				<div class="card-header">
 					<div class="logo-container">
-						<img src="<?php echo esc_url_raw( plugins_url( 'assets/images/payment-methods/multibanco-instructions.svg', WCPAY_PLUGIN_FILE ) ); ?>" alt="<?php esc_attr_e( 'Multibanco', 'woocommerce-payments' ); ?>">
+						<img src="<?php echo esc_url_raw( plugins_url( 'assets/images/payment-methods/multibanco-instructions.svg', WCPAY_PLUGIN_FILE ) ); ?>" alt="<?php esc_attr_e( 'Multibanco', 'poocommerce-payments' ); ?>">
 					</div>
 					<div class="payment-details">
 						<div class="payment-header">
 							<?php
 							/* translators: %s: order number */
-							echo esc_html( sprintf( __( 'Order #%s', 'woocommerce-payments' ), $order->get_order_number() ) );
+							echo esc_html( sprintf( __( 'Order #%s', 'poocommerce-payments' ), $order->get_order_number() ) );
 							?>
 						</div>
 						<div class="payment-expiry">
@@ -95,7 +95,7 @@ class WC_Payments_Order_Success_Page {
 						printf(
 							WC_Payments_Utils::esc_interpolated_html( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 							/* translators: %s: expiry date */
-								__( 'Expires <strong>%s</strong>', 'woocommerce-payments' ),
+								__( 'Expires <strong>%s</strong>', 'poocommerce-payments' ),
 								[
 									'strong' => '<strong>',
 								]
@@ -108,7 +108,7 @@ class WC_Payments_Order_Success_Page {
 							echo esc_html(
 								sprintf(
 									/* translators: %d: number of days */
-									_n( '%d day', '%d days', $days_remaining, 'woocommerce-payments' ),
+									_n( '%d day', '%d days', $days_remaining, 'poocommerce-payments' ),
 									$days_remaining
 								)
 							);
@@ -119,31 +119,31 @@ class WC_Payments_Order_Success_Page {
 				</div>
 
 				<div class="payment-instructions">
-					<p><strong><?php esc_html_e( 'Payment instructions', 'woocommerce-payments' ); ?></strong></p>
+					<p><strong><?php esc_html_e( 'Payment instructions', 'poocommerce-payments' ); ?></strong></p>
 					<ol>
-						<li><?php esc_html_e( 'In your online bank account or from an ATM, choose "Payment and other services".', 'woocommerce-payments' ); ?></li>
-						<li><?php esc_html_e( 'Click "Payments of services/shopping".', 'woocommerce-payments' ); ?></li>
-						<li><?php esc_html_e( 'Enter the entity number, reference number, and amount.', 'woocommerce-payments' ); ?></li>
+						<li><?php esc_html_e( 'In your online bank account or from an ATM, choose "Payment and other services".', 'poocommerce-payments' ); ?></li>
+						<li><?php esc_html_e( 'Click "Payments of services/shopping".', 'poocommerce-payments' ); ?></li>
+						<li><?php esc_html_e( 'Enter the entity number, reference number, and amount.', 'poocommerce-payments' ); ?></li>
 					</ol>
 				</div>
 
 				<div class="payment-box">
 					<div class="payment-box-row">
-						<span class="payment-box-label"><?php esc_html_e( 'Entity', 'woocommerce-payments' ); ?></span>
+						<span class="payment-box-label"><?php esc_html_e( 'Entity', 'poocommerce-payments' ); ?></span>
 						<button type="button" class="payment-box-value copy-btn" data-copy-value="<?php echo esc_attr( $multibanco_info['entity'] ); ?>"><?php echo esc_html( $multibanco_info['entity'] ); ?><i class="copy-icon"></i></button>
 					</div>
 					<div class="payment-box-row">
-						<span class="payment-box-label"><?php esc_html_e( 'Reference', 'woocommerce-payments' ); ?></span>
+						<span class="payment-box-label"><?php esc_html_e( 'Reference', 'poocommerce-payments' ); ?></span>
 						<button type="button" class="payment-box-value copy-btn" data-copy-value="<?php echo esc_attr( $multibanco_info['reference'] ); ?>"><?php echo esc_html( $multibanco_info['reference'] ); ?><i class="copy-icon"></i></button>
 					</div>
 					<div class="payment-box-row">
-						<span class="payment-box-label"><?php esc_html_e( 'Amount', 'woocommerce-payments' ); ?></span>
+						<span class="payment-box-label"><?php esc_html_e( 'Amount', 'poocommerce-payments' ); ?></span>
 						<button type="button" class="payment-box-value copy-btn" data-copy-value="<?php echo esc_attr( wp_strip_all_tags( $formatted_order_total ) ); ?>"><?php echo esc_html( wp_strip_all_tags( $formatted_order_total ) ); ?><i class="copy-icon"></i></button>
 					</div>
 				</div>
 
-				<button type="button" class="button alt print-btn"><?php esc_html_e( 'Print', 'woocommerce-payments' ); ?></button>
-				<button type="button" class="button alt copy-link-btn copy-btn" data-copy-value="<?php echo esc_attr( $multibanco_info['url'] ); ?>"><?php esc_html_e( 'Copy link for sharing', 'woocommerce-payments' ); ?><i class="copy-icon"></i></button>
+				<button type="button" class="button alt print-btn"><?php esc_html_e( 'Print', 'poocommerce-payments' ); ?></button>
+				<button type="button" class="button alt copy-link-btn copy-btn" data-copy-value="<?php echo esc_attr( $multibanco_info['url'] ); ?>"><?php esc_html_e( 'Copy link for sharing', 'poocommerce-payments' ); ?><i class="copy-icon"></i></button>
 			</div>
 		</div>
 		<?php
@@ -153,18 +153,18 @@ class WC_Payments_Order_Success_Page {
 	 * Remove the hook to override the payment method name on the order received page before the order summary.
 	 */
 	public function unregister_payment_method_override() {
-		remove_filter( 'woocommerce_order_get_payment_method_title', [ $this, 'show_woocommerce_payments_payment_method_name' ], 10 );
+		remove_filter( 'poocommerce_order_get_payment_method_title', [ $this, 'show_poocommerce_payments_payment_method_name' ], 10 );
 	}
 
 	/**
-	 * Hooked into `woocommerce_order_get_payment_method_title` to change the payment method title on the
+	 * Hooked into `poocommerce_order_get_payment_method_title` to change the payment method title on the
 	 * order received page for WooPay and BNPL orders.
 	 *
 	 * @param string            $payment_method_title Original payment method title.
 	 * @param WC_Abstract_Order $abstract_order Successful received order being shown.
 	 * @return string
 	 */
-	public function show_woocommerce_payments_payment_method_name( $payment_method_title, $abstract_order ) {
+	public function show_poocommerce_payments_payment_method_name( $payment_method_title, $abstract_order ) {
 		// Only change the payment method title on the order received page.
 		if ( ! is_order_received_page() ) {
 			return $payment_method_title;
@@ -179,7 +179,7 @@ class WC_Payments_Order_Success_Page {
 
 		$payment_method_id = $order->get_payment_method();
 
-		if ( stripos( $payment_method_id, 'woocommerce_payments' ) !== 0 ) {
+		if ( stripos( $payment_method_id, 'poocommerce_payments' ) !== 0 ) {
 			return $payment_method_title;
 		}
 
@@ -239,7 +239,7 @@ class WC_Payments_Order_Success_Page {
 			<img alt="<?php echo esc_attr( $payment_method->get_title() ); ?>" src="<?php echo esc_url_raw( $payment_method->get_icon() ); ?>">
 			<?php
 			if ( $order->get_meta( 'last4' ) ) {
-				echo esc_html_e( '•••', 'woocommerce-payments' ) . ' ';
+				echo esc_html_e( '•••', 'poocommerce-payments' ) . ' ';
 				echo esc_html( $order->get_meta( 'last4' ) );
 			}
 			?>
@@ -270,7 +270,7 @@ class WC_Payments_Order_Success_Page {
 			<img alt="<?php echo esc_attr( $payment_method->get_title() ); ?>" src="<?php echo esc_url_raw( plugins_url( "assets/images/cards/{$card_brand}.svg", WCPAY_PLUGIN_FILE ) ); ?>">
 			<?php
 			if ( $order->get_meta( 'last4' ) ) {
-				echo esc_html_e( '•••', 'woocommerce-payments' ) . ' ';
+				echo esc_html_e( '•••', 'poocommerce-payments' ) . ' ';
 				echo esc_html( $order->get_meta( 'last4' ) );
 			}
 			?>
@@ -294,7 +294,7 @@ class WC_Payments_Order_Success_Page {
 			<img alt="WooPay" src="<?php echo esc_url_raw( plugins_url( 'assets/images/payment-methods/woo-short.svg', WCPAY_PLUGIN_FILE ) ); ?>">
 			<?php
 			if ( $order->get_meta( 'last4' ) ) {
-				echo esc_html_e( 'Card ending in', 'woocommerce-payments' ) . ' ';
+				echo esc_html_e( 'Card ending in', 'poocommerce-payments' ) . ' ';
 				echo esc_html( $order->get_meta( 'last4' ) );
 			}
 			?>
@@ -351,7 +351,7 @@ class WC_Payments_Order_Success_Page {
 	public function add_notice_previous_paid_order( $text ) {
 		if ( isset( $_GET[ Duplicate_Payment_Prevention_Service::FLAG_PREVIOUS_ORDER_PAID ] ) ) { // phpcs:disable WordPress.Security.NonceVerification.Recommended
 			$text .= $this->format_addtional_thankyou_order_received_text(
-				__( 'We detected and prevented an attempt to pay for a duplicate order. If this was a mistake and you wish to try again, please create a new order.', 'woocommerce-payments' )
+				__( 'We detected and prevented an attempt to pay for a duplicate order. If this was a mistake and you wish to try again, please create a new order.', 'poocommerce-payments' )
 			);
 		}
 
@@ -368,7 +368,7 @@ class WC_Payments_Order_Success_Page {
 	public function add_notice_previous_successful_intent( $text ) {
 		if ( isset( $_GET[ Duplicate_Payment_Prevention_Service::FLAG_PREVIOUS_SUCCESSFUL_INTENT ] ) ) { // phpcs:disable WordPress.Security.NonceVerification.Recommended
 			$text .= $this->format_addtional_thankyou_order_received_text(
-				__( 'We prevented multiple payments for the same order. If this was a mistake and you wish to try again, please create a new order.', 'woocommerce-payments' )
+				__( 'We prevented multiple payments for the same order. If this was a mistake and you wish to try again, please create a new order.', 'poocommerce-payments' )
 			);
 		}
 
@@ -390,8 +390,8 @@ class WC_Payments_Order_Success_Page {
 		 *
 		 * It's safe to remove this conditional when WooPayments requires Woo core 8.3.x or higher.
 		 *
-		 * @see https://github.com/woocommerce/woocommerce/pull/39758 Introduce the issue since 8.1.0.
-		 * @see https://github.com/woocommerce/woocommerce/pull/40353 Fix the issue since 8.3.0.
+		 * @see https://github.com/poocommerce/poocommerce/pull/39758 Introduce the issue since 8.1.0.
+		 * @see https://github.com/poocommerce/poocommerce/pull/40353 Fix the issue since 8.3.0.
 		 */
 		if (
 			version_compare( WC_VERSION, '8.0', '>' )
@@ -399,14 +399,14 @@ class WC_Payments_Order_Success_Page {
 		) {
 			echo "
 				<script type='text/javascript'>
-					document.querySelector('.woocommerce-thankyou-order-received')?.classList?.add('woocommerce-info');
+					document.querySelector('.poocommerce-thankyou-order-received')?.classList?.add('poocommerce-info');
 				</script>
 			";
 
 			return ' ' . $additional_text;
 		}
 
-		return sprintf( '<div class="woocommerce-info">%s</div>', $additional_text );
+		return sprintf( '<div class="poocommerce-info">%s</div>', $additional_text );
 	}
 
 	/**
@@ -460,7 +460,7 @@ class WC_Payments_Order_Success_Page {
 			$checkout_url = wc_get_checkout_url();
 			return sprintf(
 				/* translators: %s: checkout URL */
-				__( 'Unfortunately, your order has failed. Please <a href="%s">try checking out again</a>.', 'woocommerce-payments' ),
+				__( 'Unfortunately, your order has failed. Please <a href="%s">try checking out again</a>.', 'poocommerce-payments' ),
 				esc_url( $checkout_url )
 			);
 		}
@@ -501,14 +501,14 @@ class WC_Payments_Order_Success_Page {
 		);
 
 		WC_Payments::register_script_with_dependencies( 'WCPAY_SUCCESS_PAGE', 'dist/success', [] );
-		wp_set_script_translations( 'WCPAY_SUCCESS_PAGE', 'woocommerce-payments' );
+		wp_set_script_translations( 'WCPAY_SUCCESS_PAGE', 'poocommerce-payments' );
 		wp_enqueue_script( 'WCPAY_SUCCESS_PAGE' );
 	}
 
 	/**
 	 * Make sure we show the TYP page for orders paid with WooPay
 	 * that create new user accounts, code mainly copied from
-	 * WooCommerce WC_Shortcode_Checkout::order_received and
+	 * PooCommerce WC_Shortcode_Checkout::order_received and
 	 * WC_Shortcode_Checkout::guest_should_verify_email.
 	 *
 	 * @param bool $value The current value for this filter.
@@ -517,14 +517,14 @@ class WC_Payments_Order_Success_Page {
 		global $wp;
 
 		$order_id  = $wp->query_vars['order-received'];
-		$order_key = apply_filters( 'woocommerce_thankyou_order_key', empty( $_GET['key'] ) ? '' : wc_clean( wp_unslash( $_GET['key'] ) ) );
+		$order_key = apply_filters( 'poocommerce_thankyou_order_key', empty( $_GET['key'] ) ? '' : wc_clean( wp_unslash( $_GET['key'] ) ) );
 		$order     = wc_get_order( $order_id );
 
 		if ( ( ! $order instanceof WC_Order ) || ! $order->get_meta( 'is_woopay' ) || ! hash_equals( $order->get_order_key(), $order_key ) ) {
 			return $value;
 		}
 
-		$verification_grace_period = (int) apply_filters( 'woocommerce_order_email_verification_grace_period', 10 * MINUTE_IN_SECONDS, $order );
+		$verification_grace_period = (int) apply_filters( 'poocommerce_order_email_verification_grace_period', 10 * MINUTE_IN_SECONDS, $order );
 		$date_created              = $order->get_date_created();
 
 		// We do not need to verify the email address if we are within the grace period immediately following order creation.
@@ -543,7 +543,7 @@ class WC_Payments_Order_Success_Page {
 	 * @param WC_Email|string $email The email object.
 	 */
 	public function add_multibanco_payment_instructions_to_order_on_hold_email( $order, $sent_to_admin = false, $plain_text = false, $email = '' ): void {
-		if ( ! $email instanceof WC_Email_Customer_On_Hold_Order || ! $order || $order->get_payment_method() !== 'woocommerce_payments_' . Payment_Method::MULTIBANCO ) {
+		if ( ! $email instanceof WC_Email_Customer_On_Hold_Order || ! $order || $order->get_payment_method() !== 'poocommerce_payments_' . Payment_Method::MULTIBANCO ) {
 			return;
 		}
 
@@ -555,18 +555,18 @@ class WC_Payments_Order_Success_Page {
 
 		if ( $plain_text ) {
 			echo "----------------------------------------\n";
-			echo esc_html__( 'Multibanco Payment instructions', 'woocommerce-payments' ) . "\n\n";
+			echo esc_html__( 'Multibanco Payment instructions', 'poocommerce-payments' ) . "\n\n";
 			printf(
 			/* translators: %s: expiry date */
-				esc_html__( 'Expires %s', 'woocommerce-payments' ) . "\n\n",
+				esc_html__( 'Expires %s', 'poocommerce-payments' ) . "\n\n",
 				esc_html( $expiry_date )
 			);
-			echo '1. ' . esc_html__( 'In your online bank account or from an ATM, choose "Payment and other services".', 'woocommerce-payments' ) . "\n";
-			echo '2. ' . esc_html__( 'Click "Payments of services/shopping".', 'woocommerce-payments' ) . "\n";
-			echo '3. ' . esc_html__( 'Enter the entity number, reference number, and amount.', 'woocommerce-payments' ) . "\n\n";
-			echo esc_html__( 'Entity', 'woocommerce-payments' ) . ': ' . esc_html( $multibanco_info['entity'] ) . "\n";
-			echo esc_html__( 'Reference', 'woocommerce-payments' ) . ': ' . esc_html( $multibanco_info['reference'] ) . "\n";
-			echo esc_html__( 'Amount', 'woocommerce-payments' ) . ': ' . esc_html( wp_strip_all_tags( $formatted_order_total ) ) . "\n";
+			echo '1. ' . esc_html__( 'In your online bank account or from an ATM, choose "Payment and other services".', 'poocommerce-payments' ) . "\n";
+			echo '2. ' . esc_html__( 'Click "Payments of services/shopping".', 'poocommerce-payments' ) . "\n";
+			echo '3. ' . esc_html__( 'Enter the entity number, reference number, and amount.', 'poocommerce-payments' ) . "\n\n";
+			echo esc_html__( 'Entity', 'poocommerce-payments' ) . ': ' . esc_html( $multibanco_info['entity'] ) . "\n";
+			echo esc_html__( 'Reference', 'poocommerce-payments' ) . ': ' . esc_html( $multibanco_info['reference'] ) . "\n";
+			echo esc_html__( 'Amount', 'poocommerce-payments' ) . ': ' . esc_html( wp_strip_all_tags( $formatted_order_total ) ) . "\n";
 			echo "----------------------------------------\n\n";
 		} else {
 			?>
@@ -581,13 +581,13 @@ class WC_Payments_Order_Success_Page {
 										style="background-color: #f6f7f7; border: 1px solid rgba( 109, 109, 109, 0.16 ); border-radius: 4px; box-sizing: border-box; padding: 10px;">
 										<img style="margin: 0; height: 35px; width: 35px;"
 											src="<?php echo esc_url_raw( plugins_url( 'assets/images/payment-methods/multibanco-instructions.svg', WCPAY_PLUGIN_FILE ) ); ?>"
-											alt="<?php esc_attr_e( 'Multibanco', 'woocommerce-payments' ); ?>">
+											alt="<?php esc_attr_e( 'Multibanco', 'poocommerce-payments' ); ?>">
 									</div>
 								</td>
 								<td style="font-size: 20px; padding: 0;">
 									<?php
 									/* translators: %s: order number */
-									echo esc_html( sprintf( __( 'Order #%s', 'woocommerce-payments' ), $order->get_order_number() ) );
+									echo esc_html( sprintf( __( 'Order #%s', 'poocommerce-payments' ), $order->get_order_number() ) );
 									?>
 								</td>
 							</tr>
@@ -597,7 +597,7 @@ class WC_Payments_Order_Success_Page {
 									printf(
 										WC_Payments_Utils::esc_interpolated_html( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 											/* translators: %s: expiry date */
-											__( 'Expires <strong>%s</strong>', 'woocommerce-payments' ),
+											__( 'Expires <strong>%s</strong>', 'poocommerce-payments' ),
 											[
 												'strong' => '<strong>',
 											]
@@ -610,25 +610,25 @@ class WC_Payments_Order_Success_Page {
 						</table>
 						<!-- Using a paragraph to add consistent spacing between the table and the text below. -->
 						<p></p>
-						<p><strong><?php esc_html_e( 'Payment instructions', 'woocommerce-payments' ); ?></strong></p>
+						<p><strong><?php esc_html_e( 'Payment instructions', 'poocommerce-payments' ); ?></strong></p>
 						<ol>
-							<li><?php esc_html_e( 'In your online bank account or from an ATM, choose "Payment and other services".', 'woocommerce-payments' ); ?></li>
-							<li><?php esc_html_e( 'Click "Payments of services/shopping".', 'woocommerce-payments' ); ?></li>
-							<li><?php esc_html_e( 'Enter the entity number, reference number, and amount.', 'woocommerce-payments' ); ?></li>
+							<li><?php esc_html_e( 'In your online bank account or from an ATM, choose "Payment and other services".', 'poocommerce-payments' ); ?></li>
+							<li><?php esc_html_e( 'Click "Payments of services/shopping".', 'poocommerce-payments' ); ?></li>
+							<li><?php esc_html_e( 'Enter the entity number, reference number, and amount.', 'poocommerce-payments' ); ?></li>
 						</ol>
 
 						<table class="td" cellspacing="0" cellpadding="6" border="1" width="100%">
 							<tbody>
 							<tr>
-								<th class="td"><?php esc_html_e( 'Entity', 'woocommerce-payments' ); ?></th>
+								<th class="td"><?php esc_html_e( 'Entity', 'poocommerce-payments' ); ?></th>
 								<td class="td"><?php echo esc_html( $multibanco_info['entity'] ); ?></td>
 							</tr>
 							<tr>
-								<th class="td"><?php esc_html_e( 'Reference', 'woocommerce-payments' ); ?></th>
+								<th class="td"><?php esc_html_e( 'Reference', 'poocommerce-payments' ); ?></th>
 								<td class="td"><?php echo esc_html( $multibanco_info['reference'] ); ?></td>
 							</tr>
 							<tr>
-								<th class="td"><?php esc_html_e( 'Amount', 'woocommerce-payments' ); ?></th>
+								<th class="td"><?php esc_html_e( 'Amount', 'poocommerce-payments' ); ?></th>
 								<td class="td"><?php echo esc_html( wp_strip_all_tags( $formatted_order_total ) ); ?></td>
 							</tr>
 							</tbody>

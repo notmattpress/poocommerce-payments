@@ -2,7 +2,7 @@
 /**
  * Class Duplicates_Detection_Service_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\Duplicates_Detection_Service;
@@ -130,9 +130,9 @@ class Duplicates_Detection_Service_Test extends WCPAY_UnitTestCase {
 		$this->gateway_from_another_plugin->enabled = $gateway_from_another_plugin_enabled;
 
 		if ( 'card' === $id ) {
-			$this->woopayments_gateway->id = 'woocommerce_payments';
+			$this->woopayments_gateway->id = 'poocommerce_payments';
 		} else {
-			$this->woopayments_gateway->id = 'woocommerce_payments_' . $id;
+			$this->woopayments_gateway->id = 'poocommerce_payments_' . $id;
 		}
 		$this->gateway_from_another_plugin->id = 'another_plugin_' . $id;
 	}

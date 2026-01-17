@@ -476,7 +476,7 @@ When `tcUrl` is provided:
 
 ```tsx
 // Use backend-provided tc_label when available, otherwise fall back to default.
-const tcLinkLabel = tcLabel || __( 'See terms', 'woocommerce-payments' );
+const tcLinkLabel = tcLabel || __( 'See terms', 'poocommerce-payments' );
 
 // Build tooltip content with optional T&C link.
 const tooltipContent = tcUrl ? (
@@ -512,14 +512,14 @@ if ( hasDiscount ) {
     return {
         message: getDiscountBadgeText( discountFee ),
         tooltip: getDiscountTooltipText( discountFee ),
-        tooltipLabel: __( 'Discount details', 'woocommerce-payments' ),
+        tooltipLabel: __( 'Discount details', 'poocommerce-payments' ),
     };
 }
 if ( badgePromotion ) {
     return {
         message: badgePromotion.title,
         tooltip: badgePromotion.description,
-        tooltipLabel: __( 'Promotion details', 'woocommerce-payments' ),
+        tooltipLabel: __( 'Promotion details', 'poocommerce-payments' ),
         tcUrl: badgePromotion.tc_url,
         tcLabel: badgePromotion.tc_label,
     };

@@ -51,7 +51,7 @@ class ApplePayDefinition implements PaymentMethodDefinitionInterface {
 	 * @return string
 	 */
 	public static function get_title( ?string $account_country = null ): string {
-		return __( 'Apple Pay', 'woocommerce-payments' );
+		return __( 'Apple Pay', 'poocommerce-payments' );
 	}
 
 	/**
@@ -72,7 +72,7 @@ class ApplePayDefinition implements PaymentMethodDefinitionInterface {
 	 * @return string
 	 */
 	public static function get_description( ?string $account_country = null ): string {
-		return __( 'Apple Pay is an easy and secure way for customers to pay on your store.', 'woocommerce-payments' );
+		return __( 'Apple Pay is an easy and secure way for customers to pay on your store.', 'poocommerce-payments' );
 	}
 
 	/**

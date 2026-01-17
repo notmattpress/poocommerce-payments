@@ -53,7 +53,7 @@ class GiropayDefinition implements PaymentMethodDefinitionInterface {
 	 * @return string
 	 */
 	public static function get_title( ?string $account_country = null ): string {
-		return __( 'giropay', 'woocommerce-payments' );
+		return __( 'giropay', 'poocommerce-payments' );
 	}
 
 	/**
@@ -74,7 +74,7 @@ class GiropayDefinition implements PaymentMethodDefinitionInterface {
 	 * @return string
 	 */
 	public static function get_description( ?string $account_country = null ): string {
-		return __( 'Expand your business with giropay — Germany\'s second most popular payment system.', 'woocommerce-payments' );
+		return __( 'Expand your business with giropay — Germany\'s second most popular payment system.', 'poocommerce-payments' );
 	}
 
 	/**

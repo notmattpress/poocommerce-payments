@@ -53,7 +53,7 @@ class BancontactDefinition implements PaymentMethodDefinitionInterface {
 	 * @return string
 	 */
 	public static function get_title( ?string $account_country = null ): string {
-		return __( 'Bancontact', 'woocommerce-payments' );
+		return __( 'Bancontact', 'poocommerce-payments' );
 	}
 
 	/**
@@ -74,7 +74,7 @@ class BancontactDefinition implements PaymentMethodDefinitionInterface {
 	 * @return string
 	 */
 	public static function get_description( ?string $account_country = null ): string {
-		return __( 'Bancontact is a bank redirect payment method offered by more than 80% of online businesses in Belgium.', 'woocommerce-payments' );
+		return __( 'Bancontact is a bank redirect payment method offered by more than 80% of online businesses in Belgium.', 'poocommerce-payments' );
 	}
 
 	/**

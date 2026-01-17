@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Admin_Settings
  *
- * @package WooCommerce\Payments\Admin
+ * @package PooCommerce\Payments\Admin
  */
 
 /**
@@ -52,9 +52,9 @@ class WC_Payments_Admin_Settings {
 	 * @return void
 	 */
 	public function init_hooks() {
-		add_action( 'woocommerce_woocommerce_payments_admin_notices', [ $this, 'maybe_show_test_mode_notice' ] );
-		add_action( 'woocommerce_woocommerce_payments_admin_notices', [ $this, 'maybe_show_test_account_notice' ] );
-		add_action( 'woocommerce_woocommerce_payments_admin_notices', [ $this, 'maybe_show_sandbox_account_notice' ] );
+		add_action( 'poocommerce_poocommerce_payments_admin_notices', [ $this, 'maybe_show_test_mode_notice' ] );
+		add_action( 'poocommerce_poocommerce_payments_admin_notices', [ $this, 'maybe_show_test_account_notice' ] );
+		add_action( 'poocommerce_poocommerce_payments_admin_notices', [ $this, 'maybe_show_sandbox_account_notice' ] );
 		add_filter( 'plugin_action_links_' . plugin_basename( WCPAY_PLUGIN_FILE ), [ $this, 'add_plugin_links' ] );
 		add_action( 'admin_init', [ $this, 'maybe_redirect_payment_method_settings' ], 16 );
 	}
@@ -91,7 +91,7 @@ class WC_Payments_Admin_Settings {
 					<?php
 						printf(
 							/* translators: %s: WooPayments */
-							esc_html__( '%s is in test mode — all transactions are simulated!', 'woocommerce-payments' ) . ' ',
+							esc_html__( '%s is in test mode — all transactions are simulated!', 'poocommerce-payments' ) . ' ',
 							'WooPayments'
 						);
 					?>
@@ -99,8 +99,8 @@ class WC_Payments_Admin_Settings {
 				<?php
 					printf(
 						/* translators: 1: Anchor opening tag; 2: Anchor closing tag */
-						esc_html__( 'You can use %1$stest card numbers%2$s to simulate various types of transactions.', 'woocommerce-payments' ),
-						'<a href="' . esc_url( 'https://woocommerce.com/document/woopayments/testing-and-troubleshooting/testing/#test-cards' ) . '" target="_blank" rel="noreferrer noopener">',
+						esc_html__( 'You can use %1$stest card numbers%2$s to simulate various types of transactions.', 'poocommerce-payments' ),
+						'<a href="' . esc_url( 'https://poocommerce.com/document/woopayments/testing-and-troubleshooting/testing/#test-cards' ) . '" target="_blank" rel="noreferrer noopener">',
 						'</a>'
 					);
 				?>
@@ -138,24 +138,24 @@ class WC_Payments_Admin_Settings {
 		?>
 		<div id="wcpay-test-account-notice" class="notice notice-warning">
 			<p>
-				<b><?php echo esc_html__( 'You are using a test account.', 'woocommerce-payments' ) . ' '; ?></b>
+				<b><?php echo esc_html__( 'You are using a test account.', 'poocommerce-payments' ) . ' '; ?></b>
 				<?php
 				if ( ! WC_Payments::mode()->is_dev() ) {
 					printf(
 						/* translators: %s: URL to learn more */
-						esc_html__( 'Provide additional details about your business so you can begin accepting real payments. %1$sLearn more%2$s', 'woocommerce-payments' ),
-						'<a href="' . esc_url( 'https://woocommerce.com/document/woopayments/startup-guide/#sign-up-process' ) . '" target="_blank" rel="noreferrer noopener">',
+						esc_html__( 'Provide additional details about your business so you can begin accepting real payments. %1$sLearn more%2$s', 'poocommerce-payments' ),
+						'<a href="' . esc_url( 'https://poocommerce.com/document/woopayments/startup-guide/#sign-up-process' ) . '" target="_blank" rel="noreferrer noopener">',
 						'</a>'
 					);
 				} else {
-					esc_html_e( '⚠️ Development mode is enabled for the store! There can be no live onboarding process while using development, testing, or staging WordPress environments!', 'woocommerce-payments' );
+					esc_html_e( '⚠️ Development mode is enabled for the store! There can be no live onboarding process while using development, testing, or staging WordPress environments!', 'poocommerce-payments' );
 					echo '</br>';
 					printf(
 					/* translators: 1: Anchor opening tag; 2: Anchor closing tag; 3: Anchor opening tag; 4: Anchor closing tag */
-						esc_html__( 'To begin accepting real payments, please go to the live store or change your %1$sWordPress environment%2$s to a production one. %3$sLearn more%4$s', 'woocommerce-payments' ),
+						esc_html__( 'To begin accepting real payments, please go to the live store or change your %1$sWordPress environment%2$s to a production one. %3$sLearn more%4$s', 'poocommerce-payments' ),
 						'<a href="' . esc_url( 'https://make.wordpress.org/core/2020/08/27/wordpress-environment-types/' ) . '" target="_blank" rel="noreferrer noopener">',
 						'</a>',
-						'<a href="' . esc_url( 'https://woocommerce.com/document/woopayments/testing-and-troubleshooting/test-accounts/#developer-notes' ) . '" target="_blank" rel="noreferrer noopener">',
+						'<a href="' . esc_url( 'https://poocommerce.com/document/woopayments/testing-and-troubleshooting/test-accounts/#developer-notes' ) . '" target="_blank" rel="noreferrer noopener">',
 						'</a>'
 					);
 				}
@@ -164,7 +164,7 @@ class WC_Payments_Admin_Settings {
 			<?php if ( ! WC_Payments::mode()->is_dev() ) { ?>
 				<p>
 					<a id="wcpay-activate-payments-button" href="#" class="button button-secondary">
-						<?php esc_html_e( 'Activate payments', 'woocommerce-payments' ); ?>
+						<?php esc_html_e( 'Activate payments', 'poocommerce-payments' ); ?>
 					</a>
 				</p>
 			<?php } ?>
@@ -217,26 +217,26 @@ class WC_Payments_Admin_Settings {
 		?>
 		<div id="wcpay-test-account-notice" class="notice notice-warning">
 			<p>
-				<b><?php echo esc_html__( 'You are using a sandbox test account.', 'woocommerce-payments' ) . ' '; ?></b>
+				<b><?php echo esc_html__( 'You are using a sandbox test account.', 'poocommerce-payments' ) . ' '; ?></b>
 				<?php
 				if ( ! WC_Payments::mode()->is_dev() ) {
 					printf(
 					/* translators: 1: Anchor opening tag; 2: Anchor closing tag; 3: Anchor opening tag; 4: Anchor closing tag */
-						esc_html__( 'To begin accepting real payments you will need to first %1$sreset your account%2$s and, then, provide additional details about your business. %3$sLearn more%4$s', 'woocommerce-payments' ),
-						'<a href="' . esc_url( 'https://woocommerce.com/document/woopayments/startup-guide/#resetting' ) . '" target="_blank" rel="noreferrer noopener">',
+						esc_html__( 'To begin accepting real payments you will need to first %1$sreset your account%2$s and, then, provide additional details about your business. %3$sLearn more%4$s', 'poocommerce-payments' ),
+						'<a href="' . esc_url( 'https://poocommerce.com/document/woopayments/startup-guide/#resetting' ) . '" target="_blank" rel="noreferrer noopener">',
 						'</a>',
-						'<a href="' . esc_url( 'https://woocommerce.com/document/woopayments/startup-guide/#sign-up-process' ) . '" target="_blank" rel="noreferrer noopener">',
+						'<a href="' . esc_url( 'https://poocommerce.com/document/woopayments/startup-guide/#sign-up-process' ) . '" target="_blank" rel="noreferrer noopener">',
 						'</a>',
 					);
 				} else {
-					esc_html_e( '⚠️ Development mode is enabled for the store! There can be no live onboarding process while using development, testing, or staging WordPress environments!', 'woocommerce-payments' );
+					esc_html_e( '⚠️ Development mode is enabled for the store! There can be no live onboarding process while using development, testing, or staging WordPress environments!', 'poocommerce-payments' );
 					echo '</br>';
 					printf(
 					/* translators: 1: Anchor opening tag; 2: Anchor closing tag; 3: Anchor opening tag; 4: Anchor closing tag */
-						esc_html__( 'To begin accepting real payments, please go to the live store or change your %1$sWordPress environment%2$s to a production one. %3$sLearn more%4$s', 'woocommerce-payments' ),
+						esc_html__( 'To begin accepting real payments, please go to the live store or change your %1$sWordPress environment%2$s to a production one. %3$sLearn more%4$s', 'poocommerce-payments' ),
 						'<a href="' . esc_url( 'https://make.wordpress.org/core/2020/08/27/wordpress-environment-types/' ) . '" target="_blank" rel="noreferrer noopener">',
 						'</a>',
-						'<a href="' . esc_url( 'https://woocommerce.com/document/woopayments/testing-and-troubleshooting/test-accounts/#developer-notes' ) . '" target="_blank" rel="noreferrer noopener">',
+						'<a href="' . esc_url( 'https://poocommerce.com/document/woopayments/testing-and-troubleshooting/test-accounts/#developer-notes' ) . '" target="_blank" rel="noreferrer noopener">',
 						'</a>'
 					);
 				}
@@ -248,19 +248,19 @@ class WC_Payments_Admin_Settings {
 
 	/**
 	 * Redirect payment-method-specific settings URLs to the main WooPayments settings page.
-	 * WooCommerce Core generates emails when a new payment method is enabled, with links to the payment method's name.
+	 * PooCommerce Core generates emails when a new payment method is enabled, with links to the payment method's name.
 	 * Since all WooPayments payment methods are managed in the main WooPayments settings page, we need to redirect the merchant to the main settings page.
 	 *
 	 * Handles URLs like:
-	 * - /wp-admin/admin.php?page=wc-settings&tab=checkout&section=woocommerce_payments_klarna
-	 * - /wp-admin/admin.php?page=wc-settings&tab=checkout&section=woocommerce_payments_wechat_pay
+	 * - /wp-admin/admin.php?page=wc-settings&tab=checkout&section=poocommerce_payments_klarna
+	 * - /wp-admin/admin.php?page=wc-settings&tab=checkout&section=poocommerce_payments_wechat_pay
 	 * And redirects them to:
-	 * - /wp-admin/admin.php?page=wc-settings&tab=checkout&section=woocommerce_payments
+	 * - /wp-admin/admin.php?page=wc-settings&tab=checkout&section=poocommerce_payments
 	 *
 	 * @return void
 	 */
 	public function maybe_redirect_payment_method_settings(): void {
-		if ( wp_doing_ajax() || ! current_user_can( 'manage_woocommerce' ) ) {
+		if ( wp_doing_ajax() || ! current_user_can( 'manage_poocommerce' ) ) {
 			return;
 		}
 
@@ -278,9 +278,9 @@ class WC_Payments_Admin_Settings {
 			return;
 		}
 
-		// is this a payment-method-specific URL? (e.g.: woocommerce_payments_klarna, woocommerce_payments_wechat_pay).
+		// is this a payment-method-specific URL? (e.g.: poocommerce_payments_klarna, poocommerce_payments_wechat_pay).
 		$section = $url_params['section'];
-		if ( 0 !== strpos( $section, 'woocommerce_payments_' ) ) {
+		if ( 0 !== strpos( $section, 'poocommerce_payments_' ) ) {
 			return;
 		}
 
@@ -300,7 +300,7 @@ class WC_Payments_Admin_Settings {
 	 */
 	public function add_plugin_links( $links ) {
 		$plugin_links = [
-			'<a href="' . esc_attr( self::get_settings_url() ) . '">' . esc_html__( 'Settings', 'woocommerce-payments' ) . '</a>',
+			'<a href="' . esc_attr( self::get_settings_url() ) . '">' . esc_html__( 'Settings', 'poocommerce-payments' ) . '</a>',
 		];
 
 		return array_merge( $plugin_links, $links );

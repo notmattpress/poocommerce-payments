@@ -202,7 +202,7 @@ const GroupedSelectControl = < ItemType extends ListItem >( {
 								tabIndex={ -1 }
 								placeholder={ __(
 									'Search…',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								) }
 							/>
 						) }

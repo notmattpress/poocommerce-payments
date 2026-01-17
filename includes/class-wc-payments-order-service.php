@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Order_Service
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 use WCPay\Constants\Fraud_Meta_Box_Type;
@@ -169,7 +169,7 @@ class WC_Payments_Order_Service {
 	const PAYMENT_METHOD_DETAILS_META_KEY = '_wcpay_payment_method_details';
 
 	/**
-	 * Client for making requests to the WooCommerce Payments API
+	 * Client for making requests to the PooCommerce Payments API
 	 *
 	 * @var WC_Payments_API_Client
 	 */
@@ -178,7 +178,7 @@ class WC_Payments_Order_Service {
 	/**
 	 * WC_Payments_Order_Service constructor.
 	 *
-	 * @param WC_Payments_API_Client $api_client - WooCommerce Payments API client.
+	 * @param WC_Payments_API_Client $api_client - PooCommerce Payments API client.
 	 */
 	public function __construct( WC_Payments_API_Client $api_client ) {
 		$this->api_client = $api_client;
@@ -416,15 +416,15 @@ class WC_Payments_Order_Service {
 		}
 
 		// Order `completed` and `refunded` emails should both be blocked when disputes are closed.
-		add_filter( 'woocommerce_email_enabled_customer_completed_order', '__return_false' );
-		add_filter( 'woocommerce_email_enabled_customer_refunded_order', '__return_false' );
-		add_filter( 'woocommerce_email_enabled_customer_completed_renewal_order', '__return_false' );
+		add_filter( 'poocommerce_email_enabled_customer_completed_order', '__return_false' );
+		add_filter( 'poocommerce_email_enabled_customer_refunded_order', '__return_false' );
+		add_filter( 'poocommerce_email_enabled_customer_completed_renewal_order', '__return_false' );
 
 		if ( 'lost' === $status ) {
 			wc_create_refund(
 				[
 					'amount'     => $order->get_total(),
-					'reason'     => __( 'Dispute lost.', 'woocommerce-payments' ),
+					'reason'     => __( 'Dispute lost.', 'poocommerce-payments' ),
 					'order_id'   => $order->get_id(),
 					'line_items' => $order->get_items(),
 				]
@@ -436,9 +436,9 @@ class WC_Payments_Order_Service {
 		}
 
 		// Restore completed and refunded order emails.
-		remove_filter( 'woocommerce_email_enabled_customer_completed_order', '__return_false' );
-		remove_filter( 'woocommerce_email_enabled_customer_refunded_order', '__return_false' );
-		remove_filter( 'woocommerce_email_enabled_customer_completed_renewal_order', '__return_false' );
+		remove_filter( 'poocommerce_email_enabled_customer_completed_order', '__return_false' );
+		remove_filter( 'poocommerce_email_enabled_customer_refunded_order', '__return_false' );
+		remove_filter( 'poocommerce_email_enabled_customer_completed_renewal_order', '__return_false' );
 
 		$order->add_order_note( $note );
 	}
@@ -497,8 +497,8 @@ class WC_Payments_Order_Service {
 		$this->complete_order_processing( $order, $intent_status );
 		// Trigger the failed order status hook to send notifications etc only if the order status was not already failed to avoid duplicate notifications.
 		if ( Order_Status::FAILED === $order_status_before_update ) {
-			do_action( 'woocommerce_order_status_pending_to_failed_notification', $order->get_id(), $order );
-			do_action( 'woocommerce_order_status_failed_notification', $order->get_id(), $order );
+			do_action( 'poocommerce_order_status_pending_to_failed_notification', $order->get_id(), $order );
+			do_action( 'poocommerce_order_status_failed_notification', $order->get_id(), $order );
 		}
 	}
 
@@ -559,7 +559,7 @@ class WC_Payments_Order_Service {
 			// Add fee breakdown details to the note.
 			$title = WC_Payments_Utils::esc_interpolated_html(
 				// phpcs:ignore WordPress.WP.I18n.NoHtmlWrappedStrings
-				__( '<strong>Fee details:</strong>', 'woocommerce-payments' ),
+				__( '<strong>Fee details:</strong>', 'poocommerce-payments' ),
 				[
 					'strong' => '<strong>',
 				]
@@ -1385,7 +1385,7 @@ class WC_Payments_Order_Service {
 				} catch ( \Exception $e ) {
 					$order->add_order_note(
 						WC_Payments_Utils::esc_interpolated_html(
-							__( 'Canceling authorization <strong>failed</strong> to complete.', 'woocommerce-payments' ),
+							__( 'Canceling authorization <strong>failed</strong> to complete.', 'poocommerce-payments' ),
 							[ 'strong' => '<strong>' ]
 						)
 					);
@@ -1438,7 +1438,7 @@ class WC_Payments_Order_Service {
 				} catch ( \Exception $e ) {
 					$order->add_order_note(
 						WC_Payments_Utils::esc_interpolated_html(
-							__( 'Capture authorization <strong>failed</strong> to complete.', 'woocommerce-payments' ),
+							__( 'Capture authorization <strong>failed</strong> to complete.', 'poocommerce-payments' ),
 							[ 'strong' => '<strong>' ]
 						)
 					);
@@ -1538,14 +1538,14 @@ class WC_Payments_Order_Service {
 			$note = sprintf(
 				WC_Payments_Utils::esc_interpolated_html(
 					/* translators: %1$s: the refund amount, %2$s: status (cancelled/unsuccessful), %3$s: WooPayments, %4$s: ID of the refund, %5$s: failure message or period */
-					__( 'A refund of %1$s was <strong>%2$s</strong> using %3$s (<code>%4$s</code>)%5$s', 'woocommerce-payments' ),
+					__( 'A refund of %1$s was <strong>%2$s</strong> using %3$s (<code>%4$s</code>)%5$s', 'poocommerce-payments' ),
 					[
 						'strong' => '<strong>',
 						'code'   => '<code>',
 					]
 				),
 				$formatted_amount,
-				$is_cancelled ? __( 'cancelled', 'woocommerce-payments' ) : __( 'unsuccessful', 'woocommerce-payments' ),
+				$is_cancelled ? __( 'cancelled', 'poocommerce-payments' ) : __( 'unsuccessful', 'poocommerce-payments' ),
 				'WooPayments',
 				$refund_id,
 				$is_cancelled ? '.' : ': ' . Refund_Failure_Reason::get_failure_message( $failure_reason ?? Refund_Failure_Reason::UNKNOWN ),
@@ -1582,7 +1582,7 @@ class WC_Payments_Order_Service {
 		return sprintf(
 			WC_Payments_Utils::esc_interpolated_html(
 				/* translators: %1: the successfully charged amount, %2: WooPayments, %3: transaction ID of the payment */
-				__( 'A payment of %1$s was <strong>successfully charged</strong> using %2$s (<a>%3$s</a>).', 'woocommerce-payments' ),
+				__( 'A payment of %1$s was <strong>successfully charged</strong> using %2$s (<a>%3$s</a>).', 'poocommerce-payments' ),
 				[
 					'strong' => '<strong>',
 					'a'      => ! empty( $transaction_url ) ? '<a href="' . $transaction_url . '" target="_blank" rel="noopener noreferrer">' : '<code>',
@@ -1609,7 +1609,7 @@ class WC_Payments_Order_Service {
 		$note            = sprintf(
 			WC_Payments_Utils::esc_interpolated_html(
 				/* translators: %1: the authorized amount, %2: WooPayments, %3: transaction ID of the payment */
-				__( 'A payment of %1$s <strong>failed</strong> using %2$s (<a>%3$s</a>).', 'woocommerce-payments' ),
+				__( 'A payment of %1$s <strong>failed</strong> using %2$s (<a>%3$s</a>).', 'poocommerce-payments' ),
 				[
 					'strong' => '<strong>',
 					'a'      => ! empty( $transaction_url ) ? '<a href="' . $transaction_url . '" target="_blank" rel="noopener noreferrer">' : '<code>',
@@ -1643,7 +1643,7 @@ class WC_Payments_Order_Service {
 		$note = sprintf(
 			WC_Payments_Utils::esc_interpolated_html(
 				/* translators: %1: the authorized amount, %2: WooPayments, %3: transaction ID of the payment, %4: timestamp */
-				__( 'A terminal payment of %1$s <strong>failed</strong> using %2$s (<a>%3$s</a>)', 'woocommerce-payments' ),
+				__( 'A terminal payment of %1$s <strong>failed</strong> using %2$s (<a>%3$s</a>)', 'poocommerce-payments' ),
 				[
 					'strong' => '<strong>',
 					'a'      => ! empty( $transaction_url ) ? '<a href="' . $transaction_url . '" target="_blank" rel="noopener noreferrer">' : '<code>',
@@ -1675,7 +1675,7 @@ class WC_Payments_Order_Service {
 		$note            = sprintf(
 			WC_Payments_Utils::esc_interpolated_html(
 				/* translators: %1: the authorized amount, %2: WooPayments, %3: transaction ID of the payment */
-				__( 'A payment of %1$s was <strong>authorized</strong> using %2$s (<a>%3$s</a>).', 'woocommerce-payments' ),
+				__( 'A payment of %1$s was <strong>authorized</strong> using %2$s (<a>%3$s</a>).', 'poocommerce-payments' ),
 				[
 					'strong' => '<strong>',
 					'a'      => ! empty( $transaction_url ) ? '<a href="' . $transaction_url . '" target="_blank" rel="noopener noreferrer">' : '<code>',
@@ -1701,7 +1701,7 @@ class WC_Payments_Order_Service {
 		$note = sprintf(
 			WC_Payments_Utils::esc_interpolated_html(
 				/* translators: %1: the authorized amount, %2: WooPayments, %3: intent ID of the payment */
-				__( 'A payment of %1$s was <strong>started</strong> using %2$s (<code>%3$s</code>).', 'woocommerce-payments' ),
+				__( 'A payment of %1$s was <strong>started</strong> using %2$s (<code>%3$s</code>).', 'poocommerce-payments' ),
 				[
 					'strong' => '<strong>',
 					'code'   => '<code>',
@@ -1729,7 +1729,7 @@ class WC_Payments_Order_Service {
 		$note            = sprintf(
 			WC_Payments_Utils::esc_interpolated_html(
 				/* translators: %1: the successfully charged amount, %2: WooPayments, %3: transaction ID of the payment */
-				__( 'A payment of %1$s was <strong>successfully captured</strong> using %2$s (<a>%3$s</a>).', 'woocommerce-payments' ),
+				__( 'A payment of %1$s was <strong>successfully captured</strong> using %2$s (<a>%3$s</a>).', 'poocommerce-payments' ),
 				[
 					'strong' => '<strong>',
 					'a'      => ! empty( $transaction_url ) ? '<a href="' . $transaction_url . '" target="_blank" rel="noopener noreferrer">' : '<code>',
@@ -1757,7 +1757,7 @@ class WC_Payments_Order_Service {
 		$note            = sprintf(
 			WC_Payments_Utils::esc_interpolated_html(
 				/* translators: %1: the authorized amount, %2: WooPayments, %3: transaction ID of the payment */
-				__( 'A capture of %1$s <strong>failed</strong> to complete using %2$s (<a>%3$s</a>).', 'woocommerce-payments' ),
+				__( 'A capture of %1$s <strong>failed</strong> to complete using %2$s (<a>%3$s</a>).', 'poocommerce-payments' ),
 				[
 					'strong' => '<strong>',
 					'a'      => ! empty( $transaction_url ) ? '<a href="' . $transaction_url . '" target="_blank" rel="noopener noreferrer">' : '<code>',
@@ -1789,7 +1789,7 @@ class WC_Payments_Order_Service {
 		return sprintf(
 			WC_Payments_Utils::esc_interpolated_html(
 				/* translators: %1: the authorized amount, %2: transaction ID of the payment */
-				__( 'Payment authorization has <strong>expired</strong> (<a>%1$s</a>).', 'woocommerce-payments' ),
+				__( 'Payment authorization has <strong>expired</strong> (<a>%1$s</a>).', 'poocommerce-payments' ),
 				[
 					'strong' => '<strong>',
 					'a'      => ! empty( $transaction_url ) ? '<a href="' . $transaction_url . '" target="_blank" rel="noopener noreferrer">' : '<code>',
@@ -1813,7 +1813,7 @@ class WC_Payments_Order_Service {
 		return sprintf(
 			WC_Payments_Utils::esc_interpolated_html(
 				/* translators: %1: transaction ID of the payment */
-				__( 'Payment authorization was successfully <strong>cancelled</strong> (<a>%1$s</a>).', 'woocommerce-payments' ),
+				__( 'Payment authorization was successfully <strong>cancelled</strong> (<a>%1$s</a>).', 'poocommerce-payments' ),
 				[
 					'strong' => '<strong>',
 					'a'      => ! empty( $transaction_url ) ? '<a href="' . $transaction_url . '" target="_blank" rel="noopener noreferrer">' : '<code>',
@@ -1845,7 +1845,7 @@ class WC_Payments_Order_Service {
 		$note = sprintf(
 			WC_Payments_Utils::esc_interpolated_html(
 				/* translators: %1: the authorized amount, %2: transaction ID of the payment */
-				__( '&#x26D4; A payment of %1$s was <strong>held for review</strong> by one or more risk filters.<br><br><a>View more details</a>.', 'woocommerce-payments' ),
+				__( '&#x26D4; A payment of %1$s was <strong>held for review</strong> by one or more risk filters.<br><br><a>View more details</a>.', 'poocommerce-payments' ),
 				[
 					'&#x26D4;' => '&#x26D4;',
 					'strong'   => '<strong>',
@@ -1879,7 +1879,7 @@ class WC_Payments_Order_Service {
 		$note = sprintf(
 			WC_Payments_Utils::esc_interpolated_html(
 				/* translators: %1: the blocked amount, %2: transaction ID of the payment */
-				__( '&#x1F6AB; A payment of %1$s was <strong>blocked</strong> by one or more risk filters.<br><br><a>View more details</a>.', 'woocommerce-payments' ),
+				__( '&#x1F6AB; A payment of %1$s was <strong>blocked</strong> by one or more risk filters.<br><br><a>View more details</a>.', 'poocommerce-payments' ),
 				[
 					'&#x1F6AB;' => '&#x1F6AB;',
 					'strong'    => '<strong>',
@@ -1914,7 +1914,7 @@ class WC_Payments_Order_Service {
 			return sprintf(
 				WC_Payments_Utils::esc_interpolated_html(
 					/* translators: %1: the disputed amount and currency; %2: the dispute reason; %3 the deadline date for responding to the inquiry */
-					__( 'A payment inquiry has been raised for %1$s with reason "%2$s". <a>Response due by %3$s</a>.', 'woocommerce-payments' ),
+					__( 'A payment inquiry has been raised for %1$s with reason "%2$s". <a>Response due by %3$s</a>.', 'poocommerce-payments' ),
 					[
 						'a' => '<a href="%4$s" target="_blank" rel="noopener noreferrer">',
 					]
@@ -1929,7 +1929,7 @@ class WC_Payments_Order_Service {
 		return sprintf(
 			WC_Payments_Utils::esc_interpolated_html(
 				/* translators: %1: the disputed amount and currency; %2: the dispute reason; %3 the deadline date for responding to dispute */
-				__( 'Payment has been disputed for %1$s with reason "%2$s". <a>Response due by %3$s</a>.', 'woocommerce-payments' ),
+				__( 'Payment has been disputed for %1$s with reason "%2$s". <a>Response due by %3$s</a>.', 'poocommerce-payments' ),
 				[
 					'a' => '<a href="%4$s" target="_blank" rel="noopener noreferrer">',
 				]
@@ -1957,7 +1957,7 @@ class WC_Payments_Order_Service {
 			return sprintf(
 				WC_Payments_Utils::esc_interpolated_html(
 				/* translators: %1: the dispute status */
-					__( 'Payment inquiry has been closed with status %1$s. See <a>payment status</a> for more details.', 'woocommerce-payments' ),
+					__( 'Payment inquiry has been closed with status %1$s. See <a>payment status</a> for more details.', 'poocommerce-payments' ),
 					[
 						'a' => '<a href="%2$s" target="_blank" rel="noopener noreferrer">',
 					]
@@ -1970,7 +1970,7 @@ class WC_Payments_Order_Service {
 		return sprintf(
 			WC_Payments_Utils::esc_interpolated_html(
 				/* translators: %1: the dispute status */
-				__( 'Dispute has been closed with status %1$s. See <a>dispute overview</a> for more details.', 'woocommerce-payments' ),
+				__( 'Dispute has been closed with status %1$s. See <a>dispute overview</a> for more details.', 'poocommerce-payments' ),
 				[
 					'a' => '<a href="%2$s" target="_blank" rel="noopener noreferrer">',
 				]
@@ -1998,16 +1998,16 @@ class WC_Payments_Order_Service {
 
 		$status_text = $is_pending ?
 			sprintf(
-				'<a href="https://woocommerce.com/document/woopayments/managing-money/#pending-refunds" target="_blank" rel="noopener noreferrer">%1$s</a>',
-				__( 'is pending', 'woocommerce-payments' )
+				'<a href="https://poocommerce.com/document/woopayments/managing-money/#pending-refunds" target="_blank" rel="noopener noreferrer">%1$s</a>',
+				__( 'is pending', 'poocommerce-payments' )
 			)
-			: __( 'was successfully processed', 'woocommerce-payments' );
+			: __( 'was successfully processed', 'poocommerce-payments' );
 
 		if ( empty( $refund_reason ) ) {
 			$note = sprintf(
 				WC_Payments_Utils::esc_interpolated_html(
 				/* translators: %1: the refund amount, %2: WooPayments, %3: ID of the refund, %4: status text */
-					__( 'A refund of %1$s %4$s using %2$s (<code>%3$s</code>).', 'woocommerce-payments' ),
+					__( 'A refund of %1$s %4$s using %2$s (<code>%3$s</code>).', 'poocommerce-payments' ),
 					[
 						'code' => '<code>',
 					]
@@ -2021,7 +2021,7 @@ class WC_Payments_Order_Service {
 			$note = sprintf(
 				WC_Payments_Utils::esc_interpolated_html(
 				/* translators: %1: the refund amount, %2: WooPayments, %3: reason, %4: refund id, %5: status text */
-					__( 'A refund of %1$s %5$s using %2$s. Reason: %3$s. (<code>%4$s</code>)', 'woocommerce-payments' ),
+					__( 'A refund of %1$s %5$s using %2$s. Reason: %3$s. (<code>%4$s</code>)', 'poocommerce-payments' ),
 					[
 						'code' => '<code>',
 					]
@@ -2199,12 +2199,12 @@ class WC_Payments_Order_Service {
 	private function update_order_status( $order, $order_status, $intent_id = '' ) {
 		try {
 			/**
-			 * In this instance payment_complete is not an order status, but a flag to mark the order as paid. In a default WooCommerce store, the order
-			 * may move to Processing or Completed status depending on the contents of the cart, so we let WooCommerce core decide what to do.
+			 * In this instance payment_complete is not an order status, but a flag to mark the order as paid. In a default PooCommerce store, the order
+			 * may move to Processing or Completed status depending on the contents of the cart, so we let PooCommerce core decide what to do.
 			 */
 			if ( 'payment_complete' === $order_status ) {
 				if ( empty( $intent_id ) ) {
-					throw new Exception( __( 'Intent id was not included for payment complete status change.', 'woocommerce-payments' ) );
+					throw new Exception( __( 'Intent id was not included for payment complete status change.', 'poocommerce-payments' ) );
 				}
 				$order->payment_complete( $intent_id );
 			} else {
@@ -2277,7 +2277,7 @@ class WC_Payments_Order_Service {
 		$order = $this->is_order_type_object( $order ) ? $order : wc_get_order( $order );
 		if ( ! $this->is_order_type_object( $order ) ) {
 			throw new Order_Not_Found_Exception(
-				esc_html__( 'The requested order was not found.', 'woocommerce-payments' ),
+				esc_html__( 'The requested order was not found.', 'poocommerce-payments' ),
 				'order_not_found'
 			);
 		}
@@ -2416,11 +2416,11 @@ class WC_Payments_Order_Service {
 	 * @return string
 	 */
 	private function get_frod_support_note( $formatted_amount ) {
-		$learn_more_url = 'https://woocommerce.com/document/woopayments/fees/preventing-negative-balances/#adding-funds';
+		$learn_more_url = 'https://poocommerce.com/document/woopayments/fees/preventing-negative-balances/#adding-funds';
 		return sprintf(
 			WC_Payments_Utils::esc_interpolated_html(
 				/* translators: %s: Formatted refund amount */
-				__( 'Refund of %s <strong>failed</strong> due to insufficient funds in your WooPayments balance. To prevent delays in refunding customers, please consider adding funds to your Future Refunds or Disputes (FROD) balance. <a>Learn more</a>.', 'woocommerce-payments' ),
+				__( 'Refund of %s <strong>failed</strong> due to insufficient funds in your WooPayments balance. To prevent delays in refunding customers, please consider adding funds to your Future Refunds or Disputes (FROD) balance. <a>Learn more</a>.', 'poocommerce-payments' ),
 				[
 					'strong' => '<strong>',
 					'a'      => '<a href="' . $learn_more_url . '" target="_blank" rel="noopener noreferrer">',
@@ -2440,7 +2440,7 @@ class WC_Payments_Order_Service {
 		return sprintf(
 			WC_Payments_Utils::esc_interpolated_html(
 				/* translators: %1$s: Formatted refund amount */
-				__( 'Refund of %1$s <strong>failed</strong> due to insufficient funds in your WooPayments balance.', 'woocommerce-payments' ),
+				__( 'Refund of %1$s <strong>failed</strong> due to insufficient funds in your WooPayments balance.', 'poocommerce-payments' ),
 				[
 					'strong' => '<strong>',
 				]

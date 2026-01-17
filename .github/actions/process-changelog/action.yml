@@ -1,4 +1,4 @@
-name: "Process the changelog for WooCommerce Payments"
+name: "Process the changelog for PooCommerce Payments"
 description: "Generate or amend the changelog entries"
 
 inputs:

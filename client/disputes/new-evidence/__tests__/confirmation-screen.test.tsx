@@ -169,7 +169,7 @@ describe( 'ConfirmationScreen', () => {
 			expect( learnMoreLink ).toBeInTheDocument();
 			expect( learnMoreLink ).toHaveAttribute(
 				'href',
-				'https://woocommerce.com/document/woopayments/fraud-and-disputes/managing-disputes/#how-they-work'
+				'https://poocommerce.com/document/woopayments/fraud-and-disputes/managing-disputes/#how-they-work'
 			);
 			expect( learnMoreLink ).toHaveAttribute( 'target', '_blank' );
 			expect( learnMoreLink ).toHaveAttribute(

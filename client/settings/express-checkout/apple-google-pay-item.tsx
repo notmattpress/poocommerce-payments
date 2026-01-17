@@ -43,7 +43,7 @@ const AppleGooglePayExpressCheckoutItem = (): React.ReactElement => {
 					<CheckboxControl
 						label={ __(
 							'Apple Pay / Google Pay',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 						checked={ isPaymentRequestEnabled }
 						onChange={ updateIsPaymentRequestEnabled }
@@ -77,7 +77,7 @@ const AppleGooglePayExpressCheckoutItem = (): React.ReactElement => {
 													/* eslint-disable-next-line max-len */
 													'By enabling this feature, you agree to {{stripeLink}}Stripe{{/stripeLink}} and' +
 														"{{appleLink}} Apple{{/appleLink}}'s terms of use.",
-													'woocommerce-payments'
+													'poocommerce-payments'
 												),
 												components: {
 													stripeLink: (
@@ -128,7 +128,7 @@ const AppleGooglePayExpressCheckoutItem = (): React.ReactElement => {
 													/* eslint-disable-next-line max-len */
 													'By enabling this feature, you agree to {{stripeLink}}Stripe{{/stripeLink}}, ' +
 														"and {{googleLink}}Google{{/googleLink}}'s terms of use.",
-													'woocommerce-payments'
+													'poocommerce-payments'
 												),
 												components: {
 													stripeLink: (
@@ -161,7 +161,7 @@ const AppleGooglePayExpressCheckoutItem = (): React.ReactElement => {
 							) }
 							isSecondary
 						>
-							{ __( 'Customize', 'woocommerce-payments' ) }
+							{ __( 'Customize', 'poocommerce-payments' ) }
 						</Button>
 					</div>
 				</div>

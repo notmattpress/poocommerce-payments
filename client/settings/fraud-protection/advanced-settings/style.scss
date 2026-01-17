@@ -1,27 +1,27 @@
 // Override body and header for Advanced fraud settings page to be consistent with other settings pages.
 body {
-	&.woocommerce-admin-page__payments_fraud-protection {
+	&.poocommerce-admin-page__payments_fraud-protection {
 		background: #fff;
 		.wcpay-settings-layout {
 			margin: 40px 0 0;
 			max-width: 1184px;
 		}
 		@media screen and ( max-width: 782px ) {
-			.woocommerce-layout .woocommerce-layout__main {
+			.poocommerce-layout .poocommerce-layout__main {
 				padding-top: 0; // reduce the padding in mobile view (it's too big)
 			}
 		}
-		.woocommerce-layout__header {
+		.poocommerce-layout__header {
 			&-heading {
 				font-size: 16px;
 				padding: 0 0 0 30px;
 			}
 			border-bottom: 1px solid #ddd;
 		}
-		.woocommerce-layout__primary {
+		.poocommerce-layout__primary {
 			margin: 24px 0 128px 30px;
 		}
-		#woocommerce-activity-panel {
+		#poocommerce-activity-panel {
 			display: none;
 		}
 	}
