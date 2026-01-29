@@ -246,6 +246,11 @@ declare global {
 		exitSurveyLastShown: string | null;
 	};
 
+	const wcpayReviewPromptSettings: {
+		isLive: boolean;
+		version: string;
+	};
+
 	interface WcSettings {
 		ece_data?: WCPayExpressCheckoutParams;
 		woocommerce_payments_data: typeof wcpaySettings;
@@ -268,5 +273,6 @@ declare global {
 		wcSettings: typeof wcSettings;
 		wcpayPluginSettings?: typeof wcpayPluginSettings;
 		wooPaymentsPaymentMethodsConfig?: typeof wooPaymentsPaymentMethodsConfig;
+		wcpayReviewPromptSettings?: typeof wcpayReviewPromptSettings;
 	}
 }
