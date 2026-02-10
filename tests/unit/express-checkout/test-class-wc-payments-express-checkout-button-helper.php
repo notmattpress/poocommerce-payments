@@ -154,6 +154,60 @@ class WC_Payments_Express_Checkout_Button_Helper_Test extends WCPAY_UnitTestCase
 		);
 	}
 
+	public function test_has_subscription_product_on_cart() {
+		WC_Subscriptions_Product::$is_subscription = true;
+		WC_Subscriptions_Cart::set_cart_contains_subscription( true );
+
+		$helper = $this->getMockBuilder( WC_Payments_Express_Checkout_Button_Helper::class )
+			->setConstructorArgs( [ $this->mock_wcpay_gateway, $this->mock_wcpay_account ] )
+			->onlyMethods( [ 'is_product', 'is_cart', 'is_checkout' ] )
+			->getMock();
+
+		$helper->method( 'is_product' )->willReturn( false );
+		$helper->method( 'is_cart' )->willReturn( true );
+		$helper->method( 'is_checkout' )->willReturn( false );
+
+		$this->assertTrue( $helper->has_subscription_product() );
+
+		WC_Subscriptions_Cart::set_cart_contains_subscription( false );
+	}
+
+	public function test_has_subscription_product_on_product_page_with_no_subscription_product() {
+		WC_Subscriptions_Product::$is_subscription = false;
+		WC_Subscriptions_Cart::set_cart_contains_subscription( true );
+
+		$helper = $this->getMockBuilder( WC_Payments_Express_Checkout_Button_Helper::class )
+			->setConstructorArgs( [ $this->mock_wcpay_gateway, $this->mock_wcpay_account ] )
+			->onlyMethods( [ 'is_product', 'is_cart', 'is_checkout' ] )
+			->getMock();
+
+		$helper->method( 'is_product' )->willReturn( true );
+		$helper->method( 'is_cart' )->willReturn( false );
+		$helper->method( 'is_checkout' )->willReturn( false );
+
+		$this->assertFalse( $helper->has_subscription_product() );
+
+		WC_Subscriptions_Cart::set_cart_contains_subscription( false );
+	}
+
+	public function test_has_subscription_product_on_product_page_with_subscription_product() {
+		WC_Subscriptions_Product::$is_subscription = true;
+		WC_Subscriptions_Cart::set_cart_contains_subscription( true );
+
+		$helper = $this->getMockBuilder( WC_Payments_Express_Checkout_Button_Helper::class )
+			->setConstructorArgs( [ $this->mock_wcpay_gateway, $this->mock_wcpay_account ] )
+			->onlyMethods( [ 'is_product', 'is_cart', 'is_checkout' ] )
+			->getMock();
+
+		$helper->method( 'is_product' )->willReturn( true );
+		$helper->method( 'is_cart' )->willReturn( false );
+		$helper->method( 'is_checkout' )->willReturn( false );
+
+		$this->assertTrue( $helper->has_subscription_product() );
+
+		WC_Subscriptions_Cart::set_cart_contains_subscription( false );
+	}
+
 	public function test_common_get_button_settings() {
 		$this->assertEquals(
 			[
