@@ -1,5 +1,7 @@
 *** WooPayments Changelog ***
 
+= 10.5.1 - 2026-02-11 =
+
 = 10.5.0 - 2026-02-05 =
 * Add - Add "Other" and "Booking/Reservation" product type support for dispute evidence (feature flag gated)
 * Add - Add ability to specify preferred communications email.
