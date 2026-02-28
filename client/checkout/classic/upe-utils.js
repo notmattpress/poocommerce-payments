@@ -11,10 +11,10 @@ import { SHORTCODE_BILLING_ADDRESS_FIELDS } from './constants';
  * Returns the gateway ID for a given payment method type.
  *
  * @param {string} paymentMethodType Payment method type (e.g. 'card', 'bancontact')
- * @return {string} Gateway ID (e.g. 'woocommerce_payments', 'woocommerce_payments_bancontact')
+ * @return {string} Gateway ID (e.g. 'poocommerce_payments', 'poocommerce_payments_bancontact')
  */
 export const getGatewayIdBy = ( paymentMethodType ) => {
-	const gatewayPrefix = 'woocommerce_payments';
+	const gatewayPrefix = 'poocommerce_payments';
 	// Only append underscore and payment method type for non-card payments
 	return paymentMethodType === 'card'
 		? gatewayPrefix
@@ -28,21 +28,21 @@ export const getGatewayIdBy = ( paymentMethodType ) => {
  */
 export const getSelectedUPEGatewayPaymentMethod = () => {
 	const selectedGateway = document.querySelector(
-		'input[name="payment_method"][value*="woocommerce_payments"]:checked'
+		'input[name="payment_method"][value*="poocommerce_payments"]:checked'
 	);
 
 	if ( ! selectedGateway ) {
 		return null;
 	}
 
-	// 'woocommerce_payments_affirm' => 'affirm'
-	// 'woocommerce_payments_p24' -> 'p24'
-	// 'woocommerce_payments' -> ''
+	// 'poocommerce_payments_affirm' => 'affirm'
+	// 'poocommerce_payments_p24' -> 'p24'
+	// 'poocommerce_payments' -> ''
 	const paymentMethodType = selectedGateway.value
-		// non-card elements are prefixed with `woocommerce_payments_*`
-		.replace( 'woocommerce_payments_', '' )
-		// the card element is just called `woocommerce_payments` - we need to account for variation in the name
-		.replace( 'woocommerce_payments', '' );
+		// non-card elements are prefixed with `poocommerce_payments_*`
+		.replace( 'poocommerce_payments_', '' )
+		// the card element is just called `poocommerce_payments` - we need to account for variation in the name
+		.replace( 'poocommerce_payments', '' );
 
 	// if the string is empty, it's the card element
 	return paymentMethodType || 'card';
@@ -51,7 +51,7 @@ export const getSelectedUPEGatewayPaymentMethod = () => {
 /**
  * Determines which billing fields should be hidden in the Stripe payment element.
  *
- * @param {Object} enabledBillingFields Object containing all the billing fields for the WooCommerce checkout.
+ * @param {Object} enabledBillingFields Object containing all the billing fields for the PooCommerce checkout.
  * @return {Object} Object mapping billing field names to their hidden status.
  */
 export const getHiddenBillingFields = ( enabledBillingFields ) => {
@@ -288,7 +288,7 @@ export const togglePaymentMethodForCountry = ( upeElement ) => {
 		upeContainer.style.display = 'none';
 		if ( paymentMethodType === selectedPaymentMethod ) {
 			const cardPaymentForm = document.querySelector(
-				'input[name="payment_method"][value="woocommerce_payments"]'
+				'input[name="payment_method"][value="poocommerce_payments"]'
 			);
 
 			cardPaymentForm?.click();
@@ -297,7 +297,7 @@ export const togglePaymentMethodForCountry = ( upeElement ) => {
 };
 
 /**
- * Parses the locale from WooCommerce address i18n params.
+ * Parses the locale from PooCommerce address i18n params.
  *
  * @return {Object|null} Parsed locale object or null if parsing fails
  */

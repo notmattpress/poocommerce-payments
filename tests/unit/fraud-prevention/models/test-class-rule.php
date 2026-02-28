@@ -2,7 +2,7 @@
 /**
  * Class Fraud_Prevention_Models_Rule_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\Fraud_Prevention\Models\Rule;

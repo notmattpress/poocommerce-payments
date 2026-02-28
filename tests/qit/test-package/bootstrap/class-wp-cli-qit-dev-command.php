@@ -2,7 +2,7 @@
 /**
  * QIT Dev Tools command
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 use WCPay\Database_Cache;
@@ -156,9 +156,9 @@ class WP_CLI_QIT_Dev_Command {
 		add_filter( 'wcpay_test_mode', '__return_true' );
 
 		// Also try setting the gateway settings to enable test mode.
-		$gateway_settings              = get_option( 'woocommerce_woocommerce_payments_settings', [] );
+		$gateway_settings              = get_option( 'poocommerce_poocommerce_payments_settings', [] );
 		$gateway_settings['test_mode'] = 'yes';
-		update_option( 'woocommerce_woocommerce_payments_settings', $gateway_settings );
+		update_option( 'poocommerce_poocommerce_payments_settings', $gateway_settings );
 
 		// CRITICAL: Use WC_Payments_Onboarding_Service to set test mode (this sets test_mode_onboarding).
 		if ( class_exists( 'WC_Payments_Onboarding_Service' ) ) {

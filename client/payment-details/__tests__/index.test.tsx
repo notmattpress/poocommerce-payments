@@ -18,7 +18,7 @@ import PAYMENT_METHOD_IDS, {
 import { Dispute } from 'wcpay/types/disputes';
 import { Charge, PaymentMethodDetails } from 'wcpay/types/charges';
 
-// Suppress React 18 deprecation warnings from external @woocommerce/components
+// Suppress React 18 deprecation warnings from external @poocommerce/components
 // eslint-disable-next-line no-console
 const originalError = console.error;
 beforeAll( () => {
@@ -75,7 +75,7 @@ jest.mock( '@wordpress/data', () => ( {
 } ) );
 
 const mockHistoryReplace = jest.fn();
-jest.mock( '@woocommerce/navigation', () => ( {
+jest.mock( '@poocommerce/navigation', () => ( {
 	getQuery: () => {
 		return {
 			status_is: '',
@@ -88,7 +88,7 @@ jest.mock( '@woocommerce/navigation', () => ( {
 	addHistoryListener: jest.fn(),
 } ) );
 
-jest.mock( '@woocommerce/data', () => ( {
+jest.mock( '@poocommerce/data', () => ( {
 	useUserPreferences: jest.fn( () => ( {
 		updateUserPreferences: jest.fn(),
 		wc_payments_wporg_review_2025_prompt_dismissed: false,

@@ -43,7 +43,7 @@ test.describe(
 				'/wp-admin/admin.php?page=wc-admin&path=/payments/connect',
 				{ waitUntil: 'load' }
 			);
-			// Wait for WooCommerce admin data to load (similar to dataHasLoaded)
+			// Wait for PooCommerce admin data to load (similar to dataHasLoaded)
 			await page
 				.locator( '.is-loadable-placeholder' )
 				.waitFor( { state: 'detached', timeout: 10000 } )
@@ -117,7 +117,7 @@ test.describe(
 				'/wp-admin/admin.php?page=wc-admin&path=/payments/overview',
 				{ waitUntil: 'load' }
 			);
-			// Wait for WooCommerce admin data to load
+			// Wait for PooCommerce admin data to load
 			await adminPage
 				.locator( '.is-loadable-placeholder' )
 				.waitFor( { state: 'detached', timeout: 10000 } )

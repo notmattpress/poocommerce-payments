@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Invoice_Service
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 use WCPay\Core\Server\Request\Get_Intention;
@@ -33,7 +33,7 @@ class WC_Payments_Invoice_Service {
 	const ORDER_INVOICE_ID_KEY = '_wcpay_billing_invoice_id';
 
 	/**
-	 * Client for making requests to the WooCommerce Payments API.
+	 * Client for making requests to the PooCommerce Payments API.
 	 *
 	 * @var WC_Payments_API_Client
 	 */
@@ -49,7 +49,7 @@ class WC_Payments_Invoice_Service {
 	/**
 	 * Constructor.
 	 *
-	 * @param WC_Payments_API_Client    $payments_api_client  WooCommerce Payments API client.
+	 * @param WC_Payments_API_Client    $payments_api_client  PooCommerce Payments API client.
 	 * @param WC_Payments_Order_Service $order_service         WC payments Order Service.
 	 */
 	public function __construct(
@@ -71,8 +71,8 @@ class WC_Payments_Invoice_Service {
 		}
 
 		if ( WC_Payments_Features::should_use_stripe_billing() ) {
-			add_action( 'woocommerce_order_payment_status_changed', [ $this, 'maybe_record_invoice_payment' ], 10, 1 );
-			add_action( 'woocommerce_renewal_order_payment_complete', [ $this, 'maybe_record_invoice_payment' ], 11, 1 );
+			add_action( 'poocommerce_order_payment_status_changed', [ $this, 'maybe_record_invoice_payment' ], 10, 1 );
+			add_action( 'poocommerce_renewal_order_payment_complete', [ $this, 'maybe_record_invoice_payment' ], 11, 1 );
 		}
 	}
 
@@ -140,9 +140,9 @@ class WC_Payments_Invoice_Service {
 				return $query;
 			};
 
-			add_filter( 'woocommerce_order_data_store_cpt_get_orders_query', $add_meta_query, 10, 2 );
+			add_filter( 'poocommerce_order_data_store_cpt_get_orders_query', $add_meta_query, 10, 2 );
 			$order_ids = wc_get_orders( $query_args );
-			remove_filter( 'woocommerce_order_data_store_cpt_get_orders_query', $add_meta_query, 10 );
+			remove_filter( 'poocommerce_order_data_store_cpt_get_orders_query', $add_meta_query, 10 );
 		}
 
 		return (int) array_shift( $order_ids );
@@ -288,7 +288,7 @@ class WC_Payments_Invoice_Service {
 			$intent_object = $request->send();
 
 		} catch ( API_Exception $e ) {
-			$order->add_order_note( __( 'The payment info couldn\'t be added to the order.', 'woocommerce-payments' ) );
+			$order->add_order_note( __( 'The payment info couldn\'t be added to the order.', 'poocommerce-payments' ) );
 			return;
 		}
 
@@ -435,7 +435,7 @@ class WC_Payments_Invoice_Service {
 			$wcpay_item_id = $this->get_wcpay_item_id( $item );
 
 			if ( ! isset( $wcpay_items[ $wcpay_item_id ] ) ) {
-				$message = __( 'The WooPayments invoice items do not match WC subscription items.', 'woocommerce-payments' );
+				$message = __( 'The WooPayments invoice items do not match WC subscription items.', 'poocommerce-payments' );
 				Logger::error( $message );
 				throw new Rest_Request_Exception( $message );
 			}

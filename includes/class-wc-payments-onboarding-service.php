@@ -2,15 +2,15 @@
 /**
  * Class WC_Payments_Onboarding_Service
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-use Automattic\WooCommerce\Admin\Notes\DataStore;
-use Automattic\WooCommerce\Admin\Notes\Note;
+use Automattic\PooCommerce\Admin\Notes\DataStore;
+use Automattic\PooCommerce\Admin\Notes\Note;
 use WCPay\Database_Cache;
 use WCPay\Exceptions\API_Exception;
 use WCPay\Logger;
@@ -75,7 +75,7 @@ class WC_Payments_Onboarding_Service {
 	const TRACKS_EVENT_TEST_DRIVE_ACCOUNT_DISABLE = 'wcpay_onboarding_test_account_disable';
 
 	/**
-	 * Client for making requests to the WooCommerce Payments API
+	 * Client for making requests to the PooCommerce Payments API
 	 *
 	 * @var WC_Payments_API_Client
 	 */
@@ -315,7 +315,7 @@ class WC_Payments_Onboarding_Service {
 		if ( $this->is_onboarding_init_in_progress() ) {
 			Logger::warning( 'Duplicate onboarding attempt detected.' );
 			// We can't allow multiple onboarding initializations to happen at the same time.
-			throw new Exception( __( 'Onboarding initialization is already in progress. Please wait for it to finish.', 'woocommerce-payments' ) );
+			throw new Exception( __( 'Onboarding initialization is already in progress. Please wait for it to finish.', 'poocommerce-payments' ) );
 		}
 
 		$this->set_onboarding_init_in_progress();
@@ -422,7 +422,7 @@ class WC_Payments_Onboarding_Service {
 		$details_submitted = $result['details_submitted'] ?? false;
 
 		if ( ! $result || ! $success ) {
-			throw new API_Exception( __( 'Failed to finalize onboarding session.', 'woocommerce-payments' ), 'wcpay-onboarding-finalize-error', 400 );
+			throw new API_Exception( __( 'Failed to finalize onboarding session.', 'poocommerce-payments' ), 'wcpay-onboarding-finalize-error', 400 );
 		}
 
 		// Clear the embedded KYC in progress option, since the onboarding flow is now complete.
@@ -539,7 +539,7 @@ class WC_Payments_Onboarding_Service {
 		// Onboarding needs to hide wp-admin navigation and masterbar while JS loads.
 		// This class will be removed by the onboarding component.
 		if ( isset( $_GET['path'] ) && '/payments/onboarding' === $_GET['path'] ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended
-			$classes .= ' woocommerce-admin-is-loading';
+			$classes .= ' poocommerce-admin-is-loading';
 		}
 
 		return $classes;
@@ -686,12 +686,12 @@ class WC_Payments_Onboarding_Service {
 	 */
 	public function init_test_drive_account( string $country, array $capabilities = [] ): bool {
 		if ( ! $this->payments_api_client->is_server_connected() ) {
-			throw new Exception( __( 'Your store is not connected to WordPress.com. Please connect it first.', 'woocommerce-payments' ) );
+			throw new Exception( __( 'Your store is not connected to WordPress.com. Please connect it first.', 'poocommerce-payments' ) );
 		}
 
 		if ( $this->is_onboarding_init_in_progress() ) {
 			// We can't allow multiple onboarding initializations to happen at the same time.
-			throw new Exception( __( 'Onboarding initialization is already in progress. Please wait for it to finish.', 'woocommerce-payments' ) );
+			throw new Exception( __( 'Onboarding initialization is already in progress. Please wait for it to finish.', 'poocommerce-payments' ) );
 		}
 
 		// Since there should be no Stripe KYC needed, make sure we start with a clean state.
@@ -788,12 +788,12 @@ class WC_Payments_Onboarding_Service {
 	 */
 	public function reset_onboarding( array $context ): bool {
 		if ( ! $this->payments_api_client->is_server_connected() ) {
-			throw new Exception( __( 'Your store is not connected to WordPress.com. Please connect it first.', 'woocommerce-payments' ) );
+			throw new Exception( __( 'Your store is not connected to WordPress.com. Please connect it first.', 'poocommerce-payments' ) );
 		}
 
 		// If the account does not exist, there's nothing to reset.
 		if ( ! WC_Payments::get_account_service()->is_stripe_connected() ) {
-			throw new API_Exception( __( 'Failed to reset the account: account does not exist.', 'woocommerce-payments' ), 'wcpay-onboarding-account-error', 400 );
+			throw new API_Exception( __( 'Failed to reset the account: account does not exist.', 'poocommerce-payments' ), 'wcpay-onboarding-account-error', 400 );
 		}
 
 		// Immediately change the account cache to avoid API requests during the time it takes for
@@ -804,7 +804,7 @@ class WC_Payments_Onboarding_Service {
 		$result               = $this->payments_api_client->delete_account( $test_mode_onboarding );
 		if ( ! isset( $result['result'] ) || 'success' !== $result['result'] ) {
 			WC_Payments::get_account_service()->refresh_account_data();
-			throw new API_Exception( __( 'Failed to delete account.', 'woocommerce-payments' ), 'wcpay-onboarding-account-error', 400 );
+			throw new API_Exception( __( 'Failed to delete account.', 'poocommerce-payments' ), 'wcpay-onboarding-account-error', 400 );
 		}
 
 		$this->cleanup_on_account_reset();
@@ -843,12 +843,12 @@ class WC_Payments_Onboarding_Service {
 	 */
 	public function disable_test_drive_account( array $context ): bool {
 		if ( ! $this->payments_api_client->is_server_connected() ) {
-			throw new Exception( __( 'Your store is not connected to WordPress.com. Please connect it first.', 'woocommerce-payments' ) );
+			throw new Exception( __( 'Your store is not connected to WordPress.com. Please connect it first.', 'poocommerce-payments' ) );
 		}
 
 		// If the account does not exist, there's nothing to disable.
 		if ( ! WC_Payments::get_account_service()->is_stripe_connected() ) {
-			throw new API_Exception( __( 'Failed to activate the account: account does not exist.', 'woocommerce-payments' ), 'wcpay-onboarding-account-error', 400 );
+			throw new API_Exception( __( 'Failed to activate the account: account does not exist.', 'poocommerce-payments' ), 'wcpay-onboarding-account-error', 400 );
 		}
 
 		// If the test mode onboarding is not enabled, we don't need to do anything.
@@ -872,7 +872,7 @@ class WC_Payments_Onboarding_Service {
 			$this->payments_api_client->delete_account( true );
 		} catch ( API_Exception $e ) {
 			WC_Payments::get_account_service()->refresh_account_data();
-			throw new API_Exception( __( 'Failed to disable test drive account.', 'woocommerce-payments' ), 'wcpay-onboarding-account-error', 400 );
+			throw new API_Exception( __( 'Failed to disable test drive account.', 'poocommerce-payments' ), 'wcpay-onboarding-account-error', 400 );
 		}
 
 		$this->cleanup_on_account_reset();
@@ -987,7 +987,7 @@ class WC_Payments_Onboarding_Service {
 			return $where_clause . " AND name like 'wcpay-promo-%'";
 		};
 
-		add_filter( 'woocommerce_note_where_clauses', $add_like_clause );
+		add_filter( 'poocommerce_note_where_clauses', $add_like_clause );
 
 		$wcpay_promo_notes = $data_store->get_notes(
 			[
@@ -997,7 +997,7 @@ class WC_Payments_Onboarding_Service {
 			]
 		);
 
-		remove_filter( 'woocommerce_note_where_clauses', $add_like_clause );
+		remove_filter( 'poocommerce_note_where_clauses', $add_like_clause );
 
 		// If we didn't get an array back from the data store, return an empty array of results.
 		if ( ! is_array( $wcpay_promo_notes ) ) {
@@ -1439,7 +1439,7 @@ class WC_Payments_Onboarding_Service {
 
 		/**
 		 * Keeps the list of enabled payment method IDs synchronized between the default
-		 * `woocommerce_woocommerce_payments_settings` and duplicates in individual gateway settings.
+		 * `poocommerce_poocommerce_payments_settings` and duplicates in individual gateway settings.
 		 */
 		foreach ( $enabled_payment_methods as $payment_method_id ) {
 			$payment_gateway = WC_Payments::get_payment_gateway_by_id( $payment_method_id );

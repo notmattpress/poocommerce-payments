@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Subscriptions_Plugin_Notice_Manager
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -46,7 +46,7 @@ class WC_Payments_Subscriptions_Plugin_Notice_Manager {
 		}
 
 		// The backbone modal requires the WC admin styles to be loaded.
-		wp_enqueue_style( 'woocommerce_admin_styles' );
+		wp_enqueue_style( 'poocommerce_admin_styles' );
 
 		wp_register_script(
 			'wcpay-subscriptions-plugin',

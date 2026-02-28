@@ -86,20 +86,20 @@ services:
 I used port `9003` as an example.
 To apply the change, restart your containers using `npm run down && npm run up`
 
-### Mapping WooCommerce development repo plugin folder
+### Mapping PooCommerce development repo plugin folder
 
-If you also work on [WooCommerce core](https://github.com/woocommerce/woocommerce) that you want to use in your Docker environment, you can map it by adding a volume mapping to `docker-compose.override.yml`. 
+If you also work on [PooCommerce core](https://github.com/poocommerce/poocommerce) that you want to use in your Docker environment, you can map it by adding a volume mapping to `docker-compose.override.yml`. 
 
-For example: if your WooCommerce core repo path is `/path/to/your/repo/woocommerce`, you should append `plugins/woocommerce` to this path and configure it like this.
+For example: if your PooCommerce core repo path is `/path/to/your/repo/poocommerce`, you should append `plugins/poocommerce` to this path and configure it like this.
 
 ```
 services:
   wordpress:
     volumes:
-      - /path/to/your/repo/woocommerce/plugins/woocommerce:/var/www/html/wp-content/plugins/woocommerce
+      - /path/to/your/repo/poocommerce/plugins/poocommerce:/var/www/html/wp-content/plugins/poocommerce
 ```
 
-To apply the change, restart your containers using `npm run down && npm run up`. In case, it's not working properly yet, ensure that you follow the WooCommerce code README.md and build the plugin there. 
+To apply the change, restart your containers using `npm run down && npm run up`. In case, it's not working properly yet, ensure that you follow the PooCommerce code README.md and build the plugin there. 
 
 ### Adding local helper scripts/hacks
 

@@ -40,7 +40,7 @@ const DisableConfirmationModal = ( { onClose, onConfirm } ) => {
 		<ConfirmationModal
 			title={ sprintf(
 				/* translators: %s: WooPayments */
-				__( 'Disable %s', 'woocommerce-payments' ),
+				__( 'Disable %s', 'poocommerce-payments' ),
 				'WooPayments'
 			) }
 			onRequestClose={ onClose }
@@ -76,7 +76,7 @@ const DisableConfirmationModal = ( { onClose, onConfirm } ) => {
 						__(
 							'%s is currently powering multiple popular payment methods on your store.' +
 								' Without it, they will no longer be available to your customers, which may influence sales.',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						),
 						'WooPayments'
 					),
@@ -90,7 +90,7 @@ const DisableConfirmationModal = ( { onClose, onConfirm } ) => {
 					/* translators: %s: WooPayments */
 					__(
 						'Payment methods that need %s:',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					'WooPayments'
 				) }
@@ -142,7 +142,7 @@ const DisableConfirmationModal = ( { onClose, onConfirm } ) => {
 					<li>
 						<PaymentMethodIcon
 							Icon={ WooIconShort }
-							label={ __( 'WooPay', 'woocommerce-payments' ) }
+							label={ __( 'WooPay', 'poocommerce-payments' ) }
 						/>
 					</li>
 				) }
@@ -154,8 +154,8 @@ const DisableConfirmationModal = ( { onClose, onConfirm } ) => {
 						__(
 							'{{strong}}Need help?{{/strong}} ' +
 								'Learn more about {{wooCommercePaymentsLink}}%s{{/wooCommercePaymentsLink}} or ' +
-								'{{contactSupportLink}}contact WooCommerce Support{{/contactSupportLink}}.',
-							'woocommerce-payments'
+								'{{contactSupportLink}}contact PooCommerce Support{{/contactSupportLink}}.',
+							'poocommerce-payments'
 						),
 						'WooPayments'
 					),
@@ -163,11 +163,11 @@ const DisableConfirmationModal = ( { onClose, onConfirm } ) => {
 						strong: <strong />,
 						wooCommercePaymentsLink: (
 							// eslint-disable-next-line jsx-a11y/anchor-has-content
-							<a href="https://woocommerce.com/document/woopayments/" />
+							<a href="https://poocommerce.com/document/woopayments/" />
 						),
 						contactSupportLink: (
 							// eslint-disable-next-line jsx-a11y/anchor-has-content
-							<a href="https://woocommerce.com/my-account/create-a-ticket/?select=5278104" />
+							<a href="https://poocommerce.com/my-account/create-a-ticket/?select=5278104" />
 						),
 					},
 				} ) }

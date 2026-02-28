@@ -5,7 +5,7 @@
  * Responsible for disabling merchant and customer facing management
  * interfaces for bundled subscriptions while keeping renewal logic active.
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * products from being purchased or added to orders.
  *
  * What this class disables:
- * - Admin menu items (WooCommerce > Subscriptions)
+ * - Admin menu items (PooCommerce > Subscriptions)
  * - Admin subscription management screens
  * - Subscription product types in product creation
  * - Subscription settings tab
@@ -49,10 +49,10 @@ class WC_Payments_Subscriptions_Disabler {
 	 * Initiates hooks that hide bundled subscriptions management entry points.
 	 *
 	 * This method registers UI-layer hooks only. It does NOT hook into:
-	 * - Payment processing (woocommerce_subscription_payment_complete, etc.)
-	 * - Renewal order creation (woocommerce_renewal_order_payment_complete, etc.)
+	 * - Payment processing (poocommerce_subscription_payment_complete, etc.)
+	 * - Renewal order creation (poocommerce_renewal_order_payment_complete, etc.)
 	 * - Webhook handling (invoice.paid, invoice.upcoming, etc.)
-	 * - Subscription status changes (woocommerce_subscription_status_*, etc.)
+	 * - Subscription status changes (poocommerce_subscription_status_*, etc.)
 	 *
 	 * Admin hooks (menu/screen blocking):
 	 * - Removes admin menu items
@@ -74,24 +74,24 @@ class WC_Payments_Subscriptions_Disabler {
 			add_action( 'admin_menu', [ $this, 'remove_admin_menu_items' ], 99 );
 			add_action( 'current_screen', [ $this, 'maybe_block_admin_subscription_screen' ] );
 			add_filter( 'product_type_selector', [ $this, 'filter_product_type_selector' ], 99 );
-			add_filter( 'woocommerce_settings_tabs_array', [ $this, 'filter_settings_tabs' ], 99 );
+			add_filter( 'poocommerce_settings_tabs_array', [ $this, 'filter_settings_tabs' ], 99 );
 			add_action( 'admin_init', [ $this, 'maybe_redirect_settings_tab' ], 99 );
 			add_action( 'admin_notices', [ $this, 'display_subscription_disabled_notice' ] );
-			add_filter( 'woocommerce_json_search_found_products', [ $this, 'filter_admin_product_search' ] );
-			add_filter( 'woocommerce_ajax_add_order_item_validation', [ $this, 'validate_admin_order_item' ], 10, 4 );
+			add_filter( 'poocommerce_json_search_found_products', [ $this, 'filter_admin_product_search' ] );
+			add_filter( 'poocommerce_ajax_add_order_item_validation', [ $this, 'validate_admin_order_item' ], 10, 4 );
 			add_action( 'add_meta_boxes', [ $this, 'remove_related_orders_meta_box' ], 99, 2 );
 		}
 
-		add_filter( 'woocommerce_account_menu_items', [ $this, 'remove_account_menu_item' ], 99 );
+		add_filter( 'poocommerce_account_menu_items', [ $this, 'remove_account_menu_item' ], 99 );
 		add_action( 'pre_get_posts', [ $this, 'maybe_redirect_subscription_endpoints' ], 1 );
 		add_action( 'template_redirect', [ $this, 'maybe_redirect_account_endpoints' ], 5 );
 		add_action( 'init', [ $this, 'remove_related_subscriptions_section' ], 99 );
-		add_filter( 'woocommerce_is_purchasable', [ $this, 'make_subscription_products_unpurchasable' ], 10, 2 );
-		add_filter( 'woocommerce_cart_item_removed_message', [ $this, 'filter_subscription_removal_message' ], 10, 2 );
+		add_filter( 'poocommerce_is_purchasable', [ $this, 'make_subscription_products_unpurchasable' ], 10, 2 );
+		add_filter( 'poocommerce_cart_item_removed_message', [ $this, 'filter_subscription_removal_message' ], 10, 2 );
 	}
 
 	/**
-	 * Removes WooCommerce > Subscriptions menu entries.
+	 * Removes PooCommerce > Subscriptions menu entries.
 	 *
 	 * Hides the subscriptions admin menu for both CPT and HPOS implementations.
 	 * Does not affect subscription data or the ability for renewals to process.
@@ -99,8 +99,8 @@ class WC_Payments_Subscriptions_Disabler {
 	 * @return void
 	 */
 	public function remove_admin_menu_items() {
-		remove_submenu_page( 'woocommerce', 'edit.php?post_type=shop_subscription' );
-		remove_submenu_page( 'woocommerce', 'wc-orders--shop_subscription' );
+		remove_submenu_page( 'poocommerce', 'edit.php?post_type=shop_subscription' );
+		remove_submenu_page( 'poocommerce', 'wc-orders--shop_subscription' );
 		remove_menu_page( 'wc-orders--shop_subscription' );
 	}
 
@@ -111,7 +111,7 @@ class WC_Payments_Subscriptions_Disabler {
 	 * on the admin order edit screen. We remove it to hide subscription relationships
 	 * from merchants when viewing orders.
 	 *
-	 * The meta box is added by WooCommerce Subscriptions via:
+	 * The meta box is added by PooCommerce Subscriptions via:
 	 * - WCS_Admin_Meta_Boxes::add_meta_boxes() at priority 10 on 'add_meta_boxes'
 	 * - Meta box ID: 'subscription_renewal_orders'
 	 * - Title: 'Related Orders'
@@ -140,7 +140,7 @@ class WC_Payments_Subscriptions_Disabler {
 	 * Redirects attempts to access admin subscription management screens.
 	 *
 	 * Prevents direct URL access to subscription edit/list screens by redirecting
-	 * to the WooCommerce overview. Does not run during AJAX or REST requests to
+	 * to the PooCommerce overview. Does not run during AJAX or REST requests to
 	 * avoid interfering with legitimate background operations.
 	 *
 	 * @param WP_Screen $screen Current screen instance.
@@ -195,9 +195,9 @@ class WC_Payments_Subscriptions_Disabler {
 	}
 
 	/**
-	 * Removes subscription tab from WooCommerce settings.
+	 * Removes subscription tab from PooCommerce settings.
 	 *
-	 * @param array $tabs Registered WooCommerce settings tabs.
+	 * @param array $tabs Registered PooCommerce settings tabs.
 	 * @return array
 	 */
 	public function filter_settings_tabs( $tabs ) {
@@ -238,7 +238,7 @@ class WC_Payments_Subscriptions_Disabler {
 	 * Redirects subscription endpoints during query parsing.
 	 *
 	 * This runs on the pre_get_posts hook (priority 1) to intercept subscription
-	 * endpoint requests BEFORE WooCommerce Subscriptions can redirect them to
+	 * endpoint requests BEFORE PooCommerce Subscriptions can redirect them to
 	 * the order-pay page. This is critical because WCS_Query::maybe_redirect_payment_methods()
 	 * runs at priority 10 on pre_get_posts and would redirect /my-account/subscription-payment-method/ID
 	 * to /checkout/order-pay/ID/?change_payment_method=ID before we can block it.
@@ -307,7 +307,7 @@ class WC_Payments_Subscriptions_Disabler {
 	 * 1. Direct access: /checkout/order-pay/{subscription_id}/
 	 * 2. Via change_payment_method parameter: /checkout/order-pay/ID/?change_payment_method={subscription_id}
 	 *
-	 * The second case occurs when WooCommerce Subscriptions redirects from
+	 * The second case occurs when PooCommerce Subscriptions redirects from
 	 * /my-account/subscription-payment-method/{subscription_id}/ to the order-pay
 	 * endpoint during the pre_get_posts hook.
 	 *
@@ -329,7 +329,7 @@ class WC_Payments_Subscriptions_Disabler {
 		}
 
 		// Also check for change_payment_method parameter (when redirected from subscription-payment-method endpoint).
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Nonce verified by WooCommerce core.
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Nonce verified by PooCommerce core.
 		if ( ! $subscription_id && ! empty( $_GET['change_payment_method'] ) ) {
 			$change_payment_id = absint( $_GET['change_payment_method'] ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			$post_type         = get_post_type( $change_payment_id );
@@ -360,7 +360,7 @@ class WC_Payments_Subscriptions_Disabler {
 	public function remove_related_subscriptions_section() {
 		if ( class_exists( 'WC_Subscriptions_Order' ) ) {
 			remove_action(
-				'woocommerce_order_details_after_order_table',
+				'poocommerce_order_details_after_order_table',
 				[ 'WC_Subscriptions_Order', 'add_subscriptions_to_view_order_templates' ],
 				10
 			);
@@ -399,10 +399,10 @@ class WC_Payments_Subscriptions_Disabler {
 	/**
 	 * Filters the cart item removal message for subscription products.
 	 *
-	 * When WooCommerce removes unpurchasable products from the cart, this filter
+	 * When PooCommerce removes unpurchasable products from the cart, this filter
 	 * customizes the message for subscription products to be more customer-friendly.
 	 *
-	 * @param string     $message The default removal message from WooCommerce.
+	 * @param string     $message The default removal message from PooCommerce.
 	 * @param WC_Product $product The product being removed.
 	 * @return string The filtered message.
 	 */
@@ -412,10 +412,10 @@ class WC_Payments_Subscriptions_Disabler {
 			return $message;
 		}
 
-		// Return a customer-friendly message that matches WooCommerce's standard format.
+		// Return a customer-friendly message that matches PooCommerce's standard format.
 		return sprintf(
 			/* translators: %s: product name */
-			__( '%s has been removed from your cart because it can no longer be purchased. Please contact us if you need assistance.', 'woocommerce-payments' ),
+			__( '%s has been removed from your cart because it can no longer be purchased. Please contact us if you need assistance.', 'poocommerce-payments' ),
 			$product->get_name()
 		);
 	}
@@ -475,7 +475,7 @@ class WC_Payments_Subscriptions_Disabler {
 		if ( $product->is_type( [ 'subscription', 'variable-subscription', 'subscription_variation' ] ) ) {
 			return new WP_Error(
 				'subscription_not_allowed_in_admin_order',
-				__( 'Subscription products cannot be added to orders. Please install WooCommerce Subscriptions to manage subscriptions.', 'woocommerce-payments' )
+				__( 'Subscription products cannot be added to orders. Please install PooCommerce Subscriptions to manage subscriptions.', 'poocommerce-payments' )
 			);
 		}
 
@@ -566,18 +566,18 @@ class WC_Payments_Subscriptions_Disabler {
 			return;
 		}
 
-		if ( empty( $_GET['section'] ) || 'woocommerce_payments' !== $_GET['section'] ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		if ( empty( $_GET['section'] ) || 'poocommerce_payments' !== $_GET['section'] ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			return;
 		}
 
 		$message = sprintf(
-			/* translators: %1$s: WooCommerce Subscriptions link */
-			__( 'To access your subscriptions data and keep managing recurring payments, please install <a target="_blank" href="%1$s">WooCommerce Subscriptions</a>. Built-in support for subscriptions is no longer available in WooPayments.', 'woocommerce-payments' ),
-			'https://woocommerce.com/products/woocommerce-subscriptions/'
+			/* translators: %1$s: PooCommerce Subscriptions link */
+			__( 'To access your subscriptions data and keep managing recurring payments, please install <a target="_blank" href="%1$s">PooCommerce Subscriptions</a>. Built-in support for subscriptions is no longer available in WooPayments.', 'poocommerce-payments' ),
+			'https://poocommerce.com/products/poocommerce-subscriptions/'
 		);
 		?>
 		<div class="notice notice-info wcpay-notice">
-			<p><strong><?php esc_html_e( 'WooPayments', 'woocommerce-payments' ); ?></strong></p>
+			<p><strong><?php esc_html_e( 'WooPayments', 'poocommerce-payments' ); ?></strong></p>
 			<p>
 			<?php
 			echo wp_kses(
@@ -596,7 +596,7 @@ class WC_Payments_Subscriptions_Disabler {
 	}
 
 	/**
-	 * Redirects the current request to the WooCommerce Payments settings page.
+	 * Redirects the current request to the PooCommerce Payments settings page.
 	 *
 	 * Adds a query parameter to trigger an informational notice after redirect.
 	 *
@@ -607,7 +607,7 @@ class WC_Payments_Subscriptions_Disabler {
 			[
 				'page'                        => 'wc-settings',
 				'tab'                         => 'checkout',
-				'section'                     => 'woocommerce_payments',
+				'section'                     => 'poocommerce_payments',
 				'wcpay_subscription_disabled' => '1',
 			],
 			admin_url( 'admin.php' )
@@ -625,12 +625,12 @@ class WC_Payments_Subscriptions_Disabler {
 	private function get_account_endpoint_slug( $key ) {
 		switch ( $key ) {
 			case 'view-subscription':
-				return get_option( 'woocommerce_myaccount_view_subscription_endpoint', 'view-subscription' );
+				return get_option( 'poocommerce_myaccount_view_subscription_endpoint', 'view-subscription' );
 			case 'subscription-payment-method':
-				return get_option( 'woocommerce_myaccount_subscription_payment_method_endpoint', 'subscription-payment-method' );
+				return get_option( 'poocommerce_myaccount_subscription_payment_method_endpoint', 'subscription-payment-method' );
 			case 'subscriptions':
 			default:
-				return get_option( 'woocommerce_myaccount_subscriptions_endpoint', 'subscriptions' );
+				return get_option( 'poocommerce_myaccount_subscriptions_endpoint', 'subscriptions' );
 		}
 	}
 
@@ -639,7 +639,7 @@ class WC_Payments_Subscriptions_Disabler {
 	 *
 	 * Retrieves all subscription-related My Account endpoints that customers
 	 * should not be able to access. Endpoint slugs are configurable via
-	 * WooCommerce settings, so we fetch them dynamically.
+	 * PooCommerce settings, so we fetch them dynamically.
 	 *
 	 * @return array Array of endpoint slugs to block.
 	 */

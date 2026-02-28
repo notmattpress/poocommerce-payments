@@ -5,8 +5,8 @@
  */
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { CollapsibleList, TaskItem, Text } from '@woocommerce/experimental';
-import { Badge } from '@woocommerce/components';
+import { CollapsibleList, TaskItem, Text } from '@poocommerce/experimental';
+import { Badge } from '@poocommerce/components';
 import { useDispatch } from '@wordpress/data';
 
 /**
@@ -14,13 +14,13 @@ import { useDispatch } from '@wordpress/data';
  */
 import TaskList from '..';
 
-jest.mock( '@woocommerce/experimental', () => ( {
+jest.mock( '@poocommerce/experimental', () => ( {
 	CollapsibleList: jest.fn(),
 	TaskItem: jest.fn(),
 	Text: jest.fn(),
 } ) );
 
-jest.mock( '@woocommerce/components', () => ( {
+jest.mock( '@poocommerce/components', () => ( {
 	Badge: jest.fn(),
 } ) );
 jest.mock( '@wordpress/data' );

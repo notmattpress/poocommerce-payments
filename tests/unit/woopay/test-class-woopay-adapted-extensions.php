@@ -2,7 +2,7 @@
 /**
  * Class WooPay_Adapted_Extensions_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\WooPay\WooPay_Adapted_Extensions;
@@ -13,7 +13,7 @@ use WCPay\WooPay\WooPay_Scheduler;
  */
 class WooPay_Adapted_Extensions_Test extends WCPAY_UnitTestCase {
 	const BASE_POINTS_AND_REWARDS_SCRIPT_DATA = [
-		'woocommerce-points-and-rewards-blocks' => 'active',
+		'poocommerce-points-and-rewards-blocks' => 'active',
 		'points_available'                      => 0,
 		'minimum_points_amount'                 => 0,
 		'partial_redemption_enabled'            => true,
@@ -35,14 +35,14 @@ class WooPay_Adapted_Extensions_Test extends WCPAY_UnitTestCase {
 		parent::setUp();
 
 		add_action(
-			'woocommerce_blocks_checkout_block_registration',
+			'poocommerce_blocks_checkout_block_registration',
 			function ( $integration_registry ) {
 				$integration_registry->register( new WC_Points_Rewards_Integration() );
 			}
 		);
 
 		add_action(
-			'woocommerce_blocks_checkout_block_registration',
+			'poocommerce_blocks_checkout_block_registration',
 			function ( $integration_registry ) {
 				$integration_registry->register( new WC_GC_Checkout_Blocks_Integration() );
 			}
@@ -148,6 +148,6 @@ class WooPay_Adapted_Extensions_Test extends WCPAY_UnitTestCase {
 	public function test_get_extension_data() {
 		define( 'WOOCOMMERCE_MULTICURRENCY_VERSION', '0.0.0' );
 
-		$this->assertEquals( $this->woopay_adapted_extensions->get_extension_data(), [ 'woocommerce-multicurrency' => [ 'currency' => 'USD' ] ] );
+		$this->assertEquals( $this->woopay_adapted_extensions->get_extension_data(), [ 'poocommerce-multicurrency' => [ 'currency' => 'USD' ] ] );
 	}
 }

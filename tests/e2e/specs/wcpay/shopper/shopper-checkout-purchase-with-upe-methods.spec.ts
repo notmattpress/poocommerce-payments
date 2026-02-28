@@ -100,7 +100,7 @@ test.describe(
 						await shopperPage.getByText( 'Bancontact' ).click();
 						// Ensure the actual radio becomes checked (visibility of :checked can be flaky)
 						const bancontactRadio = shopperPage.locator(
-							'#payment_method_woocommerce_payments_bancontact'
+							'#payment_method_poocommerce_payments_bancontact'
 						);
 						await bancontactRadio.scrollIntoViewIfNeeded();
 						// Explicitly check in case label click didn't propagate

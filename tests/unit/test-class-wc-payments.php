@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\WooPay\WooPay_Session;
@@ -43,11 +43,11 @@ class WC_Payments_Test extends WCPAY_UnitTestCase {
 	}
 
 	public function test_it_calls_upgrade_hook_during_upgrade() {
-		update_option( 'woocommerce_woocommerce_payments_version', '1.0.0' );
+		update_option( 'poocommerce_poocommerce_payments_version', '1.0.0' );
 
-		$upgrade_run_count = did_action( 'woocommerce_woocommerce_payments_updated' );
+		$upgrade_run_count = did_action( 'poocommerce_poocommerce_payments_updated' );
 		WC_Payments::install_actions();
-		$this->assertEquals( $upgrade_run_count + 1, did_action( 'woocommerce_woocommerce_payments_updated' ) );
+		$this->assertEquals( $upgrade_run_count + 1, did_action( 'poocommerce_poocommerce_payments_updated' ) );
 	}
 
 	public function test_it_registers_woopay_hooks_if_feature_flag_is_enabled() {
@@ -106,7 +106,7 @@ class WC_Payments_Test extends WCPAY_UnitTestCase {
 		$response = rest_do_request( $request );
 
 		$this->assertEquals( 401, $response->get_status() );
-		$this->assertEquals( 'woocommerce_rest_missing_nonce', $response->get_data()['code'] );
+		$this->assertEquals( 'poocommerce_rest_missing_nonce', $response->get_data()['code'] );
 	}
 
 	/**

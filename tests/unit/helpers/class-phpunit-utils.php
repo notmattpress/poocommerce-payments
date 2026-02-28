@@ -2,7 +2,7 @@
 /**
  * General unit test helpers.
  *
- * @package WooCommerce/Tests
+ * @package PooCommerce/Tests
  */
 
 /**

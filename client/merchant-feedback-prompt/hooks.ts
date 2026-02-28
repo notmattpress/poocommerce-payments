@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { useUserPreferences } from '@woocommerce/data';
+import { useUserPreferences } from '@poocommerce/data';
 
 /**
  * Extend the user preferences returned from useUserPreferences to include the WooPayments merchant feedback prompt dismissed state.

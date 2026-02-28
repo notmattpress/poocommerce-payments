@@ -186,7 +186,7 @@ test.describe( 'Multi-currency on-boarding', { tag: '@critical' }, () => {
 			const previewPage = previewIframe.contentFrame();
 
 			await expect(
-				await previewPage.locator( '.woocommerce-store-notice' )
+				await previewPage.locator( '.poocommerce-store-notice' )
 			).toBeVisible();
 			// TODO: fix flaky visual regression test.
 			// await expect(
@@ -194,7 +194,7 @@ test.describe( 'Multi-currency on-boarding', { tag: '@critical' }, () => {
 			// ).toHaveScreenshot();
 
 			const noticeText = await previewPage
-				.locator( '.woocommerce-store-notice' )
+				.locator( '.poocommerce-store-notice' )
 				.innerText();
 
 			expect( noticeText ).toContain(

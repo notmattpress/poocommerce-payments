@@ -2,7 +2,7 @@
 /**
  * Trait WC_Payments_Subscriptions_Utilities
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -114,7 +114,7 @@ trait WC_Payments_Subscriptions_Utilities {
 	}
 
 	/**
-	 * Gets the version of WooCommerce Subscriptions that is active.
+	 * Gets the version of PooCommerce Subscriptions that is active.
 	 *
 	 * @return null|string The plugin version. Returns null when WC Subscriptions is not active/loaded.
 	 */

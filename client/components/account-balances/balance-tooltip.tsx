@@ -38,7 +38,7 @@ export const TotalBalanceTooltip: React.FC< TotalBalanceTooltipProps > = ( {
 						{ interpolateComponents( {
 							mixedString: __(
 								'{{bold}}Total balance{{/bold}} combines both pending funds (transactions under processing) and available funds (ready for payout). {{learnMoreLink}}Learn more{{/learnMoreLink}}',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							components: {
 								bold: <b />,
@@ -61,7 +61,7 @@ export const TotalBalanceTooltip: React.FC< TotalBalanceTooltipProps > = ( {
 					>
 						{ __(
 							'Total balance = Available funds + Pending funds',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 					</InlineNotice>
 					<>
@@ -69,7 +69,7 @@ export const TotalBalanceTooltip: React.FC< TotalBalanceTooltipProps > = ( {
 							interpolateComponents( {
 								mixedString: __(
 									'Negative account balance? {{discoverWhyLink}}Discover why.{{/discoverWhyLink}}',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								),
 								components: {
 									discoverWhyLink: (
@@ -107,7 +107,7 @@ export const AvailableBalanceTooltip: React.FC< AvailableBalanceTooltipProps > =
 						{ interpolateComponents( {
 							mixedString: __(
 								'{{bold}}Available funds{{/bold}} have completed processing and are ready to be dispatched to your bank account. {{learnMoreLink}}Learn more{{/learnMoreLink}}',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							components: {
 								bold: <b />,
@@ -129,7 +129,7 @@ export const AvailableBalanceTooltip: React.FC< AvailableBalanceTooltipProps > =
 							interpolateComponents( {
 								mixedString: __(
 									'Negative account balance? {{discoverWhyLink}}Discover why.{{/discoverWhyLink}}',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								),
 								components: {
 									discoverWhyLink: (

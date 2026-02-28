@@ -4,7 +4,7 @@
 import { useEffect, useState, RawHTML, useRef } from '@wordpress/element';
 import { Elements } from '@stripe/react-stripe-js';
 // eslint-disable-next-line import/no-unresolved
-import { StoreNotice } from '@woocommerce/blocks-checkout';
+import { StoreNotice } from '@poocommerce/blocks-checkout';
 
 /**
  * Internal dependencies

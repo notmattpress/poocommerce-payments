@@ -1,8 +1,8 @@
 <?php
 /**
- * WooCommerce Payments Multi-Currency Geolocation Class
+ * PooCommerce Payments Multi-Currency Geolocation Class
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\MultiCurrency;
@@ -59,8 +59,8 @@ class Geolocation {
 		}
 
 		if ( ! $country ) {
-			$default_location = get_option( 'woocommerce_default_country', '' );
-			$location         = wc_format_country_state_string( apply_filters( 'woocommerce_customer_default_location', $default_location ) );
+			$default_location = get_option( 'poocommerce_default_country', '' );
+			$location         = wc_format_country_state_string( apply_filters( 'poocommerce_customer_default_location', $default_location ) );
 			$country          = $location['country'];
 		}
 

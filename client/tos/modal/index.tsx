@@ -34,7 +34,7 @@ const TosModalUI = ( {
 } ) => {
 	const title = sprintf(
 		/* translators: %s: WooPayments */
-		__( '%s: Terms of Service', 'woocommerce-payments' ),
+		__( '%s: Terms of Service', 'poocommerce-payments' ),
 		'WooPayments'
 	);
 	const message = interpolateComponents( {
@@ -43,7 +43,7 @@ const TosModalUI = ( {
 			__(
 				'To continue using %s, please review and agree to our {{link}}Terms of Service{{/link}}.' +
 					' By clicking “Accept” you agree to the Terms of Service.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			'WooPayments'
 		),
@@ -60,32 +60,32 @@ const TosModalUI = ( {
 			shouldCloseOnClickOutside={ false }
 			shouldCloseOnEsc={ false }
 			onRequestClose={ onDecline }
-			className="woocommerce-payments__tos-modal"
+			className="poocommerce-payments__tos-modal"
 		>
 			{ hasError && (
 				<Notice
 					status="error"
 					isDismissible={ false }
-					className="woocommerce-payments__tos-error"
+					className="poocommerce-payments__tos-error"
 				>
 					{ __(
 						'Something went wrong. Please try accepting the Terms of Service again!',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 				</Notice>
 			) }
-			<div className="woocommerce-payments__tos-wrapper">
-				<div className="woocommerce-payments__tos-modal-message">
+			<div className="poocommerce-payments__tos-wrapper">
+				<div className="poocommerce-payments__tos-modal-message">
 					{ message }
 				</div>
-				<div className="woocommerce-payments__tos-footer">
+				<div className="poocommerce-payments__tos-footer">
 					<Button
 						variant="secondary"
 						onClick={ onDecline }
 						disabled={ isBusy }
 						__next40pxDefaultSize
 					>
-						{ __( 'Decline', 'woocommerce-payments' ) }
+						{ __( 'Decline', 'poocommerce-payments' ) }
 					</Button>
 
 					<Button
@@ -94,7 +94,7 @@ const TosModalUI = ( {
 						isBusy={ isBusy }
 						__next40pxDefaultSize
 					>
-						{ __( 'Accept', 'woocommerce-payments' ) }
+						{ __( 'Accept', 'poocommerce-payments' ) }
 					</Button>
 				</div>
 			</div>
@@ -115,7 +115,7 @@ const DisableModalUI = ( {
 } ) => {
 	const title = sprintf(
 		/* translators: %s: WooPayments */
-		__( 'Disable %s', 'woocommerce-payments' ),
+		__( 'Disable %s', 'poocommerce-payments' ),
 		'WooPayments'
 	);
 	const message = interpolateComponents( {
@@ -125,7 +125,7 @@ const DisableModalUI = ( {
 				'By declining our {{link}}Terms of Service{{/link}},' +
 					' you’ll no longer be able to capture credit card payments using %s.' +
 					' Your previous transaction and payout data will still be available.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			'WooPayments'
 		),
@@ -142,33 +142,33 @@ const DisableModalUI = ( {
 			shouldCloseOnClickOutside={ false }
 			shouldCloseOnEsc={ false }
 			onRequestClose={ onDisable }
-			className="woocommerce-payments__tos-modal"
+			className="poocommerce-payments__tos-modal"
 		>
 			{ hasError && (
 				<Notice
 					status="error"
 					isDismissible={ false }
-					className="woocommerce-payments__tos-error"
+					className="poocommerce-payments__tos-error"
 				>
 					{ __(
 						'Something went wrong. Please try again!',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 				</Notice>
 			) }
 
-			<div className="woocommerce-payments__tos-wrapper">
-				<div className="woocommerce-payments__tos-modal-message">
+			<div className="poocommerce-payments__tos-wrapper">
+				<div className="poocommerce-payments__tos-modal-message">
 					{ message }
 				</div>
-				<div className="woocommerce-payments__tos-footer">
+				<div className="poocommerce-payments__tos-footer">
 					<Button
 						variant="tertiary"
 						onClick={ onCancel }
 						isBusy={ isBusy }
 						__next40pxDefaultSize
 					>
-						{ __( 'Back', 'woocommerce-payments' ) }
+						{ __( 'Back', 'poocommerce-payments' ) }
 					</Button>
 
 					<Button
@@ -177,7 +177,7 @@ const DisableModalUI = ( {
 						isBusy={ isBusy }
 						__next40pxDefaultSize
 					>
-						{ __( 'Disable', 'woocommerce-payments' ) }
+						{ __( 'Disable', 'poocommerce-payments' ) }
 					</Button>
 				</div>
 			</div>

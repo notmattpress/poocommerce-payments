@@ -425,14 +425,14 @@
 
 // Disable React Transition Group animations for HorizontalList in evidence summary
 // Higher specificity selector to target only the specific HorizontalList instance
-.evidence-summary__body .woocommerce-list--horizontal {
-	.woocommerce-list__item-enter,
-	.woocommerce-list__item-enter-active,
-	.woocommerce-list__item-enter-done,
-	.woocommerce-list__item-exit,
-	.woocommerce-list__item-exit-active,
-	.woocommerce-list__item-exit-done,
-	.woocommerce-list__item {
+.evidence-summary__body .poocommerce-list--horizontal {
+	.poocommerce-list__item-enter,
+	.poocommerce-list__item-enter-active,
+	.poocommerce-list__item-enter-done,
+	.poocommerce-list__item-exit,
+	.poocommerce-list__item-exit-active,
+	.poocommerce-list__item-exit-done,
+	.poocommerce-list__item {
 		transition: none;
 		animation: none;
 		transform: none;

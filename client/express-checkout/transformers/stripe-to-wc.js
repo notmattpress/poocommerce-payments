@@ -30,7 +30,7 @@ export const transformStripeShippingAddressForStoreApi = (
  * @param {boolean} useConfirmationToken Whether the payment credential is a confirmation token.
  * @param {string[]} paymentMethodTypes Array of Stripe payment method types used for Elements initialization.
  *
- * @return {Object} Order object in the format WooCommerce expects.
+ * @return {Object} Order object in the format PooCommerce expects.
  */
 export const transformStripePaymentMethodForStoreApi = (
 	paymentData,
@@ -75,7 +75,7 @@ export const transformStripePaymentMethodForStoreApi = (
 					phone: billingPhone,
 			  }
 			: undefined,
-		payment_method: 'woocommerce_payments',
+		payment_method: 'poocommerce_payments',
 		payment_data: [
 			{
 				key: 'payment_method',

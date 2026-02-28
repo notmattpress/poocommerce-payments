@@ -6,8 +6,8 @@
 import React from 'react';
 import { recordEvent } from 'tracks';
 import { __, _n, sprintf } from '@wordpress/i18n';
-import { TableCard, Link } from '@woocommerce/components';
-import { onQueryChange, getQuery } from '@woocommerce/navigation';
+import { TableCard, Link } from '@poocommerce/components';
+import { onQueryChange, getQuery } from '@poocommerce/navigation';
 import { useDispatch } from '@wordpress/data';
 import { parseInt } from 'lodash';
 
@@ -48,8 +48,8 @@ const getColumns = ( sortByDate?: boolean ): DepositsTableHeader[] => [
 	},
 	{
 		key: 'date',
-		label: __( 'Date', 'woocommerce-payments' ),
-		screenReaderLabel: __( 'Date', 'woocommerce-payments' ),
+		label: __( 'Date', 'poocommerce-payments' ),
+		screenReaderLabel: __( 'Date', 'poocommerce-payments' ),
 		required: true,
 		isLeftAligned: true,
 		defaultOrder: 'desc',
@@ -59,37 +59,37 @@ const getColumns = ( sortByDate?: boolean ): DepositsTableHeader[] => [
 	},
 	{
 		key: 'type',
-		label: __( 'Type', 'woocommerce-payments' ),
-		screenReaderLabel: __( 'Type', 'woocommerce-payments' ),
+		label: __( 'Type', 'poocommerce-payments' ),
+		screenReaderLabel: __( 'Type', 'poocommerce-payments' ),
 		required: true,
 		isLeftAligned: true,
 	},
 	{
 		key: 'amount',
-		label: __( 'Amount', 'woocommerce-payments' ),
-		screenReaderLabel: __( 'Amount', 'woocommerce-payments' ),
+		label: __( 'Amount', 'poocommerce-payments' ),
+		screenReaderLabel: __( 'Amount', 'poocommerce-payments' ),
 		isNumeric: true,
 		required: true,
 		isSortable: true,
 	},
 	{
 		key: 'status',
-		label: __( 'Status', 'woocommerce-payments' ),
-		screenReaderLabel: __( 'Status', 'woocommerce-payments' ),
+		label: __( 'Status', 'poocommerce-payments' ),
+		screenReaderLabel: __( 'Status', 'poocommerce-payments' ),
 		required: true,
 		isLeftAligned: true,
 	},
-	// TODO { key: 'transactions', label: __( 'Transactions', 'woocommerce-payments' ), isNumeric: true },
+	// TODO { key: 'transactions', label: __( 'Transactions', 'poocommerce-payments' ), isNumeric: true },
 	{
 		key: 'bankAccount',
-		label: __( 'Bank account', 'woocommerce-payments' ),
-		screenReaderLabel: __( 'Bank account', 'woocommerce-payments' ),
+		label: __( 'Bank account', 'poocommerce-payments' ),
+		screenReaderLabel: __( 'Bank account', 'poocommerce-payments' ),
 		isLeftAligned: true,
 	},
 	{
 		key: 'bankReferenceId',
-		label: __( 'Bank reference ID', 'woocommerce-payments' ),
-		screenReaderLabel: __( 'Bank reference ID', 'woocommerce-payments' ),
+		label: __( 'Bank reference ID', 'poocommerce-payments' ),
+		screenReaderLabel: __( 'Bank reference ID', 'poocommerce-payments' ),
 	},
 ];
 
@@ -184,7 +184,7 @@ export const DepositsList = (): JSX.Element => {
 					'payout',
 					'payouts',
 					depositsSummary.count,
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				value: `${ applyThousandSeparator(
 					depositsSummary.count as number
@@ -194,7 +194,7 @@ export const DepositsList = (): JSX.Element => {
 
 		if ( isSingleCurrency || isCurrencyFiltered ) {
 			summary.push( {
-				label: __( 'total', 'woocommerce-payments' ),
+				label: __( 'total', 'poocommerce-payments' ),
 				value: `${ formatExplicitCurrency(
 					depositsSummary.total,
 					depositsSummary.currency
@@ -254,7 +254,7 @@ export const DepositsList = (): JSX.Element => {
 		const confirmMessage = sprintf(
 			__(
 				"You are about to export %d deposits. If you'd like to reduce the size of your export, you can use one or more filters. Would you like to continue?",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			totalRows
 		);
@@ -275,7 +275,7 @@ export const DepositsList = (): JSX.Element => {
 				sprintf(
 					__(
 						'We’re processing your export. 🎉 The file will download automatically and be emailed to %s.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					userEmail
 				)
@@ -287,8 +287,8 @@ export const DepositsList = (): JSX.Element => {
 		<Page>
 			<DepositsFilters storeCurrencies={ storeCurrencies } />
 			<TableCard
-				className="wcpay-deposits-list woocommerce-report-table"
-				title={ __( 'Payout history', 'woocommerce-payments' ) }
+				className="wcpay-deposits-list poocommerce-report-table"
+				title={ __( 'Payout history', 'poocommerce-payments' ) }
 				isLoading={ isLoading }
 				rowsPerPage={ parseInt( getQuery().per_page ?? '' ) || 25 }
 				totalRows={ totalRows }

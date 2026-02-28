@@ -2,7 +2,7 @@
 /**
  * Class LoggerTest
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Tests;
@@ -160,7 +160,7 @@ class LoggerTest extends WCPAY_UnitTestCase {
 		$this->mode->expects( $this->once() )
 			->method( 'is_dev' )
 			->willReturn( false );
-		update_option( 'woocommerce_woocommerce_payments_settings', [] );
+		update_option( 'poocommerce_poocommerce_payments_settings', [] );
 		$this->assertFalse( $this->sut->can_log() );
 	}
 
@@ -175,7 +175,7 @@ class LoggerTest extends WCPAY_UnitTestCase {
 		$this->mode->expects( $this->once() )
 			->method( 'is_dev' )
 			->willReturn( false );
-		update_option( 'woocommerce_woocommerce_payments_settings', [ 'enable_logging' => 'no' ] );
+		update_option( 'poocommerce_poocommerce_payments_settings', [ 'enable_logging' => 'no' ] );
 		$this->assertFalse( $this->sut->can_log() );
 	}
 
@@ -190,7 +190,7 @@ class LoggerTest extends WCPAY_UnitTestCase {
 		$this->mode->expects( $this->once() )
 			->method( 'is_dev' )
 			->willReturn( false );
-		update_option( 'woocommerce_woocommerce_payments_settings', [ 'enable_logging' => 'yes' ] );
+		update_option( 'poocommerce_poocommerce_payments_settings', [ 'enable_logging' => 'yes' ] );
 		$this->assertTrue( $this->sut->can_log() );
 	}
 }

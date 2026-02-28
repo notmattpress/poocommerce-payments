@@ -4,7 +4,7 @@
  * External dependencies
  */
 import { useSelect, useDispatch } from '@wordpress/data';
-import type { Query } from '@woocommerce/navigation';
+import type { Query } from '@poocommerce/navigation';
 import moment from 'moment';
 
 /**

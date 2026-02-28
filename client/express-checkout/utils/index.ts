@@ -123,7 +123,7 @@ export const getExpressCheckoutData = <
 };
 
 /**
- * Get error messages from WooCommerce notice from server response.
+ * Get error messages from PooCommerce notice from server response.
  *
  * @param notice Error notice.
  * @return Error messages.

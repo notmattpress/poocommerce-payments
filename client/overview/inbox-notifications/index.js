@@ -3,21 +3,21 @@
  */
 import { __, _n } from '@wordpress/i18n';
 import { useEffect, useState, useRef } from '@wordpress/element';
-import { EmptyContent, Section } from '@woocommerce/components';
-import { NOTES_STORE_NAME, QUERY_DEFAULTS } from '@woocommerce/data';
+import { EmptyContent, Section } from '@poocommerce/components';
+import { NOTES_STORE_NAME, QUERY_DEFAULTS } from '@poocommerce/data';
 import { useSelect, useDispatch } from '@wordpress/data';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import {
 	InboxNoteCard,
 	InboxDismissConfirmationModal,
 	InboxNotePlaceholder,
-} from '@woocommerce/experimental';
+} from '@poocommerce/experimental';
 
 /**
  * Internal dependencies
  */
 import { recordEvent } from 'tracks';
-import { updateWoocommerceUserMeta } from 'utils/update-woocommerce-user-meta';
+import { updateWoocommerceUserMeta } from 'utils/update-poocommerce-user-meta';
 import './index.scss';
 
 const INBOX_QUERY = {
@@ -27,7 +27,7 @@ const INBOX_QUERY = {
 	type: QUERY_DEFAULTS.noteTypes,
 	orderby: 'date',
 	order: 'desc',
-	source: 'woocommerce-payments',
+	source: 'poocommerce-payments',
 	_fields: [
 		'id',
 		'name',
@@ -46,11 +46,11 @@ const INBOX_QUERY = {
 };
 
 const renderEmptyCard = () => (
-	<section className="woocommerce-empty-activity-card">
+	<section className="poocommerce-empty-activity-card">
 		{ __(
 			'As things begin to happen in your store your inbox will start to fill up. ' +
 				"You'll see things like achievements, new feature announcements, extension recommendations and more!",
-			'woocommerce-admin'
+			'poocommerce-admin'
 		) }
 	</section>
 );
@@ -149,16 +149,16 @@ const InboxPanel = () => {
 		} = select( NOTES_STORE_NAME );
 		const { getCurrentUser } = select( 'core' );
 		const currentUser = getCurrentUser();
-		const woocommerceMeta = currentUser ? currentUser.woocommerce_meta : {};
+		const poocommerceMeta = currentUser ? currentUser.poocommerce_meta : {};
 
 		return {
 			notes: getNotes( INBOX_QUERY ),
 			isError: Boolean( getNotesError( 'getNotes', [ INBOX_QUERY ] ) ),
 			resolving: isResolving( 'getNotes', [ INBOX_QUERY ] ),
 			batchUpdating: isNotesRequesting( 'batchUpdateNotes' ),
-			overviewInboxLastRead: woocommerceMeta.wc_payments_overview_inbox_last_read
+			overviewInboxLastRead: poocommerceMeta.wc_payments_overview_inbox_last_read
 				? JSON.parse(
-						woocommerceMeta.wc_payments_overview_inbox_last_read
+						poocommerceMeta.wc_payments_overview_inbox_last_read
 				  )
 				: undefined,
 		};
@@ -182,9 +182,9 @@ const InboxPanel = () => {
 	if ( isError ) {
 		const title = __(
 			'There was an error getting your inbox. Please try again.',
-			'woocommerce-admin'
+			'poocommerce-admin'
 		);
-		const actionLabel = __( 'Reload', 'woocommerce-admin' );
+		const actionLabel = __( 'Reload', 'poocommerce-admin' );
 		const actionCallback = () => {
 			// @todo Add tracking for how often an error is displayed, and the reload action is clicked.
 			window.location.reload();
@@ -235,12 +235,12 @@ const InboxPanel = () => {
 				createNotice(
 					'success',
 					notesRemoved.length > 1
-						? __( 'All messages dismissed', 'woocommerce-admin' )
-						: __( 'Message dismissed', 'woocommerce-admin' ),
+						? __( 'All messages dismissed', 'poocommerce-admin' )
+						: __( 'Message dismissed', 'poocommerce-admin' ),
 					{
 						actions: [
 							{
-								label: __( 'Undo', 'woocommerce-admin' ),
+								label: __( 'Undo', 'poocommerce-admin' ),
 								onClick: () => {
 									if ( notesRemoved.length > 1 ) {
 										batchUpdateNotes(
@@ -269,7 +269,7 @@ const InboxPanel = () => {
 						'Message could not be dismissed',
 						'Messages could not be dismissed',
 						numberOfNotes,
-						'woocommerce-admin'
+						'poocommerce-admin'
 					)
 				);
 				setDismiss( undefined );

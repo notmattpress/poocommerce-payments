@@ -66,7 +66,7 @@ test.describe(
 			await customerPage.keyboard.press( 'Tab' );
 
 			const frameHandle = await customerPage.waitForSelector(
-				'#payment .payment_method_woocommerce_payments .wcpay-upe-element iframe'
+				'#payment .payment_method_poocommerce_payments .wcpay-upe-element iframe'
 			);
 
 			const stripeFrame = await frameHandle.contentFrame();
@@ -152,7 +152,7 @@ test.describe(
 			);
 
 			const frameHandle = await customerPage.waitForSelector(
-				'#payment .payment_method_woocommerce_payments .wcpay-upe-element iframe'
+				'#payment .payment_method_poocommerce_payments .wcpay-upe-element iframe'
 			);
 
 			const stripeFrame = await frameHandle.contentFrame();

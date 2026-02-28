@@ -8,8 +8,8 @@ import { recordEvent } from 'tracks';
 import { _n, __, sprintf } from '@wordpress/i18n';
 import moment from 'moment';
 import { Button } from '@wordpress/components';
-import { TableCard, Link } from '@woocommerce/components';
-import { onQueryChange, getQuery, getHistory } from '@woocommerce/navigation';
+import { TableCard, Link } from '@poocommerce/components';
+import { onQueryChange, getQuery, getHistory } from '@poocommerce/navigation';
 import clsx from 'clsx';
 
 /**
@@ -60,69 +60,69 @@ const getHeaders = ( sortColumn?: string ): DisputesTableHeader[] => [
 	},
 	{
 		key: 'amount',
-		label: __( 'Amount', 'woocommerce-payments' ),
-		screenReaderLabel: __( 'Amount', 'woocommerce-payments' ),
+		label: __( 'Amount', 'poocommerce-payments' ),
+		screenReaderLabel: __( 'Amount', 'poocommerce-payments' ),
 		required: true,
 		isSortable: true,
 		isLeftAligned: true,
 	},
 	{
 		key: 'currency',
-		label: __( 'Currency', 'woocommerce-payments' ),
+		label: __( 'Currency', 'poocommerce-payments' ),
 		visible: false,
 		required: true,
 	},
 	{
 		key: 'status',
-		label: __( 'Status', 'woocommerce-payments' ),
-		screenReaderLabel: __( 'Status', 'woocommerce-payments' ),
+		label: __( 'Status', 'poocommerce-payments' ),
+		screenReaderLabel: __( 'Status', 'poocommerce-payments' ),
 		required: true,
 		isLeftAligned: true,
 	},
 	{
 		key: 'reason',
-		label: __( 'Reason', 'woocommerce-payments' ),
-		screenReaderLabel: __( 'Reason', 'woocommerce-payments' ),
+		label: __( 'Reason', 'poocommerce-payments' ),
+		screenReaderLabel: __( 'Reason', 'poocommerce-payments' ),
 		required: true,
 		isLeftAligned: true,
 	},
 	{
 		key: 'source',
-		label: __( 'Source', 'woocommerce-payments' ),
-		screenReaderLabel: __( 'Source', 'woocommerce-payments' ),
+		label: __( 'Source', 'poocommerce-payments' ),
+		screenReaderLabel: __( 'Source', 'poocommerce-payments' ),
 		required: true,
 		cellClassName: 'is-center-aligned',
 	},
 	{
 		key: 'order',
-		label: __( 'Order #', 'woocommerce-payments' ),
-		screenReaderLabel: __( 'Order #', 'woocommerce-payments' ),
+		label: __( 'Order #', 'poocommerce-payments' ),
+		screenReaderLabel: __( 'Order #', 'poocommerce-payments' ),
 		required: true,
 	},
 	{
 		key: 'customerName',
-		label: __( 'Customer', 'woocommerce-payments' ),
-		screenReaderLabel: __( 'Customer', 'woocommerce-payments' ),
+		label: __( 'Customer', 'poocommerce-payments' ),
+		screenReaderLabel: __( 'Customer', 'poocommerce-payments' ),
 		isLeftAligned: true,
 	},
 	{
 		key: 'customerEmail',
-		label: __( 'Email', 'woocommerce-payments' ),
-		screenReaderLabel: __( 'Email', 'woocommerce-payments' ),
+		label: __( 'Email', 'poocommerce-payments' ),
+		screenReaderLabel: __( 'Email', 'poocommerce-payments' ),
 		visible: false,
 		isLeftAligned: true,
 	},
 	{
 		key: 'customerCountry',
-		label: __( 'Country', 'woocommerce-payments' ),
-		screenReaderLabel: __( 'Country', 'woocommerce-payments' ),
+		label: __( 'Country', 'poocommerce-payments' ),
+		screenReaderLabel: __( 'Country', 'poocommerce-payments' ),
 		visible: false,
 		isLeftAligned: true,
 	},
 	{
 		key: 'created',
-		label: __( 'Disputed on', 'woocommerce-payments' ),
-		screenReaderLabel: __( 'Disputed on', 'woocommerce-payments' ),
+		label: __( 'Disputed on', 'poocommerce-payments' ),
+		screenReaderLabel: __( 'Disputed on', 'poocommerce-payments' ),
 		isLeftAligned: true,
 		isSortable: true,
 		defaultSort: true,
@@ -131,16 +131,16 @@ const getHeaders = ( sortColumn?: string ): DisputesTableHeader[] => [
 	},
 	{
 		key: 'dueBy',
-		label: __( 'Respond by', 'woocommerce-payments' ),
-		screenReaderLabel: __( 'Respond by', 'woocommerce-payments' ),
+		label: __( 'Respond by', 'poocommerce-payments' ),
+		screenReaderLabel: __( 'Respond by', 'poocommerce-payments' ),
 		required: true,
 		isLeftAligned: true,
 		isSortable: true,
 	},
 	{
 		key: 'action',
-		label: __( 'Action', 'woocommerce-payments' ),
-		screenReaderLabel: __( 'Action', 'woocommerce-payments' ),
+		label: __( 'Action', 'poocommerce-payments' ),
+		screenReaderLabel: __( 'Action', 'poocommerce-payments' ),
 		isLeftAligned: false,
 		isNumeric: true,
 		required: true,
@@ -174,14 +174,14 @@ const smartDueDate = ( dispute: CachedDispute ) => {
 	if ( diffHours <= 72 ) {
 		const message =
 			diffHours <= 24
-				? __( 'Last day today', 'woocommerce-payments' )
+				? __( 'Last day today', 'poocommerce-payments' )
 				: sprintf(
 						// Translators: %s is the number of days left to respond to the dispute.
 						_n(
 							'%s day left',
 							'%s days left',
 							diffDays,
-							'woocommerce-payments'
+							'poocommerce-payments'
 						),
 						diffDays
 				  );
@@ -328,8 +328,8 @@ export const DisputesList = (): JSX.Element => {
 						onClick={ onClickDisputeRow }
 					>
 						{ needsResponse
-							? __( 'Respond', 'woocommerce-payments' )
-							: __( 'See details', 'woocommerce-payments' ) }
+							? __( 'Respond', 'poocommerce-payments' )
+							: __( 'See details', 'poocommerce-payments' ) }
 					</Button>
 				),
 			},
@@ -387,7 +387,7 @@ export const DisputesList = (): JSX.Element => {
 		const confirmMessage = sprintf(
 			__(
 				"You are about to export %d disputes. If you'd like to reduce the size of your export, you can use one or more filters. Would you like to continue?",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			totalRows
 		);
@@ -408,7 +408,7 @@ export const DisputesList = (): JSX.Element => {
 				sprintf(
 					__(
 						'We’re processing your export. 🎉 The file will download automatically and be emailed to %s.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					userEmail
 				)
@@ -426,7 +426,7 @@ export const DisputesList = (): JSX.Element => {
 					'dispute',
 					'disputes',
 					disputesSummary.count ?? 0,
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				value: `${ applyThousandSeparator(
 					disputesSummary.count as number
@@ -448,7 +448,7 @@ export const DisputesList = (): JSX.Element => {
 			<DisputesFilters storeCurrencies={ storeCurrencies } />
 			<TableCard
 				className="wcpay-disputes-list"
-				title={ __( 'Disputes', 'woocommerce-payments' ) }
+				title={ __( 'Disputes', 'poocommerce-payments' ) }
 				isLoading={ isLoading }
 				rowsPerPage={ parseInt( getQuery().per_page ?? '', 10 ) || 25 }
 				totalRows={ totalRows }

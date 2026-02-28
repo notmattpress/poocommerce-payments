@@ -2,7 +2,7 @@
 /**
  * Class InvalidCurrencyException
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\MultiCurrency\Exceptions;

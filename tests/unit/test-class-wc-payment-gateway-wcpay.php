@@ -2,7 +2,7 @@
 /**
  * Class WC_Payment_Gateway_WCPay_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use PHPUnit\Framework\MockObject\MockObject;
@@ -305,7 +305,7 @@ class WC_Payment_Gateway_WCPay_Test extends WCPAY_UnitTestCase {
 	public function tear_down() {
 		parent::tear_down();
 
-		delete_option( 'woocommerce_woocommerce_payments_settings' );
+		delete_option( 'poocommerce_poocommerce_payments_settings' );
 
 		// Restore the cache service in the main class.
 		WC_Payments::set_database_cache( $this->_cache );
@@ -320,14 +320,14 @@ class WC_Payment_Gateway_WCPay_Test extends WCPAY_UnitTestCase {
 		$this->set_payment_method_map( $this->original_payment_method_map );
 
 		// Fall back to an US store.
-		update_option( 'woocommerce_store_postcode', '94110' );
+		update_option( 'poocommerce_store_postcode', '94110' );
 		$this->card_gateway->update_option( 'saved_cards', 'yes' );
 
 		// Some tests simulate payment method parameters.
 		$payment_method_keys = [
 			'payment_method',
-			'wc-woocommerce_payments-payment-token',
-			'wc-woocommerce_payments-new-payment-method',
+			'wc-poocommerce_payments-payment-token',
+			'wc-poocommerce_payments-new-payment-method',
 		];
 		foreach ( $payment_method_keys as $key ) {
 			// phpcs:disable WordPress.Security.NonceVerification.Missing
@@ -496,7 +496,7 @@ class WC_Payment_Gateway_WCPay_Test extends WCPAY_UnitTestCase {
 					],
 				],
 				'expected_title'   => 'Visa credit card',
-				'expected_gateway' => 'woocommerce_payments',
+				'expected_gateway' => 'poocommerce_payments',
 			],
 			'Visa debit card'   => [
 				'payment_details'  => [
@@ -507,7 +507,7 @@ class WC_Payment_Gateway_WCPay_Test extends WCPAY_UnitTestCase {
 					],
 				],
 				'expected_title'   => 'Visa debit card',
-				'expected_gateway' => 'woocommerce_payments',
+				'expected_gateway' => 'poocommerce_payments',
 			],
 			'Mastercard credit' => [
 				'payment_details'  => [
@@ -518,52 +518,52 @@ class WC_Payment_Gateway_WCPay_Test extends WCPAY_UnitTestCase {
 					],
 				],
 				'expected_title'   => 'Mastercard credit card',
-				'expected_gateway' => 'woocommerce_payments',
+				'expected_gateway' => 'poocommerce_payments',
 			],
 			'giropay'           => [
 				'payment_details'  => [ 'type' => 'giropay' ],
 				'expected_title'   => 'giropay',
-				'expected_gateway' => 'woocommerce_payments_giropay',
+				'expected_gateway' => 'poocommerce_payments_giropay',
 			],
 			'Sofort'            => [
 				'payment_details'  => [ 'type' => 'sofort' ],
 				'expected_title'   => 'Sofort',
-				'expected_gateway' => 'woocommerce_payments_sofort',
+				'expected_gateway' => 'poocommerce_payments_sofort',
 			],
 			'Bancontact'        => [
 				'payment_details'  => [ 'type' => 'bancontact' ],
 				'expected_title'   => 'Bancontact',
-				'expected_gateway' => 'woocommerce_payments_bancontact',
+				'expected_gateway' => 'poocommerce_payments_bancontact',
 			],
 			'EPS'               => [
 				'payment_details'  => [ 'type' => 'eps' ],
 				'expected_title'   => 'EPS',
-				'expected_gateway' => 'woocommerce_payments_eps',
+				'expected_gateway' => 'poocommerce_payments_eps',
 			],
 			'Przelewy24 (P24)'  => [
 				'payment_details'  => [ 'type' => 'p24' ],
 				'expected_title'   => 'Przelewy24 (P24)',
-				'expected_gateway' => 'woocommerce_payments_p24',
+				'expected_gateway' => 'poocommerce_payments_p24',
 			],
 			'iDEAL'             => [
 				'payment_details'  => [ 'type' => 'ideal' ],
 				'expected_title'   => 'iDEAL',
-				'expected_gateway' => 'woocommerce_payments_ideal',
+				'expected_gateway' => 'poocommerce_payments_ideal',
 			],
 			'SEPA Direct Debit' => [
 				'payment_details'  => [ 'type' => 'sepa_debit' ],
 				'expected_title'   => 'SEPA Direct Debit',
-				'expected_gateway' => 'woocommerce_payments_sepa_debit',
+				'expected_gateway' => 'poocommerce_payments_sepa_debit',
 			],
 			'BECS Direct Debit' => [
 				'payment_details'  => [ 'type' => 'au_becs_debit' ],
 				'expected_title'   => 'BECS Direct Debit',
-				'expected_gateway' => 'woocommerce_payments_au_becs_debit',
+				'expected_gateway' => 'poocommerce_payments_au_becs_debit',
 			],
 			'GrabPay'           => [
 				'payment_details'  => [ 'type' => 'grabpay' ],
 				'expected_title'   => 'GrabPay',
-				'expected_gateway' => 'woocommerce_payments_grabpay',
+				'expected_gateway' => 'poocommerce_payments_grabpay',
 			],
 		];
 	}
@@ -597,7 +597,7 @@ class WC_Payment_Gateway_WCPay_Test extends WCPAY_UnitTestCase {
 				'express_type'     => 'google_pay',
 				'stripe_type'      => 'card',
 				'expected_title'   => 'Google Pay (WooPayments)',
-				'expected_gateway' => 'woocommerce_payments',
+				'expected_gateway' => 'poocommerce_payments',
 				'payment_details'  => [
 					'type' => 'card',
 					'card' => [
@@ -610,7 +610,7 @@ class WC_Payment_Gateway_WCPay_Test extends WCPAY_UnitTestCase {
 				'express_type'     => 'apple_pay',
 				'stripe_type'      => 'card',
 				'expected_title'   => 'Apple Pay (WooPayments)',
-				'expected_gateway' => 'woocommerce_payments',
+				'expected_gateway' => 'poocommerce_payments',
 				'payment_details'  => [
 					'type' => 'card',
 					'card' => [
@@ -623,7 +623,7 @@ class WC_Payment_Gateway_WCPay_Test extends WCPAY_UnitTestCase {
 				'express_type'     => 'link',
 				'stripe_type'      => 'link',
 				'expected_title'   => 'Link (WooPayments)',
-				'expected_gateway' => 'woocommerce_payments',
+				'expected_gateway' => 'poocommerce_payments',
 				'payment_details'  => [
 					'type' => 'link',
 				],
@@ -632,7 +632,7 @@ class WC_Payment_Gateway_WCPay_Test extends WCPAY_UnitTestCase {
 				'express_type'     => 'amazon_pay',
 				'stripe_type'      => 'amazon_pay',
 				'expected_title'   => 'Amazon Pay (WooPayments)',
-				'expected_gateway' => 'woocommerce_payments_amazon_pay',
+				'expected_gateway' => 'poocommerce_payments_amazon_pay',
 				'payment_details'  => [
 					'type' => 'amazon_pay',
 				],
@@ -1363,7 +1363,7 @@ class WC_Payment_Gateway_WCPay_Test extends WCPAY_UnitTestCase {
 		$order               = WC_Helper_Order::create_order();
 		$payment_information = new Payment_Information( 'pm_mock', $order );
 
-		$_POST['payment_method'] = 'woocommerce_payments';
+		$_POST['payment_method'] = 'poocommerce_payments';
 
 		$payment_methods = $this->card_gateway->get_payment_method_types( $payment_information );
 
@@ -1549,7 +1549,7 @@ class WC_Payment_Gateway_WCPay_Test extends WCPAY_UnitTestCase {
 		// Use a callback to get and test the output (also suppresses the output buffering being printed to the CLI).
 		$this->setOutputCallback(
 			function ( $output ) {
-				$input_element = preg_match_all( '/.*<input.*id="wc-woocommerce_payments-new-payment-method".*\/>.*/', $output );
+				$input_element = preg_match_all( '/.*<input.*id="wc-poocommerce_payments-new-payment-method".*\/>.*/', $output );
 				$parent_div    = preg_match_all( '/<div >.*<\/div>/s', $output );
 
 				$this->assertSame( 1, $input_element );
@@ -1563,7 +1563,7 @@ class WC_Payment_Gateway_WCPay_Test extends WCPAY_UnitTestCase {
 	public function test_save_payment_method_checkbox_not_displayed_when_force_checked() {
 		$this->setOutputCallback(
 			function ( $output ) {
-				$input_element = preg_match_all( '/.*<input.*id="wc-woocommerce_payments-new-payment-method".*\/>.*/', $output );
+				$input_element = preg_match_all( '/.*<input.*id="wc-poocommerce_payments-new-payment-method".*\/>.*/', $output );
 				$parent_div    = preg_match_all( '/<div style="display:none;">.*<\/div>/s', $output );
 
 				$this->assertSame( 1, $input_element );
@@ -1578,14 +1578,14 @@ class WC_Payment_Gateway_WCPay_Test extends WCPAY_UnitTestCase {
 		// Setup the test so that should_use_stripe_platform_on_checkout_page returns true.
 		$this->mock_cache->method( 'get' )->willReturn( [ 'platform_checkout_eligible' => true ] );
 		$this->card_gateway->update_option( 'platform_checkout', 'yes' );
-		add_filter( 'woocommerce_is_checkout', '__return_true' );
+		add_filter( 'poocommerce_is_checkout', '__return_true' );
 		WC()->session->init();
 		WC()->cart->add_to_cart( WC_Helper_Product::create_simple_product()->get_id(), 1 );
 		WC()->cart->calculate_totals();
 
 		$this->setOutputCallback(
 			function ( $output ) {
-				$input_element = preg_match_all( '/.*<input.*id="wc-woocommerce_payments-new-payment-method".*\/>.*/', $output );
+				$input_element = preg_match_all( '/.*<input.*id="wc-poocommerce_payments-new-payment-method".*\/>.*/', $output );
 				$parent_div    = preg_match_all( '/<div style="display:none;">.*<\/div>/s', $output );
 
 				$this->assertSame( 1, $input_element );
@@ -1595,7 +1595,7 @@ class WC_Payment_Gateway_WCPay_Test extends WCPAY_UnitTestCase {
 
 		$this->card_gateway->save_payment_method_checkbox( false );
 
-		remove_filter( 'woocommerce_is_checkout', '__return_true' );
+		remove_filter( 'poocommerce_is_checkout', '__return_true' );
 		WC()->cart->empty_cart();
 	}
 
@@ -2483,7 +2483,7 @@ class WC_Payment_Gateway_WCPay_Test extends WCPAY_UnitTestCase {
 
 	public function test_schedule_order_tracking_with_no_payment_method_id() {
 		$order = WC_Helper_Order::create_order();
-		$order->set_payment_method( 'woocommerce_payments' );
+		$order->set_payment_method( 'poocommerce_payments' );
 		$order->delete_meta_data( '_new_order_tracking_complete' );
 
 		$this->mock_action_scheduler_service
@@ -2505,7 +2505,7 @@ class WC_Payment_Gateway_WCPay_Test extends WCPAY_UnitTestCase {
 
 	public function test_schedule_order_tracking() {
 		$order = WC_Helper_Order::create_order();
-		$order->set_payment_method( 'woocommerce_payments' );
+		$order->set_payment_method( 'poocommerce_payments' );
 		$order->update_meta_data( '_payment_method_id', 'pm_123' );
 		$order->update_meta_data( '_wcpay_mode', WC_Payments::mode()->is_test() ? 'test' : 'prod' );
 		$order->delete_meta_data( '_new_order_tracking_complete' );
@@ -2529,7 +2529,7 @@ class WC_Payment_Gateway_WCPay_Test extends WCPAY_UnitTestCase {
 
 	public function test_schedule_order_tracking_on_already_created_order() {
 		$order = WC_Helper_Order::create_order();
-		$order->set_payment_method( 'woocommerce_payments' );
+		$order->set_payment_method( 'poocommerce_payments' );
 		$order->add_meta_data( '_new_order_tracking_complete', 'yes' );
 		$order->update_meta_data( '_payment_method_id', 'pm_123' );
 		$order->save_meta_data();
@@ -2566,7 +2566,7 @@ class WC_Payment_Gateway_WCPay_Test extends WCPAY_UnitTestCase {
 		$output = ob_get_clean();
 		$this->assertStringMatchesFormat( '%aid="wcpay-express-checkout-settings-container"%a', $output );
 		$this->assertStringMatchesFormat( '%adata-method-id="foo"%a', $output );
-		$this->assertStringMatchesFormat( '%ahref="admin.php?page=wc-settings&#038;tab=checkout&#038;section=woocommerce_payments"%a', $output );
+		$this->assertStringMatchesFormat( '%ahref="admin.php?page=wc-settings&#038;tab=checkout&#038;section=poocommerce_payments"%a', $output );
 	}
 
 	/**
@@ -2610,7 +2610,7 @@ class WC_Payment_Gateway_WCPay_Test extends WCPAY_UnitTestCase {
 
 	public function test_payment_request_form_field_defaults() {
 		// need to delete the existing options to ensure nothing is in the DB from the `setUp` phase, where the method is instantiated.
-		delete_option( 'woocommerce_woocommerce_payments_settings' );
+		delete_option( 'poocommerce_poocommerce_payments_settings' );
 
 		$this->assertEquals(
 			[
@@ -2647,7 +2647,7 @@ class WC_Payment_Gateway_WCPay_Test extends WCPAY_UnitTestCase {
 	}
 
 	public function test_payment_gateway_enabled_for_supported_currency() {
-		$current_currency = strtolower( get_woocommerce_currency() );
+		$current_currency = strtolower( get_poocommerce_currency() );
 		$this->mock_wcpay_account->expects( $this->once() )->method( 'get_account_customer_supported_currencies' )->will(
 			$this->returnValue(
 				[
@@ -2857,7 +2857,7 @@ class WC_Payment_Gateway_WCPay_Test extends WCPAY_UnitTestCase {
 	}
 
 	public function test_set_mandate_data_to_payment_intent_if_not_required() {
-		$payment_method = 'woocommerce_payments_sepa_debit';
+		$payment_method = 'poocommerce_payments_sepa_debit';
 		$order          = WC_Helper_Order::create_order();
 		$order->set_currency( 'USD' );
 		$order->set_total( 100 );
@@ -2881,7 +2881,7 @@ class WC_Payment_Gateway_WCPay_Test extends WCPAY_UnitTestCase {
 	public function test_set_mandate_data_to_payment_intent_if_required() {
 		// Mandate data is required for SEPA and Stripe Link, hence creating the gateway with a SEPA payment method should add mandate data.
 		$gateway        = $this->get_gateway( Payment_Method::SEPA );
-		$payment_method = 'woocommerce_payments_sepa_debit';
+		$payment_method = 'poocommerce_payments_sepa_debit';
 		$order          = WC_Helper_Order::create_order();
 		$order->set_currency( 'USD' );
 		$order->set_total( 100 );
@@ -2916,7 +2916,7 @@ class WC_Payment_Gateway_WCPay_Test extends WCPAY_UnitTestCase {
 		// Disabled link is reflected in upe_enabled_payment_method_ids: when link is disabled, the array contains only card.
 		$this->card_gateway->settings['upe_enabled_payment_method_ids'] = [ 'card' ];
 
-		$payment_method = 'woocommerce_payments';
+		$payment_method = 'poocommerce_payments';
 		$order          = WC_Helper_Order::create_order();
 		$order->set_currency( 'USD' );
 		$order->set_total( 0 );
@@ -2956,7 +2956,7 @@ class WC_Payment_Gateway_WCPay_Test extends WCPAY_UnitTestCase {
 	public function test_set_mandate_data_with_setup_intent_request_when_link_is_enabled() {
 		$this->card_gateway->settings['upe_enabled_payment_method_ids'] = [ 'card', 'link' ];
 
-		$payment_method = 'woocommerce_payments';
+		$payment_method = 'poocommerce_payments';
 		$order          = WC_Helper_Order::create_order();
 		$order->set_currency( 'USD' );
 		$order->set_total( 0 );
@@ -3285,7 +3285,7 @@ class WC_Payment_Gateway_WCPay_Test extends WCPAY_UnitTestCase {
 	}
 
 	public function test_process_payment_for_order_cc_payment_method() {
-		$payment_method                              = 'woocommerce_payments';
+		$payment_method                              = 'poocommerce_payments';
 		$expected_upe_payment_method_for_pi_creation = 'card';
 		$order                                       = WC_Helper_Order::create_order();
 		$order->set_currency( 'USD' );
@@ -3308,7 +3308,7 @@ class WC_Payment_Gateway_WCPay_Test extends WCPAY_UnitTestCase {
 	}
 
 	public function test_process_payment_for_order_upe_payment_method() {
-		$payment_method                              = 'woocommerce_payments_sepa_debit';
+		$payment_method                              = 'poocommerce_payments_sepa_debit';
 		$expected_upe_payment_method_for_pi_creation = 'sepa_debit';
 		$order                                       = WC_Helper_Order::create_order();
 		$order->set_currency( 'USD' );
@@ -3334,7 +3334,7 @@ class WC_Payment_Gateway_WCPay_Test extends WCPAY_UnitTestCase {
 	 * @dataProvider process_payment_for_order_afterpay_clearpay_provider
 	 */
 	public function test_process_payment_for_order_afterpay_clearpay( array $address, array $locale_data, ?string $expected_exception ) {
-		$payment_method                              = 'woocommerce_payments_afterpay_clearpay';
+		$payment_method                              = 'poocommerce_payments_afterpay_clearpay';
 		$expected_upe_payment_method_for_pi_creation = 'afterpay_clearpay';
 		$order                                       = WC_Helper_Order::create_order();
 		$order->set_currency( 'USD' );
@@ -3461,7 +3461,7 @@ class WC_Payment_Gateway_WCPay_Test extends WCPAY_UnitTestCase {
 
 		$_POST = [
 			'wcpay-payment-method' => $pm = 'pm_mock',
-			'payment_method'       => 'woocommerce_payments',
+			'payment_method'       => 'poocommerce_payments',
 		];
 
 		$this->get_fraud_prevention_service_mock()
@@ -3864,7 +3864,7 @@ class WC_Payment_Gateway_WCPay_Test extends WCPAY_UnitTestCase {
 
 	public function test_woopay_form_field_defaults() {
 		// need to delete the existing options to ensure nothing is in the DB from the `setUp` phase, where the method is instantiated.
-		delete_option( 'woocommerce_woocommerce_payments_settings' );
+		delete_option( 'poocommerce_poocommerce_payments_settings' );
 
 		$this->assertEquals(
 			[ 'payment_request', 'woopay', 'amazon_pay' ],
@@ -3891,11 +3891,11 @@ class WC_Payment_Gateway_WCPay_Test extends WCPAY_UnitTestCase {
 		$this->mock_cache->method( 'get' )->willReturn( [ 'platform_checkout_eligible' => true ] );
 		$this->card_gateway->update_option( 'platform_checkout', 'yes' );
 		wp_set_current_user( 1 );
-		add_filter( 'woocommerce_is_checkout', '__return_true' );
+		add_filter( 'poocommerce_is_checkout', '__return_true' );
 
 		$this->assertTrue( $this->woopay_utilities->should_enable_woopay( $this->card_gateway ) );
 
-		remove_filter( 'woocommerce_is_checkout', '__return_true' );
+		remove_filter( 'poocommerce_is_checkout', '__return_true' );
 	}
 
 	public function test_should_use_stripe_platform_on_checkout_page_not_woopay_eligible() {
@@ -4010,7 +4010,7 @@ class WC_Payment_Gateway_WCPay_Test extends WCPAY_UnitTestCase {
 		$order = WC_Helper_Order::create_order();
 		$_POST = [
 			'wcpay-payment-method' => 'pm_mock',
-			'payment_method'       => 'woocommerce_payments',
+			'payment_method'       => 'poocommerce_payments',
 			'wc-' . WC_Payment_Gateway_WCPay::GATEWAY_ID . '-new-payment-method' => 'true',
 		];
 
@@ -4037,7 +4037,7 @@ class WC_Payment_Gateway_WCPay_Test extends WCPAY_UnitTestCase {
 		$_POST['express_payment_type'] = 'google_pay';
 		$_POST                         = [
 			'wcpay-payment-method' => 'pm_mock',
-			'payment_method'       => 'woocommerce_payments',
+			'payment_method'       => 'poocommerce_payments',
 			'wc-' . WC_Payment_Gateway_WCPay::GATEWAY_ID . '-new-payment-method' => 'true',
 		];
 
@@ -4086,7 +4086,7 @@ class WC_Payment_Gateway_WCPay_Test extends WCPAY_UnitTestCase {
 		$filter_callback = function () {
 			return 'US';
 		};
-		add_filter( 'woocommerce_countries_base_country', $filter_callback );
+		add_filter( 'poocommerce_countries_base_country', $filter_callback );
 
 		$this->mock_wcpay_account
 			->expects( $this->once() )
@@ -4111,7 +4111,7 @@ class WC_Payment_Gateway_WCPay_Test extends WCPAY_UnitTestCase {
 		$this->assertSame( [], $this->card_gateway->get_recommended_payment_methods( '' ) );
 
 		// Clean up.
-		remove_filter( 'woocommerce_countries_base_country', $filter_callback );
+		remove_filter( 'poocommerce_countries_base_country', $filter_callback );
 	}
 
 	public function test_updating_subscription_for_non_3ds_cards_removes_hook() {
@@ -4133,7 +4133,7 @@ class WC_Payment_Gateway_WCPay_Test extends WCPAY_UnitTestCase {
 			->willReturn( WC_Helper_Intention::create_intention( [ 'status' => 'success' ] ) );
 
 		add_filter(
-			'woocommerce_subscriptions_update_payment_via_pay_shortcode',
+			'poocommerce_subscriptions_update_payment_via_pay_shortcode',
 			[ $this->card_gateway, 'update_payment_method_for_subscriptions' ],
 			10,
 			3
@@ -4141,14 +4141,14 @@ class WC_Payment_Gateway_WCPay_Test extends WCPAY_UnitTestCase {
 
 		$this->assertEquals(
 			10,
-			has_filter( 'woocommerce_subscriptions_update_payment_via_pay_shortcode', [ $this->card_gateway, 'update_payment_method_for_subscriptions' ] ),
+			has_filter( 'poocommerce_subscriptions_update_payment_via_pay_shortcode', [ $this->card_gateway, 'update_payment_method_for_subscriptions' ] ),
 			'Hook should be registered before payment processing'
 		);
 
 		$this->card_gateway->process_payment_for_order( WC()->cart, $pi );
 
 		$this->assertFalse(
-			has_filter( 'woocommerce_subscriptions_update_payment_via_pay_shortcode', [ $this->card_gateway, 'update_payment_method_for_subscriptions' ] ),
+			has_filter( 'poocommerce_subscriptions_update_payment_via_pay_shortcode', [ $this->card_gateway, 'update_payment_method_for_subscriptions' ] ),
 			'Hook should be removed after processing payment for subscription with non-3DS card'
 		);
 	}
@@ -4165,7 +4165,7 @@ class WC_Payment_Gateway_WCPay_Test extends WCPAY_UnitTestCase {
 
 		// Set up POST data including update_all_subscriptions_payment_method.
 		$_POST = [
-			'payment_method'                          => 'woocommerce_payments',
+			'payment_method'                          => 'poocommerce_payments',
 			'update_all_subscriptions_payment_method' => '1',
 		];
 
@@ -4193,7 +4193,7 @@ class WC_Payment_Gateway_WCPay_Test extends WCPAY_UnitTestCase {
 			$this->card_gateway->process_payment_for_order( WC()->cart, $pi );
 		} catch ( Exception $e ) {
 			$this->assertEquals(
-				'woocommerce_payments',
+				'poocommerce_payments',
 				$order->get_meta( '_delayed_update_payment_method_all' ),
 				'Order metadata for delayed payment method update was not set correctly'
 			);
@@ -4224,7 +4224,7 @@ class WC_Payment_Gateway_WCPay_Test extends WCPAY_UnitTestCase {
 
 	private function prepare_gateway_for_availability_testing( $gateway ) {
 		WC_Payments::mode()->test();
-		$current_currency = strtolower( get_woocommerce_currency() );
+		$current_currency = strtolower( get_poocommerce_currency() );
 		$this->mock_wcpay_account->expects( $this->any() )->method( 'get_account_customer_supported_currencies' )->will(
 			$this->returnValue(
 				[

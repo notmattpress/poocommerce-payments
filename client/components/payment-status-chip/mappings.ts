@@ -24,7 +24,7 @@ const formattedDisputeStatuses = Object.entries( disputeStatuses ).reduce(
 				? mapping.message
 				: sprintf(
 						/** translators: %s dispute status, e.g. Won, Lost, Under review, etc. */
-						__( 'Disputed: %s', 'woocommerce-payments' ),
+						__( 'Disputed: %s', 'poocommerce-payments' ),
 						mapping.message
 				  ),
 		};
@@ -37,39 +37,39 @@ const formattedDisputeStatuses = Object.entries( disputeStatuses ).reduce(
 const paymentStatusMappings: Record< string, StatusMapping > = {
 	refunded_partial: {
 		type: 'light',
-		message: __( 'Partial refund', 'woocommerce-payments' ),
+		message: __( 'Partial refund', 'poocommerce-payments' ),
 	},
 	refunded_full: {
 		type: 'light',
-		message: __( 'Refunded', 'woocommerce-payments' ),
+		message: __( 'Refunded', 'poocommerce-payments' ),
 	},
 	paid: {
 		type: 'success',
-		message: __( 'Paid', 'woocommerce-payments' ),
+		message: __( 'Paid', 'poocommerce-payments' ),
 	},
 	authorized: {
 		type: 'primary',
-		message: __( 'Payment authorized', 'woocommerce-payments' ),
+		message: __( 'Payment authorized', 'poocommerce-payments' ),
 	},
 	refund_failed: {
 		type: 'alert',
-		message: __( 'Refund failure', 'woocommerce-payments' ),
+		message: __( 'Refund failure', 'poocommerce-payments' ),
 	},
 	failed: {
 		type: 'alert',
-		message: __( 'Payment failed', 'woocommerce-payments' ),
+		message: __( 'Payment failed', 'poocommerce-payments' ),
 	},
 	blocked: {
 		type: 'alert',
-		message: __( 'Payment blocked', 'woocommerce-payments' ),
+		message: __( 'Payment blocked', 'poocommerce-payments' ),
 	},
 	fraud_outcome_review: {
 		type: 'warning',
-		message: __( 'Needs review', 'woocommerce-payments' ),
+		message: __( 'Needs review', 'poocommerce-payments' ),
 	},
 	fraud_outcome_block: {
 		type: 'alert',
-		message: __( 'Payment blocked', 'woocommerce-payments' ),
+		message: __( 'Payment blocked', 'poocommerce-payments' ),
 	},
 	...formattedDisputeStatuses,
 };

@@ -115,12 +115,12 @@ export const getShopper = async (
 		await shopperPage.goto( '/my-account' );
 		expect(
 			shopperPage.locator(
-				'.woocommerce-MyAccount-navigation-link--customer-logout'
+				'.poocommerce-MyAccount-navigation-link--customer-logout'
 			)
 		).toBeVisible();
 		await expect(
 			shopperPage.locator(
-				'div.woocommerce-MyAccount-content > p >> nth=0'
+				'div.poocommerce-MyAccount-content > p >> nth=0'
 			)
 		).toContainText( 'Hello' );
 		await shopperPage
@@ -183,7 +183,7 @@ export const checkPageExists = async (
 export const isCustomerLoggedIn = async ( page: Page ) => {
 	await page.goto( '/my-account' );
 	const logoutLink = page.locator(
-		'.woocommerce-MyAccount-navigation-link--customer-logout'
+		'.poocommerce-MyAccount-navigation-link--customer-logout'
 	);
 
 	return await logoutLink.isVisible();
@@ -205,11 +205,11 @@ export const loginAsCustomer = async (
 			await page.goto( '/my-account' );
 			await expect(
 				page.locator(
-					'.woocommerce-MyAccount-navigation-link--customer-logout'
+					'.poocommerce-MyAccount-navigation-link--customer-logout'
 				)
 			).toBeVisible();
 			await expect(
-				page.locator( 'div.woocommerce-MyAccount-content > p >> nth=0' )
+				page.locator( 'div.poocommerce-MyAccount-content > p >> nth=0' )
 			).toContainText( 'Hello' );
 
 			console.log( 'Logged-in as customer successfully.' );

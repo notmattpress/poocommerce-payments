@@ -85,7 +85,7 @@ describe( 'Tokenized Express Checkout Element - Product page logic', () => {
 		// just mocking some server-side-provided DOM elements.
 		render(
 			<div>
-				<div className="woocommerce-notices-wrapper" />
+				<div className="poocommerce-notices-wrapper" />
 				<button className="single_add_to_cart_button" value="333">
 					Fake button
 				</button>

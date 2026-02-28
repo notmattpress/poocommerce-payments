@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Checkout
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay;
@@ -99,11 +99,11 @@ class WC_Payments_Checkout {
 		add_action( 'wp_ajax_save_upe_appearance', [ $this->gateway, 'save_upe_appearance_ajax' ] );
 		add_action( 'wp_ajax_nopriv_save_upe_appearance', [ $this->gateway, 'save_upe_appearance_ajax' ] );
 		add_action( 'switch_theme', [ $this->gateway, 'clear_upe_appearance_transient' ] );
-		add_action( 'woocommerce_woocommerce_payments_updated', [ $this->gateway, 'clear_upe_appearance_transient' ] );
+		add_action( 'poocommerce_poocommerce_payments_updated', [ $this->gateway, 'clear_upe_appearance_transient' ] );
 
 		add_action( 'wp_enqueue_scripts', [ $this, 'register_scripts' ] );
 		add_action( 'wp_enqueue_scripts', [ $this, 'register_scripts_for_zero_order_total' ], 11 );
-		add_action( 'woocommerce_after_checkout_form', [ $this, 'maybe_load_checkout_scripts' ] );
+		add_action( 'poocommerce_after_checkout_form', [ $this, 'maybe_load_checkout_scripts' ] );
 	}
 
 	/**
@@ -130,7 +130,7 @@ class WC_Payments_Checkout {
 		$script_dependencies = [ 'stripe', 'wc-checkout', 'wp-i18n' ];
 
 		if ( $this->gateway->supports( 'tokenization' ) ) {
-			$script_dependencies[] = 'woocommerce-tokenization-form';
+			$script_dependencies[] = 'poocommerce-tokenization-form';
 		}
 
 		Fraud_Prevention_Service::maybe_append_fraud_prevention_token();
@@ -149,7 +149,7 @@ class WC_Payments_Checkout {
 			! WC()->cart->is_empty() &&
 			! WC()->cart->needs_payment() &&
 			is_checkout() &&
-			! has_block( 'woocommerce/checkout' ) &&
+			! has_block( 'poocommerce/checkout' ) &&
 			! wp_script_is( 'wcpay-upe-checkout', 'enqueued' )
 		) {
 			$this->load_checkout_scripts();
@@ -191,7 +191,7 @@ class WC_Payments_Checkout {
 			'createSetupIntentNonce'            => wp_create_nonce( 'wcpay_create_setup_intent_nonce' ),
 			'initWooPayNonce'                   => wp_create_nonce( 'wcpay_init_woopay_nonce' ),
 			'saveUPEAppearanceNonce'            => wp_create_nonce( 'wcpay_save_upe_appearance_nonce' ),
-			'genericErrorMessage'               => __( 'There was a problem processing the payment. Please check your email inbox and refresh the page to try again.', 'woocommerce-payments' ),
+			'genericErrorMessage'               => __( 'There was a problem processing the payment. Please check your email inbox and refresh the page to try again.', 'poocommerce-payments' ),
 			'fraudServices'                     => $this->fraud_service->get_fraud_services_config(),
 			'features'                          => $this->gateway->supports,
 			'forceNetworkSavedCards'            => WC_Payments::is_network_saved_cards_enabled() || $gateway->should_use_stripe_platform_on_checkout_page(),
@@ -229,9 +229,9 @@ class WC_Payments_Checkout {
 		$payment_fields['wcBlocksUPEAppearance']         = get_transient( WC_Payment_Gateway_WCPay::WC_BLOCKS_UPE_APPEARANCE_TRANSIENT );
 		$payment_fields['wcBlocksUPEAppearanceTheme']    = get_transient( WC_Payment_Gateway_WCPay::WC_BLOCKS_UPE_APPEARANCE_THEME_TRANSIENT );
 		$payment_fields['cartContainsSubscription']      = $this->gateway->is_subscription_item_in_cart();
-		$payment_fields['currency']                      = get_woocommerce_currency();
+		$payment_fields['currency']                      = get_poocommerce_currency();
 		$cart_total                                      = ( WC()->cart ? WC()->cart->get_total( '' ) : 0 );
-		$payment_fields['cartTotal']                     = WC_Payments_Utils::prepare_amount( $cart_total, get_woocommerce_currency() );
+		$payment_fields['cartTotal']                     = WC_Payments_Utils::prepare_amount( $cart_total, get_poocommerce_currency() );
 
 		$enabled_billing_fields = [];
 		foreach ( WC()->checkout()->get_checkout_fields( 'billing' ) as $billing_field => $billing_field_options ) {
@@ -343,9 +343,9 @@ class WC_Payments_Checkout {
 			/* translators: link to Stripe testing page */
 			$payment_method->get_testing_instructions( $account_country ),
 			[
-				'a'      => '<a href="https://woocommerce.com/document/woopayments/testing-and-troubleshooting/testing/#test-cards" target="_blank">',
+				'a'      => '<a href="https://poocommerce.com/document/woopayments/testing-and-troubleshooting/testing/#test-cards" target="_blank">',
 				'strong' => '<strong>',
-				'number' => '<button type="button" class="js-woopayments-copy-test-number" aria-label="' . esc_attr( __( 'Click to copy the test number to clipboard', 'woocommerce-payments' ) ) . '" title="' . esc_attr( __( 'Copy to clipboard', 'woocommerce-payments' ) ) . '"><i></i><span>',
+				'number' => '<button type="button" class="js-woopayments-copy-test-number" aria-label="' . esc_attr( __( 'Click to copy the test number to clipboard', 'poocommerce-payments' ) ) . '" title="' . esc_attr( __( 'Copy to clipboard', 'poocommerce-payments' ) ) . '"><i></i><span>',
 			]
 		);
 
@@ -452,9 +452,9 @@ class WC_Payments_Checkout {
 							/* translators: link to Stripe testing page */
 								$this->gateway->get_payment_method()->get_testing_instructions( $this->account->get_account_country() ),
 								[
-									'a'      => '<a href="https://woocommerce.com/document/woopayments/testing-and-troubleshooting/testing/#test-cards" target="_blank">',
+									'a'      => '<a href="https://poocommerce.com/document/woopayments/testing-and-troubleshooting/testing/#test-cards" target="_blank">',
 									'strong' => '<strong>',
-									'number' => '<button type="button" class="js-woopayments-copy-test-number" aria-label="' . esc_attr( __( 'Click to copy the test number to clipboard', 'woocommerce-payments' ) ) . '" title="' . esc_attr( __( 'Copy to clipboard', 'woocommerce-payments' ) ) . '"><i></i><span>',
+									'number' => '<button type="button" class="js-woopayments-copy-test-number" aria-label="' . esc_attr( __( 'Click to copy the test number to clipboard', 'poocommerce-payments' ) ) . '" title="' . esc_attr( __( 'Copy to clipboard', 'poocommerce-payments' ) ) . '"><i></i><span>',
 								]
 							);
 					?>
@@ -494,7 +494,7 @@ class WC_Payments_Checkout {
 			?>
 			<div>
 				<?php
-				echo esc_html__( 'An error was encountered when preparing the payment form. Please try again later.', 'woocommerce-payments' );
+				echo esc_html__( 'An error was encountered when preparing the payment form. Please try again later.', 'poocommerce-payments' );
 				?>
 			</div>
 			<?php

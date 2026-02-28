@@ -1,40 +1,40 @@
-# CLAUDE.md - WooCommerce Payments Repository Guide
+# CLAUDE.md - PooCommerce Payments Repository Guide
 
-This file provides context about the WooCommerce Payments repository to help Claude Code assist more effectively.
+This file provides context about the PooCommerce Payments repository to help Claude Code assist more effectively.
 
 ## Repository Overview
 
-WooCommerce Payments (WCPay) is a WordPress plugin that provides payment processing capabilities for WooCommerce stores. It's a complex project combining PHP backend code with a React-based admin interface.
+PooCommerce Payments (WCPay) is a WordPress plugin that provides payment processing capabilities for PooCommerce stores. It's a complex project combining PHP backend code with a React-based admin interface.
 
 **Key Info:**
 - Plugin Name: WooPayments
 - License: GPL-3.0-or-later
-- Repository: github:Automattic/woocommerce-payments
+- Repository: github:Automattic/poocommerce-payments
 
 **Version & Requirements:**
-- See `woocommerce-payments.php` header for current version and WordPress/WooCommerce/PHP requirements
+- See `poocommerce-payments.php` header for current version and WordPress/PooCommerce/PHP requirements
 - See `package.json` for Node.js version requirements (engines field)
 
-## WooCommerce Core Reference
+## PooCommerce Core Reference
 
-WooPayments is a separate plugin that integrates with WooCommerce core, leveraging its hooks, filters, and APIs. Having the WooCommerce codebase available locally provides useful context when working on WooPayments.
+WooPayments is a separate plugin that integrates with PooCommerce core, leveraging its hooks, filters, and APIs. Having the PooCommerce codebase available locally provides useful context when working on WooPayments.
 
-**Location:** `../woocommerce` (or set `WOOCOMMERCE_DIR` env var to override)
+**Location:** `../poocommerce` (or set `WOOCOMMERCE_DIR` env var to override)
 
-**Key paths within WooCommerce:**
-- `plugins/woocommerce/includes/` - Core WooCommerce PHP classes
-- `plugins/woocommerce/src/` - Modern PSR-4 WooCommerce code
-- `plugins/woocommerce-blocks/` - Checkout and cart blocks
+**Key paths within PooCommerce:**
+- `plugins/poocommerce/includes/` - Core PooCommerce PHP classes
+- `plugins/poocommerce/src/` - Modern PSR-4 PooCommerce code
+- `plugins/poocommerce-blocks/` - Checkout and cart blocks
 
-**When to reference WooCommerce core:**
+**When to reference PooCommerce core:**
 - When working with WC hooks/filters - check the core implementation to understand parameters, timing, and context
 - When using WC base classes (e.g., `WC_Payment_Gateway`) - understand the parent class behavior
 - When debugging issues that may involve core behavior
 - When implementing features that interact with WC APIs (orders, products, customers, etc.)
 
-**Auto-reference triggers:** Proactively check WooCommerce core when you encounter:
+**Auto-reference triggers:** Proactively check PooCommerce core when you encounter:
 - Classes using `WC_*` base classes
-- Hooks starting with `woocommerce_` or `wc_`
+- Hooks starting with `poocommerce_` or `wc_`
 - Usage of `WC()` singleton or WC helper functions
 - Order, product, or customer manipulation code
 
@@ -69,13 +69,13 @@ WooPayments is a separate plugin that integrates with WooCommerce core, leveragi
 
 ## Technology Stack
 
-**Backend:** PHP, WordPress APIs, WooCommerce hooks, Composer
+**Backend:** PHP, WordPress APIs, PooCommerce hooks, Composer
 **Frontend:** React, TypeScript, @wordpress/data (Redux), SCSS
 **Build:** Webpack, Babel, PostCSS, @wordpress/scripts
 **Testing:** PHPUnit, Jest, Playwright, React Testing Library
 **Quality:** ESLint, PHPCS, Psalm, TypeScript, Prettier
 
-*See `composer.json`, `package.json`, and `woocommerce-payments.php` for specific version requirements*
+*See `composer.json`, `package.json`, and `poocommerce-payments.php` for specific version requirements*
 
 ## Common Commands
 
@@ -201,7 +201,7 @@ npm run i18n:pot                    # Generate translations
 
 ## Version Support Policy
 - WordPress: Strict L-2 (supports current and 2 previous major versions)
-- WooCommerce: Loose L-2
+- PooCommerce: Loose L-2
 - See `docs/version-support-policy.md` for details
 
 ## Documentation

@@ -15,19 +15,19 @@ const DebugMode = () => {
 
 	return (
 		<>
-			<h4>{ __( 'Debug mode', 'woocommerce-payments' ) }</h4>
+			<h4>{ __( 'Debug mode', 'poocommerce-payments' ) }</h4>
 			<CheckboxControl
 				label={
 					isDevModeEnabled
 						? __(
 								'Log error messages (defaulted on for test accounts)',
-								'woocommerce-payments'
+								'poocommerce-payments'
 						  )
-						: __( 'Log error messages', 'woocommerce-payments' )
+						: __( 'Log error messages', 'poocommerce-payments' )
 				}
 				help={ __(
-					'When enabled, payment error logs will be saved to WooCommerce > Status > Logs.',
-					'woocommerce-payments'
+					'When enabled, payment error logs will be saved to PooCommerce > Status > Logs.',
+					'poocommerce-payments'
 				) }
 				disabled={ isDevModeEnabled }
 				checked={ isDevModeEnabled || isLoggingChecked }

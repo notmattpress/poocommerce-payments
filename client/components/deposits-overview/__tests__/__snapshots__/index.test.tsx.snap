@@ -558,7 +558,7 @@ exports[`Deposits Overview information Component Renders 1`] = `
         </button>
         <a
           class="components-button is-next-40px-default-size is-tertiary"
-          href="admin.php?page=wc-settings&tab=checkout&section=woocommerce_payments#payout-schedule"
+          href="admin.php?page=wc-settings&tab=checkout&section=poocommerce_payments#payout-schedule"
         >
           Change payout schedule
         </a>
@@ -664,7 +664,7 @@ exports[`Suspended Deposit Notice Renders Component Renders 1`] = `
           . 
           <a
             data-link-type="wc-admin"
-            href="https://woocommerce.com/document/woopayments/payouts/why-payouts-suspended/"
+            href="https://poocommerce.com/document/woopayments/payouts/why-payouts-suspended/"
           >
             Learn more
           </a>

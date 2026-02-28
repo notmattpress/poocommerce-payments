@@ -53,7 +53,7 @@ class BecsDefinition implements PaymentMethodDefinitionInterface {
 	 * @return string
 	 */
 	public static function get_title( ?string $account_country = null ): string {
-		return __( 'BECS Direct Debit', 'woocommerce-payments' );
+		return __( 'BECS Direct Debit', 'poocommerce-payments' );
 	}
 
 	/**
@@ -76,7 +76,7 @@ class BecsDefinition implements PaymentMethodDefinitionInterface {
 	public static function get_description( ?string $account_country = null ): string {
 		return __(
 			'Bulk Electronic Clearing System — Accept secure bank transfer from Australia.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		);
 	}
 
@@ -151,7 +151,7 @@ class BecsDefinition implements PaymentMethodDefinitionInterface {
 	 * @return string HTML string containing testing instructions
 	 */
 	public static function get_testing_instructions( string $account_country ): string {
-		return __( '<strong>Test mode:</strong> use the test account number <number>000123456</number>. Other payment methods may redirect to a Stripe test page to authorize payment. More test card numbers are listed <a>here</a>.', 'woocommerce-payments' );
+		return __( '<strong>Test mode:</strong> use the test account number <number>000123456</number>. Other payment methods may redirect to a Stripe test page to authorize payment. More test card numbers are listed <a>here</a>.', 'poocommerce-payments' );
 	}
 
 	/**

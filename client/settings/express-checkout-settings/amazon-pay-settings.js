@@ -37,7 +37,7 @@ const buttonSizeOptions = [
 		label: makeButtonSizeText(
 			__(
 				'Small {{helpText}}(40 px){{/helpText}}',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			)
 		),
 		value: 'small',
@@ -46,7 +46,7 @@ const buttonSizeOptions = [
 		label: makeButtonSizeText(
 			__(
 				'Medium {{helpText}}(48 px){{/helpText}}',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			)
 		),
 		value: 'medium',
@@ -55,7 +55,7 @@ const buttonSizeOptions = [
 		label: makeButtonSizeText(
 			__(
 				'Large {{helpText}}(55 px){{/helpText}}',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			)
 		),
 		value: 'large',
@@ -69,7 +69,7 @@ const GeneralSettings = () => {
 		<CardBody className="wcpay-card-body">
 			<ExpressCheckoutSettingsNotices currentMethod="amazon_pay" />
 			<RadioControl
-				label={ __( 'Button size', 'woocommerce-payments' ) }
+				label={ __( 'Button size', 'poocommerce-payments' ) }
 				selected={ size }
 				options={ buttonSizeOptions }
 				onChange={ setSize }
@@ -103,12 +103,12 @@ const AmazonPaySettings = ( { section } ) => {
 							onChange={ updateIsAmazonPayEnabled }
 							label={ __(
 								'Enable Amazon Pay as an express payment button',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 							help={ __(
 								'Show Amazon Pay buttons on store pages for faster purchases. ' +
 									'Customers with Amazon accounts can use their stored payment information.',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 							__nextHasNoMarginBottom
 						/>
@@ -132,7 +132,7 @@ const AmazonPaySettings = ( { section } ) => {
 										) }
 										label={ __(
 											'Show on product page',
-											'woocommerce-payments'
+											'poocommerce-payments'
 										) }
 										__nextHasNoMarginBottom
 									/>
@@ -151,7 +151,7 @@ const AmazonPaySettings = ( { section } ) => {
 										) }
 										label={ __(
 											'Show on cart page',
-											'woocommerce-payments'
+											'poocommerce-payments'
 										) }
 										__nextHasNoMarginBottom
 									/>
@@ -170,7 +170,7 @@ const AmazonPaySettings = ( { section } ) => {
 										) }
 										label={ __(
 											'Show on checkout page',
-											'woocommerce-payments'
+											'poocommerce-payments'
 										) }
 										__nextHasNoMarginBottom
 									/>

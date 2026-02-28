@@ -30,15 +30,15 @@ const ProductDetails: React.FC< ProductDetailsProps > = ( {
 
 	const productTypeOptions = [
 		{
-			label: __( 'Physical products', 'woocommerce-payments' ),
+			label: __( 'Physical products', 'poocommerce-payments' ),
 			value: 'physical_product',
 		},
 		{
-			label: __( 'Digital products', 'woocommerce-payments' ),
+			label: __( 'Digital products', 'poocommerce-payments' ),
 			value: 'digital_product_or_service',
 		},
 		{
-			label: __( 'Offline service', 'woocommerce-payments' ),
+			label: __( 'Offline service', 'poocommerce-payments' ),
 			value: 'offline_service',
 		},
 		...( isAdditionalEvidenceTypesEnabled
@@ -46,12 +46,12 @@ const ProductDetails: React.FC< ProductDetailsProps > = ( {
 					{
 						label: __(
 							'Booking/Reservation',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						),
 						value: 'booking_reservation',
 					},
 					{
-						label: __( 'Other', 'woocommerce-payments' ),
+						label: __( 'Other', 'poocommerce-payments' ),
 						value: 'other',
 					},
 			  ]
@@ -59,7 +59,7 @@ const ProductDetails: React.FC< ProductDetailsProps > = ( {
 					{
 						label: __(
 							'Multiple product types',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						),
 						value: 'multiple',
 					},
@@ -70,18 +70,18 @@ const ProductDetails: React.FC< ProductDetailsProps > = ( {
 		<section className="wcpay-dispute-evidence-product-details">
 			<h3 className="wcpay-dispute-evidence-product-details__heading">
 				{ isAdditionalEvidenceTypesEnabled
-					? __( 'Product or service details', 'woocommerce-payments' )
-					: __( 'Product details', 'woocommerce-payments' ) }
+					? __( 'Product or service details', 'poocommerce-payments' )
+					: __( 'Product details', 'poocommerce-payments' ) }
 			</h3>
 			<div className="wcpay-dispute-evidence-product-details__subheading">
 				{ isAdditionalEvidenceTypesEnabled
 					? __(
 							'Please ensure the product or service type and description have been entered accurately.',
-							'woocommerce-payments'
+							'poocommerce-payments'
 					  )
 					: __(
 							'Please ensure the product type and description have been entered accurately.',
-							'woocommerce-payments'
+							'poocommerce-payments'
 					  ) }
 			</div>
 			<div className="wcpay-dispute-evidence-product-details__field-group">
@@ -92,9 +92,9 @@ const ProductDetails: React.FC< ProductDetailsProps > = ( {
 						isAdditionalEvidenceTypesEnabled
 							? __(
 									'PRODUCT OR SERVICE TYPE',
-									'woocommerce-payments'
+									'poocommerce-payments'
 							  )
-							: __( 'PRODUCT TYPE', 'woocommerce-payments' )
+							: __( 'PRODUCT TYPE', 'poocommerce-payments' )
 					}
 					value={ productType }
 					onChange={ onProductTypeChange }
@@ -110,11 +110,11 @@ const ProductDetails: React.FC< ProductDetailsProps > = ( {
 						isAdditionalEvidenceTypesEnabled
 							? __(
 									'PRODUCT OR SERVICE DESCRIPTION',
-									'woocommerce-payments'
+									'poocommerce-payments'
 							  )
 							: __(
 									'PRODUCT DESCRIPTION',
-									'woocommerce-payments'
+									'poocommerce-payments'
 							  )
 					}
 					value={ productDescription }

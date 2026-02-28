@@ -5,7 +5,7 @@
  */
 import React from 'react';
 import { __, _n, sprintf } from '@wordpress/i18n';
-import { TableCard } from '@woocommerce/components';
+import { TableCard } from '@poocommerce/components';
 
 /**
  * Internal dependencies.
@@ -30,47 +30,47 @@ import { MaybeShowMerchantFeedbackPrompt } from 'wcpay/merchant-feedback-prompt'
 const columns = [
 	{
 		key: 'paid_out_at',
-		label: __( 'Disbursed', 'woocommerce-payments' ),
-		screenReaderLabel: __( 'Disbursed', 'woocommerce-payments' ),
+		label: __( 'Disbursed', 'poocommerce-payments' ),
+		screenReaderLabel: __( 'Disbursed', 'poocommerce-payments' ),
 		required: true,
 		isLeftAligned: true,
 		defaultSort: true,
 	},
 	{
 		key: 'status',
-		label: __( 'Status', 'woocommerce-payments' ),
-		screenReaderLabel: __( 'Status', 'woocommerce-payments' ),
+		label: __( 'Status', 'poocommerce-payments' ),
+		screenReaderLabel: __( 'Status', 'poocommerce-payments' ),
 		required: true,
 		cellClassName: 'is-center-aligned',
 	},
 	{
 		key: 'amount',
-		label: __( 'Amount', 'woocommerce-payments' ),
-		screenReaderLabel: __( 'Amount', 'woocommerce-payments' ),
+		label: __( 'Amount', 'poocommerce-payments' ),
+		screenReaderLabel: __( 'Amount', 'poocommerce-payments' ),
 		required: true,
 		isLeftAligned: false,
 		isNumeric: true,
 	},
 	{
 		key: 'fee_amount',
-		label: __( 'Fixed fee', 'woocommerce-payments' ),
-		screenReaderLabel: __( 'Fixed fee', 'woocommerce-payments' ),
+		label: __( 'Fixed fee', 'poocommerce-payments' ),
+		screenReaderLabel: __( 'Fixed fee', 'poocommerce-payments' ),
 		required: true,
 		isLeftAligned: false,
 		isNumeric: true,
 	},
 	{
 		key: 'withhold_rate',
-		label: __( 'Withhold rate', 'woocommerce-payments' ),
-		screenReaderLabel: __( 'Withhold rate', 'woocommerce-payments' ),
+		label: __( 'Withhold rate', 'poocommerce-payments' ),
+		screenReaderLabel: __( 'Withhold rate', 'poocommerce-payments' ),
 		required: true,
 		isLeftAligned: false,
 		isNumeric: true,
 	},
 	{
 		key: 'first_paydown_at',
-		label: __( 'First paydown', 'woocommerce-payments' ),
-		screenReaderLabel: __( 'First paydown', 'woocommerce-payments' ),
+		label: __( 'First paydown', 'poocommerce-payments' ),
+		screenReaderLabel: __( 'First paydown', 'poocommerce-payments' ),
 		required: true,
 		isLeftAligned: false,
 		isNumeric: true, // Hack: this is not a numeric field, but "isNumeric" is needed for it to be right-aligned
@@ -81,10 +81,10 @@ const getLoanStatusText = ( loan: CapitalLoan ) => {
 	return loan.fully_paid_at
 		? sprintf(
 				/* translators: %s: date when the loan was paid off */
-				__( 'Paid off: %s', 'woocommerce-payments' ),
+				__( 'Paid off: %s', 'poocommerce-payments' ),
 				formatDateTimeFromString( loan.fully_paid_at )
 		  )
-		: __( 'Active', 'woocommerce-payments' );
+		: __( 'Active', 'poocommerce-payments' );
 };
 
 const getLoanStatusChip = ( loan: CapitalLoan ) => {
@@ -174,7 +174,7 @@ const getSummary = ( loans: CapitalLoan[] ) => {
 
 	const summary = [
 		{
-			label: _n( 'loan', 'loans', loans.length, 'woocommerce-payments' ),
+			label: _n( 'loan', 'loans', loans.length, 'poocommerce-payments' ),
 			value: String( loans.length ),
 		},
 	];
@@ -184,7 +184,7 @@ const getSummary = ( loans: CapitalLoan[] ) => {
 	);
 	if ( 1 === currencies.length ) {
 		summary.push( {
-			label: __( 'total', 'woocommerce-payments' ),
+			label: __( 'total', 'poocommerce-payments' ),
 			value: formatExplicitCurrency(
 				loans.reduce(
 					( acc: number, loan: CapitalLoan ) => acc + loan.amount,
@@ -194,7 +194,7 @@ const getSummary = ( loans: CapitalLoan[] ) => {
 			),
 		} );
 		summary.push( {
-			label: __( 'fixed fees', 'woocommerce-payments' ),
+			label: __( 'fixed fees', 'poocommerce-payments' ),
 			value: formatExplicitCurrency(
 				loans.reduce(
 					( acc: number, loan: CapitalLoan ) => acc + loan.fee_amount,
@@ -222,7 +222,7 @@ const CapitalPage = (): JSX.Element => {
 			) }
 			<TableCard
 				className="wcpay-loans-list"
-				title={ __( 'All loans', 'woocommerce-payments' ) }
+				title={ __( 'All loans', 'poocommerce-payments' ) }
 				isLoading={ isLoading }
 				totalRows={ loans.length }
 				headers={ columns }

@@ -2,11 +2,11 @@
 /**
  * WC_Payments_API_Setup_Intention class
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 /**
- * Setup Intent object used by the WooCommerce Payments API.
+ * Setup Intent object used by the PooCommerce Payments API.
  *
  * Only add getters and properties existing in setup intent object https://stripe.com/docs/api/setup_intents/object.
  * Otherwise, add them in the (abstract) parent class.

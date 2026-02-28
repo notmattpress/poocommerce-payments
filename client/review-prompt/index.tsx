@@ -14,9 +14,9 @@ import { recordEvent } from 'wcpay/tracks';
 import MegaphoneIcon from './megaphone-icon';
 
 const wordpressOrgReviewUrl =
-	'https://wordpress.org/support/plugin/woocommerce-payments/reviews/#new-post';
+	'https://wordpress.org/support/plugin/poocommerce-payments/reviews/#new-post';
 const marketplaceReviewUrl =
-	'https://woocommerce.com/products/woocommerce-payments/#reviews';
+	'https://poocommerce.com/products/poocommerce-payments/#reviews';
 
 /**
  * Helper to record an event with base properties and optional additional properties.
@@ -147,15 +147,15 @@ const ReviewPrompt: React.FC = () => {
 			icon={ <MegaphoneIcon /> }
 			heading={ __(
 				'Enjoying WooPayments so far?',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			) }
 			description={ __(
-				'Your feedback shapes our roadmap and supports the WooCommerce community. We are all ears!',
-				'woocommerce-payments'
+				'Your feedback shapes our roadmap and supports the PooCommerce community. We are all ears!',
+				'poocommerce-payments'
 			) }
 			primaryButtonLabel={
 				<>
-					{ __( 'Leave review', 'woocommerce-payments' ) }
+					{ __( 'Leave review', 'poocommerce-payments' ) }
 					<Icon
 						icon={ external }
 						size={ 20 }
@@ -164,7 +164,7 @@ const ReviewPrompt: React.FC = () => {
 				</>
 			}
 			onPrimaryClick={ handlePrimaryClick }
-			secondaryButtonLabel={ __( 'Maybe later', 'woocommerce-payments' ) }
+			secondaryButtonLabel={ __( 'Maybe later', 'poocommerce-payments' ) }
 			onSecondaryClick={ handleSecondaryClick }
 			onDismiss={ handleDismiss }
 			onView={ handleView }

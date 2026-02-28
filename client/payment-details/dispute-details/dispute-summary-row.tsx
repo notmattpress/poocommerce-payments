@@ -32,11 +32,11 @@ const DisputeSummaryRow: React.FC< Props > = ( { dispute } ) => {
 
 	const columns = [
 		{
-			title: __( 'Dispute Amount', 'woocommerce-payments' ),
+			title: __( 'Dispute Amount', 'poocommerce-payments' ),
 			content: formatExplicitCurrency( dispute.amount, dispute.currency ),
 		},
 		{
-			title: __( 'Disputed On', 'woocommerce-payments' ),
+			title: __( 'Disputed On', 'poocommerce-payments' ),
 			content: dispute.created
 				? formatDateTimeFromTimestamp( dispute.created, {
 						separator: ', ',
@@ -45,7 +45,7 @@ const DisputeSummaryRow: React.FC< Props > = ( { dispute } ) => {
 				: '–',
 		},
 		{
-			title: __( 'Reason', 'woocommerce-payments' ),
+			title: __( 'Reason', 'poocommerce-payments' ),
 			content: (
 				<>
 					{ disputeReason }
@@ -54,16 +54,16 @@ const DisputeSummaryRow: React.FC< Props > = ( { dispute } ) => {
 							buttonIcon={ <HelpOutlineIcon /> }
 							buttonLabel={ __(
 								'Learn more',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 							content={
 								<div className="dispute-reason-tooltip">
 									<p>
 										{ disputeReasonSummary }{ ' ' }
-										<ExternalLink href="https://woocommerce.com/document/woopayments/fraud-and-disputes/managing-disputes/">
+										<ExternalLink href="https://poocommerce.com/document/woopayments/fraud-and-disputes/managing-disputes/">
 											{ __(
 												'Learn more',
-												'woocommerce-payments'
+												'poocommerce-payments'
 											) }
 										</ExternalLink>
 									</p>
@@ -75,7 +75,7 @@ const DisputeSummaryRow: React.FC< Props > = ( { dispute } ) => {
 			),
 		},
 		{
-			title: __( 'Respond By', 'woocommerce-payments' ),
+			title: __( 'Respond By', 'poocommerce-payments' ),
 			content: (
 				<DisputeDueByDate dueBy={ dispute.evidence_details.due_by } />
 			),

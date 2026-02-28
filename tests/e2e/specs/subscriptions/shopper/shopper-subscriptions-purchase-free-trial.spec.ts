@@ -163,7 +163,7 @@ describeif( shouldRunSubscriptionsTests )(
 		test( 'Merchant should be able to create an order with "Setup Intent"', async () => {
 			await goToOrder( merchantPage, orderId );
 			await expect(
-				merchantPage.locator( '.woocommerce-order-data__meta' )
+				merchantPage.locator( '.poocommerce-order-data__meta' )
 			).toContainText( 'seti_' );
 
 			await goToSubscriptions( merchantPage );

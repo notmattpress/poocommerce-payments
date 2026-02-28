@@ -120,27 +120,27 @@ exports[`Deposit overview renders automatic payout correctly 1`] = `
       >
         <ul>
           <li
-            class="woocommerce-summary__item-container"
+            class="poocommerce-summary__item-container"
           >
             <div
-              class="woocommerce-summary__item"
+              class="poocommerce-summary__item"
             >
               <div
-                class="woocommerce-summary__item-label"
+                class="poocommerce-summary__item-label"
               >
                 Payout date: Jan 2, 2020
               </div>
               <div
-                class="woocommerce-summary__item-data"
+                class="poocommerce-summary__item-data"
               >
                 <div
-                  class="woocommerce-summary__item-value"
+                  class="poocommerce-summary__item-value"
                 >
                   <div
-                    class="woocommerce-order-status"
+                    class="poocommerce-order-status"
                   >
                     <span
-                      class="woocommerce-order-status__indicator is-paid"
+                      class="poocommerce-order-status__indicator is-paid"
                     />
                     Completed (paid)
                   </div>
@@ -365,27 +365,27 @@ exports[`Deposit overview renders automatic withdrawal correctly 1`] = `
       >
         <ul>
           <li
-            class="woocommerce-summary__item-container"
+            class="poocommerce-summary__item-container"
           >
             <div
-              class="woocommerce-summary__item"
+              class="poocommerce-summary__item"
             >
               <div
-                class="woocommerce-summary__item-label"
+                class="poocommerce-summary__item-label"
               >
                 Withdrawal date: Jan 2, 2020
               </div>
               <div
-                class="woocommerce-summary__item-data"
+                class="poocommerce-summary__item-data"
               >
                 <div
-                  class="woocommerce-summary__item-value"
+                  class="poocommerce-summary__item-value"
                 >
                   <div
-                    class="woocommerce-order-status"
+                    class="poocommerce-order-status"
                   >
                     <span
-                      class="woocommerce-order-status__indicator is-paid"
+                      class="poocommerce-order-status__indicator is-paid"
                     />
                     Completed (deducted)
                   </div>
@@ -601,42 +601,42 @@ exports[`Deposit overview renders instant deposit correctly 1`] = `
     class="wcpay-deposit-overview"
   >
     <div
-      aria-describedby="woocommerce-summary-helptext-1"
+      aria-describedby="poocommerce-summary-helptext-1"
       aria-label="Payout overview"
       aria-orientation="horizontal"
       role="menu"
     >
       <p
         class="screen-reader-text"
-        id="woocommerce-summary-helptext-1"
+        id="poocommerce-summary-helptext-1"
       >
         List of data points available for filtering. Use arrow keys to cycle through the list. Click a data point for a detailed report.
       </p>
       <ul
-        class="woocommerce-summary has-4-items"
+        class="poocommerce-summary has-4-items"
       >
         <li
-          class="woocommerce-summary__item-container"
+          class="poocommerce-summary__item-container"
         >
           <div
-            class="woocommerce-summary__item"
+            class="poocommerce-summary__item"
           >
             <div
-              class="woocommerce-summary__item-label"
+              class="poocommerce-summary__item-label"
             >
               Instant payout date: Jan 2, 2020
             </div>
             <div
-              class="woocommerce-summary__item-data"
+              class="poocommerce-summary__item-data"
             >
               <div
-                class="woocommerce-summary__item-value"
+                class="poocommerce-summary__item-value"
               >
                 <div
-                  class="woocommerce-order-status"
+                  class="poocommerce-order-status"
                 >
                   <span
-                    class="woocommerce-order-status__indicator is-paid"
+                    class="poocommerce-order-status__indicator is-paid"
                   />
                   Completed (paid)
                 </div>
@@ -645,21 +645,21 @@ exports[`Deposit overview renders instant deposit correctly 1`] = `
           </div>
         </li>
         <li
-          class="woocommerce-summary__item-container"
+          class="poocommerce-summary__item-container"
         >
           <div
-            class="woocommerce-summary__item"
+            class="poocommerce-summary__item"
           >
             <div
-              class="woocommerce-summary__item-label"
+              class="poocommerce-summary__item-label"
             >
               Payout amount
             </div>
             <div
-              class="woocommerce-summary__item-data"
+              class="poocommerce-summary__item-data"
             >
               <div
-                class="woocommerce-summary__item-value"
+                class="poocommerce-summary__item-value"
               >
                 $20.30
               </div>
@@ -667,21 +667,21 @@ exports[`Deposit overview renders instant deposit correctly 1`] = `
           </div>
         </li>
         <li
-          class="woocommerce-summary__item-container"
+          class="poocommerce-summary__item-container"
         >
           <div
-            class="woocommerce-summary__item"
+            class="poocommerce-summary__item"
           >
             <div
-              class="woocommerce-summary__item-label"
+              class="poocommerce-summary__item-label"
             >
               1.5% service fee
             </div>
             <div
-              class="woocommerce-summary__item-data"
+              class="poocommerce-summary__item-data"
             >
               <div
-                class="woocommerce-summary__item-value wcpay-deposit-fee"
+                class="poocommerce-summary__item-value wcpay-deposit-fee"
               >
                 $0.30
               </div>
@@ -689,21 +689,21 @@ exports[`Deposit overview renders instant deposit correctly 1`] = `
           </div>
         </li>
         <li
-          class="woocommerce-summary__item-container"
+          class="poocommerce-summary__item-container"
         >
           <div
-            class="woocommerce-summary__item"
+            class="poocommerce-summary__item"
           >
             <div
-              class="woocommerce-summary__item-label"
+              class="poocommerce-summary__item-label"
             >
               Net payout amount
             </div>
             <div
-              class="woocommerce-summary__item-data"
+              class="poocommerce-summary__item-data"
             >
               <div
-                class="woocommerce-summary__item-value wcpay-deposit-net"
+                class="poocommerce-summary__item-value wcpay-deposit-net"
               >
                 $20.00
               </div>

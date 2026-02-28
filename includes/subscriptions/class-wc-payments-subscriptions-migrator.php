@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Subscriptions_Migrator
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 use WCPay\Exceptions\API_Exception;
@@ -91,8 +91,8 @@ class WC_Payments_Subscriptions_Migrator extends WCS_Background_Repairer {
 		// Don't copy migrated subscription meta keys to related orders.
 		add_filter( 'wc_subscriptions_object_data', [ $this, 'exclude_migrated_meta' ], 10, 1 );
 
-		// Add manual migration tool to WooCommerce > Status > Tools.
-		add_filter( 'woocommerce_debug_tools', [ $this, 'add_manual_migration_tool' ] );
+		// Add manual migration tool to PooCommerce > Status > Tools.
+		add_filter( 'poocommerce_debug_tools', [ $this, 'add_manual_migration_tool' ] );
 
 		// Schedule the single migration action with two args. This is needed because the WCS_Background_Repairer parent class only hooks on with one arg.
 		add_action( $this->migrate_hook . '_retry', [ $this, 'migrate_wcpay_subscription' ], 10, 2 );
@@ -137,7 +137,7 @@ class WC_Payments_Subscriptions_Migrator extends WCS_Background_Repairer {
 			$this->update_wcpay_subscription_meta( $subscription );
 
 			if ( WC_Payment_Gateway_WCPay::GATEWAY_ID === $subscription->get_payment_method() ) {
-				$subscription->add_order_note( __( 'This subscription has been successfully migrated to a WooPayments tokenized subscription.', 'woocommerce-payments' ) );
+				$subscription->add_order_note( __( 'This subscription has been successfully migrated to a WooPayments tokenized subscription.', 'poocommerce-payments' ) );
 			}
 
 			$this->logger->log( sprintf( '---- Subscription #%d migration complete.', $subscription_id ) );
@@ -155,7 +155,7 @@ class WC_Payments_Subscriptions_Migrator extends WCS_Background_Repairer {
 	 * Validates the request to migrate a WCPay Subscription.
 	 *
 	 * Only allows migration if:
-	 * - The WooCommerce Subscription extension is active
+	 * - The PooCommerce Subscription extension is active
 	 * - Store is not in staging mode or is a duplicate site
 	 * - The subscription ID is a valid subscription
 	 * - The subscription has not already been migrated
@@ -166,7 +166,7 @@ class WC_Payments_Subscriptions_Migrator extends WCS_Background_Repairer {
 	 */
 	private function validate_subscription_to_migrate( $subscription_id ) {
 		if ( ! class_exists( 'WC_Subscriptions' ) ) {
-			throw new \Exception( sprintf( '---- Skipping migration of subscription #%d. The WooCommerce Subscriptions extension is not active.', $subscription_id ) );
+			throw new \Exception( sprintf( '---- Skipping migration of subscription #%d. The PooCommerce Subscriptions extension is not active.', $subscription_id ) );
 		}
 
 		if ( WC_Payments_Subscriptions::is_duplicate_site() ) {
@@ -229,7 +229,7 @@ class WC_Payments_Subscriptions_Migrator extends WCS_Background_Repairer {
 	 *   - incomplete: the subscription was created but no payment method was added to the subscription
 	 *   - incomplete_expired: the incomplete subscription expired after 24hrs of no payment method being added.
 	 *   - canceled: the subscription is already canceled
-	 *   - unpaid: this status is not used by subscriptions in WooCommerce Payments
+	 *   - unpaid: this status is not used by subscriptions in PooCommerce Payments
 	 *
 	 * @param array $wcpay_subscription The subscription data from Stripe.
 	 *
@@ -288,7 +288,7 @@ class WC_Payments_Subscriptions_Migrator extends WCS_Background_Repairer {
 	}
 
 	/**
-	 * Updates the subscription's next payment date in WooCommerce to ensure a smooth transition to on-site billing.
+	 * Updates the subscription's next payment date in PooCommerce to ensure a smooth transition to on-site billing.
 	 *
 	 * There's a scenario where a WCPay subscription is active but has no pending renewal scheduled action.
 	 * Once migrated, this results in an active subscription that will remain active forever, without processing a renewal order.
@@ -297,7 +297,7 @@ class WC_Payments_Subscriptions_Migrator extends WCS_Background_Repairer {
 	 * updating the date on the subscription.
 	 *
 	 * In priority order the new next payment date will be:
-	 *  - The existing WooCommerce next payment date if it's in the future.
+	 *  - The existing PooCommerce next payment date if it's in the future.
 	 *  - The Stripe subscription's current_period_end if it's in the future.
 	 *  - A newly calculated next payment date using the WC_Subscription::calculate_date() method.
 	 *
@@ -454,12 +454,12 @@ class WC_Payments_Subscriptions_Migrator extends WCS_Background_Repairer {
 		}
 
 		// Prevent the WC_Payments_Subscriptions class from attempting to update the Stripe Billing subscription's payment method while we set the token.
-		remove_action( 'woocommerce_payment_token_added_to_order', [ WC_Payments_Subscriptions::get_subscription_service(), 'update_wcpay_subscription_payment_method' ], 10 );
+		remove_action( 'poocommerce_payment_token_added_to_order', [ WC_Payments_Subscriptions::get_subscription_service(), 'update_wcpay_subscription_payment_method' ], 10 );
 
 		$subscription->add_payment_token( $token );
 
 		// Reattach.
-		add_action( 'woocommerce_payment_token_added_to_order', [ WC_Payments_Subscriptions::get_subscription_service(), 'update_wcpay_subscription_payment_method' ], 10, 3 );
+		add_action( 'poocommerce_payment_token_added_to_order', [ WC_Payments_Subscriptions::get_subscription_service(), 'update_wcpay_subscription_payment_method' ], 10, 3 );
 
 		return $token;
 	}
@@ -517,7 +517,7 @@ class WC_Payments_Subscriptions_Migrator extends WCS_Background_Repairer {
 	}
 
 	/**
-	 * Adds a manual migration tool to WooCommerce > Status > Tools.
+	 * Adds a manual migration tool to PooCommerce > Status > Tools.
 	 *
 	 * This tool is only loaded on stores that have:
 	 *  - WC Subscriptions extension activated
@@ -544,11 +544,11 @@ class WC_Payments_Subscriptions_Migrator extends WCS_Background_Repairer {
 		$disabled = $this->is_migrating();
 
 		$tools['migrate_wcpay_subscriptions'] = [
-			'name'             => __( 'Migrate Stripe Billing subscriptions', 'woocommerce-payments' ),
-			'button'           => $disabled ? __( 'Migration in progress', 'woocommerce-payments' ) . '&#8230;' : __( 'Migrate Subscriptions', 'woocommerce-payments' ),
+			'name'             => __( 'Migrate Stripe Billing subscriptions', 'poocommerce-payments' ),
+			'button'           => $disabled ? __( 'Migration in progress', 'poocommerce-payments' ) . '&#8230;' : __( 'Migrate Subscriptions', 'poocommerce-payments' ),
 			'desc'             => sprintf(
 				// translators: %1$s is a new line character and %2$d is the number of subscriptions.
-				__( 'This tool will migrate all Stripe Billing subscriptions to tokenized subscriptions with WooPayments.%1$sNumber of Stripe Billing subscriptions found: %2$d', 'woocommerce-payments' ),
+				__( 'This tool will migrate all Stripe Billing subscriptions to tokenized subscriptions with WooPayments.%1$sNumber of Stripe Billing subscriptions found: %2$d', 'poocommerce-payments' ),
 				'<br>',
 				$wcpay_subscriptions_count,
 			),

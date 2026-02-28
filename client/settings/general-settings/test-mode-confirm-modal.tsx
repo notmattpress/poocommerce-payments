@@ -23,15 +23,15 @@ const TestModeConfirmationModal: React.FC< TestModeConfirmationModalProps > = ( 
 } ) => {
 	return (
 		<ConfirmationModal
-			title={ __( 'Enable test mode', 'woocommerce-payments' ) }
+			title={ __( 'Enable test mode', 'poocommerce-payments' ) }
 			onRequestClose={ onClose }
 			actions={
 				<>
 					<Button onClick={ onClose } variant="secondary">
-						{ __( 'Cancel', 'woocommerce-payments' ) }
+						{ __( 'Cancel', 'poocommerce-payments' ) }
 					</Button>
 					<Button onClick={ onConfirm } variant="primary">
-						{ __( 'Enable', 'woocommerce-payments' ) }
+						{ __( 'Enable', 'poocommerce-payments' ) }
 					</Button>
 				</>
 			}
@@ -39,7 +39,7 @@ const TestModeConfirmationModal: React.FC< TestModeConfirmationModalProps > = ( 
 			<h3>
 				{ __(
 					'Are you sure you want to enable test mode?',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				) }
 			</h3>
 			<p>
@@ -47,14 +47,14 @@ const TestModeConfirmationModal: React.FC< TestModeConfirmationModalProps > = ( 
 					"Test mode lets you try out payments, refunds, disputes and other such processes as you're working on your store " +
 						'without handling live payment information. ' +
 						'All incoming orders will be simulated, and test mode will have to be disabled before you can accept real orders.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				) }
 			</p>
 			<ExternalLink
 				// eslint-disable-next-line max-len
-				href="https://woocommerce.com/document/woopayments/testing-and-troubleshooting/testing/"
+				href="https://poocommerce.com/document/woopayments/testing-and-troubleshooting/testing/"
 			>
-				{ __( 'Learn more about test mode', 'woocommerce-payments' ) }
+				{ __( 'Learn more about test mode', 'poocommerce-payments' ) }
 			</ExternalLink>
 		</ConfirmationModal>
 	);

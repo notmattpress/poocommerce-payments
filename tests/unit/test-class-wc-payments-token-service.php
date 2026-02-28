@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Token_Service_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use PHPUnit\Framework\MockObject\MockObject;
@@ -99,7 +99,7 @@ class WC_Payments_Token_Service_Test extends WCPAY_UnitTestCase {
 
 		$token = $this->token_service->add_token_to_user( $mock_payment_method, wp_get_current_user() );
 
-		$this->assertEquals( 'woocommerce_payments', $token->get_gateway_id() );
+		$this->assertEquals( 'poocommerce_payments', $token->get_gateway_id() );
 		$this->assertEquals( 1, $token->get_user_id() );
 		$this->assertEquals( 'pm_mock', $token->get_token() );
 		$this->assertEquals( 'visa', $token->get_card_type() );
@@ -124,7 +124,7 @@ class WC_Payments_Token_Service_Test extends WCPAY_UnitTestCase {
 
 		$token = $this->token_service->add_token_to_user( $mock_payment_method, wp_get_current_user() );
 
-		$this->assertEquals( 'woocommerce_payments', $token->get_gateway_id() );
+		$this->assertEquals( 'poocommerce_payments', $token->get_gateway_id() );
 		$this->assertEquals( 1, $token->get_user_id() );
 		$this->assertEquals( 'pm_mock', $token->get_token() );
 		$this->assertEquals( 'cartes_bancaires', $token->get_card_type() );
@@ -149,7 +149,7 @@ class WC_Payments_Token_Service_Test extends WCPAY_UnitTestCase {
 
 		$token = $this->token_service->add_token_to_user( $mock_payment_method, wp_get_current_user() );
 
-		$this->assertEquals( 'woocommerce_payments', $token->get_gateway_id() );
+		$this->assertEquals( 'poocommerce_payments', $token->get_gateway_id() );
 		$this->assertEquals( 1, $token->get_user_id() );
 		$this->assertEquals( 'pm_mock', $token->get_token() );
 		$this->assertEquals( 'cartes_bancaires', $token->get_card_type() );
@@ -172,7 +172,7 @@ class WC_Payments_Token_Service_Test extends WCPAY_UnitTestCase {
 
 		$token = $this->token_service->add_token_to_user( $mock_payment_method, wp_get_current_user() );
 
-		$this->assertEquals( 'woocommerce_payments_sepa_debit', $token->get_gateway_id() );
+		$this->assertEquals( 'poocommerce_payments_sepa_debit', $token->get_gateway_id() );
 		$this->assertEquals( 1, $token->get_user_id() );
 		$this->assertEquals( 'pm_mock', $token->get_token() );
 		$this->assertEquals( '3000', $token->get_last4() );
@@ -193,7 +193,7 @@ class WC_Payments_Token_Service_Test extends WCPAY_UnitTestCase {
 
 		$token = $this->token_service->add_token_to_user( $mock_payment_method, wp_get_current_user() );
 
-		$this->assertEquals( 'woocommerce_payments_sepa_debit', $token->get_gateway_id() );
+		$this->assertEquals( 'poocommerce_payments_sepa_debit', $token->get_gateway_id() );
 		$this->assertEquals( 1, $token->get_user_id() );
 		$this->assertEquals( 'pm_mock', $token->get_token() );
 		$this->assertEquals( '3000', $token->get_last4() );
@@ -214,7 +214,7 @@ class WC_Payments_Token_Service_Test extends WCPAY_UnitTestCase {
 
 		$token = $this->token_service->add_token_to_user( $mock_payment_method, wp_get_current_user() );
 
-		$this->assertEquals( 'woocommerce_payments_sepa_debit', $token->get_gateway_id() );
+		$this->assertEquals( 'poocommerce_payments_sepa_debit', $token->get_gateway_id() );
 		$this->assertEquals( 1, $token->get_user_id() );
 		$this->assertEquals( 'pm_mock', $token->get_token() );
 		$this->assertEquals( '3000', $token->get_last4() );
@@ -235,7 +235,7 @@ class WC_Payments_Token_Service_Test extends WCPAY_UnitTestCase {
 
 		$token = $this->token_service->add_token_to_user( $mock_payment_method, wp_get_current_user() );
 
-		$this->assertSame( 'woocommerce_payments', $token->get_gateway_id() );
+		$this->assertSame( 'poocommerce_payments', $token->get_gateway_id() );
 		$this->assertSame( 1, $token->get_user_id() );
 		$this->assertSame( 'pm_mock', $token->get_token() );
 		$this->assertSame( 'test@test.com', $token->get_email() );
@@ -257,7 +257,7 @@ class WC_Payments_Token_Service_Test extends WCPAY_UnitTestCase {
 
 		$token = $this->token_service->add_token_to_user( $mock_payment_method, wp_get_current_user() );
 
-		$this->assertSame( 'woocommerce_payments', $token->get_gateway_id() );
+		$this->assertSame( 'poocommerce_payments', $token->get_gateway_id() );
 		$this->assertSame( 1, $token->get_user_id() );
 		$this->assertSame( 'pm_mock', $token->get_token() );
 		$this->assertSame( 'test@test.com', $token->get_email() );
@@ -279,7 +279,7 @@ class WC_Payments_Token_Service_Test extends WCPAY_UnitTestCase {
 
 		$token = $this->token_service->add_token_to_user( $mock_payment_method, wp_get_current_user() );
 
-		$this->assertSame( 'woocommerce_payments', $token->get_gateway_id() );
+		$this->assertSame( 'poocommerce_payments', $token->get_gateway_id() );
 		$this->assertSame( 1, $token->get_user_id() );
 		$this->assertSame( 'pm_mock', $token->get_token() );
 		$this->assertSame( 'test@test.com', $token->get_email() );
@@ -308,7 +308,7 @@ class WC_Payments_Token_Service_Test extends WCPAY_UnitTestCase {
 
 		$token = $this->token_service->add_payment_method_to_user( $mock_payment_method['id'], wp_get_current_user() );
 
-		$this->assertEquals( 'woocommerce_payments', $token->get_gateway_id() );
+		$this->assertEquals( 'poocommerce_payments', $token->get_gateway_id() );
 		$this->assertEquals( 1, $token->get_user_id() );
 		$this->assertEquals( 'pm_mock', $token->get_token() );
 		$this->assertEquals( 'visa', $token->get_card_type() );
@@ -339,7 +339,7 @@ class WC_Payments_Token_Service_Test extends WCPAY_UnitTestCase {
 
 		$token = $this->token_service->add_payment_method_to_user( $mock_payment_method['id'], wp_get_current_user() );
 
-		$this->assertEquals( 'woocommerce_payments', $token->get_gateway_id() );
+		$this->assertEquals( 'poocommerce_payments', $token->get_gateway_id() );
 		$this->assertEquals( 1, $token->get_user_id() );
 		$this->assertEquals( 'pm_mock', $token->get_token() );
 		$this->assertEquals( 'cartes_bancaires', $token->get_card_type() );
@@ -370,7 +370,7 @@ class WC_Payments_Token_Service_Test extends WCPAY_UnitTestCase {
 
 		$token = $this->token_service->add_payment_method_to_user( $mock_payment_method['id'], wp_get_current_user() );
 
-		$this->assertEquals( 'woocommerce_payments', $token->get_gateway_id() );
+		$this->assertEquals( 'poocommerce_payments', $token->get_gateway_id() );
 		$this->assertEquals( 1, $token->get_user_id() );
 		$this->assertEquals( 'pm_mock', $token->get_token() );
 		$this->assertEquals( 'cartes_bancaires', $token->get_card_type() );
@@ -379,7 +379,7 @@ class WC_Payments_Token_Service_Test extends WCPAY_UnitTestCase {
 		$this->assertEquals( $expiry_year, $token->get_expiry_year() );
 	}
 
-	public function test_woocommerce_payment_token_deleted() {
+	public function test_poocommerce_payment_token_deleted() {
 		$this->mock_api_client
 			->expects( $this->once() )
 			->method( 'detach_payment_method' )
@@ -387,13 +387,13 @@ class WC_Payments_Token_Service_Test extends WCPAY_UnitTestCase {
 			->will( $this->returnValue( [] ) );
 
 		$token = new WC_Payment_Token_CC();
-		$token->set_gateway_id( 'woocommerce_payments' );
+		$token->set_gateway_id( 'poocommerce_payments' );
 		$token->set_token( 'pm_mock' );
 
-		$this->token_service->woocommerce_payment_token_deleted( 'pm_mock', $token );
+		$this->token_service->poocommerce_payment_token_deleted( 'pm_mock', $token );
 	}
 
-	public function test_woocommerce_payment_token_deleted_other_gateway() {
+	public function test_poocommerce_payment_token_deleted_other_gateway() {
 		$this->mock_api_client
 			->expects( $this->never() )
 			->method( 'detach_payment_method' );
@@ -402,10 +402,10 @@ class WC_Payments_Token_Service_Test extends WCPAY_UnitTestCase {
 		$token->set_gateway_id( 'another_gateway' );
 		$token->set_token( 'pm_mock' );
 
-		$this->token_service->woocommerce_payment_token_deleted( 'pm_mock', $token );
+		$this->token_service->poocommerce_payment_token_deleted( 'pm_mock', $token );
 	}
 
-	public function test_woocommerce_payment_token_set_default() {
+	public function test_poocommerce_payment_token_set_default() {
 		$this->mock_customer_service
 			->expects( $this->once() )
 			->method( 'get_customer_id_by_user_id' )
@@ -418,14 +418,14 @@ class WC_Payments_Token_Service_Test extends WCPAY_UnitTestCase {
 			->with( 'cus_12345', 'pm_mock' );
 
 		$token = new WC_Payment_Token_CC();
-		$token->set_gateway_id( 'woocommerce_payments' );
+		$token->set_gateway_id( 'poocommerce_payments' );
 		$token->set_token( 'pm_mock' );
 		$token->set_user_id( 1 );
 
-		$this->token_service->woocommerce_payment_token_set_default( 'pm_mock', $token );
+		$this->token_service->poocommerce_payment_token_set_default( 'pm_mock', $token );
 	}
 
-	public function test_woocommerce_payment_token_set_default_other_gateway() {
+	public function test_poocommerce_payment_token_set_default_other_gateway() {
 		$this->mock_customer_service
 			->expects( $this->never() )
 			->method( 'get_customer_id_by_user_id' );
@@ -438,10 +438,10 @@ class WC_Payments_Token_Service_Test extends WCPAY_UnitTestCase {
 		$token->set_gateway_id( 'another_gateway' );
 		$token->set_token( 'pm_mock' );
 
-		$this->token_service->woocommerce_payment_token_set_default( 'pm_mock', $token );
+		$this->token_service->poocommerce_payment_token_set_default( 'pm_mock', $token );
 	}
 
-	public function test_woocommerce_payment_token_set_default_no_customer() {
+	public function test_poocommerce_payment_token_set_default_no_customer() {
 		$this->mock_customer_service
 			->expects( $this->once() )
 			->method( 'get_customer_id_by_user_id' )
@@ -453,14 +453,14 @@ class WC_Payments_Token_Service_Test extends WCPAY_UnitTestCase {
 			->method( 'set_default_payment_method_for_customer' );
 
 		$token = new WC_Payment_Token_CC();
-		$token->set_gateway_id( 'woocommerce_payments' );
+		$token->set_gateway_id( 'poocommerce_payments' );
 		$token->set_token( 'pm_mock' );
 		$token->set_user_id( 1 );
 
-		$this->token_service->woocommerce_payment_token_set_default( 'pm_mock', $token );
+		$this->token_service->poocommerce_payment_token_set_default( 'pm_mock', $token );
 	}
 
-	public function test_woocommerce_get_customer_payment_tokens() {
+	public function test_poocommerce_get_customer_payment_tokens() {
 		$token  = $this->generate_sepa_token( 'pm_mock0' );
 		$tokens = [ $token ];
 
@@ -480,14 +480,14 @@ class WC_Payments_Token_Service_Test extends WCPAY_UnitTestCase {
 			->with( 'cus_12345' )
 			->willReturn( $mock_payment_methods );
 
-		$result        = $this->token_service->woocommerce_get_customer_payment_tokens( $tokens, 1, 'woocommerce_payments' );
+		$result        = $this->token_service->poocommerce_get_customer_payment_tokens( $tokens, 1, 'poocommerce_payments' );
 		$result_tokens = array_values( $result );
 		$this->assertEquals( 'pm_mock0', $result_tokens[0]->get_token() );
 		$this->assertEquals( 'pm_mock1', $result_tokens[1]->get_token() );
 		$this->assertEquals( 'pm_mock2', $result_tokens[2]->get_token() );
 	}
 
-	public function test_woocommerce_get_customer_payment_tokens_multiple_tokens_multiple_types() {
+	public function test_poocommerce_get_customer_payment_tokens_multiple_tokens_multiple_types() {
 		$customer_id     = 'cus_12345';
 		$payment_methods = [ Payment_Method::CARD, Payment_Method::SEPA, Payment_Method::LINK ];
 
@@ -538,8 +538,8 @@ class WC_Payments_Token_Service_Test extends WCPAY_UnitTestCase {
 				]
 			);
 
-		$card_and_link_result = $this->token_service->woocommerce_get_customer_payment_tokens( $all_saved_tokens, 1, WC_Payment_Gateway_WCPay::GATEWAY_ID );
-		$sepa_result          = $this->token_service->woocommerce_get_customer_payment_tokens( $all_saved_tokens, 1, WC_Payment_Gateway_WCPay::GATEWAY_ID . '_' . Payment_Method::SEPA );
+		$card_and_link_result = $this->token_service->poocommerce_get_customer_payment_tokens( $all_saved_tokens, 1, WC_Payment_Gateway_WCPay::GATEWAY_ID );
+		$sepa_result          = $this->token_service->poocommerce_get_customer_payment_tokens( $all_saved_tokens, 1, WC_Payment_Gateway_WCPay::GATEWAY_ID . '_' . Payment_Method::SEPA );
 
 		$this->assertSame(
 			array_keys( $card_tokens + $stripe_link_tokens ),
@@ -552,7 +552,7 @@ class WC_Payments_Token_Service_Test extends WCPAY_UnitTestCase {
 		);
 	}
 
-	public function test_woocommerce_get_customer_payment_tokens_not_logged() {
+	public function test_poocommerce_get_customer_payment_tokens_not_logged() {
 		$this->mock_customer_service
 			->expects( $this->never() )
 			->method( 'get_customer_id_by_user_id' );
@@ -560,32 +560,32 @@ class WC_Payments_Token_Service_Test extends WCPAY_UnitTestCase {
 		$user_id = get_current_user_id();
 		wp_set_current_user( 0 );
 
-		$result = $this->token_service->woocommerce_get_customer_payment_tokens( [ new WC_Payment_Token_CC() ], 1, 'woocommerce_payments' );
+		$result = $this->token_service->poocommerce_get_customer_payment_tokens( [ new WC_Payment_Token_CC() ], 1, 'poocommerce_payments' );
 		$this->assertEquals( [ new WC_Payment_Token_CC() ], $result );
 
 		wp_set_current_user( $user_id );
 	}
 
-	public function test_woocommerce_get_customer_payment_tokens_other_gateway() {
+	public function test_poocommerce_get_customer_payment_tokens_other_gateway() {
 		$this->mock_customer_service
 			->expects( $this->never() )
 			->method( 'get_customer_id_by_user_id' );
 
-		$result = $this->token_service->woocommerce_get_customer_payment_tokens( [ new WC_Payment_Token_CC() ], 1, 'other_gateway' );
+		$result = $this->token_service->poocommerce_get_customer_payment_tokens( [ new WC_Payment_Token_CC() ], 1, 'other_gateway' );
 		$this->assertEquals( [ new WC_Payment_Token_CC() ], $result );
 	}
 
-	public function test_woocommerce_get_customer_payment_tokens_no_customer() {
+	public function test_poocommerce_get_customer_payment_tokens_no_customer() {
 		$this->mock_customer_service
 			->expects( $this->once() )
 			->method( 'get_customer_id_by_user_id' )
 			->willReturn( null );
 
-		$result = $this->token_service->woocommerce_get_customer_payment_tokens( [ new WC_Payment_Token_CC() ], 1, 'woocommerce_payments' );
+		$result = $this->token_service->poocommerce_get_customer_payment_tokens( [ new WC_Payment_Token_CC() ], 1, 'poocommerce_payments' );
 		$this->assertEquals( [ new WC_Payment_Token_CC() ], $result );
 	}
 
-	public function test_woocommerce_get_customer_payment_tokens_failed_to_load_payment_methods_for_customer() {
+	public function test_poocommerce_get_customer_payment_tokens_failed_to_load_payment_methods_for_customer() {
 		$this->mock_customer_service
 			->expects( $this->once() )
 			->method( 'get_customer_id_by_user_id' )
@@ -596,11 +596,11 @@ class WC_Payments_Token_Service_Test extends WCPAY_UnitTestCase {
 			->method( 'get_payment_methods_for_customer' )
 			->willThrowException( new Exception( 'Failed to get payment methods.' ) );
 
-		$result = $this->token_service->woocommerce_get_customer_payment_tokens( [ new WC_Payment_Token_CC() ], 1, 'woocommerce_payments' );
+		$result = $this->token_service->poocommerce_get_customer_payment_tokens( [ new WC_Payment_Token_CC() ], 1, 'poocommerce_payments' );
 		$this->assertEquals( [ new WC_Payment_Token_CC() ], $result );
 	}
 
-	public function test_woocommerce_get_customer_payment_tokens_card_token_not_added_twice_for_non_gateway_specific_request() {
+	public function test_poocommerce_get_customer_payment_tokens_card_token_not_added_twice_for_non_gateway_specific_request() {
 		$gateway_id      = '';
 		$token           = $this->generate_card_token( 'pm_mock0' );
 		$tokens          = [ $token ];
@@ -624,14 +624,14 @@ class WC_Payments_Token_Service_Test extends WCPAY_UnitTestCase {
 			->with( 'cus_12345' )
 			->willReturn( $mock_payment_methods );
 
-		$result        = $this->token_service->woocommerce_get_customer_payment_tokens( $tokens, 1, $gateway_id );
+		$result        = $this->token_service->poocommerce_get_customer_payment_tokens( $tokens, 1, $gateway_id );
 		$result_tokens = array_values( $result );
 
 		$this->assertEquals( 1, count( $result_tokens ) );
 		$this->assertEquals( 'pm_mock0', $result_tokens[0]->get_token() );
 	}
 
-	public function test_woocommerce_get_customer_payment_tokens_not_added_twice_for_non_gateway_specific_request() {
+	public function test_poocommerce_get_customer_payment_tokens_not_added_twice_for_non_gateway_specific_request() {
 		$gateway_id      = '';
 		$card_token      = $this->generate_card_token( 'pm_mock0' );
 		$sepa_token      = $this->generate_sepa_token( 'pm_mock1' );
@@ -664,7 +664,7 @@ class WC_Payments_Token_Service_Test extends WCPAY_UnitTestCase {
 				]
 			);
 
-		$result        = $this->token_service->woocommerce_get_customer_payment_tokens( $tokens, 1, $gateway_id );
+		$result        = $this->token_service->poocommerce_get_customer_payment_tokens( $tokens, 1, $gateway_id );
 		$result_tokens = array_values( $result );
 
 		$this->assertEquals( 4, count( $result_tokens ) );
@@ -674,7 +674,7 @@ class WC_Payments_Token_Service_Test extends WCPAY_UnitTestCase {
 		$this->assertEquals( 'pm_444', $result_tokens[3]->get_token() );
 	}
 
-	public function test_woocommerce_get_customer_payment_tokens_payment_methods_only_for_retrievable_types() {
+	public function test_poocommerce_get_customer_payment_tokens_payment_methods_only_for_retrievable_types() {
 		$enabled_upe_payment_methods = [
 			Payment_Method::CARD,
 			Payment_Method::SEPA,
@@ -716,8 +716,8 @@ class WC_Payments_Token_Service_Test extends WCPAY_UnitTestCase {
 				],
 			);
 
-		$this->token_service->woocommerce_get_customer_payment_tokens( $tokens, 1, WC_Payment_Gateway_WCPay::GATEWAY_ID );
-		$this->token_service->woocommerce_get_customer_payment_tokens( $tokens, 1, WC_Payment_Gateway_WCPay::GATEWAY_ID . '_' . Payment_Method::SEPA );
+		$this->token_service->poocommerce_get_customer_payment_tokens( $tokens, 1, WC_Payment_Gateway_WCPay::GATEWAY_ID );
+		$this->token_service->poocommerce_get_customer_payment_tokens( $tokens, 1, WC_Payment_Gateway_WCPay::GATEWAY_ID . '_' . Payment_Method::SEPA );
 	}
 
 	/**
@@ -732,11 +732,11 @@ class WC_Payments_Token_Service_Test extends WCPAY_UnitTestCase {
 
 	public function valid_and_invalid_payment_methods_for_comparison_provider() {
 		return [
-			[ 'card', 'woocommerce_payments', true ],
-			[ 'sepa_debit', 'woocommerce_payments_sepa_debit', true ],
-			[ 'link', 'woocommerce_payments', true ],
+			[ 'card', 'poocommerce_payments', true ],
+			[ 'sepa_debit', 'poocommerce_payments_sepa_debit', true ],
+			[ 'link', 'poocommerce_payments', true ],
 			[ 'card', 'card', false ],
-			[ 'card', 'woocommerce_payments_bancontact', false ],
+			[ 'card', 'poocommerce_payments_bancontact', false ],
 		];
 	}
 
@@ -776,7 +776,7 @@ class WC_Payments_Token_Service_Test extends WCPAY_UnitTestCase {
 	private function generate_card_token( $stripe_id, $wp_id = 0 ) {
 		$token = new WC_Payment_Token_CC();
 		$token->set_id( $wp_id );
-		$token->set_gateway_id( 'woocommerce_payments' );
+		$token->set_gateway_id( 'poocommerce_payments' );
 		$token->set_token( $stripe_id );
 		$token->set_card_type( 'visa' );
 		$token->set_last4( '4242' );
@@ -791,7 +791,7 @@ class WC_Payments_Token_Service_Test extends WCPAY_UnitTestCase {
 	private function generate_sepa_token( $stripe_id, $wp_id = 0 ) {
 		$token = new WC_Payment_Token_WCPay_SEPA();
 		$token->set_id( $wp_id );
-		$token->set_gateway_id( 'woocommerce_payments' );
+		$token->set_gateway_id( 'poocommerce_payments' );
 		$token->set_token( $stripe_id );
 		$token->set_last4( '3000' );
 		$token->save();
@@ -801,7 +801,7 @@ class WC_Payments_Token_Service_Test extends WCPAY_UnitTestCase {
 	private function generate_link_token( $stripe_id, $wp_id = 0 ) {
 		$token = new WC_Payment_Token_WCPay_Link();
 		$token->set_id( $wp_id );
-		$token->set_gateway_id( 'woocommerce_payments' );
+		$token->set_gateway_id( 'poocommerce_payments' );
 		$token->set_token( $stripe_id );
 		$token->set_email( 'test@test.com' );
 		$token->save();
@@ -928,7 +928,7 @@ class WC_Payments_Token_Service_Test extends WCPAY_UnitTestCase {
 	public function test_get_payment_methods_from_stripe_with_cached_data() {
 		$user_id                = 1;
 		$customer_id            = 'cus_12345';
-		$gateway_id             = 'woocommerce_payments';
+		$gateway_id             = 'poocommerce_payments';
 		$cached_payment_methods = [
 			$this->generate_card_pm_response( 'pm_cached1' ),
 			$this->generate_card_pm_response( 'pm_cached2' ),
@@ -964,7 +964,7 @@ class WC_Payments_Token_Service_Test extends WCPAY_UnitTestCase {
 		$user_id                = 1;
 		$customer_id            = 'cus_12345';
 		$new_customer_id        = 'cus_67890';
-		$gateway_id             = 'woocommerce_payments';
+		$gateway_id             = 'poocommerce_payments';
 		$cached_payment_methods = [
 			$this->generate_card_pm_response( 'pm_cached1' ),
 		];
@@ -1010,7 +1010,7 @@ class WC_Payments_Token_Service_Test extends WCPAY_UnitTestCase {
 	public function test_get_payment_methods_from_stripe_with_no_cached_data() {
 		$user_id      = 1;
 		$customer_id  = 'cus_12345';
-		$gateway_id   = 'woocommerce_payments';
+		$gateway_id   = 'poocommerce_payments';
 		$card_methods = [ $this->generate_card_pm_response( 'pm_new1' ) ];
 		$link_methods = [ $this->generate_link_pm_response( 'pm_new2' ) ];
 
@@ -1050,7 +1050,7 @@ class WC_Payments_Token_Service_Test extends WCPAY_UnitTestCase {
 	public function test_get_payment_methods_from_stripe_with_sepa_gateway() {
 		$user_id         = 1;
 		$customer_id     = 'cus_12345';
-		$gateway_id      = 'woocommerce_payments_sepa_debit';
+		$gateway_id      = 'poocommerce_payments_sepa_debit';
 		$payment_methods = [
 			$this->generate_sepa_pm_response( 'pm_sepa1' ),
 		];
@@ -1109,7 +1109,7 @@ class WC_Payments_Token_Service_Test extends WCPAY_UnitTestCase {
 
 		$token = $this->token_service->add_token_to_user( $mock_payment_method, wp_get_current_user() );
 
-		$this->assertEquals( 'woocommerce_payments', $token->get_gateway_id() );
+		$this->assertEquals( 'poocommerce_payments', $token->get_gateway_id() );
 		$this->assertEquals( 1, $token->get_user_id() );
 		$this->assertEquals( 'pm_mock', $token->get_token() );
 		$this->assertEquals( 'visa', $token->get_card_type() );
@@ -1137,7 +1137,7 @@ class WC_Payments_Token_Service_Test extends WCPAY_UnitTestCase {
 
 		$token = $this->token_service->add_token_to_user( $mock_payment_method, wp_get_current_user() );
 
-		$this->assertEquals( 'woocommerce_payments', $token->get_gateway_id() );
+		$this->assertEquals( 'poocommerce_payments', $token->get_gateway_id() );
 		$this->assertEquals( '', $token->get_meta( '_wcpay_wallet_type', true ) );
 	}
 
@@ -1159,7 +1159,7 @@ class WC_Payments_Token_Service_Test extends WCPAY_UnitTestCase {
 		$property->setValue( null, $new_map );
 
 		$token = new WC_Payment_Token_CC();
-		$token->set_gateway_id( 'woocommerce_payments' );
+		$token->set_gateway_id( 'poocommerce_payments' );
 		$token->set_token( 'pm_mock' );
 		$token->set_card_type( 'visa' );
 		$token->set_last4( '4242' );
@@ -1202,7 +1202,7 @@ class WC_Payments_Token_Service_Test extends WCPAY_UnitTestCase {
 		$property->setValue( null, $new_map );
 
 		$token = new WC_Payment_Token_CC();
-		$token->set_gateway_id( 'woocommerce_payments' );
+		$token->set_gateway_id( 'poocommerce_payments' );
 		$token->set_token( 'pm_mock' );
 		$token->set_card_type( 'mastercard' );
 		$token->set_last4( '5555' );
@@ -1232,7 +1232,7 @@ class WC_Payments_Token_Service_Test extends WCPAY_UnitTestCase {
 	 */
 	public function test_get_account_saved_payment_methods_list_item_wallet_without_wallet() {
 		$token = new WC_Payment_Token_CC();
-		$token->set_gateway_id( 'woocommerce_payments' );
+		$token->set_gateway_id( 'poocommerce_payments' );
 		$token->set_token( 'pm_mock' );
 		$token->set_card_type( 'visa' );
 		$token->set_last4( '4242' );
@@ -1258,7 +1258,7 @@ class WC_Payments_Token_Service_Test extends WCPAY_UnitTestCase {
 	 */
 	public function test_get_account_saved_payment_methods_list_item_wallet_ignores_sepa() {
 		$token = new WC_Payment_Token_WCPay_SEPA();
-		$token->set_gateway_id( 'woocommerce_payments_sepa_debit' );
+		$token->set_gateway_id( 'poocommerce_payments_sepa_debit' );
 		$token->set_token( 'pm_mock' );
 		$token->set_last4( '3000' );
 		$token->save();
@@ -1280,7 +1280,7 @@ class WC_Payments_Token_Service_Test extends WCPAY_UnitTestCase {
 	 */
 	public function test_get_account_saved_payment_methods_list_item_wallet_missing_payment_method() {
 		$token = new WC_Payment_Token_CC();
-		$token->set_gateway_id( 'woocommerce_payments' );
+		$token->set_gateway_id( 'poocommerce_payments' );
 		$token->set_token( 'pm_mock' );
 		$token->set_card_type( 'visa' );
 		$token->set_last4( '4242' );

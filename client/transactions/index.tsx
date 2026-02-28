@@ -4,7 +4,7 @@
  * External dependencies
  */
 import React from 'react';
-import { getQuery, updateQueryString } from '@woocommerce/navigation';
+import { getQuery, updateQueryString } from '@poocommerce/navigation';
 import { __, sprintf } from '@wordpress/i18n';
 
 /**
@@ -81,21 +81,21 @@ export const TransactionsPage: React.FC = () => {
 	const tabs = [
 		{
 			name: 'transactions-page',
-			title: __( 'Transactions', 'woocommerce-payments' ),
+			title: __( 'Transactions', 'poocommerce-payments' ),
 			className: 'transactions-list',
 		},
 		{
 			name: 'uncaptured-page',
 			title: sprintf(
 				/* translators: %1: number of uncaptured authorizations */
-				__( 'Uncaptured (%1$s)', 'woocommerce-payments' ),
+				__( 'Uncaptured (%1$s)', 'poocommerce-payments' ),
 				authorizationsSummary.count ?? '...'
 			),
 			className: 'authorizations-list',
 		},
 		{
 			name: 'blocked-page',
-			title: __( 'Blocked', 'woocommerce-payments' ),
+			title: __( 'Blocked', 'poocommerce-payments' ),
 			className: 'blocked-list',
 		},
 	].filter( ( item ) => {

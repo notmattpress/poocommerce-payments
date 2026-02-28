@@ -19,7 +19,7 @@
 .wc-block-checkout__payment-method {
 	input:checked ~ div {
 		/* stylelint-disable-next-line selector-id-pattern */
-		.wc-block-components-radio-control__label:where( [id^='radio-control-wc-payment-method-options-woocommerce_payments'][id$='__label'] ) {
+		.wc-block-components-radio-control__label:where( [id^='radio-control-wc-payment-method-options-poocommerce_payments'][id$='__label'] ) {
 			> .payment-method-label {
 				.test-mode.badge {
 					// hiding the badge when the payment method is not selected
@@ -30,7 +30,7 @@
 	}
 
 	/* stylelint-disable-next-line selector-id-pattern */
-	.wc-block-components-radio-control__label:where( [id^='radio-control-wc-payment-method-options-woocommerce_payments'][id$='__label'] ) {
+	.wc-block-components-radio-control__label:where( [id^='radio-control-wc-payment-method-options-poocommerce_payments'][id$='__label'] ) {
 		width: 100%;
 		display: block !important;
 
@@ -77,13 +77,13 @@
 
 #payment-method {
 	/* stylelint-disable-next-line selector-id-pattern */
-	#radio-control-wc-payment-method-options-woocommerce_payments_affirm__label
+	#radio-control-wc-payment-method-options-poocommerce_payments_affirm__label
 		img {
 		min-width: 50px;
 		height: auto;
 	}
 	/* stylelint-disable-next-line selector-id-pattern */
-	#radio-control-wc-payment-method-options-woocommerce_payments_afterpay_clearpay__label
+	#radio-control-wc-payment-method-options-poocommerce_payments_afterpay_clearpay__label
 		img {
 		min-width: auto;
 		height: auto;

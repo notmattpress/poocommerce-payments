@@ -6,7 +6,7 @@ import {
 	registerPaymentMethod,
 	registerExpressPaymentMethod,
 	// eslint-disable-next-line import/no-unresolved
-} from '@woocommerce/blocks-registry';
+} from '@poocommerce/blocks-registry';
 
 /**
  * Internal dependencies
@@ -101,7 +101,7 @@ const addCheckoutTracking = () => {
 	if ( placeOrderButton.length ) {
 		placeOrderButton[ 0 ].addEventListener( 'click', () => {
 			const blocksCheckbox = document.getElementById(
-				'radio-control-wc-payment-method-options-woocommerce_payments'
+				'radio-control-wc-payment-method-options-poocommerce_payments'
 			);
 			if ( ! blocksCheckbox?.checked ) {
 				return;
@@ -115,7 +115,7 @@ const addCheckoutTracking = () => {
 // Call handleWooPayEmailInput if woopay is enabled and this is the checkout page.
 if ( getUPEConfig( 'isWooPayEnabled' ) ) {
 	if (
-		document.querySelector( '[data-block-name="woocommerce/checkout"]' ) &&
+		document.querySelector( '[data-block-name="poocommerce/checkout"]' ) &&
 		getUPEConfig( 'isWooPayEmailInputEnabled' ) &&
 		! isPreviewing()
 	) {
@@ -154,7 +154,7 @@ if ( getConfig( 'isMultiCurrencyEnabled' ) ) {
 		return defaultValue;
 	};
 
-	registerCheckoutFilters( 'woocommerce-payments', {
+	registerCheckoutFilters( 'poocommerce-payments', {
 		totalValue: modifyTotalsPrice,
 	} );
 }

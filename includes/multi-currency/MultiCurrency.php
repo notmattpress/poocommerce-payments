@@ -2,7 +2,7 @@
 /**
  * Class MultiCurrency
  *
- * @package WooCommerce\Payments\MultiCurrency
+ * @package PooCommerce\Payments\MultiCurrency
  */
 
 namespace WCPay\MultiCurrency;
@@ -214,8 +214,8 @@ class MultiCurrency {
 	 * @return void
 	 */
 	public function init_hooks() {
-		if ( is_admin() && current_user_can( 'manage_woocommerce' ) ) {
-			add_filter( 'woocommerce_get_settings_pages', [ $this, 'init_settings_pages' ] );
+		if ( is_admin() && current_user_can( 'manage_poocommerce' ) ) {
+			add_filter( 'poocommerce_get_settings_pages', [ $this, 'init_settings_pages' ] );
 			// Enqueue the scripts after the main WC_Payments_Admin does.
 			add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_admin_scripts' ], 20 );
 		}
@@ -231,7 +231,7 @@ class MultiCurrency {
 			add_action( 'init', [ $this, 'update_selected_currency_by_url' ], 11 );
 			add_action( 'init', [ $this, 'update_selected_currency_by_geolocation' ], 12 );
 			add_action( 'init', [ $this, 'possible_simulation_activation' ], 13 );
-			add_action( 'woocommerce_created_customer', [ $this, 'set_new_customer_currency_meta' ] );
+			add_action( 'poocommerce_created_customer', [ $this, 'set_new_customer_currency_meta' ] );
 		}
 
 		if ( ! Utils::is_store_batch_request() && ! Utils::is_store_api_request() && WC()->is_rest_api_request() ) {
@@ -258,7 +258,7 @@ class MultiCurrency {
 	}
 
 	/**
-	 * Called after the WooCommerce session has been initialized. Initialises the available currencies,
+	 * Called after the PooCommerce session has been initialized. Initialises the available currencies,
 	 * default currency and enabled currencies for the Multi-Currency plugin.
 	 *
 	 * @return void
@@ -290,7 +290,7 @@ class MultiCurrency {
 		$this->frontend_currencies->init_hooks();
 		$this->tracking->init_hooks();
 
-		add_action( 'woocommerce_order_refunded', [ $this, 'add_order_meta_on_refund' ], 50, 2 );
+		add_action( 'poocommerce_order_refunded', [ $this, 'add_order_meta_on_refund' ], 50, 2 );
 
 		// Check to make sure there are enabled currencies, then for Storefront being active, and then load the integration.
 		$theme = wp_get_theme();
@@ -303,7 +303,7 @@ class MultiCurrency {
 		}
 
 		// Update the customer currencies option after an order status change.
-		add_action( 'woocommerce_order_status_changed', [ $this, 'maybe_update_customer_currencies_option' ] );
+		add_action( 'poocommerce_order_status_changed', [ $this, 'maybe_update_customer_currencies_option' ] );
 
 		static::$is_initialized = true;
 	}
@@ -351,7 +351,7 @@ class MultiCurrency {
 		}
 
 		// Due to autoloader limitations, we shouldn't initiate MCCY settings if the plugin was just upgraded:
-		// https://github.com/Automattic/woocommerce-payments/issues/9676.
+		// https://github.com/Automattic/poocommerce-payments/issues/9676.
 		if ( did_action( 'upgrader_process_complete' ) ) {
 			return $settings_pages;
 		}
@@ -423,7 +423,7 @@ class MultiCurrency {
 			MultiCurrencyCacheInterface::CURRENCIES_KEY,
 			function () {
 				try {
-					$currency_data = $this->payments_api_client->get_currency_rates( strtolower( get_woocommerce_currency() ) );
+					$currency_data = $this->payments_api_client->get_currency_rates( strtolower( get_poocommerce_currency() ) );
 					return [
 						'currencies' => $currency_data,
 						'updated'    => time(),
@@ -645,7 +645,7 @@ class MultiCurrency {
 			$this->init();
 		}
 
-		return $this->default_currency ?? new Currency( $this->localization_service, get_woocommerce_currency() );
+		return $this->default_currency ?? new Currency( $this->localization_service, get_poocommerce_currency() );
 	}
 
 	/**
@@ -896,7 +896,7 @@ class MultiCurrency {
 	}
 
 	/**
-	 * Recalculates WooCommerce cart totals.
+	 * Recalculates PooCommerce cart totals.
 	 *
 	 * @return void
 	 */
@@ -944,10 +944,10 @@ class MultiCurrency {
 	 */
 	public function display_geolocation_currency_update_notice() {
 		$current_currency    = $this->get_selected_currency();
-		$store_currency      = get_option( 'woocommerce_currency' );
+		$store_currency      = get_option( 'poocommerce_currency' );
 		$country             = $this->geolocation->get_country_by_customer_location();
 		$geolocated_currency = $this->geolocation->get_currency_by_customer_location();
-		$currencies          = get_woocommerce_currencies();
+		$currencies          = get_poocommerce_currencies();
 
 		// Don't run next checks if simulation is enabled.
 		if ( ! $this->is_simulation_enabled() ) {
@@ -964,7 +964,7 @@ class MultiCurrency {
 
 		$message = sprintf(
 		/* translators: %1 User's country, %2 Selected currency name, %3 Default store currency name, %4 Link to switch currency */
-			__( 'We noticed you\'re visiting from %1$s. We\'ve updated our prices to %2$s for your shopping convenience. <a href="%4$s">Use %3$s instead.</a>', 'woocommerce-payments' ),
+			__( 'We noticed you\'re visiting from %1$s. We\'ve updated our prices to %2$s for your shopping convenience. <a href="%4$s">Use %3$s instead.</a>', 'poocommerce-payments' ),
 			apply_filters( self::FILTER_PREFIX . 'override_notice_country', WC()->countries->countries[ $country ] ),
 			apply_filters( self::FILTER_PREFIX . 'override_notice_currency_name', $current_currency->get_name() ),
 			esc_html( $currencies[ $store_currency ] ),
@@ -973,11 +973,11 @@ class MultiCurrency {
 
 		$notice_id = md5( $message );
 
-		echo '<p class="woocommerce-store-notice demo_store" data-notice-id="' . esc_attr( $notice_id . 2 ) . '" style="display:none;">';
+		echo '<p class="poocommerce-store-notice demo_store" data-notice-id="' . esc_attr( $notice_id . 2 ) . '" style="display:none;">';
 		// No need to escape here as the contents of $message is already escaped.
 		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo $message;
-		echo ' <a href="#" class="woocommerce-store-notice__dismiss-link">' . esc_html__( 'Dismiss', 'woocommerce-payments' ) . '</a></p>';
+		echo ' <a href="#" class="poocommerce-store-notice__dismiss-link">' . esc_html__( 'Dismiss', 'poocommerce-payments' ) . '</a></p>';
 	}
 
 	/**
@@ -1210,7 +1210,7 @@ class MultiCurrency {
 	}
 
 	/**
-	 * Checks if the currently displayed page is the WooCommerce Payments
+	 * Checks if the currently displayed page is the PooCommerce Payments
 	 * settings page for the Multi-Currency settings.
 	 *
 	 * @return bool
@@ -1221,7 +1221,7 @@ class MultiCurrency {
 		is_admin()
 		&& $current_tab && $current_screen
 		&& 'wcpay_multi_currency' === $current_tab
-		&& 'woocommerce_page_wc-settings' === $current_screen->base
+		&& 'poocommerce_page_wc-settings' === $current_screen->base
 		);
 	}
 
@@ -1242,8 +1242,8 @@ class MultiCurrency {
 		$currencies  = $this->get_available_currencies();
 		$query_union = [];
 
-		if ( class_exists( 'Automattic\WooCommerce\Utilities\OrderUtil' ) &&
-				\Automattic\WooCommerce\Utilities\OrderUtil::custom_orders_table_usage_is_enabled() ) {
+		if ( class_exists( 'Automattic\PooCommerce\Utilities\OrderUtil' ) &&
+				\Automattic\PooCommerce\Utilities\OrderUtil::custom_orders_table_usage_is_enabled() ) {
 			foreach ( $currencies as $currency ) {
 				$query_union[] = $wpdb->prepare(
 					"SELECT %s AS currency_code, EXISTS(SELECT currency FROM {$wpdb->prefix}wc_orders WHERE currency=%s LIMIT 1) AS exists_in_orders",
@@ -1380,8 +1380,8 @@ class MultiCurrency {
 	 */
 	private function initialize_available_currencies() {
 		// Add default store currency with a rate of 1.0.
-		$woocommerce_currency                                = get_woocommerce_currency();
-		$this->available_currencies[ $woocommerce_currency ] = new Currency( $this->localization_service, $woocommerce_currency, 1.0 );
+		$poocommerce_currency                                = get_poocommerce_currency();
+		$this->available_currencies[ $poocommerce_currency ] = new Currency( $this->localization_service, $poocommerce_currency, 1.0 );
 
 		$available_currencies = [];
 
@@ -1460,7 +1460,7 @@ class MultiCurrency {
 	 */
 	private function set_default_currency() {
 		$available_currencies   = $this->get_available_currencies();
-		$this->default_currency = $available_currencies[ get_woocommerce_currency() ] ?? null;
+		$this->default_currency = $available_currencies[ get_poocommerce_currency() ] ?? null;
 	}
 
 	/**
@@ -1489,16 +1489,16 @@ class MultiCurrency {
 	 */
 	private function check_store_currency_for_change(): bool {
 		$last_known_currency  = get_option( $this->id . '_store_currency', false );
-		$woocommerce_currency = get_woocommerce_currency();
+		$poocommerce_currency = get_poocommerce_currency();
 
 		// If the last known currency was not set, update the option to set it and return false.
 		if ( ! $last_known_currency ) {
-			update_option( $this->id . '_store_currency', $woocommerce_currency );
+			update_option( $this->id . '_store_currency', $poocommerce_currency );
 			return false;
 		}
 
-		if ( $last_known_currency !== $woocommerce_currency ) {
-			update_option( $this->id . '_store_currency', $woocommerce_currency );
+		if ( $last_known_currency !== $poocommerce_currency ) {
+			update_option( $this->id . '_store_currency', $poocommerce_currency );
 			return true;
 		}
 
@@ -1583,7 +1583,7 @@ class MultiCurrency {
 			return [];
 		}
 
-		$wc_currencies      = array_keys( get_woocommerce_currencies() );
+		$wc_currencies      = array_keys( get_poocommerce_currencies() );
 		$account_currencies = $wc_currencies;
 
 		$account              = $this->payments_account->get_cached_account_data();
@@ -1593,11 +1593,11 @@ class MultiCurrency {
 		}
 
 		/**
-		 * Filter the available currencies for WooCommerce Multi-Currency.
+		 * Filter the available currencies for PooCommerce Multi-Currency.
 		 *
 		 * This filter can be used to modify the currencies available for WC Pay
 		 * Multi-Currency. Currencies have to be added in uppercase and should
-		 * also be available in `get_woocommerce_currencies` for them to work.
+		 * also be available in `get_poocommerce_currencies` for them to work.
 		 *
 		 * @since 2.8.0
 		 *
@@ -1641,7 +1641,7 @@ class MultiCurrency {
 			'GBP' => $countries['GB'],
 		];
 
-		$simulation_currency      = 'USD' === get_option( 'woocommerce_currency', 'USD' ) ? 'GBP' : 'USD';
+		$simulation_currency      = 'USD' === get_option( 'poocommerce_currency', 'USD' ) ? 'GBP' : 'USD';
 		$simulation_currency_name = $this->available_currencies[ $simulation_currency ]->get_name();
 		$simulation_country       = $predefined_simulation_currencies[ $simulation_currency ];
 
@@ -1697,7 +1697,7 @@ class MultiCurrency {
 
 				// Unhide the store notice in simulation mode.
 				document.addEventListener('DOMContentLoaded', () => {
-					const noticeElement = document.querySelector('.woocommerce-store-notice.demo_store')
+					const noticeElement = document.querySelector('.poocommerce-store-notice.demo_store')
 					if( noticeElement ) {
 						const noticeId = noticeElement.getAttribute('data-notice-id');
 						cookieStore.delete( 'store_notice' + noticeId );

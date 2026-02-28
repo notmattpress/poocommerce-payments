@@ -53,7 +53,7 @@ class GrabPayDefinition implements PaymentMethodDefinitionInterface {
 	 * @return string
 	 */
 	public static function get_title( ?string $account_country = null ): string {
-		return __( 'GrabPay', 'woocommerce-payments' );
+		return __( 'GrabPay', 'poocommerce-payments' );
 	}
 
 	/**
@@ -74,7 +74,7 @@ class GrabPayDefinition implements PaymentMethodDefinitionInterface {
 	 * @return string
 	 */
 	public static function get_description( ?string $account_country = null ): string {
-		return __( 'A popular digital wallet for cashless payments in Singapore.', 'woocommerce-payments' );
+		return __( 'A popular digital wallet for cashless payments in Singapore.', 'poocommerce-payments' );
 	}
 
 	/**

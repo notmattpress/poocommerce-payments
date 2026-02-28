@@ -5,7 +5,7 @@ import { PaymentElement, useElements } from '@stripe/react-stripe-js';
 import {
 	getPaymentMethods,
 	// eslint-disable-next-line import/no-unresolved
-} from '@woocommerce/blocks-registry';
+} from '@poocommerce/blocks-registry';
 import { __ } from '@wordpress/i18n';
 import { useEffect, useRef } from 'react';
 import clsx from 'clsx';
@@ -78,7 +78,7 @@ const PaymentProcessor = ( {
 							type: 'error',
 							message: __(
 								'Invalid or missing payment details. Please ensure the provided payment method is correctly entered.',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 						};
 					}
@@ -99,7 +99,7 @@ const PaymentProcessor = ( {
 							type: 'error',
 							message: __(
 								'This payment method cannot be saved for future use.',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 						};
 					}

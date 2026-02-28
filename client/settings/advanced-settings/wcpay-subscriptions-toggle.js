@@ -35,20 +35,20 @@ const WCPaySubscriptionsToggle = () => {
 		<CheckboxControl
 			label={ sprintf(
 				/* translators: %s: WooPayments */
-				__( 'Enable Subscriptions with %s', 'woocommerce-payments' ),
+				__( 'Enable Subscriptions with %s', 'poocommerce-payments' ),
 				'WooPayments'
 			) }
 			help={ interpolateComponents( {
 				mixedString: __(
 					// eslint-disable-next-line max-len
-					'This feature is deprecated. Existing subscription renewals will continue to work, but creating or managing subscriptions is no longer available. Install {{learnMoreLink}}WooCommerce Subscriptions{{/learnMoreLink}} to continue managing subscriptions.',
-					'woocommerce-payments'
+					'This feature is deprecated. Existing subscription renewals will continue to work, but creating or managing subscriptions is no longer available. Install {{learnMoreLink}}PooCommerce Subscriptions{{/learnMoreLink}} to continue managing subscriptions.',
+					'poocommerce-payments'
 				),
 				components: {
 					learnMoreLink: (
 						// eslint-disable-next-line max-len
 						// @ts-expect-error: children is provided when interpolating the component
-						<ExternalLink href="https://woocommerce.com/products/woocommerce-subscriptions/" />
+						<ExternalLink href="https://poocommerce.com/products/poocommerce-subscriptions/" />
 					),
 				},
 			} ) }

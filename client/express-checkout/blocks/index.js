@@ -18,9 +18,9 @@ export const expressCheckoutElementApplePay = ( api ) => ( {
 	title: 'WooPayments - Apple Pay',
 	description: __(
 		"An easy, secure way to pay that's accepted on millions of stores.",
-		'woocommerce-payments'
+		'poocommerce-payments'
 	),
-	gatewayId: 'woocommerce_payments',
+	gatewayId: 'poocommerce_payments',
 	content: (
 		<ExpressCheckoutContainer api={ api } expressPaymentMethod="applePay" />
 	),
@@ -50,9 +50,9 @@ export const expressCheckoutElementGooglePay = ( api ) => ( {
 	title: 'WooPayments - Google Pay',
 	description: __(
 		'Simplify checkout with fewer steps to pay.',
-		'woocommerce-payments'
+		'poocommerce-payments'
 	),
-	gatewayId: 'woocommerce_payments',
+	gatewayId: 'poocommerce_payments',
 	content: (
 		<ExpressCheckoutContainer
 			api={ api }
@@ -83,8 +83,8 @@ export const expressCheckoutElementAmazonPay = ( api ) => ( {
 	paymentMethodId: PAYMENT_METHOD_NAME_EXPRESS_CHECKOUT_ELEMENT,
 	name: PAYMENT_METHOD_NAME_EXPRESS_CHECKOUT_ELEMENT + '_amazonPay',
 	title: 'WooPayments - Amazon Pay',
-	description: __( 'Pay with your Amazon account.', 'woocommerce-payments' ),
-	gatewayId: 'woocommerce_payments',
+	description: __( 'Pay with your Amazon account.', 'poocommerce-payments' ),
+	gatewayId: 'poocommerce_payments',
 	content: (
 		<ExpressCheckoutContainer
 			api={ api }

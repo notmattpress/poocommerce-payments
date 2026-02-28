@@ -53,7 +53,7 @@ class AffirmDefinition implements PaymentMethodDefinitionInterface {
 	 * @return string
 	 */
 	public static function get_title( ?string $account_country = null ): string {
-		return __( 'Affirm', 'woocommerce-payments' );
+		return __( 'Affirm', 'poocommerce-payments' );
 	}
 
 	/**
@@ -74,7 +74,7 @@ class AffirmDefinition implements PaymentMethodDefinitionInterface {
 	 * @return string
 	 */
 	public static function get_description( ?string $account_country = null ): string {
-		return __( 'Allow customers to pay over time with Affirm.', 'woocommerce-payments' );
+		return __( 'Allow customers to pay over time with Affirm.', 'poocommerce-payments' );
 	}
 
 	/**

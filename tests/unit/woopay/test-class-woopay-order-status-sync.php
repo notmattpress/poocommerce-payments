@@ -2,7 +2,7 @@
 /**
  * Class WooPay_Order_Status_Sync_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\WooPay\WooPay_Order_Status_Sync;
@@ -138,7 +138,7 @@ class WooPay_Order_Status_Sync_Test extends WP_UnitTestCase {
 	}
 
 	/**
-	 * Tests that the webhook is created successfully if the logged-in user has the capability manage_woocommerce
+	 * Tests that the webhook is created successfully if the logged-in user has the capability manage_poocommerce
 	 * and the account is in good working order.
 	 */
 	public function test_webhook_is_created() {
@@ -215,7 +215,7 @@ class WooPay_Order_Status_Sync_Test extends WP_UnitTestCase {
 	}
 
 	private function create_non_woopay_specific_webhook() {
-		$delivery_url_non_specific_for_woopay = 'some-woocommerce-core-webhook-delivery-url';
+		$delivery_url_non_specific_for_woopay = 'some-poocommerce-core-webhook-delivery-url';
 
 		$webhook = new \WC_Webhook();
 		$webhook->set_name( 'WCPay woopay order status sync' );

@@ -56,7 +56,7 @@ wordPressPackages.forEach( ( lib ) => {
 
 wooCommercePackages.forEach( ( lib ) => {
 	Object.defineProperty( global.wc, lib, {
-		get: () => require( `@woocommerce/${ lib }` ),
+		get: () => require( `@poocommerce/${ lib }` ),
 	} );
 } );
 
@@ -83,10 +83,10 @@ global.wcSettings = {
 		weekdaysShort: [ 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat' ],
 	},
 	// wcAdminSettings: {
-	// 	woocommerce_actionable_order_statuses: [],
-	// 	woocommerce_excluded_report_order_statuses: [],
+	// 	poocommerce_actionable_order_statuses: [],
+	// 	poocommerce_excluded_report_order_statuses: [],
 	// },
-	siteTitle: 'WooCommerce Payments Dev',
+	siteTitle: 'PooCommerce Payments Dev',
 	countries: {
 		US: 'United States of America',
 		CA: 'Canada',
@@ -114,8 +114,8 @@ global.wcpaySettings = {
 // window.wcAdminFeatures = config && config.features ? config.features : {};
 
 setLocaleData(
-	{ '': { domain: 'woocommerce-payments', lang: 'en_US' } },
-	'woocommerce-payments'
+	{ '': { domain: 'poocommerce-payments', lang: 'en_US' } },
+	'poocommerce-payments'
 );
 
 global.jQuery = jest.fn();

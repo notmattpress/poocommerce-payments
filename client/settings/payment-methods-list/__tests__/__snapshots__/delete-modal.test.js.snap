@@ -124,7 +124,7 @@ exports[`Activation Modal matches the snapshot 1`] = `
           <p>
             You can add it again at any time in 
             <a
-              href="admin.php?page=wc-settings&tab=checkout&section=woocommerce_payments"
+              href="admin.php?page=wc-settings&tab=checkout&section=poocommerce_payments"
             >
               WooPayments
             </a>

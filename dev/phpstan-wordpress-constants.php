@@ -61,11 +61,11 @@ define( 'BLOG_ID_CURRENT_SITE', 1 );
 // Common plugin constants
 define( 'WOOCOMMERCE_VERSION', '8.0.0' );
 define( 'WC_VERSION', '8.0.0' );
-define( 'WC_PLUGIN_FILE', __DIR__ . '/woocommerce/woocommerce.php' );
-define( 'WC_ABSPATH', __DIR__ . '/woocommerce/' );
+define( 'WC_PLUGIN_FILE', __DIR__ . '/poocommerce/poocommerce.php' );
+define( 'WC_ABSPATH', __DIR__ . '/poocommerce/' );
 define( 'WC_LOG_DIR', __DIR__ . '/wc-logs/' );
 
-// WooCommerce Payments constants
-define( 'WCPAY_ABSPATH', __DIR__ . '/woocommerce-payments/' );
-define( 'WCPAY_PLUGIN_FILE', __DIR__ . '/woocommerce-payments/woocommerce-payments.php' );
+// PooCommerce Payments constants
+define( 'WCPAY_ABSPATH', __DIR__ . '/poocommerce-payments/' );
+define( 'WCPAY_PLUGIN_FILE', __DIR__ . '/poocommerce-payments/poocommerce-payments.php' );
 define( 'WCPAY_VERSION', '1.0.0' );

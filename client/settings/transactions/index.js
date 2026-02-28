@@ -63,28 +63,28 @@ const Transactions = ( { setTransactionInputsValid } ) => {
 		<Card className="transactions">
 			<CardBody className="wcpay-card-body">
 				<h4>
-					{ __( 'Transaction preferences', 'woocommerce-payments' ) }
+					{ __( 'Transaction preferences', 'poocommerce-payments' ) }
 				</h4>
 				<CheckboxControl
 					checked={ isSavedCardsEnabled }
 					onChange={ setIsSavedCardsEnabled }
 					label={ __(
 						'Enable payments via saved cards',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 					help={ __(
 						'When enabled, users will be able to pay with a saved card during checkout. ' +
 							'Card details are stored in our platform, not on your store.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 					__nextHasNoMarginBottom
 				/>
 				<ManualCaptureControl></ManualCaptureControl>
-				<h4>{ __( 'Customer statements', 'woocommerce-payments' ) }</h4>
+				<h4>{ __( 'Customer statements', 'poocommerce-payments' ) }</h4>
 				<p>
 					{ __(
 						"Edit the way your store name appears on your customers' bank statements.",
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 				</p>
 
@@ -104,12 +104,12 @@ const Transactions = ( { setTransactionInputsValid } ) => {
 							settings.account_country === 'JP' &&
 							__(
 								'Use only latin characters.',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							)
 						}
 						label={ __(
 							'Customer bank statement',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 						value={ accountStatementDescriptor }
 						onChange={ setAccountStatementDescriptor }
@@ -128,11 +128,11 @@ const Transactions = ( { setTransactionInputsValid } ) => {
 									className="transactions__account-statement-input"
 									help={ __(
 										'Use only kanji characters.',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									) }
 									label={ __(
 										'Customer bank statement (kanji)',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									) }
 									value={ accountStatementDescriptorKanji }
 									onChange={
@@ -159,11 +159,11 @@ const Transactions = ( { setTransactionInputsValid } ) => {
 									className="transactions__account-statement-input"
 									help={ __(
 										'Use only kana characters.',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									) }
 									label={ __(
 										'Customer bank statement (kana)',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									) }
 									value={ accountStatementDescriptorKana }
 									onChange={
@@ -189,11 +189,11 @@ const Transactions = ( { setTransactionInputsValid } ) => {
 					) }
 				</div>
 
-				<h4>{ __( 'Customer support', 'woocommerce-payments' ) }</h4>
+				<h4>{ __( 'Customer support', 'poocommerce-payments' ) }</h4>
 				<p>
 					{ __(
 						'Provide contact information where customers can reach you for support.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 				</p>
 				<div className="transactions__customer-support">

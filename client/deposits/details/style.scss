@@ -1,10 +1,10 @@
 .wcpay-deposit-overview {
-	.woocommerce-order-status {
+	.poocommerce-order-status {
 		margin-bottom: 4px;
 		white-space: nowrap;
 	}
 
-	.woocommerce-order-status__indicator {
+	.poocommerce-order-status__indicator {
 		width: 0.85em;
 		height: 0.85em;
 
@@ -28,12 +28,12 @@
 		}
 	}
 
-	.woocommerce-summary__item {
-		.woocommerce-summary__item-label {
+	.poocommerce-summary__item {
+		.poocommerce-summary__item-label {
 			font-size: 14px;
 			line-height: 20px;
 		}
-		.woocommerce-summary__item-value {
+		.poocommerce-summary__item-value {
 			font-size: 20px;
 			line-height: 28px;
 		}
@@ -102,11 +102,11 @@
 			flex-direction: column;
 		}
 
-		.woocommerce-summary__item {
+		.poocommerce-summary__item {
 			border-bottom: 0;
 			background-color: inherit;
 			color: inherit;
-			.woocommerce-summary__item-label:hover {
+			.poocommerce-summary__item-label:hover {
 				color: inherit;
 			}
 
@@ -137,11 +137,11 @@
 	}
 
 	/* WC SummaryNumber modifications: some margins, colors and hide of unused fields */
-	.woocommerce-summary {
-		.woocommerce-summary__item-label {
+	.poocommerce-summary {
+		.poocommerce-summary__item-label {
 			margin-bottom: 12px;
 		}
-		.woocommerce-summary__item-data {
+		.poocommerce-summary__item-data {
 			margin-top: 0;
 			margin-bottom: 8px;
 		}
@@ -149,20 +149,20 @@
 			color: $dark-gray-500;
 		}
 		/* Hide unused SummaryNumber fields */
-		.woocommerce-summary__item-prev-value,
-		.woocommerce-summary__item-delta {
+		.poocommerce-summary__item-prev-value,
+		.poocommerce-summary__item-delta {
 			display: none;
 		}
-		.woocommerce-summary__item {
+		.poocommerce-summary__item {
 			background: $studio-white;
-			&:hover .woocommerce-summary__item-label {
+			&:hover .poocommerce-summary__item-label {
 				color: $gray-700;
 			}
 		}
-		a.woocommerce-summary__item {
+		a.poocommerce-summary__item {
 			&:hover {
 				background-color: $studio-gray-0;
-				&:hover .woocommerce-summary__item-label {
+				&:hover .poocommerce-summary__item-label {
 					color: var( --wp-admin-theme-color );
 				}
 			}

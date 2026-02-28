@@ -12,7 +12,7 @@ import { addFilter, doAction } from '@wordpress/hooks';
 import { getExpressCheckoutData } from 'wcpay/express-checkout/utils';
 
 jQuery( ( $ ) => {
-	$( document.body ).on( 'woocommerce_variation_has_changed', async () => {
+	$( document.body ).on( 'poocommerce_variation_has_changed', async () => {
 		doAction( 'wcpay.express-checkout.update-button-data' );
 	} );
 } );
@@ -77,9 +77,9 @@ addFilter(
 
 			attributes.push( {
 				// The Store API accepts the variable attribute's label, rather than an internal identifier:
-				// https://github.com/woocommerce/woocommerce-blocks/blob/trunk/src/StoreApi/docs/cart.md#add-item
+				// https://github.com/poocommerce/poocommerce-blocks/blob/trunk/src/StoreApi/docs/cart.md#add-item
 				// It's an unfortunate hack that doesn't work when labels have special characters in them.
-				// fallback until https://github.com/woocommerce/woocommerce/pull/55317 has been consolidated in WC Core.
+				// fallback until https://github.com/poocommerce/poocommerce/pull/55317 has been consolidated in WC Core.
 				attribute: Array.from(
 					document.querySelector(
 						`label[for="${ attributeName.replace(
@@ -91,7 +91,7 @@ addFilter(
 				value: select.value || '',
 			} );
 
-			// proper logic for https://github.com/woocommerce/woocommerce/pull/55317 .
+			// proper logic for https://github.com/poocommerce/poocommerce/pull/55317 .
 			attributes.push( {
 				attribute: attributeName,
 				value: select.value || '',

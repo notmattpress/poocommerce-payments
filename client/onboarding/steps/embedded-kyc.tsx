@@ -95,15 +95,15 @@ const EmbeddedKyc: React.FC< Props > = ( {
 							{
 								label: __(
 									'Learn more',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								),
 								variant: 'primary',
 								url:
-									'https://woocommerce.com/document/woopayments/startup-guide/#requirements',
+									'https://poocommerce.com/document/woopayments/startup-guide/#requirements',
 								urlTarget: '_blank',
 							},
 							{
-								label: __( 'Cancel', 'woocommerce-payments' ),
+								label: __( 'Cancel', 'poocommerce-payments' ),
 								variant: 'link',
 								url: getConnectUrl(
 									{
@@ -117,7 +117,7 @@ const EmbeddedKyc: React.FC< Props > = ( {
 					>
 						{ __(
 							'Payment activation through our financial partner requires HTTPS and cannot be completed.',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 					</BannerNotice>
 				) : (

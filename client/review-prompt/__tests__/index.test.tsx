@@ -73,7 +73,7 @@ let preferences = {
 	wc_payments_review_prompt_dismissed: undefined,
 	wc_payments_review_prompt_maybe_later: undefined,
 };
-jest.mock( '@woocommerce/data', () => {
+jest.mock( '@poocommerce/data', () => {
 	return {
 		useUserPreferences: jest.fn( () => ( {
 			...preferences,
@@ -123,7 +123,7 @@ describe( 'ReviewPrompt', () => {
 		).toBeInTheDocument();
 		expect(
 			screen.getByText(
-				'Your feedback shapes our roadmap and supports the WooCommerce community. We are all ears!'
+				'Your feedback shapes our roadmap and supports the PooCommerce community. We are all ears!'
 			)
 		).toBeInTheDocument();
 		expect( screen.getByText( 'Leave review' ) ).toBeInTheDocument();
@@ -156,7 +156,7 @@ describe( 'ReviewPrompt', () => {
 
 		await waitFor( () => {
 			expect( mockWindowOpen ).toHaveBeenCalledWith(
-				'https://wordpress.org/support/plugin/woocommerce-payments/reviews/#new-post',
+				'https://wordpress.org/support/plugin/poocommerce-payments/reviews/#new-post',
 				'_blank',
 				'noopener,noreferrer'
 			);
@@ -173,7 +173,7 @@ describe( 'ReviewPrompt', () => {
 
 		await waitFor( () => {
 			expect( mockWindowOpen ).toHaveBeenCalledWith(
-				'https://woocommerce.com/products/woocommerce-payments/#reviews',
+				'https://poocommerce.com/products/poocommerce-payments/#reviews',
 				'_blank',
 				'noopener,noreferrer'
 			);
@@ -346,14 +346,14 @@ describe( 'ReviewPrompt', () => {
 		await waitFor( () => {
 			// Should have tried to open in new window
 			expect( mockWindowOpen ).toHaveBeenCalledWith(
-				'https://wordpress.org/support/plugin/woocommerce-payments/reviews/#new-post',
+				'https://wordpress.org/support/plugin/poocommerce-payments/reviews/#new-post',
 				'_blank',
 				'noopener,noreferrer'
 			);
 
 			// Should fall back to navigating current window
 			expect( window.location.href ).toBe(
-				'https://wordpress.org/support/plugin/woocommerce-payments/reviews/#new-post'
+				'https://wordpress.org/support/plugin/poocommerce-payments/reviews/#new-post'
 			);
 		} );
 	} );

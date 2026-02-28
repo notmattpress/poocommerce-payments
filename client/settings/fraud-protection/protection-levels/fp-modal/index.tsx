@@ -30,7 +30,7 @@ const BasicFraudProtectionModal: React.FC< BasicFraudProtectionModalProps > = ( 
 	const hasActivePlatformChecks = declineOnAVSFailure || declineOnCVCFailure;
 	return (
 		<Modal
-			title={ __( 'Basic filter level', 'woocommerce-payments' ) }
+			title={ __( 'Basic filter level', 'poocommerce-payments' ) }
 			isDismissible
 			shouldCloseOnClickOutside
 			shouldCloseOnEsc
@@ -45,7 +45,7 @@ const BasicFraudProtectionModal: React.FC< BasicFraudProtectionModalProps > = ( 
 							{ interpolateComponents( {
 								mixedString: __(
 									'Payments will be {{blocked}}blocked{{/blocked}} if:',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								),
 								components: {
 									blocked: (
@@ -59,7 +59,7 @@ const BasicFraudProtectionModal: React.FC< BasicFraudProtectionModalProps > = ( 
 								<li>
 									{ __(
 										'The billing address does not match what is on file with the card issuer.',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									) }
 								</li>
 							) }
@@ -67,7 +67,7 @@ const BasicFraudProtectionModal: React.FC< BasicFraudProtectionModalProps > = ( 
 								<li>
 									{ __(
 										"The card's issuing bank cannot verify the CVV.",
-										'woocommerce-payments'
+										'poocommerce-payments'
 									) }
 								</li>
 							) }
@@ -79,7 +79,7 @@ const BasicFraudProtectionModal: React.FC< BasicFraudProtectionModalProps > = ( 
 					onClick={ () => setBasicModalOpen( false ) }
 					variant="secondary"
 				>
-					{ __( 'Got it', 'woocommerce-payments' ) }
+					{ __( 'Got it', 'poocommerce-payments' ) }
 				</Button>
 			</div>
 		</Modal>

@@ -83,7 +83,7 @@ export function* getPmPromotions(): unknown {
 			'createErrorNotice',
 			__(
 				'Error retrieving promotions. Please try again later.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			)
 		);
 		yield controls.dispatch(

@@ -31,7 +31,7 @@ const formatButtonList = ( buttonNames: string[] ) => {
 	if ( buttonNames.length === 1 ) {
 		return sprintf(
 			/* translators: %s: name of a button type (e.g., "WooPay") */
-			__( '%s button', 'woocommerce-payments' ),
+			__( '%s button', 'poocommerce-payments' ),
 			buttonNames[ 0 ]
 		);
 	}
@@ -39,7 +39,7 @@ const formatButtonList = ( buttonNames: string[] ) => {
 	if ( buttonNames.length === 2 ) {
 		return sprintf(
 			/* translators: %1$s and %2$s: names of button types */
-			__( '%1$s and %2$s buttons', 'woocommerce-payments' ),
+			__( '%1$s and %2$s buttons', 'poocommerce-payments' ),
 			buttonNames[ 0 ],
 			buttonNames[ 1 ]
 		);
@@ -51,7 +51,7 @@ const formatButtonList = ( buttonNames: string[] ) => {
 
 	return sprintf(
 		/* translators: %1$s: comma-separated list of button types, %2$s: last button type in the list */
-		__( '%1$s, and %2$s buttons', 'woocommerce-payments' ),
+		__( '%1$s, and %2$s buttons', 'poocommerce-payments' ),
 		otherItems,
 		lastItem
 	);
@@ -79,13 +79,13 @@ const ExpressCheckoutSettingsNotices: React.FC< ExpressCheckoutSettingsNoticesPr
 	const otherButtons = [
 		currentMethod !== 'woopay' &&
 			isWooPayEffectivelyEnabled &&
-			__( 'WooPay', 'woocommerce-payments' ),
+			__( 'WooPay', 'poocommerce-payments' ),
 		currentMethod !== 'google/apple' &&
 			isPaymentRequestEnabled &&
-			__( 'Apple Pay / Google Pay', 'woocommerce-payments' ),
+			__( 'Apple Pay / Google Pay', 'poocommerce-payments' ),
 		currentMethod !== 'amazon_pay' &&
 			isAmazonPayEffectivelyEnabled &&
-			__( 'Amazon Pay', 'woocommerce-payments' ),
+			__( 'Amazon Pay', 'poocommerce-payments' ),
 	].filter( Boolean );
 
 	if ( otherButtons.length === 0 ) {
@@ -105,7 +105,7 @@ const ExpressCheckoutSettingsNotices: React.FC< ExpressCheckoutSettingsNoticesPr
 					/* translators: %s: formatted list of button types that share these settings */
 					__(
 						'These settings will also apply to the %s on your store.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					formattedList
 				) }
@@ -117,7 +117,7 @@ const ExpressCheckoutSettingsNotices: React.FC< ExpressCheckoutSettingsNoticesPr
 			>
 				{ __(
 					'Some appearance settings may be overridden in the express payment section of the Cart & Checkout blocks.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				) }
 			</InlineNotice>
 		</>

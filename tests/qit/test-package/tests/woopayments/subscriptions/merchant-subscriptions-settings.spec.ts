@@ -2,16 +2,16 @@
  * Internal dependencies
  */
 import { test, expect } from '../../../fixtures/auth';
-import { goToWooCommerceSettings } from '../../../utils/merchant';
+import { goToPooCommerceSettings } from '../../../utils/merchant';
 
 test.describe(
-	'WooCommerce > Settings > Subscriptions',
+	'PooCommerce > Settings > Subscriptions',
 	{ tag: [ '@merchant', '@subscriptions' ] },
 	() => {
-		test( 'Merchant should be able to load WooCommerce Subscriptions settings tab', async ( {
+		test( 'Merchant should be able to load PooCommerce Subscriptions settings tab', async ( {
 			adminPage,
 		} ) => {
-			await goToWooCommerceSettings( adminPage, 'subscriptions' );
+			await goToPooCommerceSettings( adminPage, 'subscriptions' );
 			const menuItem = adminPage.getByRole( 'main' ).getByRole( 'link', {
 				name: 'Subscriptions',
 				exact: true,

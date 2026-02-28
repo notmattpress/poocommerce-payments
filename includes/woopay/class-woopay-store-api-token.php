@@ -7,7 +7,7 @@
 
 namespace WCPay\Platform_Checkout;
 
-use Automattic\WooCommerce\StoreApi\Routes\V1\AbstractCartRoute;
+use Automattic\PooCommerce\StoreApi\Routes\V1\AbstractCartRoute;
 
 if ( class_exists( AbstractCartRoute::class ) ) {
 	/**
@@ -21,9 +21,9 @@ if ( class_exists( AbstractCartRoute::class ) ) {
 		 * @return WooPay_Store_Api_Token The instance of the class.
 		 */
 		public static function init() {
-			$formatters        = new \Automattic\WooCommerce\StoreApi\Formatters();
-			$extend_schema     = new \Automattic\WooCommerce\StoreApi\Schemas\ExtendSchema( $formatters );
-			$schema_controller = new \Automattic\WooCommerce\StoreApi\SchemaController( $extend_schema );
+			$formatters        = new \Automattic\PooCommerce\StoreApi\Formatters();
+			$extend_schema     = new \Automattic\PooCommerce\StoreApi\Schemas\ExtendSchema( $formatters );
+			$schema_controller = new \Automattic\PooCommerce\StoreApi\SchemaController( $extend_schema );
 			return new self( $schema_controller, $schema_controller->get( 'cart' ) );
 		}
 

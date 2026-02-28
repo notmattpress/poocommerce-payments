@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Account_Server_Links_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\Exceptions\API_Exception;

@@ -2,7 +2,7 @@
 /**
  * Class WCPay\Tests\PaymentMethods\Configs\PaymentMethodDefinitionRegistryTest
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 namespace WCPay\Tests\PaymentMethods\Configs;

@@ -2,7 +2,7 @@
 /**
  * WC_Payments_Status class
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -53,8 +53,8 @@ class WC_Payments_Status {
 	 * @return void
 	 */
 	public function init_hooks() {
-		add_action( 'woocommerce_system_status_report', [ $this, 'render_status_report_section' ], 1 );
-		add_filter( 'woocommerce_debug_tools', [ $this, 'debug_tools' ] );
+		add_action( 'poocommerce_system_status_report', [ $this, 'render_status_report_section' ], 1 );
+		add_filter( 'poocommerce_debug_tools', [ $this, 'debug_tools' ] );
 	}
 
 	/**
@@ -89,13 +89,13 @@ class WC_Payments_Status {
 				'clear_wcpay_account_cache'            => [
 					'name'     => sprintf(
 						/* translators: %s: WooPayments */
-						__( 'Clear %s account cache', 'woocommerce-payments' ),
+						__( 'Clear %s account cache', 'poocommerce-payments' ),
 						'WooPayments'
 					),
-					'button'   => __( 'Clear', 'woocommerce-payments' ),
+					'button'   => __( 'Clear', 'poocommerce-payments' ),
 					'desc'     => sprintf(
 						/* translators: %s: WooPayments */
-						__( 'This tool will clear the cached account values used in %s.', 'woocommerce-payments' ),
+						__( 'This tool will clear the cached account values used in %s.', 'poocommerce-payments' ),
 						'WooPayments'
 					),
 					'callback' => [ $this->account, 'refresh_account_data' ],
@@ -103,29 +103,29 @@ class WC_Payments_Status {
 				'delete_wcpay_test_orders'             => [
 					'name'     => sprintf(
 						/* translators: %s: WooPayments */
-						__( 'Delete %s test orders', 'woocommerce-payments' ),
+						__( 'Delete %s test orders', 'poocommerce-payments' ),
 						'WooPayments'
 					),
-					'button'   => __( 'Delete', 'woocommerce-payments' ),
+					'button'   => __( 'Delete', 'poocommerce-payments' ),
 					'desc'     => sprintf(
 						/* translators: %s: WooPayments */
-						__( '<strong class="red">Note:</strong> This option deletes all test mode orders placed via %s. Orders placed via other gateways will not be affected. Use with caution, as this action cannot be undone.', 'woocommerce-payments' ),
+						__( '<strong class="red">Note:</strong> This option deletes all test mode orders placed via %s. Orders placed via other gateways will not be affected. Use with caution, as this action cannot be undone.', 'poocommerce-payments' ),
 						'WooPayments'
 					),
 					'callback' => [ $this, 'delete_test_orders' ],
 				],
 				'remediate_canceled_auth_fees_dry_run' => [
-					'name'     => __( 'Preview canceled authorization fix (Dry Run)', 'woocommerce-payments' ),
+					'name'     => __( 'Preview canceled authorization fix (Dry Run)', 'poocommerce-payments' ),
 					'button'   => $this->get_dry_run_button_text(),
-					'desc'     => __( 'Preview what orders would be affected by the canceled authorization fix without making any changes. Results are logged to WooCommerce > Status > Logs.', 'woocommerce-payments' ),
+					'desc'     => __( 'Preview what orders would be affected by the canceled authorization fix without making any changes. Results are logged to PooCommerce > Status > Logs.', 'poocommerce-payments' ),
 					'callback' => [ $this, 'schedule_canceled_auth_dry_run' ],
 					'disabled' => $this->is_remediation_running_or_complete(),
 				],
 				'remediate_canceled_auth_fees'         => [
-					'name'     => __( 'Fix canceled authorization analytics', 'woocommerce-payments' ),
+					'name'     => __( 'Fix canceled authorization analytics', 'poocommerce-payments' ),
 					'button'   => $this->get_remediation_button_text(),
 					'desc'     => $this->get_remediation_description(),
-					'confirm'  => __( 'This will update order metadata and delete incorrect refund records for affected orders. This fixes negative values in WooCommerce Analytics. Make sure you have a recent backup before proceeding. Continue?', 'woocommerce-payments' ),
+					'confirm'  => __( 'This will update order metadata and delete incorrect refund records for affected orders. This fixes negative values in PooCommerce Analytics. Make sure you have a recent backup before proceeding. Continue?', 'poocommerce-payments' ),
 					'callback' => [ $this, 'schedule_canceled_auth_remediation' ],
 					'disabled' => $this->is_remediation_running_or_complete(),
 				],
@@ -142,8 +142,8 @@ class WC_Payments_Status {
 	 */
 	public function delete_test_orders() {
 		// Add explicit capability check.
-		if ( ! current_user_can( 'manage_woocommerce' ) ) {
-			return __( 'You do not have permission to delete orders.', 'woocommerce-payments' );
+		if ( ! current_user_can( 'manage_poocommerce' ) ) {
+			return __( 'You do not have permission to delete orders.', 'poocommerce-payments' );
 		}
 
 		try {
@@ -160,7 +160,7 @@ class WC_Payments_Status {
 			);
 
 			if ( empty( $test_orders ) ) {
-				return __( 'No test orders found.', 'woocommerce-payments' );
+				return __( 'No test orders found.', 'poocommerce-payments' );
 			}
 
 			$deleted_count = 0;
@@ -177,14 +177,14 @@ class WC_Payments_Status {
 					'%d test order has been permanently deleted.',
 					'%d test orders have been permanently deleted.',
 					$deleted_count,
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				$deleted_count
 			);
 		} catch ( Exception $e ) {
 			return sprintf(
 				/* translators: %s: error message */
-				__( 'Error deleting test orders: %s', 'woocommerce-payments' ),
+				__( 'Error deleting test orders: %s', 'poocommerce-payments' ),
 				$e->getMessage()
 			);
 		}
@@ -200,8 +200,8 @@ class WC_Payments_Status {
 	 */
 	public function schedule_canceled_auth_remediation() {
 		// Add explicit capability check.
-		if ( ! current_user_can( 'manage_woocommerce' ) ) {
-			return __( 'You do not have permission to run this tool.', 'woocommerce-payments' );
+		if ( ! current_user_can( 'manage_poocommerce' ) ) {
+			return __( 'You do not have permission to run this tool.', 'poocommerce-payments' );
 		}
 
 		try {
@@ -210,26 +210,26 @@ class WC_Payments_Status {
 
 			// Check if already complete.
 			if ( $remediation->is_complete() ) {
-				return __( 'Remediation has already been completed.', 'woocommerce-payments' );
+				return __( 'Remediation has already been completed.', 'poocommerce-payments' );
 			}
 
 			// Check if already running (either full action or dry run).
 			if ( function_exists( 'as_has_scheduled_action' ) ) {
 				if ( as_has_scheduled_action( WC_Payments_Remediate_Canceled_Auth_Fees::ACTION_HOOK ) ||
 					as_has_scheduled_action( WC_Payments_Remediate_Canceled_Auth_Fees::DRY_RUN_ACTION_HOOK ) ) {
-					return __( 'Remediation is already in progress. Check the Action Scheduler for status.', 'woocommerce-payments' );
+					return __( 'Remediation is already in progress. Check the Action Scheduler for status.', 'poocommerce-payments' );
 				}
 			}
 
 			// Schedule the remediation.
 			$remediation->schedule_remediation();
 
-			return __( 'Remediation has been scheduled and will run in the background. You can monitor progress in the Action Scheduler.', 'woocommerce-payments' );
+			return __( 'Remediation has been scheduled and will run in the background. You can monitor progress in the Action Scheduler.', 'poocommerce-payments' );
 
 		} catch ( Exception $e ) {
 			return sprintf(
 				/* translators: %s: error message */
-				__( 'Error scheduling remediation: %s', 'woocommerce-payments' ),
+				__( 'Error scheduling remediation: %s', 'poocommerce-payments' ),
 				$e->getMessage()
 			);
 		}
@@ -244,8 +244,8 @@ class WC_Payments_Status {
 	 */
 	public function schedule_canceled_auth_dry_run() {
 		// Add explicit capability check.
-		if ( ! current_user_can( 'manage_woocommerce' ) ) {
-			return __( 'You do not have permission to run this tool.', 'woocommerce-payments' );
+		if ( ! current_user_can( 'manage_poocommerce' ) ) {
+			return __( 'You do not have permission to run this tool.', 'poocommerce-payments' );
 		}
 
 		try {
@@ -254,26 +254,26 @@ class WC_Payments_Status {
 
 			// Check if already complete.
 			if ( $remediation->is_complete() ) {
-				return __( 'Remediation has already been completed.', 'woocommerce-payments' );
+				return __( 'Remediation has already been completed.', 'poocommerce-payments' );
 			}
 
 			// Check if already running.
 			if ( function_exists( 'as_has_scheduled_action' ) ) {
 				if ( as_has_scheduled_action( WC_Payments_Remediate_Canceled_Auth_Fees::ACTION_HOOK ) ||
 					as_has_scheduled_action( WC_Payments_Remediate_Canceled_Auth_Fees::DRY_RUN_ACTION_HOOK ) ) {
-					return __( 'Remediation is already in progress. Check the Action Scheduler for status.', 'woocommerce-payments' );
+					return __( 'Remediation is already in progress. Check the Action Scheduler for status.', 'poocommerce-payments' );
 				}
 			}
 
 			// Schedule the dry run.
 			$remediation->schedule_dry_run();
 
-			return __( 'Dry run has been scheduled and will run in the background. Check WooCommerce > Status > Logs for results (source: wcpay-fee-remediation).', 'woocommerce-payments' );
+			return __( 'Dry run has been scheduled and will run in the background. Check PooCommerce > Status > Logs for results (source: wcpay-fee-remediation).', 'poocommerce-payments' );
 
 		} catch ( Exception $e ) {
 			return sprintf(
 				/* translators: %s: error message */
-				__( 'Error scheduling dry run: %s', 'woocommerce-payments' ),
+				__( 'Error scheduling dry run: %s', 'poocommerce-payments' ),
 				$e->getMessage()
 			);
 		}
@@ -288,14 +288,14 @@ class WC_Payments_Status {
 		$status = get_option( 'wcpay_fee_remediation_status', '' );
 
 		if ( 'completed' === $status ) {
-			return __( 'Completed', 'woocommerce-payments' );
+			return __( 'Completed', 'poocommerce-payments' );
 		}
 
 		if ( 'running' === $status || $this->is_remediation_action_scheduled() ) {
-			return __( 'Running...', 'woocommerce-payments' );
+			return __( 'Running...', 'poocommerce-payments' );
 		}
 
-		return __( 'Preview', 'woocommerce-payments' );
+		return __( 'Preview', 'poocommerce-payments' );
 	}
 
 	/**
@@ -307,14 +307,14 @@ class WC_Payments_Status {
 		$status = get_option( 'wcpay_fee_remediation_status', '' );
 
 		if ( 'completed' === $status ) {
-			return __( 'Completed', 'woocommerce-payments' );
+			return __( 'Completed', 'poocommerce-payments' );
 		}
 
 		if ( 'running' === $status || $this->is_remediation_action_scheduled() ) {
-			return __( 'Running...', 'woocommerce-payments' );
+			return __( 'Running...', 'poocommerce-payments' );
 		}
 
-		return __( 'Run', 'woocommerce-payments' );
+		return __( 'Run', 'poocommerce-payments' );
 	}
 
 	/**
@@ -323,7 +323,7 @@ class WC_Payments_Status {
 	 * @return string Tool description with status.
 	 */
 	private function get_remediation_description(): string {
-		$base_desc = __( 'This tool removes incorrect refund records and fee data from orders where payment authorization was canceled (not captured). This fixes negative values appearing in WooCommerce Analytics for stores using manual capture.', 'woocommerce-payments' );
+		$base_desc = __( 'This tool removes incorrect refund records and fee data from orders where payment authorization was canceled (not captured). This fixes negative values appearing in PooCommerce Analytics for stores using manual capture.', 'poocommerce-payments' );
 
 		$status = get_option( 'wcpay_fee_remediation_status', '' );
 
@@ -335,7 +335,7 @@ class WC_Payments_Status {
 			if ( $processed > 0 ) {
 				return sprintf(
 					/* translators: 1: base description, 2: number of orders processed, 3: number of orders remediated */
-					__( '%1$s <strong>Status: Completed.</strong> Processed %2$d orders, remediated %3$d.', 'woocommerce-payments' ),
+					__( '%1$s <strong>Status: Completed.</strong> Processed %2$d orders, remediated %3$d.', 'poocommerce-payments' ),
 					$base_desc,
 					$processed,
 					$remediated
@@ -344,7 +344,7 @@ class WC_Payments_Status {
 
 			return sprintf(
 				/* translators: %s: base description */
-				__( '%s <strong>Status: Completed.</strong> No affected orders found.', 'woocommerce-payments' ),
+				__( '%s <strong>Status: Completed.</strong> No affected orders found.', 'poocommerce-payments' ),
 				$base_desc
 			);
 		}
@@ -356,7 +356,7 @@ class WC_Payments_Status {
 			if ( $processed > 0 ) {
 				return sprintf(
 					/* translators: 1: base description, 2: number of orders processed so far */
-					__( '%1$s <strong>Status: Running...</strong> Processed %2$d orders so far. Check the Action Scheduler for details.', 'woocommerce-payments' ),
+					__( '%1$s <strong>Status: Running...</strong> Processed %2$d orders so far. Check the Action Scheduler for details.', 'poocommerce-payments' ),
 					$base_desc,
 					$processed
 				);
@@ -364,7 +364,7 @@ class WC_Payments_Status {
 
 			return sprintf(
 				/* translators: %s: base description */
-				__( '%s <strong>Status: Running...</strong> Check the Action Scheduler for details.', 'woocommerce-payments' ),
+				__( '%s <strong>Status: Running...</strong> Check the Action Scheduler for details.', 'poocommerce-payments' ),
 				$base_desc
 			);
 		}
@@ -416,107 +416,107 @@ class WC_Payments_Status {
 		</thead>
 		<tbody>
 			<tr>
-				<td data-export-label="Version"><?php esc_html_e( 'Version', 'woocommerce-payments' ); ?>:</td>
+				<td data-export-label="Version"><?php esc_html_e( 'Version', 'poocommerce-payments' ); ?>:</td>
 				<td class="help">
 					<?php
 					/* translators: %s: WooPayments */
-					echo wc_help_tip( sprintf( esc_html__( 'The current version of the %s extension.', 'woocommerce-payments' ), 'WooPayments' ) ); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped, WordPress.Security.EscapeOutput.OutputNotEscaped */
+					echo wc_help_tip( sprintf( esc_html__( 'The current version of the %s extension.', 'poocommerce-payments' ), 'WooPayments' ) ); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped, WordPress.Security.EscapeOutput.OutputNotEscaped */
 					?>
 				</td>
 				<td><?php echo esc_html( WCPAY_VERSION_NUMBER ); ?></td>
 			</tr>
 			<tr>
-				<td data-export-label="Connected to WPCOM"><?php esc_html_e( 'Connected to WPCOM', 'woocommerce-payments' ); ?>:</td>
+				<td data-export-label="Connected to WPCOM"><?php esc_html_e( 'Connected to WPCOM', 'poocommerce-payments' ); ?>:</td>
 				<td class="help">
 					<?php
 					/* translators: %s: WooPayments */
-					echo wc_help_tip( sprintf( esc_html__( 'Can your store connect securely to wordpress.com? Without a proper WPCOM connection %s can\'t function!', 'woocommerce-payments' ), 'WooPayments' ) ); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped, WordPress.Security.EscapeOutput.OutputNotEscaped */
+					echo wc_help_tip( sprintf( esc_html__( 'Can your store connect securely to wordpress.com? Without a proper WPCOM connection %s can\'t function!', 'poocommerce-payments' ), 'WooPayments' ) ); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped, WordPress.Security.EscapeOutput.OutputNotEscaped */
 					?>
 				</td>
-				<td><?php echo $this->http->is_connected() ? esc_html__( 'Yes', 'woocommerce-payments' ) : '<mark class="error"><span class="dashicons dashicons-warning"></span> ' . esc_html__( 'No', 'woocommerce-payments' ) . '</mark>'; ?></td>
+				<td><?php echo $this->http->is_connected() ? esc_html__( 'Yes', 'poocommerce-payments' ) : '<mark class="error"><span class="dashicons dashicons-warning"></span> ' . esc_html__( 'No', 'poocommerce-payments' ) . '</mark>'; ?></td>
 			</tr>
 			<?php if ( $this->http->is_connected() ) : ?>
 				<tr>
-					<td data-export-label="WPCOM Blog ID"><?php esc_html_e( 'WPCOM Blog ID', 'woocommerce-payments' ); ?>:</td>
-					<td class="help"><?php echo wc_help_tip( esc_html__( 'The corresponding wordpress.com blog ID for this store.', 'woocommerce-payments' ) ); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped, WordPress.Security.EscapeOutput.OutputNotEscaped */ ?></td>
+					<td data-export-label="WPCOM Blog ID"><?php esc_html_e( 'WPCOM Blog ID', 'poocommerce-payments' ); ?>:</td>
+					<td class="help"><?php echo wc_help_tip( esc_html__( 'The corresponding wordpress.com blog ID for this store.', 'poocommerce-payments' ) ); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped, WordPress.Security.EscapeOutput.OutputNotEscaped */ ?></td>
 					<td><?php echo esc_html( $this->http->is_connected() ? $this->http->get_blog_id() : '-' ); ?></td>
 				</tr>
 				<tr>
-					<td data-export-label="Account ID"><?php esc_html_e( 'Account ID', 'woocommerce-payments' ); ?>:</td>
-					<td class="help"><?php echo wc_help_tip( esc_html__( 'The merchant account ID you are currently using to process payments with.', 'woocommerce-payments' ) ); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped, WordPress.Security.EscapeOutput.OutputNotEscaped */ ?></td>
-					<td><?php echo $this->gateway->is_connected() ? esc_html( $this->account->get_stripe_account_id() ?? '-' ) : '<mark class="error"><span class="dashicons dashicons-warning"></span> ' . esc_html__( 'Not connected', 'woocommerce-payments' ) . '</mark>'; ?></td>
+					<td data-export-label="Account ID"><?php esc_html_e( 'Account ID', 'poocommerce-payments' ); ?>:</td>
+					<td class="help"><?php echo wc_help_tip( esc_html__( 'The merchant account ID you are currently using to process payments with.', 'poocommerce-payments' ) ); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped, WordPress.Security.EscapeOutput.OutputNotEscaped */ ?></td>
+					<td><?php echo $this->gateway->is_connected() ? esc_html( $this->account->get_stripe_account_id() ?? '-' ) : '<mark class="error"><span class="dashicons dashicons-warning"></span> ' . esc_html__( 'Not connected', 'poocommerce-payments' ) . '</mark>'; ?></td>
 				</tr>
 				<?php
 				// Only display the rest if the payment gateway is connected since many places check for this and we might get inaccurate data.
 				if ( $this->gateway->is_connected() ) :
 					?>
 					<tr>
-						<td data-export-label="Payment Gateway"><?php esc_html_e( 'Payment Gateway', 'woocommerce-payments' ); ?>:</td>
-						<td class="help"><?php echo wc_help_tip( esc_html__( 'Is the payment gateway ready and enabled for use on your store?', 'woocommerce-payments' ) ); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped, WordPress.Security.EscapeOutput.OutputNotEscaped */ ?></td>
-						<td><?php echo $this->gateway->needs_setup() ? '<mark class="error"><span class="dashicons dashicons-warning"></span> ' . esc_html__( 'Needs setup', 'woocommerce-payments' ) . '</mark>' : ( $this->gateway->is_enabled() ? esc_html__( 'Enabled', 'woocommerce-payments' ) : esc_html__( 'Disabled', 'woocommerce-payments' ) ); ?></td>
+						<td data-export-label="Payment Gateway"><?php esc_html_e( 'Payment Gateway', 'poocommerce-payments' ); ?>:</td>
+						<td class="help"><?php echo wc_help_tip( esc_html__( 'Is the payment gateway ready and enabled for use on your store?', 'poocommerce-payments' ) ); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped, WordPress.Security.EscapeOutput.OutputNotEscaped */ ?></td>
+						<td><?php echo $this->gateway->needs_setup() ? '<mark class="error"><span class="dashicons dashicons-warning"></span> ' . esc_html__( 'Needs setup', 'poocommerce-payments' ) . '</mark>' : ( $this->gateway->is_enabled() ? esc_html__( 'Enabled', 'poocommerce-payments' ) : esc_html__( 'Disabled', 'poocommerce-payments' ) ); ?></td>
 					</tr>
 					<tr>
-						<td data-export-label="Test Mode"><?php esc_html_e( 'Test Mode', 'woocommerce-payments' ); ?>:</td>
-						<td class="help"><?php echo wc_help_tip( esc_html__( 'Whether the payment gateway has test payments enabled or not.', 'woocommerce-payments' ) ); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped, WordPress.Security.EscapeOutput.OutputNotEscaped */ ?></td>
-						<td><?php WC_Payments::mode()->is_test() ? esc_html_e( 'Enabled', 'woocommerce-payments' ) : esc_html_e( 'Disabled', 'woocommerce-payments' ); ?></td>
+						<td data-export-label="Test Mode"><?php esc_html_e( 'Test Mode', 'poocommerce-payments' ); ?>:</td>
+						<td class="help"><?php echo wc_help_tip( esc_html__( 'Whether the payment gateway has test payments enabled or not.', 'poocommerce-payments' ) ); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped, WordPress.Security.EscapeOutput.OutputNotEscaped */ ?></td>
+						<td><?php WC_Payments::mode()->is_test() ? esc_html_e( 'Enabled', 'poocommerce-payments' ) : esc_html_e( 'Disabled', 'poocommerce-payments' ); ?></td>
 					</tr>
 					<tr>
-						<td data-export-label="Enabled APMs"><?php esc_html_e( 'Enabled APMs', 'woocommerce-payments' ); ?>:</td>
-						<td class="help"><?php echo wc_help_tip( esc_html__( 'What payment methods are enabled for the store.', 'woocommerce-payments' ) ); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped, WordPress.Security.EscapeOutput.OutputNotEscaped */ ?></td>
+						<td data-export-label="Enabled APMs"><?php esc_html_e( 'Enabled APMs', 'poocommerce-payments' ); ?>:</td>
+						<td class="help"><?php echo wc_help_tip( esc_html__( 'What payment methods are enabled for the store.', 'poocommerce-payments' ) ); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped, WordPress.Security.EscapeOutput.OutputNotEscaped */ ?></td>
 						<td><?php echo esc_html( implode( ',', $this->gateway->get_upe_enabled_payment_method_ids() ) ); ?></td>
 					</tr>
 
 					<?php if ( ! WC_Payments_Features::is_woopay_express_checkout_enabled() ) : ?>
 					<tr>
-						<td data-export-label="WooPay"><?php esc_html_e( 'WooPay Express Checkout', 'woocommerce-payments' ); ?>:</td>
+						<td data-export-label="WooPay"><?php esc_html_e( 'WooPay Express Checkout', 'poocommerce-payments' ); ?>:</td>
 						<td class="help">
 							<?php
 							/* translators: %s: WooPayments */
-							echo wc_help_tip( sprintf( esc_html__( 'WooPay is not available, as a %s feature, or the store is not yet eligible.', 'woocommerce-payments' ), 'WooPayments' ) ); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped, WordPress.Security.EscapeOutput.OutputNotEscaped */
+							echo wc_help_tip( sprintf( esc_html__( 'WooPay is not available, as a %s feature, or the store is not yet eligible.', 'poocommerce-payments' ), 'WooPayments' ) ); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped, WordPress.Security.EscapeOutput.OutputNotEscaped */
 							?>
 						</td>
-						<td><?php echo ! WC_Payments_Features::is_woopay_eligible() ? esc_html__( 'Not eligible', 'woocommerce-payments' ) : esc_html__( 'Not active', 'woocommerce-payments' ); ?></td>
+						<td><?php echo ! WC_Payments_Features::is_woopay_eligible() ? esc_html__( 'Not eligible', 'poocommerce-payments' ) : esc_html__( 'Not active', 'poocommerce-payments' ); ?></td>
 					</tr>
 <?php else : ?>
 					<tr>
-						<td data-export-label="WooPay"><?php esc_html_e( 'WooPay Express Checkout', 'woocommerce-payments' ); ?>:</td>
-						<td class="help"><?php echo wc_help_tip( esc_html__( 'Whether the new WooPay Express Checkout is enabled or not.', 'woocommerce-payments' ) ); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped, WordPress.Security.EscapeOutput.OutputNotEscaped */ ?></td>
+						<td data-export-label="WooPay"><?php esc_html_e( 'WooPay Express Checkout', 'poocommerce-payments' ); ?>:</td>
+						<td class="help"><?php echo wc_help_tip( esc_html__( 'Whether the new WooPay Express Checkout is enabled or not.', 'poocommerce-payments' ) ); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped, WordPress.Security.EscapeOutput.OutputNotEscaped */ ?></td>
 						<td>
 						<?php
 						$woopay_enabled_locations = $this->get_express_checkout_method_locations( 'woopay' );
 						$woopay_enabled_locations = empty( $woopay_enabled_locations ) ? 'no locations enabled' : implode( ',', $woopay_enabled_locations );
-						echo esc_html( WC_Payments_Features::is_woopay_enabled() ? __( 'Enabled', 'woocommerce-payments' ) . ' (' . $woopay_enabled_locations . ')' : __( 'Disabled', 'woocommerce-payments' ) );
+						echo esc_html( WC_Payments_Features::is_woopay_enabled() ? __( 'Enabled', 'poocommerce-payments' ) . ' (' . $woopay_enabled_locations . ')' : __( 'Disabled', 'poocommerce-payments' ) );
 						?>
 						</td>
 					</tr>
 					<tr>
-						<td data-export-label="WooPay Incompatible Extensions"><?php esc_html_e( 'WooPay Incompatible Extensions', 'woocommerce-payments' ); ?>:</td>
-						<td class="help"><?php echo wc_help_tip( esc_html__( 'Whether there are extensions active that are have known incompatibilities with the functioning of the new WooPay Express Checkout.', 'woocommerce-payments' ) ); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped, WordPress.Security.EscapeOutput.OutputNotEscaped */ ?></td>
-						<td><?php get_option( \WCPay\WooPay\WooPay_Scheduler::INVALID_EXTENSIONS_FOUND_OPTION_NAME, false ) ? esc_html_e( 'Yes', 'woocommerce-payments' ) : esc_html_e( 'No', 'woocommerce-payments' ); ?></td>
+						<td data-export-label="WooPay Incompatible Extensions"><?php esc_html_e( 'WooPay Incompatible Extensions', 'poocommerce-payments' ); ?>:</td>
+						<td class="help"><?php echo wc_help_tip( esc_html__( 'Whether there are extensions active that are have known incompatibilities with the functioning of the new WooPay Express Checkout.', 'poocommerce-payments' ) ); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped, WordPress.Security.EscapeOutput.OutputNotEscaped */ ?></td>
+						<td><?php get_option( \WCPay\WooPay\WooPay_Scheduler::INVALID_EXTENSIONS_FOUND_OPTION_NAME, false ) ? esc_html_e( 'Yes', 'poocommerce-payments' ) : esc_html_e( 'No', 'poocommerce-payments' ); ?></td>
 					</tr>
 <?php endif; ?>
 
 					<tr>
-						<td data-export-label="Apple Pay / Google Pay"><?php esc_html_e( 'Apple Pay / Google Pay Express Checkout', 'woocommerce-payments' ); ?>:</td>
-						<td class="help"><?php echo wc_help_tip( esc_html__( 'Whether the store has Payment Request enabled or not.', 'woocommerce-payments' ) ); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped, WordPress.Security.EscapeOutput.OutputNotEscaped */ ?></td>
+						<td data-export-label="Apple Pay / Google Pay"><?php esc_html_e( 'Apple Pay / Google Pay Express Checkout', 'poocommerce-payments' ); ?>:</td>
+						<td class="help"><?php echo wc_help_tip( esc_html__( 'Whether the store has Payment Request enabled or not.', 'poocommerce-payments' ) ); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped, WordPress.Security.EscapeOutput.OutputNotEscaped */ ?></td>
 						<td>
 						<?php
 						$payment_request_enabled           = $this->gateway->is_payment_request_enabled();
 						$payment_request_enabled_locations = $this->get_express_checkout_method_locations( 'payment_request' );
 						$payment_request_enabled_locations = empty( $payment_request_enabled_locations ) ? 'no locations enabled' : implode( ',', $payment_request_enabled_locations );
-						echo esc_html( $payment_request_enabled ? __( 'Enabled', 'woocommerce-payments' ) . ' (' . $payment_request_enabled_locations . ')' : __( 'Disabled', 'woocommerce-payments' ) );
+						echo esc_html( $payment_request_enabled ? __( 'Enabled', 'poocommerce-payments' ) . ' (' . $payment_request_enabled_locations . ')' : __( 'Disabled', 'poocommerce-payments' ) );
 						?>
 						</td>
 					</tr>
 					<tr>
-						<td data-export-label="Fraud Protection Level"><?php esc_html_e( 'Fraud Protection Level', 'woocommerce-payments' ); ?>:</td>
-						<td class="help"><?php echo wc_help_tip( esc_html__( 'The current fraud protection level the payment gateway is using.', 'woocommerce-payments' ) ); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped, WordPress.Security.EscapeOutput.OutputNotEscaped */ ?></td>
+						<td data-export-label="Fraud Protection Level"><?php esc_html_e( 'Fraud Protection Level', 'poocommerce-payments' ); ?>:</td>
+						<td class="help"><?php echo wc_help_tip( esc_html__( 'The current fraud protection level the payment gateway is using.', 'poocommerce-payments' ) ); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped, WordPress.Security.EscapeOutput.OutputNotEscaped */ ?></td>
 						<td><?php echo esc_html( $this->gateway->get_option( 'current_protection_level' ) ); ?></td>
 					</tr>
 					<?php if ( $this->gateway->get_option( 'current_protection_level' ) === 'advanced' ) : ?>
 					<tr>
-						<td data-export-label="Enabled Fraud Filters"><?php esc_html_e( 'Enabled Fraud Filters', 'woocommerce-payments' ); ?>:</td>
-						<td class="help"><?php echo wc_help_tip( esc_html__( 'The advanced fraud protection filters currently enabled.', 'woocommerce-payments' ) ); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped, WordPress.Security.EscapeOutput.OutputNotEscaped */ ?></td>
+						<td data-export-label="Enabled Fraud Filters"><?php esc_html_e( 'Enabled Fraud Filters', 'poocommerce-payments' ); ?>:</td>
+						<td class="help"><?php echo wc_help_tip( esc_html__( 'The advanced fraud protection filters currently enabled.', 'poocommerce-payments' ) ); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped, WordPress.Security.EscapeOutput.OutputNotEscaped */ ?></td>
 						<td>
 							<?php
 							// Process the list.
@@ -557,31 +557,31 @@ class WC_Payments_Status {
 <?php endif; ?>
 
 					<tr>
-						<td data-export-label="Multi-currency"><?php esc_html_e( 'Multi-currency', 'woocommerce-payments' ); ?>:</td>
-						<td class="help"><?php echo wc_help_tip( esc_html__( 'Whether the store has the Multi-currency feature enabled or not.', 'woocommerce-payments' ) ); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped, WordPress.Security.EscapeOutput.OutputNotEscaped */ ?></td>
-						<td><?php WC_Payments_Features::is_customer_multi_currency_enabled() ? esc_html_e( 'Enabled', 'woocommerce-payments' ) : esc_html_e( 'Disabled', 'woocommerce-payments' ); ?></td>
+						<td data-export-label="Multi-currency"><?php esc_html_e( 'Multi-currency', 'poocommerce-payments' ); ?>:</td>
+						<td class="help"><?php echo wc_help_tip( esc_html__( 'Whether the store has the Multi-currency feature enabled or not.', 'poocommerce-payments' ) ); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped, WordPress.Security.EscapeOutput.OutputNotEscaped */ ?></td>
+						<td><?php WC_Payments_Features::is_customer_multi_currency_enabled() ? esc_html_e( 'Enabled', 'poocommerce-payments' ) : esc_html_e( 'Disabled', 'poocommerce-payments' ); ?></td>
 					</tr>
 					<tr>
-						<td data-export-label="Auth and Capture"><?php esc_html_e( 'Auth and Capture', 'woocommerce-payments' ); ?>:</td>
-						<td class="help"><?php echo wc_help_tip( esc_html__( 'Whether the store has the Auth & Capture feature enabled or not.', 'woocommerce-payments' ) ); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped, WordPress.Security.EscapeOutput.OutputNotEscaped */ ?></td>
+						<td data-export-label="Auth and Capture"><?php esc_html_e( 'Auth and Capture', 'poocommerce-payments' ); ?>:</td>
+						<td class="help"><?php echo wc_help_tip( esc_html__( 'Whether the store has the Auth & Capture feature enabled or not.', 'poocommerce-payments' ) ); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped, WordPress.Security.EscapeOutput.OutputNotEscaped */ ?></td>
 						<td>
 						<?php
 							$manual_capture_enabled = 'yes' === $this->gateway->get_option( 'manual_capture' );
-							echo $manual_capture_enabled ? esc_html__( 'Enabled', 'woocommerce-payments' ) : esc_html__( 'Disabled', 'woocommerce-payments' );
+							echo $manual_capture_enabled ? esc_html__( 'Enabled', 'poocommerce-payments' ) : esc_html__( 'Disabled', 'poocommerce-payments' );
 						?>
 						</td>
 					</tr>
 					<tr>
-						<td data-export-label="Documents"><?php esc_html_e( 'Documents', 'woocommerce-payments' ); ?>:</td>
-						<td class="help"><?php echo wc_help_tip( esc_html__( 'Whether the tax documents section is enabled or not.', 'woocommerce-payments' ) ); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped, WordPress.Security.EscapeOutput.OutputNotEscaped */ ?></td>
-						<td><?php WC_Payments_Features::is_documents_section_enabled() ? esc_html_e( 'Enabled', 'woocommerce-payments' ) : esc_html_e( 'Disabled', 'woocommerce-payments' ); ?></td>
+						<td data-export-label="Documents"><?php esc_html_e( 'Documents', 'poocommerce-payments' ); ?>:</td>
+						<td class="help"><?php echo wc_help_tip( esc_html__( 'Whether the tax documents section is enabled or not.', 'poocommerce-payments' ) ); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped, WordPress.Security.EscapeOutput.OutputNotEscaped */ ?></td>
+						<td><?php WC_Payments_Features::is_documents_section_enabled() ? esc_html_e( 'Enabled', 'poocommerce-payments' ) : esc_html_e( 'Disabled', 'poocommerce-payments' ); ?></td>
 					</tr>
 <?php endif; // Gateway connected. ?>
 <?php endif; // Connected to WPCOM. ?>
 			<tr>
-				<td data-export-label="Logging"><?php esc_html_e( 'Logging', 'woocommerce-payments' ); ?>:</td>
-				<td class="help"><?php echo wc_help_tip( esc_html__( 'Whether debug logging is enabled and working or not.', 'woocommerce-payments' ) ); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped, WordPress.Security.EscapeOutput.OutputNotEscaped */ ?></td>
-				<td><?php \WCPay\Logger::can_log() ? esc_html_e( 'Enabled', 'woocommerce-payments' ) : esc_html_e( 'Disabled', 'woocommerce-payments' ); ?></td>
+				<td data-export-label="Logging"><?php esc_html_e( 'Logging', 'poocommerce-payments' ); ?>:</td>
+				<td class="help"><?php echo wc_help_tip( esc_html__( 'Whether debug logging is enabled and working or not.', 'poocommerce-payments' ) ); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped, WordPress.Security.EscapeOutput.OutputNotEscaped */ ?></td>
+				<td><?php \WCPay\Logger::can_log() ? esc_html_e( 'Enabled', 'poocommerce-payments' ) : esc_html_e( 'Disabled', 'poocommerce-payments' ); ?></td>
 			</tr>
 		</tbody>
 	</table>

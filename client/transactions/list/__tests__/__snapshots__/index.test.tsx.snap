@@ -155,11 +155,11 @@ exports[`Transactions list renders correctly when can filter by several currenci
 
 <div>
   <div
-    class=" woocommerce-payments-page"
+    class=" poocommerce-payments-page"
     id=""
   >
     <div
-      class="woocommerce-filters-transactions"
+      class="poocommerce-filters-transactions"
     >
       <h2
         class="screen-reader-text"
@@ -167,16 +167,16 @@ exports[`Transactions list renders correctly when can filter by several currenci
         Filters
       </h2>
       <div
-        class="woocommerce-filters"
+        class="poocommerce-filters"
       >
         <div
-          class="woocommerce-filters__basic-filters"
+          class="poocommerce-filters__basic-filters"
         >
           <div
-            class="woocommerce-filters-filter"
+            class="poocommerce-filters-filter"
           >
             <span
-              class="woocommerce-filters-label"
+              class="poocommerce-filters-label"
             >
               Deposit currency
               :
@@ -187,11 +187,11 @@ exports[`Transactions list renders correctly when can filter by several currenci
             >
               <button
                 aria-expanded="false"
-                class="components-button woocommerce-dropdown-button"
+                class="components-button poocommerce-dropdown-button"
                 type="button"
               >
                 <div
-                  class="woocommerce-dropdown-button__labels"
+                  class="poocommerce-dropdown-button__labels"
                 >
                   <span>
                     All currencies
@@ -201,10 +201,10 @@ exports[`Transactions list renders correctly when can filter by several currenci
             </div>
           </div>
           <div
-            class="woocommerce-filters-filter"
+            class="poocommerce-filters-filter"
           >
             <span
-              class="woocommerce-filters-label"
+              class="poocommerce-filters-label"
             >
               Show
               :
@@ -215,11 +215,11 @@ exports[`Transactions list renders correctly when can filter by several currenci
             >
               <button
                 aria-expanded="false"
-                class="components-button woocommerce-dropdown-button"
+                class="components-button poocommerce-dropdown-button"
                 type="button"
               >
                 <div
-                  class="woocommerce-dropdown-button__labels"
+                  class="poocommerce-dropdown-button__labels"
                 >
                   <span>
                     All transactions
@@ -232,7 +232,7 @@ exports[`Transactions list renders correctly when can filter by several currenci
       </div>
     </div>
     <div
-      class="components-surface components-card woocommerce-table transactions-list woocommerce-report-table has-search has-actions has-menu emotion-0 emotion-1"
+      class="components-surface components-card poocommerce-table transactions-list poocommerce-report-table has-search has-actions has-menu emotion-0 emotion-1"
       data-wp-c16t="true"
       data-wp-component="Card"
     >
@@ -252,19 +252,19 @@ exports[`Transactions list renders correctly when can filter by several currenci
             Transactions
           </h2>
           <div
-            class="woocommerce-table__actions"
+            class="poocommerce-table__actions"
           >
             <div>
               <div>
                 <div
-                  class="woocommerce-select-control woocommerce-search is-searchable"
+                  class="poocommerce-select-control poocommerce-search is-searchable"
                 >
                   <div
-                    class="components-base-control woocommerce-select-control__control empty"
+                    class="components-base-control poocommerce-select-control__control empty"
                   >
                     <svg
                       aria-hidden="true"
-                      class="woocommerce-select-control__control-icon"
+                      class="poocommerce-select-control__control-icon"
                       focusable="false"
                       height="24"
                       viewBox="0 0 24 24"
@@ -283,8 +283,8 @@ exports[`Transactions list renders correctly when can filter by several currenci
                         aria-expanded="false"
                         aria-haspopup="true"
                         autocomplete="off"
-                        class="woocommerce-select-control__control-input"
-                        id="woocommerce-select-control-15__control-input"
+                        class="poocommerce-select-control__control-input"
+                        id="poocommerce-select-control-15__control-input"
                         placeholder=""
                         role="combobox"
                         type="text"
@@ -302,7 +302,7 @@ exports[`Transactions list renders correctly when can filter by several currenci
               </div>
             </div>
             <button
-              class="components-button woocommerce-table__download-button is-next-40px-default-size"
+              class="components-button poocommerce-table__download-button is-next-40px-default-size"
               type="button"
             >
               <svg
@@ -323,14 +323,14 @@ exports[`Transactions list renders correctly when can filter by several currenci
                 />
               </svg>
               <span
-                class="woocommerce-table__download-button__label"
+                class="poocommerce-table__download-button__label"
               >
                 Export
               </span>
             </button>
           </div>
           <div
-            class="woocommerce-ellipsis-menu"
+            class="poocommerce-ellipsis-menu"
           >
             <div
               class="components-dropdown"
@@ -338,7 +338,7 @@ exports[`Transactions list renders correctly when can filter by several currenci
             >
               <button
                 aria-expanded="false"
-                class="components-button woocommerce-ellipsis-menu__toggle"
+                class="components-button poocommerce-ellipsis-menu__toggle"
                 title="Choose which values to display"
                 type="button"
               >
@@ -366,12 +366,12 @@ exports[`Transactions list renders correctly when can filter by several currenci
         >
           <div
             aria-labelledby="caption-15"
-            class="woocommerce-table__table"
+            class="poocommerce-table__table"
             role="group"
           >
             <table>
               <caption
-                class="woocommerce-table__caption screen-reader-text"
+                class="poocommerce-table__caption screen-reader-text"
                 id="caption-15"
               >
                 Transactions
@@ -380,7 +380,7 @@ exports[`Transactions list renders correctly when can filter by several currenci
                 <tr>
                   <th
                     aria-sort="descending"
-                    class="woocommerce-table__header date-time is-left-aligned is-sortable is-sorted"
+                    class="poocommerce-table__header date-time is-left-aligned is-sortable is-sorted"
                     role="columnheader"
                     scope="col"
                   >
@@ -420,7 +420,7 @@ exports[`Transactions list renders correctly when can filter by several currenci
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-left-aligned"
+                    class="poocommerce-table__header is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -436,7 +436,7 @@ exports[`Transactions list renders correctly when can filter by several currenci
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-left-aligned"
+                    class="poocommerce-table__header is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -453,7 +453,7 @@ exports[`Transactions list renders correctly when can filter by several currenci
                   </th>
                   <th
                     aria-sort="none"
-                    class="woocommerce-table__header is-sortable is-numeric"
+                    class="poocommerce-table__header is-sortable is-numeric"
                     role="columnheader"
                     scope="col"
                   >
@@ -494,7 +494,7 @@ exports[`Transactions list renders correctly when can filter by several currenci
                   </th>
                   <th
                     aria-sort="none"
-                    class="woocommerce-table__header is-sortable is-numeric"
+                    class="poocommerce-table__header is-sortable is-numeric"
                     role="columnheader"
                     scope="col"
                   >
@@ -535,7 +535,7 @@ exports[`Transactions list renders correctly when can filter by several currenci
                   </th>
                   <th
                     aria-sort="none"
-                    class="woocommerce-table__header is-sortable is-numeric"
+                    class="poocommerce-table__header is-sortable is-numeric"
                     role="columnheader"
                     scope="col"
                   >
@@ -575,7 +575,7 @@ exports[`Transactions list renders correctly when can filter by several currenci
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-left-aligned"
+                    class="poocommerce-table__header is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -591,7 +591,7 @@ exports[`Transactions list renders correctly when can filter by several currenci
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-center-aligned is-left-aligned"
+                    class="poocommerce-table__header is-center-aligned is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -607,7 +607,7 @@ exports[`Transactions list renders correctly when can filter by several currenci
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-left-aligned"
+                    class="poocommerce-table__header is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -623,7 +623,7 @@ exports[`Transactions list renders correctly when can filter by several currenci
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header deposit is-left-aligned"
+                    class="poocommerce-table__header deposit is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -641,11 +641,11 @@ exports[`Transactions list renders correctly when can filter by several currenci
                 </tr>
                 <tr>
                   <th
-                    class="woocommerce-table__item date-time is-left-aligned is-sorted"
+                    class="poocommerce-table__item date-time is-left-aligned is-sorted"
                     scope="row"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_j23jda9JJa&transaction_type=refund"
                       tabindex="-1"
@@ -654,10 +654,10 @@ exports[`Transactions list renders correctly when can filter by several currenci
                     </a>
                   </th>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_j23jda9JJa&transaction_type=refund"
                       tabindex="-1"
@@ -666,10 +666,10 @@ exports[`Transactions list renders correctly when can filter by several currenci
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_j23jda9JJa&transaction_type=refund"
                       tabindex="-1"
@@ -678,10 +678,10 @@ exports[`Transactions list renders correctly when can filter by several currenci
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_j23jda9JJa&transaction_type=refund"
                       tabindex="-1"
@@ -690,10 +690,10 @@ exports[`Transactions list renders correctly when can filter by several currenci
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_j23jda9JJa&transaction_type=refund"
                       tabindex="-1"
@@ -702,10 +702,10 @@ exports[`Transactions list renders correctly when can filter by several currenci
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_j23jda9JJa&transaction_type=refund"
                       tabindex="-1"
@@ -714,7 +714,7 @@ exports[`Transactions list renders correctly when can filter by several currenci
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
                       data-link-type="external"
@@ -724,10 +724,10 @@ exports[`Transactions list renders correctly when can filter by several currenci
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-center-aligned is-left-aligned"
+                    class="poocommerce-table__item is-center-aligned is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_j23jda9JJa&transaction_type=refund"
                       tabindex="-1"
@@ -755,7 +755,7 @@ exports[`Transactions list renders correctly when can filter by several currenci
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
                       data-link-type="wc-admin"
@@ -765,7 +765,7 @@ exports[`Transactions list renders correctly when can filter by several currenci
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item deposit is-left-aligned"
+                    class="poocommerce-table__item deposit is-left-aligned"
                   >
                     Future payout
                     <button
@@ -799,11 +799,11 @@ exports[`Transactions list renders correctly when can filter by several currenci
                 </tr>
                 <tr>
                   <th
-                    class="woocommerce-table__item date-time is-left-aligned is-sorted"
+                    class="poocommerce-table__item date-time is-left-aligned is-sorted"
                     scope="row"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_oa9kaKaa8&transaction_type=charge"
                       tabindex="-1"
@@ -812,10 +812,10 @@ exports[`Transactions list renders correctly when can filter by several currenci
                     </a>
                   </th>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_oa9kaKaa8&transaction_type=charge"
                       tabindex="-1"
@@ -824,10 +824,10 @@ exports[`Transactions list renders correctly when can filter by several currenci
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_oa9kaKaa8&transaction_type=charge"
                       tabindex="-1"
@@ -836,10 +836,10 @@ exports[`Transactions list renders correctly when can filter by several currenci
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_oa9kaKaa8&transaction_type=charge"
                       tabindex="-1"
@@ -872,10 +872,10 @@ exports[`Transactions list renders correctly when can filter by several currenci
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_oa9kaKaa8&transaction_type=charge"
                       tabindex="-1"
@@ -884,10 +884,10 @@ exports[`Transactions list renders correctly when can filter by several currenci
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_oa9kaKaa8&transaction_type=charge"
                       tabindex="-1"
@@ -896,7 +896,7 @@ exports[`Transactions list renders correctly when can filter by several currenci
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
                       data-link-type="external"
@@ -906,10 +906,10 @@ exports[`Transactions list renders correctly when can filter by several currenci
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-center-aligned is-left-aligned"
+                    class="poocommerce-table__item is-center-aligned is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_oa9kaKaa8&transaction_type=charge"
                       tabindex="-1"
@@ -937,7 +937,7 @@ exports[`Transactions list renders correctly when can filter by several currenci
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
                       data-link-type="wc-admin"
@@ -947,7 +947,7 @@ exports[`Transactions list renders correctly when can filter by several currenci
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item deposit is-left-aligned"
+                    class="poocommerce-table__item deposit is-left-aligned"
                   >
                     <a
                       data-link-type="wc-admin"
@@ -959,11 +959,11 @@ exports[`Transactions list renders correctly when can filter by several currenci
                 </tr>
                 <tr>
                   <th
-                    class="woocommerce-table__item date-time is-left-aligned is-sorted"
+                    class="poocommerce-table__item date-time is-left-aligned is-sorted"
                     scope="row"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=ch_rskkmpe46yu&transaction_id=txn_mmtr89gjh5&transaction_type=charge"
                       tabindex="-1"
@@ -972,10 +972,10 @@ exports[`Transactions list renders correctly when can filter by several currenci
                     </a>
                   </th>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=ch_rskkmpe46yu&transaction_id=txn_mmtr89gjh5&transaction_type=charge"
                       tabindex="-1"
@@ -984,10 +984,10 @@ exports[`Transactions list renders correctly when can filter by several currenci
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=ch_rskkmpe46yu&transaction_id=txn_mmtr89gjh5&transaction_type=charge"
                       tabindex="-1"
@@ -1001,17 +1001,17 @@ exports[`Transactions list renders correctly when can filter by several currenci
                           class="wcpay-tooltip__content-wrapper"
                         >
                           <span
-                            class="woocommerce-taptopay__icon"
+                            class="poocommerce-taptopay__icon"
                           />
                         </div>
                       </button>
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=ch_rskkmpe46yu&transaction_id=txn_mmtr89gjh5&transaction_type=charge"
                       tabindex="-1"
@@ -1020,10 +1020,10 @@ exports[`Transactions list renders correctly when can filter by several currenci
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=ch_rskkmpe46yu&transaction_id=txn_mmtr89gjh5&transaction_type=charge"
                       tabindex="-1"
@@ -1032,10 +1032,10 @@ exports[`Transactions list renders correctly when can filter by several currenci
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=ch_rskkmpe46yu&transaction_id=txn_mmtr89gjh5&transaction_type=charge"
                       tabindex="-1"
@@ -1044,7 +1044,7 @@ exports[`Transactions list renders correctly when can filter by several currenci
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
                       data-link-type="external"
@@ -1054,10 +1054,10 @@ exports[`Transactions list renders correctly when can filter by several currenci
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-center-aligned is-left-aligned"
+                    class="poocommerce-table__item is-center-aligned is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=ch_rskkmpe46yu&transaction_id=txn_mmtr89gjh5&transaction_type=charge"
                       tabindex="-1"
@@ -1085,7 +1085,7 @@ exports[`Transactions list renders correctly when can filter by several currenci
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
                       data-link-type="wc-admin"
@@ -1095,7 +1095,7 @@ exports[`Transactions list renders correctly when can filter by several currenci
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item deposit is-left-aligned"
+                    class="poocommerce-table__item deposit is-left-aligned"
                   >
                     Future payout
                     <button
@@ -1137,19 +1137,19 @@ exports[`Transactions list renders correctly when can filter by several currenci
           data-wp-component="CardFooter"
         >
           <ul
-            class="woocommerce-table__summary"
+            class="poocommerce-table__summary"
             role="complementary"
           >
             <li
-              class="woocommerce-table__summary-item"
+              class="poocommerce-table__summary-item"
             >
               <span
-                class="woocommerce-table__summary-value"
+                class="poocommerce-table__summary-value"
               >
                 10
               </span>
               <span
-                class="woocommerce-table__summary-label"
+                class="poocommerce-table__summary-label"
               >
                 transactions
               </span>
@@ -1329,11 +1329,11 @@ exports[`Transactions list renders correctly when filtered by currency 1`] = `
 
 <div>
   <div
-    class=" woocommerce-payments-page"
+    class=" poocommerce-payments-page"
     id=""
   >
     <div
-      class="woocommerce-filters-transactions"
+      class="poocommerce-filters-transactions"
     >
       <h2
         class="screen-reader-text"
@@ -1341,16 +1341,16 @@ exports[`Transactions list renders correctly when filtered by currency 1`] = `
         Filters
       </h2>
       <div
-        class="woocommerce-filters"
+        class="poocommerce-filters"
       >
         <div
-          class="woocommerce-filters__basic-filters"
+          class="poocommerce-filters__basic-filters"
         >
           <div
-            class="woocommerce-filters-filter"
+            class="poocommerce-filters-filter"
           >
             <span
-              class="woocommerce-filters-label"
+              class="poocommerce-filters-label"
             >
               Show
               :
@@ -1361,11 +1361,11 @@ exports[`Transactions list renders correctly when filtered by currency 1`] = `
             >
               <button
                 aria-expanded="false"
-                class="components-button woocommerce-dropdown-button"
+                class="components-button poocommerce-dropdown-button"
                 type="button"
               >
                 <div
-                  class="woocommerce-dropdown-button__labels"
+                  class="poocommerce-dropdown-button__labels"
                 >
                   <span>
                     All transactions
@@ -1378,7 +1378,7 @@ exports[`Transactions list renders correctly when filtered by currency 1`] = `
       </div>
     </div>
     <div
-      class="components-surface components-card woocommerce-table transactions-list woocommerce-report-table has-search has-actions has-menu emotion-0 emotion-1"
+      class="components-surface components-card poocommerce-table transactions-list poocommerce-report-table has-search has-actions has-menu emotion-0 emotion-1"
       data-wp-c16t="true"
       data-wp-component="Card"
     >
@@ -1398,19 +1398,19 @@ exports[`Transactions list renders correctly when filtered by currency 1`] = `
             Transactions
           </h2>
           <div
-            class="woocommerce-table__actions"
+            class="poocommerce-table__actions"
           >
             <div>
               <div>
                 <div
-                  class="woocommerce-select-control woocommerce-search is-searchable"
+                  class="poocommerce-select-control poocommerce-search is-searchable"
                 >
                   <div
-                    class="components-base-control woocommerce-select-control__control empty"
+                    class="components-base-control poocommerce-select-control__control empty"
                   >
                     <svg
                       aria-hidden="true"
-                      class="woocommerce-select-control__control-icon"
+                      class="poocommerce-select-control__control-icon"
                       focusable="false"
                       height="24"
                       viewBox="0 0 24 24"
@@ -1429,8 +1429,8 @@ exports[`Transactions list renders correctly when filtered by currency 1`] = `
                         aria-expanded="false"
                         aria-haspopup="true"
                         autocomplete="off"
-                        class="woocommerce-select-control__control-input"
-                        id="woocommerce-select-control-16__control-input"
+                        class="poocommerce-select-control__control-input"
+                        id="poocommerce-select-control-16__control-input"
                         placeholder=""
                         role="combobox"
                         type="text"
@@ -1448,7 +1448,7 @@ exports[`Transactions list renders correctly when filtered by currency 1`] = `
               </div>
             </div>
             <button
-              class="components-button woocommerce-table__download-button is-next-40px-default-size"
+              class="components-button poocommerce-table__download-button is-next-40px-default-size"
               type="button"
             >
               <svg
@@ -1469,14 +1469,14 @@ exports[`Transactions list renders correctly when filtered by currency 1`] = `
                 />
               </svg>
               <span
-                class="woocommerce-table__download-button__label"
+                class="poocommerce-table__download-button__label"
               >
                 Export
               </span>
             </button>
           </div>
           <div
-            class="woocommerce-ellipsis-menu"
+            class="poocommerce-ellipsis-menu"
           >
             <div
               class="components-dropdown"
@@ -1484,7 +1484,7 @@ exports[`Transactions list renders correctly when filtered by currency 1`] = `
             >
               <button
                 aria-expanded="false"
-                class="components-button woocommerce-ellipsis-menu__toggle"
+                class="components-button poocommerce-ellipsis-menu__toggle"
                 title="Choose which values to display"
                 type="button"
               >
@@ -1512,12 +1512,12 @@ exports[`Transactions list renders correctly when filtered by currency 1`] = `
         >
           <div
             aria-labelledby="caption-16"
-            class="woocommerce-table__table"
+            class="poocommerce-table__table"
             role="group"
           >
             <table>
               <caption
-                class="woocommerce-table__caption screen-reader-text"
+                class="poocommerce-table__caption screen-reader-text"
                 id="caption-16"
               >
                 Transactions
@@ -1526,7 +1526,7 @@ exports[`Transactions list renders correctly when filtered by currency 1`] = `
                 <tr>
                   <th
                     aria-sort="descending"
-                    class="woocommerce-table__header date-time is-left-aligned is-sortable is-sorted"
+                    class="poocommerce-table__header date-time is-left-aligned is-sortable is-sorted"
                     role="columnheader"
                     scope="col"
                   >
@@ -1566,7 +1566,7 @@ exports[`Transactions list renders correctly when filtered by currency 1`] = `
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-left-aligned"
+                    class="poocommerce-table__header is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -1582,7 +1582,7 @@ exports[`Transactions list renders correctly when filtered by currency 1`] = `
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-left-aligned"
+                    class="poocommerce-table__header is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -1599,7 +1599,7 @@ exports[`Transactions list renders correctly when filtered by currency 1`] = `
                   </th>
                   <th
                     aria-sort="none"
-                    class="woocommerce-table__header is-sortable is-numeric"
+                    class="poocommerce-table__header is-sortable is-numeric"
                     role="columnheader"
                     scope="col"
                   >
@@ -1640,7 +1640,7 @@ exports[`Transactions list renders correctly when filtered by currency 1`] = `
                   </th>
                   <th
                     aria-sort="none"
-                    class="woocommerce-table__header is-sortable is-numeric"
+                    class="poocommerce-table__header is-sortable is-numeric"
                     role="columnheader"
                     scope="col"
                   >
@@ -1681,7 +1681,7 @@ exports[`Transactions list renders correctly when filtered by currency 1`] = `
                   </th>
                   <th
                     aria-sort="none"
-                    class="woocommerce-table__header is-sortable is-numeric"
+                    class="poocommerce-table__header is-sortable is-numeric"
                     role="columnheader"
                     scope="col"
                   >
@@ -1721,7 +1721,7 @@ exports[`Transactions list renders correctly when filtered by currency 1`] = `
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-left-aligned"
+                    class="poocommerce-table__header is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -1737,7 +1737,7 @@ exports[`Transactions list renders correctly when filtered by currency 1`] = `
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-center-aligned is-left-aligned"
+                    class="poocommerce-table__header is-center-aligned is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -1753,7 +1753,7 @@ exports[`Transactions list renders correctly when filtered by currency 1`] = `
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-left-aligned"
+                    class="poocommerce-table__header is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -1769,7 +1769,7 @@ exports[`Transactions list renders correctly when filtered by currency 1`] = `
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header deposit is-left-aligned"
+                    class="poocommerce-table__header deposit is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -1787,11 +1787,11 @@ exports[`Transactions list renders correctly when filtered by currency 1`] = `
                 </tr>
                 <tr>
                   <th
-                    class="woocommerce-table__item date-time is-left-aligned is-sorted"
+                    class="poocommerce-table__item date-time is-left-aligned is-sorted"
                     scope="row"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_j23jda9JJa&transaction_type=refund"
                       tabindex="-1"
@@ -1800,10 +1800,10 @@ exports[`Transactions list renders correctly when filtered by currency 1`] = `
                     </a>
                   </th>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_j23jda9JJa&transaction_type=refund"
                       tabindex="-1"
@@ -1812,10 +1812,10 @@ exports[`Transactions list renders correctly when filtered by currency 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_j23jda9JJa&transaction_type=refund"
                       tabindex="-1"
@@ -1824,10 +1824,10 @@ exports[`Transactions list renders correctly when filtered by currency 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_j23jda9JJa&transaction_type=refund"
                       tabindex="-1"
@@ -1836,10 +1836,10 @@ exports[`Transactions list renders correctly when filtered by currency 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_j23jda9JJa&transaction_type=refund"
                       tabindex="-1"
@@ -1848,10 +1848,10 @@ exports[`Transactions list renders correctly when filtered by currency 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_j23jda9JJa&transaction_type=refund"
                       tabindex="-1"
@@ -1860,7 +1860,7 @@ exports[`Transactions list renders correctly when filtered by currency 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
                       data-link-type="external"
@@ -1870,10 +1870,10 @@ exports[`Transactions list renders correctly when filtered by currency 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-center-aligned is-left-aligned"
+                    class="poocommerce-table__item is-center-aligned is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_j23jda9JJa&transaction_type=refund"
                       tabindex="-1"
@@ -1901,7 +1901,7 @@ exports[`Transactions list renders correctly when filtered by currency 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
                       data-link-type="wc-admin"
@@ -1911,7 +1911,7 @@ exports[`Transactions list renders correctly when filtered by currency 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item deposit is-left-aligned"
+                    class="poocommerce-table__item deposit is-left-aligned"
                   >
                     Future payout
                     <button
@@ -1945,11 +1945,11 @@ exports[`Transactions list renders correctly when filtered by currency 1`] = `
                 </tr>
                 <tr>
                   <th
-                    class="woocommerce-table__item date-time is-left-aligned is-sorted"
+                    class="poocommerce-table__item date-time is-left-aligned is-sorted"
                     scope="row"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_oa9kaKaa8&transaction_type=charge"
                       tabindex="-1"
@@ -1958,10 +1958,10 @@ exports[`Transactions list renders correctly when filtered by currency 1`] = `
                     </a>
                   </th>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_oa9kaKaa8&transaction_type=charge"
                       tabindex="-1"
@@ -1970,10 +1970,10 @@ exports[`Transactions list renders correctly when filtered by currency 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_oa9kaKaa8&transaction_type=charge"
                       tabindex="-1"
@@ -1982,10 +1982,10 @@ exports[`Transactions list renders correctly when filtered by currency 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_oa9kaKaa8&transaction_type=charge"
                       tabindex="-1"
@@ -2018,10 +2018,10 @@ exports[`Transactions list renders correctly when filtered by currency 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_oa9kaKaa8&transaction_type=charge"
                       tabindex="-1"
@@ -2030,10 +2030,10 @@ exports[`Transactions list renders correctly when filtered by currency 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_oa9kaKaa8&transaction_type=charge"
                       tabindex="-1"
@@ -2042,7 +2042,7 @@ exports[`Transactions list renders correctly when filtered by currency 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
                       data-link-type="external"
@@ -2052,10 +2052,10 @@ exports[`Transactions list renders correctly when filtered by currency 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-center-aligned is-left-aligned"
+                    class="poocommerce-table__item is-center-aligned is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_oa9kaKaa8&transaction_type=charge"
                       tabindex="-1"
@@ -2083,7 +2083,7 @@ exports[`Transactions list renders correctly when filtered by currency 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
                       data-link-type="wc-admin"
@@ -2093,7 +2093,7 @@ exports[`Transactions list renders correctly when filtered by currency 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item deposit is-left-aligned"
+                    class="poocommerce-table__item deposit is-left-aligned"
                   >
                     <a
                       data-link-type="wc-admin"
@@ -2105,11 +2105,11 @@ exports[`Transactions list renders correctly when filtered by currency 1`] = `
                 </tr>
                 <tr>
                   <th
-                    class="woocommerce-table__item date-time is-left-aligned is-sorted"
+                    class="poocommerce-table__item date-time is-left-aligned is-sorted"
                     scope="row"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=ch_rskkmpe46yu&transaction_id=txn_mmtr89gjh5&transaction_type=charge"
                       tabindex="-1"
@@ -2118,10 +2118,10 @@ exports[`Transactions list renders correctly when filtered by currency 1`] = `
                     </a>
                   </th>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=ch_rskkmpe46yu&transaction_id=txn_mmtr89gjh5&transaction_type=charge"
                       tabindex="-1"
@@ -2130,10 +2130,10 @@ exports[`Transactions list renders correctly when filtered by currency 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=ch_rskkmpe46yu&transaction_id=txn_mmtr89gjh5&transaction_type=charge"
                       tabindex="-1"
@@ -2147,17 +2147,17 @@ exports[`Transactions list renders correctly when filtered by currency 1`] = `
                           class="wcpay-tooltip__content-wrapper"
                         >
                           <span
-                            class="woocommerce-taptopay__icon"
+                            class="poocommerce-taptopay__icon"
                           />
                         </div>
                       </button>
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=ch_rskkmpe46yu&transaction_id=txn_mmtr89gjh5&transaction_type=charge"
                       tabindex="-1"
@@ -2166,10 +2166,10 @@ exports[`Transactions list renders correctly when filtered by currency 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=ch_rskkmpe46yu&transaction_id=txn_mmtr89gjh5&transaction_type=charge"
                       tabindex="-1"
@@ -2178,10 +2178,10 @@ exports[`Transactions list renders correctly when filtered by currency 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=ch_rskkmpe46yu&transaction_id=txn_mmtr89gjh5&transaction_type=charge"
                       tabindex="-1"
@@ -2190,7 +2190,7 @@ exports[`Transactions list renders correctly when filtered by currency 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
                       data-link-type="external"
@@ -2200,10 +2200,10 @@ exports[`Transactions list renders correctly when filtered by currency 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-center-aligned is-left-aligned"
+                    class="poocommerce-table__item is-center-aligned is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=ch_rskkmpe46yu&transaction_id=txn_mmtr89gjh5&transaction_type=charge"
                       tabindex="-1"
@@ -2231,7 +2231,7 @@ exports[`Transactions list renders correctly when filtered by currency 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
                       data-link-type="wc-admin"
@@ -2241,7 +2241,7 @@ exports[`Transactions list renders correctly when filtered by currency 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item deposit is-left-aligned"
+                    class="poocommerce-table__item deposit is-left-aligned"
                   >
                     Future payout
                     <button
@@ -2283,61 +2283,61 @@ exports[`Transactions list renders correctly when filtered by currency 1`] = `
           data-wp-component="CardFooter"
         >
           <ul
-            class="woocommerce-table__summary"
+            class="poocommerce-table__summary"
             role="complementary"
           >
             <li
-              class="woocommerce-table__summary-item"
+              class="poocommerce-table__summary-item"
             >
               <span
-                class="woocommerce-table__summary-value"
+                class="poocommerce-table__summary-value"
               >
                 10
               </span>
               <span
-                class="woocommerce-table__summary-label"
+                class="poocommerce-table__summary-label"
               >
                 transactions
               </span>
             </li>
             <li
-              class="woocommerce-table__summary-item"
+              class="poocommerce-table__summary-item"
             >
               <span
-                class="woocommerce-table__summary-value"
+                class="poocommerce-table__summary-value"
               >
                 $10.00
               </span>
               <span
-                class="woocommerce-table__summary-label"
+                class="poocommerce-table__summary-label"
               >
                 total
               </span>
             </li>
             <li
-              class="woocommerce-table__summary-item"
+              class="poocommerce-table__summary-item"
             >
               <span
-                class="woocommerce-table__summary-value"
+                class="poocommerce-table__summary-value"
               >
                 $1.00
               </span>
               <span
-                class="woocommerce-table__summary-label"
+                class="poocommerce-table__summary-label"
               >
                 fees
               </span>
             </li>
             <li
-              class="woocommerce-table__summary-item"
+              class="poocommerce-table__summary-item"
             >
               <span
-                class="woocommerce-table__summary-value"
+                class="poocommerce-table__summary-value"
               >
                 $9.00
               </span>
               <span
-                class="woocommerce-table__summary-label"
+                class="poocommerce-table__summary-label"
               >
                 net
               </span>
@@ -2517,11 +2517,11 @@ exports[`Transactions list renders correctly when filtered by payout 1`] = `
 
 <div>
   <div
-    class=" woocommerce-payments-page"
+    class=" poocommerce-payments-page"
     id=""
   >
     <div
-      class="components-surface components-card woocommerce-table transactions-list woocommerce-report-table has-search has-actions has-menu emotion-0 emotion-1"
+      class="components-surface components-card poocommerce-table transactions-list poocommerce-report-table has-search has-actions has-menu emotion-0 emotion-1"
       data-wp-c16t="true"
       data-wp-component="Card"
     >
@@ -2541,19 +2541,19 @@ exports[`Transactions list renders correctly when filtered by payout 1`] = `
             Transactions
           </h2>
           <div
-            class="woocommerce-table__actions"
+            class="poocommerce-table__actions"
           >
             <div>
               <div>
                 <div
-                  class="woocommerce-select-control woocommerce-search is-searchable"
+                  class="poocommerce-select-control poocommerce-search is-searchable"
                 >
                   <div
-                    class="components-base-control woocommerce-select-control__control empty"
+                    class="components-base-control poocommerce-select-control__control empty"
                   >
                     <svg
                       aria-hidden="true"
-                      class="woocommerce-select-control__control-icon"
+                      class="poocommerce-select-control__control-icon"
                       focusable="false"
                       height="24"
                       viewBox="0 0 24 24"
@@ -2572,8 +2572,8 @@ exports[`Transactions list renders correctly when filtered by payout 1`] = `
                         aria-expanded="false"
                         aria-haspopup="true"
                         autocomplete="off"
-                        class="woocommerce-select-control__control-input"
-                        id="woocommerce-select-control-0__control-input"
+                        class="poocommerce-select-control__control-input"
+                        id="poocommerce-select-control-0__control-input"
                         placeholder=""
                         role="combobox"
                         type="text"
@@ -2591,7 +2591,7 @@ exports[`Transactions list renders correctly when filtered by payout 1`] = `
               </div>
             </div>
             <button
-              class="components-button woocommerce-table__download-button is-next-40px-default-size"
+              class="components-button poocommerce-table__download-button is-next-40px-default-size"
               type="button"
             >
               <svg
@@ -2612,14 +2612,14 @@ exports[`Transactions list renders correctly when filtered by payout 1`] = `
                 />
               </svg>
               <span
-                class="woocommerce-table__download-button__label"
+                class="poocommerce-table__download-button__label"
               >
                 Export
               </span>
             </button>
           </div>
           <div
-            class="woocommerce-ellipsis-menu"
+            class="poocommerce-ellipsis-menu"
           >
             <div
               class="components-dropdown"
@@ -2627,7 +2627,7 @@ exports[`Transactions list renders correctly when filtered by payout 1`] = `
             >
               <button
                 aria-expanded="false"
-                class="components-button woocommerce-ellipsis-menu__toggle"
+                class="components-button poocommerce-ellipsis-menu__toggle"
                 title="Choose which values to display"
                 type="button"
               >
@@ -2655,12 +2655,12 @@ exports[`Transactions list renders correctly when filtered by payout 1`] = `
         >
           <div
             aria-labelledby="caption-0"
-            class="woocommerce-table__table"
+            class="poocommerce-table__table"
             role="group"
           >
             <table>
               <caption
-                class="woocommerce-table__caption screen-reader-text"
+                class="poocommerce-table__caption screen-reader-text"
                 id="caption-0"
               >
                 Transactions
@@ -2669,7 +2669,7 @@ exports[`Transactions list renders correctly when filtered by payout 1`] = `
                 <tr>
                   <th
                     aria-sort="descending"
-                    class="woocommerce-table__header date-time is-left-aligned is-sortable is-sorted"
+                    class="poocommerce-table__header date-time is-left-aligned is-sortable is-sorted"
                     role="columnheader"
                     scope="col"
                   >
@@ -2709,7 +2709,7 @@ exports[`Transactions list renders correctly when filtered by payout 1`] = `
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-left-aligned"
+                    class="poocommerce-table__header is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -2725,7 +2725,7 @@ exports[`Transactions list renders correctly when filtered by payout 1`] = `
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-left-aligned"
+                    class="poocommerce-table__header is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -2742,7 +2742,7 @@ exports[`Transactions list renders correctly when filtered by payout 1`] = `
                   </th>
                   <th
                     aria-sort="none"
-                    class="woocommerce-table__header is-sortable is-numeric"
+                    class="poocommerce-table__header is-sortable is-numeric"
                     role="columnheader"
                     scope="col"
                   >
@@ -2783,7 +2783,7 @@ exports[`Transactions list renders correctly when filtered by payout 1`] = `
                   </th>
                   <th
                     aria-sort="none"
-                    class="woocommerce-table__header is-sortable is-numeric"
+                    class="poocommerce-table__header is-sortable is-numeric"
                     role="columnheader"
                     scope="col"
                   >
@@ -2824,7 +2824,7 @@ exports[`Transactions list renders correctly when filtered by payout 1`] = `
                   </th>
                   <th
                     aria-sort="none"
-                    class="woocommerce-table__header is-sortable is-numeric"
+                    class="poocommerce-table__header is-sortable is-numeric"
                     role="columnheader"
                     scope="col"
                   >
@@ -2864,7 +2864,7 @@ exports[`Transactions list renders correctly when filtered by payout 1`] = `
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-left-aligned"
+                    class="poocommerce-table__header is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -2880,7 +2880,7 @@ exports[`Transactions list renders correctly when filtered by payout 1`] = `
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-center-aligned is-left-aligned"
+                    class="poocommerce-table__header is-center-aligned is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -2896,7 +2896,7 @@ exports[`Transactions list renders correctly when filtered by payout 1`] = `
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-left-aligned"
+                    class="poocommerce-table__header is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -2914,11 +2914,11 @@ exports[`Transactions list renders correctly when filtered by payout 1`] = `
                 </tr>
                 <tr>
                   <th
-                    class="woocommerce-table__item date-time is-left-aligned is-sorted"
+                    class="poocommerce-table__item date-time is-left-aligned is-sorted"
                     scope="row"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_oa9kaKaa8&transaction_type=charge"
                       tabindex="-1"
@@ -2927,10 +2927,10 @@ exports[`Transactions list renders correctly when filtered by payout 1`] = `
                     </a>
                   </th>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_oa9kaKaa8&transaction_type=charge"
                       tabindex="-1"
@@ -2939,10 +2939,10 @@ exports[`Transactions list renders correctly when filtered by payout 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_oa9kaKaa8&transaction_type=charge"
                       tabindex="-1"
@@ -2951,10 +2951,10 @@ exports[`Transactions list renders correctly when filtered by payout 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_oa9kaKaa8&transaction_type=charge"
                       tabindex="-1"
@@ -2987,10 +2987,10 @@ exports[`Transactions list renders correctly when filtered by payout 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_oa9kaKaa8&transaction_type=charge"
                       tabindex="-1"
@@ -2999,10 +2999,10 @@ exports[`Transactions list renders correctly when filtered by payout 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_oa9kaKaa8&transaction_type=charge"
                       tabindex="-1"
@@ -3011,7 +3011,7 @@ exports[`Transactions list renders correctly when filtered by payout 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
                       data-link-type="external"
@@ -3021,10 +3021,10 @@ exports[`Transactions list renders correctly when filtered by payout 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-center-aligned is-left-aligned"
+                    class="poocommerce-table__item is-center-aligned is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_oa9kaKaa8&transaction_type=charge"
                       tabindex="-1"
@@ -3052,7 +3052,7 @@ exports[`Transactions list renders correctly when filtered by payout 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
                       data-link-type="wc-admin"
@@ -3072,61 +3072,61 @@ exports[`Transactions list renders correctly when filtered by payout 1`] = `
           data-wp-component="CardFooter"
         >
           <ul
-            class="woocommerce-table__summary"
+            class="poocommerce-table__summary"
             role="complementary"
           >
             <li
-              class="woocommerce-table__summary-item"
+              class="poocommerce-table__summary-item"
             >
               <span
-                class="woocommerce-table__summary-value"
+                class="poocommerce-table__summary-value"
               >
                 3
               </span>
               <span
-                class="woocommerce-table__summary-label"
+                class="poocommerce-table__summary-label"
               >
                 transactions
               </span>
             </li>
             <li
-              class="woocommerce-table__summary-item"
+              class="poocommerce-table__summary-item"
             >
               <span
-                class="woocommerce-table__summary-value"
+                class="poocommerce-table__summary-value"
               >
                 $3.00
               </span>
               <span
-                class="woocommerce-table__summary-label"
+                class="poocommerce-table__summary-label"
               >
                 total
               </span>
             </li>
             <li
-              class="woocommerce-table__summary-item"
+              class="poocommerce-table__summary-item"
             >
               <span
-                class="woocommerce-table__summary-value"
+                class="poocommerce-table__summary-value"
               >
                 $0.30
               </span>
               <span
-                class="woocommerce-table__summary-label"
+                class="poocommerce-table__summary-label"
               >
                 fees
               </span>
             </li>
             <li
-              class="woocommerce-table__summary-item"
+              class="poocommerce-table__summary-item"
             >
               <span
-                class="woocommerce-table__summary-value"
+                class="poocommerce-table__summary-value"
               >
                 $2.70
               </span>
               <span
-                class="woocommerce-table__summary-label"
+                class="poocommerce-table__summary-label"
               >
                 net
               </span>
@@ -3306,11 +3306,11 @@ exports[`Transactions list subscription column renders correctly 1`] = `
 
 <div>
   <div
-    class=" woocommerce-payments-page"
+    class=" poocommerce-payments-page"
     id=""
   >
     <div
-      class="woocommerce-filters-transactions"
+      class="poocommerce-filters-transactions"
     >
       <h2
         class="screen-reader-text"
@@ -3318,16 +3318,16 @@ exports[`Transactions list subscription column renders correctly 1`] = `
         Filters
       </h2>
       <div
-        class="woocommerce-filters"
+        class="poocommerce-filters"
       >
         <div
-          class="woocommerce-filters__basic-filters"
+          class="poocommerce-filters__basic-filters"
         >
           <div
-            class="woocommerce-filters-filter"
+            class="poocommerce-filters-filter"
           >
             <span
-              class="woocommerce-filters-label"
+              class="poocommerce-filters-label"
             >
               Show
               :
@@ -3338,11 +3338,11 @@ exports[`Transactions list subscription column renders correctly 1`] = `
             >
               <button
                 aria-expanded="false"
-                class="components-button woocommerce-dropdown-button"
+                class="components-button poocommerce-dropdown-button"
                 type="button"
               >
                 <div
-                  class="woocommerce-dropdown-button__labels"
+                  class="poocommerce-dropdown-button__labels"
                 >
                   <span>
                     All transactions
@@ -3355,7 +3355,7 @@ exports[`Transactions list subscription column renders correctly 1`] = `
       </div>
     </div>
     <div
-      class="components-surface components-card woocommerce-table transactions-list woocommerce-report-table has-search has-actions has-menu emotion-0 emotion-1"
+      class="components-surface components-card poocommerce-table transactions-list poocommerce-report-table has-search has-actions has-menu emotion-0 emotion-1"
       data-wp-c16t="true"
       data-wp-component="Card"
     >
@@ -3375,19 +3375,19 @@ exports[`Transactions list subscription column renders correctly 1`] = `
             Transactions
           </h2>
           <div
-            class="woocommerce-table__actions"
+            class="poocommerce-table__actions"
           >
             <div>
               <div>
                 <div
-                  class="woocommerce-select-control woocommerce-search is-searchable"
+                  class="poocommerce-select-control poocommerce-search is-searchable"
                 >
                   <div
-                    class="components-base-control woocommerce-select-control__control empty"
+                    class="components-base-control poocommerce-select-control__control empty"
                   >
                     <svg
                       aria-hidden="true"
-                      class="woocommerce-select-control__control-icon"
+                      class="poocommerce-select-control__control-icon"
                       focusable="false"
                       height="24"
                       viewBox="0 0 24 24"
@@ -3406,8 +3406,8 @@ exports[`Transactions list subscription column renders correctly 1`] = `
                         aria-expanded="false"
                         aria-haspopup="true"
                         autocomplete="off"
-                        class="woocommerce-select-control__control-input"
-                        id="woocommerce-select-control-14__control-input"
+                        class="poocommerce-select-control__control-input"
+                        id="poocommerce-select-control-14__control-input"
                         placeholder=""
                         role="combobox"
                         type="text"
@@ -3425,7 +3425,7 @@ exports[`Transactions list subscription column renders correctly 1`] = `
               </div>
             </div>
             <button
-              class="components-button woocommerce-table__download-button is-next-40px-default-size"
+              class="components-button poocommerce-table__download-button is-next-40px-default-size"
               type="button"
             >
               <svg
@@ -3446,14 +3446,14 @@ exports[`Transactions list subscription column renders correctly 1`] = `
                 />
               </svg>
               <span
-                class="woocommerce-table__download-button__label"
+                class="poocommerce-table__download-button__label"
               >
                 Export
               </span>
             </button>
           </div>
           <div
-            class="woocommerce-ellipsis-menu"
+            class="poocommerce-ellipsis-menu"
           >
             <div
               class="components-dropdown"
@@ -3461,7 +3461,7 @@ exports[`Transactions list subscription column renders correctly 1`] = `
             >
               <button
                 aria-expanded="false"
-                class="components-button woocommerce-ellipsis-menu__toggle"
+                class="components-button poocommerce-ellipsis-menu__toggle"
                 title="Choose which values to display"
                 type="button"
               >
@@ -3489,12 +3489,12 @@ exports[`Transactions list subscription column renders correctly 1`] = `
         >
           <div
             aria-labelledby="caption-14"
-            class="woocommerce-table__table"
+            class="poocommerce-table__table"
             role="group"
           >
             <table>
               <caption
-                class="woocommerce-table__caption screen-reader-text"
+                class="poocommerce-table__caption screen-reader-text"
                 id="caption-14"
               >
                 Transactions
@@ -3503,7 +3503,7 @@ exports[`Transactions list subscription column renders correctly 1`] = `
                 <tr>
                   <th
                     aria-sort="descending"
-                    class="woocommerce-table__header date-time is-left-aligned is-sortable is-sorted"
+                    class="poocommerce-table__header date-time is-left-aligned is-sortable is-sorted"
                     role="columnheader"
                     scope="col"
                   >
@@ -3543,7 +3543,7 @@ exports[`Transactions list subscription column renders correctly 1`] = `
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-left-aligned"
+                    class="poocommerce-table__header is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -3559,7 +3559,7 @@ exports[`Transactions list subscription column renders correctly 1`] = `
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-left-aligned"
+                    class="poocommerce-table__header is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -3576,7 +3576,7 @@ exports[`Transactions list subscription column renders correctly 1`] = `
                   </th>
                   <th
                     aria-sort="none"
-                    class="woocommerce-table__header is-sortable is-numeric"
+                    class="poocommerce-table__header is-sortable is-numeric"
                     role="columnheader"
                     scope="col"
                   >
@@ -3617,7 +3617,7 @@ exports[`Transactions list subscription column renders correctly 1`] = `
                   </th>
                   <th
                     aria-sort="none"
-                    class="woocommerce-table__header is-sortable is-numeric"
+                    class="poocommerce-table__header is-sortable is-numeric"
                     role="columnheader"
                     scope="col"
                   >
@@ -3658,7 +3658,7 @@ exports[`Transactions list subscription column renders correctly 1`] = `
                   </th>
                   <th
                     aria-sort="none"
-                    class="woocommerce-table__header is-sortable is-numeric"
+                    class="poocommerce-table__header is-sortable is-numeric"
                     role="columnheader"
                     scope="col"
                   >
@@ -3698,7 +3698,7 @@ exports[`Transactions list subscription column renders correctly 1`] = `
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-left-aligned"
+                    class="poocommerce-table__header is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -3714,7 +3714,7 @@ exports[`Transactions list subscription column renders correctly 1`] = `
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-left-aligned"
+                    class="poocommerce-table__header is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -3730,7 +3730,7 @@ exports[`Transactions list subscription column renders correctly 1`] = `
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-center-aligned is-left-aligned"
+                    class="poocommerce-table__header is-center-aligned is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -3746,7 +3746,7 @@ exports[`Transactions list subscription column renders correctly 1`] = `
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-left-aligned"
+                    class="poocommerce-table__header is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -3762,7 +3762,7 @@ exports[`Transactions list subscription column renders correctly 1`] = `
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header deposit is-left-aligned"
+                    class="poocommerce-table__header deposit is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -3780,11 +3780,11 @@ exports[`Transactions list subscription column renders correctly 1`] = `
                 </tr>
                 <tr>
                   <th
-                    class="woocommerce-table__item date-time is-left-aligned is-sorted"
+                    class="poocommerce-table__item date-time is-left-aligned is-sorted"
                     scope="row"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_j23jda9JJa&transaction_type=refund"
                       tabindex="-1"
@@ -3793,10 +3793,10 @@ exports[`Transactions list subscription column renders correctly 1`] = `
                     </a>
                   </th>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_j23jda9JJa&transaction_type=refund"
                       tabindex="-1"
@@ -3805,10 +3805,10 @@ exports[`Transactions list subscription column renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_j23jda9JJa&transaction_type=refund"
                       tabindex="-1"
@@ -3817,10 +3817,10 @@ exports[`Transactions list subscription column renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_j23jda9JJa&transaction_type=refund"
                       tabindex="-1"
@@ -3829,10 +3829,10 @@ exports[`Transactions list subscription column renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_j23jda9JJa&transaction_type=refund"
                       tabindex="-1"
@@ -3841,10 +3841,10 @@ exports[`Transactions list subscription column renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_j23jda9JJa&transaction_type=refund"
                       tabindex="-1"
@@ -3853,7 +3853,7 @@ exports[`Transactions list subscription column renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
                       data-link-type="external"
@@ -3863,7 +3863,7 @@ exports[`Transactions list subscription column renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
                       data-link-type="external"
@@ -3873,10 +3873,10 @@ exports[`Transactions list subscription column renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-center-aligned is-left-aligned"
+                    class="poocommerce-table__item is-center-aligned is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_j23jda9JJa&transaction_type=refund"
                       tabindex="-1"
@@ -3904,7 +3904,7 @@ exports[`Transactions list subscription column renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
                       data-link-type="wc-admin"
@@ -3914,7 +3914,7 @@ exports[`Transactions list subscription column renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item deposit is-left-aligned"
+                    class="poocommerce-table__item deposit is-left-aligned"
                   >
                     Future payout
                     <button
@@ -3948,11 +3948,11 @@ exports[`Transactions list subscription column renders correctly 1`] = `
                 </tr>
                 <tr>
                   <th
-                    class="woocommerce-table__item date-time is-left-aligned is-sorted"
+                    class="poocommerce-table__item date-time is-left-aligned is-sorted"
                     scope="row"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_oa9kaKaa8&transaction_type=charge"
                       tabindex="-1"
@@ -3961,10 +3961,10 @@ exports[`Transactions list subscription column renders correctly 1`] = `
                     </a>
                   </th>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_oa9kaKaa8&transaction_type=charge"
                       tabindex="-1"
@@ -3973,10 +3973,10 @@ exports[`Transactions list subscription column renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_oa9kaKaa8&transaction_type=charge"
                       tabindex="-1"
@@ -3985,10 +3985,10 @@ exports[`Transactions list subscription column renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_oa9kaKaa8&transaction_type=charge"
                       tabindex="-1"
@@ -4021,10 +4021,10 @@ exports[`Transactions list subscription column renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_oa9kaKaa8&transaction_type=charge"
                       tabindex="-1"
@@ -4033,10 +4033,10 @@ exports[`Transactions list subscription column renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_oa9kaKaa8&transaction_type=charge"
                       tabindex="-1"
@@ -4045,7 +4045,7 @@ exports[`Transactions list subscription column renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
                       data-link-type="external"
@@ -4055,13 +4055,13 @@ exports[`Transactions list subscription column renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   />
                   <td
-                    class="woocommerce-table__item is-center-aligned is-left-aligned"
+                    class="poocommerce-table__item is-center-aligned is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_oa9kaKaa8&transaction_type=charge"
                       tabindex="-1"
@@ -4089,7 +4089,7 @@ exports[`Transactions list subscription column renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
                       data-link-type="wc-admin"
@@ -4099,7 +4099,7 @@ exports[`Transactions list subscription column renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item deposit is-left-aligned"
+                    class="poocommerce-table__item deposit is-left-aligned"
                   >
                     <a
                       data-link-type="wc-admin"
@@ -4111,11 +4111,11 @@ exports[`Transactions list subscription column renders correctly 1`] = `
                 </tr>
                 <tr>
                   <th
-                    class="woocommerce-table__item date-time is-left-aligned is-sorted"
+                    class="poocommerce-table__item date-time is-left-aligned is-sorted"
                     scope="row"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=ch_rskkmpe46yu&transaction_id=txn_mmtr89gjh5&transaction_type=charge"
                       tabindex="-1"
@@ -4124,10 +4124,10 @@ exports[`Transactions list subscription column renders correctly 1`] = `
                     </a>
                   </th>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=ch_rskkmpe46yu&transaction_id=txn_mmtr89gjh5&transaction_type=charge"
                       tabindex="-1"
@@ -4136,10 +4136,10 @@ exports[`Transactions list subscription column renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=ch_rskkmpe46yu&transaction_id=txn_mmtr89gjh5&transaction_type=charge"
                       tabindex="-1"
@@ -4153,17 +4153,17 @@ exports[`Transactions list subscription column renders correctly 1`] = `
                           class="wcpay-tooltip__content-wrapper"
                         >
                           <span
-                            class="woocommerce-taptopay__icon"
+                            class="poocommerce-taptopay__icon"
                           />
                         </div>
                       </button>
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=ch_rskkmpe46yu&transaction_id=txn_mmtr89gjh5&transaction_type=charge"
                       tabindex="-1"
@@ -4172,10 +4172,10 @@ exports[`Transactions list subscription column renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=ch_rskkmpe46yu&transaction_id=txn_mmtr89gjh5&transaction_type=charge"
                       tabindex="-1"
@@ -4184,10 +4184,10 @@ exports[`Transactions list subscription column renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=ch_rskkmpe46yu&transaction_id=txn_mmtr89gjh5&transaction_type=charge"
                       tabindex="-1"
@@ -4196,7 +4196,7 @@ exports[`Transactions list subscription column renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
                       data-link-type="external"
@@ -4206,13 +4206,13 @@ exports[`Transactions list subscription column renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   />
                   <td
-                    class="woocommerce-table__item is-center-aligned is-left-aligned"
+                    class="poocommerce-table__item is-center-aligned is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=ch_rskkmpe46yu&transaction_id=txn_mmtr89gjh5&transaction_type=charge"
                       tabindex="-1"
@@ -4240,7 +4240,7 @@ exports[`Transactions list subscription column renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
                       data-link-type="wc-admin"
@@ -4250,7 +4250,7 @@ exports[`Transactions list subscription column renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item deposit is-left-aligned"
+                    class="poocommerce-table__item deposit is-left-aligned"
                   >
                     Future payout
                     <button
@@ -4292,61 +4292,61 @@ exports[`Transactions list subscription column renders correctly 1`] = `
           data-wp-component="CardFooter"
         >
           <ul
-            class="woocommerce-table__summary"
+            class="poocommerce-table__summary"
             role="complementary"
           >
             <li
-              class="woocommerce-table__summary-item"
+              class="poocommerce-table__summary-item"
             >
               <span
-                class="woocommerce-table__summary-value"
+                class="poocommerce-table__summary-value"
               >
                 10
               </span>
               <span
-                class="woocommerce-table__summary-label"
+                class="poocommerce-table__summary-label"
               >
                 transactions
               </span>
             </li>
             <li
-              class="woocommerce-table__summary-item"
+              class="poocommerce-table__summary-item"
             >
               <span
-                class="woocommerce-table__summary-value"
+                class="poocommerce-table__summary-value"
               >
                 $10.00
               </span>
               <span
-                class="woocommerce-table__summary-label"
+                class="poocommerce-table__summary-label"
               >
                 total
               </span>
             </li>
             <li
-              class="woocommerce-table__summary-item"
+              class="poocommerce-table__summary-item"
             >
               <span
-                class="woocommerce-table__summary-value"
+                class="poocommerce-table__summary-value"
               >
                 $1.00
               </span>
               <span
-                class="woocommerce-table__summary-label"
+                class="poocommerce-table__summary-label"
               >
                 fees
               </span>
             </li>
             <li
-              class="woocommerce-table__summary-item"
+              class="poocommerce-table__summary-item"
             >
               <span
-                class="woocommerce-table__summary-value"
+                class="poocommerce-table__summary-value"
               >
                 $9.00
               </span>
               <span
-                class="woocommerce-table__summary-label"
+                class="poocommerce-table__summary-label"
               >
                 net
               </span>
@@ -4526,11 +4526,11 @@ exports[`Transactions list when not filtered by payout renders correctly 1`] = `
 
 <div>
   <div
-    class=" woocommerce-payments-page"
+    class=" poocommerce-payments-page"
     id=""
   >
     <div
-      class="woocommerce-filters-transactions"
+      class="poocommerce-filters-transactions"
     >
       <h2
         class="screen-reader-text"
@@ -4538,16 +4538,16 @@ exports[`Transactions list when not filtered by payout renders correctly 1`] = `
         Filters
       </h2>
       <div
-        class="woocommerce-filters"
+        class="poocommerce-filters"
       >
         <div
-          class="woocommerce-filters__basic-filters"
+          class="poocommerce-filters__basic-filters"
         >
           <div
-            class="woocommerce-filters-filter"
+            class="poocommerce-filters-filter"
           >
             <span
-              class="woocommerce-filters-label"
+              class="poocommerce-filters-label"
             >
               Show
               :
@@ -4558,11 +4558,11 @@ exports[`Transactions list when not filtered by payout renders correctly 1`] = `
             >
               <button
                 aria-expanded="false"
-                class="components-button woocommerce-dropdown-button"
+                class="components-button poocommerce-dropdown-button"
                 type="button"
               >
                 <div
-                  class="woocommerce-dropdown-button__labels"
+                  class="poocommerce-dropdown-button__labels"
                 >
                   <span>
                     All transactions
@@ -4575,7 +4575,7 @@ exports[`Transactions list when not filtered by payout renders correctly 1`] = `
       </div>
     </div>
     <div
-      class="components-surface components-card woocommerce-table transactions-list woocommerce-report-table has-search has-actions has-menu emotion-0 emotion-1"
+      class="components-surface components-card poocommerce-table transactions-list poocommerce-report-table has-search has-actions has-menu emotion-0 emotion-1"
       data-wp-c16t="true"
       data-wp-component="Card"
     >
@@ -4595,19 +4595,19 @@ exports[`Transactions list when not filtered by payout renders correctly 1`] = `
             Transactions
           </h2>
           <div
-            class="woocommerce-table__actions"
+            class="poocommerce-table__actions"
           >
             <div>
               <div>
                 <div
-                  class="woocommerce-select-control woocommerce-search is-searchable"
+                  class="poocommerce-select-control poocommerce-search is-searchable"
                 >
                   <div
-                    class="components-base-control woocommerce-select-control__control empty"
+                    class="components-base-control poocommerce-select-control__control empty"
                   >
                     <svg
                       aria-hidden="true"
-                      class="woocommerce-select-control__control-icon"
+                      class="poocommerce-select-control__control-icon"
                       focusable="false"
                       height="24"
                       viewBox="0 0 24 24"
@@ -4626,8 +4626,8 @@ exports[`Transactions list when not filtered by payout renders correctly 1`] = `
                         aria-expanded="false"
                         aria-haspopup="true"
                         autocomplete="off"
-                        class="woocommerce-select-control__control-input"
-                        id="woocommerce-select-control-1__control-input"
+                        class="poocommerce-select-control__control-input"
+                        id="poocommerce-select-control-1__control-input"
                         placeholder=""
                         role="combobox"
                         type="text"
@@ -4645,7 +4645,7 @@ exports[`Transactions list when not filtered by payout renders correctly 1`] = `
               </div>
             </div>
             <button
-              class="components-button woocommerce-table__download-button is-next-40px-default-size"
+              class="components-button poocommerce-table__download-button is-next-40px-default-size"
               type="button"
             >
               <svg
@@ -4666,14 +4666,14 @@ exports[`Transactions list when not filtered by payout renders correctly 1`] = `
                 />
               </svg>
               <span
-                class="woocommerce-table__download-button__label"
+                class="poocommerce-table__download-button__label"
               >
                 Export
               </span>
             </button>
           </div>
           <div
-            class="woocommerce-ellipsis-menu"
+            class="poocommerce-ellipsis-menu"
           >
             <div
               class="components-dropdown"
@@ -4681,7 +4681,7 @@ exports[`Transactions list when not filtered by payout renders correctly 1`] = `
             >
               <button
                 aria-expanded="false"
-                class="components-button woocommerce-ellipsis-menu__toggle"
+                class="components-button poocommerce-ellipsis-menu__toggle"
                 title="Choose which values to display"
                 type="button"
               >
@@ -4709,12 +4709,12 @@ exports[`Transactions list when not filtered by payout renders correctly 1`] = `
         >
           <div
             aria-labelledby="caption-1"
-            class="woocommerce-table__table"
+            class="poocommerce-table__table"
             role="group"
           >
             <table>
               <caption
-                class="woocommerce-table__caption screen-reader-text"
+                class="poocommerce-table__caption screen-reader-text"
                 id="caption-1"
               >
                 Transactions
@@ -4723,7 +4723,7 @@ exports[`Transactions list when not filtered by payout renders correctly 1`] = `
                 <tr>
                   <th
                     aria-sort="descending"
-                    class="woocommerce-table__header date-time is-left-aligned is-sortable is-sorted"
+                    class="poocommerce-table__header date-time is-left-aligned is-sortable is-sorted"
                     role="columnheader"
                     scope="col"
                   >
@@ -4763,7 +4763,7 @@ exports[`Transactions list when not filtered by payout renders correctly 1`] = `
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-left-aligned"
+                    class="poocommerce-table__header is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -4779,7 +4779,7 @@ exports[`Transactions list when not filtered by payout renders correctly 1`] = `
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-left-aligned"
+                    class="poocommerce-table__header is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -4796,7 +4796,7 @@ exports[`Transactions list when not filtered by payout renders correctly 1`] = `
                   </th>
                   <th
                     aria-sort="none"
-                    class="woocommerce-table__header is-sortable is-numeric"
+                    class="poocommerce-table__header is-sortable is-numeric"
                     role="columnheader"
                     scope="col"
                   >
@@ -4837,7 +4837,7 @@ exports[`Transactions list when not filtered by payout renders correctly 1`] = `
                   </th>
                   <th
                     aria-sort="none"
-                    class="woocommerce-table__header is-sortable is-numeric"
+                    class="poocommerce-table__header is-sortable is-numeric"
                     role="columnheader"
                     scope="col"
                   >
@@ -4878,7 +4878,7 @@ exports[`Transactions list when not filtered by payout renders correctly 1`] = `
                   </th>
                   <th
                     aria-sort="none"
-                    class="woocommerce-table__header is-sortable is-numeric"
+                    class="poocommerce-table__header is-sortable is-numeric"
                     role="columnheader"
                     scope="col"
                   >
@@ -4918,7 +4918,7 @@ exports[`Transactions list when not filtered by payout renders correctly 1`] = `
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-left-aligned"
+                    class="poocommerce-table__header is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -4934,7 +4934,7 @@ exports[`Transactions list when not filtered by payout renders correctly 1`] = `
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-center-aligned is-left-aligned"
+                    class="poocommerce-table__header is-center-aligned is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -4950,7 +4950,7 @@ exports[`Transactions list when not filtered by payout renders correctly 1`] = `
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-left-aligned"
+                    class="poocommerce-table__header is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -4966,7 +4966,7 @@ exports[`Transactions list when not filtered by payout renders correctly 1`] = `
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header deposit is-left-aligned"
+                    class="poocommerce-table__header deposit is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -4984,11 +4984,11 @@ exports[`Transactions list when not filtered by payout renders correctly 1`] = `
                 </tr>
                 <tr>
                   <th
-                    class="woocommerce-table__item date-time is-left-aligned is-sorted"
+                    class="poocommerce-table__item date-time is-left-aligned is-sorted"
                     scope="row"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_j23jda9JJa&transaction_type=refund"
                       tabindex="-1"
@@ -4997,10 +4997,10 @@ exports[`Transactions list when not filtered by payout renders correctly 1`] = `
                     </a>
                   </th>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_j23jda9JJa&transaction_type=refund"
                       tabindex="-1"
@@ -5009,10 +5009,10 @@ exports[`Transactions list when not filtered by payout renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_j23jda9JJa&transaction_type=refund"
                       tabindex="-1"
@@ -5021,10 +5021,10 @@ exports[`Transactions list when not filtered by payout renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_j23jda9JJa&transaction_type=refund"
                       tabindex="-1"
@@ -5033,10 +5033,10 @@ exports[`Transactions list when not filtered by payout renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_j23jda9JJa&transaction_type=refund"
                       tabindex="-1"
@@ -5045,10 +5045,10 @@ exports[`Transactions list when not filtered by payout renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_j23jda9JJa&transaction_type=refund"
                       tabindex="-1"
@@ -5057,7 +5057,7 @@ exports[`Transactions list when not filtered by payout renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
                       data-link-type="external"
@@ -5067,10 +5067,10 @@ exports[`Transactions list when not filtered by payout renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-center-aligned is-left-aligned"
+                    class="poocommerce-table__item is-center-aligned is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_j23jda9JJa&transaction_type=refund"
                       tabindex="-1"
@@ -5098,7 +5098,7 @@ exports[`Transactions list when not filtered by payout renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
                       data-link-type="wc-admin"
@@ -5108,7 +5108,7 @@ exports[`Transactions list when not filtered by payout renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item deposit is-left-aligned"
+                    class="poocommerce-table__item deposit is-left-aligned"
                   >
                     Future payout
                     <button
@@ -5142,11 +5142,11 @@ exports[`Transactions list when not filtered by payout renders correctly 1`] = `
                 </tr>
                 <tr>
                   <th
-                    class="woocommerce-table__item date-time is-left-aligned is-sorted"
+                    class="poocommerce-table__item date-time is-left-aligned is-sorted"
                     scope="row"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_oa9kaKaa8&transaction_type=charge"
                       tabindex="-1"
@@ -5155,10 +5155,10 @@ exports[`Transactions list when not filtered by payout renders correctly 1`] = `
                     </a>
                   </th>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_oa9kaKaa8&transaction_type=charge"
                       tabindex="-1"
@@ -5167,10 +5167,10 @@ exports[`Transactions list when not filtered by payout renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_oa9kaKaa8&transaction_type=charge"
                       tabindex="-1"
@@ -5179,10 +5179,10 @@ exports[`Transactions list when not filtered by payout renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_oa9kaKaa8&transaction_type=charge"
                       tabindex="-1"
@@ -5215,10 +5215,10 @@ exports[`Transactions list when not filtered by payout renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_oa9kaKaa8&transaction_type=charge"
                       tabindex="-1"
@@ -5227,10 +5227,10 @@ exports[`Transactions list when not filtered by payout renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_oa9kaKaa8&transaction_type=charge"
                       tabindex="-1"
@@ -5239,7 +5239,7 @@ exports[`Transactions list when not filtered by payout renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
                       data-link-type="external"
@@ -5249,10 +5249,10 @@ exports[`Transactions list when not filtered by payout renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-center-aligned is-left-aligned"
+                    class="poocommerce-table__item is-center-aligned is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_oa9kaKaa8&transaction_type=charge"
                       tabindex="-1"
@@ -5280,7 +5280,7 @@ exports[`Transactions list when not filtered by payout renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
                       data-link-type="wc-admin"
@@ -5290,7 +5290,7 @@ exports[`Transactions list when not filtered by payout renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item deposit is-left-aligned"
+                    class="poocommerce-table__item deposit is-left-aligned"
                   >
                     <a
                       data-link-type="wc-admin"
@@ -5302,11 +5302,11 @@ exports[`Transactions list when not filtered by payout renders correctly 1`] = `
                 </tr>
                 <tr>
                   <th
-                    class="woocommerce-table__item date-time is-left-aligned is-sorted"
+                    class="poocommerce-table__item date-time is-left-aligned is-sorted"
                     scope="row"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=ch_rskkmpe46yu&transaction_id=txn_mmtr89gjh5&transaction_type=charge"
                       tabindex="-1"
@@ -5315,10 +5315,10 @@ exports[`Transactions list when not filtered by payout renders correctly 1`] = `
                     </a>
                   </th>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=ch_rskkmpe46yu&transaction_id=txn_mmtr89gjh5&transaction_type=charge"
                       tabindex="-1"
@@ -5327,10 +5327,10 @@ exports[`Transactions list when not filtered by payout renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=ch_rskkmpe46yu&transaction_id=txn_mmtr89gjh5&transaction_type=charge"
                       tabindex="-1"
@@ -5344,17 +5344,17 @@ exports[`Transactions list when not filtered by payout renders correctly 1`] = `
                           class="wcpay-tooltip__content-wrapper"
                         >
                           <span
-                            class="woocommerce-taptopay__icon"
+                            class="poocommerce-taptopay__icon"
                           />
                         </div>
                       </button>
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=ch_rskkmpe46yu&transaction_id=txn_mmtr89gjh5&transaction_type=charge"
                       tabindex="-1"
@@ -5363,10 +5363,10 @@ exports[`Transactions list when not filtered by payout renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=ch_rskkmpe46yu&transaction_id=txn_mmtr89gjh5&transaction_type=charge"
                       tabindex="-1"
@@ -5375,10 +5375,10 @@ exports[`Transactions list when not filtered by payout renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=ch_rskkmpe46yu&transaction_id=txn_mmtr89gjh5&transaction_type=charge"
                       tabindex="-1"
@@ -5387,7 +5387,7 @@ exports[`Transactions list when not filtered by payout renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
                       data-link-type="external"
@@ -5397,10 +5397,10 @@ exports[`Transactions list when not filtered by payout renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-center-aligned is-left-aligned"
+                    class="poocommerce-table__item is-center-aligned is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=ch_rskkmpe46yu&transaction_id=txn_mmtr89gjh5&transaction_type=charge"
                       tabindex="-1"
@@ -5428,7 +5428,7 @@ exports[`Transactions list when not filtered by payout renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
                       data-link-type="wc-admin"
@@ -5438,7 +5438,7 @@ exports[`Transactions list when not filtered by payout renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item deposit is-left-aligned"
+                    class="poocommerce-table__item deposit is-left-aligned"
                   >
                     Future payout
                     <button
@@ -5480,61 +5480,61 @@ exports[`Transactions list when not filtered by payout renders correctly 1`] = `
           data-wp-component="CardFooter"
         >
           <ul
-            class="woocommerce-table__summary"
+            class="poocommerce-table__summary"
             role="complementary"
           >
             <li
-              class="woocommerce-table__summary-item"
+              class="poocommerce-table__summary-item"
             >
               <span
-                class="woocommerce-table__summary-value"
+                class="poocommerce-table__summary-value"
               >
                 10
               </span>
               <span
-                class="woocommerce-table__summary-label"
+                class="poocommerce-table__summary-label"
               >
                 transactions
               </span>
             </li>
             <li
-              class="woocommerce-table__summary-item"
+              class="poocommerce-table__summary-item"
             >
               <span
-                class="woocommerce-table__summary-value"
+                class="poocommerce-table__summary-value"
               >
                 $10.00
               </span>
               <span
-                class="woocommerce-table__summary-label"
+                class="poocommerce-table__summary-label"
               >
                 total
               </span>
             </li>
             <li
-              class="woocommerce-table__summary-item"
+              class="poocommerce-table__summary-item"
             >
               <span
-                class="woocommerce-table__summary-value"
+                class="poocommerce-table__summary-value"
               >
                 $1.00
               </span>
               <span
-                class="woocommerce-table__summary-label"
+                class="poocommerce-table__summary-label"
               >
                 fees
               </span>
             </li>
             <li
-              class="woocommerce-table__summary-item"
+              class="poocommerce-table__summary-item"
             >
               <span
-                class="woocommerce-table__summary-value"
+                class="poocommerce-table__summary-value"
               >
                 $9.00
               </span>
               <span
-                class="woocommerce-table__summary-label"
+                class="poocommerce-table__summary-label"
               >
                 net
               </span>
@@ -5714,11 +5714,11 @@ exports[`Transactions list when not filtered by payout renders table summary onl
 
 <div>
   <div
-    class=" woocommerce-payments-page"
+    class=" poocommerce-payments-page"
     id=""
   >
     <div
-      class="woocommerce-filters-transactions"
+      class="poocommerce-filters-transactions"
     >
       <h2
         class="screen-reader-text"
@@ -5726,16 +5726,16 @@ exports[`Transactions list when not filtered by payout renders table summary onl
         Filters
       </h2>
       <div
-        class="woocommerce-filters"
+        class="poocommerce-filters"
       >
         <div
-          class="woocommerce-filters__basic-filters"
+          class="poocommerce-filters__basic-filters"
         >
           <div
-            class="woocommerce-filters-filter"
+            class="poocommerce-filters-filter"
           >
             <span
-              class="woocommerce-filters-label"
+              class="poocommerce-filters-label"
             >
               Show
               :
@@ -5746,11 +5746,11 @@ exports[`Transactions list when not filtered by payout renders table summary onl
             >
               <button
                 aria-expanded="false"
-                class="components-button woocommerce-dropdown-button"
+                class="components-button poocommerce-dropdown-button"
                 type="button"
               >
                 <div
-                  class="woocommerce-dropdown-button__labels"
+                  class="poocommerce-dropdown-button__labels"
                 >
                   <span>
                     All transactions
@@ -5763,7 +5763,7 @@ exports[`Transactions list when not filtered by payout renders table summary onl
       </div>
     </div>
     <div
-      class="components-surface components-card woocommerce-table transactions-list woocommerce-report-table has-search has-actions has-menu emotion-0 emotion-1"
+      class="components-surface components-card poocommerce-table transactions-list poocommerce-report-table has-search has-actions has-menu emotion-0 emotion-1"
       data-wp-c16t="true"
       data-wp-component="Card"
     >
@@ -5783,19 +5783,19 @@ exports[`Transactions list when not filtered by payout renders table summary onl
             Transactions
           </h2>
           <div
-            class="woocommerce-table__actions"
+            class="poocommerce-table__actions"
           >
             <div>
               <div>
                 <div
-                  class="woocommerce-select-control woocommerce-search is-searchable"
+                  class="poocommerce-select-control poocommerce-search is-searchable"
                 >
                   <div
-                    class="components-base-control woocommerce-select-control__control empty"
+                    class="components-base-control poocommerce-select-control__control empty"
                   >
                     <svg
                       aria-hidden="true"
-                      class="woocommerce-select-control__control-icon"
+                      class="poocommerce-select-control__control-icon"
                       focusable="false"
                       height="24"
                       viewBox="0 0 24 24"
@@ -5814,8 +5814,8 @@ exports[`Transactions list when not filtered by payout renders table summary onl
                         aria-expanded="false"
                         aria-haspopup="true"
                         autocomplete="off"
-                        class="woocommerce-select-control__control-input"
-                        id="woocommerce-select-control-11__control-input"
+                        class="poocommerce-select-control__control-input"
+                        id="poocommerce-select-control-11__control-input"
                         placeholder=""
                         role="combobox"
                         type="text"
@@ -5833,7 +5833,7 @@ exports[`Transactions list when not filtered by payout renders table summary onl
               </div>
             </div>
             <button
-              class="components-button woocommerce-table__download-button is-next-40px-default-size"
+              class="components-button poocommerce-table__download-button is-next-40px-default-size"
               type="button"
             >
               <svg
@@ -5854,14 +5854,14 @@ exports[`Transactions list when not filtered by payout renders table summary onl
                 />
               </svg>
               <span
-                class="woocommerce-table__download-button__label"
+                class="poocommerce-table__download-button__label"
               >
                 Export
               </span>
             </button>
           </div>
           <div
-            class="woocommerce-ellipsis-menu"
+            class="poocommerce-ellipsis-menu"
           >
             <div
               class="components-dropdown"
@@ -5869,7 +5869,7 @@ exports[`Transactions list when not filtered by payout renders table summary onl
             >
               <button
                 aria-expanded="false"
-                class="components-button woocommerce-ellipsis-menu__toggle"
+                class="components-button poocommerce-ellipsis-menu__toggle"
                 title="Choose which values to display"
                 type="button"
               >
@@ -5897,12 +5897,12 @@ exports[`Transactions list when not filtered by payout renders table summary onl
         >
           <div
             aria-labelledby="caption-11"
-            class="woocommerce-table__table"
+            class="poocommerce-table__table"
             role="group"
           >
             <table>
               <caption
-                class="woocommerce-table__caption screen-reader-text"
+                class="poocommerce-table__caption screen-reader-text"
                 id="caption-11"
               >
                 Transactions
@@ -5911,7 +5911,7 @@ exports[`Transactions list when not filtered by payout renders table summary onl
                 <tr>
                   <th
                     aria-sort="descending"
-                    class="woocommerce-table__header date-time is-left-aligned is-sortable is-sorted"
+                    class="poocommerce-table__header date-time is-left-aligned is-sortable is-sorted"
                     role="columnheader"
                     scope="col"
                   >
@@ -5951,7 +5951,7 @@ exports[`Transactions list when not filtered by payout renders table summary onl
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-left-aligned"
+                    class="poocommerce-table__header is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -5967,7 +5967,7 @@ exports[`Transactions list when not filtered by payout renders table summary onl
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-left-aligned"
+                    class="poocommerce-table__header is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -5984,7 +5984,7 @@ exports[`Transactions list when not filtered by payout renders table summary onl
                   </th>
                   <th
                     aria-sort="none"
-                    class="woocommerce-table__header is-sortable is-numeric"
+                    class="poocommerce-table__header is-sortable is-numeric"
                     role="columnheader"
                     scope="col"
                   >
@@ -6025,7 +6025,7 @@ exports[`Transactions list when not filtered by payout renders table summary onl
                   </th>
                   <th
                     aria-sort="none"
-                    class="woocommerce-table__header is-sortable is-numeric"
+                    class="poocommerce-table__header is-sortable is-numeric"
                     role="columnheader"
                     scope="col"
                   >
@@ -6066,7 +6066,7 @@ exports[`Transactions list when not filtered by payout renders table summary onl
                   </th>
                   <th
                     aria-sort="none"
-                    class="woocommerce-table__header is-sortable is-numeric"
+                    class="poocommerce-table__header is-sortable is-numeric"
                     role="columnheader"
                     scope="col"
                   >
@@ -6106,7 +6106,7 @@ exports[`Transactions list when not filtered by payout renders table summary onl
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-left-aligned"
+                    class="poocommerce-table__header is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -6122,7 +6122,7 @@ exports[`Transactions list when not filtered by payout renders table summary onl
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-center-aligned is-left-aligned"
+                    class="poocommerce-table__header is-center-aligned is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -6138,7 +6138,7 @@ exports[`Transactions list when not filtered by payout renders table summary onl
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-left-aligned"
+                    class="poocommerce-table__header is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -6154,7 +6154,7 @@ exports[`Transactions list when not filtered by payout renders table summary onl
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header deposit is-left-aligned"
+                    class="poocommerce-table__header deposit is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -6172,11 +6172,11 @@ exports[`Transactions list when not filtered by payout renders table summary onl
                 </tr>
                 <tr>
                   <th
-                    class="woocommerce-table__item date-time is-left-aligned is-sorted"
+                    class="poocommerce-table__item date-time is-left-aligned is-sorted"
                     scope="row"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_j23jda9JJa&transaction_type=refund"
                       tabindex="-1"
@@ -6185,10 +6185,10 @@ exports[`Transactions list when not filtered by payout renders table summary onl
                     </a>
                   </th>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_j23jda9JJa&transaction_type=refund"
                       tabindex="-1"
@@ -6197,10 +6197,10 @@ exports[`Transactions list when not filtered by payout renders table summary onl
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_j23jda9JJa&transaction_type=refund"
                       tabindex="-1"
@@ -6209,10 +6209,10 @@ exports[`Transactions list when not filtered by payout renders table summary onl
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_j23jda9JJa&transaction_type=refund"
                       tabindex="-1"
@@ -6221,10 +6221,10 @@ exports[`Transactions list when not filtered by payout renders table summary onl
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_j23jda9JJa&transaction_type=refund"
                       tabindex="-1"
@@ -6233,10 +6233,10 @@ exports[`Transactions list when not filtered by payout renders table summary onl
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_j23jda9JJa&transaction_type=refund"
                       tabindex="-1"
@@ -6245,7 +6245,7 @@ exports[`Transactions list when not filtered by payout renders table summary onl
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
                       data-link-type="external"
@@ -6255,10 +6255,10 @@ exports[`Transactions list when not filtered by payout renders table summary onl
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-center-aligned is-left-aligned"
+                    class="poocommerce-table__item is-center-aligned is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_j23jda9JJa&transaction_type=refund"
                       tabindex="-1"
@@ -6286,7 +6286,7 @@ exports[`Transactions list when not filtered by payout renders table summary onl
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
                       data-link-type="wc-admin"
@@ -6296,7 +6296,7 @@ exports[`Transactions list when not filtered by payout renders table summary onl
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item deposit is-left-aligned"
+                    class="poocommerce-table__item deposit is-left-aligned"
                   >
                     Future payout
                     <button
@@ -6330,11 +6330,11 @@ exports[`Transactions list when not filtered by payout renders table summary onl
                 </tr>
                 <tr>
                   <th
-                    class="woocommerce-table__item date-time is-left-aligned is-sorted"
+                    class="poocommerce-table__item date-time is-left-aligned is-sorted"
                     scope="row"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_oa9kaKaa8&transaction_type=charge"
                       tabindex="-1"
@@ -6343,10 +6343,10 @@ exports[`Transactions list when not filtered by payout renders table summary onl
                     </a>
                   </th>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_oa9kaKaa8&transaction_type=charge"
                       tabindex="-1"
@@ -6355,10 +6355,10 @@ exports[`Transactions list when not filtered by payout renders table summary onl
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_oa9kaKaa8&transaction_type=charge"
                       tabindex="-1"
@@ -6367,10 +6367,10 @@ exports[`Transactions list when not filtered by payout renders table summary onl
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_oa9kaKaa8&transaction_type=charge"
                       tabindex="-1"
@@ -6403,10 +6403,10 @@ exports[`Transactions list when not filtered by payout renders table summary onl
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_oa9kaKaa8&transaction_type=charge"
                       tabindex="-1"
@@ -6415,10 +6415,10 @@ exports[`Transactions list when not filtered by payout renders table summary onl
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_oa9kaKaa8&transaction_type=charge"
                       tabindex="-1"
@@ -6427,7 +6427,7 @@ exports[`Transactions list when not filtered by payout renders table summary onl
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
                       data-link-type="external"
@@ -6437,10 +6437,10 @@ exports[`Transactions list when not filtered by payout renders table summary onl
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-center-aligned is-left-aligned"
+                    class="poocommerce-table__item is-center-aligned is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=pi_mock&transaction_id=txn_oa9kaKaa8&transaction_type=charge"
                       tabindex="-1"
@@ -6468,7 +6468,7 @@ exports[`Transactions list when not filtered by payout renders table summary onl
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
                       data-link-type="wc-admin"
@@ -6478,7 +6478,7 @@ exports[`Transactions list when not filtered by payout renders table summary onl
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item deposit is-left-aligned"
+                    class="poocommerce-table__item deposit is-left-aligned"
                   >
                     <a
                       data-link-type="wc-admin"
@@ -6490,11 +6490,11 @@ exports[`Transactions list when not filtered by payout renders table summary onl
                 </tr>
                 <tr>
                   <th
-                    class="woocommerce-table__item date-time is-left-aligned is-sorted"
+                    class="poocommerce-table__item date-time is-left-aligned is-sorted"
                     scope="row"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=ch_rskkmpe46yu&transaction_id=txn_mmtr89gjh5&transaction_type=charge"
                       tabindex="-1"
@@ -6503,10 +6503,10 @@ exports[`Transactions list when not filtered by payout renders table summary onl
                     </a>
                   </th>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=ch_rskkmpe46yu&transaction_id=txn_mmtr89gjh5&transaction_type=charge"
                       tabindex="-1"
@@ -6515,10 +6515,10 @@ exports[`Transactions list when not filtered by payout renders table summary onl
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=ch_rskkmpe46yu&transaction_id=txn_mmtr89gjh5&transaction_type=charge"
                       tabindex="-1"
@@ -6532,17 +6532,17 @@ exports[`Transactions list when not filtered by payout renders table summary onl
                           class="wcpay-tooltip__content-wrapper"
                         >
                           <span
-                            class="woocommerce-taptopay__icon"
+                            class="poocommerce-taptopay__icon"
                           />
                         </div>
                       </button>
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=ch_rskkmpe46yu&transaction_id=txn_mmtr89gjh5&transaction_type=charge"
                       tabindex="-1"
@@ -6551,10 +6551,10 @@ exports[`Transactions list when not filtered by payout renders table summary onl
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=ch_rskkmpe46yu&transaction_id=txn_mmtr89gjh5&transaction_type=charge"
                       tabindex="-1"
@@ -6563,10 +6563,10 @@ exports[`Transactions list when not filtered by payout renders table summary onl
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=ch_rskkmpe46yu&transaction_id=txn_mmtr89gjh5&transaction_type=charge"
                       tabindex="-1"
@@ -6575,7 +6575,7 @@ exports[`Transactions list when not filtered by payout renders table summary onl
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
                       data-link-type="external"
@@ -6585,10 +6585,10 @@ exports[`Transactions list when not filtered by payout renders table summary onl
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-center-aligned is-left-aligned"
+                    class="poocommerce-table__item is-center-aligned is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=ch_rskkmpe46yu&transaction_id=txn_mmtr89gjh5&transaction_type=charge"
                       tabindex="-1"
@@ -6616,7 +6616,7 @@ exports[`Transactions list when not filtered by payout renders table summary onl
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
                       data-link-type="wc-admin"
@@ -6626,7 +6626,7 @@ exports[`Transactions list when not filtered by payout renders table summary onl
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item deposit is-left-aligned"
+                    class="poocommerce-table__item deposit is-left-aligned"
                   >
                     Future payout
                     <button
@@ -6668,61 +6668,61 @@ exports[`Transactions list when not filtered by payout renders table summary onl
           data-wp-component="CardFooter"
         >
           <ul
-            class="woocommerce-table__summary"
+            class="poocommerce-table__summary"
             role="complementary"
           >
             <li
-              class="woocommerce-table__summary-item"
+              class="poocommerce-table__summary-item"
             >
               <span
-                class="woocommerce-table__summary-value"
+                class="poocommerce-table__summary-value"
               >
                 1
               </span>
               <span
-                class="woocommerce-table__summary-label"
+                class="poocommerce-table__summary-label"
               >
                 transaction
               </span>
             </li>
             <li
-              class="woocommerce-table__summary-item"
+              class="poocommerce-table__summary-item"
             >
               <span
-                class="woocommerce-table__summary-value"
+                class="poocommerce-table__summary-value"
               >
                 $10.00
               </span>
               <span
-                class="woocommerce-table__summary-label"
+                class="poocommerce-table__summary-label"
               >
                 total
               </span>
             </li>
             <li
-              class="woocommerce-table__summary-item"
+              class="poocommerce-table__summary-item"
             >
               <span
-                class="woocommerce-table__summary-value"
+                class="poocommerce-table__summary-value"
               >
                 $1.00
               </span>
               <span
-                class="woocommerce-table__summary-label"
+                class="poocommerce-table__summary-label"
               >
                 fees
               </span>
             </li>
             <li
-              class="woocommerce-table__summary-item"
+              class="poocommerce-table__summary-item"
             >
               <span
-                class="woocommerce-table__summary-value"
+                class="poocommerce-table__summary-value"
               >
                 $9.00
               </span>
               <span
-                class="woocommerce-table__summary-label"
+                class="poocommerce-table__summary-label"
               >
                 net
               </span>

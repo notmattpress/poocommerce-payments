@@ -65,13 +65,13 @@ const OrderItemsThresholdCustomForm: React.FC< OrderItemsThresholdCustomFormProp
 
 	return (
 		<div className="fraud-protection-rule-toggle-children-container">
-			<strong>{ __( 'Limits', 'woocommerce-payments' ) }</strong>
+			<strong>{ __( 'Limits', 'poocommerce-payments' ) }</strong>
 			<div className="fraud-protection-rule-toggle-children-horizontal-form">
 				<div className="fraud-protection-rule-toggle-children-vertical-form">
 					<TextControl
 						label={ __(
 							'Minimum items per order',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 						id="fraud-protection-order-items-minimum"
 						placeholder="0"
@@ -83,7 +83,7 @@ const OrderItemsThresholdCustomForm: React.FC< OrderItemsThresholdCustomFormProp
 						}
 						help={ __(
 							'Leave blank for no limit',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 						min="1"
 						step="1"
@@ -95,7 +95,7 @@ const OrderItemsThresholdCustomForm: React.FC< OrderItemsThresholdCustomFormProp
 					<TextControl
 						label={ __(
 							'Maximum items per order',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 						id="fraud-protection-order-items-maximum"
 						placeholder="0"
@@ -107,7 +107,7 @@ const OrderItemsThresholdCustomForm: React.FC< OrderItemsThresholdCustomFormProp
 						}
 						help={ __(
 							'Leave blank for no limit',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 						min="1"
 						step="1"
@@ -121,7 +121,7 @@ const OrderItemsThresholdCustomForm: React.FC< OrderItemsThresholdCustomFormProp
 					<FraudProtectionRuleCardNotice type="warning">
 						{ __(
 							'An item range must be set for this filter to take effect.',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 					</FraudProtectionRuleCardNotice>
 				</div>
@@ -131,7 +131,7 @@ const OrderItemsThresholdCustomForm: React.FC< OrderItemsThresholdCustomFormProp
 					<FraudProtectionRuleCardNotice type="error">
 						{ __(
 							'Maximum item count must be greater than the minimum item count.',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 					</FraudProtectionRuleCardNotice>
 				</div>
@@ -141,19 +141,19 @@ const OrderItemsThresholdCustomForm: React.FC< OrderItemsThresholdCustomFormProp
 };
 const OrderItemsThresholdRuleCard: React.FC = () => (
 	<FraudProtectionRuleCard
-		title={ __( 'Order Items Threshold', 'woocommerce-payments' ) }
+		title={ __( 'Order Items Threshold', 'poocommerce-payments' ) }
 		id="order-items-threshold-card"
 	>
 		<FraudProtectionRuleToggle
 			setting="order_items_threshold"
 			label={ __(
 				'Enable Order Items Threshold filter',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			) }
 			description={ __(
 				'This filter compares the amount of items in an order to the minimum and maximum counts that you specify. ' +
 					'When enabled the payment will be blocked.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			) }
 		>
 			<OrderItemsThresholdCustomForm setting="order_items_threshold" />
@@ -162,7 +162,7 @@ const OrderItemsThresholdRuleCard: React.FC = () => (
 		<FraudProtectionRuleDescription>
 			{ __(
 				'An unusually high item count, compared to the average for your business, can indicate potential fraudulent activity.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			) }
 		</FraudProtectionRuleDescription>
 	</FraudProtectionRuleCard>
@@ -182,7 +182,7 @@ export const OrderItemsThresholdValidation = (
 			setValidationError(
 				__(
 					'An item range must be set for the "Order Item Threshold" filter.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				)
 			);
 			return false;
@@ -191,7 +191,7 @@ export const OrderItemsThresholdValidation = (
 			setValidationError(
 				__(
 					'Maximum item count must be greater than the minimum item count on the "Order Item Threshold" rule.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				)
 			);
 			return false;

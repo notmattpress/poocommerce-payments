@@ -51,7 +51,7 @@ const WooPayFileUpload: React.FunctionComponent< WooPayFileUploadProps > = ( {
 			createErrorNotice(
 				__(
 					'The file you have attached is exceeding the maximum limit.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				)
 			);
 
@@ -160,7 +160,7 @@ const WooPayFileUpload: React.FunctionComponent< WooPayFileUploadProps > = ( {
 					type="image"
 					uploadButtonLabel={ __(
 						'Upload custom logo',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 				/>
 
@@ -173,13 +173,13 @@ const WooPayFileUpload: React.FunctionComponent< WooPayFileUploadProps > = ( {
 					{ isDone && (
 						<>
 							<Button onClick={ openFileDialog } isLink>
-								{ __( 'Replace', 'woocommerce-payments' ) }
+								{ __( 'Replace', 'poocommerce-payments' ) }
 							</Button>
 							<Button
 								className="delete-uploaded-file-button"
 								aria-label={ __(
 									'Remove file',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								) }
 								icon={ <TrashIcon size={ 18 } /> }
 								onClick={ handleFileRemove }

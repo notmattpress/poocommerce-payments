@@ -2,7 +2,7 @@
  * External dependencies
  */
 import { __, _x } from '@wordpress/i18n';
-import { getSetting } from '@woocommerce/settings';
+import { getSetting } from '@poocommerce/settings';
 
 /**
  * Internal dependencies
@@ -15,7 +15,7 @@ const depositStatusOptions = Object.entries( depositStatusLabels )
 	.map( ( [ status, label ] ) => {
 		if ( status === 'paid' ) {
 			return {
-				label: __( 'Completed', 'woocommerce-payments' ),
+				label: __( 'Completed', 'poocommerce-payments' ),
 				value: 'paid',
 			};
 		}
@@ -24,7 +24,7 @@ const depositStatusOptions = Object.entries( depositStatusLabels )
 
 export const filters = [
 	{
-		label: __( 'Payout currency', 'woocommerce-payments' ),
+		label: __( 'Payout currency', 'poocommerce-payments' ),
 		param: 'store_currency_is',
 		staticParams: [
 			'paged',
@@ -42,7 +42,7 @@ export const filters = [
 		showFilters: () => false,
 		filters: [
 			{
-				label: __( 'All', 'woocommerce-payments' ),
+				label: __( 'All', 'poocommerce-payments' ),
 				value: '---',
 			},
 			// Other values are getting injected later, taking values from store.
@@ -50,7 +50,7 @@ export const filters = [
 		defaultValue: '---',
 	},
 	{
-		label: __( 'Show', 'woocommerce-payments' ),
+		label: __( 'Show', 'poocommerce-payments' ),
 		param: 'filter',
 		staticParams: [
 			'paged',
@@ -62,11 +62,11 @@ export const filters = [
 		showFilters: () => true,
 		filters: [
 			{
-				label: __( 'All payouts', 'woocommerce-payments' ),
+				label: __( 'All payouts', 'poocommerce-payments' ),
 				value: 'all',
 			},
 			{
-				label: __( 'Advanced filters', 'woocommerce-payments' ),
+				label: __( 'Advanced filters', 'poocommerce-payments' ),
 				value: 'advanced',
 			},
 		],
@@ -74,7 +74,7 @@ export const filters = [
 	// Declare advanced filters here.
 ];
 
-// TODO: Remove this and all the checks once we drop support of WooCommerce 7.7 and below.
+// TODO: Remove this and all the checks once we drop support of PooCommerce 7.7 and below.
 const wooCommerceVersionString = getSetting( 'wcVersion' );
 const wooCommerceVersion = parseFloat( wooCommerceVersionString ); // This will parse 7.7.1 to 7.7, but it's fine for this purpose
 
@@ -83,45 +83,45 @@ export const advancedFilters = {
 	/** translators: A sentence describing filters for deposits. See screen shot for context: https://d.pr/i/NcGpwL */
 	title:
 		wooCommerceVersion < 7.8
-			? __( 'Payouts match {{select /}} filters', 'woocommerce-payments' )
-			: __( 'Payouts match <select /> filters', 'woocommerce-payments' ),
+			? __( 'Payouts match {{select /}} filters', 'poocommerce-payments' )
+			: __( 'Payouts match <select /> filters', 'poocommerce-payments' ),
 	filters: {
 		date: {
 			labels: {
-				add: __( 'Date', 'woocommerce-payments' ),
+				add: __( 'Date', 'poocommerce-payments' ),
 				remove: __(
 					'Remove payout date filter',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				rule: __(
 					'Select a payout date filter match',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				/* translators: A sentence describing a deposit date filter. See screen shot for context: https://d.pr/i/NcGpwL */
 				title:
 					wooCommerceVersion < 7.8
 						? __(
 								'{{title}}Date{{/title}} {{rule /}} {{filter /}}',
-								'woocommerce-payments'
+								'poocommerce-payments'
 						  )
 						: __(
 								'<title>Date</title> <rule /> <filter />',
-								'woocommerce-payments'
+								'poocommerce-payments'
 						  ),
-				filter: __( 'Select a payout date', 'woocommerce-payments' ),
+				filter: __( 'Select a payout date', 'poocommerce-payments' ),
 			},
 			rules: [
 				{
 					value: 'before',
-					label: __( 'Before', 'woocommerce-payments' ),
+					label: __( 'Before', 'poocommerce-payments' ),
 				},
 				{
 					value: 'after',
-					label: __( 'After', 'woocommerce-payments' ),
+					label: __( 'After', 'poocommerce-payments' ),
 				},
 				{
 					value: 'between',
-					label: __( 'Between', 'woocommerce-payments' ),
+					label: __( 'Between', 'poocommerce-payments' ),
 				},
 			],
 			input: {
@@ -130,33 +130,33 @@ export const advancedFilters = {
 		},
 		status: {
 			labels: {
-				add: __( 'Status', 'woocommerce-payments' ),
+				add: __( 'Status', 'poocommerce-payments' ),
 				remove: __(
 					'Remove payout status filter',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				rule: __(
 					'Select a payout status filter match',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				/* translators: A sentence describing a deposit status filter. See screen shot for context: https://d.pr/i/NcGpwL */
 				title:
 					wooCommerceVersion < 7.8
 						? __(
 								'{{title}}Status{{/title}} {{rule /}} {{filter /}}',
-								'woocommerce-payments'
+								'poocommerce-payments'
 						  )
 						: __(
 								'<title>Status</title> <rule /> <filter />',
-								'woocommerce-payments'
+								'poocommerce-payments'
 						  ),
-				filter: __( 'Select a payout status', 'woocommerce-payments' ),
+				filter: __( 'Select a payout status', 'poocommerce-payments' ),
 			},
 			rules: [
 				{
 					value: 'is',
 					/* translators: Sentence fragment, logical, "Is" refers to searching for deposits matching a chosen deposit status. Screenshot for context: https://d.pr/i/NcGpwL */
-					label: _x( 'Is', 'payout status', 'woocommerce-payments' ),
+					label: _x( 'Is', 'payout status', 'poocommerce-payments' ),
 				},
 				{
 					value: 'is_not',
@@ -164,7 +164,7 @@ export const advancedFilters = {
 					label: _x(
 						'Is not',
 						'payout status',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 				},
 			],

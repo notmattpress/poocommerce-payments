@@ -27,7 +27,7 @@ const Page = ( {
 	className = '',
 }: React.PropsWithChildren< PageProps > ) => {
 	const customStyle = maxWidth ? { maxWidth } : undefined;
-	const classNames = [ className, 'woocommerce-payments-page' ];
+	const classNames = [ className, 'poocommerce-payments-page' ];
 	if ( isNarrow ) {
 		classNames.push( 'is-narrow' );
 	}

@@ -25,19 +25,19 @@ import { SettingsSection } from 'multi-currency/interface/components';
 
 const EnabledCurrenciesSettingsDescription = () => (
 	<>
-		<h2>{ __( 'Enabled currencies', 'woocommerce-payments' ) }</h2>
+		<h2>{ __( 'Enabled currencies', 'poocommerce-payments' ) }</h2>
 		<p>
 			{ createInterpolateElement(
 				__(
 					'Accept payments in multiple currencies. Prices are converted ' +
 						'based on exchange rates and rounding rules. <learnMoreLink>' +
 						'Learn more</learnMoreLink>',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				{
 					learnMoreLink: (
 						// @ts-expect-error: children is provided when interpolating the component
-						<ExternalLink href="https://woocommerce.com/document/woopayments/currencies/multi-currency-setup/#enabled-currencies" />
+						<ExternalLink href="https://poocommerce.com/document/woopayments/currencies/multi-currency-setup/#enabled-currencies" />
 					),
 				}
 			) }
@@ -72,8 +72,8 @@ const EnabledCurrencies = () => {
 				<CardBody
 					className={ `${ classBase }__enabled-currencies-header` }
 				>
-					<div>{ __( 'Name', 'woocommerce-payments' ) }</div>
-					<div>{ __( 'Exchange rate', 'woocommerce-payments' ) }</div>
+					<div>{ __( 'Name', 'poocommerce-payments' ) }</div>
+					<div>{ __( 'Exchange rate', 'poocommerce-payments' ) }</div>
 					<div />
 				</CardBody>
 				<CardDivider />

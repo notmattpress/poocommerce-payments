@@ -2,16 +2,16 @@
     "$schema": "https://qit.woo.com/json-schema/qit",
     "sut": {
         "type": "plugin",
-        "slug": "woocommerce-payments",
+        "slug": "poocommerce-payments",
         "source": {
             "type": "local",
-            "path": "woocommerce-payments.zip"
+            "path": "poocommerce-payments.zip"
         }
     },
     "environments": {
         "default": {
             "plugins": [
-                { "slug": "woocommerce", "from": "wporg", "version": "stable" },
+                { "slug": "poocommerce", "from": "wporg", "version": "stable" },
                 { "slug": "jetpack", "from": "wporg", "version": "stable" }
             ]
         }

@@ -22,7 +22,7 @@ const DownloadButton: React.FunctionComponent< React.PropsWithChildren<
 	DownloadButtonProps
 > > = ( { isDisabled, isBusy, onClick } ) => (
 	<Button
-		className="woocommerce-table__download-button"
+		className="poocommerce-table__download-button"
 		disabled={ isDisabled }
 		onClick={ onClick }
 		isBusy={ isBusy }
@@ -43,8 +43,8 @@ const DownloadButton: React.FunctionComponent< React.PropsWithChildren<
 				fill="none"
 			/>
 		</svg>
-		<span className="woocommerce-table__download-button__label">
-			{ __( 'Export', 'woocommerce-payments' ) }
+		<span className="poocommerce-table__download-button__label">
+			{ __( 'Export', 'poocommerce-payments' ) }
 		</span>
 	</Button>
 );

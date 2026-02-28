@@ -2,7 +2,7 @@
 /**
  * WC_Payments_Webhook_Processing_Service class
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 use WCPay\Constants\Order_Status;
@@ -26,7 +26,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class WC_Payments_Webhook_Processing_Service {
 	/**
-	 * Client for making requests to the WooCommerce Payments API
+	 * Client for making requests to the PooCommerce Payments API
 	 *
 	 * @var WC_Payments_API_Client
 	 */
@@ -98,7 +98,7 @@ class WC_Payments_Webhook_Processing_Service {
 	/**
 	 * WC_Payments_Webhook_Processing_Service constructor.
 	 *
-	 * @param WC_Payments_API_Client                          $api_client          WooCommerce Payments API client.
+	 * @param WC_Payments_API_Client                          $api_client          PooCommerce Payments API client.
 	 * @param WC_Payments_DB                                  $wcpay_db            WC_Payments_DB instance.
 	 * @param WC_Payments_Account                             $account             WC_Payments_Account instance.
 	 * @param WC_Payments_Remote_Note_Service                 $remote_note_service WC_Payments_Remote_Note_Service instance.
@@ -164,7 +164,7 @@ class WC_Payments_Webhook_Processing_Service {
 		}
 
 		try {
-			do_action( 'woocommerce_payments_before_webhook_delivery', $event_type, $event_body );
+			do_action( 'poocommerce_payments_before_webhook_delivery', $event_type, $event_body );
 		} catch ( Exception $e ) {
 			Logger::error( $e );
 		}
@@ -196,7 +196,7 @@ class WC_Payments_Webhook_Processing_Service {
 				break;
 			case 'account.deleted':
 				$this->onboarding_service->cleanup_on_account_reset();
-				// Reset the WooCommerce NOX data, if it is not already.
+				// Reset the PooCommerce NOX data, if it is not already.
 				delete_option( WC_Payments_Account::NOX_PROFILE_OPTION_KEY );
 				// NOX onboarding should be unlocked by the time we receive this event,
 				// but unlock it just in case, to maintain sanity.
@@ -231,7 +231,7 @@ class WC_Payments_Webhook_Processing_Service {
 		}
 
 		try {
-			do_action( 'woocommerce_payments_after_webhook_delivery', $event_type, $event_body );
+			do_action( 'poocommerce_payments_after_webhook_delivery', $event_type, $event_body );
 		} catch ( Exception $e ) {
 			Logger::error( $e );
 		}
@@ -297,7 +297,7 @@ class WC_Payments_Webhook_Processing_Service {
 			throw new Invalid_Payment_Method_Exception(
 				sprintf(
 				/* translators: %1: charge ID */
-					__( 'Could not find order via charge ID: %1$s', 'woocommerce-payments' ),
+					__( 'Could not find order via charge ID: %1$s', 'poocommerce-payments' ),
 					$charge_id
 				),
 				'order_not_found'
@@ -363,7 +363,7 @@ class WC_Payments_Webhook_Processing_Service {
 			throw new Invalid_Payment_Method_Exception(
 				sprintf(
 				/* translators: %1: charge ID */
-					__( 'Could not find order via charge ID: %1$s', 'woocommerce-payments' ),
+					__( 'Could not find order via charge ID: %1$s', 'poocommerce-payments' ),
 					$charge_id
 				),
 				'order_not_found'
@@ -577,7 +577,7 @@ class WC_Payments_Webhook_Processing_Service {
 			throw new Invalid_Webhook_Data_Exception(
 				sprintf(
 				/* translators: %1: charge ID */
-					__( 'Could not find order via charge ID: %1$s', 'woocommerce-payments' ),
+					__( 'Could not find order via charge ID: %1$s', 'poocommerce-payments' ),
 					$charge_id
 				)
 			);
@@ -607,7 +607,7 @@ class WC_Payments_Webhook_Processing_Service {
 			throw new Invalid_Webhook_Data_Exception(
 				sprintf(
 				/* translators: %1: charge ID */
-					__( 'Could not find order via charge ID: %1$s', 'woocommerce-payments' ),
+					__( 'Could not find order via charge ID: %1$s', 'poocommerce-payments' ),
 					$charge_id
 				)
 			);
@@ -637,7 +637,7 @@ class WC_Payments_Webhook_Processing_Service {
 			throw new Invalid_Webhook_Data_Exception(
 				sprintf(
 				/* translators: %1: charge ID */
-					__( 'Could not find order via charge ID: %1$s', 'woocommerce-payments' ),
+					__( 'Could not find order via charge ID: %1$s', 'poocommerce-payments' ),
 					$charge_id
 				)
 			);
@@ -645,18 +645,18 @@ class WC_Payments_Webhook_Processing_Service {
 
 		switch ( $event_type ) {
 			case 'charge.dispute.funds_withdrawn':
-				$message = __( 'Payment dispute and fees have been deducted from your next payout', 'woocommerce-payments' );
+				$message = __( 'Payment dispute and fees have been deducted from your next payout', 'poocommerce-payments' );
 				break;
 			case 'charge.dispute.funds_reinstated':
-				$message = __( 'Payment dispute funds have been reinstated', 'woocommerce-payments' );
+				$message = __( 'Payment dispute funds have been reinstated', 'poocommerce-payments' );
 				break;
 			default:
-				$message = __( 'Payment dispute has been updated', 'woocommerce-payments' );
+				$message = __( 'Payment dispute has been updated', 'poocommerce-payments' );
 		}
 
 		$note = sprintf(
 		/* translators: %1: the dispute message, %2: the dispute details URL */
-			__( '%1$s. See <a href="%2$s">dispute overview</a> for more details.', 'woocommerce-payments' ),
+			__( '%1$s. See <a href="%2$s">dispute overview</a> for more details.', 'poocommerce-payments' ),
 			$message,
 			add_query_arg(
 				[ 'id' => $charge_id ],
@@ -709,7 +709,7 @@ class WC_Payments_Webhook_Processing_Service {
 			throw new Invalid_Webhook_Data_Exception(
 				sprintf(
 				/* translators: %1: ID being fetched */
-					__( '%1$s not found in array', 'woocommerce-payments' ),
+					__( '%1$s not found in array', 'poocommerce-payments' ),
 					$key
 				)
 			);
@@ -790,7 +790,7 @@ class WC_Payments_Webhook_Processing_Service {
 			throw new Invalid_Payment_Method_Exception(
 				sprintf(
 				/* translators: %1: intent ID */
-					__( 'Could not find order via intent ID: %1$s', 'woocommerce-payments' ),
+					__( 'Could not find order via intent ID: %1$s', 'poocommerce-payments' ),
 					$intent_id
 				),
 				'order_not_found'
@@ -815,30 +815,30 @@ class WC_Payments_Webhook_Processing_Service {
 
 		switch ( $code ) {
 			case 'account_closed':
-				return __( "The customer's bank account has been closed.", 'woocommerce-payments' );
+				return __( "The customer's bank account has been closed.", 'poocommerce-payments' );
 			case 'debit_not_authorized':
-				return __( 'The customer has notified their bank that this payment was unauthorized.', 'woocommerce-payments' );
+				return __( 'The customer has notified their bank that this payment was unauthorized.', 'poocommerce-payments' );
 			case 'insufficient_funds':
-				return __( "The customer's account has insufficient funds to cover this payment.", 'woocommerce-payments' );
+				return __( "The customer's account has insufficient funds to cover this payment.", 'poocommerce-payments' );
 			case 'no_account':
-				return __( "The customer's bank account could not be located.", 'woocommerce-payments' );
+				return __( "The customer's bank account could not be located.", 'poocommerce-payments' );
 			case 'payment_method_microdeposit_failed':
-				return __( 'Microdeposit transfers failed. Please check the account, institution and transit numbers.', 'woocommerce-payments' );
+				return __( 'Microdeposit transfers failed. Please check the account, institution and transit numbers.', 'poocommerce-payments' );
 			case 'payment_method_microdeposit_verification_attempts_exceeded':
-				return __( 'You have exceeded the number of allowed verification attempts.', 'woocommerce-payments' );
+				return __( 'You have exceeded the number of allowed verification attempts.', 'poocommerce-payments' );
 			case 'payment_intent_mandate_invalid':
-				return __( 'The mandate used for this renewal payment is invalid. You may need to bring the customer back to your store and ask them to resubmit their payment information.', 'woocommerce-payments' );
+				return __( 'The mandate used for this renewal payment is invalid. You may need to bring the customer back to your store and ask them to resubmit their payment information.', 'poocommerce-payments' );
 			case 'card_declined':
 				switch ( $decline_code ) {
 					case 'debit_notification_undelivered':
-						return __( "The customer's bank could not send pre-debit notification for the payment.", 'woocommerce-payments' );
+						return __( "The customer's bank could not send pre-debit notification for the payment.", 'poocommerce-payments' );
 					case 'transaction_not_approved':
-						return __( 'For recurring payment greater than mandate amount or INR 15000, payment was not approved by the card holder.', 'woocommerce-payments' );
+						return __( 'For recurring payment greater than mandate amount or INR 15000, payment was not approved by the card holder.', 'poocommerce-payments' );
 				}
 		}
 
 		// translators: %s Stripe error message.
-		return sprintf( __( 'With the following message: <code>%s</code>', 'woocommerce-payments' ), $message );
+		return sprintf( __( 'With the following message: <code>%s</code>', 'poocommerce-payments' ), $message );
 	}
 
 	/**
@@ -862,7 +862,7 @@ class WC_Payments_Webhook_Processing_Service {
 
 		// Check if the charge was actually captured before processing the refund.
 		// Stripe sends charge.refunded webhooks for cancelled authorizations even though no payment was captured.
-		// We should not create WooCommerce refund objects for these cases as they cause negative values in analytics.
+		// We should not create PooCommerce refund objects for these cases as they cause negative values in analytics.
 		$captured = $event_object['captured'] ?? false;
 		if ( ! $captured ) {
 			return;
@@ -885,7 +885,7 @@ class WC_Payments_Webhook_Processing_Service {
 			throw new Order_Not_Found_Exception(
 				sprintf(
 				/* translators: %1: charge ID */
-					__( 'Could not find order via charge ID: %1$s', 'woocommerce-payments' ),
+					__( 'Could not find order via charge ID: %1$s', 'poocommerce-payments' ),
 					$charge_id
 				),
 				'order_not_found'
@@ -906,7 +906,7 @@ class WC_Payments_Webhook_Processing_Service {
 			throw new Invalid_Webhook_Data_Exception(
 				sprintf(
 				/* translators: %1: charge ID */
-					__( 'The refund amount is not valid for charge ID: %1$s', 'woocommerce-payments' ),
+					__( 'The refund amount is not valid for charge ID: %1$s', 'poocommerce-payments' ),
 					$charge_id
 				)
 			);

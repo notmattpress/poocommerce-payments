@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Webhook_Processing_Service_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use PHPUnit\Framework\MockObject\MockObject;
@@ -635,14 +635,14 @@ class WC_Payments_Webhook_Processing_Service_Test extends WCPAY_UnitTestCase {
 	 */
 	public function test_action_hook_exception_returns_response() {
 		add_action(
-			'woocommerce_payments_before_webhook_delivery',
+			'poocommerce_payments_before_webhook_delivery',
 			function () {
 				throw new Exception( 'Crash before' );
 			}
 		);
 
 		add_action(
-			'woocommerce_payments_after_webhook_delivery',
+			'poocommerce_payments_after_webhook_delivery',
 			function () {
 				throw new Exception( 'Crash after' );
 			}

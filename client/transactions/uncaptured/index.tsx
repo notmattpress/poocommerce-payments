@@ -5,8 +5,8 @@
  */
 import React, { useEffect } from 'react';
 import { __ } from '@wordpress/i18n';
-import { TableCard, TableCardColumn } from '@woocommerce/components';
-import { onQueryChange, getQuery } from '@woocommerce/navigation';
+import { TableCard, TableCardColumn } from '@poocommerce/components';
+import { onQueryChange, getQuery } from '@poocommerce/navigation';
 import moment from 'moment';
 
 /**
@@ -41,8 +41,8 @@ const getColumns = (): Column[] =>
 	[
 		{
 			key: 'created',
-			label: __( 'Authorized on', 'woocommerce-payments' ),
-			screenReaderLabel: __( 'Authorized on', 'woocommerce-payments' ),
+			label: __( 'Authorized on', 'poocommerce-payments' ),
+			screenReaderLabel: __( 'Authorized on', 'poocommerce-payments' ),
 			required: true,
 			isLeftAligned: true,
 			defaultOrder: 'asc',
@@ -52,8 +52,8 @@ const getColumns = (): Column[] =>
 		},
 		{
 			key: 'capture_by',
-			label: __( 'Capture by', 'woocommerce-payments' ),
-			screenReaderLabel: __( 'Capture by', 'woocommerce-payments' ),
+			label: __( 'Capture by', 'poocommerce-payments' ),
+			screenReaderLabel: __( 'Capture by', 'poocommerce-payments' ),
 			required: true,
 			isLeftAligned: true,
 			cellClassName: 'date-time',
@@ -61,44 +61,44 @@ const getColumns = (): Column[] =>
 		},
 		{
 			key: 'order',
-			label: __( 'Order', 'woocommerce-payments' ),
-			screenReaderLabel: __( 'Order number', 'woocommerce-payments' ),
+			label: __( 'Order', 'poocommerce-payments' ),
+			screenReaderLabel: __( 'Order number', 'poocommerce-payments' ),
 			required: true,
 		},
 		{
 			key: 'risk_level',
-			label: __( 'Risk level', 'woocommerce-payments' ),
+			label: __( 'Risk level', 'poocommerce-payments' ),
 			screenReaderLabel: __(
 				'Risk level of transaction',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			isLeftAligned: true,
 		},
 		{
 			key: 'amount',
-			label: __( 'Amount', 'woocommerce-payments' ),
-			screenReaderLabel: __( 'Amount', 'woocommerce-payments' ),
+			label: __( 'Amount', 'poocommerce-payments' ),
+			screenReaderLabel: __( 'Amount', 'poocommerce-payments' ),
 			isNumeric: true,
 			isSortable: true,
 		},
 		{
 			key: 'customer_email',
-			label: __( 'Email', 'woocommerce-payments' ),
-			screenReaderLabel: __( 'Email', 'woocommerce-payments' ),
+			label: __( 'Email', 'poocommerce-payments' ),
+			screenReaderLabel: __( 'Email', 'poocommerce-payments' ),
 			visible: false,
 			isLeftAligned: true,
 		},
 		{
 			key: 'customer_country',
-			label: __( 'Country', 'woocommerce-payments' ),
-			screenReaderLabel: __( 'Country', 'woocommerce-payments' ),
+			label: __( 'Country', 'poocommerce-payments' ),
+			screenReaderLabel: __( 'Country', 'poocommerce-payments' ),
 			visible: false,
 			isLeftAligned: true,
 		},
 		{
 			key: 'action',
-			label: __( 'Action', 'woocommerce-payments' ),
-			screenReaderLabel: __( 'Action', 'woocommerce-payments' ),
+			label: __( 'Action', 'poocommerce-payments' ),
+			screenReaderLabel: __( 'Action', 'poocommerce-payments' ),
 			visible: true,
 			required: true,
 		},
@@ -219,7 +219,7 @@ export const AuthorizationsList = (): JSX.Element => {
 	if ( isAuthorizationsSummaryLoaded ) {
 		summary = [
 			{
-				label: __( 'authorization(s)', 'woocommerce-payments' ),
+				label: __( 'authorization(s)', 'poocommerce-payments' ),
 				value: String( authorizationsSummary.count ),
 			},
 		];
@@ -232,7 +232,7 @@ export const AuthorizationsList = (): JSX.Element => {
 		) {
 			// Only show the total if there is one currency available
 			summary.push( {
-				label: __( 'total', 'woocommerce-payments' ),
+				label: __( 'total', 'poocommerce-payments' ),
 				value: `${ formatExplicitCurrency(
 					// We've already checked that `.total` is not undefined, but TypeScript doesn't detect
 					// that so we remove the `undefined` in the type manually.
@@ -252,10 +252,10 @@ export const AuthorizationsList = (): JSX.Element => {
 	return (
 		<Page>
 			<TableCard
-				className="authorizations-list woocommerce-report-table has-search"
+				className="authorizations-list poocommerce-report-table has-search"
 				title={ __(
 					'Uncaptured transactions',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				) }
 				isLoading={ isLoading || isSummaryLoading }
 				rowsPerPage={ parseInt( getQuery().per_page ?? '', 10 ) || 25 }

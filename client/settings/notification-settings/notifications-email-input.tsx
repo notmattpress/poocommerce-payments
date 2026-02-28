@@ -46,7 +46,7 @@ const NotificationsEmailInput: React.FC = () => {
 		! isValidEmail( accountCommunicationsEmail );
 
 	const clientValidationError = showClientValidationError
-		? __( 'Please enter a valid email address.', 'woocommerce-payments' )
+		? __( 'Please enter a valid email address.', 'poocommerce-payments' )
 		: null;
 
 	// Server error takes precedence over client validation error
@@ -54,11 +54,11 @@ const NotificationsEmailInput: React.FC = () => {
 
 	return (
 		<>
-			<h4>{ __( 'Notifications email', 'woocommerce-payments' ) }</h4>
+			<h4>{ __( 'Notifications email', 'poocommerce-payments' ) }</h4>
 			<p className="settings__notifications-email-description">
 				{ __(
 					'Provide an email address where you would like to receive communications about your WooPayments account.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				) }
 			</p>
 
@@ -70,7 +70,7 @@ const NotificationsEmailInput: React.FC = () => {
 
 			<TextControl
 				className="settings__notifications-email-input"
-				label={ __( 'Email address', 'woocommerce-payments' ) }
+				label={ __( 'Email address', 'poocommerce-payments' ) }
 				value={ accountCommunicationsEmail }
 				onChange={ setAccountCommunicationsEmail }
 				onBlur={ () => setHasBlurred( true ) }

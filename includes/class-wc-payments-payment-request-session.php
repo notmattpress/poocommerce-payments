@@ -2,10 +2,10 @@
 /**
  * Class WC_Payments_Payment_Request_Session
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
-use Automattic\WooCommerce\StoreApi\Utilities\JsonWebToken;
+use Automattic\PooCommerce\StoreApi\Utilities\JsonWebToken;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -36,18 +36,18 @@ class WC_Payments_Payment_Request_Session {
 	 */
 	public function init() {
 		// adding this filter with a higher priority than the session handler of the Store API.
-		add_filter( 'woocommerce_session_handler', [ $this, 'add_payment_request_store_api_session_handler' ], 20 );
+		add_filter( 'poocommerce_session_handler', [ $this, 'add_payment_request_store_api_session_handler' ], 20 );
 
 		// checking to ensure we're not erasing the cart on the "order received" page.
 		if ( $this->is_custom_session_order_received_page() ) {
-			add_filter( 'woocommerce_persistent_cart_enabled', '__return_false' );
-			add_filter( 'woocommerce_cart_session_initialize', '__return_false' );
+			add_filter( 'poocommerce_persistent_cart_enabled', '__return_false' );
+			add_filter( 'poocommerce_cart_session_initialize', '__return_false' );
 			add_action(
-				'woocommerce_before_cart_emptied',
+				'poocommerce_before_cart_emptied',
 				[ $this, 'save_old_cart_data_for_restore' ]
 			);
 			add_action(
-				'woocommerce_cart_emptied',
+				'poocommerce_cart_emptied',
 				[ $this, 'restore_old_cart_data' ]
 			);
 		}
@@ -96,7 +96,7 @@ class WC_Payments_Payment_Request_Session {
 	/**
 	 * Check if the $_SERVER global has order received URL slug in its 'REQUEST_URI' value - just like `wcs_is_order_received_page`.
 	 *
-	 * Similar to WooCommerce's is_custom_session_order_received_page(), but can be used before the $wp's query vars are setup, which is essential
+	 * Similar to PooCommerce's is_custom_session_order_received_page(), but can be used before the $wp's query vars are setup, which is essential
 	 * when preventing the cart from being emptied on the "order received" page, if the order has been placed with WooPayments GooglePay/ApplePay on the product page.
 	 *
 	 * @return bool
@@ -191,9 +191,9 @@ class WC_Payments_Payment_Request_Session {
 		}
 
 		// ensures cart contents aren't merged across different sessions for the same customer.
-		add_filter( 'woocommerce_persistent_cart_enabled', '__return_false' );
+		add_filter( 'poocommerce_persistent_cart_enabled', '__return_false' );
 		// when an order is placed via the Store API on product pages, we need to slightly modify the "order received" URL.
-		add_filter( 'woocommerce_get_return_url', [ $this, 'store_api_order_received_return_url' ] );
+		add_filter( 'poocommerce_get_return_url', [ $this, 'store_api_order_received_return_url' ] );
 		// ensuring that the `X-WooPayments-Tokenized-Cart-Session` response header is added to the response.
 		add_filter( 'rest_post_dispatch', [ $this, 'store_api_headers' ] );
 		// clearing the cart contents if the request is made just to fetch product attributes and prices.

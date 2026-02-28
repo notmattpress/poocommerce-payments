@@ -53,7 +53,7 @@ class AlipayDefinition implements PaymentMethodDefinitionInterface {
 	 * @return string
 	 */
 	public static function get_title( ?string $account_country = null ): string {
-		return __( 'Alipay', 'woocommerce-payments' );
+		return __( 'Alipay', 'poocommerce-payments' );
 	}
 
 	/**
@@ -74,7 +74,7 @@ class AlipayDefinition implements PaymentMethodDefinitionInterface {
 	 * @return string
 	 */
 	public static function get_description( ?string $account_country = null ): string {
-		return __( 'A digital wallet for customers with mainland China Alipay accounts. Regional versions like AlipayHK are not supported.', 'woocommerce-payments' );
+		return __( 'A digital wallet for customers with mainland China Alipay accounts. Regional versions like AlipayHK are not supported.', 'poocommerce-payments' );
 	}
 
 	/**

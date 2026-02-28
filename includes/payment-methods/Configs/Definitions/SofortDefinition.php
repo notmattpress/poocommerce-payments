@@ -53,7 +53,7 @@ class SofortDefinition implements PaymentMethodDefinitionInterface {
 	 * @return string
 	 */
 	public static function get_title( ?string $account_country = null ): string {
-		return __( 'Sofort', 'woocommerce-payments' );
+		return __( 'Sofort', 'poocommerce-payments' );
 	}
 
 	/**
@@ -74,7 +74,7 @@ class SofortDefinition implements PaymentMethodDefinitionInterface {
 	 * @return string
 	 */
 	public static function get_description( ?string $account_country = null ): string {
-		return __( 'Accept secure bank transfers from Austria, Belgium, Germany, Italy, Netherlands, and Spain.', 'woocommerce-payments' );
+		return __( 'Accept secure bank transfers from Austria, Belgium, Germany, Italy, Netherlands, and Spain.', 'poocommerce-payments' );
 	}
 
 	/**

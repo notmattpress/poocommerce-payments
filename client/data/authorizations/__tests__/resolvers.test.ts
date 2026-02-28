@@ -5,7 +5,7 @@
  */
 import { apiFetch } from '@wordpress/data-controls';
 import { controls } from '@wordpress/data';
-import { Query } from '@woocommerce/navigation';
+import { Query } from '@poocommerce/navigation';
 
 /**
  * Internal dependencies

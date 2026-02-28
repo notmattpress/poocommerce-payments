@@ -200,7 +200,7 @@ export const onConfirmHandler = async (
 					)?.value ||
 					__(
 						'There was a problem processing the order.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					)
 			)
 		);

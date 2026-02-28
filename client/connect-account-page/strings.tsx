@@ -12,65 +12,65 @@ export default {
 		// CTA label to use when there isn't a working WPCOM/Jetpack connection.
 		jetpack_not_connected: __(
 			'Connect your store',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		// CTA label to use when there is a working WPCOM/Jetpack connection but no Stripe account connected.
 		account_not_connected: __(
 			'Verify business details',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		// CTA label to use when there is a working WPCOM/Jetpack connection and a Stripe account connected,
 		// but only partially onboarded (not valid).
 		account_invalid: __(
 			'Finish business details verifications',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
-		sandbox: __( 'Create test account', 'woocommerce-payments' ),
-		reset: __( 'Reset account', 'woocommerce-payments' ),
+		sandbox: __( 'Create test account', 'poocommerce-payments' ),
+		reset: __( 'Reset account', 'poocommerce-payments' ),
 	},
 	heading: ( firstName?: string ): string =>
 		sprintf(
 			/* translators: %s: first name of the merchant, if it exists, %s: WooPayments. */
-			__( 'Hi%s, Welcome to %s!', 'woocommerce' ),
+			__( 'Hi%s, Welcome to %s!', 'poocommerce' ),
 			firstName ? ` ${ firstName }` : '',
 			'WooPayments'
 		),
 	paymentMethods: {
 		deposits: {
-			title: __( 'Payouts', 'woocommerce-payments' ),
-			value: __( 'Automatic - Daily', 'woocommerce-payments' ),
+			title: __( 'Payouts', 'poocommerce-payments' ),
+			value: __( 'Automatic - Daily', 'poocommerce-payments' ),
 		},
 		capture: {
-			title: __( 'Payments capture', 'woocommerce-payments' ),
-			value: __( 'Capture on order', 'woocommerce-payments' ),
+			title: __( 'Payments capture', 'poocommerce-payments' ),
+			value: __( 'Capture on order', 'poocommerce-payments' ),
 		},
 		recurring: {
-			title: __( 'Recurring payments', 'woocommerce-payments' ),
-			value: __( 'Supported', 'woocommerce-payments' ),
+			title: __( 'Recurring payments', 'poocommerce-payments' ),
+			value: __( 'Supported', 'poocommerce-payments' ),
 		},
 	},
 	usp1: __(
 		'Offer card payments, Apple Pay, iDeal, Affirm, Afterpay, and accept in-person payments with the Woo mobile app.',
-		'woocommerce-payments'
+		'poocommerce-payments'
 	),
 	usp2: __(
 		'Sell to international markets and accept over 135 currencies with local payment methods.',
-		'woocommerce-payments'
+		'poocommerce-payments'
 	),
 	usp3: __(
 		'Earn recurring revenue and get payouts into your bank account.',
-		'woocommerce-payments'
+		'poocommerce-payments'
 	),
 	sandboxMode: {
 		title: __(
 			"I'm setting up a store for someone else.",
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		description: sprintf(
 			/* translators: %s: WooPayments */
 			__(
 				'This option will set up a %s test account using test data. When you’re ready to launch your store, switching to live payments is easy.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			'WooPayments'
 		),
@@ -78,14 +78,14 @@ export default {
 	sandboxModeNotice: interpolateComponents( {
 		mixedString: __(
 			'Test mode is enabled, only test accounts will be created. If you want to process live transactions, please {{learnMoreLink}}disable it{{/learnMoreLink}}.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		components: {
 			learnMoreLink: (
 				// Link content is in the format string above. Consider disabling jsx-a11y/anchor-has-content.
 				// eslint-disable-next-line jsx-a11y/anchor-has-content
 				<a
-					href="https://woocommerce.com/document/woopayments/testing-and-troubleshooting/sandbox-mode/"
+					href="https://poocommerce.com/document/woopayments/testing-and-troubleshooting/sandbox-mode/"
 					target="_blank"
 					rel="noreferrer"
 				/>
@@ -96,7 +96,7 @@ export default {
 		/* translators: 1: WooPayments. */
 		__(
 			'Please <b>complete your %1$s setup</b> to process payments.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		'WooPayments'
 	),
@@ -104,31 +104,31 @@ export default {
 		description: {
 			jetpack_connected: __(
 				"You'll need to verify your business and payment details to ",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			jetpack_not_connected: __(
 				'To ensure safe and secure transactions, a WordPress.com account is required before you can verify your business details.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 		},
-		button: __( 'enable payouts.', 'woocommerce-payments' ),
+		button: __( 'enable payouts.', 'poocommerce-payments' ),
 	},
 	infoModal: {
 		title: sprintf(
 			/* translators: %s: WooPayments */
-			__( 'Verifying your information with %s', 'woocommerce-payments' ),
+			__( 'Verifying your information with %s', 'poocommerce-payments' ),
 			'WooPayments'
 		),
 		whyWeAsk: {
 			heading: __(
 				'Why we ask for personal financial information',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			description: sprintf(
 				/* translators: %s: WooPayments */
 				__(
 					"As you continue the process of signing up for %s, we'll ask for information about your business, including the business owner's date of birth and tax ID number. We know you may wonder why we ask for this information, and how it will be used. The “Know Your Customer” process, explained below, helps us provide a safe, ethical environment for all financial transactions.",
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				'WooPayments'
 			),
@@ -136,37 +136,37 @@ export default {
 		whatIsKyc: {
 			heading: __(
 				'What is “Know Your Customer”?',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			description: __(
 				"“Know Your Customer” standards are used by banks and other financial institutions to confirm that customers are who they say they are. By confirming their customers' identities, banks and financial institutions can help keep transactions safe from fraud and other suspicious activities.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 		},
 		whyShareInfo: {
 			heading: __(
 				'Why do I have to share this information?',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			description: __(
 				"Before we build a payment relationship with a customer, we ask for the information listed above to validate the business owner's identity and tax ID number, and to ensure that we can connect the listed bank account with the business itself.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			description2: __(
 				'The ultimate goal of the “Know Your Customer” process is to help your business get up and running with payments as soon as possible while protecting your business and your customers. We follow the same regulations as other financial institutions so that we can ensure we operate in an ethical and trustworthy manner. We want to protect your business and the payments that we manage for you. The “Know Your Customer” process helps us protect you.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 		},
 		whatElse: {
 			heading: __(
 				'What else should I keep in mind while completing this process?',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			description: sprintf(
 				/* translators: %s: WooPayments */
 				__(
 					"If you're setting up %s for someone else, it's best to have that person complete the account creation process. As you can see above, we ask for very specific information about the business owner - and you might not have all the details at hand. It's not always possible to change account information once it's been saved, especially if the site accepts live transactions before the correct account information is entered.",
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				'WooPayments'
 			),
@@ -174,14 +174,14 @@ export default {
 		isMyDataSafe: {
 			heading: sprintf(
 				/* translators: %s: WooPayments */
-				__( 'Is my data safe with %s?', 'woocommerce-payments' ),
+				__( 'Is my data safe with %s?', 'poocommerce-payments' ),
 				'WooPayments'
 			),
 			description: sprintf(
 				/* translators: %s: WooPayments */
 				__(
 					'We take every step required to safeguard your personal data. %s is built in partnership with Stripe to store your data in a safe and secure manner.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				'WooPayments'
 			),
@@ -189,99 +189,99 @@ export default {
 		howQuickly: {
 			heading: __(
 				'How quickly will you confirm my identity and allow me to process payments?',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			description: __(
 				"We'll do our best to work with Stripe to confirm your identity as quickly as we can. Typically, we'll confirm your application within a couple of days.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 		},
 		whatInformation: {
 			heading: __(
 				'What information should I have at hand before I start the “Know Your Customer” process?',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			description: __(
 				"Here's a brief list of the information you'll need to finish payment signup:"
 			),
 		},
 		businessOwnerInfo: {
-			heading: __( 'Business owner info:', 'woocommerce-payments' ),
+			heading: __( 'Business owner info:', 'poocommerce-payments' ),
 			fields: [
-				__( 'Legal name', 'woocommerce-payments' ),
-				__( 'Date of birth', 'woocommerce-payments' ),
-				__( 'Home address', 'woocommerce-payments' ),
-				__( 'Email address', 'woocommerce-payments' ),
-				__( 'Mobile phone number', 'woocommerce-payments' ),
-				__( 'Bank account information', 'woocommerce-payments' ),
+				__( 'Legal name', 'poocommerce-payments' ),
+				__( 'Date of birth', 'poocommerce-payments' ),
+				__( 'Home address', 'poocommerce-payments' ),
+				__( 'Email address', 'poocommerce-payments' ),
+				__( 'Mobile phone number', 'poocommerce-payments' ),
+				__( 'Bank account information', 'poocommerce-payments' ),
 				__(
 					'Social Security number (SSN) or Taxpayer Identification Number',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 			],
 		},
 		businessInfo: {
-			heading: __( 'Business info:', 'woocommerce-payments' ),
+			heading: __( 'Business info:', 'poocommerce-payments' ),
 			fields: [
 				__(
 					'Country where your business is based',
-					'woocommerce-payments '
+					'poocommerce-payments '
 				),
-				__( 'Type of business', 'woocommerce-payments ' ),
-				__( 'Industry', 'woocommerce-payments ' ),
-				__( 'Company address', 'woocommerce-payments ' ),
-				__( 'Company phone number', 'woocommerce-payments ' ),
-				__( 'Company URL', 'woocommerce-payments ' ),
+				__( 'Type of business', 'poocommerce-payments ' ),
+				__( 'Industry', 'poocommerce-payments ' ),
+				__( 'Company address', 'poocommerce-payments ' ),
+				__( 'Company phone number', 'poocommerce-payments ' ),
+				__( 'Company URL', 'poocommerce-payments ' ),
 			],
 		},
 	},
 	stepsHeading: __(
 		'You’re only steps away from getting paid',
-		'woocommerce-payments'
+		'poocommerce-payments'
 	),
 	step1: {
 		heading: __(
 			'Create and connect your account',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		description: __(
 			'To ensure safe and secure transactions, a WordPress.com account is required.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 	},
 	step2: {
-		heading: __( 'Provide a few business details', 'woocommerce-payments' ),
+		heading: __( 'Provide a few business details', 'poocommerce-payments' ),
 		description: __(
 			'Next we’ll ask you to verify your business and payment details to enable payouts.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 	},
 	step3: {
-		heading: __( 'Setup complete!', 'woocommerce-payments' ),
+		heading: __( 'Setup complete!', 'poocommerce-payments' ),
 		description: sprintf(
 			/* translators: %s: WooPayments */
 			__(
 				'You’re ready to start using the features and benefits of %s.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			'WooPayments'
 		),
 	},
 	onboardingDisabled: __(
 		"We've temporarily paused new account creation. We'll notify you when we resume!",
-		'woocommerce-payments'
+		'poocommerce-payments'
 	),
 	incentive: {
-		limitedTimeOffer: __( 'Limited time offer', 'woocommerce-payments' ),
+		limitedTimeOffer: __( 'Limited time offer', 'poocommerce-payments' ),
 		details: __(
 			'Discount will be applied to payments processed via WooPayments upon completion of installation, setup, and connection.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		termsAndConditions: ( url: string ): JSX.Element =>
 			createInterpolateElement(
 				__(
 					'*See <a>Terms and Conditions</a> for details.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				{
 					a: (
@@ -296,7 +296,7 @@ export default {
 			),
 		error: __(
 			'There was an error applying the promotion. Please contact support for assistance if the problem persists',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 	},
 	nonSupportedCountry: createInterpolateElement(
@@ -304,7 +304,7 @@ export default {
 			/* translators: %1$s: WooPayments */
 			__(
 				'<b>%1$s is not currently available in your location</b>. To be eligible for %1$s, your business address must be in one of the following <a>supported countries</a>.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			'WooPayments'
 		),
@@ -313,7 +313,7 @@ export default {
 			a: (
 				// eslint-disable-next-line jsx-a11y/anchor-has-content
 				<a
-					href="https://woocommerce.com/document/woopayments/compatibility/countries/"
+					href="https://poocommerce.com/document/woopayments/compatibility/countries/"
 					target="_blank"
 					rel="noopener noreferrer"
 				/>

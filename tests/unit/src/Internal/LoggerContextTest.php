@@ -2,7 +2,7 @@
 /**
  * Class LoggerContextTest
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Tests;
@@ -48,7 +48,7 @@ class LoggerContextTest extends WCPAY_UnitTestCase {
 		$level      = WC_Log_Levels::INFO;
 
 		$filtered_entry = apply_filters(
-			'woocommerce_format_log_entry',
+			'poocommerce_format_log_entry',
 			$message,
 			[
 				'timestamp' => $timestamp,
@@ -118,7 +118,7 @@ class LoggerContextTest extends WCPAY_UnitTestCase {
 		$this->sut->set_value( 'foo', 'bar' );
 
 		$filtered_entry = apply_filters(
-			'woocommerce_format_log_entry',
+			'poocommerce_format_log_entry',
 			$message,
 			[
 				'timestamp' => $timestamp,
@@ -131,7 +131,7 @@ class LoggerContextTest extends WCPAY_UnitTestCase {
 		$this->assertSame( $message, $filtered_entry, 'Filtered entry is the same as the original message' );
 
 		$filtered_entry = apply_filters(
-			'woocommerce_format_log_entry',
+			'poocommerce_format_log_entry',
 			$message,
 			[
 				'timestamp' => $timestamp,

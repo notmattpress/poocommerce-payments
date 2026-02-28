@@ -51,7 +51,7 @@ class GooglePayDefinition implements PaymentMethodDefinitionInterface {
 	 * @return string
 	 */
 	public static function get_title( ?string $account_country = null ): string {
-		return __( 'Google Pay', 'woocommerce-payments' );
+		return __( 'Google Pay', 'poocommerce-payments' );
 	}
 
 	/**
@@ -72,7 +72,7 @@ class GooglePayDefinition implements PaymentMethodDefinitionInterface {
 	 * @return string
 	 */
 	public static function get_description( ?string $account_country = null ): string {
-		return __( 'Offer customers a fast, secure checkout experience with Google Pay.', 'woocommerce-payments' );
+		return __( 'Offer customers a fast, secure checkout experience with Google Pay.', 'poocommerce-payments' );
 	}
 
 	/**

@@ -13,7 +13,7 @@ npx --no-install yarnhook
 # --ignore-platform-req=php allows dev-only packages (like qit-cli) that need PHP 7.4+
 composer install --ignore-platform-req=php
 
-DEV_TOOLS_PLUGIN_PATH=${LOCAL_WCPAY_DEV_TOOLS_PLUGIN_REPO_PATH:-"docker/wordpress/wp-content/plugins/woocommerce-payments-dev-tools"}
+DEV_TOOLS_PLUGIN_PATH=${LOCAL_WCPAY_DEV_TOOLS_PLUGIN_REPO_PATH:-"docker/wordpress/wp-content/plugins/poocommerce-payments-dev-tools"}
 if [ ! -d $DEV_TOOLS_PLUGIN_PATH ]; then
 	echo
     echo "\033[33mCouldn't find the '$DEV_TOOLS_PLUGIN_PATH' directory. Skipping the auto-update for the WCPay Dev Tools plugin...\033[0m"

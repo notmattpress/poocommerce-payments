@@ -68,7 +68,7 @@ export default class ExpressCheckoutCartApi {
 
 	/**
 	 * Creates an order from the cart object.
-	 * See https://github.com/woocommerce/woocommerce/blob/trunk/docs/apis/store-api/
+	 * See https://github.com/poocommerce/poocommerce/blob/trunk/docs/apis/store-api/
 	 * resources-endpoints/checkout.md#process-order-and-payment
 	 *
 	 * @param {{
@@ -94,7 +94,7 @@ export default class ExpressCheckoutCartApi {
 
 	/**
 	 * Returns the customer's cart object.
-	 * See https://github.com/woocommerce/woocommerce/blob/trunk/plugins/woocommerce/src/StoreApi/docs/cart.md#get-cart
+	 * See https://github.com/poocommerce/poocommerce/blob/trunk/plugins/poocommerce/src/StoreApi/docs/cart.md#get-cart
 	 *
 	 * @return {Promise} Cart response object.
 	 */
@@ -126,7 +126,7 @@ export default class ExpressCheckoutCartApi {
 
 	/**
 	 * Update customer data and return the full cart response, or an error.
-	 * See https://github.com/woocommerce/woocommerce/blob/trunk/plugins/woocommerce/src/StoreApi/docs/cart.md#update-customer
+	 * See https://github.com/poocommerce/poocommerce/blob/trunk/plugins/poocommerce/src/StoreApi/docs/cart.md#update-customer
 	 *
 	 * @param {{
 	 *          billing_address: Object?,
@@ -148,7 +148,7 @@ export default class ExpressCheckoutCartApi {
 
 	/**
 	 * Selects an available shipping rate for a package, then returns the full cart response, or an error
-	 * See https://github.com/woocommerce/woocommerce/blob/trunk/plugins/woocommerce/src/StoreApi/docs/cart.md#select-shipping-rate
+	 * See https://github.com/poocommerce/poocommerce/blob/trunk/plugins/poocommerce/src/StoreApi/docs/cart.md#select-shipping-rate
 	 *
 	 * @param {{rate_id: string, package_id: integer}} shippingRate The selected shipping rate.
 	 * @return {Promise} Cart Response on success, or an Error Response on failure.
@@ -163,7 +163,7 @@ export default class ExpressCheckoutCartApi {
 
 	/**
 	 * Add an item to the cart and return the full cart response, or an error.
-	 * See https://github.com/woocommerce/woocommerce/blob/trunk/plugins/woocommerce/src/StoreApi/docs/cart.md#add-item
+	 * See https://github.com/poocommerce/poocommerce/blob/trunk/plugins/poocommerce/src/StoreApi/docs/cart.md#add-item
 	 *
 	 * @return {Promise} Cart Response on success, or an Error Response on failure.
 	 */
@@ -188,7 +188,7 @@ export default class ExpressCheckoutCartApi {
 
 	/**
 	 * Removes all items from the cart and clears the cart headers.
-	 * See https://github.com/woocommerce/woocommerce/blob/trunk/plugins/woocommerce/src/StoreApi/docs/cart.md#remove-item
+	 * See https://github.com/poocommerce/poocommerce/blob/trunk/plugins/poocommerce/src/StoreApi/docs/cart.md#remove-item
 	 *
 	 * @return {undefined}
 	 */

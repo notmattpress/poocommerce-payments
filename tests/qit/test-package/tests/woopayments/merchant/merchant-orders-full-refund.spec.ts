@@ -6,7 +6,7 @@ import { goToOrder, goToPaymentDetails } from '../../../utils/merchant';
 import { placeOrderWithCurrency } from '../../../utils/shopper';
 
 test.describe(
-	'WooCommerce Payments - Full Refund',
+	'PooCommerce Payments - Full Refund',
 	{ tag: '@merchant' },
 	() => {
 		let orderId: string;
@@ -23,7 +23,7 @@ test.describe(
 				// Get the order total so we can verify the refund amount
 				orderAmount = await customerPage
 					.locator(
-						'.woocommerce-order-overview__total .woocommerce-Price-amount'
+						'.poocommerce-order-overview__total .poocommerce-Price-amount'
 					)
 					.textContent();
 

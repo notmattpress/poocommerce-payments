@@ -2,10 +2,10 @@
 /**
  * Class WC_Payments_Account_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
-use Automattic\WooCommerce\Admin\Notes\Notes;
+use Automattic\PooCommerce\Admin\Notes\Notes;
 use WCPay\Core\Server\Request\Get_Account;
 use WCPay\Core\Server\Request\Get_Request;
 use WCPay\Core\Server\Request\Update_Account;
@@ -119,13 +119,13 @@ class WC_Payments_Account_Test extends WCPAY_UnitTestCase {
 		$this->assertNotFalse( has_action( 'admin_init', [ $this->wcpay_account, 'maybe_redirect_from_connect_page' ] ), 'maybe_redirect_from_connect_page action does not exist.' );
 		$this->assertNotFalse( has_action( 'admin_init', [ $this->wcpay_account, 'maybe_redirect_from_overview_page' ] ), 'maybe_redirect_from_overview_page action does not exist.' );
 		$this->assertNotFalse( has_action( 'admin_init', [ $this->wcpay_account, 'maybe_activate_woopay' ] ), 'maybe_activate_woopay action does not exist.' );
-		$this->assertNotFalse( has_action( 'woocommerce_payments_account_refreshed', [ $this->wcpay_account, 'handle_instant_deposits_inbox_note' ] ), 'handle_instant_deposits_inbox_note action does not exist.' );
-		$this->assertNotFalse( has_action( 'woocommerce_payments_account_refreshed', [ $this->wcpay_account, 'handle_loan_approved_inbox_note' ] ), 'handle_loan_approved_inbox_note action does not exist.' );
+		$this->assertNotFalse( has_action( 'poocommerce_payments_account_refreshed', [ $this->wcpay_account, 'handle_instant_deposits_inbox_note' ] ), 'handle_instant_deposits_inbox_note action does not exist.' );
+		$this->assertNotFalse( has_action( 'poocommerce_payments_account_refreshed', [ $this->wcpay_account, 'handle_loan_approved_inbox_note' ] ), 'handle_loan_approved_inbox_note action does not exist.' );
 		$this->assertNotFalse( has_action( 'wcpay_instant_deposit_reminder', [ $this->wcpay_account, 'handle_instant_deposits_inbox_reminder' ] ), 'handle_instant_deposits_inbox_reminder action does not exist.' );
 		$this->assertNotFalse( has_filter( 'allowed_redirect_hosts', [ $this->wcpay_account, 'allowed_redirect_hosts' ] ), 'allowed_redirect_hooks filter does not exist.' );
 		$this->assertNotFalse( has_action( 'jetpack_site_registered', [ $this->wcpay_account, 'clear_cache' ] ), 'jetpack_site_registered action does not exist.' );
 		$this->assertNotFalse( has_action( 'updated_option', [ $this->wcpay_account, 'possibly_update_wcpay_account_locale' ] ), 'updated_option action does not exist.' );
-		$this->assertNotFalse( has_action( 'woocommerce_woocommerce_payments_updated', [ $this->wcpay_account, 'clear_cache' ] ), 'woocommerce_woocommerce_payments_updated action does not exist.' );
+		$this->assertNotFalse( has_action( 'poocommerce_poocommerce_payments_updated', [ $this->wcpay_account, 'clear_cache' ] ), 'poocommerce_poocommerce_payments_updated action does not exist.' );
 		$this->assertNotFalse( has_action( WC_Payments_Account::STORE_SETUP_SYNC_ACTION, [ $this->wcpay_account, 'store_setup_sync' ] ), 'store_setup_sync action does not exist.' );
 	}
 
@@ -1475,7 +1475,7 @@ class WC_Payments_Account_Test extends WCPAY_UnitTestCase {
 
 		$this->mock_empty_cache();
 
-		$cb = $this->create_can_manage_woocommerce_cap_override( true );
+		$cb = $this->create_can_manage_poocommerce_cap_override( true );
 		add_filter( 'user_has_cap', $cb );
 
 		$this->mock_wcpay_request( Get_Account::class )
@@ -1502,7 +1502,7 @@ class WC_Payments_Account_Test extends WCPAY_UnitTestCase {
 
 		$this->mock_empty_cache();
 
-		$cb = $this->create_can_manage_woocommerce_cap_override( true );
+		$cb = $this->create_can_manage_poocommerce_cap_override( true );
 		add_filter( 'user_has_cap', $cb );
 
 		$this->mock_wcpay_request( Get_Account::class )
@@ -1533,7 +1533,7 @@ class WC_Payments_Account_Test extends WCPAY_UnitTestCase {
 
 		$this->mock_empty_cache();
 
-		$cb = $this->create_can_manage_woocommerce_cap_override( true );
+		$cb = $this->create_can_manage_poocommerce_cap_override( true );
 		add_filter( 'user_has_cap', $cb );
 
 		$this->mock_wcpay_request( Get_Account::class )
@@ -1561,7 +1561,7 @@ class WC_Payments_Account_Test extends WCPAY_UnitTestCase {
 
 		$this->mock_empty_cache();
 
-		$cb = $this->create_can_manage_woocommerce_cap_override( true );
+		$cb = $this->create_can_manage_poocommerce_cap_override( true );
 		add_filter( 'user_has_cap', $cb );
 
 		$this->mock_wcpay_request( Get_Account::class )
@@ -1598,7 +1598,7 @@ class WC_Payments_Account_Test extends WCPAY_UnitTestCase {
 
 		$this->mock_empty_cache();
 
-		$cb = $this->create_can_manage_woocommerce_cap_override( false );
+		$cb = $this->create_can_manage_poocommerce_cap_override( false );
 		add_filter( 'user_has_cap', $cb );
 
 		$this->mock_wcpay_request( Get_Account::class, 0 );
@@ -1619,7 +1619,7 @@ class WC_Payments_Account_Test extends WCPAY_UnitTestCase {
 
 		$this->mock_empty_cache();
 
-		$cb = $this->create_can_manage_woocommerce_cap_override( true );
+		$cb = $this->create_can_manage_poocommerce_cap_override( true );
 		add_filter( 'user_has_cap', $cb );
 
 		$this->mock_wcpay_request( Get_Account::class )
@@ -1687,7 +1687,7 @@ class WC_Payments_Account_Test extends WCPAY_UnitTestCase {
 		// Simulate the account details cache not being there and then timing out.
 		$this->mock_empty_cache();
 
-		$cb = $this->create_can_manage_woocommerce_cap_override( true );
+		$cb = $this->create_can_manage_poocommerce_cap_override( true );
 		add_filter( 'user_has_cap', $cb );
 
 		// Simulate the situation where the redirect has not happened yet.
@@ -1953,7 +1953,7 @@ class WC_Payments_Account_Test extends WCPAY_UnitTestCase {
 				[
 					'page'    => 'wc-settings',
 					'tab'     => 'checkout',
-					'section' => 'woocommerce_payments',
+					'section' => 'poocommerce_payments',
 				],
 			],
 			'stripe_not_connected'                     => [
@@ -1964,7 +1964,7 @@ class WC_Payments_Account_Test extends WCPAY_UnitTestCase {
 				[
 					'page'    => 'wc-settings',
 					'tab'     => 'checkout',
-					'section' => 'woocommerce_payments',
+					'section' => 'poocommerce_payments',
 				],
 			],
 			'stripe_connected_but_partially_onboarded' => [
@@ -1975,7 +1975,7 @@ class WC_Payments_Account_Test extends WCPAY_UnitTestCase {
 				[
 					'page'    => 'wc-settings',
 					'tab'     => 'checkout',
-					'section' => 'woocommerce_payments',
+					'section' => 'poocommerce_payments',
 				],
 				false,
 			],
@@ -1987,7 +1987,7 @@ class WC_Payments_Account_Test extends WCPAY_UnitTestCase {
 				[
 					'page'    => 'wc-settings',
 					'tab'     => 'checkout',
-					'section' => 'woocommerce_payments',
+					'section' => 'poocommerce_payments',
 				],
 			],
 		];
@@ -3457,13 +3457,13 @@ class WC_Payments_Account_Test extends WCPAY_UnitTestCase {
 	}
 
 	/**
-	 * @param bool $can_manage_woocommerce
+	 * @param bool $can_manage_poocommerce
 	 *
 	 * @return Closure
 	 */
-	private function create_can_manage_woocommerce_cap_override( bool $can_manage_woocommerce ) {
-		return function ( $allcaps ) use ( $can_manage_woocommerce ) {
-			$allcaps['manage_woocommerce'] = $can_manage_woocommerce;
+	private function create_can_manage_poocommerce_cap_override( bool $can_manage_poocommerce ) {
+		return function ( $allcaps ) use ( $can_manage_poocommerce ) {
+			$allcaps['manage_poocommerce'] = $can_manage_poocommerce;
 
 			return $allcaps;
 		};
@@ -3654,7 +3654,7 @@ class WC_Payments_Account_Test extends WCPAY_UnitTestCase {
 			'wechat_pay' => 'wechat_payments',
 		];
 		$mock_gateway->method( 'get_payment_method_capability_key_map' )->willReturn( $payment_method_capability_map );
-		$mock_gateway->method( 'find_duplicates' )->willReturn( [ 'card' => [ 'woocommerce_payments', 'some_other_gateway' ] ] );
+		$mock_gateway->method( 'find_duplicates' )->willReturn( [ 'card' => [ 'poocommerce_payments', 'some_other_gateway' ] ] );
 		$mock_gateway->method( 'get_option' )->willReturnCallback(
 			function ( $key, $default = null ) {
 				$options = [
@@ -3735,7 +3735,7 @@ class WC_Payments_Account_Test extends WCPAY_UnitTestCase {
 		$this->assertEquals( [ 'card', 'bancontact', 'eps', 'ideal', 'p24', 'klarna', 'multibanco', 'alipay', 'wechat_pay' ], $captured_data['payment_methods']['available'] );
 		$this->assertEquals( [ 'card', 'klarna' ], $captured_data['payment_methods']['enabled'] );
 		$this->assertEquals( [ 'bancontact', 'eps', 'ideal', 'p24', 'multibanco', 'alipay', 'wechat_pay' ], $captured_data['payment_methods']['disabled'] );
-		$this->assertEquals( [ 'card' => [ 'woocommerce_payments', 'some_other_gateway' ] ], $captured_data['payment_methods']['duplicates'] );
+		$this->assertEquals( [ 'card' => [ 'poocommerce_payments', 'some_other_gateway' ] ], $captured_data['payment_methods']['duplicates'] );
 
 		// Assert: Verify provider_capabilities sub-entries and values.
 		$this->assertArrayHasKey( 'available', $captured_data['provider_capabilities'] );

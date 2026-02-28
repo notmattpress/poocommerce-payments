@@ -92,7 +92,7 @@ export const useExpressCheckout = ( {
 							id: 'pending',
 							displayName: __(
 								'Pending',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							amount: 0,
 						},
@@ -124,7 +124,7 @@ export const useExpressCheckout = ( {
 				},
 				// if the transformed cart total is less than the total of `lineItems`, Stripe throws an error
 				// it can sometimes happen that the total is _slightly_ less, due to rounding errors on individual items/taxes/shipping
-				// (or with the `woocommerce_tax_round_at_subtotal` setting).
+				// (or with the `poocommerce_tax_round_at_subtotal` setting).
 				// if that happens, let's just not return any of the line items.
 				// This way, just the total amount will be displayed to the customer.
 				lineItems: cartTotals < lineItemsTotals ? [] : lineItems,

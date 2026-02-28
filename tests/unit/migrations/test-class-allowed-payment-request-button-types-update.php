@@ -2,7 +2,7 @@
 /**
  * Class Allowed_Payment_Request_Button_Types_Update_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 namespace WCPay\Migrations;
@@ -96,7 +96,7 @@ class Allowed_Payment_Request_Button_Types_Update_Test extends WCPAY_UnitTestCas
 	}
 
 	private function setup_environment( $stored_wcpay_version, $settings ) {
-		update_option( 'woocommerce_woocommerce_payments_version', $stored_wcpay_version );
+		update_option( 'poocommerce_poocommerce_payments_version', $stored_wcpay_version );
 		$this->gateway_mock->method( 'get_option' )
 			->willReturnCallback(
 				function ( $key ) use ( $settings ) {

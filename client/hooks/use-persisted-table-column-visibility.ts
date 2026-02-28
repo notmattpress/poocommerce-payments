@@ -2,8 +2,8 @@
  * External dependencies
  */
 import { useMemo } from 'react';
-import { useUserPreferences } from '@woocommerce/data';
-import type { TableCardColumn } from '@woocommerce/components';
+import { useUserPreferences } from '@poocommerce/data';
+import type { TableCardColumn } from '@poocommerce/components';
 
 /**
  * Type for user preferences returned from useUserPreferences hook.
@@ -28,7 +28,7 @@ interface UserPreferences {
  * Hook to manage column visibility for a TableCard component.
  *
  * This hook is used to manage the visibility of columns in a TableCard component.
- * It uses the `@woocommerce/data` `useUserPreferences` hook to get the user's preferences and store them in the `wp_usermeta` table.
+ * It uses the `@poocommerce/data` `useUserPreferences` hook to get the user's preferences and store them in the `wp_usermeta` table.
  */
 export const usePersistedColumnVisibility = <
 	ColumnType extends TableCardColumn
@@ -36,7 +36,7 @@ export const usePersistedColumnVisibility = <
 	/**
 	 * The key used to store the user's preference for hidden columns in the `wp_usermeta` table.
 	 *
-	 * This value will be prepended with `woocommerce_admin_` and used as the `meta_key` in the DB.
+	 * This value will be prepended with `poocommerce_admin_` and used as the `meta_key` in the DB.
 	 */
 	columnPrefsKey: keyof UserPreferences,
 	/**

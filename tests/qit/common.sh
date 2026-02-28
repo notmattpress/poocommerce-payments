@@ -5,7 +5,7 @@ set -e
 cwd=$(pwd)
 WCP_ROOT=$cwd
 QIT_ROOT="$cwd/tests/qit"
-EXTENSION_NAME="woocommerce-payments"
+EXTENSION_NAME="poocommerce-payments"
 
 #Load local env variables if present.
 if [[ -f "$QIT_ROOT/config/local.env" ]]; then

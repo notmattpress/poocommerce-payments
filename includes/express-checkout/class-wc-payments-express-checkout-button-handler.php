@@ -4,15 +4,15 @@
  * Adds support for Apple Pay, Google Pay and ECE API buttons.
  * Utilizes the Stripe Express Checkout Element to support checkout from the product detail and cart pages.
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use Automattic\WooCommerce\Blocks\Package;
-use Automattic\WooCommerce\Blocks\Assets\AssetDataRegistry;
+use Automattic\PooCommerce\Blocks\Package;
+use Automattic\PooCommerce\Blocks\Assets\AssetDataRegistry;
 use WCPay\Fraud_Prevention\Fraud_Prevention_Service;
 
 /**
@@ -88,15 +88,15 @@ class WC_Payments_Express_Checkout_Button_Handler {
 		add_action( 'template_redirect', [ $this, 'set_session' ] );
 		add_action( 'wcpay_payment_fields_js_config', [ $this, 'payment_fields_js_config' ] );
 		add_action( 'template_redirect', [ $this, 'handle_express_checkout_redirect' ] );
-		add_filter( 'woocommerce_login_redirect', [ $this, 'get_login_redirect_url' ], 10, 3 );
-		add_filter( 'woocommerce_registration_redirect', [ $this, 'get_login_redirect_url' ], 10, 3 );
-		add_filter( 'woocommerce_cart_needs_shipping_address', [ $this, 'filter_cart_needs_shipping_address' ], 11, 1 );
+		add_filter( 'poocommerce_login_redirect', [ $this, 'get_login_redirect_url' ], 10, 3 );
+		add_filter( 'poocommerce_registration_redirect', [ $this, 'get_login_redirect_url' ], 10, 3 );
+		add_filter( 'poocommerce_cart_needs_shipping_address', [ $this, 'filter_cart_needs_shipping_address' ], 11, 1 );
 		add_action( 'wp_enqueue_scripts', [ $this, 'scripts' ] );
-		add_filter( 'woocommerce_gateway_title', [ $this, 'filter_gateway_title' ], 10, 2 );
+		add_filter( 'poocommerce_gateway_title', [ $this, 'filter_gateway_title' ], 10, 2 );
 
 		$this->express_checkout_ajax_handler->init();
 
-		if ( is_admin() && current_user_can( 'manage_woocommerce' ) ) {
+		if ( is_admin() && current_user_can( 'manage_poocommerce' ) ) {
 			$this->register_ece_data_for_block_editor();
 		}
 	}
@@ -143,7 +143,7 @@ class WC_Payments_Express_Checkout_Button_Handler {
 		}
 
 		/* translators: The text encapsulated in `**` can be replaced with "Apple Pay" or "Google Pay". Please translate this text, but don't remove the `**`. */
-		$message      = __( 'To complete your transaction with **the selected payment method**, you must log in or create an account with our site.', 'woocommerce-payments' );
+		$message      = __( 'To complete your transaction with **the selected payment method**, you must log in or create an account with our site.', 'poocommerce-payments' );
 		$redirect_url = add_query_arg(
 			[
 				'_wpnonce'                            => wp_create_nonce( 'wcpay-set-redirect-url' ),
@@ -166,7 +166,7 @@ class WC_Payments_Express_Checkout_Button_Handler {
 	 */
 	public function is_authentication_required() {
 		// If guest checkout is disabled and account creation is not possible, authentication is required.
-		if ( 'no' === get_option( 'woocommerce_enable_guest_checkout', 'yes' ) && ! $this->is_account_creation_possible() ) {
+		if ( 'no' === get_option( 'poocommerce_enable_guest_checkout', 'yes' ) && ! $this->is_account_creation_possible() ) {
 			return true;
 		}
 		// If cart contains subscription and account creation is not posible, authentication is required.
@@ -209,19 +209,19 @@ class WC_Payments_Express_Checkout_Button_Handler {
 	 * @return bool
 	 */
 	public function is_account_creation_possible() {
-		$is_signup_from_checkout_allowed = 'yes' === get_option( 'woocommerce_enable_signup_and_login_from_checkout', 'no' );
+		$is_signup_from_checkout_allowed = 'yes' === get_option( 'poocommerce_enable_signup_and_login_from_checkout', 'no' );
 
 		// If a subscription is being purchased, check if account creation is allowed for subscriptions.
 		if ( ! $is_signup_from_checkout_allowed && $this->has_subscription_product() ) {
-			$is_signup_from_checkout_allowed = 'yes' === get_option( 'woocommerce_enable_signup_from_checkout_for_subscriptions', 'no' );
+			$is_signup_from_checkout_allowed = 'yes' === get_option( 'poocommerce_enable_signup_from_checkout_for_subscriptions', 'no' );
 		}
 
 		// If automatically generate username/password are disabled, the Express Checkout API
 		// can't include any of those fields, so account creation is not possible.
 		return (
 			$is_signup_from_checkout_allowed &&
-			'yes' === get_option( 'woocommerce_registration_generate_username', 'yes' ) &&
-			'yes' === get_option( 'woocommerce_registration_generate_password', 'yes' )
+			'yes' === get_option( 'poocommerce_registration_generate_username', 'yes' ) &&
+			'yes' === get_option( 'poocommerce_registration_generate_password', 'yes' )
 		);
 	}
 
@@ -250,20 +250,20 @@ class WC_Payments_Express_Checkout_Button_Handler {
 						'store_api_nonce'              => wp_create_nonce( 'wc_store_api' ),
 					],
 					'checkout'           => [
-						'currency_code'              => strtolower( get_woocommerce_currency() ),
-						'currency_decimals'          => WC_Payments::get_localization_service()->get_currency_format( get_woocommerce_currency() )['num_decimals'],
-						'country_code'               => substr( get_option( 'woocommerce_default_country' ), 0, 2 ),
+						'currency_code'              => strtolower( get_poocommerce_currency() ),
+						'currency_decimals'          => WC_Payments::get_localization_service()->get_currency_format( get_poocommerce_currency() )['num_decimals'],
+						'country_code'               => substr( get_option( 'poocommerce_default_country' ), 0, 2 ),
 						'needs_shipping'             => WC()->cart->needs_shipping(),
 						// Defaults to 'required' to match how core initializes this option.
-						'needs_payer_phone'          => 'required' === get_option( 'woocommerce_checkout_phone_field', 'required' ),
+						'needs_payer_phone'          => 'required' === get_option( 'poocommerce_checkout_phone_field', 'required' ),
 						'allowed_shipping_countries' => array_keys( WC()->countries->get_shipping_countries() ?? [] ),
-						'display_prices_with_tax'    => 'incl' === get_option( 'woocommerce_tax_display_cart' ),
+						'display_prices_with_tax'    => 'incl' === get_option( 'poocommerce_tax_display_cart' ),
 					],
 					'has_subscription'   => $this->has_subscription_product(),
 					'button'             => $this->get_button_settings(),
 					'login_confirmation' => $this->get_login_confirmation_settings(),
 					'button_context'     => $this->express_checkout_helper->get_button_context(),
-					'has_block'          => has_block( 'woocommerce/cart' ) || has_block( 'woocommerce/checkout' ),
+					'has_block'          => has_block( 'poocommerce/cart' ) || has_block( 'poocommerce/checkout' ),
 					'product'            => $this->express_checkout_helper->get_product_data(),
 					'store_name'         => get_bloginfo( 'name' ),
 					'enabled_methods'    => $this->express_checkout_helper->get_enabled_express_checkout_methods_for_context(),
@@ -313,14 +313,14 @@ class WC_Payments_Express_Checkout_Button_Handler {
 		wp_localize_script( 'WCPAY_EXPRESS_CHECKOUT_ECE', 'wcpayExpressCheckoutParams', $express_checkout_params );
 		wp_localize_script( 'WCPAY_BLOCKS_CHECKOUT', 'wcpayExpressCheckoutParams', $express_checkout_params );
 
-		wp_set_script_translations( 'WCPAY_EXPRESS_CHECKOUT_ECE', 'woocommerce-payments' );
+		wp_set_script_translations( 'WCPAY_EXPRESS_CHECKOUT_ECE', 'poocommerce-payments' );
 
 		wp_enqueue_script( 'WCPAY_EXPRESS_CHECKOUT_ECE' );
 
 		Fraud_Prevention_Service::maybe_append_fraud_prevention_token();
 
 		$gateways = WC()->payment_gateways->get_available_payment_gateways();
-		if ( isset( $gateways['woocommerce_payments'] ) ) {
+		if ( isset( $gateways['poocommerce_payments'] ) ) {
 			WC_Payments::get_wc_payments_checkout()->register_scripts();
 		}
 	}
@@ -373,7 +373,7 @@ class WC_Payments_Express_Checkout_Button_Handler {
 			// Users will have a 10 minute timeout to login/create account, otherwise redirect URL expires.
 			wc_setcookie( 'wcpay_express_checkout_redirect_url', $url, time() + MINUTE_IN_SECONDS * 10 );
 			// Redirects to "my-account" page.
-			wp_safe_redirect( get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ) );
+			wp_safe_redirect( get_permalink( get_option( 'poocommerce_myaccount_page_id' ) ) );
 		}
 	}
 
@@ -416,7 +416,7 @@ class WC_Payments_Express_Checkout_Button_Handler {
 	 * @param string $id Gateway ID.
 	 */
 	public function filter_gateway_title( $title, $id ) {
-		if ( 'woocommerce_payments' !== $id || ! is_admin() ) {
+		if ( 'poocommerce_payments' !== $id || ! is_admin() ) {
 			return $title;
 		}
 

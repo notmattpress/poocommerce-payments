@@ -51,7 +51,7 @@ const CancelAuthorizationButton: React.FC< React.PropsWithChildren<
 			disabled={ ( isLoading && IsCancelRequested ) || isRequesting } // Button should be disabled when the cancel is requested
 			__next40pxDefaultSize
 		>
-			{ children || __( 'Cancel', 'woocommerce-payments' ) }
+			{ children || __( 'Cancel', 'poocommerce-payments' ) }
 		</Button>
 	);
 };

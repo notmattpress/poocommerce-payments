@@ -9,7 +9,7 @@ import {
 	SummaryListPlaceholder,
 	SummaryList,
 	OrderStatus,
-} from '@woocommerce/components';
+} from '@poocommerce/components';
 import interpolateComponents from '@automattic/interpolate-components';
 import clsx from 'clsx';
 import {
@@ -43,7 +43,7 @@ import { formatDateTimeFromString } from 'wcpay/utils/date-time';
 import { MaybeShowMerchantFeedbackPrompt } from 'wcpay/merchant-feedback-prompt';
 
 /**
- * Renders the deposit status indicator UI, re-purposing the OrderStatus component from @woocommerce/components.
+ * Renders the deposit status indicator UI, re-purposing the OrderStatus component from @poocommerce/components.
  */
 const DepositStatusIndicator: React.FC< {
 	deposit: Pick< CachedDeposit, 'status' | 'type' >;
@@ -74,7 +74,7 @@ interface SummaryItemProps {
 }
 
 /**
- * A custom SummaryNumber with custom value className, reusing @woocommerce/components styles.
+ * A custom SummaryNumber with custom value className, reusing @poocommerce/components styles.
  */
 const SummaryItem: React.FC< SummaryItemProps > = ( {
 	label,
@@ -82,13 +82,13 @@ const SummaryItem: React.FC< SummaryItemProps > = ( {
 	valueClass,
 	detail,
 } ) => (
-	<li className="woocommerce-summary__item-container">
-		<div className="woocommerce-summary__item">
-			<div className="woocommerce-summary__item-label">{ label }</div>
-			<div className="woocommerce-summary__item-data">
+	<li className="poocommerce-summary__item-container">
+		<div className="poocommerce-summary__item">
+			<div className="poocommerce-summary__item-label">{ label }</div>
+			<div className="poocommerce-summary__item-data">
 				<div
 					className={ clsx(
-						'woocommerce-summary__item-value',
+						'poocommerce-summary__item-value',
 						valueClass
 					) }
 				>
@@ -107,12 +107,12 @@ interface DepositDateItemProps {
 }
 
 const DepositDateItem: React.FC< DepositDateItemProps > = ( { deposit } ) => {
-	let depositDateLabel = __( 'Payout date', 'woocommerce-payments' );
+	let depositDateLabel = __( 'Payout date', 'poocommerce-payments' );
 	if ( ! deposit.automatic ) {
-		depositDateLabel = __( 'Instant payout date', 'woocommerce-payments' );
+		depositDateLabel = __( 'Instant payout date', 'poocommerce-payments' );
 	}
 	if ( deposit.type === 'withdrawal' ) {
-		depositDateLabel = __( 'Withdrawal date', 'woocommerce-payments' );
+		depositDateLabel = __( 'Withdrawal date', 'poocommerce-payments' );
 	}
 
 	return (
@@ -138,7 +138,7 @@ export const DepositOverview: React.FC< DepositOverviewProps > = ( {
 			<InlineNotice icon status="error" isDismissible={ false }>
 				{ __(
 					`The deposit you are looking for cannot be found.`,
-					'woocommerce-payments'
+					'poocommerce-payments'
 				) }
 			</InlineNotice>
 		);
@@ -166,9 +166,9 @@ export const DepositOverview: React.FC< DepositOverviewProps > = ( {
 						isWithdrawal
 							? __(
 									'Withdrawal overview',
-									'woocommerce-payments'
+									'poocommerce-payments'
 							  )
-							: __( 'Payout overview', 'woocommerce-payments' )
+							: __( 'Payout overview', 'poocommerce-payments' )
 					}
 				>
 					{ () => [
@@ -179,11 +179,11 @@ export const DepositOverview: React.FC< DepositOverviewProps > = ( {
 								isWithdrawal
 									? __(
 											'Withdrawal amount',
-											'woocommerce-payments'
+											'poocommerce-payments'
 									  )
 									: __(
 											'Payout amount',
-											'woocommerce-payments'
+											'poocommerce-payments'
 									  )
 							}
 							value={ formatExplicitCurrency(
@@ -195,7 +195,7 @@ export const DepositOverview: React.FC< DepositOverviewProps > = ( {
 							key="depositFees"
 							label={ sprintf(
 								/* translators: %s - amount representing the fee percentage */
-								__( '%s service fee', 'woocommerce-payments' ),
+								__( '%s service fee', 'poocommerce-payments' ),
 								`${ deposit.fee_percentage }%`
 							) }
 							value={ formatCurrency(
@@ -212,11 +212,11 @@ export const DepositOverview: React.FC< DepositOverviewProps > = ( {
 								isWithdrawal
 									? __(
 											'Net withdrawal amount',
-											'woocommerce-payments'
+											'poocommerce-payments'
 									  )
 									: __(
 											'Net payout amount',
-											'woocommerce-payments'
+											'poocommerce-payments'
 									  )
 							}
 							value={ formatExplicitCurrency(
@@ -235,26 +235,26 @@ export const DepositOverview: React.FC< DepositOverviewProps > = ( {
 					key="payout-failure-notice"
 				>
 					<strong>
-						{ __( 'Failure reason: ', 'woocommerce-payments' ) }
+						{ __( 'Failure reason: ', 'poocommerce-payments' ) }
 					</strong>
 					{ payoutFailureMessages[ deposit.failure_code ] ||
 						deposit.failure_message ||
-						__( 'Unknown', 'woocommerce-payments' ) }
+						__( 'Unknown', 'poocommerce-payments' ) }
 				</BannerNotice>
 			) }
 			<Card>
 				<CardHeader>
 					<Text size={ 16 } weight={ 600 }>
 						{ isWithdrawal
-							? __( 'Withdrawal details', 'woocommerce-payments' )
-							: __( 'Payout details', 'woocommerce-payments' ) }
+							? __( 'Withdrawal details', 'poocommerce-payments' )
+							: __( 'Payout details', 'poocommerce-payments' ) }
 					</Text>
 				</CardHeader>
 				<CardBody>
 					<div className="woopayments-payout-details-header">
 						<div className="woopayments-payout-details-header__item">
 							<h2>
-								{ __( 'Bank account', 'woocommerce-payments' ) }
+								{ __( 'Bank account', 'poocommerce-payments' ) }
 							</h2>
 							<div className="woopayments-payout-details-header__value">
 								{ deposit.bankAccount }
@@ -264,7 +264,7 @@ export const DepositOverview: React.FC< DepositOverviewProps > = ( {
 							<h2>
 								{ __(
 									'Bank reference ID',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								) }
 							</h2>
 							<div className="woopayments-payout-details-header__value">
@@ -279,7 +279,7 @@ export const DepositOverview: React.FC< DepositOverviewProps > = ( {
 											}
 											label={ __(
 												'Copy bank reference ID to clipboard',
-												'woocommerce-payments'
+												'poocommerce-payments'
 											) }
 										/>
 									</>
@@ -287,7 +287,7 @@ export const DepositOverview: React.FC< DepositOverviewProps > = ( {
 									<div className="woopayments-payout-details-header__value">
 										{ __(
 											'Not available',
-											'woocommerce-payments'
+											'poocommerce-payments'
 										) }
 									</div>
 								) }
@@ -328,13 +328,13 @@ export const DepositDetails: React.FC< DepositDetailsProps > = ( {
 				<ErrorBoundary>
 					{ isInstantDeposit ? (
 						// If instant deposit, show a message instead of the transactions list.
-						// Matching the components used in @woocommerce/components TableCard for consistent UI.
+						// Matching the components used in @poocommerce/components TableCard for consistent UI.
 						<Card>
 							<CardHeader>
 								<Text size={ 16 } weight={ 600 } as="h2">
 									{ __(
 										'Payout transactions',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									) }
 								</Text>
 							</CardHeader>
@@ -343,12 +343,12 @@ export const DepositDetails: React.FC< DepositDetailsProps > = ( {
 									/* Translators: {{learnMoreLink}} is a link element (<a/>). */
 									mixedString: __(
 										`We're unable to show transaction history on instant payouts. {{learnMoreLink}}Learn more{{/learnMoreLink}}`,
-										'woocommerce-payments'
+										'poocommerce-payments'
 									),
 									components: {
 										learnMoreLink: (
 											// @ts-expect-error: children is provided when interpolating the component
-											<ExternalLink href="https://woocommerce.com/document/woopayments/payouts/instant-payouts/#transactions" />
+											<ExternalLink href="https://poocommerce.com/document/woopayments/payouts/instant-payouts/#transactions" />
 										),
 									},
 								} ) }

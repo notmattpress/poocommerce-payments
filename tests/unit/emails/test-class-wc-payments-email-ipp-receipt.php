@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Email_IPP_Receipt_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 /**
@@ -22,7 +22,7 @@ class WC_Payments_Email_IPP_Receipt_Test extends WCPAY_UnitTestCase {
 	public function set_up() {
 		parent::set_up();
 
-		// Load the email class - it extends WC_Email which requires WooCommerce to be initialized.
+		// Load the email class - it extends WC_Email which requires PooCommerce to be initialized.
 		if ( ! class_exists( 'WC_Payments_Email_IPP_Receipt' ) ) {
 			require_once WCPAY_ABSPATH . 'includes/emails/class-wc-payments-email-ipp-receipt.php';
 		}
@@ -34,7 +34,7 @@ class WC_Payments_Email_IPP_Receipt_Test extends WCPAY_UnitTestCase {
 	 * Test that get_preview_order returns false when passed false.
 	 *
 	 * This ensures the method handles third-party plugin email previews gracefully,
-	 * where WooCommerce may pass false instead of a WC_Order object.
+	 * where PooCommerce may pass false instead of a WC_Order object.
 	 *
 	 * @see https://linear.app/a8c/issue/WOOPMNT-5617
 	 */
@@ -61,6 +61,6 @@ class WC_Payments_Email_IPP_Receipt_Test extends WCPAY_UnitTestCase {
 
 		$this->assertInstanceOf( WC_Order::class, $result );
 		$this->assertSame( $order, $result );
-		$this->assertSame( 'WooCommerce In-Person Payments', $result->get_payment_method_title() );
+		$this->assertSame( 'PooCommerce In-Person Payments', $result->get_payment_method_title() );
 	}
 }

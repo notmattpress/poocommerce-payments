@@ -21,7 +21,7 @@ export const dataHasLoaded = async ( page: Page ) => {
 
 export const tableDataHasLoaded = async ( page: Page ) => {
 	await page
-		.locator( '.woocommerce-table__table.is-loading' )
+		.locator( '.poocommerce-table__table.is-loading' )
 		.waitFor( { state: 'hidden' } );
 };
 
@@ -33,7 +33,7 @@ export const waitAndSkipTourComponent = async (
 		await page.waitForSelector( `${ containerClass }`, { timeout: 3000 } );
 		if ( await page.isVisible( `${ containerClass }` ) ) {
 			await page.click(
-				`${ containerClass } button.woocommerce-tour-kit-step-controls__close-btn`
+				`${ containerClass } button.poocommerce-tour-kit-step-controls__close-btn`
 			);
 		}
 	} catch ( error ) {
@@ -45,7 +45,7 @@ const isWooPaymentsSettingsPage = ( page: Page ) => {
 	return page
 		.url()
 		.includes(
-			'/wp-admin/admin.php?page=wc-settings&tab=checkout&section=woocommerce_payments'
+			'/wp-admin/admin.php?page=wc-settings&tab=checkout&section=poocommerce_payments'
 		);
 };
 
@@ -277,18 +277,18 @@ export const setDefaultCurrency = async (
 	page: Page,
 	currencyCode: string
 ) => {
-	await navigation.goToWooCommerceSettings( page );
+	await navigation.goToPooCommerceSettings( page );
 
 	// Determine if the currency is already set as default.
 	const currentCurrencyCode = await page
-		.locator( '#woocommerce_currency' )
+		.locator( '#poocommerce_currency' )
 		.inputValue();
 	if ( currentCurrencyCode === currencyCode ) {
 		return false;
 	}
 
 	// Set default currency.
-	await page.locator( '#woocommerce_currency' ).selectOption( currencyCode );
+	await page.locator( '#poocommerce_currency' ).selectOption( currencyCode );
 	await page.getByRole( 'button', { name: 'Save changes' } ).click();
 	await expect(
 		page.getByText( 'Your settings have been saved.' )

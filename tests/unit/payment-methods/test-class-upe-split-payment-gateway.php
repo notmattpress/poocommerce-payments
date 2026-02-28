@@ -2,7 +2,7 @@
 /**
  * Class WC_Payment_Gateway_WCPay_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 namespace WCPay\Payment_Methods;
@@ -913,7 +913,7 @@ class UPE_Split_Payment_Gateway_Test extends WCPAY_UnitTestCase {
 		$order = WC_Helper_Order::create_order();
 		$_POST = [
 			'wcpay-payment-method' => $payment_method_id,
-			'payment_method'       => 'woocommerce_payments_sepa_debit',
+			'payment_method'       => 'poocommerce_payments_sepa_debit',
 		];
 
 		$mock_sepa_payment_gateway->expects( $this->once() )
@@ -954,7 +954,7 @@ class UPE_Split_Payment_Gateway_Test extends WCPAY_UnitTestCase {
 		$result_order = wc_get_order( $order->get_id() );
 
 		$this->assertEquals( 'success', $result['result'] );
-		$this->assertEquals( 'woocommerce_payments_sepa_debit', $result_order->get_payment_method() );
+		$this->assertEquals( 'poocommerce_payments_sepa_debit', $result_order->get_payment_method() );
 		$this->assertEquals( 'SEPA Direct Debit', $result_order->get_payment_method_title() );
 		$this->assertEquals( null, $result_order->get_meta( 'last4', true ) );
 		$this->assertEquals( null, $result_order->get_meta( '_card_brand', true ) );
@@ -1214,11 +1214,11 @@ class UPE_Split_Payment_Gateway_Test extends WCPAY_UnitTestCase {
 		$order               = WC_Helper_Order::create_order();
 		$payment_information = new Payment_Information( 'pm_mock', $order );
 
-		$_POST['payment_method'] = 'woocommerce_payments';
+		$_POST['payment_method'] = 'poocommerce_payments';
 
 		$mock_upe_gateway->expects( $this->once() )
 			->method( 'get_payment_methods_from_gateway_id' )
-			->with( 'woocommerce_payments' )
+			->with( 'poocommerce_payments' )
 			->will(
 				$this->returnValue( [ Payment_Method::CARD ] )
 			);

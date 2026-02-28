@@ -49,7 +49,7 @@ const WooPayExpressCheckoutItem = (): React.ReactElement | null => {
 			<div className="express-checkout__row">
 				<div className="express-checkout__checkbox">
 					<CheckboxControl
-						label={ __( 'WooPay', 'woocommerce-payments' ) }
+						label={ __( 'WooPay', 'poocommerce-payments' ) }
 						checked={ isWooPayEnabled }
 						disabled={ isStripeLinkEnabled }
 						onChange={ updateIsWooPayEnabled }
@@ -64,11 +64,11 @@ const WooPayExpressCheckoutItem = (): React.ReactElement | null => {
 								<WooIcon />
 							</div>
 							<div className="express-checkout__label express-checkout__label-mobile">
-								{ __( 'WooPay', 'woocommerce-payments' ) }
+								{ __( 'WooPay', 'poocommerce-payments' ) }
 							</div>
 							<div className="express-checkout__label-container">
 								<div className="express-checkout__label express-checkout__label-desktop">
-									{ __( 'WooPay', 'woocommerce-payments' ) }
+									{ __( 'WooPay', 'poocommerce-payments' ) }
 								</div>
 								<div className="express-checkout__description">
 									{
@@ -77,7 +77,7 @@ const WooPayExpressCheckoutItem = (): React.ReactElement | null => {
 											? __(
 													'Boost conversion and customer loyalty by' +
 														' offering a single click, secure way to pay.',
-													'woocommerce-payments'
+													'poocommerce-payments'
 											  )
 											: interpolateComponents( {
 													mixedString: __(
@@ -85,11 +85,11 @@ const WooPayExpressCheckoutItem = (): React.ReactElement | null => {
 														'Boost conversion and customer loyalty by offering a single click, secure way to pay. ' +
 															'In order to use {{wooPayLink}}WooPay{{/wooPayLink}},' +
 															' you must agree to our ' +
-															'{{tosLink}}WooCommerce Terms of Service{{/tosLink}} ' +
+															'{{tosLink}}PooCommerce Terms of Service{{/tosLink}} ' +
 															'and {{privacyLink}}Privacy Policy{{/privacyLink}}. ' +
 															'{{trackingLink}}Click here{{/trackingLink}} to learn more about the ' +
 															'data you will be sharing and opt-out options.',
-														'woocommerce-payments'
+														'poocommerce-payments'
 													),
 													components: {
 														wooPayLink: (
@@ -97,7 +97,7 @@ const WooPayExpressCheckoutItem = (): React.ReactElement | null => {
 																target="_blank"
 																rel="noreferrer"
 																// eslint-disable-next-line max-len
-																href="https://woocommerce.com/document/woopay-merchant-documentation/"
+																href="https://poocommerce.com/document/woopay-merchant-documentation/"
 															/>
 														),
 														tosLink: (
@@ -118,7 +118,7 @@ const WooPayExpressCheckoutItem = (): React.ReactElement | null => {
 															<a
 																target="_blank"
 																rel="noreferrer"
-																href="https://woocommerce.com/usage-tracking/"
+																href="https://poocommerce.com/usage-tracking/"
 															/>
 														),
 													},
@@ -135,7 +135,7 @@ const WooPayExpressCheckoutItem = (): React.ReactElement | null => {
 							href={ getPaymentMethodSettingsUrl( 'woopay' ) }
 							isSecondary
 						>
-							{ __( 'Customize', 'woocommerce-payments' ) }
+							{ __( 'Customize', 'poocommerce-payments' ) }
 						</Button>
 					</div>
 				</div>
@@ -144,7 +144,7 @@ const WooPayExpressCheckoutItem = (): React.ReactElement | null => {
 				<InlineNotice status="warning" isDismissible={ false }>
 					{ __(
 						'To enable WooPay, you must first disable Link by Stripe.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 				</InlineNotice>
 			) }

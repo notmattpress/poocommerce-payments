@@ -2,7 +2,7 @@
 /**
  * Class WC_REST_Payments_Settings_Option_Controller_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 /**
@@ -46,8 +46,8 @@ class WC_REST_Payments_Settings_Option_Controller_Test extends WCPAY_UnitTestCas
 				'wcpay_multi_currency_setup_completed',
 				true,
 			],
-			'valid option: woocommerce_dismissed_todo_tasks' => [
-				'woocommerce_dismissed_todo_tasks',
+			'valid option: poocommerce_dismissed_todo_tasks' => [
+				'poocommerce_dismissed_todo_tasks',
 				true,
 			],
 			'valid option: wcpay_fraud_protection_welcome_tour_dismissed' => [
@@ -85,9 +85,9 @@ class WC_REST_Payments_Settings_Option_Controller_Test extends WCPAY_UnitTestCas
 		return [
 			'bool option with true'          => [ 'wcpay_multi_currency_setup_completed', true ],
 			'bool option with false'         => [ 'wcpay_multi_currency_setup_completed', false ],
-			'array option with empty array'  => [ 'woocommerce_dismissed_todo_tasks', [] ],
-			'array option with array'        => [ 'woocommerce_dismissed_todo_tasks', [ 'key' => 'value' ] ],
-			'array option with nested array' => [ 'woocommerce_dismissed_todo_tasks', [ 'key' => [ 'nested' => 'value' ] ] ],
+			'array option with empty array'  => [ 'poocommerce_dismissed_todo_tasks', [] ],
+			'array option with array'        => [ 'poocommerce_dismissed_todo_tasks', [ 'key' => 'value' ] ],
+			'array option with nested array' => [ 'poocommerce_dismissed_todo_tasks', [ 'key' => [ 'nested' => 'value' ] ] ],
 			'string option with string'      => [ 'wcpay_exit_survey_last_shown', '2026-01-09T09:23:30.444Z' ],
 		];
 	}
@@ -113,8 +113,8 @@ class WC_REST_Payments_Settings_Option_Controller_Test extends WCPAY_UnitTestCas
 			'bool option with string'  => [ 'wcpay_multi_currency_setup_completed', 'string' ],
 			'bool option with array'   => [ 'wcpay_multi_currency_setup_completed', [] ],
 			'bool option with int'     => [ 'wcpay_multi_currency_setup_completed', 123 ],
-			'array option with bool'   => [ 'woocommerce_dismissed_todo_tasks', true ],
-			'array option with string' => [ 'woocommerce_dismissed_todo_tasks', 'string' ],
+			'array option with bool'   => [ 'poocommerce_dismissed_todo_tasks', true ],
+			'array option with string' => [ 'poocommerce_dismissed_todo_tasks', 'string' ],
 			'string option with bool'  => [ 'wcpay_exit_survey_last_shown', true ],
 			'string option with array' => [ 'wcpay_exit_survey_last_shown', [] ],
 			'string option with int'   => [ 'wcpay_exit_survey_last_shown', 123 ],

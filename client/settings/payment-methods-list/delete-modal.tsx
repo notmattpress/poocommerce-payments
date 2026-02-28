@@ -26,7 +26,7 @@ const ConfirmPaymentMethodDeleteModal: React.FunctionComponent< {
 				__(
 					/* translators: %1: Name of the payment method being removed */
 					'Remove %1$s from checkout',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				label
 			) }
@@ -34,10 +34,10 @@ const ConfirmPaymentMethodDeleteModal: React.FunctionComponent< {
 			actions={
 				<>
 					<Button onClick={ onConfirm } isPrimary isDestructive>
-						{ __( 'Remove', 'woocommerce-payments' ) }
+						{ __( 'Remove', 'poocommerce-payments' ) }
 					</Button>
 					<Button onClick={ onCancel } isSecondary>
-						{ __( 'Cancel', 'woocommerce-payments' ) }
+						{ __( 'Cancel', 'poocommerce-payments' ) }
 					</Button>
 				</>
 			}
@@ -52,7 +52,7 @@ const ConfirmPaymentMethodDeleteModal: React.FunctionComponent< {
 						__(
 							'Are you sure you want to remove {{strong}}%s{{/strong}}? ' +
 								'Your customers will no longer be able to pay using %s.',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						),
 						label,
 						label
@@ -66,11 +66,11 @@ const ConfirmPaymentMethodDeleteModal: React.FunctionComponent< {
 				{ interpolateComponents( {
 					mixedString: __(
 						'You can add it again at any time in {{wooCommercePaymentsLink /}}.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					components: {
 						wooCommercePaymentsLink: (
-							<a href="admin.php?page=wc-settings&tab=checkout&section=woocommerce_payments">
+							<a href="admin.php?page=wc-settings&tab=checkout&section=poocommerce_payments">
 								{ 'WooPayments' }
 							</a>
 						),

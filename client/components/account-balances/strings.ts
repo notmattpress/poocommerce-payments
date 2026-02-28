@@ -4,13 +4,13 @@
 import { __ } from '@wordpress/i18n';
 
 export const fundLabelStrings = {
-	available: __( 'Available funds', 'woocommerce-payments' ),
-	total: __( 'Total balance', 'woocommerce-payments' ),
+	available: __( 'Available funds', 'poocommerce-payments' ),
+	total: __( 'Total balance', 'poocommerce-payments' ),
 };
 
 export const documentationUrls = {
 	depositSchedule:
-		'https://woocommerce.com/document/woopayments/payouts/payout-schedule/',
+		'https://poocommerce.com/document/woopayments/payouts/payout-schedule/',
 	negativeBalance:
-		'https://woocommerce.com/document/woopayments/fees/account-showing-negative-balance/',
+		'https://poocommerce.com/document/woopayments/fees/account-showing-negative-balance/',
 };

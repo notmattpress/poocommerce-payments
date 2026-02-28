@@ -39,7 +39,7 @@ jest.mock( '@wordpress/data', () => ( {
 	useDispatch: jest.fn( () => ( { createErrorNotice: jest.fn() } ) ),
 } ) );
 
-jest.mock( '@woocommerce/components', () => ( {
+jest.mock( '@poocommerce/components', () => ( {
 	Link: jest
 		.fn()
 		.mockImplementation( ( { href, children } ) => (

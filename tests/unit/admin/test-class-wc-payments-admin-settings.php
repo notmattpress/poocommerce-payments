@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Admin_Settings_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use PHPUnit\Framework\MockObject\MockObject;
@@ -512,21 +512,21 @@ class WC_Payments_Admin_Settings_Test extends WCPAY_UnitTestCase {
 		$_GET = [
 			'page'    => 'wc-settings',
 			'tab'     => 'checkout',
-			'section' => 'woocommerce_payments_klarna',
+			'section' => 'poocommerce_payments_klarna',
 		];
 
 		$this->mock_current_user_is_admin();
 
 		$this->payments_admin_settings->maybe_redirect_payment_method_settings();
 
-		$this->assertStringContainsString( '/wp-admin/admin.php?page=wc-settings&tab=checkout&section=woocommerce_payments', $this->attempted_redirect_location );
+		$this->assertStringContainsString( '/wp-admin/admin.php?page=wc-settings&tab=checkout&section=poocommerce_payments', $this->attempted_redirect_location );
 	}
 
 	public function test_maybe_redirect_payment_method_settings_does_not_redirect_main_settings() {
 		$_GET = [
 			'page'    => 'wc-settings',
 			'tab'     => 'checkout',
-			'section' => 'woocommerce_payments',
+			'section' => 'poocommerce_payments',
 		];
 
 		$this->mock_current_user_is_admin();
@@ -554,7 +554,7 @@ class WC_Payments_Admin_Settings_Test extends WCPAY_UnitTestCase {
 		$_GET = [
 			'page'    => 'wc-settings',
 			'tab'     => 'checkout',
-			'section' => 'woocommerce_payments_klarna',
+			'section' => 'poocommerce_payments_klarna',
 		];
 
 		wp_set_current_user( 0 );

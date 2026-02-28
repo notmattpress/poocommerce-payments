@@ -113,7 +113,7 @@ test.describe(
 						await shopperPage.getByText( 'Bancontact' ).click();
 
 						const bancontactRadio = shopperPage.locator(
-							'#payment_method_woocommerce_payments_bancontact'
+							'#payment_method_poocommerce_payments_bancontact'
 						);
 						await bancontactRadio.scrollIntoViewIfNeeded();
 						await bancontactRadio.check( { force: true } );

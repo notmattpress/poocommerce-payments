@@ -2,7 +2,7 @@
 /**
  * Class file for WCPay\Core\Server\Request\List_Transactions.
  *
- * @package WooCommerce Payments
+ * @package PooCommerce Payments
  */
 
 namespace WCPay\Core\Server\Request;
@@ -134,7 +134,7 @@ class List_Disputes extends Paginated {
 	public function set_search( $search ) {
 		if ( ! is_string( $search ) && ! is_array( $search ) ) {
 			throw new Invalid_Request_Parameter_Exception(
-				esc_html__( 'The search parameter must be a string, or an array of strings.', 'woocommerce-payments' ),
+				esc_html__( 'The search parameter must be a string, or an array of strings.', 'poocommerce-payments' ),
 				'wcpay_core_invalid_request_parameter_invalid_search'
 			);
 		}
@@ -172,7 +172,7 @@ class List_Disputes extends Paginated {
 	 * @return Response
 	 */
 	public function format_response( $response ) {
-		// Add WooCommerce order information to each dispute.
+		// Add PooCommerce order information to each dispute.
 		if ( isset( $response['data'] ) ) {
 			$wcpay_db = new WC_Payments_DB();
 			foreach ( $response['data'] as &$dispute ) {

@@ -2,7 +2,7 @@
 /**
  * Class StorefrontIntegration
  *
- * @package WooCommerce\Payments\StorefrontIntegration
+ * @package PooCommerce\Payments\StorefrontIntegration
  */
 
 namespace WCPay\MultiCurrency;
@@ -38,10 +38,10 @@ class StorefrontIntegration {
 	 */
 	public function add_inline_css() {
 		$css = '
-			#woocommerce-payments-multi-currency-storefront-widget {
+			#poocommerce-payments-multi-currency-storefront-widget {
 				float: right;
 			}
-			#woocommerce-payments-multi-currency-storefront-widget form {
+			#poocommerce-payments-multi-currency-storefront-widget form {
 				margin: 0;
 			}
 		';
@@ -65,7 +65,7 @@ class StorefrontIntegration {
 		$args     = apply_filters(
 			MultiCurrency::FILTER_PREFIX . 'storefront_widget_args',
 			[
-				'before_widget' => '<div id="woocommerce-payments-multi-currency-storefront-widget" class="woocommerce-breadcrumb">',
+				'before_widget' => '<div id="poocommerce-payments-multi-currency-storefront-widget" class="poocommerce-breadcrumb">',
 				'after_widget'  => '</div>',
 			]
 		);
@@ -112,7 +112,7 @@ class StorefrontIntegration {
 				|| $this->multi_currency->is_using_storefront_switcher()
 				)
 			) {
-				add_filter( 'woocommerce_breadcrumb_defaults', [ $this, 'modify_breadcrumb_defaults' ], 9999 );
+				add_filter( 'poocommerce_breadcrumb_defaults', [ $this, 'modify_breadcrumb_defaults' ], 9999 );
 				add_action( 'wp_enqueue_scripts', [ $this, 'add_inline_css' ], 50 );
 		}
 	}

@@ -106,12 +106,12 @@ describe( 'ExpressCheckout', () => {
 
 		expect( woopayCheckbox ).toHaveAttribute(
 			'href',
-			'admin.php?page=wc-settings&tab=checkout&section=woocommerce_payments&method=woopay'
+			'admin.php?page=wc-settings&tab=checkout&section=poocommerce_payments&method=woopay'
 		);
 
 		expect( paymentRequestCheckbox ).toHaveAttribute(
 			'href',
-			'admin.php?page=wc-settings&tab=checkout&section=woocommerce_payments&method=payment_request'
+			'admin.php?page=wc-settings&tab=checkout&section=poocommerce_payments&method=payment_request'
 		);
 	} );
 

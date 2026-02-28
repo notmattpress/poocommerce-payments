@@ -2,7 +2,7 @@
 /**
  * Order helpers.
  *
- * @package WooCommerce/Tests
+ * @package PooCommerce/Tests
  */
 
 use WCPay\Constants\Country_Code;
@@ -35,7 +35,7 @@ class WC_Helper_Order {
 		$order->delete( true );
 	}
 
-	public static function woocommerce_currency_usd() {
+	public static function poocommerce_currency_usd() {
 		return 'USD';
 	}
 
@@ -54,9 +54,9 @@ class WC_Helper_Order {
 	 */
 	public static function create_order( $customer_id = 1, $total = 50, $product = null ) {
 
-		// Since the default currency of WooCommerce < 5.3.0 is GBP.
-		if ( version_compare( WC_VERSION, '5.3.0', '<' ) && ! has_filter( 'woocommerce_currency', 'WC_Helper_Order::woocommerce_currency_usd' ) ) {
-			add_filter( 'woocommerce_currency', 'WC_Helper_Order::woocommerce_currency_usd' );
+		// Since the default currency of PooCommerce < 5.3.0 is GBP.
+		if ( version_compare( WC_VERSION, '5.3.0', '<' ) && ! has_filter( 'poocommerce_currency', 'WC_Helper_Order::poocommerce_currency_usd' ) ) {
+			add_filter( 'poocommerce_currency', 'WC_Helper_Order::poocommerce_currency_usd' );
 		}
 
 		if ( ! is_a( $product, 'WC_Product' ) ) {

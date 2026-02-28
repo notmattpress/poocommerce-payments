@@ -204,20 +204,20 @@ declare global {
 			};
 			preloadSettings: {
 				general: {
-					woocommerce_allowed_countries: string;
-					woocommerce_all_except_countries: string[];
-					woocommerce_specific_allowed_countries: string[];
-					woocommerce_default_country: string;
-					woocommerce_store_address: string;
-					woocommerce_store_address_2: string;
-					woocommerce_store_city: string;
-					woocommerce_store_postcode: string;
+					poocommerce_allowed_countries: string;
+					poocommerce_all_except_countries: string[];
+					poocommerce_specific_allowed_countries: string[];
+					poocommerce_default_country: string;
+					poocommerce_store_address: string;
+					poocommerce_store_address_2: string;
+					poocommerce_store_city: string;
+					poocommerce_store_postcode: string;
 				};
 			};
 			siteVisibilitySettings: {
-				woocommerce_share_key: string;
-				woocommerce_coming_soon: string;
-				woocommerce_private_link: string;
+				poocommerce_share_key: string;
+				poocommerce_coming_soon: string;
+				poocommerce_private_link: string;
 			};
 			timeZone: string;
 		};
@@ -253,7 +253,7 @@ declare global {
 
 	interface WcSettings {
 		ece_data?: WCPayExpressCheckoutParams;
-		woocommerce_payments_data: typeof wcpaySettings;
+		poocommerce_payments_data: typeof wcpaySettings;
 	}
 
 	const wcSettingsModule: {

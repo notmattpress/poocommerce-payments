@@ -38,7 +38,7 @@ test.describe( 'Admin order analytics', { tag: '@merchant' }, () => {
 		await tableDataHasLoaded( adminPage );
 		await waitAndSkipTourComponent(
 			adminPage,
-			'.woocommerce-revenue-report-date-tour'
+			'.poocommerce-revenue-report-date-tour'
 		);
 
 		const ordersTitle = adminPage.getByRole( 'heading', {
@@ -66,7 +66,7 @@ test.describe( 'Admin order analytics', { tag: '@merchant' }, () => {
 				await tableDataHasLoaded( adminPage );
 				await waitAndSkipTourComponent(
 					adminPage,
-					'.woocommerce-revenue-report-date-tour'
+					'.poocommerce-revenue-report-date-tour'
 				);
 				// Wait a bit more for data to load after refresh
 				await adminPage.waitForTimeout( 2000 );
@@ -90,7 +90,7 @@ test.describe( 'Admin order analytics', { tag: '@merchant' }, () => {
 		await tableDataHasLoaded( adminPage );
 		await waitAndSkipTourComponent(
 			adminPage,
-			'.woocommerce-revenue-report-date-tour'
+			'.poocommerce-revenue-report-date-tour'
 		);
 
 		const columnToggle = adminPage.getByTitle(

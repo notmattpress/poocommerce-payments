@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Admin_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use PHPUnit\Framework\MockObject\MockObject;
@@ -95,7 +95,7 @@ class WC_Payments_Admin_Test extends WCPAY_UnitTestCase {
 		$this->current_screen_backup = $GLOBALS['current_screen'] ?? null;
 		$GLOBALS['current_screen']   = $this->get_screen_mock(); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 		if ( ! did_action( 'current_screen' ) ) {
-			do_action( 'current_screen', $GLOBALS['current_screen'] ); // phpcs:ignore WooCommerce.Commenting.CommentHooks.MissingHookComment
+			do_action( 'current_screen', $GLOBALS['current_screen'] ); // phpcs:ignore PooCommerce.Commenting.CommentHooks.MissingHookComment
 		}
 
 		$this->mock_api_client = $this->getMockBuilder( WC_Payments_API_Client::class )
@@ -498,9 +498,9 @@ class WC_Payments_Admin_Test extends WCPAY_UnitTestCase {
 		$_GET['tab']  = 'products'; // Wrong WC settings tab.
 
 		// Mock the current screen.
-		$GLOBALS['current_screen']->id = 'woocommerce_page_wc-settings';
+		$GLOBALS['current_screen']->id = 'poocommerce_page_wc-settings';
 
-		// Mock the WooCommerce version to be at the minimum required version.
+		// Mock the PooCommerce version to be at the minimum required version.
 		Constants::set_constant( 'WC_VERSION', '9.9.2' );
 
 		// Act.
@@ -526,9 +526,9 @@ class WC_Payments_Admin_Test extends WCPAY_UnitTestCase {
 		$_GET['tab']  = 'checkout';
 
 		// Mock the current screen.
-		$GLOBALS['current_screen']->id = 'woocommerce_page_wc-settings';
+		$GLOBALS['current_screen']->id = 'poocommerce_page_wc-settings';
 
-		// Mock the WooCommerce version to NOT be at the minimum required version.
+		// Mock the PooCommerce version to NOT be at the minimum required version.
 		Constants::set_constant( 'WC_VERSION', '9.9.1' );
 
 		// Act.

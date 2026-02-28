@@ -2,19 +2,19 @@
 /**
  * Class WC_Payments_Email_IPP_Receipt file
  *
- * @package WooCommerce\Emails
+ * @package PooCommerce\Emails
  *
- * @filter woocommerce_email_preview_dummy_order
+ * @filter poocommerce_email_preview_dummy_order
  *     Filters the dummy order object used for email previews.
  *     @param WC_Order|bool $order The order object or false.
  *     @return WC_Order The filtered order object.
  *
- * @filter woocommerce_email_preview_dummy_address
+ * @filter poocommerce_email_preview_dummy_address
  *     Filters the dummy address data used for email previews.
  *     @param array $address The address data array.
  *     @return array Modified address data array with store location details.
  *
- * @filter woocommerce_email_preview_placeholders
+ * @filter poocommerce_email_preview_placeholders
  *     Filters the email preview placeholders.
  *     @param array $placeholders Array of email preview placeholders.
  *     @return array Modified array of placeholders with order date and number.
@@ -33,7 +33,7 @@ if ( ! class_exists( 'WC_Payments_Email_IPP_Receipt' ) ) :
 	 *
 	 * @class       WC_Payments_Email_IPP_Receipt
 	 * @version     2.0.0
-	 * @package     WooCommerce\Classes\Emails
+	 * @package     PooCommerce\Classes\Emails
 	 */
 	class WC_Payments_Email_IPP_Receipt extends WC_Email {
 
@@ -57,34 +57,34 @@ if ( ! class_exists( 'WC_Payments_Email_IPP_Receipt' ) ) :
 		public function __construct() {
 			$this->id             = 'new_receipt';
 			$this->customer_email = true;
-			$this->title          = __( 'New receipt', 'woocommerce-payments' );
-			$this->description    = __( 'New receipt emails are sent to customers when a new order is paid for with a card reader.', 'woocommerce-payments' );
+			$this->title          = __( 'New receipt', 'poocommerce-payments' );
+			$this->description    = __( 'New receipt emails are sent to customers when a new order is paid for with a card reader.', 'poocommerce-payments' );
 			$this->template_base  = WCPAY_ABSPATH . 'templates/';
 			$this->template_html  = 'emails/customer-ipp-receipt.php';
 			$this->template_plain = 'emails/plain/customer-ipp-receipt.php';
-			$this->plugin_id      = 'woocommerce_woocommerce_payments_';
+			$this->plugin_id      = 'poocommerce_poocommerce_payments_';
 			$this->placeholders   = [
 				'{order_date}'   => '',
 				'{order_number}' => '',
 			];
 
 			// Content hooks.
-			add_action( 'woocommerce_payments_email_ipp_receipt_store_details', [ $this, 'store_details' ], 10, 2 );
-			add_action( 'woocommerce_payments_email_ipp_receipt_compliance_details', [ $this, 'compliance_details' ], 10, 2 );
+			add_action( 'poocommerce_payments_email_ipp_receipt_store_details', [ $this, 'store_details' ], 10, 2 );
+			add_action( 'poocommerce_payments_email_ipp_receipt_compliance_details', [ $this, 'compliance_details' ], 10, 2 );
 
 			// Triggers for this email.
-			add_action( 'woocommerce_payments_email_ipp_receipt_notification', [ $this, 'trigger' ], 10, 3 );
+			add_action( 'poocommerce_payments_email_ipp_receipt_notification', [ $this, 'trigger' ], 10, 3 );
 
-			// WooCommerce Email preview filters.
-			add_filter( 'woocommerce_email_preview_dummy_order', [ $this, 'get_preview_order' ], 10, 1 );
-			add_filter( 'woocommerce_email_preview_dummy_address', [ $this, 'get_preview_address' ], 10, 1 );
-			add_filter( 'woocommerce_email_preview_placeholders', [ $this, 'get_preview_placeholders' ], 10, 1 );
+			// PooCommerce Email preview filters.
+			add_filter( 'poocommerce_email_preview_dummy_order', [ $this, 'get_preview_order' ], 10, 1 );
+			add_filter( 'poocommerce_email_preview_dummy_address', [ $this, 'get_preview_address' ], 10, 1 );
+			add_filter( 'poocommerce_email_preview_placeholders', [ $this, 'get_preview_placeholders' ], 10, 1 );
 
 			/**
 			 * Please don't move. The call to the parent constructor here is intentional. It allows this class to merge
 			 * its placeholders with the parent's and prefix the settings with its own identifier.
 			 * Moving this call to the top of the constructor will cause the placeholders to stop working and
-			 * lose the woocommerce_payments_ prefix in the settings.
+			 * lose the poocommerce_payments_ prefix in the settings.
 			 *
 			 * @see: WC_Email::_construct()
 			*/
@@ -103,7 +103,7 @@ if ( ! class_exists( 'WC_Payments_Email_IPP_Receipt' ) ) :
 				return $order;
 			}
 
-			$order->set_payment_method_title( __( 'WooCommerce In-Person Payments', 'woocommerce-payments' ) );
+			$order->set_payment_method_title( __( 'PooCommerce In-Person Payments', 'poocommerce-payments' ) );
 			return $order;
 		}
 
@@ -146,7 +146,7 @@ if ( ! class_exists( 'WC_Payments_Email_IPP_Receipt' ) ) :
 		 * @return string
 		 */
 		public function get_default_subject(): string {
-			return __( 'Your {site_title} Receipt', 'woocommerce-payments' );
+			return __( 'Your {site_title} Receipt', 'poocommerce-payments' );
 		}
 
 		/**
@@ -156,7 +156,7 @@ if ( ! class_exists( 'WC_Payments_Email_IPP_Receipt' ) ) :
 		 * @return string
 		 */
 		public function get_default_heading(): string {
-			return __( 'Your receipt for order: #{order_number}', 'woocommerce-payments' );
+			return __( 'Your receipt for order: #{order_number}', 'poocommerce-payments' );
 		}
 
 		/**
@@ -364,7 +364,7 @@ if ( ! class_exists( 'WC_Payments_Email_IPP_Receipt' ) ) :
 		 * @return string
 		 */
 		public function get_default_additional_content(): string {
-			return __( 'Thanks for using {site_url}!', 'woocommerce-payments' );
+			return __( 'Thanks for using {site_url}!', 'poocommerce-payments' );
 		}
 	}
 

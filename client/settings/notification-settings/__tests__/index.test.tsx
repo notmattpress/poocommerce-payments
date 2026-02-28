@@ -82,7 +82,7 @@ describe( 'NotificationSettingsDescription', () => {
 		expect( link ).toBeInTheDocument();
 		expect( link ).toHaveAttribute(
 			'href',
-			'https://woocommerce.com/document/woopayments/settings-guide/#account-notifications'
+			'https://poocommerce.com/document/woopayments/settings-guide/#account-notifications'
 		);
 	} );
 } );

@@ -45,21 +45,21 @@ export enum PAYMENT_METHOD_BRANDS {
 // This constant is used for rendering tooltip titles for "payment methods" in transaction list and details pages.
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const TRANSACTION_PAYMENT_METHOD_TITLES = {
-	ach_credit_transfer: __( 'ACH Credit Transfer', 'woocommerce-payments' ),
-	ach_debit: __( 'ACH Debit', 'woocommerce-payments' ),
-	acss_debit: __( 'ACSS Debit', 'woocommerce-payments' ),
-	amazon_pay: __( 'Amazon Pay', 'woocommerce-payments' ),
-	amex: __( 'American Express', 'woocommerce-payments' ),
-	card: __( 'Card Payment', 'woocommerce-payments' ),
-	card_present: __( 'In-Person Card Payment', 'woocommerce-payments' ),
-	cartes_bancaires: __( 'Cartes Bancaires', 'woocommerce-payments' ),
-	diners: __( 'Diners Club', 'woocommerce-payments' ),
-	discover: __( 'Discover', 'woocommerce-payments' ),
-	jcb: __( 'JCB', 'woocommerce-payments' ),
-	mastercard: __( 'Mastercard', 'woocommerce-payments' ),
-	stripe_account: __( 'Stripe Account', 'woocommerce-payments' ),
-	unionpay: __( 'Union Pay', 'woocommerce-payments' ),
-	visa: __( 'Visa', 'woocommerce-payments' ),
+	ach_credit_transfer: __( 'ACH Credit Transfer', 'poocommerce-payments' ),
+	ach_debit: __( 'ACH Debit', 'poocommerce-payments' ),
+	acss_debit: __( 'ACSS Debit', 'poocommerce-payments' ),
+	amazon_pay: __( 'Amazon Pay', 'poocommerce-payments' ),
+	amex: __( 'American Express', 'poocommerce-payments' ),
+	card: __( 'Card Payment', 'poocommerce-payments' ),
+	card_present: __( 'In-Person Card Payment', 'poocommerce-payments' ),
+	cartes_bancaires: __( 'Cartes Bancaires', 'poocommerce-payments' ),
+	diners: __( 'Diners Club', 'poocommerce-payments' ),
+	discover: __( 'Discover', 'poocommerce-payments' ),
+	jcb: __( 'JCB', 'poocommerce-payments' ),
+	mastercard: __( 'Mastercard', 'poocommerce-payments' ),
+	stripe_account: __( 'Stripe Account', 'poocommerce-payments' ),
+	unionpay: __( 'Union Pay', 'poocommerce-payments' ),
+	visa: __( 'Visa', 'poocommerce-payments' ),
 };
 
 export default PAYMENT_METHOD_IDS;

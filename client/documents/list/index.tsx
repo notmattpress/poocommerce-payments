@@ -5,8 +5,8 @@
  */
 import React, { useCallback, useEffect, useState } from 'react';
 import { __, _n, sprintf } from '@wordpress/i18n';
-import { TableCard, TableCardColumn } from '@woocommerce/components';
-import { onQueryChange, getQuery } from '@woocommerce/navigation';
+import { TableCard, TableCardColumn } from '@poocommerce/components';
+import { onQueryChange, getQuery } from '@poocommerce/navigation';
 import { Button } from '@wordpress/components';
 
 /**
@@ -32,8 +32,8 @@ const getColumns = (): Column[] =>
 	[
 		{
 			key: 'date',
-			label: __( 'Date', 'woocommerce-payments' ),
-			screenReaderLabel: __( 'Date and time', 'woocommerce-payments' ),
+			label: __( 'Date', 'poocommerce-payments' ),
+			screenReaderLabel: __( 'Date and time', 'poocommerce-payments' ),
 			required: true,
 			isLeftAligned: true,
 			defaultOrder: 'desc',
@@ -43,20 +43,20 @@ const getColumns = (): Column[] =>
 		},
 		{
 			key: 'type',
-			label: __( 'Type', 'woocommerce-payments' ),
-			screenReaderLabel: __( 'Type', 'woocommerce-payments' ),
+			label: __( 'Type', 'poocommerce-payments' ),
+			screenReaderLabel: __( 'Type', 'poocommerce-payments' ),
 			required: true,
 			isLeftAligned: true,
 		},
 		{
 			key: 'description',
-			label: __( 'Description', 'woocommerce-payments' ),
-			screenReaderLabel: __( 'Description', 'woocommerce-payments' ),
+			label: __( 'Description', 'poocommerce-payments' ),
+			screenReaderLabel: __( 'Description', 'poocommerce-payments' ),
 		},
 		{
 			key: 'download',
-			label: __( 'Download', 'woocommerce-payments' ),
-			screenReaderLabel: __( 'Download', 'woocommerce-payments' ),
+			label: __( 'Download', 'poocommerce-payments' ),
+			screenReaderLabel: __( 'Download', 'poocommerce-payments' ),
 			isLeftAligned: false,
 			isNumeric: true,
 		},
@@ -67,18 +67,18 @@ const getDocumentDescription = ( document: Document ) => {
 		case 'vat_invoice':
 			if ( document.period_from && document.period_to ) {
 				return sprintf(
-					__( 'Tax invoice for %s to %s', 'woocommerce-payments' ),
+					__( 'Tax invoice for %s to %s', 'poocommerce-payments' ),
 					formatDateTimeFromString( document.period_from ),
 					formatDateTimeFromString( document.period_to )
 				);
 			}
 			return __(
 				'Tax invoice without proper period dates',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			);
 
 		default:
-			return __( 'Unknown document type', 'woocommerce-payments' );
+			return __( 'Unknown document type', 'poocommerce-payments' );
 	}
 };
 
@@ -171,7 +171,7 @@ export const DocumentsList = (): JSX.Element => {
 	const rows = documents.map( ( document: Document ) => {
 		const documentType =
 			displayType[ document.type ] ??
-			__( 'Unknown document type', 'woocommerce-payments' );
+			__( 'Unknown document type', 'poocommerce-payments' );
 		// Map document into table row.
 		const data = {
 			date: {
@@ -200,7 +200,7 @@ export const DocumentsList = (): JSX.Element => {
 						}
 						__next40pxDefaultSize
 					>
-						{ __( 'Download', 'woocommerce-payments' ) }
+						{ __( 'Download', 'poocommerce-payments' ) }
 					</Button>
 				),
 			},
@@ -211,7 +211,7 @@ export const DocumentsList = (): JSX.Element => {
 		);
 	} );
 
-	const title = __( 'Documents', 'woocommerce-payments' );
+	const title = __( 'Documents', 'poocommerce-payments' );
 
 	// initializing summary with undefined as we don't want to render the TableSummary component unless we have the data
 	let summary;
@@ -228,7 +228,7 @@ export const DocumentsList = (): JSX.Element => {
 					// We've already checked that `.count` is not undefined, but TypeScript doesn't detect
 					// that so we remove the `undefined` in the type manually.
 					documentsSummary.count as number,
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				value: `${ documentsSummary.count }`,
 			},
@@ -239,7 +239,7 @@ export const DocumentsList = (): JSX.Element => {
 		<Page>
 			<DocumentsFilters />
 			<TableCard
-				className="documents-list woocommerce-report-table has-search"
+				className="documents-list poocommerce-report-table has-search"
 				title={ title }
 				isLoading={ isLoading }
 				rowsPerPage={ parseInt( getQuery().per_page ?? '', 10 ) || 25 }

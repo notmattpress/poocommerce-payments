@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Subscription_Service_Creation_Logic_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use PHPUnit\Framework\MockObject\MockObject;
@@ -58,7 +58,7 @@ class WC_Payments_Subscription_Service_Creation_Logic_Test extends WCPAY_UnitTes
 	private $mock_subscription_product;
 
 	/**
-	 * Mock callback for woocommerce_get_product_from_item filter.
+	 * Mock callback for poocommerce_get_product_from_item filter.
 	 *
 	 * @var callable
 	 */
@@ -88,7 +88,7 @@ class WC_Payments_Subscription_Service_Creation_Logic_Test extends WCPAY_UnitTes
 			return $this->mock_subscription_product;
 		};
 
-		add_filter( 'woocommerce_get_product_from_item', $this->mock_get_product_from_item_callback );
+		add_filter( 'poocommerce_get_product_from_item', $this->mock_get_product_from_item_callback );
 	}
 
 	/**
@@ -226,7 +226,7 @@ class WC_Payments_Subscription_Service_Creation_Logic_Test extends WCPAY_UnitTes
 
 		// Mock empty payment tokens to simulate non-reusable payment method.
 		$subscription->payment_tokens = [];
-		$subscription->payment_method = 'woocommerce_payments';
+		$subscription->payment_method = 'poocommerce_payments';
 		// Mock that subscription doesn't have WCPay subscription ID yet.
 		$subscription->update_meta_data( self::SUBSCRIPTION_ID_META_KEY, '' );
 		$subscription->save();
@@ -260,7 +260,7 @@ class WC_Payments_Subscription_Service_Creation_Logic_Test extends WCPAY_UnitTes
 		$subscription->set_parent( $order );
 		// Even with payment tokens, automatic subscriptions use different logic.
 		$subscription->payment_tokens = [ 'pm_test123' ];
-		$subscription->payment_method = 'woocommerce_payments';
+		$subscription->payment_method = 'poocommerce_payments';
 		$subscription->update_meta_data( self::SUBSCRIPTION_ID_META_KEY, uniqid( 'sub_' ) );
 		$subscription->update_meta_data( self::ORDER_INVOICE_ID_KEY, uniqid( 'order_' ) );
 		$subscription->save();
@@ -286,6 +286,6 @@ class WC_Payments_Subscription_Service_Creation_Logic_Test extends WCPAY_UnitTes
 	public function tear_down() {
 		parent::tear_down();
 		WC_Subscriptions::set_wcs_get_subscriptions_for_renewal_order( null );
-		remove_filter( 'woocommerce_get_product_from_item', $this->mock_get_product_from_item_callback );
+		remove_filter( 'poocommerce_get_product_from_item', $this->mock_get_product_from_item_callback );
 	}
 }
