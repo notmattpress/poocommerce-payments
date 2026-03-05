@@ -142,6 +142,7 @@ You can read our Terms of Service and other policies [here](https://woocommerce.
 * Dev - Add PR reviewer and label requirements to CLAUDE.md
 * Dev - Add root AGENTS.md symlink for cross-agent discoverability
 * Dev - Align .claude/ documentation structure with CIAB Admin conventions.
+* Dev - Bump WC tested up to version to 10.6.0
 * Dev - chore: move ECE utilities into separate files
 * Dev - chore: rename option for dynamic place order button
 * Dev - Comment: Add agent pipeline review stage with compound reviewer and WCPay-specific review rules
