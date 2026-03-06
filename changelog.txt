@@ -1,6 +1,6 @@
 *** WooPayments Changelog ***
 
-= 10.6.0 - 2026-03-11 =
+= 10.6.0 - 2026-05-11 =
 * Add - Add credit_not_processed evidence for booking/reservation (refund has been issued)
 * Add - Add E2E testing skill and automated local setup script for running Playwright E2E tests against a local Transact Platform Server
 * Add - Added local development workflow for QIT E2E tests with npm run test:qit-e2e-up, test:qit-e2e-down, and test:qit-e2e-reset commands
@@ -15,6 +15,7 @@
 * Add - Add WooPayments review prompt on Payments Settings page
 * Add - feat: add Amazon Pay subscriptions support
 * Add - feat: add mccy merchant orders e2e tests
+* Add - feat: enable amazon pay by default
 * Add - Store ipp_channel from Stripe intent metadata on WooCommerce orders and suppress IPP receipt email for POS orders
 * Add - Surface WooPayments support phone number status in the System Status Report.
 * Fix - Add email confirmation field and warning notice to account notification email settings to prevent typos and improve security awareness
