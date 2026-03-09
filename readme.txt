@@ -122,6 +122,7 @@ You can read our Terms of Service and other policies [here](https://woocommerce.
 * Fix - Fix fatal error when WC_Payments_Explicit_Price_Formatter class is loaded before loan approved note
 * Fix - Fix flaky disputes E2E test by polling for saved evidence instead of asserting stale state
 * Fix - Fix memory exhaustion and null customer fatal errors in BNPL site messaging on product and cart pages
+* Fix - Fix Stripe IntegrationError for invalid currency when canMakePayment is called during WC Blocks store hydration
 * Fix - Fix the case of double exchange rate applied to the displayed fee amount in some scenarios.
 * Fix - Fix the logic of the WooPay button on single product pages.
 * Fix - Fix themed checkout extracting incorrect accent/link colors by using more specific CSS selectors for links, headers, and footers
