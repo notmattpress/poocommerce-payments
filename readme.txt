@@ -112,6 +112,7 @@ You can read our Terms of Service and other policies [here](https://woocommerce.
 * Fix - fix: display ECE buttons on pay-for-order pages
 * Fix - fix: ensure that subscriptions with free trials are consistently handled by the ECE
 * Fix - fix: notice on cart block
+* Fix - fix: shipping rates on ECE for subscriptions with free trial
 * Fix - fix: WooPay & Stripe Link mutual compatibility in settings
 * Fix - fix: WooPay typo when saving customer
 * Fix - Fixed duplicate payment method dismissed notices option type from bool to array, allowing notice dismissals to persist across page refreshes.
