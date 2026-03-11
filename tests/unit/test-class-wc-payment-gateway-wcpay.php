@@ -545,9 +545,9 @@ class WC_Payment_Gateway_WCPay_Test extends WCPAY_UnitTestCase {
 				'expected_title'   => 'Przelewy24 (P24)',
 				'expected_gateway' => 'woocommerce_payments_p24',
 			],
-			'iDEAL'             => [
+			'iDEAL | Wero'      => [
 				'payment_details'  => [ 'type' => 'ideal' ],
-				'expected_title'   => 'iDEAL',
+				'expected_title'   => 'iDEAL | Wero',
 				'expected_gateway' => 'woocommerce_payments_ideal',
 			],
 			'SEPA Direct Debit' => [
@@ -779,8 +779,8 @@ class WC_Payment_Gateway_WCPay_Test extends WCPAY_UnitTestCase {
 		$this->assertFalse( $sepa_method->is_reusable() );
 
 		$this->assertEquals( 'ideal', $ideal_method->get_id() );
-		$this->assertEquals( 'iDEAL', $ideal_method->get_title() );
-		$this->assertEquals( 'iDEAL', $ideal_method->get_title( 'US', $mock_ideal_details ) );
+		$this->assertEquals( 'iDEAL | Wero', $ideal_method->get_title() );
+		$this->assertEquals( 'iDEAL | Wero', $ideal_method->get_title( 'US', $mock_ideal_details ) );
 		$this->assertTrue( $ideal_method->is_enabled_at_checkout( 'US' ) );
 		$this->assertFalse( $ideal_method->is_reusable() );
 
@@ -1415,6 +1415,23 @@ class WC_Payment_Gateway_WCPay_Test extends WCPAY_UnitTestCase {
 		$this->card_gateway->settings['upe_enabled_payment_method_ids'] = [ Payment_Method::CARD ];
 		$payment_methods = $this->card_gateway->get_payment_methods_from_gateway_id( WC_Payment_Gateway_WCPay::GATEWAY_ID );
 		$this->assertSame( [ Payment_Method::CARD ], $payment_methods );
+
+		WC_Payments::set_gateway( $gateway );
+	}
+
+	public function test_get_payment_methods_from_gateway_id_returns_card_for_apple_pay_and_google_pay() {
+		$gateway = WC_Payments::get_gateway();
+
+		// Apple Pay and Google Pay are wrappers around card payments for Stripe.
+		$payment_methods = $this->card_gateway->get_payment_methods_from_gateway_id( WC_Payment_Gateway_WCPay::GATEWAY_ID . '_apple_pay' );
+		$this->assertSame( [ Payment_Method::CARD ], $payment_methods );
+
+		$payment_methods = $this->card_gateway->get_payment_methods_from_gateway_id( WC_Payment_Gateway_WCPay::GATEWAY_ID . '_google_pay' );
+		$this->assertSame( [ Payment_Method::CARD ], $payment_methods );
+
+		// Amazon Pay uses its own payment method, not card.
+		$payment_methods = $this->card_gateway->get_payment_methods_from_gateway_id( WC_Payment_Gateway_WCPay::GATEWAY_ID . '_amazon_pay' );
+		$this->assertSame( [ 'amazon_pay' ], $payment_methods );
 
 		WC_Payments::set_gateway( $gateway );
 	}
@@ -4441,5 +4458,92 @@ class WC_Payment_Gateway_WCPay_Test extends WCPAY_UnitTestCase {
 		);
 
 		$this->assertTrue( $this->card_gateway->is_payment_request_enabled() );
+	}
+
+	public function test_has_custom_place_order_button_set_for_express_checkout_when_feature_enabled() {
+		// The feature requires WooCommerce 10.6.0+.
+		if ( ! defined( 'WC_VERSION' ) || version_compare( WC_VERSION, '10.6.0', '<' ) ) {
+			$this->markTestSkipped( 'Test requires WooCommerce 10.6.0+' );
+		}
+
+		update_option( WC_Payments_Features::WCPAY_DYNAMIC_CHECKOUT_PLACE_ORDER_BUTTON_FLAG_NAME, '1' );
+
+		$amazon_pay_payment_method = new UPE_Payment_Method(
+			$this->mock_token_service,
+			\WCPay\PaymentMethods\Configs\Definitions\AmazonPayDefinition::class
+		);
+
+		$gateway = new WC_Payment_Gateway_WCPay(
+			$this->mock_api_client,
+			$this->mock_wcpay_account,
+			$this->mock_customer_service,
+			$this->mock_token_service,
+			$this->mock_action_scheduler_service,
+			$amazon_pay_payment_method,
+			$this->payment_methods,
+			$this->order_service,
+			$this->mock_dpps,
+			$this->mock_localization_service,
+			$this->mock_fraud_service,
+			$this->mock_duplicates_detection_service,
+			$this->mock_rate_limiter
+		);
+
+		$this->assertTrue( $gateway->has_custom_place_order_button );
+
+		delete_option( WC_Payments_Features::WCPAY_DYNAMIC_CHECKOUT_PLACE_ORDER_BUTTON_FLAG_NAME );
+	}
+
+	public function test_has_custom_place_order_button_not_set_for_express_checkout_when_feature_disabled() {
+		delete_option( WC_Payments_Features::WCPAY_DYNAMIC_CHECKOUT_PLACE_ORDER_BUTTON_FLAG_NAME );
+
+		$amazon_pay_payment_method = new UPE_Payment_Method(
+			$this->mock_token_service,
+			\WCPay\PaymentMethods\Configs\Definitions\AmazonPayDefinition::class
+		);
+
+		$gateway = new WC_Payment_Gateway_WCPay(
+			$this->mock_api_client,
+			$this->mock_wcpay_account,
+			$this->mock_customer_service,
+			$this->mock_token_service,
+			$this->mock_action_scheduler_service,
+			$amazon_pay_payment_method,
+			$this->payment_methods,
+			$this->order_service,
+			$this->mock_dpps,
+			$this->mock_localization_service,
+			$this->mock_fraud_service,
+			$this->mock_duplicates_detection_service,
+			$this->mock_rate_limiter
+		);
+
+		$this->assertFalse( isset( $gateway->has_custom_place_order_button ) && $gateway->has_custom_place_order_button );
+	}
+
+	public function test_has_custom_place_order_button_not_set_for_non_express_checkout() {
+		update_option( WC_Payments_Features::WCPAY_DYNAMIC_CHECKOUT_PLACE_ORDER_BUTTON_FLAG_NAME, '1' );
+
+		$card_payment_method = new CC_Payment_Method( $this->mock_token_service );
+
+		$gateway = new WC_Payment_Gateway_WCPay(
+			$this->mock_api_client,
+			$this->mock_wcpay_account,
+			$this->mock_customer_service,
+			$this->mock_token_service,
+			$this->mock_action_scheduler_service,
+			$card_payment_method,
+			$this->payment_methods,
+			$this->order_service,
+			$this->mock_dpps,
+			$this->mock_localization_service,
+			$this->mock_fraud_service,
+			$this->mock_duplicates_detection_service,
+			$this->mock_rate_limiter
+		);
+
+		$this->assertFalse( isset( $gateway->has_custom_place_order_button ) && $gateway->has_custom_place_order_button );
+
+		delete_option( WC_Payments_Features::WCPAY_DYNAMIC_CHECKOUT_PLACE_ORDER_BUTTON_FLAG_NAME );
 	}
 }

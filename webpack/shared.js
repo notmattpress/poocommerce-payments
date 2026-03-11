@@ -28,6 +28,8 @@ module.exports = {
 				'./includes/multi-currency/client/blocks/currency-switcher.js',
 			'multi-currency-analytics':
 				'./includes/multi-currency/client/analytics/index.js',
+			'multi-currency-async-renderer':
+				'./includes/multi-currency/client/async-renderer/index.js',
 			order: './client/order/index.js',
 			'subscriptions-empty-state':
 				'./client/subscriptions-empty-state/index.js',
@@ -42,6 +44,8 @@ module.exports = {
 			success: './client/success/index.js',
 			'wc-payments-settings-spotlight':
 				'./client/wc-payments-settings-spotlight.js',
+			'wc-payments-review-prompt':
+				'./client/wc-payments-review-prompt.tsx',
 		},
 		// Override webpack public path dynamically on every entry.
 		// Required for chunks loading to work on sites with JS concatenation.

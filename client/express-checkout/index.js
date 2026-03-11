@@ -3,7 +3,7 @@
  * External dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { addAction, removeAction } from '@wordpress/hooks';
+import { addAction, removeAction, applyFilters } from '@wordpress/hooks';
 
 /**
  * Internal dependencies
@@ -14,11 +14,12 @@ import './compatibility/wc-deposits';
 import './compatibility/wc-order-attribution';
 import './compatibility/wc-product-page';
 import './compatibility/wc-product-bundles';
+import './compatibility/wc-subscriptions';
 import {
 	getExpressCheckoutButtonAppearance,
 	getExpressCheckoutButtonStyleSettings,
 	getExpressCheckoutData,
-	getSetupFutureUsage,
+	getStripeElementsMode,
 	displayLoginConfirmation,
 } from './utils';
 import {
@@ -61,10 +62,15 @@ const fetchNewCartData = async () => {
 
 const getTotalAmount = () => {
 	if ( cachedCartData ) {
-		return transformPrice(
-			parseInt( cachedCartData.totals.total_price, 10 ) -
-				parseInt( cachedCartData.totals.total_refund || 0, 10 ),
-			cachedCartData.totals
+		// Apply filter to allow modifications (e.g., for trial subscriptions)
+		return applyFilters(
+			'wcpay.express-checkout.total-amount',
+			transformPrice(
+				parseInt( cachedCartData.totals.total_price, 10 ) -
+					parseInt( cachedCartData.totals.total_refund || 0, 10 ),
+				cachedCartData.totals
+			),
+			cachedCartData
 		);
 	}
 
@@ -224,14 +230,11 @@ jQuery( ( $ ) => {
 
 			// https://docs.stripe.com/js/elements_object/create_without_intent
 			elements = stripe.elements( {
-				mode: 'payment',
+				mode: getStripeElementsMode(),
 				amount: creationOptions.total,
 				currency: creationOptions.currency,
 				...( useConfirmationToken
-					? {
-							paymentMethodTypes,
-							...getSetupFutureUsage(),
-					  }
+					? { paymentMethodTypes }
 					: { paymentMethodCreation: 'manual' } ),
 				appearance: getExpressCheckoutButtonAppearance(),
 				locale: getExpressCheckoutData( 'stripe' )?.locale ?? 'en',
@@ -378,7 +381,7 @@ jQuery( ( $ ) => {
 			} );
 
 			eceButton.on( 'shippingratechange', async ( event ) =>
-				shippingRateChangeHandler( event, elements )
+				shippingRateChangeHandler( event, elements, cachedCartData )
 			);
 
 			eceButton.on( 'confirm', async ( event ) => {
@@ -461,7 +464,14 @@ jQuery( ( $ ) => {
 			}
 
 			const total = getTotalAmount();
-			if ( total === 0 ) {
+			// Check if cart is eligible for ECE (filter allows extensions to override)
+			const isCartEligible = applyFilters(
+				'wcpay.express-checkout.is-cart-eligible',
+				total > 0,
+				cachedCartData
+			);
+
+			if ( ! isCartEligible ) {
 				expressCheckoutButtonUi.hideContainer();
 				expressCheckoutButtonUi.getButtonSeparator().hide();
 			} else if ( cachedCartData ) {
@@ -530,7 +540,14 @@ jQuery( ( $ ) => {
 							elements.update( { amount: newTotal } );
 						}
 
-						if ( newTotal === 0 ) {
+						// Check if cart is eligible (filter allows extensions to override)
+						const isNewCartEligible = applyFilters(
+							'wcpay.express-checkout.is-cart-eligible',
+							newTotal > 0,
+							cachedCartData
+						);
+
+						if ( ! isNewCartEligible ) {
 							expressCheckoutButtonUi.hideContainer();
 							expressCheckoutButtonUi.getButtonSeparator().hide();
 						} else {
