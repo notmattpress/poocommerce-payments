@@ -4,16 +4,16 @@
 import { __ } from '@wordpress/i18n';
 
 export const numberWords = [
-	__( 'any', 'woocommerce-payments' ),
-	__( 'one', 'woocommerce-payments' ),
-	__( 'two', 'woocommerce-payments' ),
-	__( 'three', 'woocommerce-payments' ),
-	__( 'four', 'woocommerce-payments' ),
-	__( 'five', 'woocommerce-payments' ),
-	__( 'six', 'woocommerce-payments' ),
-	__( 'seven', 'woocommerce-payments' ),
-	__( 'eight', 'woocommerce-payments' ),
-	__( 'nine', 'woocommerce-payments' ),
+	__( 'any', 'poocommerce-payments' ),
+	__( 'one', 'poocommerce-payments' ),
+	__( 'two', 'poocommerce-payments' ),
+	__( 'three', 'poocommerce-payments' ),
+	__( 'four', 'poocommerce-payments' ),
+	__( 'five', 'poocommerce-payments' ),
+	__( 'six', 'poocommerce-payments' ),
+	__( 'seven', 'poocommerce-payments' ),
+	__( 'eight', 'poocommerce-payments' ),
+	__( 'nine', 'poocommerce-payments' ),
 ];
 
 export const recommendedCurrencyCodes = [

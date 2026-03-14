@@ -22,26 +22,26 @@ else
     wp plugin activate wordpress-importer
 fi
 
-WC_SAMPLE_DATA_PATH=$(wp eval 'echo trailingslashit( WP_CONTENT_DIR ) . "plugins/woocommerce/sample-data/sample_products.xml";' 2>/dev/null)
+WC_SAMPLE_DATA_PATH=$(wp eval 'echo trailingslashit( WP_CONTENT_DIR ) . "plugins/poocommerce/sample-data/sample_products.xml";' 2>/dev/null)
 if [ -z "$WC_SAMPLE_DATA_PATH" ]; then
-    echo "Unable to resolve WooCommerce sample data path; skipping import."
+    echo "Unable to resolve PooCommerce sample data path; skipping import."
 else
     if [ -f "$WC_SAMPLE_DATA_PATH" ]; then
-        echo "Importing WooCommerce sample products from $WC_SAMPLE_DATA_PATH ..."
+        echo "Importing PooCommerce sample products from $WC_SAMPLE_DATA_PATH ..."
         wp import "$WC_SAMPLE_DATA_PATH" --authors=skip
     else
         echo "Sample data file not found at $WC_SAMPLE_DATA_PATH; skipping import."
     fi
 fi
 
-# Import WooCommerce Subscriptions products if the plugin is installed.
-echo "Checking for WooCommerce Subscriptions plugin..."
-if wp plugin is-installed woocommerce-subscriptions 2>/dev/null; then
-    echo "WooCommerce Subscriptions detected - configuring settings..."
+# Import PooCommerce Subscriptions products if the plugin is installed.
+echo "Checking for PooCommerce Subscriptions plugin..."
+if wp plugin is-installed poocommerce-subscriptions 2>/dev/null; then
+    echo "PooCommerce Subscriptions detected - configuring settings..."
 
     # Allow multiple subscriptions to be purchased in a single order.
     # This is required for testing scenarios where customers buy multiple subscription products.
-    wp option update woocommerce_subscriptions_multiple_purchase "yes"
+    wp option update poocommerce_subscriptions_multiple_purchase "yes"
     echo "Enabled multiple subscription purchases."
 
     # Import subscription products.
@@ -55,15 +55,15 @@ if wp plugin is-installed woocommerce-subscriptions 2>/dev/null; then
         echo "Warning: Subscription products XML not found at $WC_SUBSCRIPTIONS_DATA_PATH"
     fi
 else
-    echo "WooCommerce Subscriptions not installed - skipping subscription products import."
+    echo "PooCommerce Subscriptions not installed - skipping subscription products import."
 fi
 
-# Ensure WooCommerce core pages exist and configure checkout/cart.
-echo "Ensuring WooCommerce core pages exist..."
+# Ensure PooCommerce core pages exist and configure checkout/cart.
+echo "Ensuring PooCommerce core pages exist..."
 wp wc --user=admin tool run install_pages >/dev/null 2>&1 || true
 
-CHECKOUT_PAGE_ID=$(wp option get woocommerce_checkout_page_id)
-CART_PAGE_ID=$(wp option get woocommerce_cart_page_id)
+CHECKOUT_PAGE_ID=$(wp option get poocommerce_checkout_page_id)
+CART_PAGE_ID=$(wp option get poocommerce_cart_page_id)
 
 if [ -z "$CHECKOUT_PAGE_ID" ] || [ "$CHECKOUT_PAGE_ID" = "0" ]; then
     CHECKOUT_PAGE_ID=$(wp post list --post_type=page --name=checkout --field=ID --format=ids)
@@ -77,13 +77,13 @@ fi
 if [ -n "${CHECKOUT_PAGE_ID}" ] && [ -n "${CART_PAGE_ID}" ]; then
     echo "Configuring classic checkout and cart pages..."
 
-    CHECKOUT_SHORTCODE="<!-- wp:shortcode -->[woocommerce_checkout]<!-- /wp:shortcode -->"
-    CART_SHORTCODE="<!-- wp:shortcode -->[woocommerce_cart]<!-- /wp:shortcode -->"
+    CHECKOUT_SHORTCODE="<!-- wp:shortcode -->[poocommerce_checkout]<!-- /wp:shortcode -->"
+    CART_SHORTCODE="<!-- wp:shortcode -->[poocommerce_cart]<!-- /wp:shortcode -->"
 
-    # Provision a dedicated WooCommerce Blocks checkout clone if it does not exist yet.
+    # Provision a dedicated PooCommerce Blocks checkout clone if it does not exist yet.
     CHECKOUT_WCB_PAGE_ID=$(wp post list --post_type=page --name=checkout-wcb --field=ID --format=ids)
     if [ -z "$CHECKOUT_WCB_PAGE_ID" ]; then
-        echo "Creating WooCommerce Blocks checkout page..."
+        echo "Creating PooCommerce Blocks checkout page..."
         CHECKOUT_WCB_PAGE_ID=$(wp post create \
             --from-post="$CHECKOUT_PAGE_ID" \
             --post_type=page \
@@ -92,7 +92,7 @@ if [ -n "${CHECKOUT_PAGE_ID}" ] && [ -n "${CART_PAGE_ID}" ]; then
             --post_name="checkout-wcb" \
             --porcelain)
     else
-        echo "WooCommerce Blocks checkout page already exists (ID: $CHECKOUT_WCB_PAGE_ID)."
+        echo "PooCommerce Blocks checkout page already exists (ID: $CHECKOUT_WCB_PAGE_ID)."
     fi
 
     wp post update "$CART_PAGE_ID" --post_content="$CART_SHORTCODE"
@@ -105,35 +105,35 @@ fi
 
 # Ensure option points to the classic checkout page.
 if [ -n "$CHECKOUT_PAGE_ID" ]; then
-    wp option update woocommerce_checkout_page_id "$CHECKOUT_PAGE_ID"
+    wp option update poocommerce_checkout_page_id "$CHECKOUT_PAGE_ID"
 fi
 
-# Configure WooCommerce checkout settings.
-wp option update woocommerce_currency "USD"
-wp option update woocommerce_enable_guest_checkout "yes"
-wp option update woocommerce_force_ssl_checkout "no"
-wp option set woocommerce_checkout_company_field "optional" --quiet 2>/dev/null || true
-wp option set woocommerce_coming_soon "no" --quiet 2>/dev/null || true
-wp option set woocommerce_store_pages_only "no" --quiet 2>/dev/null || true
+# Configure PooCommerce checkout settings.
+wp option update poocommerce_currency "USD"
+wp option update poocommerce_enable_guest_checkout "yes"
+wp option update poocommerce_force_ssl_checkout "no"
+wp option set poocommerce_checkout_company_field "optional" --quiet 2>/dev/null || true
+wp option set poocommerce_coming_soon "no" --quiet 2>/dev/null || true
+wp option set poocommerce_store_pages_only "no" --quiet 2>/dev/null || true
 
 # Create test users.
 echo "Creating test users..."
 
-wp user create customer customer@woocommercecoree2etestsuite.com \
+wp user create customer customer@poocommercecoree2etestsuite.com \
     --role=customer \
     --user_pass=password \
     --first_name="Jane" \
     --last_name="Smith" \
     --quiet 2>/dev/null || wp user update customer --user_pass=password --quiet
 
-wp user create subscriptions-customer subscriptions-customer@woocommercecoree2etestsuite.com \
+wp user create subscriptions-customer subscriptions-customer@poocommercecoree2etestsuite.com \
     --role=customer \
     --user_pass=password \
     --first_name="Sub" \
     --last_name="Customer" \
     --quiet 2>/dev/null || wp user update subscriptions-customer --user_pass=password --quiet
 
-wp user create editor editor@woocommercecoree2etestsuite.com \
+wp user create editor editor@poocommercecoree2etestsuite.com \
     --role=editor \
     --user_pass=password \
     --first_name="Ed" \
@@ -166,7 +166,7 @@ wp theme activate storefront
 
 # Enable WooPayments settings.
 echo "Enabling WooPayments settings..."
-wp option set woocommerce_woocommerce_payments_settings --format=json '{"enabled":"yes"}'
+wp option set poocommerce_poocommerce_payments_settings --format=json '{"enabled":"yes"}'
 
 # Check required environment variables for Jetpack authentication.
 if [ -n "${E2E_JP_SITE_ID:-}" ] && [ -n "${E2E_JP_BLOG_TOKEN:-}" ] && [ -n "${E2E_JP_USER_TOKEN:-}" ]; then
@@ -202,8 +202,8 @@ wp option set wcpay_session_rate_limiter_disabled_wcpay_card_declined_registry y
 # This is also handled in test specs, but pre-setting it ensures consistency.
 wp option set wcpaydev_force_card_testing_protection_on 0 --quiet 2>/dev/null || true
 
-# Disable WooCommerce tour dialogs that interfere with tests.
-wp option set woocommerce_orders_report_date_tour_shown yes --quiet 2>/dev/null || true
+# Disable PooCommerce tour dialogs that interfere with tests.
+wp option set poocommerce_orders_report_date_tour_shown yes --quiet 2>/dev/null || true
 
 echo "WooPayments E2E setup complete."
 

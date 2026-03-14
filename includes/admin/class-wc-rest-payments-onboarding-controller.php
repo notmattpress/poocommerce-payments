@@ -2,7 +2,7 @@
 /**
  * Class WC_REST_Payments_Onboarding_Controller
  *
- * @package WooCommerce\Payments\Admin
+ * @package PooCommerce\Payments\Admin
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -31,7 +31,7 @@ class WC_REST_Payments_Onboarding_Controller extends WC_Payments_REST_Controller
 	/**
 	 * Constructor.
 	 *
-	 * @param WC_Payments_API_Client         $api_client         WooCommerce Payments API client.
+	 * @param WC_Payments_API_Client         $api_client         PooCommerce Payments API client.
 	 * @param WC_Payments_Onboarding_Service $onboarding_service Onboarding Service class instance.
 	 */
 	public function __construct(

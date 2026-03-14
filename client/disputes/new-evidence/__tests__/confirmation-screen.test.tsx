@@ -173,7 +173,7 @@ describe( 'ConfirmationScreen', () => {
 			expect( preventingDisputesLink ).toBeInTheDocument();
 			expect( preventingDisputesLink ).toHaveAttribute(
 				'href',
-				'https://woocommerce.com/document/woopayments/fraud-and-disputes/preventing-disputes/'
+				'https://poocommerce.com/document/woopayments/fraud-and-disputes/preventing-disputes/'
 			);
 			expect( preventingDisputesLink ).toHaveAttribute(
 				'target',
@@ -191,7 +191,7 @@ describe( 'ConfirmationScreen', () => {
 			expect( learnMoreLink ).toBeInTheDocument();
 			expect( learnMoreLink ).toHaveAttribute(
 				'href',
-				'https://woocommerce.com/document/woopayments/fraud-and-disputes/managing-disputes/#how-they-work'
+				'https://poocommerce.com/document/woopayments/fraud-and-disputes/managing-disputes/#how-they-work'
 			);
 			expect( learnMoreLink ).toHaveAttribute( 'target', '_blank' );
 			expect( learnMoreLink ).toHaveAttribute(

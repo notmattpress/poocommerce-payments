@@ -224,7 +224,7 @@ describe( 'Tokenized Express Checkout Element - Pay-for-order page logic', () =>
 		// just mocking some server-side-provided DOM elements.
 		render(
 			<div>
-				<div className="woocommerce-notices-wrapper" />
+				<div className="poocommerce-notices-wrapper" />
 				<div id="wcpay-express-checkout-wrapper">
 					<div
 						id="wcpay-express-checkout-element"

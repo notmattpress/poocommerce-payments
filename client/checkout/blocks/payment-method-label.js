@@ -58,7 +58,7 @@ const PaymentMethodIcon = memo( function PaymentMethodIcon( {
 
 	const testModeBadge = isTestMode && (
 		<span className="test-mode badge">
-			{ __( 'Test Mode', 'woocommerce-payments' ) }
+			{ __( 'Test Mode', 'poocommerce-payments' ) }
 		</span>
 	);
 
@@ -90,11 +90,11 @@ const PaymentMethodIcon = memo( function PaymentMethodIcon( {
 } );
 
 /**
- * Payment method label component that uses the WooCommerce Blocks PaymentMethodLabel
+ * Payment method label component that uses the PooCommerce Blocks PaymentMethodLabel
  * with the icon prop for proper icon positioning.
  *
- * @param {Object} props Component props passed by WooCommerce Blocks.
- * @param {Object} props.components Components provided by WooCommerce Blocks, including PaymentMethodLabel.
+ * @param {Object} props Component props passed by PooCommerce Blocks.
+ * @param {Object} props.components Components provided by PooCommerce Blocks, including PaymentMethodLabel.
  * @param {string} props.title The payment method title to display.
  * @param {string} props.paymentMethodId The payment method ID (e.g., 'card', 'giropay').
  * @param {string} props.icon The icon URL.

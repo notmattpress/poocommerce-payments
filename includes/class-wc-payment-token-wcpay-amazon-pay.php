@@ -2,7 +2,7 @@
 /**
  * Class WC_Payment_Token_WCPay_Amazon_Pay
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * WooCommerce Amazon Pay Payment Token.
+ * PooCommerce Amazon Pay Payment Token.
  *
  * Representation of a payment token for Amazon Pay.
  *
@@ -44,7 +44,7 @@ class WC_Payment_Token_WCPay_Amazon_Pay extends WC_Payment_Token {
 	/**
 	 * Get payment method type to display to user.
 	 *
-	 * @param  string $deprecated Deprecated since WooCommerce 3.0.
+	 * @param  string $deprecated Deprecated since PooCommerce 3.0.
 	 * @return string
 	 */
 	public function get_display_name( $deprecated = '' ) {
@@ -52,19 +52,19 @@ class WC_Payment_Token_WCPay_Amazon_Pay extends WC_Payment_Token {
 		if ( ! empty( $email ) ) {
 			return sprintf(
 				/* translators: %s: redacted customer email */
-				__( 'Amazon Pay (%s)', 'woocommerce-payments' ),
+				__( 'Amazon Pay (%s)', 'poocommerce-payments' ),
 				$email
 			);
 		}
 
-		return __( 'Amazon Pay', 'woocommerce-payments' );
+		return __( 'Amazon Pay', 'poocommerce-payments' );
 	}
 
 	/**
 	 * Hook prefix.
 	 */
 	protected function get_hook_prefix() {
-		return 'woocommerce_payments_token_wcpay_amazon_pay_get_';
+		return 'poocommerce_payments_token_wcpay_amazon_pay_get_';
 	}
 
 	/**
@@ -93,7 +93,7 @@ class WC_Payment_Token_WCPay_Amazon_Pay extends WC_Payment_Token {
 	/**
 	 * Returns the type of this payment token.
 	 *
-	 * @param  string $deprecated Deprecated since WooCommerce 3.0.
+	 * @param  string $deprecated Deprecated since PooCommerce 3.0.
 	 * @return string Payment Token Type.
 	 */
 	public function get_type( $deprecated = '' ) {

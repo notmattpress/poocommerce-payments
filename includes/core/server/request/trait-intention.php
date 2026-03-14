@@ -2,7 +2,7 @@
 /**
  * Trait file for WCPay\Core\Server\Request\Intention.
  *
- * @package WooCommerce Payments
+ * @package PooCommerce Payments
  */
 
 namespace WCPay\Core\Server\Request;
