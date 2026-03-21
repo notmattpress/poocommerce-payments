@@ -16,7 +16,7 @@ import { getExpressCheckoutData, getStripeElementsMode } from '.';
 import { transformPrice } from '../transformers/wc-to-stripe';
 import { getPaymentMethodsOverride } from './payment-method-overrides';
 
-// types from https://github.com/woocommerce/woocommerce/blob/360d9bc0f5709e6cf13c646860360fca9968ebb0/plugins/woocommerce/client/blocks/assets/js/types/type-defs/cart.ts
+// types from https://github.com/poocommerce/poocommerce/blob/360d9bc0f5709e6cf13c646860360fca9968ebb0/plugins/poocommerce/client/blocks/assets/js/types/type-defs/cart.ts
 interface CartTotals {
 	total_price: string;
 	currency_code: string;
@@ -69,7 +69,7 @@ const checkPaymentMethodIsAvailableInternal = (
 	currencyCode: string,
 	api: WCPayAPI
 ): Promise< boolean > => {
-	// Guard against empty currency code during WooCommerce Blocks store
+	// Guard against empty currency code during PooCommerce Blocks store
 	// hydration. The cart store initialises with currency_code: '' before
 	// server-side preloaded data is applied. Passing an empty string to
 	// Stripe Elements throws: "Invalid value for elements(): currency should

@@ -2,7 +2,7 @@
 /**
  * Class AsyncPriceRenderer
  *
- * @package WooCommerce\Payments\MultiCurrency
+ * @package PooCommerce\Payments\MultiCurrency
  */
 
 namespace WCPay\MultiCurrency;

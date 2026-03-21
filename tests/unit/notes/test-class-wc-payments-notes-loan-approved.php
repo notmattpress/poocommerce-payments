@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Notes_Loan_Approved_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 require_once WCPAY_ABSPATH . 'includes/notes/class-wc-payments-notes-loan-approved.php';
@@ -33,7 +33,7 @@ class WC_Payments_Notes_Loan_Approved_Test extends WCPAY_UnitTestCase {
 
 		$note = WC_Payments_Notes_Loan_Approved::get_note();
 
-		$this->assertInstanceOf( \Automattic\WooCommerce\Admin\Notes\Note::class, $note );
+		$this->assertInstanceOf( \Automattic\PooCommerce\Admin\Notes\Note::class, $note );
 		$this->assertStringContainsString( 'capital loan has been approved', $note->get_content() );
 		$this->assertEquals( 'wc-payments-notes-loan-approved', $note->get_name() );
 	}

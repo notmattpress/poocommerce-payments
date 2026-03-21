@@ -67,7 +67,7 @@ export const fetchUserTokens = async (
 	} );
 	if ( ! response.ok ) {
 		throw new Error(
-			__( 'Failed to fetch user tokens', 'woocommerce-payments' )
+			__( 'Failed to fetch user tokens', 'poocommerce-payments' )
 		);
 	}
 
@@ -78,7 +78,7 @@ export const fetchUserTokens = async (
 		throw new Error(
 			__(
 				'Failed to fetch user tokens. Please reload the page and try again.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			)
 		);
 	}
@@ -193,7 +193,7 @@ export const PaymentMethodSelect = ( {
 				setLoadingError(
 					error instanceof Error
 						? error.message
-						: __( 'Unknown error', 'woocommerce-payments' )
+						: __( 'Unknown error', 'poocommerce-payments' )
 				);
 			}
 		} );
@@ -205,7 +205,7 @@ export const PaymentMethodSelect = ( {
 				<option value={ 0 } key={ 'no-customer' } disabled>
 					{ __(
 						'Please select a customer first',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 				</option>
 			</select>
@@ -213,7 +213,7 @@ export const PaymentMethodSelect = ( {
 	}
 
 	if ( isLoading ) {
-		return <>{ __( 'Loading…', 'woocommerce-payments' ) }</>;
+		return <>{ __( 'Loading…', 'poocommerce-payments' ) }</>;
 	}
 
 	if ( loadingError ) {
@@ -227,7 +227,7 @@ export const PaymentMethodSelect = ( {
 				<option value={ 0 } key={ 'select' } disabled>
 					{ __(
 						'Please select a payment method',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 				</option>
 			) }
@@ -255,7 +255,7 @@ const setupPaymentSelector = ( element: HTMLSpanElement ): void => {
 	// Use the values from the data instead of input to ensure correct types.
 	const userId = data.userId ?? 0;
 	const value = data.value ?? 0;
-	const gatewayId = data.gatewayId ?? 'woocommerce_payments';
+	const gatewayId = data.gatewayId ?? 'poocommerce_payments';
 
 	if ( userId ) {
 		// Initial cache population.

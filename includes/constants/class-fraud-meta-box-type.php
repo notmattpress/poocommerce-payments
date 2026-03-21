@@ -2,7 +2,7 @@
 /**
  * Class Fraud_Meta_Box_Type
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Constants;

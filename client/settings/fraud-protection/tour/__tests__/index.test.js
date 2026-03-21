@@ -9,7 +9,7 @@ import { render, act } from '@testing-library/react';
  */
 import FraudProtectionTour from '..';
 
-jest.mock( '@woocommerce/components', () => ( {
+jest.mock( '@poocommerce/components', () => ( {
 	TourKit: () => <div data-testid="tour-kit" />,
 } ) );
 

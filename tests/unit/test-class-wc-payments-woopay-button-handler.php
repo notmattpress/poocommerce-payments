@@ -2,7 +2,7 @@
 /**
  * These tests make assertions against class WC_Payments_WooPay_Button_Handler.
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\Duplicate_Payment_Prevention_Service;
@@ -64,7 +64,7 @@ class WC_Payments_WooPay_Button_Handler_Test extends WCPAY_UnitTestCase {
 		parent::set_up();
 
 		// Clean up orphaned product meta lookup entries from previous tests.
-		// WooCommerce's product deletion doesn't always clean up the lookup table properly in test environments,
+		// PooCommerce's product deletion doesn't always clean up the lookup table properly in test environments,
 		// which can cause duplicate primary key errors when product IDs get reused.
 		global $wpdb;
 		$wpdb->query( "DELETE FROM {$wpdb->prefix}wc_product_meta_lookup WHERE product_id NOT IN (SELECT ID FROM {$wpdb->posts} WHERE post_type = 'product')" );
@@ -133,9 +133,9 @@ class WC_Payments_WooPay_Button_Handler_Test extends WCPAY_UnitTestCase {
 		WC()->cart->calculate_totals();
 
 		add_filter(
-			'woocommerce_available_payment_gateways',
+			'poocommerce_available_payment_gateways',
 			function () {
-				return [ 'woocommerce_payments' => $this->mock_wcpay_gateway ];
+				return [ 'poocommerce_payments' => $this->mock_wcpay_gateway ];
 			}
 		);
 	}
@@ -144,7 +144,7 @@ class WC_Payments_WooPay_Button_Handler_Test extends WCPAY_UnitTestCase {
 		WC()->cart->empty_cart();
 		WC()->session->cleanup_sessions();
 
-		remove_all_filters( 'woocommerce_available_payment_gateways' );
+		remove_all_filters( 'poocommerce_available_payment_gateways' );
 
 		parent::tear_down();
 	}
@@ -485,7 +485,7 @@ class WC_Payments_WooPay_Button_Handler_Test extends WCPAY_UnitTestCase {
 	}
 
 	public function test_should_show_woopay_button_unavailable_wcpay() {
-		add_filter( 'woocommerce_available_payment_gateways', '__return_empty_array' );
+		add_filter( 'poocommerce_available_payment_gateways', '__return_empty_array' );
 
 		$this->mock_woopay_utilities
 			->expects( $this->never() )
@@ -497,7 +497,7 @@ class WC_Payments_WooPay_Button_Handler_Test extends WCPAY_UnitTestCase {
 
 		$this->assertFalse( $this->mock_pr->should_show_woopay_button() );
 
-		remove_filter( 'woocommerce_available_payment_gateways', '__return_empty_array' );
+		remove_filter( 'poocommerce_available_payment_gateways', '__return_empty_array' );
 	}
 
 	public function test_should_show_woopay_button_woopay_not_enabled() {

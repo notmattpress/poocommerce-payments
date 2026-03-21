@@ -246,7 +246,7 @@ if [[ -z "$WOOPAY_BLOG_ID" && "$MODE" == "local" ]]; then
 fi
 
 # --- Detect dev-tools ---
-DEV_TOOLS_DOCKER_PATH="$PROJECT_ROOT/docker/wordpress/wp-content/plugins/woocommerce-payments-dev-tools"
+DEV_TOOLS_DOCKER_PATH="$PROJECT_ROOT/docker/wordpress/wp-content/plugins/poocommerce-payments-dev-tools"
 WCP_DEV_TOOLS_REPO=""
 
 if [[ -d "$DEV_TOOLS_DOCKER_PATH/.git" ]]; then

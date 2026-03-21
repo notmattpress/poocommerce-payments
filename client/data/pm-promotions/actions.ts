@@ -78,7 +78,7 @@ export function* activatePmPromotion( identifier: string ): unknown {
 		yield controls.dispatch(
 			'core/notices',
 			'createSuccessNotice',
-			__( 'Promotion activated successfully!', 'woocommerce-payments' )
+			__( 'Promotion activated successfully!', 'poocommerce-payments' )
 		);
 
 		// Refetch promotions to update the list.
@@ -94,7 +94,7 @@ export function* activatePmPromotion( identifier: string ): unknown {
 			'createErrorNotice',
 			__(
 				'Error activating promotion. Please try again.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			)
 		);
 		yield controls.dispatch(
@@ -122,7 +122,7 @@ export function* dismissPmPromotion( id: string ): unknown {
 		yield controls.dispatch(
 			'core/notices',
 			'createSuccessNotice',
-			__( 'Promotion dismissed.', 'woocommerce-payments' )
+			__( 'Promotion dismissed.', 'poocommerce-payments' )
 		);
 
 		// Refetch promotions to update the list.
@@ -138,7 +138,7 @@ export function* dismissPmPromotion( id: string ): unknown {
 			'createErrorNotice',
 			__(
 				'Error dismissing promotion. Please try again.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			)
 		);
 		yield controls.dispatch(

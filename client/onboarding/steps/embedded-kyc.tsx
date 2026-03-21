@@ -90,7 +90,7 @@ const EmbeddedKyc: React.FC< Props > = ( {
 								'{{strong}}Your store is in development mode.{{/strong}} %1$s can only create test accounts in development or staging environments. ' +
 									'To set up a live account, switch to a production {{wpEnvLink}}WordPress environment{{/wpEnvLink}} or remove the WCPAY_DEV_MODE constant. ' +
 									'{{learnMoreLink}}Learn more{{/learnMoreLink}}',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							'WooPayments'
 						),
@@ -108,7 +108,7 @@ const EmbeddedKyc: React.FC< Props > = ( {
 								// @ts-expect-error: children is provided when interpolating the component
 								<ExternalLink
 									href={
-										'https://woocommerce.com/document/woopayments/testing-and-troubleshooting/sandbox-mode/'
+										'https://poocommerce.com/document/woopayments/testing-and-troubleshooting/sandbox-mode/'
 									}
 								/>
 							),
@@ -136,15 +136,15 @@ const EmbeddedKyc: React.FC< Props > = ( {
 							{
 								label: __(
 									'Learn more',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								),
 								variant: 'primary',
 								url:
-									'https://woocommerce.com/document/woopayments/startup-guide/#requirements',
+									'https://poocommerce.com/document/woopayments/startup-guide/#requirements',
 								urlTarget: '_blank',
 							},
 							{
-								label: __( 'Cancel', 'woocommerce-payments' ),
+								label: __( 'Cancel', 'poocommerce-payments' ),
 								variant: 'link',
 								url: getConnectUrl(
 									{
@@ -158,7 +158,7 @@ const EmbeddedKyc: React.FC< Props > = ( {
 					>
 						{ __(
 							'Payment activation through our financial partner requires HTTPS and cannot be completed.',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 					</BannerNotice>
 				) : (

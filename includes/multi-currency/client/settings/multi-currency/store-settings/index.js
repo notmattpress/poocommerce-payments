@@ -25,19 +25,19 @@ import PreviewModal from 'multi-currency/components/preview-modal';
 
 const StoreSettingsDescription = () => (
 	<>
-		<h2>{ __( 'Store settings', 'woocommerce-payments' ) }</h2>
+		<h2>{ __( 'Store settings', 'poocommerce-payments' ) }</h2>
 		<p>
 			{ createInterpolateElement(
 				__(
 					'Store settings allow your customers to choose which currency they ' +
 						'would like to use when shopping at your store. <learnMoreLink>' +
 						'Learn more</learnMoreLink>',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				{
 					learnMoreLink: (
 						// @ts-expect-error: children is provided when interpolating the component
-						<ExternalLink href="https://woocommerce.com/document/woopayments/currencies/multi-currency-setup/#store-settings" />
+						<ExternalLink href="https://poocommerce.com/document/woopayments/currencies/multi-currency-setup/#store-settings" />
 					),
 				}
 			) }
@@ -127,13 +127,13 @@ const StoreSettings = () => {
 								data-testid={ 'enable_auto_currency' }
 								label={ __(
 									'Automatically switch customers to their local currency if it has been enabled',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								) }
 								help={ createInterpolateElement(
 									__(
 										'Customers will be notified via store alert banner. ' +
 											'<previewLink>Preview</previewLink>',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									),
 									{
 										previewLink: (
@@ -153,25 +153,25 @@ const StoreSettings = () => {
 								<RadioControl
 									label={ __(
 										'Price rendering mode',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									) }
 									help={ __(
 										'Choose how multi-currency prices are rendered. "Optimized for caching" outputs identical HTML for all visitors and converts prices client-side, allowing hosting providers to cache pages effectively.',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									) }
 									selected={ renderingModeValue }
 									options={ [
 										{
 											label: __(
 												'Optimized for speed (default)',
-												'woocommerce-payments'
+												'poocommerce-payments'
 											),
 											value: 'speed',
 										},
 										{
 											label: __(
 												'Optimized for caching',
-												'woocommerce-payments'
+												'poocommerce-payments'
 											),
 											value: 'cache',
 										},
@@ -188,7 +188,7 @@ const StoreSettings = () => {
 									data-testid={ 'enable_storefront_switcher' }
 									label={ __(
 										'Add a currency switcher to the Storefront theme on breadcrumb section.',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									) }
 									help={ createInterpolateElement(
 										sprintf(
@@ -196,7 +196,7 @@ const StoreSettings = () => {
 											__(
 												'A currency switcher is also available in your widgets. ' +
 													'<linkToWidgets>Configure now</linkToWidgets>',
-												'woocommerce-payments'
+												'poocommerce-payments'
 											),
 											'widgets.php'
 										),
@@ -228,7 +228,7 @@ const StoreSettings = () => {
 					onClick={ saveSettings }
 					__next40pxDefaultSize
 				>
-					{ __( 'Save changes', 'woocommerce-payments' ) }
+					{ __( 'Save changes', 'poocommerce-payments' ) }
 				</Button>
 			</SettingsSection>
 		</>

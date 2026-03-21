@@ -90,7 +90,7 @@ const LinkExpressCheckoutItem = (): React.ReactElement | null => {
 													'By enabling this feature, you agree to the ' +
 														'{{stripeLinkTerms}}Link by Stripe terms{{/stripeLinkTerms}}, ' +
 														'and {{privacyPolicy}}Privacy Policy{{/privacyPolicy}}.',
-													'woocommerce-payments'
+													'poocommerce-payments'
 												),
 												components: {
 													stripeLinkTerms: (
@@ -121,10 +121,10 @@ const LinkExpressCheckoutItem = (): React.ReactElement | null => {
 							target="_blank"
 							rel="noreferrer"
 							/* eslint-disable-next-line max-len */
-							href="https://woocommerce.com/document/woopayments/payment-methods/link-by-stripe/"
+							href="https://poocommerce.com/document/woopayments/payment-methods/link-by-stripe/"
 							isSecondary
 						>
-							{ __( 'Read more', 'woocommerce-payments' ) }
+							{ __( 'Read more', 'poocommerce-payments' ) }
 						</Button>
 					</div>
 				</div>
@@ -133,7 +133,7 @@ const LinkExpressCheckoutItem = (): React.ReactElement | null => {
 				<InlineNotice status="warning" isDismissible={ false }>
 					{ __(
 						'To enable Link by Stripe, you must first disable WooPay.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 				</InlineNotice>
 			) }

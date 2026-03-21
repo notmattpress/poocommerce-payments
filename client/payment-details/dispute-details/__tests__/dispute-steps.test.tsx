@@ -58,7 +58,7 @@ describe( 'NonCompliantDisputeSteps', () => {
 		} );
 		expect( learnMoreLinks[ 0 ] ).toHaveAttribute(
 			'href',
-			'https://woocommerce.com/document/woopayments/fraud-and-disputes/managing-disputes/#visa-compliance-disputes'
+			'https://poocommerce.com/document/woopayments/fraud-and-disputes/managing-disputes/#visa-compliance-disputes'
 		);
 	} );
 
@@ -94,7 +94,7 @@ describe( 'NonCompliantDisputeSteps', () => {
 		learnMoreLinks.forEach( ( link ) => {
 			expect( link ).toHaveAttribute(
 				'href',
-				'https://woocommerce.com/document/woopayments/fraud-and-disputes/managing-disputes/#visa-compliance-disputes'
+				'https://poocommerce.com/document/woopayments/fraud-and-disputes/managing-disputes/#visa-compliance-disputes'
 			);
 			expect( link ).toHaveAttribute( 'target', '_blank' );
 			expect( link ).toHaveAttribute( 'rel', 'noopener noreferrer' );

@@ -19,14 +19,14 @@ interface StatusChangeStrategies {
 }
 
 const OrderStatus = {
-	CANCELLED: __( 'cancelled', 'woocommerce-payments' ),
-	COMPLETED: __( 'completed', 'woocommerce-payments' ),
-	FAILED: __( 'failed', 'woocommerce-payments' ),
-	ON_HOLD: __( 'on-hold', 'woocommerce-payments' ),
-	PENDING: __( 'pending', 'woocommerce-payments' ),
-	PROCESSING: __( 'processing', 'woocommerce-payments' ),
-	REFUNDED: __( 'refunded', 'woocommerce-payments' ),
-	TRASH: __( 'trash', 'woocommerce-payments' ),
+	CANCELLED: __( 'cancelled', 'poocommerce-payments' ),
+	COMPLETED: __( 'completed', 'poocommerce-payments' ),
+	FAILED: __( 'failed', 'poocommerce-payments' ),
+	ON_HOLD: __( 'on-hold', 'poocommerce-payments' ),
+	PENDING: __( 'pending', 'poocommerce-payments' ),
+	PROCESSING: __( 'processing', 'poocommerce-payments' ),
+	REFUNDED: __( 'refunded', 'poocommerce-payments' ),
+	TRASH: __( 'trash', 'poocommerce-payments' ),
 };
 
 const OrderStatusCancelled = 'wc-cancelled';
@@ -65,30 +65,30 @@ function triggerCancelAuthorizationModal(
 		mixedString: __(
 			'This order has been {{authorizedNotCaptured/}} yet. Changing the status to ' +
 				'{{newOrderStatus/}} will also {{cancelAuthorization/}}. Do you want to continue?',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		components: {
 			authorizedNotCaptured: (
 				<a
 					target="_blank"
 					href={
-						'https://woocommerce.com/document/woopayments/settings-guide/authorize-and-capture/#authorize-vs-capture'
+						'https://poocommerce.com/document/woopayments/settings-guide/authorize-and-capture/#authorize-vs-capture'
 					}
 					rel="noopener noreferrer"
 				>
 					{ __(
 						'authorized but payment has not been captured',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 				</a>
 			),
 			cancelAuthorization: (
 				<a
 					target="_blank"
-					href="https://woocommerce.com/document/woopayments/settings-guide/authorize-and-capture/#cancelling-authorizations"
+					href="https://poocommerce.com/document/woopayments/settings-guide/authorize-and-capture/#cancelling-authorizations"
 					rel="noopener noreferrer"
 				>
-					{ __( 'cancel the payment', 'woocommerce-payments' ) }
+					{ __( 'cancel the payment', 'poocommerce-payments' ) }
 				</a>
 			),
 			newOrderStatus: <b>{ OrderStatusLookup[ newOrderStatus ] }</b>,
@@ -97,12 +97,12 @@ function triggerCancelAuthorizationModal(
 
 	renderModal(
 		<OrderStatusConfirmationModal
-			title={ __( 'Cancel payment', 'woocommerce-payments' ) }
+			title={ __( 'Cancel payment', 'poocommerce-payments' ) }
 			confirmButtonText={ __(
 				'Cancel order and payment',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			) }
-			cancelButtonText={ __( 'Cancel', 'woocommerce-payments' ) }
+			cancelButtonText={ __( 'Cancel', 'poocommerce-payments' ) }
 			confirmationMessage={ interpolatedMessage }
 			onConfirm={ () => {
 				const orderEditForm: HTMLFormElement | null =
@@ -134,20 +134,20 @@ function triggerCaptureAuthorizationModal(
 		mixedString: __(
 			'This order has been {{authorizedNotCaptured/}} yet. Changing the status to ' +
 				'{{newOrderStatus/}} will also {{captureAuthorization/}}. Do you want to continue?',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		components: {
 			authorizedNotCaptured: (
 				<a
 					target="_blank"
 					href={
-						'https://woocommerce.com/document/woopayments/settings-guide/authorize-and-capture/#authorize-vs-capture'
+						'https://poocommerce.com/document/woopayments/settings-guide/authorize-and-capture/#authorize-vs-capture'
 					}
 					rel="noopener noreferrer"
 				>
 					{ __(
 						'authorized but payment has not been captured',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 				</a>
 			),
@@ -155,11 +155,11 @@ function triggerCaptureAuthorizationModal(
 				<a
 					target="_blank"
 					href={
-						'https://woocommerce.com/document/woopayments/settings-guide/authorize-and-capture/#capturing-authorized-payments'
+						'https://poocommerce.com/document/woopayments/settings-guide/authorize-and-capture/#capturing-authorized-payments'
 					}
 					rel="noopener noreferrer"
 				>
-					{ __( 'capture the payment', 'woocommerce-payments' ) }
+					{ __( 'capture the payment', 'poocommerce-payments' ) }
 				</a>
 			),
 			newOrderStatus: <b>{ OrderStatusLookup[ newOrderStatus ] }</b>,
@@ -168,12 +168,12 @@ function triggerCaptureAuthorizationModal(
 
 	renderModal(
 		<OrderStatusConfirmationModal
-			title={ __( 'Capture payment', 'woocommerce-payments' ) }
+			title={ __( 'Capture payment', 'poocommerce-payments' ) }
 			confirmButtonText={ __(
 				'Complete order and capture payment',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			) }
-			cancelButtonText={ __( 'Cancel', 'woocommerce-payments' ) }
+			cancelButtonText={ __( 'Cancel', 'poocommerce-payments' ) }
 			confirmationMessage={ interpolatedMessage }
 			onConfirm={ () => {
 				const orderEditForm: HTMLFormElement | null =
@@ -204,13 +204,13 @@ function renderRefundConfirmationModal(
 ): void {
 	if ( ! canRefund ) {
 		dispatch( 'core/notices' ).createErrorNotice(
-			__( 'Order cannot be refunded', 'woocommerce-payments' )
+			__( 'Order cannot be refunded', 'poocommerce-payments' )
 		);
 		return;
 	}
 	if ( refundAmount <= 0 ) {
 		dispatch( 'core/notices' ).createErrorNotice(
-			__( 'Invalid Refund Amount', 'woocommerce-payments' )
+			__( 'Invalid Refund Amount', 'poocommerce-payments' )
 		);
 		return;
 	}
@@ -260,22 +260,22 @@ function handleCancelledStatus(
 				'Are you trying to issue a refund for this order? If so, please click ' +
 					'{{doNothingBold/}} and see our documentation on {{howtoIssueRefunds/}}. If you want ' +
 					'to mark this order as Cancelled without issuing a refund, click {{cancelOrderBold/}}.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			components: {
 				doNothingBold: (
-					<b>{ __( 'Do Nothing', 'woocommerce-payments' ) }</b>
+					<b>{ __( 'Do Nothing', 'poocommerce-payments' ) }</b>
 				),
 				cancelOrderBold: (
-					<b>{ __( 'Cancel order', 'woocommerce-payments' ) }</b>
+					<b>{ __( 'Cancel order', 'poocommerce-payments' ) }</b>
 				),
 				howtoIssueRefunds: (
 					<a
 						target="_blank"
-						href="https://woocommerce.com/document/woopayments/managing-money/#refunds"
+						href="https://poocommerce.com/document/woopayments/managing-money/#refunds"
 						rel="noopener noreferrer"
 					>
-						{ __( 'how to issue refunds', 'woocommerce-payments' ) }
+						{ __( 'how to issue refunds', 'poocommerce-payments' ) }
 					</a>
 				),
 			},
@@ -283,12 +283,12 @@ function handleCancelledStatus(
 
 		renderModal(
 			<OrderStatusConfirmationModal
-				title={ __( 'Cancel order', 'woocommerce-payments' ) }
+				title={ __( 'Cancel order', 'poocommerce-payments' ) }
 				confirmButtonText={ __(
 					'Cancel order',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				) }
-				cancelButtonText={ __( 'Do Nothing', 'woocommerce-payments' ) }
+				cancelButtonText={ __( 'Do Nothing', 'poocommerce-payments' ) }
 				confirmationMessage={ confirmationMessage }
 				onConfirm={ () => {
 					const orderEditForm: HTMLFormElement | null =

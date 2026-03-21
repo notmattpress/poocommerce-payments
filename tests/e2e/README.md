@@ -18,7 +18,7 @@ Note: The Playwright config sets `video: on-first-retry`, which applies only if 
 
 ## Dynamic matrix generation
 
-- L-1 policy: Tests run against the latest WooCommerce version and the L-1 (previous major) version
+- L-1 policy: Tests run against the latest PooCommerce version and the L-1 (previous major) version
 - Dynamic version resolution: Automatically fetches latest WC, RC, and beta versions from WordPress.org API
 - Optimized PHP strategy: Reduces job count while maintaining comprehensive coverage
 - Business continuity: Maintains support for WC 7.7.0 for significant TPV reasons
@@ -111,13 +111,13 @@ SKIP_WC_ACTION_SCHEDULER_TESTS=1
 SKIP_WC_BLOCKS_TESTS=1
 ```
 
-### Using a specific version of WordPress or WooCommerce
+### Using a specific version of WordPress or PooCommerce
 
-To use a specific version of WordPress or WooCommerce for testing, the following env variables need to be added to your `local.env`.
+To use a specific version of WordPress or PooCommerce for testing, the following env variables need to be added to your `local.env`.
 
 ```bash
 E2E_WP_VERSION='<wordpress_version>'
-E2E_WC_VERSION='<woocommerce_version>'
+E2E_WC_VERSION='<poocommerce_version>'
 ```
 
 ### Initialize E2E docker environment
@@ -166,7 +166,7 @@ By adding additional env variables to your `local.env` file, it is possible to r
 You can also run tests using Playwright's tag filtering:
 
 ```bash
-# Run only WooCommerce Blocks tests
+# Run only PooCommerce Blocks tests
 npm run test:e2e -- --grep @blocks
 
 # Run WCPay tests excluding blocks tests
@@ -200,7 +200,7 @@ Place new spec files in the appropriate directory under `tests/e2e/specs`. The d
 - **Subscriptions Merchant**: `tests/e2e/specs/subscriptions/merchant` - Subscription related tests for the merchant role.
 - **Subscriptions Shopper**: `tests/e2e/specs/subscriptions/shopper` - Subscription related tests for the shopper role.
 - **WooPayments Merchant**: `tests/e2e/specs/wcpay/merchant` - Tests for the merchant role in WooPayments.
-- **WooPayments Shopper**: `tests/e2e/specs/wcpay/shopper` - Tests for the shopper role in WooPayments (includes WooCommerce Blocks tests tagged with `@blocks`).
+- **WooPayments Shopper**: `tests/e2e/specs/wcpay/shopper` - Tests for the shopper role in WooPayments (includes PooCommerce Blocks tests tagged with `@blocks`).
 
 ## Debugging tests
 
@@ -325,7 +325,7 @@ test.describe( 'Sign in as customer', () => {
 
 The E2E test matrix is dynamically generated using the `.github/scripts/generate-wc-matrix.sh` script:
 
-- L-1 policy: Automatically tests against the latest WooCommerce version and the L-1 (previous major) version
+- L-1 policy: Automatically tests against the latest PooCommerce version and the L-1 (previous major) version
 - Version resolution: Fetches latest WC, RC, and beta versions from WordPress.org API
 - PHP strategy:
   - WC 7.7.0: PHP 7.4 (legacy support)

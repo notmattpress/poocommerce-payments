@@ -48,12 +48,12 @@ const PaymentRequestSettings = ( { section } ) => {
 							onChange={ updateIsPaymentRequestEnabled }
 							label={ __(
 								'Enable Apple Pay / Google Pay as express payment buttons',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 							help={ __(
 								'Show express payment buttons on store pages for faster purchases. ' +
 									'Customers with Apple Pay or Google Pay enabled will be able to pay with their preferred wallet.',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 							__nextHasNoMarginBottom
 						/>
@@ -69,19 +69,19 @@ const PaymentRequestSettings = ( { section } ) => {
 								}
 								label={ __(
 									'Enable express checkout methods as options in the payment methods list',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								) }
 								help={
 									wcpaySettings.featureFlags.amazonPay
 										? __(
 												'Apple Pay, Google Pay, and Amazon Pay will appear as options ' +
 													'in the payment methods list instead of as separate express checkout buttons.',
-												'woocommerce-payments'
+												'poocommerce-payments'
 										  )
 										: __(
 												'Apple Pay and Google Pay will appear as options in the payment methods list ' +
 													'instead of as separate express checkout buttons.',
-												'woocommerce-payments'
+												'poocommerce-payments'
 										  )
 								}
 								__nextHasNoMarginBottom
@@ -112,7 +112,7 @@ const PaymentRequestSettings = ( { section } ) => {
 										) }
 										label={ __(
 											'Show on product page',
-											'woocommerce-payments'
+											'poocommerce-payments'
 										) }
 										__nextHasNoMarginBottom
 									/>
@@ -136,7 +136,7 @@ const PaymentRequestSettings = ( { section } ) => {
 										) }
 										label={ __(
 											'Show on cart page',
-											'woocommerce-payments'
+											'poocommerce-payments'
 										) }
 										__nextHasNoMarginBottom
 									/>
@@ -160,7 +160,7 @@ const PaymentRequestSettings = ( { section } ) => {
 										) }
 										label={ __(
 											'Show on checkout page',
-											'woocommerce-payments'
+											'poocommerce-payments'
 										) }
 										__nextHasNoMarginBottom
 									/>
