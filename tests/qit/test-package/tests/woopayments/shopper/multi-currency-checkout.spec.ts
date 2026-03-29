@@ -77,7 +77,7 @@ test.describe( 'Multi-currency checkout', { tag: '@shopper' }, () => {
 					async () => {
 						await expect(
 							shopperPage.locator(
-								'.woocommerce-order-overview__total'
+								'.poocommerce-order-overview__total'
 							)
 						).toHaveText( new RegExp( currency ) );
 					}
@@ -180,7 +180,7 @@ test.describe( 'Multi-currency checkout', { tag: '@shopper' }, () => {
 			await isUIUnblocked( shopperPage );
 			await shopperPage.getByText( 'Bancontact' ).click();
 			await shopperPage.waitForSelector(
-				'#payment_method_woocommerce_payments_bancontact:checked',
+				'#payment_method_poocommerce_payments_bancontact:checked',
 				{ timeout: 10_000 }
 			);
 

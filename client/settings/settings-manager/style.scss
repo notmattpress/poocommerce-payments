@@ -1,7 +1,7 @@
 body {
 	/* this can be removed after all the settings sections are converted to the new layout */
-	&.woocommerce_page_wc-settings {
-		&.woocommerce-payments-checkout-section {
+	&.poocommerce_page_wc-settings {
+		&.poocommerce-payments-checkout-section {
 			background: #fff;
 
 			.settings-content,

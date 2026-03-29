@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Status_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 /**
@@ -117,14 +117,14 @@ class WC_Payments_Status_Test extends WCPAY_UnitTestCase {
 			}
 			return $query;
 		};
-		add_filter( 'woocommerce_order_data_store_cpt_get_orders_query', $filter_callback, 10, 2 );
+		add_filter( 'poocommerce_order_data_store_cpt_get_orders_query', $filter_callback, 10, 2 );
 
 		$result = $this->status->delete_test_orders();
 
 		$this->assertEquals( 'No test orders found.', $result );
 
 		// Clean up filter.
-		remove_filter( 'woocommerce_order_data_store_cpt_get_orders_query', $filter_callback, 10 );
+		remove_filter( 'poocommerce_order_data_store_cpt_get_orders_query', $filter_callback, 10 );
 	}
 
 	/**
@@ -189,7 +189,7 @@ class WC_Payments_Status_Test extends WCPAY_UnitTestCase {
 		$filter_callback = function () {
 			throw new Exception( 'Database error' );
 		};
-		add_filter( 'woocommerce_order_data_store_cpt_get_orders_query', $filter_callback, 10, 2 );
+		add_filter( 'poocommerce_order_data_store_cpt_get_orders_query', $filter_callback, 10, 2 );
 
 		$result = $this->status->delete_test_orders();
 
@@ -197,13 +197,13 @@ class WC_Payments_Status_Test extends WCPAY_UnitTestCase {
 		$this->assertStringContainsString( 'Database error', $result );
 
 		// Clean up filter.
-		remove_filter( 'woocommerce_order_data_store_cpt_get_orders_query', $filter_callback, 10 );
+		remove_filter( 'poocommerce_order_data_store_cpt_get_orders_query', $filter_callback, 10 );
 	}
 
 	/**
-	 * Test delete_test_orders denies access for users without manage_woocommerce capability.
+	 * Test delete_test_orders denies access for users without manage_poocommerce capability.
 	 */
-	public function test_delete_test_orders_requires_manage_woocommerce_capability() {
+	public function test_delete_test_orders_requires_manage_poocommerce_capability() {
 		// Create test orders with _wcpay_mode meta.
 		$order1 = wc_create_order();
 		$order1->update_meta_data( '_wcpay_mode', 'test' );
@@ -213,9 +213,9 @@ class WC_Payments_Status_Test extends WCPAY_UnitTestCase {
 		$order2->update_meta_data( '_wcpay_mode', 'test' );
 		$order2->save();
 
-		// Mock that the current user is missing the manage_woocommerce capability.
+		// Mock that the current user is missing the manage_poocommerce capability.
 		$filter_callback = function ( $allcaps ) {
-			$allcaps['manage_woocommerce'] = false;
+			$allcaps['manage_poocommerce'] = false;
 
 			return $allcaps;
 		};

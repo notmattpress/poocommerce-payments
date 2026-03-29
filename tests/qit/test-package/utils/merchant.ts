@@ -55,7 +55,7 @@ export async function dataHasLoaded( page: Page ) {
 
 export const tableDataHasLoaded = async ( page: Page ) => {
 	await page
-		.locator( '.woocommerce-table__table.is-loading' )
+		.locator( '.poocommerce-table__table.is-loading' )
 		.waitFor( { state: 'hidden' } );
 };
 
@@ -67,7 +67,7 @@ export const waitAndSkipTourComponent = async (
 		await page.waitForSelector( `${ containerClass }`, { timeout: 3000 } );
 		if ( await page.isVisible( `${ containerClass }` ) ) {
 			await page.click(
-				`${ containerClass } button.woocommerce-tour-kit-step-controls__close-btn`
+				`${ containerClass } button.poocommerce-tour-kit-step-controls__close-btn`
 			);
 		}
 	} catch ( error ) {
@@ -76,16 +76,16 @@ export const waitAndSkipTourComponent = async (
 };
 
 export const ensureOrderIsProcessed = async ( page: Page ) => {
-	// Sync the most recent order to WooCommerce Analytics tables.
+	// Sync the most recent order to PooCommerce Analytics tables.
 	// We call the sync functions directly via PHP eval since the 'wc admin' CLI
-	// command no longer exists in current WooCommerce versions.
+	// command no longer exists in current PooCommerce versions.
 	const syncCommand = `
 		$order = wc_get_orders( array( 'limit' => 1, 'orderby' => 'date', 'order' => 'DESC' ) )[0];
 		if ( $order ) {
 			$id = $order->get_id();
-			Automattic\\WooCommerce\\Admin\\API\\Reports\\Orders\\Stats\\DataStore::sync_order( $id );
-			Automattic\\WooCommerce\\Admin\\API\\Reports\\Products\\DataStore::sync_order_products( $id );
-			Automattic\\WooCommerce\\Admin\\API\\Reports\\Customers\\DataStore::sync_order_customer( $id );
+			Automattic\\PooCommerce\\Admin\\API\\Reports\\Orders\\Stats\\DataStore::sync_order( $id );
+			Automattic\\PooCommerce\\Admin\\API\\Reports\\Products\\DataStore::sync_order_products( $id );
+			Automattic\\PooCommerce\\Admin\\API\\Reports\\Customers\\DataStore::sync_order_customer( $id );
 		}
 	`;
 
@@ -101,7 +101,7 @@ export const ensureOrderIsProcessed = async ( page: Page ) => {
 
 export const goToWooPaymentsSettings = async ( page: Page ) => {
 	await page.goto(
-		'/wp-admin/admin.php?page=wc-settings&tab=checkout&section=woocommerce_payments',
+		'/wp-admin/admin.php?page=wc-settings&tab=checkout&section=poocommerce_payments',
 		{ waitUntil: 'load' }
 	);
 	await dataHasLoaded( page );
@@ -139,7 +139,7 @@ export const goToPaymentsOverview = async ( page: Page ) => {
 	await dataHasLoaded( page );
 };
 
-export const goToWooCommerceSettings = async ( page: Page, tab?: string ) => {
+export const goToPooCommerceSettings = async ( page: Page, tab?: string ) => {
 	await page.goto(
 		'/wp-admin/admin.php?page=wc-settings' + ( tab ? '&tab=' + tab : '' ),
 		{ waitUntil: 'load' }
@@ -226,7 +226,7 @@ export const goToPaymentDetails = async (
  * Extracts the payment intent ID from the order page and navigates to the payment details.
  *
  * @param page - The page object to use for navigation
- * @param orderId - The WooCommerce order ID
+ * @param orderId - The PooCommerce order ID
  * @return The URL of the payment details page
  */
 export const goToPaymentDetailsForOrder = async (
@@ -252,11 +252,11 @@ export const goToPaymentDetailsForOrder = async (
 	return page.url();
 };
 
-const goToWooCommerceGeneralSettings = async ( page: Page ) => {
+const goToPooCommerceGeneralSettings = async ( page: Page ) => {
 	await page.goto( '/wp-admin/admin.php?page=wc-settings&tab=general', {
 		waitUntil: 'load',
 	} );
-	await expect( page.locator( '#woocommerce_currency' ) ).toBeVisible();
+	await expect( page.locator( '#poocommerce_currency' ) ).toBeVisible();
 };
 
 const expectSnackbarWithText = async (
@@ -274,7 +274,7 @@ const expectSnackbarWithText = async (
 };
 
 const ensureSupportPhoneIsFilled = async ( page: Page ) => {
-	if ( ! page.url().includes( '&section=woocommerce_payments' ) ) {
+	if ( ! page.url().includes( '&section=poocommerce_payments' ) ) {
 		return;
 	}
 	const supportPhoneInput = page.getByPlaceholder( 'Mobile number' );
@@ -361,16 +361,16 @@ export const saveMultiCurrencySettings = async ( page: Page ) => {
 };
 
 export const getDefaultCurrency = async ( page: Page ) => {
-	await goToWooCommerceGeneralSettings( page );
-	return await page.locator( '#woocommerce_currency' ).inputValue();
+	await goToPooCommerceGeneralSettings( page );
+	return await page.locator( '#poocommerce_currency' ).inputValue();
 };
 
 export const setDefaultCurrency = async (
 	page: Page,
 	currencyCode: string
 ) => {
-	await goToWooCommerceGeneralSettings( page );
-	const currencySelect = page.locator( '#woocommerce_currency' );
+	await goToPooCommerceGeneralSettings( page );
+	const currencySelect = page.locator( '#poocommerce_currency' );
 	const currentCurrency = await currencySelect.inputValue();
 
 	if ( currentCurrency === currencyCode ) {

@@ -2,7 +2,7 @@
 /**
  * Class Core_Mode_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\Core\Mode;
@@ -41,7 +41,7 @@ class Core_Mode_Test extends WCPAY_UnitTestCase {
 	}
 
 	public function test_init_defaults_to_live_mode() {
-		update_option( 'woocommerce_woocommerce_payments_settings', [ 'test_mode' => 'no' ] );
+		update_option( 'poocommerce_poocommerce_payments_settings', [ 'test_mode' => 'no' ] );
 
 		$this->assertTrue( $this->mode->is_live() );
 	}
@@ -89,7 +89,7 @@ class Core_Mode_Test extends WCPAY_UnitTestCase {
 	}
 
 	public function test_init_enters_test_mode_with_gateway_test_mode_settings() {
-		update_option( 'woocommerce_woocommerce_payments_settings', [ 'test_mode' => 'yes' ] );
+		update_option( 'poocommerce_poocommerce_payments_settings', [ 'test_mode' => 'yes' ] );
 
 		// Reset and check.
 		$this->assertFalse( $this->mode->is_dev() );

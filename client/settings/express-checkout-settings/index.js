@@ -34,7 +34,7 @@ const methods = {
 						<p>
 							{ __(
 								'Allow your customers to collect payments via WooPay.',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 						</p>
 					</>
@@ -54,11 +54,11 @@ const methods = {
 				section: 'general',
 				description: () => (
 					<>
-						<h2>{ __( 'Settings', 'woocommerce-payments' ) }</h2>
+						<h2>{ __( 'Settings', 'poocommerce-payments' ) }</h2>
 						<p>
 							{ __(
 								'Configure the display of WooPay buttons on your store.',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 						</p>
 					</>
@@ -93,7 +93,7 @@ const methods = {
 							<p>
 								{ __(
 									'Allow your customers to collect payments via Apple Pay and Google Pay.',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								) }
 							</p>
 						</>
@@ -104,11 +104,11 @@ const methods = {
 				section: 'general',
 				description: () => (
 					<>
-						<h2>{ __( 'Settings', 'woocommerce-payments' ) }</h2>
+						<h2>{ __( 'Settings', 'poocommerce-payments' ) }</h2>
 						<p>
 							{ __(
 								'Configure the display of Apple Pay and Google Pay buttons on your store.',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 						</p>
 					</>
@@ -135,7 +135,7 @@ const methods = {
 							<p>
 								{ __(
 									'Allow your customers to collect payments via Amazon Pay.',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								) }
 							</p>
 						</>
@@ -146,11 +146,11 @@ const methods = {
 				section: 'general',
 				description: () => (
 					<>
-						<h2>{ __( 'Settings', 'woocommerce-payments' ) }</h2>
+						<h2>{ __( 'Settings', 'poocommerce-payments' ) }</h2>
 						<p>
 							{ __(
 								'Configure the display of Amazon Pay buttons on your store.',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 						</p>
 					</>
@@ -169,7 +169,7 @@ const ExpressCheckoutSettings = ( { methodId } ) => {
 			<p>
 				{ __(
 					'Invalid express checkout method ID specified.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				) }
 			</p>
 		);

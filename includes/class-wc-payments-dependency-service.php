@@ -2,7 +2,7 @@
 /**
  * WC_Payments_Dependency_Service class
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -109,39 +109,39 @@ class WC_Payments_Dependency_Service {
 	}
 
 	/**
-	 * Checks if WooCommerce is installed and activated.
+	 * Checks if PooCommerce is installed and activated.
 	 *
-	 * @return bool True if WooCommerce is installed and activated.
+	 * @return bool True if PooCommerce is installed and activated.
 	 */
 	public function is_woo_core_active() {
-		// Check if WooCommerce is installed and active.
-		return class_exists( 'WooCommerce' );
+		// Check if PooCommerce is installed and active.
+		return class_exists( 'PooCommerce' );
 	}
 
 	/**
-	 * Checks if the version of WooCommerce is compatible with WooPayments.
+	 * Checks if the version of PooCommerce is compatible with WooPayments.
 	 *
-	 * @return bool True if WooCommerce version is greater than or equal the minimum accepted
+	 * @return bool True if PooCommerce version is greater than or equal the minimum accepted
 	 */
 	public function is_woo_core_version_compatible() {
 
 		$plugin_headers = WC_Payments::get_plugin_headers();
 		$wc_version     = $plugin_headers['WCRequires'];
 
-		// Check if the version of WooCommerce is compatible with WooPayments.
+		// Check if the version of PooCommerce is compatible with WooPayments.
 		return ( defined( 'WC_VERSION' ) && version_compare( WC_VERSION, $wc_version, '>=' ) );
 	}
 
 	/**
-	 * Checks if the WooCommerce version has WooCommerce Admin bundled (WC 4.0+)
+	 * Checks if the PooCommerce version has PooCommerce Admin bundled (WC 4.0+)
 	 * but it's disabled using a filter.
 	 *
 	 * @return bool True if WC Admin is found
 	 */
 	public function is_wc_admin_enabled() {
 
-		// Check if the current WooCommerce version has WooCommerce Admin bundled (WC 4.0+) but it's disabled using a filter.
-		if ( ! defined( 'WC_ADMIN_VERSION_NUMBER' ) || apply_filters( 'woocommerce_admin_disabled', false ) ) {
+		// Check if the current PooCommerce version has PooCommerce Admin bundled (WC 4.0+) but it's disabled using a filter.
+		if ( ! defined( 'WC_ADMIN_VERSION_NUMBER' ) || apply_filters( 'poocommerce_admin_disabled', false ) ) {
 			return false;
 		}
 
@@ -155,7 +155,7 @@ class WC_Payments_Dependency_Service {
 	 */
 	public function is_wc_admin_version_compatible() {
 
-		// Check if the version of WooCommerce Admin is compatible with WooPayments.
+		// Check if the version of PooCommerce Admin is compatible with WooPayments.
 		return ( defined( 'WC_ADMIN_VERSION_NUMBER' ) && version_compare( WC_ADMIN_VERSION_NUMBER, WCPAY_MIN_WC_ADMIN_VERSION, '>=' ) );
 	}
 
@@ -200,23 +200,23 @@ class WC_Payments_Dependency_Service {
 			case self::WOOCORE_NOT_FOUND:
 				$error_message = WC_Payments_Utils::esc_interpolated_html(
 					sprintf(
-						/* translators: %1$s: WooPayments, %2$s: WooCommerce */
-						__( '%1$s requires <a>%2$s</a> to be installed and active.', 'woocommerce-payments' ),
+						/* translators: %1$s: WooPayments, %2$s: PooCommerce */
+						__( '%1$s requires <a>%2$s</a> to be installed and active.', 'poocommerce-payments' ),
 						'WooPayments',
-						'WooCommerce'
+						'PooCommerce'
 					),
-					[ 'a' => '<a href="https://wordpress.org/plugins/woocommerce">' ]
+					[ 'a' => '<a href="https://wordpress.org/plugins/poocommerce">' ]
 				);
 
 				if ( current_user_can( 'install_plugins' ) ) {
-					if ( is_wp_error( validate_plugin( 'woocommerce/woocommerce.php' ) ) ) {
-						// WooCommerce is not installed.
-						$activate_url  = wp_nonce_url( admin_url( 'update.php?action=install-plugin&plugin=woocommerce' ), 'install-plugin_woocommerce' );
-						$activate_text = __( 'Install WooCommerce', 'woocommerce-payments' );
+					if ( is_wp_error( validate_plugin( 'poocommerce/poocommerce.php' ) ) ) {
+						// PooCommerce is not installed.
+						$activate_url  = wp_nonce_url( admin_url( 'update.php?action=install-plugin&plugin=poocommerce' ), 'install-plugin_poocommerce' );
+						$activate_text = __( 'Install PooCommerce', 'poocommerce-payments' );
 					} else {
-						// WooCommerce is installed, so it just needs to be enabled.
-						$activate_url  = wp_nonce_url( admin_url( 'plugins.php?action=activate&plugin=woocommerce/woocommerce.php' ), 'activate-plugin_woocommerce/woocommerce.php' );
-						$activate_text = __( 'Activate WooCommerce', 'woocommerce-payments' );
+						// PooCommerce is installed, so it just needs to be enabled.
+						$activate_url  = wp_nonce_url( admin_url( 'plugins.php?action=activate&plugin=poocommerce/poocommerce.php' ), 'activate-plugin_poocommerce/poocommerce.php' );
+						$activate_text = __( 'Activate PooCommerce', 'poocommerce-payments' );
 					}
 					$error_message .= ' <a href="' . $activate_url . '">' . $activate_text . '</a>';
 				}
@@ -225,11 +225,11 @@ class WC_Payments_Dependency_Service {
 			case self::WOOCORE_INCOMPATIBLE:
 				$error_message = WC_Payments_Utils::esc_interpolated_html(
 					sprintf(
-						/* translators: %1: WooPayments, %2: current WooCommerce Payment version, %3: WooCommerce, %4: required WC version number, %5: currently installed WC version number */
-						__( '%1$s %2$s requires <strong>%3$s %4$s</strong> or greater to be installed (you are using %5$s). ', 'woocommerce-payments' ),
+						/* translators: %1: WooPayments, %2: current PooCommerce Payment version, %3: PooCommerce, %4: required WC version number, %5: currently installed WC version number */
+						__( '%1$s %2$s requires <strong>%3$s %4$s</strong> or greater to be installed (you are using %5$s). ', 'poocommerce-payments' ),
 						'WooPayments',
 						WCPAY_VERSION_NUMBER,
-						'WooCommerce',
+						'PooCommerce',
 						$wc_version,
 						WC_VERSION
 					),
@@ -237,20 +237,20 @@ class WC_Payments_Dependency_Service {
 				);
 
 				if ( current_user_can( 'update_plugins' ) ) {
-					// Take the user to the "plugins" screen instead of trying to update WooCommerce inline. WooCommerce adds important information
+					// Take the user to the "plugins" screen instead of trying to update PooCommerce inline. PooCommerce adds important information
 					// on its plugin row regarding the currently installed extensions and their compatibility with the latest WC version.
 					$error_message .= '<br/>' . WC_Payments_Utils::esc_interpolated_html(
 						sprintf(
-							/* translators: %1$s: WooCommerce, %2$s: WooPayments, a1: link to the Plugins page, a2: link to the page having all previous versions */
-							__( '<a1>Update %1$s</a1> <strong>(recommended)</strong> or manually re-install <a2>a previous version</a2> of %2$s.', 'woocommerce-payments' ),
-							'WooCommerce',
+							/* translators: %1$s: PooCommerce, %2$s: WooPayments, a1: link to the Plugins page, a2: link to the page having all previous versions */
+							__( '<a1>Update %1$s</a1> <strong>(recommended)</strong> or manually re-install <a2>a previous version</a2> of %2$s.', 'poocommerce-payments' ),
+							'PooCommerce',
 							'WooPayments'
 						),
 						[
 
 							'a1'     => '<a href="' . admin_url( 'plugins.php' ) . '">',
 							'strong' => '<strong>',
-							'a2'     => '<a href="https://wordpress.org/plugins/woocommerce-payments/advanced/#download-previous-link" target="_blank">',
+							'a2'     => '<a href="https://wordpress.org/plugins/poocommerce-payments/advanced/#download-previous-link" target="_blank">',
 						]
 					);
 				}
@@ -259,10 +259,10 @@ class WC_Payments_Dependency_Service {
 			case self::WOOADMIN_NOT_FOUND:
 				$error_message = WC_Payments_Utils::esc_interpolated_html(
 					sprintf(
-						/* translators: %1$s: WooPayments, %2$s: WooCommerce Admin */
-						__( '%1$s requires %2$s to be enabled. Please remove the <code>woocommerce_admin_disabled</code> filter to use %1$s.', 'woocommerce-payments' ),
+						/* translators: %1$s: WooPayments, %2$s: PooCommerce Admin */
+						__( '%1$s requires %2$s to be enabled. Please remove the <code>poocommerce_admin_disabled</code> filter to use %1$s.', 'poocommerce-payments' ),
 						'WooPayments',
-						'WooCommerce Admin'
+						'PooCommerce Admin'
 					),
 					[ 'code' => '<code>' ]
 				);
@@ -271,22 +271,22 @@ class WC_Payments_Dependency_Service {
 			case self::WOOADMIN_INCOMPATIBLE:
 				$error_message = WC_Payments_Utils::esc_interpolated_html(
 					sprintf(
-						/* translators: %1: WooPayments, %2: WooCommerce Admin, %3: required WC-Admin version number, %4: currently installed WC-Admin version number */
-						__( '%1$s requires <strong>%2$s %3$s</strong> or greater to be installed (you are using %4$s).', 'woocommerce-payments' ),
+						/* translators: %1: WooPayments, %2: PooCommerce Admin, %3: required WC-Admin version number, %4: currently installed WC-Admin version number */
+						__( '%1$s requires <strong>%2$s %3$s</strong> or greater to be installed (you are using %4$s).', 'poocommerce-payments' ),
 						'WooPayments',
-						'WooCommerce Admin',
+						'PooCommerce Admin',
 						WCPAY_MIN_WC_ADMIN_VERSION,
 						WC_ADMIN_VERSION_NUMBER
 					),
 					[ 'strong' => '<strong>' ]
 				);
 
-				// Let's assume for now that any WC-Admin version bundled with WooCommerce will meet our minimum requirements.
-				$error_message .= ' ' . __( 'There is a newer version of WooCommerce Admin bundled with WooCommerce.', 'woocommerce-payments' );
+				// Let's assume for now that any WC-Admin version bundled with PooCommerce will meet our minimum requirements.
+				$error_message .= ' ' . __( 'There is a newer version of PooCommerce Admin bundled with PooCommerce.', 'poocommerce-payments' );
 
 				if ( current_user_can( 'deactivate_plugins' ) ) {
-					$deactivate_url = wp_nonce_url( admin_url( 'plugins.php?action=deactivate&plugin=woocommerce-admin/woocommerce-admin.php' ), 'deactivate-plugin_woocommerce-admin/woocommerce-admin.php' );
-					$error_message .= ' <a href="' . $deactivate_url . '">' . __( 'Use the bundled version of WooCommerce Admin', 'woocommerce-payments' ) . '</a>';
+					$deactivate_url = wp_nonce_url( admin_url( 'plugins.php?action=deactivate&plugin=poocommerce-admin/poocommerce-admin.php' ), 'deactivate-plugin_poocommerce-admin/poocommerce-admin.php' );
+					$error_message .= ' <a href="' . $deactivate_url . '">' . __( 'Use the bundled version of PooCommerce Admin', 'poocommerce-payments' ) . '</a>';
 				}
 
 				break;
@@ -294,7 +294,7 @@ class WC_Payments_Dependency_Service {
 				$error_message = WC_Payments_Utils::esc_interpolated_html(
 					sprintf(
 						/* translators: %1: WooPayments, %2: required WP version number, %3: currently installed WP version number */
-						__( '%1$s requires <strong>WordPress %2$s</strong> or greater (you are using %3$s).', 'woocommerce-payments' ),
+						__( '%1$s requires <strong>WordPress %2$s</strong> or greater (you are using %3$s).', 'poocommerce-payments' ),
 						'WooPayments',
 						$wp_version,
 						get_bloginfo( 'version' )
@@ -302,7 +302,7 @@ class WC_Payments_Dependency_Service {
 					[ 'strong' => '<strong>' ]
 				);
 				if ( current_user_can( 'update_core' ) ) {
-					$error_message .= ' <a href="' . admin_url( 'update-core.php' ) . '">' . __( 'Update WordPress', 'woocommerce-payments' ) . '</a>';
+					$error_message .= ' <a href="' . admin_url( 'update-core.php' ) . '">' . __( 'Update WordPress', 'poocommerce-payments' ) . '</a>';
 				}
 				break;
 			case self::DEV_ASSETS_NOT_BUILT:
@@ -311,14 +311,14 @@ class WC_Payments_Dependency_Service {
 						/* translators: %s: WooPayments */
 						__(
 							'You have installed a development version of %s which requires files to be built. From the plugin directory, run <code>npm run build:client</code> to build and minify assets. Alternatively, you can download a pre-built version of the plugin from the <a1>WordPress.org repository</a1> or by visiting the <a2>releases page in the GitHub repository</a2>.',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						),
 						'WooPayments'
 					),
 					[
 						'code' => '<code>',
-						'a1'   => '<a href="https://wordpress.org/plugins/woocommerce-payments/">',
-						'a2'   => '<a href="https://github.com/automattic/woocommerce-payments/releases/">',
+						'a1'   => '<a href="https://wordpress.org/plugins/poocommerce-payments/">',
+						'a2'   => '<a href="https://github.com/automattic/poocommerce-payments/releases/">',
 					]
 				);
 				break;
