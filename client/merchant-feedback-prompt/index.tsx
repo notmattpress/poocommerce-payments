@@ -44,7 +44,7 @@ import './style.scss';
  */
 const WCFooterPortal = ( { children }: { children: React.ReactNode } ) => {
 	const portalRoot = document.getElementsByClassName(
-		'woocommerce-layout__footer'
+		'poocommerce-layout__footer'
 	)[ 0 ];
 
 	if ( ! portalRoot ) {
@@ -111,7 +111,7 @@ const MerchantFeedbackPrompt: React.FC< MerchantFeedbackPromptProps > = ( {
 								<FlexItem>
 									{ __(
 										'Are you satisfied with WooPayments?',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									) }
 								</FlexItem>
 								<FlexItem>
@@ -131,13 +131,13 @@ const MerchantFeedbackPrompt: React.FC< MerchantFeedbackPromptProps > = ( {
 											icon={ thumbsUp }
 											aria-label={ __(
 												'"Yes" icon',
-												'woocommerce-payments'
+												'poocommerce-payments'
 											) }
 										/>
 										<span className="wcpay-merchant-feedback-prompt__action-label">
 											{ __(
 												'Yes',
-												'woocommerce-payments'
+												'poocommerce-payments'
 											) }
 										</span>
 									</Button>
@@ -159,13 +159,13 @@ const MerchantFeedbackPrompt: React.FC< MerchantFeedbackPromptProps > = ( {
 											icon={ thumbsDown }
 											aria-label={ __(
 												'"No" icon',
-												'woocommerce-payments'
+												'poocommerce-payments'
 											) }
 										/>
 										<span className="wcpay-merchant-feedback-prompt__action-label">
 											{ __(
 												'No',
-												'woocommerce-payments'
+												'poocommerce-payments'
 											) }
 										</span>
 									</Button>
@@ -176,7 +176,7 @@ const MerchantFeedbackPrompt: React.FC< MerchantFeedbackPromptProps > = ( {
 										role="button"
 										aria-label={ __(
 											'Dismiss',
-											'woocommerce-payments'
+											'poocommerce-payments'
 										) }
 										tabIndex={ 0 }
 										onClick={ () => {

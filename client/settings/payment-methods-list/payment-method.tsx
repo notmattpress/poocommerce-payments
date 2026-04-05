@@ -77,14 +77,14 @@ const PaymentMethodLabel = ( {
 			return {
 				message: getDiscountBadgeText( discountFee ),
 				tooltip: getDiscountTooltipText( discountFee ),
-				tooltipLabel: __( 'Discount details', 'woocommerce-payments' ),
+				tooltipLabel: __( 'Discount details', 'poocommerce-payments' ),
 			};
 		}
 		if ( badgePromotion ) {
 			return {
 				message: badgePromotion.title,
 				tooltip: badgePromotion.description,
-				tooltipLabel: __( 'Promotion details', 'woocommerce-payments' ),
+				tooltipLabel: __( 'Promotion details', 'poocommerce-payments' ),
 				tcUrl: badgePromotion.tc_url,
 				tcLabel: badgePromotion.tc_label,
 				type: badgePromotion.badge_type,
@@ -100,7 +100,7 @@ const PaymentMethodLabel = ( {
 			{ label }
 			{ PAYMENT_METHOD_IDS.CARD === id && (
 				<span className="payment-method__required-label">
-					{ '(' + __( 'Required', 'woocommerce-payments' ) + ')' }
+					{ '(' + __( 'Required', 'poocommerce-payments' ) + ')' }
 				</span>
 			) }
 			{ chip && <Chip message={ chip } type={ chipType } /> }
@@ -241,7 +241,7 @@ const PaymentMethod = ( {
 										aria-label={ sprintf(
 											__(
 												'Base transaction fees: %s',
-												'woocommerce-payments'
+												'poocommerce-payments'
 											),
 											formatMethodFeesDescription(
 												accountFees[ id ]

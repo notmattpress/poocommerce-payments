@@ -52,7 +52,7 @@ class CardDefinition implements PaymentMethodDefinitionInterface {
 	 * @return string
 	 */
 	public static function get_title( ?string $account_country = null ): string {
-		return __( 'Card', 'woocommerce-payments' );
+		return __( 'Card', 'poocommerce-payments' );
 	}
 
 	/**
@@ -79,7 +79,7 @@ class CardDefinition implements PaymentMethodDefinitionInterface {
 	 * @return string
 	 */
 	public static function get_settings_label( ?string $account_country = null ): string {
-		return __( 'Credit / Debit Cards', 'woocommerce-payments' );
+		return __( 'Credit / Debit Cards', 'poocommerce-payments' );
 	}
 
 	/**
@@ -91,7 +91,7 @@ class CardDefinition implements PaymentMethodDefinitionInterface {
 	public static function get_description( ?string $account_country = null ): string {
 		return __(
 			'Let your customers pay with major credit and debit cards without leaving your store.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		);
 	}
 
@@ -174,7 +174,7 @@ class CardDefinition implements PaymentMethodDefinitionInterface {
 
 		return sprintf(
 			// Translators: %s is a test card number.
-			__( 'Use test card <number>%s</number> or refer to our <a>testing guide</a>.', 'woocommerce-payments' ),
+			__( 'Use test card <number>%s</number> or refer to our <a>testing guide</a>.', 'poocommerce-payments' ),
 			$test_card_number
 		);
 	}

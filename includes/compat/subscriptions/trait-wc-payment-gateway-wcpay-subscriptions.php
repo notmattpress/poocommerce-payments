@@ -2,7 +2,7 @@
 /**
  * Trait WC_Payment_Gateway_WCPay_Subscriptions_Trait
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -21,7 +21,7 @@ use WCPay\Constants\Payment_Initiated_By;
 use WCPay\PaymentMethods\Configs\Definitions\AmazonPayDefinition;
 
 /**
- * Gateway class for WooPayments, with added compatibility with WooCommerce Subscriptions.
+ * Gateway class for WooPayments, with added compatibility with PooCommerce Subscriptions.
  */
 trait WC_Payment_Gateway_WCPay_Subscriptions_Trait {
 
@@ -148,7 +148,7 @@ trait WC_Payment_Gateway_WCPay_Subscriptions_Trait {
 			// Avoid duplication if the title already contains the last4.
 			if ( ! empty( $last4 ) && false === strpos( $default, $last4 ) ) {
 				// translators: 1: payment method likely credit card, 2: last 4 digit.
-				return sprintf( __( '%1$s ending in %2$s', 'woocommerce-payments' ), $default, $last4 );
+				return sprintf( __( '%1$s ending in %2$s', 'poocommerce-payments' ), $default, $last4 );
 			}
 		}
 
@@ -157,7 +157,7 @@ trait WC_Payment_Gateway_WCPay_Subscriptions_Trait {
 			// Avoid duplication if the title already contains the email.
 			if ( ! empty( $email ) && false === strpos( $default, $email ) ) {
 				// translators: 1: payment method (Amazon Pay), 2: redacted customer email.
-				return sprintf( __( '%1$s (%2$s)', 'woocommerce-payments' ), $default, $email );
+				return sprintf( __( '%1$s (%2$s)', 'poocommerce-payments' ), $default, $email );
 			}
 		}
 
@@ -199,7 +199,7 @@ trait WC_Payment_Gateway_WCPay_Subscriptions_Trait {
 		/*
 		 * Base set of subscription features to add.
 		 * The WCPay payment gateway supports these features
-		 * for both WCPay Subscriptions and WooCommerce Subscriptions.
+		 * for both WCPay Subscriptions and PooCommerce Subscriptions.
 		 */
 		$payment_gateway_features = [
 			'multiple_subscriptions',
@@ -260,23 +260,23 @@ trait WC_Payment_Gateway_WCPay_Subscriptions_Trait {
 
 		self::$has_attached_integration_hooks = true;
 
-		add_filter( 'woocommerce_email_classes', [ $this, 'add_emails' ], 20 );
+		add_filter( 'poocommerce_email_classes', [ $this, 'add_emails' ], 20 );
 
 		// Switch Amazon Pay ECE subscriptions to the correct gateway (priority 10, before manual renewal check).
-		add_action( 'woocommerce_checkout_subscription_created', [ $this, 'maybe_switch_subscription_to_amazon_pay_gateway' ], 10, 1 );
+		add_action( 'poocommerce_checkout_subscription_created', [ $this, 'maybe_switch_subscription_to_amazon_pay_gateway' ], 10, 1 );
 		// Force non-reusable payment methods to manual renewal (priority 11, after gateway switch).
-		add_action( 'woocommerce_checkout_subscription_created', [ $this, 'maybe_force_subscription_to_manual' ], 11, 1 );
+		add_action( 'poocommerce_checkout_subscription_created', [ $this, 'maybe_force_subscription_to_manual' ], 11, 1 );
 
 		// Register gateway-specific hooks for all reusable gateways.
 		foreach ( $this->get_reusable_wcpay_gateway_ids() as $gateway_id ) {
-			add_action( 'woocommerce_scheduled_subscription_payment_' . $gateway_id, [ $this, 'scheduled_subscription_payment' ], 10, 2 );
-			add_action( 'woocommerce_subscription_failing_payment_method_updated_' . $gateway_id, [ $this, 'update_failing_payment_method' ], 10, 2 );
+			add_action( 'poocommerce_scheduled_subscription_payment_' . $gateway_id, [ $this, 'scheduled_subscription_payment' ], 10, 2 );
+			add_action( 'poocommerce_subscription_failing_payment_method_updated_' . $gateway_id, [ $this, 'update_failing_payment_method' ], 10, 2 );
 		}
 
 		add_filter( 'wc_payments_display_save_payment_method_checkbox', [ $this, 'display_save_payment_method_checkbox' ], 10 );
 
 		// Display the payment method used for a subscription in the "My Subscriptions" table.
-		add_filter( 'woocommerce_my_subscriptions_payment_method', [ $this, 'maybe_render_subscription_payment_method' ], 10, 2 );
+		add_filter( 'poocommerce_my_subscriptions_payment_method', [ $this, 'maybe_render_subscription_payment_method' ], 10, 2 );
 
 		// Hide "Change payment" button for manual subscriptions with non-reusable payment methods.
 		add_filter( 'wcs_view_subscription_actions', [ $this, 'maybe_hide_change_payment_for_manual_subscriptions' ], 10, 2 );
@@ -292,21 +292,21 @@ trait WC_Payment_Gateway_WCPay_Subscriptions_Trait {
 		}
 
 		// Allow store managers to manually set Stripe as the payment method on a subscription.
-		add_filter( 'woocommerce_subscription_payment_meta', [ $this, 'add_subscription_payment_meta' ], 10, 2 );
-		add_filter( 'woocommerce_subscription_validate_payment_meta', [ $this, 'validate_subscription_payment_meta' ], 10, 3 );
+		add_filter( 'poocommerce_subscription_payment_meta', [ $this, 'add_subscription_payment_meta' ], 10, 2 );
+		add_filter( 'poocommerce_subscription_validate_payment_meta', [ $this, 'validate_subscription_payment_meta' ], 10, 3 );
 		add_action( 'wcs_save_other_payment_meta', [ $this, 'save_meta_in_order_tokens' ], 10, 4 );
 
 		// To make sure payment meta is copied from subscription to order.
 		add_filter( 'wcs_copy_payment_meta_to_order', [ $this, 'append_payment_meta' ], 10, 3 );
 
-		add_filter( 'woocommerce_subscription_note_old_payment_method_title', [ $this, 'get_specific_old_payment_method_title' ], 10, 3 );
-		add_filter( 'woocommerce_subscription_note_new_payment_method_title', [ $this, 'get_specific_new_payment_method_title' ], 10, 3 );
+		add_filter( 'poocommerce_subscription_note_old_payment_method_title', [ $this, 'get_specific_old_payment_method_title' ], 10, 3 );
+		add_filter( 'poocommerce_subscription_note_new_payment_method_title', [ $this, 'get_specific_new_payment_method_title' ], 10, 3 );
 
-		add_action( 'woocommerce_admin_order_data_after_billing_address', [ $this, 'add_payment_method_select_to_subscription_edit' ] );
+		add_action( 'poocommerce_admin_order_data_after_billing_address', [ $this, 'add_payment_method_select_to_subscription_edit' ] );
 
 		// Update subscriptions token when user sets a default payment method.
-		add_filter( 'woocommerce_subscriptions_update_subscription_token', [ $this, 'update_subscription_token' ], 10, 3 );
-		add_filter( 'woocommerce_subscriptions_update_payment_via_pay_shortcode', [ $this, 'update_payment_method_for_subscriptions' ], 10, 3 );
+		add_filter( 'poocommerce_subscriptions_update_subscription_token', [ $this, 'update_subscription_token' ], 10, 3 );
+		add_filter( 'poocommerce_subscriptions_update_payment_via_pay_shortcode', [ $this, 'update_payment_method_for_subscriptions' ], 10, 3 );
 
 		// AJAX handler for fetching payment tokens when customer changes.
 		add_action( 'wp_ajax_wcpay_get_user_payment_tokens', [ $this, 'ajax_get_user_payment_tokens' ] );
@@ -408,7 +408,7 @@ trait WC_Payment_Gateway_WCPay_Subscriptions_Trait {
 					/* translators: %1: the failed payment amount, %2: error message  */
 						__(
 							'A payment of %1$s <strong>failed</strong> to complete with the following message: <code>%2$s</code>.',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						),
 						[
 							'strong' => '<strong>',
@@ -454,7 +454,7 @@ trait WC_Payment_Gateway_WCPay_Subscriptions_Trait {
 		return [
 			self::$payment_method_meta_table => [
 				self::$payment_method_meta_key => [
-					'label' => __( 'Saved payment method', 'woocommerce-payments' ),
+					'label' => __( 'Saved payment method', 'poocommerce-payments' ),
 					'value' => empty( $active_token ) ? '' : (string) $active_token->get_id(),
 				],
 			],
@@ -498,7 +498,7 @@ trait WC_Payment_Gateway_WCPay_Subscriptions_Trait {
 			// Display select element on newer Subscriptions versions.
 			add_action(
 				sprintf(
-					'woocommerce_subscription_payment_meta_input_%s_%s_%s',
+					'poocommerce_subscription_payment_meta_input_%s_%s_%s',
 					$gateway_id,
 					self::$payment_method_meta_table,
 					self::$payment_method_meta_key
@@ -530,7 +530,7 @@ trait WC_Payment_Gateway_WCPay_Subscriptions_Trait {
 
 		if ( empty( $payment_meta[ self::$payment_method_meta_table ][ self::$payment_method_meta_key ]['value'] ) ) {
 			throw new Invalid_Payment_Method_Exception(
-				__( 'A customer saved payment method was not selected for this order.', 'woocommerce-payments' ),
+				__( 'A customer saved payment method was not selected for this order.', 'poocommerce-payments' ),
 				'payment_method_not_selected'
 			);
 		}
@@ -539,14 +539,14 @@ trait WC_Payment_Gateway_WCPay_Subscriptions_Trait {
 
 		if ( empty( $token ) ) {
 			throw new Invalid_Payment_Method_Exception(
-				__( 'The saved payment method selected is invalid or does not exist.', 'woocommerce-payments' ),
+				__( 'The saved payment method selected is invalid or does not exist.', 'poocommerce-payments' ),
 				'payment_method_token_not_found'
 			);
 		}
 
 		if ( $subscription->get_user_id() !== $token->get_user_id() ) {
 			throw new Invalid_Payment_Method_Exception(
-				__( 'The saved payment method selected does not belong to this order\'s customer.', 'woocommerce-payments' ),
+				__( 'The saved payment method selected does not belong to this order\'s customer.', 'poocommerce-payments' ),
 				'payment_method_token_not_owned'
 			);
 		}
@@ -608,7 +608,7 @@ trait WC_Payment_Gateway_WCPay_Subscriptions_Trait {
 
 		WC_Payments::register_script_with_dependencies( 'WCPAY_SUBSCRIPTION_EDIT_PAGE', 'dist/subscription-edit-page' );
 
-		wp_set_script_translations( 'WCPAY_SUBSCRIPTION_EDIT_PAGE', 'woocommerce-payments' );
+		wp_set_script_translations( 'WCPAY_SUBSCRIPTION_EDIT_PAGE', 'poocommerce-payments' );
 
 		wp_enqueue_script( 'WCPAY_SUBSCRIPTION_EDIT_PAGE' );
 	}
@@ -704,8 +704,8 @@ trait WC_Payment_Gateway_WCPay_Subscriptions_Trait {
 	public function ajax_get_user_payment_tokens() {
 		check_ajax_referer( 'wcpay-subscription-edit', 'nonce' );
 
-		if ( ! current_user_can( 'manage_woocommerce' ) ) {
-			wp_send_json_error( [ 'message' => __( 'You do not have permission to perform this action.', 'woocommerce-payments' ) ], 403 );
+		if ( ! current_user_can( 'manage_poocommerce' ) ) {
+			wp_send_json_error( [ 'message' => __( 'You do not have permission to perform this action.', 'poocommerce-payments' ) ], 403 );
 			return;
 		}
 
@@ -720,7 +720,7 @@ trait WC_Payment_Gateway_WCPay_Subscriptions_Trait {
 		// Verify user exists.
 		$user = get_user_by( 'id', $user_id );
 		if ( ! $user ) {
-			wp_send_json_error( [ 'message' => __( 'Invalid user ID.', 'woocommerce-payments' ) ], 400 );
+			wp_send_json_error( [ 'message' => __( 'Invalid user ID.', 'poocommerce-payments' ) ], 400 );
 			return;
 		}
 
@@ -787,11 +787,11 @@ trait WC_Payment_Gateway_WCPay_Subscriptions_Trait {
 			$prepared_data['tokens'] = $tokens;
 
 			if ( empty( $options ) ) {
-				$options[0] = __( 'No payment methods found for customer', 'woocommerce-payments' );
+				$options[0] = __( 'No payment methods found for customer', 'poocommerce-payments' );
 				$disabled   = true;
 			}
 		} else {
-			$options[0] = __( 'Please select a customer first', 'woocommerce-payments' );
+			$options[0] = __( 'Please select a customer first', 'poocommerce-payments' );
 			$selected   = 0;
 			$disabled   = true;
 		}
@@ -799,7 +799,7 @@ trait WC_Payment_Gateway_WCPay_Subscriptions_Trait {
 		<span class="wcpay-subscription-payment-method" data-wcpay-pm-selector="<?php echo esc_attr( wp_json_encode( $prepared_data ) ); ?>">
 			<select name="<?php echo esc_attr( $field_id ); ?>" id="<?php echo esc_attr( $field_id ); ?>">
 				<?php if ( $field_value && $field_value !== $selected ) : ?>
-					<option value="" selected disabled><?php echo esc_html__( 'Please select a payment method', 'woocommerce-payments' ); ?></option>
+					<option value="" selected disabled><?php echo esc_html__( 'Please select a payment method', 'poocommerce-payments' ); ?></option>
 				<?php endif; ?>
 				<?php foreach ( $options as $token_id => $display_name ) : ?>
 					<option value="<?php echo esc_attr( $token_id ); ?>" <?php selected( $token_id, $selected ); ?> <?php echo disabled( $disabled ); ?>>
@@ -896,11 +896,11 @@ trait WC_Payment_Gateway_WCPay_Subscriptions_Trait {
 				$payment_method    = $this->payments_api_client->get_payment_method( $payment_method_id );
 				if ( ! empty( $payment_method['card']['last4'] ) ) {
 					// translators: 1: payment method likely credit card, 2: last 4 digit.
-					return sprintf( __( '%1$s ending in %2$s', 'woocommerce-payments' ), $new_payment_method_title, $payment_method['card']['last4'] );
+					return sprintf( __( '%1$s ending in %2$s', 'poocommerce-payments' ), $new_payment_method_title, $payment_method['card']['last4'] );
 				}
 				if ( ! empty( $payment_method['amazon_pay']['email'] ) ) {
 					// translators: 1: payment method (Amazon Pay), 2: redacted customer email.
-					return sprintf( __( '%1$s (%2$s)', 'woocommerce-payments' ), $new_payment_method_title, $payment_method['amazon_pay']['email'] );
+					return sprintf( __( '%1$s (%2$s)', 'poocommerce-payments' ), $new_payment_method_title, $payment_method['amazon_pay']['email'] );
 				}
 			} catch ( Exception $e ) {
 				Logger::error( $e );
@@ -1001,7 +1001,7 @@ trait WC_Payment_Gateway_WCPay_Subscriptions_Trait {
 	}
 
 	/**
-	 * Adds the failed SCA auth email to WooCommerce.
+	 * Adds the failed SCA auth email to PooCommerce.
 	 *
 	 * @param WC_Email[] $email_classes All existing emails.
 	 * @return WC_Email[]
@@ -1150,7 +1150,7 @@ trait WC_Payment_Gateway_WCPay_Subscriptions_Trait {
 
 			$note = sprintf(
 			/* translators: 1) date in date_format or 'F j, Y'; 2) time in time_format or 'g:i a' */
-				__( 'The customer must authorize this payment via a notification sent to them by the bank which issued their card. The authorization must be completed before %1$s at %2$s, when the charge will be attempted.', 'woocommerce-payments' ),
+				__( 'The customer must authorize this payment via a notification sent to them by the bank which issued their card. The authorization must be completed before %1$s at %2$s, when the charge will be attempted.', 'poocommerce-payments' ),
 				$attempt_date,
 				$attempt_time
 			);
@@ -1214,7 +1214,7 @@ trait WC_Payment_Gateway_WCPay_Subscriptions_Trait {
 		}
 
 		// technically, `$express_checkout_type` could also be `google_pay` or `apple_pay`.
-		// But those are card methods, processed through `woocommerce_payments`, not through `woocommerce_payments_google_pay`.
+		// But those are card methods, processed through `poocommerce_payments`, not through `poocommerce_payments_google_pay`.
 		$express_checkout_type = $parent_order->get_meta( '_wcpay_express_checkout_payment_method' );
 		if ( AmazonPayDefinition::get_id() !== $express_checkout_type ) {
 			return;
@@ -1234,7 +1234,7 @@ trait WC_Payment_Gateway_WCPay_Subscriptions_Trait {
 	 * @param WC_Subscription $subscription The subscription being created.
 	 */
 	public function maybe_force_subscription_to_manual( $subscription ) {
-		// Only process WCPay subscriptions (including split UPE gateways like woocommerce_payments_ideal).
+		// Only process WCPay subscriptions (including split UPE gateways like poocommerce_payments_ideal).
 		$payment_method_id = $subscription->get_payment_method();
 		if ( 0 !== strpos( $payment_method_id, WC_Payment_Gateway_WCPay::GATEWAY_ID ) ) {
 			return;
@@ -1247,7 +1247,7 @@ trait WC_Payment_Gateway_WCPay_Subscriptions_Trait {
 		}
 
 		// This is a split UPE gateway (non-reusable payment method).
-		// Extract the payment method type from the gateway ID (e.g., "ideal" from "woocommerce_payments_ideal").
+		// Extract the payment method type from the gateway ID (e.g., "ideal" from "poocommerce_payments_ideal").
 		$payment_method_type = str_replace( WC_Payment_Gateway_WCPay::GATEWAY_ID . '_', '', $payment_method_id );
 
 		// Store the original payment method ID for reference.
@@ -1262,7 +1262,7 @@ trait WC_Payment_Gateway_WCPay_Subscriptions_Trait {
 		$subscription->add_order_note(
 			sprintf(
 				/* translators: %s: payment method type */
-				__( 'Subscription set to manual renewal because %s is a non-reusable payment method.', 'woocommerce-payments' ),
+				__( 'Subscription set to manual renewal because %s is a non-reusable payment method.', 'poocommerce-payments' ),
 				$payment_method_type
 			)
 		);

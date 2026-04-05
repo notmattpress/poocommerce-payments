@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_PM_Promotions_Service_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use PHPUnit\Framework\MockObject\MockObject;
@@ -167,7 +167,7 @@ class WC_Payments_PM_Promotions_Service_Test extends WCPAY_UnitTestCase {
 						return 'enabled' === $key ? ( $enabled ? 'yes' : 'no' ) : '';
 					}
 				);
-			$gateway_mock->method( 'get_option_key' )->willReturn( 'woocommerce_woocommerce_payments_' . $payment_method_id . '_settings' );
+			$gateway_mock->method( 'get_option_key' )->willReturn( 'poocommerce_poocommerce_payments_' . $payment_method_id . '_settings' );
 			$gateway_mock->method( 'get_payment_method_capability_key_map' )->willReturn( [] );
 			$gateway_mock->method( 'get_upe_enabled_payment_method_ids' )->willReturn( [] );
 			$gateway_mock->method( 'update_option' )->willReturn( true );
@@ -1037,7 +1037,7 @@ class WC_Payments_PM_Promotions_Service_Test extends WCPAY_UnitTestCase {
 					return 'enabled' === $key ? 'no' : '';
 				}
 			);
-		$gateway_mock->method( 'get_option_key' )->willReturn( 'woocommerce_woocommerce_payments_klarna_settings' );
+		$gateway_mock->method( 'get_option_key' )->willReturn( 'poocommerce_poocommerce_payments_klarna_settings' );
 		$gateway_mock->method( 'get_payment_method_capability_key_map' )->willReturn( [] );
 		$gateway_mock->method( 'get_upe_enabled_payment_method_ids' )->willReturn( [] );
 
@@ -1131,7 +1131,7 @@ class WC_Payments_PM_Promotions_Service_Test extends WCPAY_UnitTestCase {
 				return 'enabled' === $key ? ( $enabled ? 'yes' : 'no' ) : '';
 			}
 		);
-		$gateway_mock->method( 'get_option_key' )->willReturn( 'woocommerce_woocommerce_payments_klarna_settings' );
+		$gateway_mock->method( 'get_option_key' )->willReturn( 'poocommerce_poocommerce_payments_klarna_settings' );
 		$gateway_mock->method( 'get_payment_method_capability_key_map' )->willReturn( [] );
 		$gateway_mock->method( 'get_upe_enabled_payment_method_ids' )->willReturn( [] );
 		$gateway_mock->method( 'update_option' )->willReturn( true );
@@ -1164,7 +1164,7 @@ class WC_Payments_PM_Promotions_Service_Test extends WCPAY_UnitTestCase {
 				return 'enabled' === $key ? 'no' : '';
 			}
 		);
-		$gateway_mock->method( 'get_option_key' )->willReturn( 'woocommerce_woocommerce_payments_klarna_settings' );
+		$gateway_mock->method( 'get_option_key' )->willReturn( 'poocommerce_poocommerce_payments_klarna_settings' );
 		$gateway_mock->method( 'get_payment_method_capability_key_map' )->willReturn( [] );
 		$gateway_mock->method( 'get_upe_enabled_payment_method_ids' )->willReturn( [] );
 
@@ -1184,8 +1184,8 @@ class WC_Payments_PM_Promotions_Service_Test extends WCPAY_UnitTestCase {
 	 * =========================================================================
 	 */
 
-	public function test_get_visible_promotions_returns_null_for_user_without_manage_woocommerce() {
-		// Create a subscriber user (doesn't have manage_woocommerce capability).
+	public function test_get_visible_promotions_returns_null_for_user_without_manage_poocommerce() {
+		// Create a subscriber user (doesn't have manage_poocommerce capability).
 		$subscriber_id = self::factory()->user->create( [ 'role' => 'subscriber' ] );
 		wp_set_current_user( $subscriber_id );
 

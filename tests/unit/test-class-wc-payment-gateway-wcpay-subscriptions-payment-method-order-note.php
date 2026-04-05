@@ -2,7 +2,7 @@
 /**
  * Class WC_Payment_Gateway_WCPay_Subscriptions_Payment_Method_Order_Note_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\Duplicate_Payment_Prevention_Service;
@@ -186,8 +186,8 @@ class WC_Payment_Gateway_WCPay_Subscriptions_Payment_Method_Order_Note_Test exte
 		$new_payment_method_title = 'new_payment_method_title';
 		$new_payment_method       = 'non-wc-pay';
 
-		$filtered_old_payment_method_title = (string) apply_filters( 'woocommerce_subscription_note_old_payment_method_title', $old_payment_method_title, $old_payment_method, $this->subscription );
-		$filtered_new_payment_method_title = (string) apply_filters( 'woocommerce_subscription_note_new_payment_method_title', $new_payment_method_title, $new_payment_method, $this->subscription );
+		$filtered_old_payment_method_title = (string) apply_filters( 'poocommerce_subscription_note_old_payment_method_title', $old_payment_method_title, $old_payment_method, $this->subscription );
+		$filtered_new_payment_method_title = (string) apply_filters( 'poocommerce_subscription_note_new_payment_method_title', $new_payment_method_title, $new_payment_method, $this->subscription );
 
 		$this->assertEquals( $filtered_old_payment_method_title, $old_payment_method_title );
 		$this->assertEquals( $filtered_new_payment_method_title, $new_payment_method_title );
@@ -211,8 +211,8 @@ class WC_Payment_Gateway_WCPay_Subscriptions_Payment_Method_Order_Note_Test exte
 		$_POST['payment_method']                      = WC_Payment_Gateway_WCPay::GATEWAY_ID;
 		$_POST[ $this->post_payment_token_parameter ] = $this->token2->get_id();
 
-		$old_payment_method_title_modified = (string) apply_filters( 'woocommerce_subscription_note_old_payment_method_title', $old_payment_method_title, $old_payment_method, $this->subscription );
-		$new_payment_method_title_modified = (string) apply_filters( 'woocommerce_subscription_note_new_payment_method_title', $new_payment_method_title, $new_payment_method, $this->subscription );
+		$old_payment_method_title_modified = (string) apply_filters( 'poocommerce_subscription_note_old_payment_method_title', $old_payment_method_title, $old_payment_method, $this->subscription );
+		$new_payment_method_title_modified = (string) apply_filters( 'poocommerce_subscription_note_new_payment_method_title', $new_payment_method_title, $new_payment_method, $this->subscription );
 		$this->assertStringContainsString( $this->last4digits[1], $old_payment_method_title_modified );
 		$this->assertStringContainsString( $this->last4digits[2], $new_payment_method_title_modified );
 	}
@@ -237,8 +237,8 @@ class WC_Payment_Gateway_WCPay_Subscriptions_Payment_Method_Order_Note_Test exte
 					],
 				]
 			);
-		$old_payment_method_title_modified = (string) apply_filters( 'woocommerce_subscription_note_old_payment_method_title', $old_payment_method_title, $old_payment_method, $this->subscription );
-		$new_payment_method_title_modified = (string) apply_filters( 'woocommerce_subscription_note_new_payment_method_title', $new_payment_method_title, $new_payment_method, $this->subscription );
+		$old_payment_method_title_modified = (string) apply_filters( 'poocommerce_subscription_note_old_payment_method_title', $old_payment_method_title, $old_payment_method, $this->subscription );
+		$new_payment_method_title_modified = (string) apply_filters( 'poocommerce_subscription_note_new_payment_method_title', $new_payment_method_title, $new_payment_method, $this->subscription );
 		$this->assertStringContainsString( $this->last4digits[1], $old_payment_method_title_modified );
 		$this->assertStringContainsString( $this->last4digits[3], $new_payment_method_title_modified );
 	}
@@ -261,8 +261,8 @@ class WC_Payment_Gateway_WCPay_Subscriptions_Payment_Method_Order_Note_Test exte
 		$_POST['payment_method']                      = WC_Payment_Gateway_WCPay::GATEWAY_ID;
 		$_POST[ $this->post_payment_token_parameter ] = $this->token2->get_id();
 
-		$old_payment_method_title_modified = (string) apply_filters( 'woocommerce_subscription_note_old_payment_method_title', $old_payment_method_title, $old_payment_method, $this->subscription );
-		$new_payment_method_title_modified = (string) apply_filters( 'woocommerce_subscription_note_new_payment_method_title', $new_payment_method_title, $new_payment_method, $this->subscription );
+		$old_payment_method_title_modified = (string) apply_filters( 'poocommerce_subscription_note_old_payment_method_title', $old_payment_method_title, $old_payment_method, $this->subscription );
+		$new_payment_method_title_modified = (string) apply_filters( 'poocommerce_subscription_note_new_payment_method_title', $new_payment_method_title, $new_payment_method, $this->subscription );
 		$this->assertStringContainsString( $this->last4digits[1], $old_payment_method_title_modified );
 		$this->assertStringContainsString( $this->last4digits[2], $new_payment_method_title_modified );
 	}
@@ -292,8 +292,8 @@ class WC_Payment_Gateway_WCPay_Subscriptions_Payment_Method_Order_Note_Test exte
 					],
 				]
 			);
-		$old_payment_method_title_modified = (string) apply_filters( 'woocommerce_subscription_note_old_payment_method_title', $old_payment_method_title, $old_payment_method, $this->subscription );
-		$new_payment_method_title_modified = (string) apply_filters( 'woocommerce_subscription_note_new_payment_method_title', $new_payment_method_title, $new_payment_method, $this->subscription );
+		$old_payment_method_title_modified = (string) apply_filters( 'poocommerce_subscription_note_old_payment_method_title', $old_payment_method_title, $old_payment_method, $this->subscription );
+		$new_payment_method_title_modified = (string) apply_filters( 'poocommerce_subscription_note_new_payment_method_title', $new_payment_method_title, $new_payment_method, $this->subscription );
 		$this->assertStringContainsString( $this->last4digits[1], $old_payment_method_title_modified );
 		$this->assertStringContainsString( $this->last4digits[3], $new_payment_method_title_modified );
 	}
@@ -371,8 +371,8 @@ class WC_Payment_Gateway_WCPay_Subscriptions_Payment_Method_Order_Note_Test exte
 		$new_payment_method = 'non-wc-pay';
 		$this->subscription->update_meta_data( '_old_payment_method', $old_payment_method );
 		$this->subscription->set_payment_method( $new_payment_method );
-		$old_payment_method_title_modified = (string) apply_filters( 'woocommerce_subscription_note_old_payment_method_title', $old_payment_method_title, $old_payment_method, $this->subscription );
-		$new_payment_method_title_modified = (string) apply_filters( 'woocommerce_subscription_note_new_payment_method_title', $new_payment_method_title, $new_payment_method, $this->subscription );
+		$old_payment_method_title_modified = (string) apply_filters( 'poocommerce_subscription_note_old_payment_method_title', $old_payment_method_title, $old_payment_method, $this->subscription );
+		$new_payment_method_title_modified = (string) apply_filters( 'poocommerce_subscription_note_new_payment_method_title', $new_payment_method_title, $new_payment_method, $this->subscription );
 		$this->assertStringContainsString( $this->last4digits[1], $old_payment_method_title_modified );
 		$this->assertEquals( $new_payment_method_title, $new_payment_method_title_modified );
 	}
@@ -388,9 +388,9 @@ class WC_Payment_Gateway_WCPay_Subscriptions_Payment_Method_Order_Note_Test exte
 		$this->renewal_order->add_payment_token( $newer_token );
 
 		$old_payment_method_title_modified = (string) apply_filters(
-			'woocommerce_subscription_note_old_payment_method_title',
+			'poocommerce_subscription_note_old_payment_method_title',
 			'Amazon Pay',
-			'woocommerce_payments_amazon_pay',
+			'poocommerce_payments_amazon_pay',
 			$this->subscription
 		);
 
@@ -399,7 +399,7 @@ class WC_Payment_Gateway_WCPay_Subscriptions_Payment_Method_Order_Note_Test exte
 	}
 
 	public function test_amazon_pay_new_saved_payment_method_displays_email() {
-		$amazon_pay_gateway_id = 'woocommerce_payments_amazon_pay';
+		$amazon_pay_gateway_id = 'poocommerce_payments_amazon_pay';
 
 		$new_token = WC_Helper_Token::create_amazon_pay_token( 'pm_amazon_1', self::USER_ID, 'buyer@amazon.com' );
 
@@ -410,7 +410,7 @@ class WC_Payment_Gateway_WCPay_Subscriptions_Payment_Method_Order_Note_Test exte
 		$_POST[ 'wc-' . $amazon_pay_gateway_id . '-payment-token' ] = $new_token->get_id();
 
 		$new_payment_method_title_modified = (string) apply_filters(
-			'woocommerce_subscription_note_new_payment_method_title',
+			'poocommerce_subscription_note_new_payment_method_title',
 			'Amazon Pay',
 			$amazon_pay_gateway_id,
 			$this->subscription
@@ -421,7 +421,7 @@ class WC_Payment_Gateway_WCPay_Subscriptions_Payment_Method_Order_Note_Test exte
 	}
 
 	public function test_switching_from_card_to_amazon_pay() {
-		$amazon_pay_gateway_id    = 'woocommerce_payments_amazon_pay';
+		$amazon_pay_gateway_id    = 'poocommerce_payments_amazon_pay';
 		$old_payment_method       = WC_Payment_Gateway_WCPay::GATEWAY_ID;
 		$old_payment_method_title = 'Credit card';
 		$new_payment_method_title = 'Amazon Pay';
@@ -434,13 +434,13 @@ class WC_Payment_Gateway_WCPay_Subscriptions_Payment_Method_Order_Note_Test exte
 		$_POST[ 'wc-' . $amazon_pay_gateway_id . '-payment-token' ] = $new_token->get_id();
 
 		$old_payment_method_title_modified = (string) apply_filters(
-			'woocommerce_subscription_note_old_payment_method_title',
+			'poocommerce_subscription_note_old_payment_method_title',
 			$old_payment_method_title,
 			$old_payment_method,
 			$this->subscription
 		);
 		$new_payment_method_title_modified = (string) apply_filters(
-			'woocommerce_subscription_note_new_payment_method_title',
+			'poocommerce_subscription_note_new_payment_method_title',
 			$new_payment_method_title,
 			$amazon_pay_gateway_id,
 			$this->subscription

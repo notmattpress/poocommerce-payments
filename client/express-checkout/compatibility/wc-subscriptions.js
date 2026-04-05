@@ -55,7 +55,7 @@ const getSubscriptionShippingRates = ( cartData ) => {
 
 /**
  * Checks if the cart contains any trial subscriptions (with or without sign-up fee)
- * that have deferred shipping. During free trials, WooCommerce Subscriptions moves
+ * that have deferred shipping. During free trials, PooCommerce Subscriptions moves
  * shipping rates from the main cart to the subscription extensions.
  *
  * @param {Object} cartData Cart data from Store API.
@@ -361,7 +361,7 @@ addFilter(
 					...item,
 					name: `${ item.name } (${ __(
 						'recurring',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) })`,
 					totals: {
 						...item.totals,
@@ -371,7 +371,7 @@ addFilter(
 					item_data: [
 						...( item.item_data || [] ),
 						{
-							name: __( 'First payment', 'woocommerce-payments' ),
+							name: __( 'First payment', 'poocommerce-payments' ),
 							value: subscription.next_payment_date,
 						},
 					],

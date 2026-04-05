@@ -53,7 +53,7 @@ describe( 'Getting styles for automated theming', () => {
 		};
 
 		const fieldStyles = upeStyles.getFieldStyles(
-			'.woocommerce-checkout .form-row input',
+			'.poocommerce-checkout .form-row input',
 			'.Input',
 			null,
 			scope
@@ -269,7 +269,7 @@ describe( 'Getting styles for automated theming', () => {
 		};
 
 		const fieldStyles = upeStyles.getFieldStyles(
-			[ 'form.checkout a', '.woocommerce a', 'a' ],
+			[ 'form.checkout a', '.poocommerce a', 'a' ],
 			'.Label',
 			null,
 			scope

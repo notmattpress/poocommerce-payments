@@ -17,7 +17,7 @@
 }
 
 .wc-block-checkout__payment-method {
-	// Style the WooCommerce Blocks payment method label with icon.
+	// Style the PooCommerce Blocks payment method label with icon.
 	// The markup has icon first, then text. We use flexbox with order to
 	// keep text on the left and move icon to the right.
 	// Badge (order 1) stays after text, icon (order 2) goes to the right.
@@ -60,7 +60,7 @@
 	// Show test mode badge when payment method is selected
 	input:checked
 		~ div
-		.wc-block-components-radio-control__label:where( [id^='radio-control-wc-payment-method-options-woocommerce_payments'][id$='__label'] )
+		.wc-block-components-radio-control__label:where( [id^='radio-control-wc-payment-method-options-poocommerce_payments'][id$='__label'] )
 		> .wc-block-components-payment-method-label
 		.test-mode.badge {
 		display: inline-block;

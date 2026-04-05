@@ -85,7 +85,7 @@ npm run test:qit-e2e-up
 This command:
 1. Validates your configuration (checks for required credentials)
 2. Starts Docker containers (WordPress, database)
-3. Installs and configures WooCommerce and WooPayments
+3. Installs and configures PooCommerce and WooPayments
 4. Runs the test setup (creates users, products, test data)
 5. Keeps the environment running for development
 

@@ -2,7 +2,7 @@
 /**
  * Class Add_Amazon_Pay_To_Express_Checkout_Locations
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Migrations;
@@ -42,12 +42,12 @@ class Add_Amazon_Pay_To_Express_Checkout_Locations {
 	 * and the express checkout settings exist without amazon_pay.
 	 */
 	public function maybe_migrate() {
-		$previous_version = get_option( 'woocommerce_woocommerce_payments_version' );
+		$previous_version = get_option( 'poocommerce_poocommerce_payments_version' );
 		if ( version_compare( self::VERSION_SINCE, $previous_version, '<=' ) ) {
 			return;
 		}
 
-		$card_settings = get_option( 'woocommerce_woocommerce_payments_settings', [] );
+		$card_settings = get_option( 'poocommerce_poocommerce_payments_settings', [] );
 
 		// Only migrate if express checkout settings exist (meaning user has saved settings before).
 		if ( ! isset( $card_settings['express_checkout_product_methods'] ) ) {
@@ -77,7 +77,7 @@ class Add_Amazon_Pay_To_Express_Checkout_Locations {
 		}
 
 		if ( $updated ) {
-			update_option( 'woocommerce_woocommerce_payments_settings', $card_settings );
+			update_option( 'poocommerce_poocommerce_payments_settings', $card_settings );
 		}
 	}
 }

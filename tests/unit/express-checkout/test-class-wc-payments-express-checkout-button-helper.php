@@ -2,7 +2,7 @@
 /**
  * These tests make assertions against class WC_Payments_Express_Checkout_Button_Helper.
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\Duplicate_Payment_Prevention_Service;
@@ -107,8 +107,8 @@ class WC_Payments_Express_Checkout_Button_Helper_Test extends WCPAY_UnitTestCase
 		$this->zone->delete();
 		remove_filter( 'wc_tax_enabled', '__return_true' );
 		remove_filter( 'wc_tax_enabled', '__return_false' );
-		remove_filter( 'pre_option_woocommerce_tax_display_cart', [ $this, '__return_excl' ] );
-		remove_filter( 'pre_option_woocommerce_tax_display_cart', [ $this, '__return_incl' ] );
+		remove_filter( 'pre_option_poocommerce_tax_display_cart', [ $this, '__return_excl' ] );
+		remove_filter( 'pre_option_poocommerce_tax_display_cart', [ $this, '__return_incl' ] );
 
 		parent::tear_down();
 	}
@@ -229,14 +229,14 @@ class WC_Payments_Express_Checkout_Button_Helper_Test extends WCPAY_UnitTestCase
 
 	public function test_cart_prices_include_tax_with_tax_enabled_and_display_incl() {
 		add_filter( 'wc_tax_enabled', '__return_true' ); // reset in tear_down.
-		add_filter( 'pre_option_woocommerce_tax_display_cart', [ $this, '__return_incl' ] ); // reset in tear_down.
+		add_filter( 'pre_option_poocommerce_tax_display_cart', [ $this, '__return_incl' ] ); // reset in tear_down.
 
 		$this->assertTrue( $this->system_under_test->cart_prices_include_tax() );
 	}
 
 	public function test_cart_prices_include_tax_with_tax_enabled_and_display_excl() {
 		add_filter( 'wc_tax_enabled', '__return_true' ); // reset in tear_down.
-		add_filter( 'pre_option_woocommerce_tax_display_cart', [ $this, '__return_excl' ] ); // reset in tear_down.
+		add_filter( 'pre_option_poocommerce_tax_display_cart', [ $this, '__return_excl' ] ); // reset in tear_down.
 
 		$this->assertFalse( $this->system_under_test->cart_prices_include_tax() );
 	}
@@ -247,7 +247,7 @@ class WC_Payments_Express_Checkout_Button_Helper_Test extends WCPAY_UnitTestCase
 
 		$result = $this->system_under_test->get_total_label();
 
-		$this->assertEquals( 'Google Pay (via WooCommerce)', $result );
+		$this->assertEquals( 'Google Pay (via PooCommerce)', $result );
 	}
 
 	public function test_get_total_label_with_filter() {
@@ -284,11 +284,11 @@ class WC_Payments_Express_Checkout_Button_Helper_Test extends WCPAY_UnitTestCase
 		$wp->query_vars       = [ 'order-pay' => strval( $order_id ) ];
 		$wp_query->query_vars = [ 'order-pay' => strval( $order_id ) ];
 
-		add_filter( 'woocommerce_is_checkout', '__return_true' );
+		add_filter( 'poocommerce_is_checkout', '__return_true' );
 
 		$this->assertTrue( $this->system_under_test->should_show_express_checkout_button() );
 
-		remove_filter( 'woocommerce_is_checkout', '__return_true' );
+		remove_filter( 'poocommerce_is_checkout', '__return_true' );
 	}
 
 	public function test_should_show_express_checkout_button_for_non_shipping_but_price_includes_tax() {
@@ -298,18 +298,18 @@ class WC_Payments_Express_Checkout_Button_Helper_Test extends WCPAY_UnitTestCase
 
 		WC_Payments::mode()->dev();
 
-		add_filter( 'woocommerce_is_checkout', '__return_true' );
+		add_filter( 'poocommerce_is_checkout', '__return_true' );
 		add_filter( 'wc_shipping_enabled', '__return_false' );
 		add_filter( 'wc_tax_enabled', '__return_true' );
 
-		update_option( 'woocommerce_tax_based_on', 'billing' );
-		update_option( 'woocommerce_prices_include_tax', 'yes' );
+		update_option( 'poocommerce_tax_based_on', 'billing' );
+		update_option( 'poocommerce_prices_include_tax', 'yes' );
 
 		$this->assertTrue( $this->system_under_test->should_show_express_checkout_button() );
 
-		remove_filter( 'woocommerce_is_checkout', '__return_true' );
+		remove_filter( 'poocommerce_is_checkout', '__return_true' );
 		remove_filter( 'wc_tax_enabled', '__return_true' );
-		remove_filter( 'pre_option_woocommerce_tax_display_cart', [ $this, '__return_incl' ] );
+		remove_filter( 'pre_option_poocommerce_tax_display_cart', [ $this, '__return_incl' ] );
 	}
 
 	public function test_should_not_show_express_checkout_button_for_non_shipping_but_price_does_not_include_tax() {
@@ -319,18 +319,18 @@ class WC_Payments_Express_Checkout_Button_Helper_Test extends WCPAY_UnitTestCase
 
 		WC_Payments::mode()->dev();
 
-		add_filter( 'woocommerce_is_checkout', '__return_true' );
+		add_filter( 'poocommerce_is_checkout', '__return_true' );
 		add_filter( 'wc_shipping_enabled', '__return_false' );
 		add_filter( 'wc_tax_enabled', '__return_true' );
 
-		update_option( 'woocommerce_tax_based_on', 'billing' );
-		update_option( 'woocommerce_prices_include_tax', 'no' );
+		update_option( 'poocommerce_tax_based_on', 'billing' );
+		update_option( 'poocommerce_prices_include_tax', 'no' );
 
 		$this->assertFalse( $this->system_under_test->should_show_express_checkout_button() );
 
-		remove_filter( 'woocommerce_is_checkout', '__return_true' );
+		remove_filter( 'poocommerce_is_checkout', '__return_true' );
 		remove_filter( 'wc_tax_enabled', '__return_true' );
-		remove_filter( 'pre_option_woocommerce_tax_display_cart', [ $this, '__return_incl' ] );
+		remove_filter( 'pre_option_poocommerce_tax_display_cart', [ $this, '__return_incl' ] );
 	}
 
 	/**
@@ -530,7 +530,7 @@ class WC_Payments_Express_Checkout_Button_Helper_Test extends WCPAY_UnitTestCase
 		WC_Payments::set_database_cache( $mock_cache );
 
 		// EUR is not supported for US merchants.
-		add_filter( 'woocommerce_currency', [ $this, 'return_eur_currency' ] );
+		add_filter( 'poocommerce_currency', [ $this, 'return_eur_currency' ] );
 
 		$mock_account = $this->createMock( WC_Payments_Account::class );
 		$mock_account->method( 'get_account_country' )->willReturn( 'US' );
@@ -563,7 +563,7 @@ class WC_Payments_Express_Checkout_Button_Helper_Test extends WCPAY_UnitTestCase
 		$this->assertNotContains( 'amazon_pay', $enabled_methods );
 
 		remove_all_filters( 'pre_option__wcpay_feature_amazon_pay' );
-		remove_filter( 'woocommerce_currency', [ $this, 'return_eur_currency' ] );
+		remove_filter( 'poocommerce_currency', [ $this, 'return_eur_currency' ] );
 		WC_Payments::set_database_cache( $original_cache );
 	}
 
@@ -649,7 +649,7 @@ class WC_Payments_Express_Checkout_Button_Helper_Test extends WCPAY_UnitTestCase
 
 		if ( $tax_on_billing ) {
 			add_filter( 'wc_tax_enabled', '__return_true' );
-			update_option( 'woocommerce_tax_based_on', 'billing' );
+			update_option( 'poocommerce_tax_based_on', 'billing' );
 		} else {
 			add_filter( 'wc_tax_enabled', '__return_false' );
 		}
@@ -672,7 +672,7 @@ class WC_Payments_Express_Checkout_Button_Helper_Test extends WCPAY_UnitTestCase
 		WC_Payments::set_database_cache( $original_cache );
 		remove_filter( 'wc_tax_enabled', '__return_true' );
 		remove_filter( 'wc_tax_enabled', '__return_false' );
-		delete_option( 'woocommerce_tax_based_on' );
+		delete_option( 'poocommerce_tax_based_on' );
 	}
 
 	public function test_can_use_amazon_pay_returns_false_when_express_checkout_in_payment_methods_enabled() {

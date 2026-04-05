@@ -36,7 +36,7 @@
 		&:not( :disabled ) {
 			&:focus,
 			&:focus-within {
-				outline: 4px solid $studio-woocommerce-purple-10;
+				outline: 4px solid $studio-poocommerce-purple-10;
 			}
 
 			&:hover {
@@ -56,7 +56,7 @@
 		}
 
 		svg {
-			fill: $studio-woocommerce-purple-60;
+			fill: $studio-poocommerce-purple-60;
 			width: 99px;
 		}
 
@@ -102,16 +102,16 @@
 		}
 
 		&[data-theme='dark'] {
-			background: $studio-woocommerce-purple-40;
+			background: $studio-poocommerce-purple-40;
 			color: $white;
-			border-color: $studio-woocommerce-purple-40;
+			border-color: $studio-poocommerce-purple-40;
 
 			svg {
 				fill: $white;
 			}
 			&:not( :disabled ):hover {
-				border-color: $studio-woocommerce-purple-30;
-				background: $studio-woocommerce-purple-30;
+				border-color: $studio-poocommerce-purple-30;
+				background: $studio-poocommerce-purple-30;
 			}
 		}
 

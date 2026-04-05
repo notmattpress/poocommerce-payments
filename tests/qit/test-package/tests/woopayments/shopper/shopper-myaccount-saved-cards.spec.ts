@@ -68,7 +68,7 @@ const makeCardTimingHelper = () => {
 		// Make sure that at least 20s had already elapsed since the last card was added.
 		// Otherwise, you will get the error message,
 		// "You cannot add a new payment method so soon after the previous one."
-		// Source: /docker/wordpress/wp-content/plugins/woocommerce/includes/class-wc-form-handler.php#L509-L521
+		// Source: /docker/wordpress/wp-content/plugins/poocommerce/includes/class-wc-form-handler.php#L509-L521
 
 		// Be careful that this is only needed for a successful card addition, so call it only where it's needed the most, to prevent unnecessary delays.
 		async waitIfNeededBeforeAddingCard( page: Page ) {

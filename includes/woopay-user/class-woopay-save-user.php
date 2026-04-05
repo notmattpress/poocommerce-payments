@@ -2,7 +2,7 @@
 /**
  * Class WooPaySaveUser
  *
- * @package WooCommerce\Payments\WooPay
+ * @package PooCommerce\Payments\WooPay
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -30,20 +30,20 @@ class WooPay_Save_User {
 
 		add_action( 'wp_enqueue_scripts', [ $this, 'register_checkout_page_scripts' ] );
 		add_filter( 'wcpay_metadata_from_order', [ $this, 'maybe_add_userdata_to_metadata' ], 10, 2 );
-		add_action( 'woocommerce_payment_complete', [ $this, 'maybe_clear_session_key' ], 10, 2 );
+		add_action( 'poocommerce_payment_complete', [ $this, 'maybe_clear_session_key' ], 10, 2 );
 	}
 
 	/**
 	 * Load scripts and styles for checkout page.
 	 */
 	public function register_checkout_page_scripts() {
-		if ( ! is_checkout() && ! has_block( 'woocommerce/checkout' ) ) {
+		if ( ! is_checkout() && ! has_block( 'poocommerce/checkout' ) ) {
 			return;
 		}
 
 		// Don't enqueue checkout page scripts when WCPay isn't available.
 		$gateways = WC()->payment_gateways->get_available_payment_gateways();
-		if ( ! isset( $gateways['woocommerce_payments'] ) ) {
+		if ( ! isset( $gateways['poocommerce_payments'] ) ) {
 			return;
 		}
 

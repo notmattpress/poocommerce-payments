@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Express_Checkout_Ajax_Handler
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -39,8 +39,8 @@ class WC_Payments_Express_Checkout_Ajax_Handler {
 	 * @return  void
 	 */
 	public function init() {
-		if ( function_exists( 'woocommerce_store_api_register_update_callback' ) ) {
-			woocommerce_store_api_register_update_callback(
+		if ( function_exists( 'poocommerce_store_api_register_update_callback' ) ) {
+			poocommerce_store_api_register_update_callback(
 				[
 					'namespace' => 'woopayments/express-checkout/refresh-ui',
 					// do nothing, this callback is needed just to refresh the UI.
@@ -50,7 +50,7 @@ class WC_Payments_Express_Checkout_Ajax_Handler {
 		}
 
 		add_action(
-			'woocommerce_store_api_checkout_update_order_from_request',
+			'poocommerce_store_api_checkout_update_order_from_request',
 			[
 				$this,
 				'tokenized_cart_set_payment_method_type',
@@ -59,7 +59,7 @@ class WC_Payments_Express_Checkout_Ajax_Handler {
 			2
 		);
 		add_filter( 'rest_pre_dispatch', [ $this, 'tokenized_cart_store_api_address_normalization' ], 10, 3 );
-		add_filter( 'woocommerce_get_country_locale', [ $this, 'modify_country_locale_for_express_checkout' ], 20 );
+		add_filter( 'poocommerce_get_country_locale', [ $this, 'modify_country_locale_for_express_checkout' ], 20 );
 	}
 
 	/**
@@ -82,7 +82,7 @@ class WC_Payments_Express_Checkout_Ajax_Handler {
 				[
 					'error' => [
 						'code'    => 'invalid_product_id',
-						'message' => __( 'Invalid product id', 'woocommerce-payments' ),
+						'message' => __( 'Invalid product id', 'poocommerce-payments' ),
 					],
 				],
 				404
@@ -94,7 +94,7 @@ class WC_Payments_Express_Checkout_Ajax_Handler {
 
 		$product_type = $product->get_type();
 
-		$is_add_to_cart_valid = apply_filters( 'woocommerce_add_to_cart_validation', true, $product_id, $quantity );
+		$is_add_to_cart_valid = apply_filters( 'poocommerce_add_to_cart_validation', true, $product_id, $quantity );
 
 		if ( ! $is_add_to_cart_valid ) {
 			// Some extensions error messages needs to be
@@ -123,7 +123,7 @@ class WC_Payments_Express_Checkout_Ajax_Handler {
 
 		if ( in_array( $product_type, [ 'simple', 'variation', 'subscription', 'subscription_variation', 'booking', 'bundle', 'mix-and-match' ], true ) ) {
 			$allowed_item_data = [
-				// Teams for WooCommerce Memberships fields.
+				// Teams for PooCommerce Memberships fields.
 				'team_name',
 				'team_owner_takes_seat',
 			];
@@ -162,7 +162,7 @@ class WC_Payments_Express_Checkout_Ajax_Handler {
 	 * @param \WP_REST_Request $request Store API request to update the order.
 	 */
 	public function tokenized_cart_set_payment_method_type( \WC_Order $order, \WP_REST_Request $request ) {
-		if ( ! isset( $request['payment_method'] ) || 'woocommerce_payments' !== $request['payment_method'] ) {
+		if ( ! isset( $request['payment_method'] ) || 'poocommerce_payments' !== $request['payment_method'] ) {
 			return;
 		}
 
@@ -238,7 +238,7 @@ class WC_Payments_Express_Checkout_Ajax_Handler {
 		// If that's the case, let's temporarily allow to skip the zip code validation, in order to get some shipping rates.
 		$is_update_customer_route = $request->get_route() === '/wc/store/v1/cart/update-customer';
 		if ( $is_update_customer_route ) {
-			add_filter( 'woocommerce_validate_postcode', [ $this, 'maybe_skip_postcode_validation' ], 10, 3 );
+			add_filter( 'poocommerce_validate_postcode', [ $this, 'maybe_skip_postcode_validation' ], 10, 3 );
 		}
 
 		if ( isset( $request['shipping_address'] ) && is_array( $request['shipping_address'] ) ) {
@@ -290,7 +290,7 @@ class WC_Payments_Express_Checkout_Ajax_Handler {
 	}
 
 	/**
-	 * Transform a Google Pay/Apple Pay state address data fields into values that are valid for WooCommerce.
+	 * Transform a Google Pay/Apple Pay state address data fields into values that are valid for PooCommerce.
 	 *
 	 * @param array $address The address to normalize from the Google Pay/Apple Pay request.
 	 *
@@ -370,7 +370,7 @@ class WC_Payments_Express_Checkout_Ajax_Handler {
 		}
 
 		// If the above doesn't work, fallback to matching against the list of translated
-		// states from WooCommerce.
+		// states from PooCommerce.
 		return $this->get_normalized_state_from_wc_states( $state, $country );
 	}
 
@@ -420,7 +420,7 @@ class WC_Payments_Express_Checkout_Ajax_Handler {
 	}
 
 	/**
-	 * Get normalized state from WooCommerce list of translated states.
+	 * Get normalized state from PooCommerce list of translated states.
 	 *
 	 * @param string $state Full state name or state code.
 	 * @param string $country Two-letter country code.
@@ -442,7 +442,7 @@ class WC_Payments_Express_Checkout_Ajax_Handler {
 	}
 
 	/**
-	 * Transform a Google Pay/Apple Pay postcode address data fields into values that are valid for WooCommerce.
+	 * Transform a Google Pay/Apple Pay postcode address data fields into values that are valid for PooCommerce.
 	 *
 	 * @param array $address The address to normalize from the Google Pay/Apple Pay request.
 	 *

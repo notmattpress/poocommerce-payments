@@ -1,7 +1,7 @@
 {
-    "name": "woocommerce/payments",
-    "description": "WooCommerce Payments",
-    "homepage": "https://github.com/Automattic/woocommerce-payments",
+    "name": "poocommerce/payments",
+    "description": "PooCommerce Payments",
+    "homepage": "https://github.com/Automattic/poocommerce-payments",
     "type": "wordpress-plugin",
     "license": "GPL-3.0-or-later",
     "prefer-stable": true,
@@ -27,25 +27,25 @@
         "automattic/jetpack-config": "3.1.1",
         "automattic/jetpack-autoloader": "5.0.15",
         "automattic/jetpack-sync": "4.24.1",
-        "woocommerce/subscriptions-core": "6.7.1",
+        "poocommerce/subscriptions-core": "6.7.1",
         "automattic/jetpack-constants": "3.0.8"
     },
     "require-dev": {
         "composer/installers": "1.10.0",
         "phpunit/phpunit": "9.6.34",
-        "woocommerce/woocommerce-sniffs": "1.0.0",
-        "woocommerce/action-scheduler": "3.8.2",
+        "poocommerce/poocommerce-sniffs": "1.0.0",
+        "poocommerce/action-scheduler": "3.8.2",
         "kalessil/production-dependencies-guard": "dev-master",
         "phpstan/phpstan": "^1.10",
         "phpstan/extension-installer": "^1.3",
         "php-stubs/wordpress-stubs": "5.9.6",
-        "php-stubs/woocommerce-stubs": "6.8.0",
+        "php-stubs/poocommerce-stubs": "6.8.0",
         "rregeer/phpunit-coverage-check": "0.3.1",
         "yoast/phpunit-polyfills": "2.0.5",
         "cweagans/composer-patches": "1.7.1",
         "automattic/jetpack-changelogger": "3.3.2",
         "spatie/phpunit-watcher": "1.23.6",
-        "woocommerce/qit-cli": "dev-trunk",
+        "poocommerce/qit-cli": "dev-trunk",
         "slevomat/coding-standard": "^8.15",
         "dg/bypass-finals": "1.5.1",
         "sirbrillig/phpcs-variable-analysis": "^2.11",
@@ -107,7 +107,7 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/automattic/woocommerce-subscriptions-core.git"
+            "url": "https://github.com/automattic/poocommerce-subscriptions-core.git"
         }
     ]
 }

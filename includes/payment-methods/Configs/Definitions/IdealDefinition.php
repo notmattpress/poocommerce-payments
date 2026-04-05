@@ -53,7 +53,7 @@ class IdealDefinition implements PaymentMethodDefinitionInterface {
 	 * @return string
 	 */
 	public static function get_title( ?string $account_country = null ): string {
-		return __( 'iDEAL | Wero', 'woocommerce-payments' );
+		return __( 'iDEAL | Wero', 'poocommerce-payments' );
 	}
 
 	/**
@@ -86,7 +86,7 @@ class IdealDefinition implements PaymentMethodDefinitionInterface {
 	 * @return string
 	 */
 	public static function get_description( ?string $account_country = null ): string {
-		return __( 'Expand your business with iDEAL | Wero — Netherlands\'s most popular payment method.', 'woocommerce-payments' );
+		return __( 'Expand your business with iDEAL | Wero — Netherlands\'s most popular payment method.', 'poocommerce-payments' );
 	}
 
 	/**

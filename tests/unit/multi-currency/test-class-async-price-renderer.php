@@ -2,7 +2,7 @@
 /**
  * Class WCPay_Multi_Currency_Async_Price_Renderer_Tests
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\MultiCurrency\AsyncPriceRenderer;
@@ -45,7 +45,7 @@ class WCPay_Multi_Currency_Async_Price_Renderer_Tests extends WCPAY_UnitTestCase
 	 */
 	public function test_wrap_price_with_skeleton_produces_correct_html() {
 		$result = $this->renderer->wrap_price_with_skeleton(
-			'<span class="woocommerce-Price-amount amount">$10.00</span>',
+			'<span class="poocommerce-Price-amount amount">$10.00</span>',
 			10.00,
 			[],
 			10.00,

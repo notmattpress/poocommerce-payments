@@ -2,7 +2,7 @@
 /**
  * Class file for WCPay\Core\Server\Request.
  *
- * @package WooCommerce Payments
+ * @package PooCommerce Payments
  */
 
 namespace WCPay\Core\Server;
@@ -668,7 +668,7 @@ abstract class Request {
 	protected function validate_stripe_id( $id, $prefixes = null ) {
 		if ( empty( $id ) ) {
 			throw new Invalid_Request_Parameter_Exception(
-				esc_html__( 'Empty parameter is not allowed', 'woocommerce-payments' ),
+				esc_html__( 'Empty parameter is not allowed', 'poocommerce-payments' ),
 				'wcpay_core_invalid_request_parameter_stripe_id'
 			);
 		}
@@ -699,7 +699,7 @@ abstract class Request {
 			esc_html(
 				sprintf(
 				// Translators: %s is a Stripe ID.
-					__( '%s is not a valid Stripe identifier', 'woocommerce-payments' ),
+					__( '%s is not a valid Stripe identifier', 'poocommerce-payments' ),
 					$id
 				)
 			),
@@ -724,7 +724,7 @@ abstract class Request {
 			esc_html(
 				sprintf(
 				/* translators: %1$s and %2$s are both numbers */
-					__( 'Invalid number passed. Number %1$s needs to be larger than %2$s', 'woocommerce-payments' ),
+					__( 'Invalid number passed. Number %1$s needs to be larger than %2$s', 'poocommerce-payments' ),
 					$value_to_validate,
 					$value_to_compare
 				)
@@ -748,7 +748,7 @@ abstract class Request {
 				esc_html(
 					sprintf(
 					// Translators: %s is a currency code.
-						__( '%s is not a supported currency for payments.', 'woocommerce-payments' ),
+						__( '%s is not a supported currency for payments.', 'poocommerce-payments' ),
 						$currency_code
 					)
 				),
@@ -798,7 +798,7 @@ abstract class Request {
 				esc_html(
 					sprintf(
 					// Translators: %1$s is a provided date string, %2$s is a date format.
-						__( '%1$s is not a valid date for format %2$s.', 'woocommerce-payments' ),
+						__( '%1$s is not a valid date for format %2$s.', 'poocommerce-payments' ),
 						$date,
 						$format
 					)
@@ -823,7 +823,7 @@ abstract class Request {
 				esc_html(
 					sprintf(
 					// Translators: %s is a currency code.
-						__( '%1$s is not a valid redirect URL. Use a URL in the allowed_redirect_hosts filter.', 'woocommerce-payments' ),
+						__( '%1$s is not a valid redirect URL. Use a URL in the allowed_redirect_hosts filter.', 'poocommerce-payments' ),
 						$redirect_url
 					)
 				),
@@ -847,7 +847,7 @@ abstract class Request {
 				esc_html(
 					sprintf(
 					// Translators: %s is a provided username.
-						__( '%s is not a valid username.', 'woocommerce-payments' ),
+						__( '%s is not a valid username.', 'poocommerce-payments' ),
 						$user_name
 					)
 				),
