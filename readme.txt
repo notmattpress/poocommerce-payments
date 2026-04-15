@@ -112,10 +112,12 @@ You can read our Terms of Service and other policies [here](https://woocommerce.
 * Fix - fix: amazon pay manual capture compatibility
 * Fix - fix: avoid fatal error on invalid currency option in DB
 * Fix - fix: ensure that page doesn't crash if wallet icon is missing
+* Fix - fix: express checkout to show recurring subscription info for free trial subscriptions with sign-up fees, not just pure $0 free trials
 * Fix - fix: MCCY tooltip messaging for payment methods supporting multiple currencies now uses "or" instead of "and"
 * Fix - fix: prevent payment error string being written in the order meta
 * Fix - fix: trim whitespace for postcode at checkout
 * Fix - fix: unit tests after new WC version
+* Fix - Fix active plugin list being empty on older WooCommerce versions
 * Fix - Fix additional wc pay tracking call on order creation
 * Fix - Fix Apple Pay manual capture error when using confirmation tokens
 * Fix - Fix Docker preflight skipping infrastructure startup when database container is missing
@@ -131,6 +133,8 @@ You can read our Terms of Service and other policies [here](https://woocommerce.
 * Fix - Fix undefined index warning when store country is empty in terminal locations controller
 * Fix - Fix WooPay admin preview footer card logo sizing and layout at narrow widths.
 * Fix - Fix WooPay Direct Checkout not working in iAPI mini-cart (WooCommerce 10.4+)
+* Fix - Fix WooPay themed checkout header color not applied when template part is nested inside a wrapper block
+* Fix - Handle duplicate KYC session initialization gracefully
 * Fix - Harden public multi-currency config REST endpoint with permission callback
 * Fix - Improve cover letter print preview to safely render content.
 * Fix - Intermittent empty cart after switching from guest to an existing customer
