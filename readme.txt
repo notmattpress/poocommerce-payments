@@ -88,7 +88,7 @@ You can read our Terms of Service and other policies [here](https://woocommerce.
 == Changelog ==
 
 = 10.7.1 - 2026-04-16 =
-
+* Fix - Fix changelog entries for 10.7.0 release.
 
 = 10.7.0 - 2026-04-15 =
 * Add - Add client-side async price renderer for cache-optimized multi-currency mode
