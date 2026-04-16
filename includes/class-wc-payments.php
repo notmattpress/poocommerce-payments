@@ -12,7 +12,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 use WCPay\Core\Mode;
 use WCPay\Core\Server\Request;
 use WCPay\Migrations\Allowed_Payment_Request_Button_Types_Update;
-use WCPay\Payment_Methods\CC_Payment_Method;
 use WCPay\Payment_Methods\UPE_Payment_Method;
 use WCPay\PaymentMethods\Configs\Definitions\GiropayDefinition;
 use WCPay\PaymentMethods\Configs\Definitions\SofortDefinition;
@@ -339,6 +338,7 @@ class WC_Payments {
 		define( 'WCPAY_VERSION_NUMBER', self::get_plugin_headers()['Version'] );
 
 		include_once __DIR__ . '/class-wc-payments-utils.php';
+		include_once __DIR__ . '/class-wc-payments-styles-cache.php';
 		include_once __DIR__ . '/core/class-mode.php';
 
 		self::$mode = new Mode();
@@ -360,10 +360,12 @@ class WC_Payments {
 		add_action( 'admin_init', [ __CLASS__, 'remove_deprecated_notes' ] );
 		add_action( 'init', [ __CLASS__, 'install_actions' ] );
 
-		// Invalidate the styles cache version when theme or styles change.
-		add_action( 'after_switch_theme', [ 'WC_Payments_Utils', 'invalidate_styles_cache_version' ] );
-		add_action( 'save_post_wp_global_styles', [ 'WC_Payments_Utils', 'invalidate_styles_cache_version' ] );
-		add_action( 'customize_save_after', [ 'WC_Payments_Utils', 'invalidate_styles_cache_version' ] );
+		// Invalidate styles cache and recompute WooPay appearance when theme or styles change.
+		add_action( 'after_switch_theme', [ 'WC_Payments_Styles_Cache', 'handle_theme_change' ] );
+		add_action( 'save_post_wp_global_styles', [ 'WC_Payments_Styles_Cache', 'handle_theme_change' ] );
+		add_action( 'customize_save_after', [ 'WC_Payments_Styles_Cache', 'handle_theme_change' ] );
+		add_action( 'save_post_wp_template_part', [ 'WC_Payments_Styles_Cache', 'handle_theme_change' ] );
+		add_action( 'save_post_wp_template', [ 'WC_Payments_Styles_Cache', 'handle_theme_change' ] );
 
 		add_action( 'woocommerce_blocks_payment_method_type_registration', [ __CLASS__, 'register_checkout_gateway' ] );
 		add_action( 'enqueue_block_editor_assets', [ __CLASS__, 'disable_express_checkout_in_block_editor' ], 1 );
@@ -442,7 +444,6 @@ class WC_Payments {
 		include_once __DIR__ . '/class-wc-payment-gateway-wcpay.php';
 		include_once __DIR__ . '/class-wc-payments-checkout.php';
 		include_once __DIR__ . '/payment-methods/class-upe-payment-method.php';
-		include_once __DIR__ . '/payment-methods/class-cc-payment-method.php';
 		include_once __DIR__ . '/inline-script-payloads/class-woo-payments-payment-methods-config.php';
 		include_once __DIR__ . '/express-checkout/class-wc-payments-express-checkout-button-helper.php';
 		include_once __DIR__ . '/class-wc-payment-token-wcpay-sepa.php';
@@ -579,23 +580,8 @@ class WC_Payments {
 		self::$token_service->init_hooks();
 		self::$fee_remediation->init();
 
-		/**
-		 * FLAG: PAYMENT_METHODS_LIST
-		 * As payment methods are converted to use definitions, they need to be removed from the list below.
-		 */
-		$payment_method_classes = [
-			CC_Payment_Method::class,
-		];
-
 		$payment_methods = [];
-		// Initialize legacy payment methods.
-		foreach ( $payment_method_classes as $payment_method_class ) {
-			$payment_method                               = new $payment_method_class( self::$token_service );
-			$payment_methods[ $payment_method->get_id() ] = $payment_method;
-		}
 
-		// Initialize definition-based payment methods.
-		// Initialize and get payment method classes from the registry for those that have been converted.
 		$registry = PaymentMethodDefinitionRegistry::instance();
 		$registry->init();
 
@@ -608,7 +594,7 @@ class WC_Payments {
 
 		// Build the card gateway first so that WC_Payments::get_gateway() is available
 		// during construction of the other gateways (e.g. for settings checks).
-		$card_payment_method                                        = $payment_methods[ CC_Payment_Method::PAYMENT_METHOD_STRIPE_ID ];
+		$card_payment_method                                        = $payment_methods[ \WCPay\PaymentMethods\Configs\Definitions\CardDefinition::get_id() ];
 		self::$payment_method_map[ $card_payment_method->get_id() ] = $card_payment_method;
 		self::$card_gateway = new WC_Payment_Gateway_WCPay( self::$api_client, self::$account, self::$customer_service, self::$token_service, self::$action_scheduler_service, $card_payment_method, $payment_methods, self::$order_service, self::$duplicate_payment_prevention_service, self::$localization_service, self::$fraud_service, self::$duplicates_detection_service, self::$failed_transaction_rate_limiter );
 		self::$payment_gateway_map[ $card_payment_method->get_id() ] = self::$card_gateway;
@@ -731,7 +717,7 @@ class WC_Payments {
 		add_action( 'woocommerce_woocommerce_payments_updated', [ new \WCPay\Migrations\Migrate_Express_Checkout_Locations(), 'maybe_migrate' ] );
 		add_action( 'woocommerce_woocommerce_payments_updated', [ new \WCPay\Migrations\Add_Amazon_Pay_To_Express_Checkout_Locations(), 'maybe_migrate' ] );
 		add_action( 'woocommerce_woocommerce_payments_updated', [ new \WCPay\Migrations\Delete_Appearance_Transients(), 'maybe_migrate' ] );
-		add_action( 'woocommerce_woocommerce_payments_updated', [ 'WC_Payments_Utils', 'invalidate_styles_cache_version' ] );
+		add_action( 'woocommerce_woocommerce_payments_updated', [ 'WC_Payments_Styles_Cache', 'handle_theme_change' ] );
 
 		include_once WCPAY_ABSPATH . '/includes/class-wc-payments-explicit-price-formatter.php';
 		WC_Payments_Explicit_Price_Formatter::init();
@@ -903,6 +889,11 @@ class WC_Payments {
 	public static function add_address_provider( $providers ) {
 		// Only enable address provider integration if a WCPay gateway is enabled.
 		if ( ! self::get_gateway()->is_enabled() ) {
+			return $providers;
+		}
+
+		// Don't offer address autocomplete if the account is rejected or suspended (under review).
+		if ( self::$account->is_account_rejected() || self::$account->is_account_under_review() ) {
 			return $providers;
 		}
 
@@ -1695,6 +1686,10 @@ class WC_Payments {
 			add_action( 'wc_ajax_wcpay_set_woopay_phone_number', [ WooPay_Session::class, 'ajax_set_woopay_phone_number' ] );
 			add_action( 'wc_ajax_wcpay_get_woopay_signature', [ __CLASS__, 'ajax_get_woopay_signature' ] );
 			add_action( 'wc_ajax_wcpay_get_woopay_minimum_session_data', [ WooPay_Session::class, 'ajax_get_woopay_minimum_session_data' ] );
+			// Admin-only endpoint: always accepts appearance write (requires manage_woocommerce).
+			add_action( 'wp_ajax_wcpay_admin_set_woopay_appearance', [ WooPay_Session::class, 'ajax_admin_set_woopay_appearance' ] );
+			// Shopper endpoint: conditional write (only if slot is empty for current version).
+			add_action( 'wc_ajax_wcpay_shopper_set_woopay_appearance', [ WooPay_Session::class, 'ajax_shopper_set_woopay_appearance' ] );
 
 			// This injects the payments API and draft orders into core, so the WooCommerce Blocks plugin is not necessary.
 			// We should remove this once both features are available by default in the WC minimum supported version.

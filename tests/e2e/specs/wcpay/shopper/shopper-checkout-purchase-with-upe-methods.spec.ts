@@ -27,6 +27,7 @@ import {
 	fillBillingAddress,
 	focusPlaceOrderButton,
 	placeOrder,
+	selectPaymentMethod,
 } from '../../../utils/shopper';
 import { config } from '../../../config/default';
 import { goToCheckout } from '../../../utils/shopper-navigation';
@@ -86,6 +87,11 @@ test.describe(
 						}
 					} );
 
+					// Reload after each test to prevent state leaking between tests.
+					test.afterEach( async () => {
+						await shopperPage.reload();
+					} );
+
 					test( 'should successfully place order with Bancontact', async () => {
 						await addToCartFromShopPage( shopperPage );
 						await goToCheckout( shopperPage );
@@ -97,17 +103,7 @@ test.describe(
 							shopperPage,
 							ctpEnabled
 						);
-						await shopperPage.getByText( 'Bancontact' ).click();
-						// Ensure the actual radio becomes checked (visibility of :checked can be flaky)
-						const bancontactRadio = shopperPage.locator(
-							'#payment_method_woocommerce_payments_bancontact'
-						);
-						await bancontactRadio.scrollIntoViewIfNeeded();
-						// Explicitly check in case label click didn't propagate
-						await bancontactRadio.check( { force: true } );
-						await expect( bancontactRadio ).toBeChecked( {
-							timeout: 10000,
-						} );
+						await selectPaymentMethod( shopperPage, 'Bancontact' );
 
 						await focusPlaceOrderButton( shopperPage );
 						await placeOrder( shopperPage );

@@ -12,6 +12,7 @@ import {
 	getCachedAppearance,
 	setCachedAppearance,
 	dispatchAppearanceEvent,
+	isAppearanceValid,
 } from 'wcpay/utils/appearance-cache';
 import showErrorCheckout from 'wcpay/checkout/utils/show-error-checkout';
 import {
@@ -62,7 +63,14 @@ function initializeAppearance( elementsLocation ) {
 
 	const appearance = getAppearance( elementsLocation );
 	dispatchAppearanceEvent( appearance, elementsLocation );
-	setCachedAppearance( elementsLocation, version, appearance );
+
+	// Only cache if extraction produced meaningful rules.
+	// Empty results (e.g. non-standard theme markup) should not be cached
+	// so the next page load can retry extraction.
+	if ( isAppearanceValid( appearance ) ) {
+		setCachedAppearance( elementsLocation, version, appearance );
+	}
+
 	return appearance;
 }
 
@@ -207,9 +215,12 @@ async function createStripePaymentMethod(
 					line2: document.querySelector(
 						`#${ SHORTCODE_BILLING_ADDRESS_FIELDS.address_2 }`
 					)?.value,
-					postal_code: document.querySelector(
-						`#${ SHORTCODE_BILLING_ADDRESS_FIELDS.postcode }`
-					)?.value,
+					// Trim to avoid Stripe AVS mismatches on leading/trailing whitespace.
+					postal_code: document
+						.querySelector(
+							`#${ SHORTCODE_BILLING_ADDRESS_FIELDS.postcode }`
+						)
+						?.value?.trim(),
 					state: document.querySelector(
 						`#${ SHORTCODE_BILLING_ADDRESS_FIELDS.state }`
 					)?.value,

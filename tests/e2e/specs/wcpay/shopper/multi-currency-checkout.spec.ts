@@ -6,7 +6,7 @@ import { test, expect, Page } from '@playwright/test';
  * Internal dependencies
  */
 import { config } from '../../../config/default';
-import { getMerchant, getShopper, isUIUnblocked } from '../../../utils/helpers';
+import { getMerchant, getShopper } from '../../../utils/helpers';
 import {
 	activateMulticurrency,
 	addCurrency,
@@ -141,7 +141,7 @@ test.describe( 'Multi-currency checkout', () => {
 				config.addresses[ 'upe-customer' ].billing.be
 			);
 			await expect(
-				shopperPage.getByText( 'Bancontact' )
+				shopperPage.getByText( 'Bancontact', { exact: true } )
 			).not.toBeVisible();
 
 			// Shopper switch to EUR.
@@ -152,19 +152,7 @@ test.describe( 'Multi-currency checkout', () => {
 				shopperPage,
 				config.addresses[ 'upe-customer' ].billing.be
 			);
-			await expect( shopperPage.getByText( 'Bancontact' ) ).toBeVisible();
-
-			// Ensure UI is not blocked before clicking
-			await isUIUnblocked( shopperPage );
-
-			// Shopper checkout with Bancontact.
-			await shopperPage.getByText( 'Bancontact' ).click();
-
-			// Wait for the Bancontact payment method to be actually selected
-			await shopperPage.waitForSelector(
-				'#payment_method_woocommerce_payments_bancontact:checked',
-				{ timeout: 10000 }
-			);
+			await shopper.selectPaymentMethod( shopperPage, 'Bancontact' );
 
 			await shopper.focusPlaceOrderButton( shopperPage );
 			await shopper.placeOrder( shopperPage );
@@ -192,7 +180,9 @@ test.describe( 'Multi-currency checkout', () => {
 				shopperPage,
 				config.addresses[ 'upe-customer' ].billing.be
 			);
-			await expect( shopperPage.getByText( 'Bancontact' ) ).toBeVisible();
+			await expect(
+				shopperPage.getByText( 'Bancontact', { exact: true } )
+			).toBeVisible();
 
 			// Shopper switch to USD.
 			await navigation.goToCheckout( shopperPage, {
@@ -203,7 +193,7 @@ test.describe( 'Multi-currency checkout', () => {
 				config.addresses[ 'upe-customer' ].billing.be
 			);
 			await expect(
-				shopperPage.getByText( 'Bancontact' )
+				shopperPage.getByText( 'Bancontact', { exact: true } )
 			).not.toBeVisible();
 
 			// Shopper checkout with CC.

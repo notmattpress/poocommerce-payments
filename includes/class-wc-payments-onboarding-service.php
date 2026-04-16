@@ -116,6 +116,7 @@ class WC_Payments_Onboarding_Service {
 	public function init_hooks() {
 		add_filter( 'admin_body_class', [ $this, 'add_admin_body_classes' ] );
 		add_filter( 'wc_payments_get_onboarding_data_args', [ $this, 'maybe_add_test_drive_settings_to_new_account_request' ] );
+		add_filter( 'wc_payments_get_onboarding_data_args', [ $this, 'add_woocommerce_store_id_to_request' ] );
 	}
 
 	/**
@@ -683,17 +684,18 @@ class WC_Payments_Onboarding_Service {
 	 *
 	 * Note: This is a subset of the WC_Payments_Account::maybe_handle_onboarding method.
 	 *
-	 * @param string $country      The country code to use for the account.
-	 *                             This is a ISO 3166-1 alpha-2 country code.
-	 * @param array  $capabilities Optional. List keyed by capabilities IDs (payment methods) with boolean values
-	 *                             indicating whether the capability should be requested when the account is created
-	 *                             and enabled in the settings.
+	 * @param string $country                 The country code to use for the account.
+	 *                                         This is a ISO 3166-1 alpha-2 country code.
+	 * @param array  $capabilities             Optional. List keyed by capabilities IDs (payment methods) with boolean values
+	 *                                         indicating whether the capability should be requested when the account is created
+	 *                                         and enabled in the settings.
+	 * @param array  $additional_account_data  Optional. Additional account data to merge into the account data sent to the platform.
 	 *
 	 * @return bool Whether the account was created.
 	 * @throws API_Exception When the API request fails.
 	 * @throws Exception When an onboarding initialization is already in progress.
 	 */
-	public function init_test_drive_account( string $country, array $capabilities = [] ): bool {
+	public function init_test_drive_account( string $country, array $capabilities = [], array $additional_account_data = [] ): bool {
 		if ( ! $this->payments_api_client->is_server_connected() ) {
 			throw new Exception( __( 'Your store is not connected to WordPress.com. Please connect it first.', 'woocommerce-payments' ) );
 		}
@@ -733,12 +735,20 @@ class WC_Payments_Onboarding_Service {
 		);
 
 		// Attempt to create the account.
+		// Filter out empty values first, then merge additional data so that
+		// boolean `false` values (e.g. `extra_bootstrapping: false`) are preserved.
+		$account_data = WC_Payments_Utils::array_filter_recursive( $account_data );
+
+		if ( ! empty( $additional_account_data ) ) {
+			$account_data = WC_Payments_Utils::array_merge_recursive_distinct( $account_data, $additional_account_data );
+		}
+
 		$onboarding_data = $this->payments_api_client->get_onboarding_data(
 			false,
 			WC_Payments_Account::get_connect_url(),
 			$site_data,
 			WC_Payments_Utils::array_filter_recursive( $user_data ),
-			WC_Payments_Utils::array_filter_recursive( $account_data ),
+			$account_data,
 			self::get_actioned_notes(),
 		);
 
@@ -1145,12 +1155,12 @@ class WC_Payments_Onboarding_Service {
 		if ( false !== strpos( $referer, 'page=wc-admin&task=payments' ) ) {
 			return self::FROM_WCADMIN_PAYMENTS_TASK;
 		}
-		if ( false !== strpos( $referer, 'page=wc-settings&tab=checkout' ) ) {
-			return self::FROM_WCADMIN_PAYMENTS_SETTINGS;
-		}
 		if ( false !== strpos( $referer, 'page=wc-settings&tab=checkout' ) &&
 			false !== strpos( $referer, 'path=/woopayments/onboarding' ) ) {
 			return self::FROM_WCADMIN_NOX_IN_CONTEXT;
+		}
+		if ( false !== strpos( $referer, 'page=wc-settings&tab=checkout' ) ) {
+			return self::FROM_WCADMIN_PAYMENTS_SETTINGS;
 		}
 		if ( false !== strpos( $referer, 'path=/wc-pay-welcome-page' ) ) {
 			return self::FROM_WCADMIN_INCENTIVE;
@@ -1414,6 +1424,21 @@ class WC_Payments_Onboarding_Service {
 			delete_transient( WC_Payments_Account::ONBOARDING_TEST_DRIVE_SETTINGS_FOR_LIVE_ACCOUNT );
 		}
 
+		return $args;
+	}
+
+	/**
+	 * Add the WooCommerce store ID to outgoing onboarding request args.
+	 *
+	 * @param array $args The request args.
+	 *
+	 * @return array
+	 */
+	public function add_woocommerce_store_id_to_request( array $args ): array {
+		$store_id_key                 = ( class_exists( '\WC_Install' ) && defined( '\WC_Install::STORE_ID_OPTION' ) )
+			? \WC_Install::STORE_ID_OPTION
+			: 'woocommerce_store_id';
+		$args['woocommerce_store_id'] = get_option( $store_id_key, '' );
 		return $args;
 	}
 
