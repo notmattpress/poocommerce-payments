@@ -5,7 +5,7 @@
  */
 import React from 'react';
 import { __ } from '@wordpress/i18n';
-import { Link } from '@woocommerce/components';
+import { Link } from '@poocommerce/components';
 
 /**
  * Internal dependencies.
@@ -21,15 +21,15 @@ import { Dispute } from 'wcpay/types/disputes';
 import { formatDateTimeFromTimestamp } from 'wcpay/utils/date-time';
 
 const fields: { key: string; label: string }[] = [
-	{ key: 'created', label: __( 'Dispute date', 'woocommerce-payments' ) },
-	{ key: 'amount', label: __( 'Disputed amount', 'woocommerce-payments' ) },
-	{ key: 'dueBy', label: __( 'Respond by', 'woocommerce-payments' ) },
-	{ key: 'reason', label: __( 'Reason', 'woocommerce-payments' ) },
-	{ key: 'order', label: __( 'Order', 'woocommerce-payments' ) },
-	{ key: 'customer', label: __( 'Customer', 'woocommerce-payments' ) },
+	{ key: 'created', label: __( 'Dispute date', 'poocommerce-payments' ) },
+	{ key: 'amount', label: __( 'Disputed amount', 'poocommerce-payments' ) },
+	{ key: 'dueBy', label: __( 'Respond by', 'poocommerce-payments' ) },
+	{ key: 'reason', label: __( 'Reason', 'poocommerce-payments' ) },
+	{ key: 'order', label: __( 'Order', 'poocommerce-payments' ) },
+	{ key: 'customer', label: __( 'Customer', 'poocommerce-payments' ) },
 	{
 		key: 'transactionId',
-		label: __( 'Transaction ID', 'woocommerce-payments' ),
+		label: __( 'Transaction ID', 'poocommerce-payments' ),
 	},
 ];
 
@@ -59,13 +59,13 @@ const Info = ( {
 } ): JSX.Element => {
 	const data: Record< string, any > = isLoading
 		? {
-				created: __( 'Created date', 'woocommerce-payments' ),
-				amount: __( 'Amount', 'woocommerce-payments' ),
-				dueBy: __( 'Due by date', 'woocommerce-payments' ),
-				reason: __( 'Dispute reason', 'woocommerce-payments' ),
-				order: __( 'Order link', 'woocommerce-payments' ),
-				customer: __( 'Customer name', 'woocommerce-payments' ),
-				transactionId: __( 'Transaction link', 'woocommerce-payments' ),
+				created: __( 'Created date', 'poocommerce-payments' ),
+				amount: __( 'Amount', 'poocommerce-payments' ),
+				dueBy: __( 'Due by date', 'poocommerce-payments' ),
+				reason: __( 'Dispute reason', 'poocommerce-payments' ),
+				order: __( 'Order link', 'poocommerce-payments' ),
+				customer: __( 'Customer name', 'poocommerce-payments' ),
+				transactionId: __( 'Transaction link', 'poocommerce-payments' ),
 		  }
 		: {
 				created: formatDateTimeFromTimestamp( dispute.created ),

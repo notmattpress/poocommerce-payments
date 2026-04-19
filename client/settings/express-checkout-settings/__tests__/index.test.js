@@ -72,7 +72,7 @@ jest.mock( 'utils/express-checkout', () => ( {
 	} ),
 } ) );
 
-jest.mock( '@woocommerce/components', () => ( {
+jest.mock( '@poocommerce/components', () => ( {
 	Link: jest
 		.fn()
 		.mockImplementation( ( { href, children } ) => (

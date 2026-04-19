@@ -2,7 +2,7 @@
 /**
  * Class Level3ServiceTest
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Tests\Internal\Service;
@@ -239,7 +239,7 @@ class Level3ServiceTest extends WCPAY_UnitTestCase {
 
 		$this->legacy_proxy->expects( $this->once() )
 			->method( 'call_function' )
-			->with( 'get_option', 'woocommerce_store_postcode' )
+			->with( 'get_option', 'poocommerce_store_postcode' )
 			->willReturn( '94110' );
 
 		$this->mock_account->method( 'get_account_country' )->willReturn( Country_Code::UNITED_STATES );
@@ -270,7 +270,7 @@ class Level3ServiceTest extends WCPAY_UnitTestCase {
 
 		$this->legacy_proxy->expects( $this->once() )
 			->method( 'call_function' )
-			->with( 'get_option', 'woocommerce_store_postcode' )
+			->with( 'get_option', 'poocommerce_store_postcode' )
 			->willReturn( '94110' );
 
 		$this->mock_account->method( 'get_account_country' )->willReturn( Country_Code::UNITED_STATES );
@@ -309,7 +309,7 @@ class Level3ServiceTest extends WCPAY_UnitTestCase {
 
 		$this->legacy_proxy->expects( $this->once() )
 			->method( 'call_function' )
-			->with( 'get_option', 'woocommerce_store_postcode' )
+			->with( 'get_option', 'poocommerce_store_postcode' )
 			->willReturn( '94110' );
 
 		$this->mock_account->method( 'get_account_country' )->willReturn( Country_Code::UNITED_STATES );
@@ -356,7 +356,7 @@ class Level3ServiceTest extends WCPAY_UnitTestCase {
 
 		$this->legacy_proxy->expects( $this->once() )
 			->method( 'call_function' )
-			->with( 'get_option', 'woocommerce_store_postcode' )
+			->with( 'get_option', 'poocommerce_store_postcode' )
 			->willReturn( '94110' );
 
 		$this->mock_account->method( 'get_account_country' )->willReturn( Country_Code::UNITED_STATES );
@@ -396,7 +396,7 @@ class Level3ServiceTest extends WCPAY_UnitTestCase {
 		// Use a non-US postcode.
 		$this->legacy_proxy->expects( $this->once() )
 			->method( 'call_function' )
-			->with( 'get_option', 'woocommerce_store_postcode' )
+			->with( 'get_option', 'poocommerce_store_postcode' )
 			->willReturn( '9000' );
 
 		$this->mock_account->method( 'get_account_country' )->willReturn( Country_Code::UNITED_STATES );
@@ -437,7 +437,7 @@ class Level3ServiceTest extends WCPAY_UnitTestCase {
 
 		$this->legacy_proxy->expects( $this->once() )
 			->method( 'call_function' )
-			->with( 'get_option', 'woocommerce_store_postcode' )
+			->with( 'get_option', 'poocommerce_store_postcode' )
 			->willReturn( '94110' );
 
 		$this->mock_account->method( 'get_account_country' )->willReturn( Country_Code::UNITED_STATES );
@@ -487,7 +487,7 @@ class Level3ServiceTest extends WCPAY_UnitTestCase {
 
 		$this->legacy_proxy->expects( $this->once() )
 			->method( 'call_function' )
-			->with( 'get_option', 'woocommerce_store_postcode' )
+			->with( 'get_option', 'poocommerce_store_postcode' )
 			->willReturn( '94110' );
 
 		$this->mock_account->method( 'get_account_country' )->willReturn( Country_Code::UNITED_STATES );

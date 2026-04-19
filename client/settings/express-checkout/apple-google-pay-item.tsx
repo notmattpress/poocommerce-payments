@@ -40,7 +40,7 @@ const AppleGooglePayExpressCheckoutItem = (): React.ReactElement => {
 			id="express-checkouts-apple-google-pay"
 		>
 			<PaymentMethodItem.Checkbox
-				label={ __( 'Apple Pay / Google Pay', 'woocommerce-payments' ) }
+				label={ __( 'Apple Pay / Google Pay', 'poocommerce-payments' ) }
 				checked={ isPaymentRequestEnabled }
 				onChange={ updateIsPaymentRequestEnabled }
 			/>
@@ -60,7 +60,7 @@ const AppleGooglePayExpressCheckoutItem = (): React.ReactElement => {
 										/* eslint-disable-next-line max-len */
 										'By enabling this feature, you agree to {{stripeLink}}Stripe{{/stripeLink}} and' +
 											"{{appleLink}} Apple{{/appleLink}}'s terms of use.",
-										'woocommerce-payments'
+										'poocommerce-payments'
 									),
 									components: {
 										stripeLink: (
@@ -98,7 +98,7 @@ const AppleGooglePayExpressCheckoutItem = (): React.ReactElement => {
 										/* eslint-disable-next-line max-len */
 										'By enabling this feature, you agree to {{stripeLink}}Stripe{{/stripeLink}}, ' +
 											"and {{googleLink}}Google{{/googleLink}}'s terms of use.",
-										'woocommerce-payments'
+										'poocommerce-payments'
 									),
 									components: {
 										stripeLink: (
@@ -129,7 +129,7 @@ const AppleGooglePayExpressCheckoutItem = (): React.ReactElement => {
 						) }
 						isSecondary
 					>
-						{ __( 'Customize', 'woocommerce-payments' ) }
+						{ __( 'Customize', 'poocommerce-payments' ) }
 					</Button>
 				</PaymentMethodItem.Action>
 			</PaymentMethodItem.Body>

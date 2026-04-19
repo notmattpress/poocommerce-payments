@@ -38,55 +38,55 @@ const getDuplicateMatrix = (): {
 	physical_product__is_duplicate: [
 		{
 			key: DOCUMENT_FIELD_KEYS.RECEIPT,
-			label: __( 'Order receipt', 'woocommerce-payments' ),
+			label: __( 'Order receipt', 'poocommerce-payments' ),
 			description: __(
 				"A copy of the customer's receipt, which can be found in the receipt history for this transaction.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 10,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.REFUND_RECEIPT_DOCUMENTATION,
-			label: __( 'Refund receipt', 'woocommerce-payments' ),
+			label: __( 'Refund receipt', 'poocommerce-payments' ),
 			description: __(
 				'A confirmation that a refund was issued.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 15,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.ACCESS_ACTIVITY_LOG,
-			label: __( 'Proof of active subscription', 'woocommerce-payments' ),
+			label: __( 'Proof of active subscription', 'poocommerce-payments' ),
 			description: __(
 				'Any documents showing the billing history, subscription status, or cancellation logs, for example.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 22,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.REFUND_POLICY,
-			label: __( 'Refund policy', 'woocommerce-payments' ),
+			label: __( 'Refund policy', 'poocommerce-payments' ),
 			description: __(
 				"A screenshot of your store's refund policy.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 25,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.CANCELLATION_POLICY,
-			label: __( 'Terms of service', 'woocommerce-payments' ),
+			label: __( 'Terms of service', 'poocommerce-payments' ),
 			description: __(
 				"A screenshot of your store's terms of service.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 30,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.UNCATEGORIZED_FILE,
-			label: __( 'Other documents', 'woocommerce-payments' ),
+			label: __( 'Other documents', 'poocommerce-payments' ),
 			description: __(
 				'Any other relevant documents that will support your case.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 100,
 		},
@@ -95,37 +95,37 @@ const getDuplicateMatrix = (): {
 	physical_product__is_not_duplicate: [
 		{
 			key: DOCUMENT_FIELD_KEYS.RECEIPT,
-			label: __( 'Order receipt', 'woocommerce-payments' ),
+			label: __( 'Order receipt', 'poocommerce-payments' ),
 			description: __(
 				"A copy of the customer's receipt, which can be found in the receipt history for this transaction.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 10,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.DUPLICATE_CHARGE_DOCUMENTATION,
-			label: __( 'Any additional receipts', 'woocommerce-payments' ),
+			label: __( 'Any additional receipts', 'poocommerce-payments' ),
 			description: __(
 				'Receipt(s) for any other order(s) from this customer.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 12,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.REFUND_POLICY,
-			label: __( 'Refund policy', 'woocommerce-payments' ),
+			label: __( 'Refund policy', 'poocommerce-payments' ),
 			description: __(
 				"A screenshot of your store's refund policy.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 25,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.UNCATEGORIZED_FILE,
-			label: __( 'Other documents', 'woocommerce-payments' ),
+			label: __( 'Other documents', 'poocommerce-payments' ),
 			description: __(
 				'Any other relevant documents that will support your case.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 100,
 		},
@@ -134,37 +134,37 @@ const getDuplicateMatrix = (): {
 	booking_reservation__is_duplicate: [
 		{
 			key: DOCUMENT_FIELD_KEYS.RECEIPT,
-			label: __( 'Order receipt', 'woocommerce-payments' ),
+			label: __( 'Order receipt', 'poocommerce-payments' ),
 			description: __(
 				"A copy of the customer's receipt, which can be found in the receipt history for this transaction.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 10,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.REFUND_RECEIPT_DOCUMENTATION,
-			label: __( 'Refund receipt', 'woocommerce-payments' ),
+			label: __( 'Refund receipt', 'poocommerce-payments' ),
 			description: __(
 				'A confirmation that a refund was issued.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 15,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.REFUND_POLICY,
-			label: __( 'Refund policy', 'woocommerce-payments' ),
+			label: __( 'Refund policy', 'poocommerce-payments' ),
 			description: __(
 				"A screenshot of your store's refund policy.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 25,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.UNCATEGORIZED_FILE,
-			label: __( 'Other documents', 'woocommerce-payments' ),
+			label: __( 'Other documents', 'poocommerce-payments' ),
 			description: __(
 				'Any other relevant documents that will support your case.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 100,
 		},
@@ -173,37 +173,37 @@ const getDuplicateMatrix = (): {
 	booking_reservation__is_not_duplicate: [
 		{
 			key: DOCUMENT_FIELD_KEYS.RECEIPT,
-			label: __( 'Order receipt', 'woocommerce-payments' ),
+			label: __( 'Order receipt', 'poocommerce-payments' ),
 			description: __(
 				"A copy of the customer's receipt, which can be found in the receipt history for this transaction.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 10,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.DUPLICATE_CHARGE_DOCUMENTATION,
-			label: __( 'Any additional receipts', 'woocommerce-payments' ),
+			label: __( 'Any additional receipts', 'poocommerce-payments' ),
 			description: __(
 				'Receipt(s) for any other order(s) from this customer.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 12,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.REFUND_POLICY,
-			label: __( 'Refund policy', 'woocommerce-payments' ),
+			label: __( 'Refund policy', 'poocommerce-payments' ),
 			description: __(
 				"A screenshot of your store's refund policy.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 25,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.UNCATEGORIZED_FILE,
-			label: __( 'Other documents', 'woocommerce-payments' ),
+			label: __( 'Other documents', 'poocommerce-payments' ),
 			description: __(
 				'Any other relevant documents that will support your case.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 100,
 		},
@@ -212,37 +212,37 @@ const getDuplicateMatrix = (): {
 	digital_product_or_service__is_duplicate: [
 		{
 			key: DOCUMENT_FIELD_KEYS.RECEIPT,
-			label: __( 'Order receipt', 'woocommerce-payments' ),
+			label: __( 'Order receipt', 'poocommerce-payments' ),
 			description: __(
 				"A copy of the customer's receipt, which can be found in the receipt history for this transaction.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 10,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.REFUND_RECEIPT_DOCUMENTATION,
-			label: __( 'Refund receipt', 'woocommerce-payments' ),
+			label: __( 'Refund receipt', 'poocommerce-payments' ),
 			description: __(
 				'A confirmation that a refund was issued.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 15,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.REFUND_POLICY,
-			label: __( 'Refund policy', 'woocommerce-payments' ),
+			label: __( 'Refund policy', 'poocommerce-payments' ),
 			description: __(
 				"A screenshot of your store's refund policy.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 25,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.UNCATEGORIZED_FILE,
-			label: __( 'Other documents', 'woocommerce-payments' ),
+			label: __( 'Other documents', 'poocommerce-payments' ),
 			description: __(
 				'Any other relevant documents that will support your case.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 100,
 		},
@@ -251,37 +251,37 @@ const getDuplicateMatrix = (): {
 	digital_product_or_service__is_not_duplicate: [
 		{
 			key: DOCUMENT_FIELD_KEYS.RECEIPT,
-			label: __( 'Order receipt', 'woocommerce-payments' ),
+			label: __( 'Order receipt', 'poocommerce-payments' ),
 			description: __(
 				"A copy of the customer's receipt, which can be found in the receipt history for this transaction.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 10,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.DUPLICATE_CHARGE_DOCUMENTATION,
-			label: __( 'Any additional receipts', 'woocommerce-payments' ),
+			label: __( 'Any additional receipts', 'poocommerce-payments' ),
 			description: __(
 				'Receipt(s) for any other order(s) from this customer.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 12,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.REFUND_POLICY,
-			label: __( 'Refund policy', 'woocommerce-payments' ),
+			label: __( 'Refund policy', 'poocommerce-payments' ),
 			description: __(
 				"A screenshot of your store's refund policy.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 25,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.UNCATEGORIZED_FILE,
-			label: __( 'Other documents', 'woocommerce-payments' ),
+			label: __( 'Other documents', 'poocommerce-payments' ),
 			description: __(
 				'Any other relevant documents that will support your case.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 100,
 		},
@@ -290,37 +290,37 @@ const getDuplicateMatrix = (): {
 	offline_service__is_duplicate: [
 		{
 			key: DOCUMENT_FIELD_KEYS.RECEIPT,
-			label: __( 'Order receipt', 'woocommerce-payments' ),
+			label: __( 'Order receipt', 'poocommerce-payments' ),
 			description: __(
 				"A copy of the customer's receipt, which can be found in the receipt history for this transaction.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 10,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.REFUND_RECEIPT_DOCUMENTATION,
-			label: __( 'Refund receipt', 'woocommerce-payments' ),
+			label: __( 'Refund receipt', 'poocommerce-payments' ),
 			description: __(
 				'A confirmation that a refund was issued.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 15,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.REFUND_POLICY,
-			label: __( 'Refund policy', 'woocommerce-payments' ),
+			label: __( 'Refund policy', 'poocommerce-payments' ),
 			description: __(
 				"A screenshot of your store's refund policy.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 25,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.UNCATEGORIZED_FILE,
-			label: __( 'Other documents', 'woocommerce-payments' ),
+			label: __( 'Other documents', 'poocommerce-payments' ),
 			description: __(
 				'Any other relevant documents that will support your case.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 100,
 		},
@@ -329,37 +329,37 @@ const getDuplicateMatrix = (): {
 	offline_service__is_not_duplicate: [
 		{
 			key: DOCUMENT_FIELD_KEYS.RECEIPT,
-			label: __( 'Order receipt', 'woocommerce-payments' ),
+			label: __( 'Order receipt', 'poocommerce-payments' ),
 			description: __(
 				"A copy of the customer's receipt, which can be found in the receipt history for this transaction.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 10,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.DUPLICATE_CHARGE_DOCUMENTATION,
-			label: __( 'Any additional receipts', 'woocommerce-payments' ),
+			label: __( 'Any additional receipts', 'poocommerce-payments' ),
 			description: __(
 				'Receipt(s) for any other order(s) from this customer.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 12,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.REFUND_POLICY,
-			label: __( 'Refund policy', 'woocommerce-payments' ),
+			label: __( 'Refund policy', 'poocommerce-payments' ),
 			description: __(
 				"A screenshot of your store's refund policy.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 25,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.UNCATEGORIZED_FILE,
-			label: __( 'Other documents', 'woocommerce-payments' ),
+			label: __( 'Other documents', 'poocommerce-payments' ),
 			description: __(
 				'Any other relevant documents that will support your case.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 100,
 		},
@@ -368,37 +368,37 @@ const getDuplicateMatrix = (): {
 	event__is_duplicate: [
 		{
 			key: DOCUMENT_FIELD_KEYS.RECEIPT,
-			label: __( 'Order receipt', 'woocommerce-payments' ),
+			label: __( 'Order receipt', 'poocommerce-payments' ),
 			description: __(
 				"A copy of the customer's receipt, which can be found in the receipt history for this transaction.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 10,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.REFUND_RECEIPT_DOCUMENTATION,
-			label: __( 'Refund receipt', 'woocommerce-payments' ),
+			label: __( 'Refund receipt', 'poocommerce-payments' ),
 			description: __(
 				'A confirmation that a refund was issued.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 15,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.REFUND_POLICY,
-			label: __( 'Refund policy', 'woocommerce-payments' ),
+			label: __( 'Refund policy', 'poocommerce-payments' ),
 			description: __(
 				"A screenshot of your store's refund policy.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 25,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.UNCATEGORIZED_FILE,
-			label: __( 'Other documents', 'woocommerce-payments' ),
+			label: __( 'Other documents', 'poocommerce-payments' ),
 			description: __(
 				'Any other relevant documents that will support your case.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 100,
 		},
@@ -407,37 +407,37 @@ const getDuplicateMatrix = (): {
 	event__is_not_duplicate: [
 		{
 			key: DOCUMENT_FIELD_KEYS.RECEIPT,
-			label: __( 'Order receipt', 'woocommerce-payments' ),
+			label: __( 'Order receipt', 'poocommerce-payments' ),
 			description: __(
 				"A copy of the customer's receipt, which can be found in the receipt history for this transaction.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 10,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.DUPLICATE_CHARGE_DOCUMENTATION,
-			label: __( 'Any additional receipts', 'woocommerce-payments' ),
+			label: __( 'Any additional receipts', 'poocommerce-payments' ),
 			description: __(
 				'Receipt(s) for any other order(s) from this customer.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 12,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.REFUND_POLICY,
-			label: __( 'Refund policy', 'woocommerce-payments' ),
+			label: __( 'Refund policy', 'poocommerce-payments' ),
 			description: __(
 				"A screenshot of your store's refund policy.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 25,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.UNCATEGORIZED_FILE,
-			label: __( 'Other documents', 'woocommerce-payments' ),
+			label: __( 'Other documents', 'poocommerce-payments' ),
 			description: __(
 				'Any other relevant documents that will support your case.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 100,
 		},
@@ -446,37 +446,37 @@ const getDuplicateMatrix = (): {
 	other__is_duplicate: [
 		{
 			key: DOCUMENT_FIELD_KEYS.RECEIPT,
-			label: __( 'Order receipt', 'woocommerce-payments' ),
+			label: __( 'Order receipt', 'poocommerce-payments' ),
 			description: __(
 				"A copy of the customer's receipt, which can be found in the receipt history for this transaction.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 10,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.REFUND_RECEIPT_DOCUMENTATION,
-			label: __( 'Refund receipt', 'woocommerce-payments' ),
+			label: __( 'Refund receipt', 'poocommerce-payments' ),
 			description: __(
 				'A confirmation that a refund was issued.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 15,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.REFUND_POLICY,
-			label: __( 'Refund policy', 'woocommerce-payments' ),
+			label: __( 'Refund policy', 'poocommerce-payments' ),
 			description: __(
 				"A screenshot of your store's refund policy.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 25,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.UNCATEGORIZED_FILE,
-			label: __( 'Other documents', 'woocommerce-payments' ),
+			label: __( 'Other documents', 'poocommerce-payments' ),
 			description: __(
 				'Any other relevant documents that will support your case.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 100,
 		},
@@ -485,37 +485,37 @@ const getDuplicateMatrix = (): {
 	other__is_not_duplicate: [
 		{
 			key: DOCUMENT_FIELD_KEYS.RECEIPT,
-			label: __( 'Order receipt', 'woocommerce-payments' ),
+			label: __( 'Order receipt', 'poocommerce-payments' ),
 			description: __(
 				"A copy of the customer's receipt, which can be found in the receipt history for this transaction.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 10,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.DUPLICATE_CHARGE_DOCUMENTATION,
-			label: __( 'Any additional receipts', 'woocommerce-payments' ),
+			label: __( 'Any additional receipts', 'poocommerce-payments' ),
 			description: __(
 				'Receipt(s) for any other order(s) from this customer.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 12,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.REFUND_POLICY,
-			label: __( 'Refund policy', 'woocommerce-payments' ),
+			label: __( 'Refund policy', 'poocommerce-payments' ),
 			description: __(
 				"A screenshot of your store's refund policy.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 25,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.UNCATEGORIZED_FILE,
-			label: __( 'Other documents', 'woocommerce-payments' ),
+			label: __( 'Other documents', 'poocommerce-payments' ),
 			description: __(
 				'Any other relevant documents that will support your case.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 100,
 		},
@@ -537,46 +537,46 @@ const getSubscriptionCanceledMatrix = (): {
 	physical_product: [
 		{
 			key: DOCUMENT_FIELD_KEYS.RECEIPT,
-			label: __( 'Order receipt', 'woocommerce-payments' ),
+			label: __( 'Order receipt', 'poocommerce-payments' ),
 			description: __(
 				"A copy of the customer's receipt, which can be found in the receipt history for this transaction.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 10,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.CANCELLATION_REBUTTAL,
-			label: __( 'Cancellation logs', 'woocommerce-payments' ),
+			label: __( 'Cancellation logs', 'poocommerce-payments' ),
 			description: __(
 				'Records showing no cancellation attempt or request was made before the charge, such as account activity, subscription status, or communication history.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 25,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.REFUND_POLICY,
-			label: __( 'Refund policy', 'woocommerce-payments' ),
+			label: __( 'Refund policy', 'poocommerce-payments' ),
 			description: __(
 				"A screenshot of your store's refund policy.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 30,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.CANCELLATION_POLICY,
-			label: __( 'Terms of service', 'woocommerce-payments' ),
+			label: __( 'Terms of service', 'poocommerce-payments' ),
 			description: __(
 				"A screenshot of your store's terms of service.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 35,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.UNCATEGORIZED_FILE,
-			label: __( 'Other documents', 'woocommerce-payments' ),
+			label: __( 'Other documents', 'poocommerce-payments' ),
 			description: __(
 				'Any other relevant documents that will support your case.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 100,
 		},
@@ -585,37 +585,37 @@ const getSubscriptionCanceledMatrix = (): {
 	booking_reservation: [
 		{
 			key: DOCUMENT_FIELD_KEYS.RECEIPT,
-			label: __( 'Order receipt', 'woocommerce-payments' ),
+			label: __( 'Order receipt', 'poocommerce-payments' ),
 			description: __(
 				"A copy of the customer's receipt, which can be found in the receipt history for this transaction.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 10,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.CANCELLATION_REBUTTAL,
-			label: __( 'Cancellation logs', 'woocommerce-payments' ),
+			label: __( 'Cancellation logs', 'poocommerce-payments' ),
 			description: __(
 				'Records showing no cancellation attempt or request was made before the charge, such as account activity, subscription status, or communication history.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 25,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.CANCELLATION_POLICY,
-			label: __( 'Terms of service', 'woocommerce-payments' ),
+			label: __( 'Terms of service', 'poocommerce-payments' ),
 			description: __(
 				"A screenshot of your store's terms of service.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 30,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.UNCATEGORIZED_FILE,
-			label: __( 'Other documents', 'woocommerce-payments' ),
+			label: __( 'Other documents', 'poocommerce-payments' ),
 			description: __(
 				'Any other relevant documents that will support your case.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 100,
 		},
@@ -624,37 +624,37 @@ const getSubscriptionCanceledMatrix = (): {
 	offline_service: [
 		{
 			key: DOCUMENT_FIELD_KEYS.RECEIPT,
-			label: __( 'Order receipt', 'woocommerce-payments' ),
+			label: __( 'Order receipt', 'poocommerce-payments' ),
 			description: __(
 				"A copy of the customer's receipt, which can be found in the receipt history for this transaction.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 10,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.CANCELLATION_REBUTTAL,
-			label: __( 'Cancellation logs', 'woocommerce-payments' ),
+			label: __( 'Cancellation logs', 'poocommerce-payments' ),
 			description: __(
 				'Records showing no cancellation attempt or request was made before the charge, such as account activity, subscription status, or communication history.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 25,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.CANCELLATION_POLICY,
-			label: __( 'Terms of service', 'woocommerce-payments' ),
+			label: __( 'Terms of service', 'poocommerce-payments' ),
 			description: __(
 				"A screenshot of your store's terms of service.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 30,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.UNCATEGORIZED_FILE,
-			label: __( 'Other documents', 'woocommerce-payments' ),
+			label: __( 'Other documents', 'poocommerce-payments' ),
 			description: __(
 				'Any other relevant documents that will support your case.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 100,
 		},
@@ -663,37 +663,37 @@ const getSubscriptionCanceledMatrix = (): {
 	event: [
 		{
 			key: DOCUMENT_FIELD_KEYS.RECEIPT,
-			label: __( 'Order receipt', 'woocommerce-payments' ),
+			label: __( 'Order receipt', 'poocommerce-payments' ),
 			description: __(
 				"A copy of the customer's receipt, which can be found in the receipt history for this transaction.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 10,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.CANCELLATION_REBUTTAL,
-			label: __( 'Cancellation logs', 'woocommerce-payments' ),
+			label: __( 'Cancellation logs', 'poocommerce-payments' ),
 			description: __(
 				'Records showing no cancellation attempt or request was made before the charge, such as account activity, subscription status, or communication history.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 25,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.CANCELLATION_POLICY,
-			label: __( 'Terms of service', 'woocommerce-payments' ),
+			label: __( 'Terms of service', 'poocommerce-payments' ),
 			description: __(
 				"A screenshot of your store's terms of service.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 30,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.UNCATEGORIZED_FILE,
-			label: __( 'Other documents', 'woocommerce-payments' ),
+			label: __( 'Other documents', 'poocommerce-payments' ),
 			description: __(
 				'Any other relevant documents that will support your case.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 100,
 		},
@@ -702,46 +702,46 @@ const getSubscriptionCanceledMatrix = (): {
 	digital_product_or_service: [
 		{
 			key: DOCUMENT_FIELD_KEYS.RECEIPT,
-			label: __( 'Order receipt', 'woocommerce-payments' ),
+			label: __( 'Order receipt', 'poocommerce-payments' ),
 			description: __(
 				"A copy of the customer's receipt, which can be found in the receipt history for this transaction.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 10,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.CANCELLATION_REBUTTAL,
-			label: __( 'Cancellation logs', 'woocommerce-payments' ),
+			label: __( 'Cancellation logs', 'poocommerce-payments' ),
 			description: __(
 				'Records showing no cancellation attempt or request was made before the charge, such as account activity, subscription status, or communication history.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 15,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.ACCESS_ACTIVITY_LOG,
-			label: __( 'Login or usage records', 'woocommerce-payments' ),
+			label: __( 'Login or usage records', 'poocommerce-payments' ),
 			description: __(
 				'Any documents showing the login history, usage activity, or access logs for the digital product or service.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 22,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.CANCELLATION_POLICY,
-			label: __( 'Terms of service', 'woocommerce-payments' ),
+			label: __( 'Terms of service', 'poocommerce-payments' ),
 			description: __(
 				"A screenshot of your store's terms of service.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 30,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.UNCATEGORIZED_FILE,
-			label: __( 'Other documents', 'woocommerce-payments' ),
+			label: __( 'Other documents', 'poocommerce-payments' ),
 			description: __(
 				'Any other relevant documents that will support your case.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 100,
 		},
@@ -750,28 +750,28 @@ const getSubscriptionCanceledMatrix = (): {
 	other: [
 		{
 			key: DOCUMENT_FIELD_KEYS.RECEIPT,
-			label: __( 'Order receipt', 'woocommerce-payments' ),
+			label: __( 'Order receipt', 'poocommerce-payments' ),
 			description: __(
 				"A copy of the customer's receipt, which can be found in the receipt history for this transaction.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 10,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.CANCELLATION_POLICY,
-			label: __( 'Terms of service', 'woocommerce-payments' ),
+			label: __( 'Terms of service', 'poocommerce-payments' ),
 			description: __(
 				"A screenshot of your store's terms of service.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 25,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.UNCATEGORIZED_FILE,
-			label: __( 'Other documents', 'woocommerce-payments' ),
+			label: __( 'Other documents', 'poocommerce-payments' ),
 			description: __(
 				'Any other relevant documents that will support your case.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 100,
 		},
@@ -780,37 +780,37 @@ const getSubscriptionCanceledMatrix = (): {
 	multiple: [
 		{
 			key: DOCUMENT_FIELD_KEYS.RECEIPT,
-			label: __( 'Order receipt', 'woocommerce-payments' ),
+			label: __( 'Order receipt', 'poocommerce-payments' ),
 			description: __(
 				"A copy of the customer's receipt, which can be found in the receipt history for this transaction.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 10,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.REFUND_POLICY,
-			label: __( 'Refund policy', 'woocommerce-payments' ),
+			label: __( 'Refund policy', 'poocommerce-payments' ),
 			description: __(
 				"A screenshot of your store's refund policy.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 40,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.CANCELLATION_POLICY,
-			label: __( 'Terms of service', 'woocommerce-payments' ),
+			label: __( 'Terms of service', 'poocommerce-payments' ),
 			description: __(
 				"A screenshot of your store's terms of service.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 50,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.UNCATEGORIZED_FILE,
-			label: __( 'Other documents', 'woocommerce-payments' ),
+			label: __( 'Other documents', 'poocommerce-payments' ),
 			description: __(
 				'Any other relevant documents that will support your case.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 100,
 		},
@@ -827,37 +827,37 @@ const getProductNotReceivedMatrix = (): {
 	physical_product: [
 		{
 			key: DOCUMENT_FIELD_KEYS.RECEIPT,
-			label: __( 'Order receipt', 'woocommerce-payments' ),
+			label: __( 'Order receipt', 'poocommerce-payments' ),
 			description: __(
 				"A copy of the customer's receipt, which can be found in the receipt history for this transaction.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 10,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.CUSTOMER_SIGNATURE,
-			label: __( "Customer's signature", 'woocommerce-payments' ),
+			label: __( "Customer's signature", 'poocommerce-payments' ),
 			description: __(
 				"Any relevant documents showing the customer's signature, such as signed proof of delivery.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 25,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.REFUND_POLICY,
-			label: __( 'Refund policy', 'woocommerce-payments' ),
+			label: __( 'Refund policy', 'poocommerce-payments' ),
 			description: __(
 				"A screenshot of your store's refund policy.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 30,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.UNCATEGORIZED_FILE,
-			label: __( 'Other documents', 'woocommerce-payments' ),
+			label: __( 'Other documents', 'poocommerce-payments' ),
 			description: __(
 				'Any other relevant documents that will support your case.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 100,
 		},
@@ -866,28 +866,28 @@ const getProductNotReceivedMatrix = (): {
 	digital_product_or_service: [
 		{
 			key: DOCUMENT_FIELD_KEYS.RECEIPT,
-			label: __( 'Order receipt', 'woocommerce-payments' ),
+			label: __( 'Order receipt', 'poocommerce-payments' ),
 			description: __(
 				"A copy of the customer's receipt, which can be found in the receipt history for this transaction.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 10,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.ACCESS_ACTIVITY_LOG,
-			label: __( 'Login or usage records', 'woocommerce-payments' ),
+			label: __( 'Login or usage records', 'poocommerce-payments' ),
 			description: __(
 				'Any documents showing the login history, usage activity, or access logs for the digital product or service.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 15,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.UNCATEGORIZED_FILE,
-			label: __( 'Other documents', 'woocommerce-payments' ),
+			label: __( 'Other documents', 'poocommerce-payments' ),
 			description: __(
 				'Any other relevant documents that will support your case.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 100,
 		},
@@ -896,10 +896,10 @@ const getProductNotReceivedMatrix = (): {
 	booking_reservation: [
 		{
 			key: DOCUMENT_FIELD_KEYS.RECEIPT,
-			label: __( 'Order receipt', 'woocommerce-payments' ),
+			label: __( 'Order receipt', 'poocommerce-payments' ),
 			description: __(
 				"A copy of the customer's receipt, which can be found in the receipt history for this transaction.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 10,
 		},
@@ -907,29 +907,29 @@ const getProductNotReceivedMatrix = (): {
 			key: DOCUMENT_FIELD_KEYS.SERVICE_DOCUMENTATION,
 			label: __(
 				'Reservation or booking confirmation',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			description: __(
 				'Any documents showing the service completion, attendance or reservation confirmation.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 25,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.CANCELLATION_REBUTTAL,
-			label: __( 'Cancellation confirmation', 'woocommerce-payments' ),
+			label: __( 'Cancellation confirmation', 'poocommerce-payments' ),
 			description: __(
 				'Documents showing the product or service was canceled, such as cancellation logs, confirmation emails, or account records.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 30,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.UNCATEGORIZED_FILE,
-			label: __( 'Other documents', 'woocommerce-payments' ),
+			label: __( 'Other documents', 'poocommerce-payments' ),
 			description: __(
 				'Any other relevant documents that will support your case.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 100,
 		},
@@ -938,28 +938,28 @@ const getProductNotReceivedMatrix = (): {
 	offline_service: [
 		{
 			key: DOCUMENT_FIELD_KEYS.RECEIPT,
-			label: __( 'Order receipt', 'woocommerce-payments' ),
+			label: __( 'Order receipt', 'poocommerce-payments' ),
 			description: __(
 				"A copy of the customer's receipt, which can be found in the receipt history for this transaction.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 10,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.SERVICE_DOCUMENTATION,
-			label: __( 'Proof of service completion', 'woocommerce-payments' ),
+			label: __( 'Proof of service completion', 'poocommerce-payments' ),
 			description: __(
 				'Screenshots or documents showing the service was completed and delivered to the customer.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 15,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.UNCATEGORIZED_FILE,
-			label: __( 'Other documents', 'woocommerce-payments' ),
+			label: __( 'Other documents', 'poocommerce-payments' ),
 			description: __(
 				'Any other relevant documents that will support your case.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 100,
 		},
@@ -968,28 +968,28 @@ const getProductNotReceivedMatrix = (): {
 	event: [
 		{
 			key: DOCUMENT_FIELD_KEYS.RECEIPT,
-			label: __( 'Order receipt', 'woocommerce-payments' ),
+			label: __( 'Order receipt', 'poocommerce-payments' ),
 			description: __(
 				"A copy of the customer's receipt, which can be found in the receipt history for this transaction.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 10,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.SERVICE_DOCUMENTATION,
-			label: __( 'Attendance confirmation', 'woocommerce-payments' ),
+			label: __( 'Attendance confirmation', 'poocommerce-payments' ),
 			description: __(
 				'Any documents showing the service completion, attendance or reservation confirmation.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 15,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.UNCATEGORIZED_FILE,
-			label: __( 'Other documents', 'woocommerce-payments' ),
+			label: __( 'Other documents', 'poocommerce-payments' ),
 			description: __(
 				'Any other relevant documents that will support your case.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 100,
 		},
@@ -998,28 +998,28 @@ const getProductNotReceivedMatrix = (): {
 	other: [
 		{
 			key: DOCUMENT_FIELD_KEYS.RECEIPT,
-			label: __( 'Order receipt', 'woocommerce-payments' ),
+			label: __( 'Order receipt', 'poocommerce-payments' ),
 			description: __(
 				"A copy of the customer's receipt, which can be found in the receipt history for this transaction.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 10,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.SERVICE_DOCUMENTATION,
-			label: __( 'Service completion records', 'woocommerce-payments' ),
+			label: __( 'Service completion records', 'poocommerce-payments' ),
 			description: __(
 				'Screenshots or documents showing the service was completed and delivered to the customer.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 15,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.UNCATEGORIZED_FILE,
-			label: __( 'Other documents', 'woocommerce-payments' ),
+			label: __( 'Other documents', 'poocommerce-payments' ),
 			description: __(
 				'Any other relevant documents that will support your case.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 100,
 		},
@@ -1036,46 +1036,46 @@ const getProductUnacceptableMatrix = (): {
 	physical_product: [
 		{
 			key: DOCUMENT_FIELD_KEYS.RECEIPT,
-			label: __( 'Order receipt', 'woocommerce-payments' ),
+			label: __( 'Order receipt', 'poocommerce-payments' ),
 			description: __(
 				"A copy of the customer's receipt, which can be found in the receipt history for this transaction.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 10,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.CUSTOMER_SIGNATURE,
-			label: __( "Customer's signature", 'woocommerce-payments' ),
+			label: __( "Customer's signature", 'poocommerce-payments' ),
 			description: __(
 				"Any relevant documents showing the customer's signature, such as signed proof of delivery.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 15,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.REFUND_POLICY,
-			label: __( 'Refund policy', 'woocommerce-payments' ),
+			label: __( 'Refund policy', 'poocommerce-payments' ),
 			description: __(
 				"A screenshot of your store's refund policy.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 25,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.SERVICE_DOCUMENTATION,
-			label: __( "Item's condition", 'woocommerce-payments' ),
+			label: __( "Item's condition", 'poocommerce-payments' ),
 			description: __(
 				"Photos showing the item's condition prior to shipping.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 30,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.UNCATEGORIZED_FILE,
-			label: __( 'Other documents', 'woocommerce-payments' ),
+			label: __( 'Other documents', 'poocommerce-payments' ),
 			description: __(
 				'Any other relevant documents that will support your case.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 100,
 		},
@@ -1084,46 +1084,46 @@ const getProductUnacceptableMatrix = (): {
 	digital_product_or_service: [
 		{
 			key: DOCUMENT_FIELD_KEYS.SERVICE_DOCUMENTATION,
-			label: __( 'Proof of delivered service', 'woocommerce-payments' ),
+			label: __( 'Proof of delivered service', 'poocommerce-payments' ),
 			description: __(
 				'Screenshots or documents showing the digital product or service was delivered and accessible to the customer.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 10,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.RECEIPT,
-			label: __( 'Order receipt', 'woocommerce-payments' ),
+			label: __( 'Order receipt', 'poocommerce-payments' ),
 			description: __(
 				"A copy of the customer's receipt, which can be found in the receipt history for this transaction.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 12,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.ACCESS_ACTIVITY_LOG,
-			label: __( 'Login or usage records', 'woocommerce-payments' ),
+			label: __( 'Login or usage records', 'poocommerce-payments' ),
 			description: __(
 				'Any documents showing the login history, usage activity, or access logs for the digital product or service.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 15,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.REFUND_POLICY,
-			label: __( 'Refund policy', 'woocommerce-payments' ),
+			label: __( 'Refund policy', 'poocommerce-payments' ),
 			description: __(
 				"A screenshot of your store's refund policy.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 25,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.UNCATEGORIZED_FILE,
-			label: __( 'Other documents', 'woocommerce-payments' ),
+			label: __( 'Other documents', 'poocommerce-payments' ),
 			description: __(
 				'Any other relevant documents that will support your case.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 100,
 		},
@@ -1134,38 +1134,38 @@ const getProductUnacceptableMatrix = (): {
 			key: DOCUMENT_FIELD_KEYS.SERVICE_DOCUMENTATION,
 			label: __(
 				'Event or booking documentation',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			description: __(
 				'Screenshots or documents showing the event or reservation details (date, location, description, and terms) and confirmation it occurred or remained valid as described.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 10,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.RECEIPT,
-			label: __( 'Order receipt', 'woocommerce-payments' ),
+			label: __( 'Order receipt', 'poocommerce-payments' ),
 			description: __(
 				"A copy of the customer's receipt, which can be found in the receipt history for this transaction.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 15,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.REFUND_POLICY,
-			label: __( 'Refund policy', 'woocommerce-payments' ),
+			label: __( 'Refund policy', 'poocommerce-payments' ),
 			description: __(
 				"A screenshot of your store's refund policy.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 25,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.UNCATEGORIZED_FILE,
-			label: __( 'Other documents', 'woocommerce-payments' ),
+			label: __( 'Other documents', 'poocommerce-payments' ),
 			description: __(
 				'Any other relevant documents that will support your case.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 100,
 		},
@@ -1174,37 +1174,37 @@ const getProductUnacceptableMatrix = (): {
 	offline_service: [
 		{
 			key: DOCUMENT_FIELD_KEYS.SERVICE_DOCUMENTATION,
-			label: __( 'Proof of delivered service', 'woocommerce-payments' ),
+			label: __( 'Proof of delivered service', 'poocommerce-payments' ),
 			description: __(
 				'Screenshots or documents showing the service was completed and delivered to the customer.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 10,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.RECEIPT,
-			label: __( 'Order receipt', 'woocommerce-payments' ),
+			label: __( 'Order receipt', 'poocommerce-payments' ),
 			description: __(
 				"A copy of the customer's receipt, which can be found in the receipt history for this transaction.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 12,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.REFUND_POLICY,
-			label: __( 'Refund policy', 'woocommerce-payments' ),
+			label: __( 'Refund policy', 'poocommerce-payments' ),
 			description: __(
 				"A screenshot of your store's refund policy.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 25,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.UNCATEGORIZED_FILE,
-			label: __( 'Other documents', 'woocommerce-payments' ),
+			label: __( 'Other documents', 'poocommerce-payments' ),
 			description: __(
 				'Any other relevant documents that will support your case.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 100,
 		},
@@ -1215,38 +1215,38 @@ const getProductUnacceptableMatrix = (): {
 			key: DOCUMENT_FIELD_KEYS.SERVICE_DOCUMENTATION,
 			label: __(
 				'Event or booking documentation',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			description: __(
 				'Screenshots or documents showing the event or reservation details (date, location, description, and terms) and confirmation it occurred or remained valid as described.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 10,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.RECEIPT,
-			label: __( 'Order receipt', 'woocommerce-payments' ),
+			label: __( 'Order receipt', 'poocommerce-payments' ),
 			description: __(
 				"A copy of the customer's receipt, which can be found in the receipt history for this transaction.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 12,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.REFUND_POLICY,
-			label: __( 'Refund policy', 'woocommerce-payments' ),
+			label: __( 'Refund policy', 'poocommerce-payments' ),
 			description: __(
 				"A screenshot of your store's refund policy.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 25,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.UNCATEGORIZED_FILE,
-			label: __( 'Other documents', 'woocommerce-payments' ),
+			label: __( 'Other documents', 'poocommerce-payments' ),
 			description: __(
 				'Any other relevant documents that will support your case.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 100,
 		},
@@ -1255,28 +1255,28 @@ const getProductUnacceptableMatrix = (): {
 	other: [
 		{
 			key: DOCUMENT_FIELD_KEYS.RECEIPT,
-			label: __( 'Order receipt', 'woocommerce-payments' ),
+			label: __( 'Order receipt', 'poocommerce-payments' ),
 			description: __(
 				"A copy of the customer's receipt, which can be found in the receipt history for this transaction.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 10,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.CANCELLATION_POLICY,
-			label: __( 'Terms of service', 'woocommerce-payments' ),
+			label: __( 'Terms of service', 'poocommerce-payments' ),
 			description: __(
 				"A screenshot of your store's terms of service.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 25,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.UNCATEGORIZED_FILE,
-			label: __( 'Other documents', 'woocommerce-payments' ),
+			label: __( 'Other documents', 'poocommerce-payments' ),
 			description: __(
 				'Any other relevant documents that will support your case.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 100,
 		},
@@ -1298,64 +1298,64 @@ const getCreditNotProcessedMatrix = (): {
 	physical_product__refund_has_been_issued: [
 		{
 			key: DOCUMENT_FIELD_KEYS.RECEIPT,
-			label: __( 'Order receipt', 'woocommerce-payments' ),
+			label: __( 'Order receipt', 'poocommerce-payments' ),
 			description: __(
 				"A copy of the customer's receipt, which can be found in the receipt history for this transaction.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 10,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.REFUND_RECEIPT_DOCUMENTATION,
-			label: __( 'Refund receipt', 'woocommerce-payments' ),
+			label: __( 'Refund receipt', 'poocommerce-payments' ),
 			description: __(
 				'A confirmation that a merchant is waiting for a return prior to refund.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 12,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.SHIPPING_DOCUMENTATION,
-			label: __( 'Return tracking', 'woocommerce-payments' ),
+			label: __( 'Return tracking', 'poocommerce-payments' ),
 			description: __(
 				'A confirmation that a merchant is waiting for a return prior to refund (if applicable).',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 15,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.CUSTOMER_COMMUNICATION,
-			label: __( 'Customer communication', 'woocommerce-payments' ),
+			label: __( 'Customer communication', 'poocommerce-payments' ),
 			description: __(
 				'Any correspondence with the customer regarding this purchase.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 20,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.CUSTOMER_SIGNATURE,
-			label: __( "Customer's signature", 'woocommerce-payments' ),
+			label: __( "Customer's signature", 'poocommerce-payments' ),
 			description: __(
 				"Any relevant documents showing the customer's signature, such as signed proof of delivery.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 25,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.REFUND_POLICY,
-			label: __( 'Refund policy', 'woocommerce-payments' ),
+			label: __( 'Refund policy', 'poocommerce-payments' ),
 			description: __(
 				"A screenshot of your store's refund policy.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 30,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.UNCATEGORIZED_FILE,
-			label: __( 'Other documents', 'woocommerce-payments' ),
+			label: __( 'Other documents', 'poocommerce-payments' ),
 			description: __(
 				'Any other relevant documents that will support your case.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 100,
 		},
@@ -1367,37 +1367,37 @@ const getCreditNotProcessedMatrix = (): {
 	physical_product__refund_was_not_owed: [
 		{
 			key: DOCUMENT_FIELD_KEYS.UNCATEGORIZED_FILE,
-			label: __( 'Proof of acceptance', 'woocommerce-payments' ),
+			label: __( 'Proof of acceptance', 'poocommerce-payments' ),
 			description: __(
 				'Screenshot or document showing where the customer agreed to or acknowledged the refund policy during checkout or on the receipt.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 10,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.CUSTOMER_COMMUNICATION,
-			label: __( 'Customer communication', 'woocommerce-payments' ),
+			label: __( 'Customer communication', 'poocommerce-payments' ),
 			description: __(
 				'Any correspondence with the customer regarding this purchase.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 20,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.REFUND_POLICY,
-			label: __( 'Refund policy', 'woocommerce-payments' ),
+			label: __( 'Refund policy', 'poocommerce-payments' ),
 			description: __(
 				"A screenshot of your store's refund policy.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 25,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.SERVICE_DOCUMENTATION,
-			label: __( 'Other documents', 'woocommerce-payments' ),
+			label: __( 'Other documents', 'poocommerce-payments' ),
 			description: __(
 				'Any other relevant documents that will support your case.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 100,
 		},
@@ -1408,28 +1408,28 @@ const getCreditNotProcessedMatrix = (): {
 	digital_product_or_service__refund_has_been_issued: [
 		{
 			key: DOCUMENT_FIELD_KEYS.RECEIPT,
-			label: __( 'Refund receipt', 'woocommerce-payments' ),
+			label: __( 'Refund receipt', 'poocommerce-payments' ),
 			description: __(
 				'A copy of the refund receipt, which can be found in the receipt history for this transaction.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 10,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.CANCELLATION_REBUTTAL,
-			label: __( 'Cancellation logs', 'woocommerce-payments' ),
+			label: __( 'Cancellation logs', 'poocommerce-payments' ),
 			description: __(
 				'Records showing no cancellation attempt or request was made before the charge, such as account activity, subscription status, or communication history.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 20,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.CUSTOMER_COMMUNICATION,
-			label: __( 'Other documents', 'woocommerce-payments' ),
+			label: __( 'Other documents', 'poocommerce-payments' ),
 			description: __(
 				'Any other relevant documents that will support your case.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 100,
 		},
@@ -1442,28 +1442,28 @@ const getCreditNotProcessedMatrix = (): {
 	digital_product_or_service__refund_was_not_owed: [
 		{
 			key: DOCUMENT_FIELD_KEYS.UNCATEGORIZED_FILE,
-			label: __( 'Proof of acceptance', 'woocommerce-payments' ),
+			label: __( 'Proof of acceptance', 'poocommerce-payments' ),
 			description: __(
 				'Screenshot or document showing where the customer agreed to or acknowledged the refund policy during checkout or on the receipt.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 10,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.REFUND_POLICY,
-			label: __( 'Refund policy', 'woocommerce-payments' ),
+			label: __( 'Refund policy', 'poocommerce-payments' ),
 			description: __(
 				"A screenshot of your store's refund policy.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 25,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.CUSTOMER_COMMUNICATION,
-			label: __( 'Other documents', 'woocommerce-payments' ),
+			label: __( 'Other documents', 'poocommerce-payments' ),
 			description: __(
 				'Any other relevant documents that will support your case.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 100,
 		},
@@ -1474,28 +1474,28 @@ const getCreditNotProcessedMatrix = (): {
 	booking_reservation__refund_has_been_issued: [
 		{
 			key: DOCUMENT_FIELD_KEYS.RECEIPT,
-			label: __( 'Refund receipt', 'woocommerce-payments' ),
+			label: __( 'Refund receipt', 'poocommerce-payments' ),
 			description: __(
 				'A copy of the refund receipt, which can be found in the receipt history for this transaction.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 10,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.CANCELLATION_REBUTTAL,
-			label: __( 'Cancellation logs', 'woocommerce-payments' ),
+			label: __( 'Cancellation logs', 'poocommerce-payments' ),
 			description: __(
 				'Records showing no cancellation attempt or request was made before the charge, such as account activity, subscription status, or communication history.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 20,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.CUSTOMER_COMMUNICATION,
-			label: __( 'Other documents', 'woocommerce-payments' ),
+			label: __( 'Other documents', 'poocommerce-payments' ),
 			description: __(
 				'Any other relevant documents that will support your case.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 100,
 		},
@@ -1508,28 +1508,28 @@ const getCreditNotProcessedMatrix = (): {
 	booking_reservation__refund_was_not_owed: [
 		{
 			key: DOCUMENT_FIELD_KEYS.UNCATEGORIZED_FILE,
-			label: __( 'Proof of acceptance', 'woocommerce-payments' ),
+			label: __( 'Proof of acceptance', 'poocommerce-payments' ),
 			description: __(
 				'Screenshot or document showing where the customer agreed to or acknowledged the refund policy during checkout or on the receipt.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 10,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.REFUND_POLICY,
-			label: __( 'Refund policy', 'woocommerce-payments' ),
+			label: __( 'Refund policy', 'poocommerce-payments' ),
 			description: __(
 				"A screenshot of your store's refund policy.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 25,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.CUSTOMER_COMMUNICATION,
-			label: __( 'Other documents', 'woocommerce-payments' ),
+			label: __( 'Other documents', 'poocommerce-payments' ),
 			description: __(
 				'Any other relevant documents that will support your case.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 100,
 		},
@@ -1540,28 +1540,28 @@ const getCreditNotProcessedMatrix = (): {
 	offline_service__refund_has_been_issued: [
 		{
 			key: DOCUMENT_FIELD_KEYS.RECEIPT,
-			label: __( 'Refund receipt', 'woocommerce-payments' ),
+			label: __( 'Refund receipt', 'poocommerce-payments' ),
 			description: __(
 				'A copy of the refund receipt, which can be found in the receipt history for this transaction.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 10,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.CANCELLATION_REBUTTAL,
-			label: __( 'Cancellation logs', 'woocommerce-payments' ),
+			label: __( 'Cancellation logs', 'poocommerce-payments' ),
 			description: __(
 				'Records showing no cancellation attempt or request was made before the charge, such as account activity, subscription status, or communication history.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 20,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.CUSTOMER_COMMUNICATION,
-			label: __( 'Other documents', 'woocommerce-payments' ),
+			label: __( 'Other documents', 'poocommerce-payments' ),
 			description: __(
 				'Any other relevant documents that will support your case.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 100,
 		},
@@ -1574,28 +1574,28 @@ const getCreditNotProcessedMatrix = (): {
 	offline_service__refund_was_not_owed: [
 		{
 			key: DOCUMENT_FIELD_KEYS.UNCATEGORIZED_FILE,
-			label: __( 'Proof of acceptance', 'woocommerce-payments' ),
+			label: __( 'Proof of acceptance', 'poocommerce-payments' ),
 			description: __(
 				'Screenshot or document showing where the customer agreed to or acknowledged the refund policy during checkout or on the receipt.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 10,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.REFUND_POLICY,
-			label: __( 'Refund policy', 'woocommerce-payments' ),
+			label: __( 'Refund policy', 'poocommerce-payments' ),
 			description: __(
 				"A screenshot of your store's refund policy.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 25,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.CUSTOMER_COMMUNICATION,
-			label: __( 'Other documents', 'woocommerce-payments' ),
+			label: __( 'Other documents', 'poocommerce-payments' ),
 			description: __(
 				'Any other relevant documents that will support your case.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 100,
 		},
@@ -1606,28 +1606,28 @@ const getCreditNotProcessedMatrix = (): {
 	event__refund_has_been_issued: [
 		{
 			key: DOCUMENT_FIELD_KEYS.RECEIPT,
-			label: __( 'Refund receipt', 'woocommerce-payments' ),
+			label: __( 'Refund receipt', 'poocommerce-payments' ),
 			description: __(
 				'A copy of the refund receipt, which can be found in the receipt history for this transaction.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 10,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.CANCELLATION_REBUTTAL,
-			label: __( 'Cancellation logs', 'woocommerce-payments' ),
+			label: __( 'Cancellation logs', 'poocommerce-payments' ),
 			description: __(
 				'Records showing no cancellation attempt or request was made before the charge, such as account activity, subscription status, or communication history.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 20,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.CUSTOMER_COMMUNICATION,
-			label: __( 'Other documents', 'woocommerce-payments' ),
+			label: __( 'Other documents', 'poocommerce-payments' ),
 			description: __(
 				'Any other relevant documents that will support your case.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 100,
 		},
@@ -1640,28 +1640,28 @@ const getCreditNotProcessedMatrix = (): {
 	event__refund_was_not_owed: [
 		{
 			key: DOCUMENT_FIELD_KEYS.UNCATEGORIZED_FILE,
-			label: __( 'Proof of acceptance', 'woocommerce-payments' ),
+			label: __( 'Proof of acceptance', 'poocommerce-payments' ),
 			description: __(
 				'Screenshot or document showing where the customer agreed to or acknowledged the refund policy during checkout or on the receipt.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 10,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.REFUND_POLICY,
-			label: __( 'Refund policy', 'woocommerce-payments' ),
+			label: __( 'Refund policy', 'poocommerce-payments' ),
 			description: __(
 				"A screenshot of your store's refund policy.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 25,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.CUSTOMER_COMMUNICATION,
-			label: __( 'Other documents', 'woocommerce-payments' ),
+			label: __( 'Other documents', 'poocommerce-payments' ),
 			description: __(
 				'Any other relevant documents that will support your case.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 100,
 		},
@@ -1673,28 +1673,28 @@ const getCreditNotProcessedMatrix = (): {
 	other__refund_has_been_issued: [
 		{
 			key: DOCUMENT_FIELD_KEYS.RECEIPT,
-			label: __( 'Refund receipt', 'woocommerce-payments' ),
+			label: __( 'Refund receipt', 'poocommerce-payments' ),
 			description: __(
 				'A copy of the refund receipt, which can be found in the receipt history for this transaction.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 10,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.SHIPPING_DOCUMENTATION,
-			label: __( 'Return tracking', 'woocommerce-payments' ),
+			label: __( 'Return tracking', 'poocommerce-payments' ),
 			description: __(
 				'A confirmation that a merchant is waiting for a return prior to refund (if applicable).',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 15,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.CUSTOMER_COMMUNICATION,
-			label: __( 'Other documents', 'woocommerce-payments' ),
+			label: __( 'Other documents', 'poocommerce-payments' ),
 			description: __(
 				'Any other relevant documents that will support your case.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 100,
 		},
@@ -1707,28 +1707,28 @@ const getCreditNotProcessedMatrix = (): {
 	other__refund_was_not_owed: [
 		{
 			key: DOCUMENT_FIELD_KEYS.UNCATEGORIZED_FILE,
-			label: __( 'Proof of acceptance', 'woocommerce-payments' ),
+			label: __( 'Proof of acceptance', 'poocommerce-payments' ),
 			description: __(
 				'Screenshot or document showing where the customer agreed to or acknowledged the refund policy during checkout or on the receipt.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 10,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.REFUND_POLICY,
-			label: __( 'Refund policy', 'woocommerce-payments' ),
+			label: __( 'Refund policy', 'poocommerce-payments' ),
 			description: __(
 				"A screenshot of your store's refund policy.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 25,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.CUSTOMER_COMMUNICATION,
-			label: __( 'Other documents', 'woocommerce-payments' ),
+			label: __( 'Other documents', 'poocommerce-payments' ),
 			description: __(
 				'Any other relevant documents that will support your case.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 100,
 		},
@@ -1745,10 +1745,10 @@ const getFraudulentMatrix = (): {
 	physical_product: [
 		{
 			key: DOCUMENT_FIELD_KEYS.RECEIPT,
-			label: __( 'Order receipt', 'woocommerce-payments' ),
+			label: __( 'Order receipt', 'poocommerce-payments' ),
 			description: __(
 				"A copy of the customer's receipt, which can be found in the receipt history for this transaction.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 10,
 		},
@@ -1756,38 +1756,38 @@ const getFraudulentMatrix = (): {
 			key: DOCUMENT_FIELD_KEYS.ACCESS_ACTIVITY_LOG,
 			label: __(
 				'Prior undisputed transaction history',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			description: __(
 				'Proof of past undisputed transactions from the same customer, with matching billing and device details.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 15,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.CUSTOMER_SIGNATURE,
-			label: __( "Customer's signature", 'woocommerce-payments' ),
+			label: __( "Customer's signature", 'poocommerce-payments' ),
 			description: __(
 				"Any relevant documents showing the customer's signature, such as signed proof of delivery.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 25,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.REFUND_POLICY,
-			label: __( 'Refund policy', 'woocommerce-payments' ),
+			label: __( 'Refund policy', 'poocommerce-payments' ),
 			description: __(
 				"A screenshot of your store's refund policy.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 30,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.UNCATEGORIZED_FILE,
-			label: __( 'Other documents', 'woocommerce-payments' ),
+			label: __( 'Other documents', 'poocommerce-payments' ),
 			description: __(
 				'Any other relevant documents that will support your case.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 100,
 		},
@@ -1798,10 +1798,10 @@ const getFraudulentMatrix = (): {
 	digital_product_or_service: [
 		{
 			key: DOCUMENT_FIELD_KEYS.ACCESS_ACTIVITY_LOG,
-			label: __( 'Login or usage records', 'woocommerce-payments' ),
+			label: __( 'Login or usage records', 'poocommerce-payments' ),
 			description: __(
 				'Any documents showing the login history, usage activity, or access logs for the digital product or service.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 10,
 		},
@@ -1809,20 +1809,20 @@ const getFraudulentMatrix = (): {
 			key: DOCUMENT_FIELD_KEYS.SERVICE_DOCUMENTATION,
 			label: __(
 				'Prior undisputed transaction history',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			description: __(
 				'Proof of past undisputed transactions from the same customer, with matching billing and device details.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 15,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.UNCATEGORIZED_FILE,
-			label: __( 'Other documents', 'woocommerce-payments' ),
+			label: __( 'Other documents', 'poocommerce-payments' ),
 			description: __(
 				'Any other relevant documents that will support your case.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 100,
 		},
@@ -1833,20 +1833,20 @@ const getFraudulentMatrix = (): {
 			key: DOCUMENT_FIELD_KEYS.ACCESS_ACTIVITY_LOG,
 			label: __(
 				'Prior undisputed transaction history',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			description: __(
 				'Proof of past undisputed transactions from the same customer, with matching billing and device details.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 10,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.UNCATEGORIZED_FILE,
-			label: __( 'Other documents', 'woocommerce-payments' ),
+			label: __( 'Other documents', 'poocommerce-payments' ),
 			description: __(
 				'Any other relevant documents that will support your case.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 100,
 		},
@@ -1857,20 +1857,20 @@ const getFraudulentMatrix = (): {
 			key: DOCUMENT_FIELD_KEYS.ACCESS_ACTIVITY_LOG,
 			label: __(
 				'Prior undisputed transaction history',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			description: __(
 				'Proof of past undisputed transactions from the same customer, with matching billing and device details.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 10,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.UNCATEGORIZED_FILE,
-			label: __( 'Other documents', 'woocommerce-payments' ),
+			label: __( 'Other documents', 'poocommerce-payments' ),
 			description: __(
 				'Any other relevant documents that will support your case.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 100,
 		},
@@ -1881,20 +1881,20 @@ const getFraudulentMatrix = (): {
 			key: DOCUMENT_FIELD_KEYS.ACCESS_ACTIVITY_LOG,
 			label: __(
 				'Prior undisputed transaction history',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			description: __(
 				'Proof of past undisputed transactions from the same customer, with matching billing and device details.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 10,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.UNCATEGORIZED_FILE,
-			label: __( 'Other documents', 'woocommerce-payments' ),
+			label: __( 'Other documents', 'poocommerce-payments' ),
 			description: __(
 				'Any other relevant documents that will support your case.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 100,
 		},
@@ -1905,20 +1905,20 @@ const getFraudulentMatrix = (): {
 			key: DOCUMENT_FIELD_KEYS.ACCESS_ACTIVITY_LOG,
 			label: __(
 				'Prior undisputed transaction history',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			description: __(
 				'Proof of past undisputed transactions from the same customer, with matching billing and device details.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 10,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.UNCATEGORIZED_FILE,
-			label: __( 'Other documents', 'woocommerce-payments' ),
+			label: __( 'Other documents', 'poocommerce-payments' ),
 			description: __(
 				'Any other relevant documents that will support your case.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 100,
 		},

@@ -53,7 +53,7 @@ const GeneralSettings = () => {
 					{ ! isTestModeOnboarding && (
 						<>
 							<h4>
-								{ __( 'Test mode', 'woocommerce-payments' ) }
+								{ __( 'Test mode', 'poocommerce-payments' ) }
 							</h4>
 							<CheckboxControl
 								checked={ isDevModeEnabled || isEnabled }
@@ -76,11 +76,11 @@ const GeneralSettings = () => {
 									isDevModeEnabled
 										? __(
 												'Enable test mode (enabled by development mode)',
-												'woocommerce-payments'
+												'poocommerce-payments'
 										  )
 										: __(
 												'Enable test mode',
-												'woocommerce-payments'
+												'poocommerce-payments'
 										  )
 								}
 								help={
@@ -91,7 +91,7 @@ const GeneralSettings = () => {
 													'Test mode is active because your store is running in a development or staging environment. ' +
 														'To disable it, switch to a production {{wpEnvLink}}WordPress environment{{/wpEnvLink}} or remove the WCPAY_DEV_MODE constant. ' +
 														'{{learnMoreLink}}Learn more{{/learnMoreLink}}',
-													'woocommerce-payments'
+													'poocommerce-payments'
 												),
 												/* eslint-enable max-len */
 												components: {
@@ -110,7 +110,7 @@ const GeneralSettings = () => {
 															target="_blank"
 															rel="noreferrer"
 															/* eslint-disable-next-line max-len */
-															href="https://woocommerce.com/document/woopayments/testing-and-troubleshooting/testing/"
+															href="https://poocommerce.com/document/woopayments/testing-and-troubleshooting/testing/"
 														/>
 													),
 												},
@@ -119,7 +119,7 @@ const GeneralSettings = () => {
 												mixedString: __(
 													'Use {{testCardHelpLink}}test card numbers{{/testCardHelpLink}} to simulate ' +
 														'various transactions. {{learnMoreLink}}Learn more{{/learnMoreLink}}',
-													'woocommerce-payments'
+													'poocommerce-payments'
 												),
 												components: {
 													testCardHelpLink: (
@@ -128,7 +128,7 @@ const GeneralSettings = () => {
 															target="_blank"
 															rel="noreferrer"
 															/* eslint-disable-next-line max-len */
-															href="https://woocommerce.com/document/woopayments/testing-and-troubleshooting/testing/#test-cards"
+															href="https://poocommerce.com/document/woopayments/testing-and-troubleshooting/testing/#test-cards"
 														/>
 													),
 													learnMoreLink: (
@@ -137,7 +137,7 @@ const GeneralSettings = () => {
 															target="_blank"
 															rel="noreferrer"
 															/* eslint-disable-next-line max-len */
-															href="https://woocommerce.com/document/woopayments/testing-and-troubleshooting/testing/"
+															href="https://poocommerce.com/document/woopayments/testing-and-troubleshooting/testing/"
 														/>
 													),
 												},

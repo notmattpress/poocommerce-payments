@@ -33,7 +33,7 @@ jest.mock(
 		setEncryptedSessionDataAsNotPrefetched: jest.fn(),
 		redirectElements: {
 			BLOCKS_MINI_CART_PROCEED_BUTTON:
-				'a.wp-block-woocommerce-mini-cart-checkout-button-block',
+				'a.wp-block-poocommerce-mini-cart-checkout-button-block',
 			BLOCKS_FOOTER_MINI_CART_PROCEED_BUTTON:
 				'a.wc-block-mini-cart__footer-checkout',
 		},
@@ -183,7 +183,7 @@ describe( 'WooPay direct checkout cart item listeners', () => {
 		await new Promise( ( resolve ) => setImmediate( resolve ) );
 
 		await wpHookCallbacks[
-			'experimental__woocommerce_blocks-cart-add-item'
+			'experimental__poocommerce_blocks-cart-add-item'
 		]();
 
 		expect(
@@ -205,7 +205,7 @@ describe( 'WooPay direct checkout cart item listeners', () => {
 		await new Promise( ( resolve ) => setImmediate( resolve ) );
 
 		await wpHookCallbacks[
-			'experimental__woocommerce_blocks-cart-add-item'
+			'experimental__poocommerce_blocks-cart-add-item'
 		]();
 
 		expect(
@@ -229,14 +229,14 @@ describe( 'WooPay direct checkout iAPI mini-cart', () => {
 		miniCartWidget = document.createElement( 'div' );
 		miniCartWidget.setAttribute(
 			'data-wp-interactive',
-			'woocommerce/mini-cart'
+			'poocommerce/mini-cart'
 		);
 		document.body.appendChild( miniCartWidget );
 
 		// Set up SSR'd checkout button inside the overlay.
 		miniCartButton = document.createElement( 'a' );
 		miniCartButton.classList.add(
-			'wp-block-woocommerce-mini-cart-checkout-button-block'
+			'wp-block-poocommerce-mini-cart-checkout-button-block'
 		);
 		document.body.appendChild( miniCartButton );
 

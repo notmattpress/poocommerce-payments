@@ -40,10 +40,10 @@ const PaymentMethodInformationObject: Record<
 	{
 		jcb: {
 			id: 'jcb',
-			label: __( 'JCB', 'woocommerce-payments' ),
+			label: __( 'JCB', 'poocommerce-payments' ),
 			description: __(
 				'Let your customers pay with JCB, the only international payment brand based in Japan.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			icon: JCBIcon,
 			currencies: [ 'JPY' ],

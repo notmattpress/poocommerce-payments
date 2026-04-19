@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Styles_Cache
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -634,9 +634,9 @@ class WC_Payments_Styles_Cache {
 	 *                              with optional 'background' and 'text' keys.
 	 */
 	private static function get_checkout_section_colors(): array {
-		// Theme override takes priority, then WooCommerce's registered template.
+		// Theme override takes priority, then PooCommerce's registered template.
 		$template = get_block_template( get_stylesheet() . '//page-checkout' )
-			?? get_block_template( 'woocommerce//page-checkout' );
+			?? get_block_template( 'poocommerce//page-checkout' );
 
 		if ( ! $template || empty( $template->content ) ) {
 			return [];
@@ -728,7 +728,7 @@ class WC_Payments_Styles_Cache {
 	 * by parsing its outermost block attributes.
 	 *
 	 * @param string $slug  The template part slug (e.g. 'header', 'checkout-header').
-	 * @param string $theme The theme attribute from the template-part block (e.g. 'woocommerce/woocommerce').
+	 * @param string $theme The theme attribute from the template-part block (e.g. 'poocommerce/poocommerce').
 	 * @return array Associative array with 'background' and/or 'text' keys, or empty.
 	 */
 	private static function get_template_part_colors( string $slug, string $theme = '' ): array {

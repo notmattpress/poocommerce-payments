@@ -2,7 +2,7 @@
 /**
  * Class UPE_Payment_Method_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 namespace WCPay\Payment_Methods;
@@ -115,7 +115,7 @@ class UPE_Payment_Method_Test extends WCPAY_UnitTestCase {
 		wcpay_get_test_container()->reset_all_replacements();
 		WC_Payments::set_account_service( $this->original_account_service );
 		if ( null !== $this->currency_filter_callback ) {
-			remove_filter( 'woocommerce_currency', $this->currency_filter_callback, PHP_INT_MAX );
+			remove_filter( 'poocommerce_currency', $this->currency_filter_callback, PHP_INT_MAX );
 			$this->currency_filter_callback = null;
 		}
 	}
@@ -141,7 +141,7 @@ class UPE_Payment_Method_Test extends WCPAY_UnitTestCase {
 		$this->currency_filter_callback = function () {
 			return 'EUR';
 		};
-		add_filter( 'woocommerce_currency', $this->currency_filter_callback, PHP_INT_MAX );
+		add_filter( 'poocommerce_currency', $this->currency_filter_callback, PHP_INT_MAX );
 
 		$payment_method = $this->mock_payment_methods['klarna'];
 
@@ -171,7 +171,7 @@ class UPE_Payment_Method_Test extends WCPAY_UnitTestCase {
 		$this->currency_filter_callback = function () {
 			return 'AUD';
 		};
-		add_filter( 'woocommerce_currency', $this->currency_filter_callback, PHP_INT_MAX );
+		add_filter( 'poocommerce_currency', $this->currency_filter_callback, PHP_INT_MAX );
 
 		$payment_method = $this->mock_payment_methods['klarna'];
 

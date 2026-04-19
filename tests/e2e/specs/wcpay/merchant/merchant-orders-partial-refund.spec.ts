@@ -89,7 +89,7 @@ test.describe( 'Order > Partial refund', () => {
 		).toBeVisible();
 
 		const orderIdField = shopperPage.locator(
-			'.woocommerce-order-overview__order.order > strong'
+			'.poocommerce-order-overview__order.order > strong'
 		);
 		const orderId = await orderIdField.innerText();
 

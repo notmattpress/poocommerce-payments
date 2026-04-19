@@ -2,7 +2,7 @@
 /**
  * Class WC_Payment_Gateway_WCPay_Subscriptions_Non_Reusable_Methods_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\Constants\Payment_Method;
@@ -40,7 +40,7 @@ class WC_Payment_Gateway_WCPay_Subscriptions_Non_Reusable_Methods_Test extends W
 	public function test_maybe_force_subscription_to_manual_with_split_upe_gateway() {
 		// Arrange: Create a subscription with a split UPE gateway (iDEAL).
 		$subscription = new WC_Subscription();
-		$subscription->set_payment_method( 'woocommerce_payments_ideal' );
+		$subscription->set_payment_method( 'poocommerce_payments_ideal' );
 		$subscription->set_requires_manual_renewal( false ); // Start as automatic.
 		$subscription->save();
 
@@ -49,8 +49,8 @@ class WC_Payment_Gateway_WCPay_Subscriptions_Non_Reusable_Methods_Test extends W
 
 		// Assert: Subscription should be forced to manual.
 		$this->assertTrue( $subscription->is_manual(), 'Subscription should be manual for non-reusable payment method' );
-		$this->assertEquals( 'woocommerce_payments_ideal', $subscription->get_meta( '_wcpay_original_payment_method_id', true ), 'Original payment method ID should be stored' );
-		$this->assertEquals( 'woocommerce_payments_ideal', $subscription->get_payment_method(), 'Payment method should remain as split UPE gateway' );
+		$this->assertEquals( 'poocommerce_payments_ideal', $subscription->get_meta( '_wcpay_original_payment_method_id', true ), 'Original payment method ID should be stored' );
+		$this->assertEquals( 'poocommerce_payments_ideal', $subscription->get_payment_method(), 'Payment method should remain as split UPE gateway' );
 	}
 
 	/**
@@ -59,7 +59,7 @@ class WC_Payment_Gateway_WCPay_Subscriptions_Non_Reusable_Methods_Test extends W
 	public function test_maybe_force_subscription_to_manual_with_base_gateway() {
 		// Arrange: Create a subscription with the base gateway (card).
 		$subscription = new WC_Subscription();
-		$subscription->set_payment_method( 'woocommerce_payments' );
+		$subscription->set_payment_method( 'poocommerce_payments' );
 		$subscription->set_requires_manual_renewal( false ); // Automatic.
 		$subscription->save();
 
@@ -95,7 +95,7 @@ class WC_Payment_Gateway_WCPay_Subscriptions_Non_Reusable_Methods_Test extends W
 	public function test_maybe_force_subscription_to_manual_configures_subscription() {
 		// Arrange: Create a subscription with a split UPE gateway.
 		$subscription = new WC_Subscription();
-		$subscription->set_payment_method( 'woocommerce_payments_bancontact' );
+		$subscription->set_payment_method( 'poocommerce_payments_bancontact' );
 		$subscription->set_requires_manual_renewal( false ); // Start as automatic.
 		$subscription->save();
 
@@ -104,8 +104,8 @@ class WC_Payment_Gateway_WCPay_Subscriptions_Non_Reusable_Methods_Test extends W
 
 		// Assert: Verify the subscription was properly configured.
 		$this->assertTrue( $subscription->is_manual(), 'Subscription should be set to manual' );
-		$this->assertEquals( 'woocommerce_payments_bancontact', $subscription->get_meta( '_wcpay_original_payment_method_id', true ), 'Original payment method ID should be stored' );
-		$this->assertEquals( 'woocommerce_payments_bancontact', $subscription->get_payment_method(), 'Payment method should remain unchanged' );
+		$this->assertEquals( 'poocommerce_payments_bancontact', $subscription->get_meta( '_wcpay_original_payment_method_id', true ), 'Original payment method ID should be stored' );
+		$this->assertEquals( 'poocommerce_payments_bancontact', $subscription->get_payment_method(), 'Payment method should remain unchanged' );
 	}
 
 	/**
@@ -115,7 +115,7 @@ class WC_Payment_Gateway_WCPay_Subscriptions_Non_Reusable_Methods_Test extends W
 		// Arrange: Create a manual subscription with non-reusable payment method.
 		$subscription = new WC_Subscription();
 		$subscription->set_requires_manual_renewal( true );
-		$subscription->update_meta_data( '_wcpay_original_payment_method_id', 'woocommerce_payments_ideal' );
+		$subscription->update_meta_data( '_wcpay_original_payment_method_id', 'poocommerce_payments_ideal' );
 		$subscription->save();
 
 		$actions = [
@@ -167,7 +167,7 @@ class WC_Payment_Gateway_WCPay_Subscriptions_Non_Reusable_Methods_Test extends W
 		// Arrange: Create an automatic subscription with non-reusable payment method meta.
 		$subscription = new WC_Subscription();
 		$subscription->set_requires_manual_renewal( false );
-		$subscription->update_meta_data( '_wcpay_original_payment_method_id', 'woocommerce_payments_ideal' );
+		$subscription->update_meta_data( '_wcpay_original_payment_method_id', 'poocommerce_payments_ideal' );
 		$subscription->save();
 
 		$actions = [
@@ -195,7 +195,7 @@ class WC_Payment_Gateway_WCPay_Subscriptions_Non_Reusable_Methods_Test extends W
 
 		// Create a subscription with the base gateway (as it would be initially set by ECE).
 		$subscription = new WC_Subscription();
-		$subscription->set_payment_method( 'woocommerce_payments' );
+		$subscription->set_payment_method( 'poocommerce_payments' );
 		$subscription->set_parent( $parent_order );
 		$subscription->save();
 
@@ -215,7 +215,7 @@ class WC_Payment_Gateway_WCPay_Subscriptions_Non_Reusable_Methods_Test extends W
 
 		// Create a subscription with the base gateway (as it would be initially set by ECE).
 		$subscription = new WC_Subscription();
-		$subscription->set_payment_method( 'woocommerce_payments' );
+		$subscription->set_payment_method( 'poocommerce_payments' );
 		$subscription->set_requires_manual_renewal( false ); // Start as automatic.
 		$subscription->set_parent( $parent_order );
 		$subscription->save();
@@ -225,7 +225,7 @@ class WC_Payment_Gateway_WCPay_Subscriptions_Non_Reusable_Methods_Test extends W
 		$this->mock_gateway->maybe_force_subscription_to_manual( $subscription );
 
 		// Assert: Subscription should be on Amazon Pay gateway and remain automatic.
-		$this->assertEquals( 'woocommerce_payments_amazon_pay', $subscription->get_payment_method(), 'Payment method should be Amazon Pay split gateway' );
+		$this->assertEquals( 'poocommerce_payments_amazon_pay', $subscription->get_payment_method(), 'Payment method should be Amazon Pay split gateway' );
 		$this->assertFalse( $subscription->is_manual(), 'Subscription should remain automatic for Amazon Pay (reusable payment method)' );
 		$this->assertEmpty( $subscription->get_meta( '_wcpay_original_payment_method_id', true ), 'No original payment method ID should be stored for Amazon Pay' );
 	}
@@ -242,7 +242,7 @@ class WC_Payment_Gateway_WCPay_Subscriptions_Non_Reusable_Methods_Test extends W
 
 		// Create a subscription with the base gateway.
 		$subscription = new WC_Subscription();
-		$subscription->set_payment_method( 'woocommerce_payments' );
+		$subscription->set_payment_method( 'poocommerce_payments' );
 		$subscription->set_requires_manual_renewal( false ); // Automatic.
 		$subscription->set_parent( $parent_order );
 		$subscription->save();
@@ -251,7 +251,7 @@ class WC_Payment_Gateway_WCPay_Subscriptions_Non_Reusable_Methods_Test extends W
 		$this->mock_gateway->maybe_force_subscription_to_manual( $subscription );
 
 		// Assert: Subscription should remain on base gateway (Google Pay uses card) and NOT forced to manual.
-		$this->assertEquals( 'woocommerce_payments', $subscription->get_payment_method(), 'Payment method should remain as base gateway for Google Pay' );
+		$this->assertEquals( 'poocommerce_payments', $subscription->get_payment_method(), 'Payment method should remain as base gateway for Google Pay' );
 		$this->assertFalse( $subscription->is_manual(), 'Subscription should remain automatic for Google Pay' );
 	}
 }

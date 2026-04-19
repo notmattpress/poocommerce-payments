@@ -8,7 +8,7 @@ source "$DIR/common.sh"
 
 echo "Running security tests..."
 set +e
-$QIT_BINARY run:security woocommerce-payments --zip=woocommerce-payments.zip --wait
+$QIT_BINARY run:security poocommerce-payments --zip=poocommerce-payments.zip --wait
 EXIT_CODE=$?
 set -e
 

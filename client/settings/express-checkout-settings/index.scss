@@ -326,7 +326,7 @@
 					display: flex;
 					align-items: center;
 					gap: 0.0625rem;
-					color: $studio-woocommerce-purple-50;
+					color: $studio-poocommerce-purple-50;
 					font-weight: 500;
 					font-size: 0.3125rem;
 				}
@@ -363,7 +363,7 @@
 					position: absolute;
 					top: -0.125rem;
 					right: -0.125rem;
-					background: $studio-woocommerce-purple-90;
+					background: $studio-poocommerce-purple-90;
 					color: $studio-white;
 					font-size: 0.25rem;
 					line-height: 1;
@@ -411,7 +411,7 @@
 				align-items: center;
 				gap: 0.0625rem;
 				font-size: 0.3125rem;
-				color: $studio-woocommerce-purple-50;
+				color: $studio-poocommerce-purple-50;
 				font-weight: 500;
 
 				&-icon {
@@ -470,7 +470,7 @@
 			}
 
 			&__footer-guest-text {
-				color: $studio-woocommerce-purple-40;
+				color: $studio-poocommerce-purple-40;
 				font-weight: 500;
 			}
 
@@ -505,12 +505,12 @@
 			&__shortcode-link {
 				color: var(
 					--preview-link-color,
-					$studio-woocommerce-purple-60
+					$studio-poocommerce-purple-60
 				);
 			}
 
 			&__checkout-button {
-				background-color: $studio-woocommerce-purple-40;
+				background-color: $studio-poocommerce-purple-40;
 				border-radius: 0.25rem;
 				align-items: center;
 				display: flex;

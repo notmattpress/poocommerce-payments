@@ -1,4 +1,4 @@
-# PHPStan configuration for WooCommerce Payments
+# PHPStan configuration for PooCommerce Payments
 # This replaces the previous Psalm configuration
 
 includes:
@@ -16,7 +16,7 @@ parameters:
 
     # Files and directories to analyze
     paths:
-        - woocommerce-payments.php
+        - poocommerce-payments.php
         - includes
         - src
 
@@ -35,7 +35,7 @@ parameters:
         - dev/phpstan-wcpay-constants.php
 
     scanDirectories:
-        - vendor/woocommerce/subscriptions-core
+        - vendor/poocommerce/subscriptions-core
 
     # Handle undefined constants gracefully
     reportUnmatchedIgnoredErrors: false
@@ -70,7 +70,7 @@ parameters:
         }
         - {
             identifier: class.notFound
-            message: '#Automattic\\WooCommerce\\(Utilities|StoreApi)#'
+            message: '#Automattic\\PooCommerce\\(Utilities|StoreApi)#'
         }
         - {
             identifier: class.notFound

@@ -503,8 +503,8 @@ export default ( { query }: { query: { id: string } } ) => {
 	// --- Save/submit logic ---
 	const handleSaveSuccess = ( submit: boolean ) => {
 		const message = submit
-			? __( 'Evidence submitted!', 'woocommerce-payments' )
-			: __( 'Evidence saved!', 'woocommerce-payments' );
+			? __( 'Evidence submitted!', 'poocommerce-payments' )
+			: __( 'Evidence saved!', 'poocommerce-payments' );
 
 		recordEvent(
 			submit
@@ -532,8 +532,8 @@ export default ( { query }: { query: { id: string } } ) => {
 		);
 
 		const message = submit
-			? __( 'Failed to submit evidence. (%s)', 'woocommerce-payments' )
-			: __( 'Failed to save evidence. (%s)', 'woocommerce-payments' );
+			? __( 'Failed to submit evidence. (%s)', 'poocommerce-payments' )
+			: __( 'Failed to save evidence. (%s)', 'poocommerce-payments' );
 		createErrorNotice(
 			sprintf(
 				message,
@@ -548,7 +548,7 @@ export default ( { query }: { query: { id: string } } ) => {
 			createInfoNotice(
 				__(
 					'Please wait until file upload is finished',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				)
 			);
 			return;
@@ -690,14 +690,14 @@ export default ( { query }: { query: { id: string } } ) => {
 		const disputeReasonSummary = reasons[ disputeReason ]?.summary || [];
 		return [
 			{
-				title: __( 'Dispute Amount', 'woocommerce-payments' ),
+				title: __( 'Dispute Amount', 'poocommerce-payments' ),
 				content: formatExplicitCurrency(
 					dispute.amount,
 					dispute.currency
 				),
 			},
 			{
-				title: __( 'Disputed On', 'woocommerce-payments' ),
+				title: __( 'Disputed On', 'poocommerce-payments' ),
 				content: dispute.created
 					? formatDateTimeFromTimestamp( dispute.created, {
 							separator: ', ',
@@ -706,7 +706,7 @@ export default ( { query }: { query: { id: string } } ) => {
 					: '–',
 			},
 			{
-				title: __( 'Reason', 'woocommerce-payments' ),
+				title: __( 'Reason', 'poocommerce-payments' ),
 				content: (
 					<>
 						{ reasons[ disputeReason ]?.display || disputeReason }
@@ -715,7 +715,7 @@ export default ( { query }: { query: { id: string } } ) => {
 								buttonIcon={ <HelpOutlineIcon /> }
 								buttonLabel={ __(
 									'Learn more',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								) }
 								content={
 									<div className="dispute-reason-tooltip">
@@ -728,13 +728,13 @@ export default ( { query }: { query: { id: string } } ) => {
 										</Paragraphs>
 										<p>
 											<a
-												href="https://woocommerce.com/document/woopayments/fraud-and-disputes/managing-disputes/"
+												href="https://poocommerce.com/document/woopayments/fraud-and-disputes/managing-disputes/"
 												target="_blank"
 												rel="noopener noreferrer"
 											>
 												{ __(
 													'Learn more',
-													'woocommerce-payments'
+													'poocommerce-payments'
 												) }
 											</a>
 										</p>
@@ -746,7 +746,7 @@ export default ( { query }: { query: { id: string } } ) => {
 				),
 			},
 			{
-				title: __( 'Respond By', 'woocommerce-payments' ),
+				title: __( 'Respond By', 'poocommerce-payments' ),
 				content: (
 					<DisputeDueByDate
 						dueBy={ dispute.evidence_details?.due_by }
@@ -754,7 +754,7 @@ export default ( { query }: { query: { id: string } } ) => {
 				),
 			},
 			{
-				title: __( 'Order', 'woocommerce-payments' ),
+				title: __( 'Order', 'poocommerce-payments' ),
 				content: <OrderLink order={ dispute.order } />,
 			},
 		];
@@ -794,7 +794,7 @@ export default ( { query }: { query: { id: string } } ) => {
 							<div>
 								{ __(
 									'Loading dispute…',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								) }
 							</div>
 						</FlexItem>
@@ -884,7 +884,7 @@ export default ( { query }: { query: { id: string } } ) => {
 					"The files you've attached to this dispute as evidence will exceed the limit for a " +
 						"dispute's total size. Try using smaller files as evidence. Hint: if you've attached " +
 						'images, you might want to try providing them in lower resolutions.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				)
 			);
 			return true;
@@ -946,7 +946,7 @@ export default ( { query }: { query: { id: string } } ) => {
 			// Display error as WordPress admin notice
 			createErrorNotice(
 				sprintf(
-					__( 'Failed to upload file. (%s)', 'woocommerce-payments' ),
+					__( 'Failed to upload file. (%s)', 'poocommerce-payments' ),
 					err instanceof Error ? err.message : String( err )
 				)
 			);
@@ -1034,13 +1034,13 @@ export default ( { query }: { query: { id: string } } ) => {
 					? sprintf(
 							__(
 								'<strong>The outcome of this dispute will be determined by %1$s.</strong> WooPayments has no influence over the decision and is not liable for any chargebacks.',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							bankNameValue
 					  )
 					: __(
 							"<strong>The outcome of this dispute will be determined by the cardholder's bank.</strong> WooPayments has no influence over the decision and is not liable for any chargebacks.",
-							'woocommerce-payments'
+							'poocommerce-payments'
 					  ),
 				{
 					strong: <strong />,
@@ -1059,7 +1059,7 @@ export default ( { query }: { query: { id: string } } ) => {
 			{ createInterpolateElement(
 				__(
 					'<strong>The outcome of this dispute will be determined by Visa.</strong> WooPayments has no influence over the decision and is not liable for any chargebacks.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				{
 					strong: <strong />,
@@ -1075,24 +1075,24 @@ export default ( { query }: { query: { id: string } } ) => {
 				<h2 className="wcpay-dispute-evidence-new__stepper-title">
 					{ __(
 						'Tell us about the dispute',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 				</h2>
 				<p className="wcpay-dispute-evidence-new__stepper-subheading">
 					{ __(
 						'This is a compliance case and the issuer has indicated network rules have been violated. Please check for accuracy and upload any relevant documents.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 				</p>
 
 				<section className="wcpay-dispute-evidence-visa-compliance">
 					<h3 className="wcpay-dispute-evidence-visa-compliance__heading">
-						{ __( 'Dispute details', 'woocommerce-payments' ) }
+						{ __( 'Dispute details', 'poocommerce-payments' ) }
 					</h3>
 					<div className="wcpay-dispute-evidence-visa-compliance__subheading">
 						{ __(
 							'Input any context you think the issuer and network should have while reviewing this dispute.',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 					</div>
 					<TextareaControl
@@ -1100,11 +1100,11 @@ export default ( { query }: { query: { id: string } } ) => {
 						__nextHasNoMarginBottom
 						label={ __(
 							'Why do you disagree with this dispute?',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 						help={ __(
 							'Please enter any relevant details here.',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 						value={ coverLetter }
 						onChange={ ( newValue: string ) => {
@@ -1247,7 +1247,7 @@ export default ( { query }: { query: { id: string } } ) => {
 						>
 							{ __(
 								"You've made some manual edits to your cover letter. If you update your evidence again, those changes won't be reflected here automatically — but you can always make further edits yourself.",
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 						</InlineNotice>
 					) }
@@ -1350,7 +1350,7 @@ export default ( { query }: { query: { id: string } } ) => {
 						}
 						__next40pxDefaultSize
 					>
-						{ __( 'Cancel', 'woocommerce-payments' ) }
+						{ __( 'Cancel', 'poocommerce-payments' ) }
 					</Button>
 					<div className="wcpay-dispute-evidence-new__button-group-right">
 						{ ! readOnly && (
@@ -1362,7 +1362,7 @@ export default ( { query }: { query: { id: string } } ) => {
 							>
 								{ __(
 									'Save for later',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								) }
 							</Button>
 						) }
@@ -1374,7 +1374,7 @@ export default ( { query }: { query: { id: string } } ) => {
 									const confirmed = window.confirm(
 										__(
 											"Are you sure you're ready to submit this evidence? Evidence submissions are final.",
-											'woocommerce-payments'
+											'poocommerce-payments'
 										)
 									);
 
@@ -1385,7 +1385,7 @@ export default ( { query }: { query: { id: string } } ) => {
 								data-testid="submit-evidence-button"
 								__next40pxDefaultSize
 							>
-								{ __( 'Submit', 'woocommerce-payments' ) }
+								{ __( 'Submit', 'poocommerce-payments' ) }
 							</Button>
 						) }
 					</div>
@@ -1405,7 +1405,7 @@ export default ( { query }: { query: { id: string } } ) => {
 						}
 						__next40pxDefaultSize
 					>
-						{ __( 'Cancel', 'woocommerce-payments' ) }
+						{ __( 'Cancel', 'poocommerce-payments' ) }
 					</Button>
 					<div className="wcpay-dispute-evidence-new__button-group-right">
 						{ ! readOnly && (
@@ -1417,7 +1417,7 @@ export default ( { query }: { query: { id: string } } ) => {
 							>
 								{ __(
 									'Save for later',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								) }
 							</Button>
 						) }
@@ -1430,7 +1430,7 @@ export default ( { query }: { query: { id: string } } ) => {
 							iconPosition="right"
 							__next40pxDefaultSize
 						>
-							{ __( 'Next', 'woocommerce-payments' ) }
+							{ __( 'Next', 'poocommerce-payments' ) }
 						</Button>
 					</div>
 				</div>
@@ -1445,7 +1445,7 @@ export default ( { query }: { query: { id: string } } ) => {
 						iconPosition="left"
 						__next40pxDefaultSize
 					>
-						{ __( 'Back', 'woocommerce-payments' ) }
+						{ __( 'Back', 'poocommerce-payments' ) }
 					</Button>
 					<div className="wcpay-dispute-evidence-new__button-group-right">
 						{ ! readOnly && (
@@ -1457,7 +1457,7 @@ export default ( { query }: { query: { id: string } } ) => {
 							>
 								{ __(
 									'Save for later',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								) }
 							</Button>
 						) }
@@ -1470,7 +1470,7 @@ export default ( { query }: { query: { id: string } } ) => {
 							}
 							__next40pxDefaultSize
 						>
-							{ __( 'Next', 'woocommerce-payments' ) }
+							{ __( 'Next', 'poocommerce-payments' ) }
 						</Button>
 					</div>
 				</div>
@@ -1485,7 +1485,7 @@ export default ( { query }: { query: { id: string } } ) => {
 					onClick={ () => handleStepBack( currentStep - 1 ) }
 					__next40pxDefaultSize
 				>
-					{ __( 'Back', 'woocommerce-payments' ) }
+					{ __( 'Back', 'poocommerce-payments' ) }
 				</Button>
 				{ ! readOnly && (
 					<div className="wcpay-dispute-evidence-new__button-group-right">
@@ -1495,7 +1495,7 @@ export default ( { query }: { query: { id: string } } ) => {
 							data-testid="save-for-later-button"
 							__next40pxDefaultSize
 						>
-							{ __( 'Save for later', 'woocommerce-payments' ) }
+							{ __( 'Save for later', 'poocommerce-payments' ) }
 						</Button>
 						<Button
 							variant="primary"
@@ -1504,7 +1504,7 @@ export default ( { query }: { query: { id: string } } ) => {
 								const confirmed = window.confirm(
 									__(
 										"Are you sure you're ready to submit this evidence? Evidence submissions are final.",
-										'woocommerce-payments'
+										'poocommerce-payments'
 									)
 								);
 
@@ -1515,7 +1515,7 @@ export default ( { query }: { query: { id: string } } ) => {
 							data-testid="submit-evidence-button"
 							__next40pxDefaultSize
 						>
-							{ __( 'Submit', 'woocommerce-payments' ) }
+							{ __( 'Submit', 'poocommerce-payments' ) }
 						</Button>
 					</div>
 				) }
@@ -1535,7 +1535,7 @@ export default ( { query }: { query: { id: string } } ) => {
 							<AccordionBody
 								title={ __(
 									'Challenge dispute',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								) }
 								opened={ isAccordionOpen }
 								onToggle={ setIsAccordionOpen }

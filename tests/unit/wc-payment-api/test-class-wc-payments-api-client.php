@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_API_Client_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\Constants\Country_Code;
@@ -254,7 +254,7 @@ class WC_Payments_API_Client_Test extends WCPAY_UnitTestCase {
 	 * @throws API_Exception
 	 */
 	public function test_get_onboarding_data() {
-		update_option( 'woocommerce_store_id', 'test-store-id-12345' );
+		update_option( 'poocommerce_store_id', 'test-store-id-12345' );
 
 		$site_data = [
 			'site_username' => 'admin',
@@ -281,7 +281,7 @@ class WC_Payments_API_Client_Test extends WCPAY_UnitTestCase {
 			'f' => 6,
 		];
 
-		$default_wc_pages = $this->create_woocommerce_default_pages();
+		$default_wc_pages = $this->create_poocommerce_default_pages();
 
 		$this->mock_http_client
 			->expects( $this->once() )
@@ -304,7 +304,7 @@ class WC_Payments_API_Client_Test extends WCPAY_UnitTestCase {
 						'actioned_notes'              => $actioned_notes,
 						'create_live_account'         => true,
 						'collect_payout_requirements' => false,
-						'woocommerce_store_id'        => 'test-store-id-12345',
+						'poocommerce_store_id'        => 'test-store-id-12345',
 						'compatibility_data'          => $this->get_mock_compatibility_data(),
 						'referral_code'               => null,
 					]
@@ -1026,7 +1026,7 @@ class WC_Payments_API_Client_Test extends WCPAY_UnitTestCase {
 		// Act: Get the result of updating the data.
 		$result = $this->payments_api_client->update_compatibility_data(
 			[
-				'woocommerce_core_version' => WC_VERSION,
+				'poocommerce_core_version' => WC_VERSION,
 			]
 		);
 
@@ -1232,11 +1232,11 @@ class WC_Payments_API_Client_Test extends WCPAY_UnitTestCase {
 		return array_merge(
 			[
 				'woopayments_version'    => WCPAY_VERSION_NUMBER,
-				'woocommerce_version'    => WC_VERSION,
-				'woocommerce_permalinks' => get_option( 'woocommerce_permalinks' ),
-				'woocommerce_shop'       => get_permalink( wc_get_page_id( 'shop' ) ),
-				'woocommerce_cart'       => get_permalink( wc_get_page_id( 'cart' ) ),
-				'woocommerce_checkout'   => get_permalink( wc_get_page_id( 'checkout' ) ),
+				'poocommerce_version'    => WC_VERSION,
+				'poocommerce_permalinks' => get_option( 'poocommerce_permalinks' ),
+				'poocommerce_shop'       => get_permalink( wc_get_page_id( 'shop' ) ),
+				'poocommerce_cart'       => get_permalink( wc_get_page_id( 'cart' ) ),
+				'poocommerce_checkout'   => get_permalink( wc_get_page_id( 'checkout' ) ),
 				'blog_theme'             => 'default',
 				'active_plugins'         => [],
 				'post_types_count'       => [
@@ -1251,11 +1251,11 @@ class WC_Payments_API_Client_Test extends WCPAY_UnitTestCase {
 	}
 
 	/**
-	 * Creates the default WooCommerce pages for test purposes.
+	 * Creates the default PooCommerce pages for test purposes.
 	 *
 	 * @return array Array of post IDs that were created.
 	 */
-	private function create_woocommerce_default_pages(): array {
+	private function create_poocommerce_default_pages(): array {
 		// Note: Inspired by WC_Install::create_pages().
 
 		$pages = [
@@ -1291,7 +1291,7 @@ class WC_Payments_API_Client_Test extends WCPAY_UnitTestCase {
 		foreach ( $pages as $key => $page ) {
 			$page_ids[] = wc_create_page(
 				esc_sql( $page['name'] ),
-				'woocommerce_' . $key . '_page_id',
+				'poocommerce_' . $key . '_page_id',
 				$page['title'],
 				$page['content'],
 				'',
