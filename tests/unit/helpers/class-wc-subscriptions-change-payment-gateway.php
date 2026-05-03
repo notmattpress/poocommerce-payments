@@ -2,11 +2,11 @@
 /**
  * Stub for WC_Subscriptions_Change_Payment_Gateway.
  *
- * This class ships with WooCommerce Subscriptions and is not available in the
+ * This class ships with PooCommerce Subscriptions and is not available in the
  * unit test environment. The stub exposes static call-tracking properties so
  * tests can assert which arguments were passed.
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 if ( ! class_exists( 'WC_Subscriptions_Change_Payment_Gateway' ) ) {

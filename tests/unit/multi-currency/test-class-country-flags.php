@@ -2,7 +2,7 @@
 /**
  * Class Country_Flags_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\MultiCurrency\CountryFlags;

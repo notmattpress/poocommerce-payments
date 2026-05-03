@@ -57,7 +57,7 @@ const ApplePayPreview = ( { buttonAttributes } ) => {
 				id="express-checkout-button-preview-applePay"
 				className="express-checkout-button-preview"
 				style={ buttonStyle }
-				aria-label={ __( 'Apple Pay', 'woocommerce-payments' ) }
+				aria-label={ __( 'Apple Pay', 'poocommerce-payments' ) }
 			/>
 		</div>
 	);

@@ -16,7 +16,7 @@ import { STORE_NAME } from 'wcpay/data/constants';
 import { useAuthorization, useChargeFromOrder, useTimeline } from 'wcpay/data';
 import { ApiError } from 'wcpay/types/errors';
 
-// Suppress React 18 deprecation warnings from external @woocommerce/components
+// Suppress React 18 deprecation warnings from external @poocommerce/components
 // eslint-disable-next-line no-console
 const originalError = console.error;
 beforeAll( () => {
@@ -136,7 +136,7 @@ jest.mock( '@wordpress/data', () => ( {
 	useSelect: jest.fn(),
 } ) );
 
-jest.mock( '@woocommerce/data', () => ( {
+jest.mock( '@poocommerce/data', () => ( {
 	useUserPreferences: jest.fn( () => ( {
 		updateUserPreferences: jest.fn(),
 		wc_payments_wporg_review_2025_prompt_dismissed: false,

@@ -29,10 +29,10 @@ import { resolveWoopayAppearance } from 'wcpay/checkout/woopay/appearance/resolv
 const BUTTON_WIDTH_THRESHOLD = 140;
 
 const ButtonTypeTextMap = {
-	default: __( 'WooPay', 'woocommerce-payments' ),
-	buy: __( 'Buy with WooPay', 'woocommerce-payments' ),
-	donate: __( 'Donate with WooPay', 'woocommerce-payments' ),
-	book: __( 'Book with WooPay', 'woocommerce-payments' ),
+	default: __( 'WooPay', 'poocommerce-payments' ),
+	buy: __( 'Buy with WooPay', 'poocommerce-payments' ),
+	donate: __( 'Donate with WooPay', 'poocommerce-payments' ),
+	book: __( 'Book with WooPay', 'poocommerce-payments' ),
 };
 
 export const WoopayExpressCheckoutButton = ( {
@@ -133,14 +133,14 @@ export const WoopayExpressCheckoutButton = ( {
 						?.i18n_unavailable_text ||
 						__(
 							'Sorry, this product is unavailable. Please choose a different combination.',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						)
 				);
 			} else {
 				window.alert(
 					__(
 						'Please select your product options before proceeding.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					)
 				);
 			}
@@ -276,7 +276,7 @@ export const WoopayExpressCheckoutButton = ( {
 						.catch( () => {
 							const errorMessage = __(
 								'Something went wrong. Please try again.',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							);
 							showErrorMessage( context, errorMessage );
 							isLoadingRef.current = false;
@@ -317,7 +317,7 @@ export const WoopayExpressCheckoutButton = ( {
 					?.catch( () => {
 						const errorMessage = __(
 							'Something went wrong. Please try again.',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						);
 						showErrorMessage( context, errorMessage );
 						isLoadingRef.current = false;

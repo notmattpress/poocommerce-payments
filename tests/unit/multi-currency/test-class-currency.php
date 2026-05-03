@@ -2,7 +2,7 @@
 /**
  * Class WCPay_Multi_Currency_Currency_Tests
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\MultiCurrency\Currency;
@@ -67,7 +67,7 @@ class WCPay_Multi_Currency_Currency_Tests extends WCPAY_UnitTestCase {
 		$this->assertTrue( $zero_decimal_currency->get_is_zero_decimal() );
 	}
 
-	public function test_get_name_returns_currency_code_when_currency_not_in_woocommerce_list() {
+	public function test_get_name_returns_currency_code_when_currency_not_in_poocommerce_list() {
 		$currency = new Currency( $this->localization_service, 'CUSTOM' );
 		$this->assertSame( 'CUSTOM', $currency->get_name() );
 	}

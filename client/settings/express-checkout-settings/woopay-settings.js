@@ -6,7 +6,7 @@ import React from 'react';
 import clsx from 'clsx';
 import { __ } from '@wordpress/i18n';
 import interpolateComponents from '@automattic/interpolate-components';
-import { Link } from '@woocommerce/components';
+import { Link } from '@poocommerce/components';
 
 /**
  * Internal dependencies
@@ -81,7 +81,7 @@ const WooPaySettings = ( { section } ) => {
 						<InlineNotice status="warning" isDismissible={ false }>
 							{ __(
 								'To enable WooPay, you must first disable Link by Stripe.',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 						</InlineNotice>
 					) }
@@ -92,32 +92,32 @@ const WooPaySettings = ( { section } ) => {
 							onChange={ updateIsWooPayEnabled }
 							label={ __(
 								'Enable WooPay',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 							help={
 								/* eslint-disable jsx-a11y/anchor-has-content */
 								isWooPayEnabled
 									? __(
 											'When enabled, customers will be able to checkout using WooPay.',
-											'woocommerce-payments'
+											'poocommerce-payments'
 									  )
 									: interpolateComponents( {
 											mixedString: __(
 												/* eslint-disable-next-line max-len */
 												'When enabled, customers will be able to checkout using WooPay. ' +
 													'In order to use {{wooPayLink}}WooPay{{/wooPayLink}}, you must agree to our ' +
-													'{{tosLink}}WooCommerce Terms of Service{{/tosLink}} ' +
+													'{{tosLink}}PooCommerce Terms of Service{{/tosLink}} ' +
 													'and {{privacyLink}}Privacy Policy{{/privacyLink}}. ' +
 													'{{trackingLink}}Click here{{/trackingLink}} to learn more about the ' +
 													'data you will be sharing and opt-out options.',
-												'woocommerce-payments'
+												'poocommerce-payments'
 											),
 											components: {
 												wooPayLink: (
 													<a
 														target="_blank"
 														rel="noreferrer"
-														href="https://woocommerce.com/document/woopay-merchant-documentation/"
+														href="https://poocommerce.com/document/woopay-merchant-documentation/"
 													/>
 												),
 												tosLink: (
@@ -138,7 +138,7 @@ const WooPaySettings = ( { section } ) => {
 													<a
 														target="_blank"
 														rel="noreferrer"
-														href="https://woocommerce.com/usage-tracking/"
+														href="https://poocommerce.com/usage-tracking/"
 													/>
 												),
 											},
@@ -167,7 +167,7 @@ const WooPaySettings = ( { section } ) => {
 										) }
 										label={ __(
 											'Show on product page',
-											'woocommerce-payments'
+											'poocommerce-payments'
 										) }
 										__nextHasNoMarginBottom
 									/>
@@ -184,7 +184,7 @@ const WooPaySettings = ( { section } ) => {
 										) }
 										label={ __(
 											'Show on cart page',
-											'woocommerce-payments'
+											'poocommerce-payments'
 										) }
 										__nextHasNoMarginBottom
 									/>
@@ -203,7 +203,7 @@ const WooPaySettings = ( { section } ) => {
 										) }
 										label={ __(
 											'Show on checkout page',
-											'woocommerce-payments'
+											'poocommerce-payments'
 										) }
 										__nextHasNoMarginBottom
 									/>
@@ -218,14 +218,14 @@ const WooPaySettings = ( { section } ) => {
 				<CardBody className="wcpay-card-body woopay-settings__appearance-card-settings">
 					<WooPayFileUpload
 						fieldKey="woopay-store-logo"
-						label={ __( 'Checkout logo', 'woocommerce-payments' ) }
+						label={ __( 'Checkout logo', 'poocommerce-payments' ) }
 						accept="image/png, image/jpeg"
 						disabled={ false }
 						help={ __(
 							'Upload a custom logo. Upload a horizontal image with a white' +
 								' or transparent background for best results. Use a PNG or JPG' +
 								' image format. Recommended width: 512 pixels minimum.',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 						purpose="business_logo"
 						fileID={ woopayStoreLogo }
@@ -236,7 +236,7 @@ const WooPaySettings = ( { section } ) => {
 							<h4>
 								{ __(
 									'Checkout theme',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								) }
 							</h4>
 							<div className="woopay-settings__global-theme-checkbox">
@@ -252,7 +252,7 @@ const WooPaySettings = ( { section } ) => {
 										<div className="woopay-settings__global-theme-label">
 											{ __(
 												'Enable global theme support',
-												'woocommerce-payments'
+												'poocommerce-payments'
 											) }
 											<span className="woopay-settings__badge">
 												Beta
@@ -263,7 +263,7 @@ const WooPaySettings = ( { section } ) => {
 										mixedString: __(
 											'When enabled, WooPay checkout will be themed with your store’s brand colors and fonts. ' +
 												'{{docs}}Learn more {{/docs}}',
-											'woocommerce-payments'
+											'poocommerce-payments'
 										),
 										components: {
 											docs: (
@@ -272,7 +272,7 @@ const WooPaySettings = ( { section } ) => {
 													target="_blank"
 													rel="noreferrer"
 													// eslint-disable-next-line max-len
-													href="https://woocommerce.com/document/woopay-merchant-documentation/#checkout-appearance"
+													href="https://poocommerce.com/document/woopay-merchant-documentation/#checkout-appearance"
 												/>
 											),
 										},
@@ -285,14 +285,14 @@ const WooPaySettings = ( { section } ) => {
 					<TextareaControl
 						label={ __(
 							'Checkout policies',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 						help={ interpolateComponents( {
 							mixedString: __(
 								'Override the default {{privacyLink}}privacy policy{{/privacyLink}}' +
 									' and {{termsLink}}terms of service{{/termsLink}},' +
 									' or add custom text to WooPay checkout. {{learnMoreLink}}Learn more{{/learnMoreLink}}.',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							// prettier-ignore
 							components: {
@@ -307,7 +307,7 @@ const WooPaySettings = ( { section } ) => {
 									learnMoreLink: (
 										// @ts-expect-error: children is provided when interpolating the component
 										// eslint-disable-next-line max-len
-										<ExternalLink href="https://woocommerce.com/document/woopay-merchant-documentation/#checkout-appearance" />
+										<ExternalLink href="https://poocommerce.com/document/woopay-merchant-documentation/#checkout-appearance" />
 									),
 								}
 						} ) }
@@ -320,7 +320,7 @@ const WooPaySettings = ( { section } ) => {
 						className="woopay-settings__preview"
 						label={ __(
 							'Preview of checkout',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 						__nextHasNoMarginBottom
 					>

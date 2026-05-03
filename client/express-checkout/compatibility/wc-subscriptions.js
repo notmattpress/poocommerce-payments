@@ -55,7 +55,7 @@ const getSubscriptionShippingRates = ( cartData ) => {
 
 /**
  * Checks if the cart contains any trial subscriptions (with or without sign-up fee)
- * that have deferred shipping. During free trials, WooCommerce Subscriptions moves
+ * that have deferred shipping. During free trials, PooCommerce Subscriptions moves
  * shipping rates from the main cart to the subscription extensions.
  *
  * @param {Object} cartData Cart data from Store API.
@@ -203,19 +203,19 @@ const getLocalizedBillingPeriod = ( period, interval ) => {
 	if ( interval > 1 ) {
 		const plurals = {
 			day: sprintf(
-				_n( '%d day', '%d days', interval, 'woocommerce-payments' ),
+				_n( '%d day', '%d days', interval, 'poocommerce-payments' ),
 				interval
 			),
 			week: sprintf(
-				_n( '%d week', '%d weeks', interval, 'woocommerce-payments' ),
+				_n( '%d week', '%d weeks', interval, 'poocommerce-payments' ),
 				interval
 			),
 			month: sprintf(
-				_n( '%d month', '%d months', interval, 'woocommerce-payments' ),
+				_n( '%d month', '%d months', interval, 'poocommerce-payments' ),
 				interval
 			),
 			year: sprintf(
-				_n( '%d year', '%d years', interval, 'woocommerce-payments' ),
+				_n( '%d year', '%d years', interval, 'poocommerce-payments' ),
 				interval
 			),
 		};
@@ -223,10 +223,10 @@ const getLocalizedBillingPeriod = ( period, interval ) => {
 	}
 
 	const singulars = {
-		day: __( 'day', 'woocommerce-payments' ),
-		week: __( 'week', 'woocommerce-payments' ),
-		month: __( 'month', 'woocommerce-payments' ),
-		year: __( 'year', 'woocommerce-payments' ),
+		day: __( 'day', 'poocommerce-payments' ),
+		week: __( 'week', 'poocommerce-payments' ),
+		month: __( 'month', 'poocommerce-payments' ),
+		year: __( 'year', 'poocommerce-payments' ),
 	};
 	return singulars[ period ] || period;
 };
@@ -264,7 +264,7 @@ const formatRecurringTotal = ( subscription ) => {
 
 	/* translators: %1$s: formatted price (e.g. "$7.58"), %2$s: billing period (e.g. "month", "2 months") */
 	return sprintf(
-		__( '%1$s / %2$s', 'woocommerce-payments' ),
+		__( '%1$s / %2$s', 'poocommerce-payments' ),
 		formattedPrice,
 		periodLabel
 	);
@@ -425,7 +425,7 @@ addFilter(
 
 		const recurringTotalLabel = __(
 			'Recurring total',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		);
 
 		subscriptions.forEach( ( subscription ) => {
@@ -470,7 +470,7 @@ addFilter(
 					...item,
 					name: `${ item.name } (${ __(
 						'recurring',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) })`,
 					// Only replace prices with recurring amounts for $0 carts
 					// (pure free trials). When a sign-up fee is present, keep
@@ -487,11 +487,11 @@ addFilter(
 						{
 							name: __(
 								'Recurring total',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							/* translators: %1$s: recurring price with period (e.g. "$7.58 / month"), %2$s: date (e.g. "May 9, 2026") */
 							value: sprintf(
-								__( '%1$s on %2$s', 'woocommerce-payments' ),
+								__( '%1$s on %2$s', 'poocommerce-payments' ),
 								formatRecurringTotal( subscription ),
 								subscription.next_payment_date
 							),

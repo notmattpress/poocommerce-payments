@@ -109,12 +109,12 @@ Same layers: Request → API Client → HTTP → Jetpack → wpcom → Stripe.
 
 1. `onPaymentSetup` hook: validates Stripe Elements, creates PaymentMethod via `stripe.createPaymentMethod({ elements })`
 2. Returns `pm_xxx` ID in `meta.paymentMethodData['wcpay-payment-method']`
-3. WooCommerce Blocks sends this to PHP via the Store API
+3. PooCommerce Blocks sends this to PHP via the Store API
 4. `onCheckoutSuccess` hook: handles 3DS confirmation via `stripe.handleNextAction()` or `stripe.confirmCardPayment()`
 
 ### Express Checkout in Blocks (ECE)
 
-Express checkout buttons (Apple Pay, Google Pay, Amazon Pay) in WooCommerce block-based Cart/Checkout use a **dual data path** — bugs often arise from these paths being out of sync:
+Express checkout buttons (Apple Pay, Google Pay, Amazon Pay) in PooCommerce block-based Cart/Checkout use a **dual data path** — bugs often arise from these paths being out of sync:
 
 1. **Registration data** — `isPaymentRequestEnabled` from `get_payment_method_data()` → WC Blocks registry → `getUPEConfig()`. Controls whether `registerExpressPaymentMethod()` is called.
 2. **Runtime data** — `wcpayExpressCheckoutParams` from `wp_localize_script()` in the Express Checkout Button Handler's `scripts()` method. Provides `enabled_methods` for the current page context.
@@ -201,11 +201,11 @@ Appearance objects for Stripe Elements are cached **client-side in localStorage*
 ## Plugin Initialization Chain
 
 ```
-woocommerce-payments.php (plugin file)
+poocommerce-payments.php (plugin file)
   → WC_Payments::init()
     → Creates WC_Payments_API_Client (with WC_Payments_Http)
     → Creates WC_Payment_Gateway_WCPay (with api_client, account, customer_service, ...)
-    → Registers gateway via 'woocommerce_payment_gateways' filter
-    → Registers Blocks integration via 'woocommerce_blocks_payment_method_type_registration'
+    → Registers gateway via 'poocommerce_payment_gateways' filter
+    → Registers Blocks integration via 'poocommerce_blocks_payment_method_type_registration'
     → Creates 25+ service instances (Account, Customer, Token, Order, Webhook, etc.)
 ```

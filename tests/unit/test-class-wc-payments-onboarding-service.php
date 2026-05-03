@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Onboarding_Service_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use PHPUnit\Framework\MockObject\MockObject;
@@ -147,7 +147,7 @@ class WC_Payments_Onboarding_Service_Test extends WCPAY_UnitTestCase {
 
 	public function test_filters_registered_properly() {
 		$this->assertNotFalse( has_filter( 'admin_body_class', [ $this->onboarding_service, 'add_admin_body_classes' ] ) );
-		$this->assertNotFalse( has_filter( 'wc_payments_get_onboarding_data_args', [ $this->onboarding_service, 'add_woocommerce_store_id_to_request' ] ) );
+		$this->assertNotFalse( has_filter( 'wc_payments_get_onboarding_data_args', [ $this->onboarding_service, 'add_poocommerce_store_id_to_request' ] ) );
 	}
 
 	public function test_create_embedded_kyc_session() {
@@ -312,7 +312,7 @@ class WC_Payments_Onboarding_Service_Test extends WCPAY_UnitTestCase {
 	public function test_add_admin_body_classes_when_onboarding() {
 		$_GET['path'] = '/payments/onboarding';
 
-		$this->assertEquals( ' woocommerce-admin-is-loading', $this->onboarding_service->add_admin_body_classes() );
+		$this->assertEquals( ' poocommerce-admin-is-loading', $this->onboarding_service->add_admin_body_classes() );
 	}
 
 	public function test_set_test_mode() {
@@ -819,22 +819,22 @@ class WC_Payments_Onboarding_Service_Test extends WCPAY_UnitTestCase {
 		$this->assertSame( 'test_drive', $captured_account_data['setup_mode'] );
 	}
 
-	public function test_add_woocommerce_store_id_to_request_adds_store_id() {
+	public function test_add_poocommerce_store_id_to_request_adds_store_id() {
 		$store_id = 'test-store-uuid-1234';
-		update_option( 'woocommerce_store_id', $store_id );
+		update_option( 'poocommerce_store_id', $store_id );
 
 		$args   = [ 'existing_key' => 'value' ];
-		$result = $this->onboarding_service->add_woocommerce_store_id_to_request( $args );
+		$result = $this->onboarding_service->add_poocommerce_store_id_to_request( $args );
 
-		$this->assertSame( $store_id, $result['woocommerce_store_id'] );
+		$this->assertSame( $store_id, $result['poocommerce_store_id'] );
 		$this->assertSame( 'value', $result['existing_key'] );
 	}
 
-	public function test_add_woocommerce_store_id_to_request_returns_empty_string_when_option_missing() {
-		delete_option( 'woocommerce_store_id' );
+	public function test_add_poocommerce_store_id_to_request_returns_empty_string_when_option_missing() {
+		delete_option( 'poocommerce_store_id' );
 
-		$result = $this->onboarding_service->add_woocommerce_store_id_to_request( [] );
+		$result = $this->onboarding_service->add_poocommerce_store_id_to_request( [] );
 
-		$this->assertSame( '', $result['woocommerce_store_id'] );
+		$this->assertSame( '', $result['poocommerce_store_id'] );
 	}
 }

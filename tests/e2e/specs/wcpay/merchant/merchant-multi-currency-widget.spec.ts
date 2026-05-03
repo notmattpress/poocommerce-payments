@@ -253,7 +253,7 @@ test.describe( 'Multi-currency widget setup', () => {
 
 			// Get the initial price text.
 			const initialPrice = await shopperPage
-				.locator( '.woocommerce-Price-amount' )
+				.locator( '.poocommerce-Price-amount' )
 				.first()
 				.textContent();
 
@@ -264,7 +264,7 @@ test.describe( 'Multi-currency widget setup', () => {
 
 			// Wait for prices to update after the currency switch navigation.
 			const priceLocator = shopperPage
-				.locator( '.woocommerce-Price-amount' )
+				.locator( '.poocommerce-Price-amount' )
 				.first();
 			await expect( priceLocator ).toContainText( '€' );
 

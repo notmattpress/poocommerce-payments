@@ -11,7 +11,7 @@ import { select } from '@wordpress/data';
  */
 import OverviewPage from '../';
 import { getTasks } from '../task-list/tasks';
-import { getQuery } from '@woocommerce/navigation';
+import { getQuery } from '@poocommerce/navigation';
 
 const settingsMock = {
 	enabled_payment_method_ids: [ 'foo', 'bar' ],
@@ -29,15 +29,15 @@ jest.mock( '../task-list/tasks', () => ( { getTasks: jest.fn() } ) );
 jest.mock( '../inbox-notifications', () =>
 	jest.fn().mockImplementation( () => '[inbox-notifications]' )
 );
-jest.mock( '@woocommerce/experimental', () => {
+jest.mock( '@poocommerce/experimental', () => {
 	return {
 		CollapsibleList: () => (
-			<div className="woocommerce-experimental-list"></div>
+			<div className="poocommerce-experimental-list"></div>
 		),
 		Text: () => <div>text</div>,
 	};
 } );
-jest.mock( '@woocommerce/navigation', () => ( {
+jest.mock( '@poocommerce/navigation', () => ( {
 	getQuery: jest.fn(),
 	addHistoryListener: jest.fn(),
 } ) );
@@ -135,7 +135,7 @@ describe( 'Overview page', () => {
 		const { container } = render( <OverviewPage /> );
 
 		expect(
-			container.querySelector( '.woocommerce-experimental-list' )
+			container.querySelector( '.poocommerce-experimental-list' )
 		).toBeNull();
 	} );
 
@@ -148,7 +148,7 @@ describe( 'Overview page', () => {
 		const { container } = render( <OverviewPage /> );
 
 		expect(
-			container.querySelector( '.woocommerce-experimental-list' )
+			container.querySelector( '.poocommerce-experimental-list' )
 		).toBeNull();
 	} );
 

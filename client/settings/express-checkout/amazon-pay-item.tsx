@@ -58,7 +58,7 @@ const AmazonPayExpressCheckoutItem = (): React.ReactElement => {
 								'By activating this feature, you accept ' +
 									'{{stripeLink}}Stripe{{/stripeLink}} and ' +
 									"{{amazonLink}}Amazon{{/amazonLink}}'s terms of use.",
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							/* eslint-disable jsx-a11y/anchor-has-content */
 							components: {
@@ -86,7 +86,7 @@ const AmazonPayExpressCheckoutItem = (): React.ReactElement => {
 						href={ getPaymentMethodSettingsUrl( 'amazon_pay' ) }
 						isSecondary
 					>
-						{ __( 'Customize', 'woocommerce-payments' ) }
+						{ __( 'Customize', 'poocommerce-payments' ) }
 					</Button>
 				</PaymentMethodItem.Action>
 			</PaymentMethodItem.Body>

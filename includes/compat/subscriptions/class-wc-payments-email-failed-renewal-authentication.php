@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Email_Failed_Renewal_Authentication
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -25,12 +25,12 @@ class WC_Payments_Email_Failed_Renewal_Authentication extends WC_Email {
 	/**
 	 * Constructor.
 	 *
-	 * @param WC_Email_Failed_Order[] $email_classes All existing instances of WooCommerce emails.
+	 * @param WC_Email_Failed_Order[] $email_classes All existing instances of PooCommerce emails.
 	 */
 	public function __construct( $email_classes = [] ) {
 		$this->id             = 'failed_renewal_authentication';
-		$this->title          = __( 'Failed subscription renewal SCA authentication', 'woocommerce-payments' );
-		$this->description    = __( 'Sent to a customer when a renewal fails because the transaction requires an SCA verification. The email contains renewal order information and payment links.', 'woocommerce-payments' );
+		$this->title          = __( 'Failed subscription renewal SCA authentication', 'poocommerce-payments' );
+		$this->description    = __( 'Sent to a customer when a renewal fails because the transaction requires an SCA verification. The email contains renewal order information and payment links.', 'poocommerce-payments' );
 		$this->customer_email = true;
 
 		$this->template_html  = 'failed-renewal-authentication.php';
@@ -38,7 +38,7 @@ class WC_Payments_Email_Failed_Renewal_Authentication extends WC_Email {
 		$this->template_base  = __DIR__ . '/emails/';
 
 		// Triggers the email at the correct hook.
-		add_action( 'woocommerce_woocommerce_payments_payment_requires_action', [ $this, 'trigger' ] );
+		add_action( 'poocommerce_poocommerce_payments_payment_requires_action', [ $this, 'trigger' ] );
 
 		if ( isset( $email_classes['WCS_Email_Customer_Renewal_Invoice'] ) ) {
 			$this->original_email = $email_classes['WCS_Email_Customer_Renewal_Invoice'];
@@ -113,9 +113,9 @@ class WC_Payments_Email_Failed_Renewal_Authentication extends WC_Email {
 
 		$this->form_fields = [
 			'enabled'    => [
-				'title'   => _x( 'Enable/disable', 'an email notification', 'woocommerce-payments' ),
+				'title'   => _x( 'Enable/disable', 'an email notification', 'poocommerce-payments' ),
 				'type'    => 'checkbox',
-				'label'   => __( 'Enable this email notification', 'woocommerce-payments' ),
+				'label'   => __( 'Enable this email notification', 'poocommerce-payments' ),
 				'default' => 'yes',
 			],
 
@@ -131,7 +131,7 @@ class WC_Payments_Email_Failed_Renewal_Authentication extends WC_Email {
 	 * @return string
 	 */
 	public function get_default_subject() {
-		return __( 'Payment authorization needed for renewal of {site_title} order {order_number}', 'woocommerce-payments' );
+		return __( 'Payment authorization needed for renewal of {site_title} order {order_number}', 'poocommerce-payments' );
 	}
 
 	/**
@@ -140,7 +140,7 @@ class WC_Payments_Email_Failed_Renewal_Authentication extends WC_Email {
 	 * @return string
 	 */
 	public function get_default_heading() {
-		return __( 'Payment authorization needed for renewal of order {order_number}', 'woocommerce-payments' );
+		return __( 'Payment authorization needed for renewal of order {order_number}', 'poocommerce-payments' );
 	}
 
 	/**
@@ -166,17 +166,17 @@ class WC_Payments_Email_Failed_Renewal_Authentication extends WC_Email {
 
 			$this->send( $this->get_recipient(), $this->get_subject(), $this->get_content(), $this->get_headers(), $this->get_attachments() );
 
-			// Prevent the renewal email from WooCommerce Subscriptions from being sent.
+			// Prevent the renewal email from PooCommerce Subscriptions from being sent.
 			if ( isset( $this->original_email ) ) {
 				remove_action(
-					'woocommerce_generated_manual_renewal_order_renewal_notification',
+					'poocommerce_generated_manual_renewal_order_renewal_notification',
 					[
 						$this->original_email,
 						'trigger',
 					]
 				);
 				remove_action(
-					'woocommerce_order_status_failed_renewal_notification',
+					'poocommerce_order_status_failed_renewal_notification',
 					[
 						$this->original_email,
 						'trigger',
@@ -184,7 +184,7 @@ class WC_Payments_Email_Failed_Renewal_Authentication extends WC_Email {
 				);
 			}
 
-			// Prevent the retry email from WooCommerce Subscriptions from being sent.
+			// Prevent the retry email from PooCommerce Subscriptions from being sent.
 			add_filter( 'wcs_get_retry_rule_raw', [ $this, 'prevent_retry_notification_email' ], 100, 3 );
 
 			// Send email to store owner indicating communication is happening with the customer to request authentication.

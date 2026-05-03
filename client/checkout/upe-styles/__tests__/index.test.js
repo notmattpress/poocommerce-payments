@@ -14,12 +14,12 @@ describe( 'appearanceSelectors.updateSelectors', () => {
 
 	it( 'uses primary selectors when they exist in the DOM', () => {
 		document.body.innerHTML =
-			'<div class="woocommerce-billing-fields__field-wrapper">' +
+			'<div class="poocommerce-billing-fields__field-wrapper">' +
 			'<input id="billing_first_name" type="text" />' +
 			'</div>';
 
 		const selectors = {
-			appendTarget: '.woocommerce-billing-fields__field-wrapper',
+			appendTarget: '.poocommerce-billing-fields__field-wrapper',
 			upeThemeInputSelector: '#billing_first_name',
 			alternateSelectors: {
 				appendTarget: 'form.checkout',
@@ -29,7 +29,7 @@ describe( 'appearanceSelectors.updateSelectors', () => {
 
 		const result = appearanceSelectors.updateSelectors( selectors, scope );
 		expect( result.appendTarget ).toBe(
-			'.woocommerce-billing-fields__field-wrapper'
+			'.poocommerce-billing-fields__field-wrapper'
 		);
 		expect( result.upeThemeInputSelector ).toBe( '#billing_first_name' );
 		expect( result ).not.toHaveProperty( 'alternateSelectors' );
@@ -42,7 +42,7 @@ describe( 'appearanceSelectors.updateSelectors', () => {
 			'</form>';
 
 		const selectors = {
-			appendTarget: '.woocommerce-billing-fields__field-wrapper',
+			appendTarget: '.poocommerce-billing-fields__field-wrapper',
 			upeThemeInputSelector: '#billing_first_name',
 			alternateSelectors: {
 				appendTarget: 'form.checkout',
@@ -60,46 +60,46 @@ describe( 'appearanceSelectors.updateSelectors', () => {
 	it( 'falls back array selectors when none of the primary match', () => {
 		document.body.innerHTML =
 			'<form class="checkout">' +
-			'<div class="woocommerce">content</div>' +
+			'<div class="poocommerce">content</div>' +
 			'</form>';
 
 		const selectors = {
 			upeThemeTextSelectors: [
 				'#payment .payment_methods li .payment_box fieldset',
-				'.woocommerce-checkout .form-row',
+				'.poocommerce-checkout .form-row',
 			],
 			alternateSelectors: {
-				upeThemeTextSelectors: [ 'form.checkout', '.woocommerce' ],
+				upeThemeTextSelectors: [ 'form.checkout', '.poocommerce' ],
 			},
 		};
 
 		const result = appearanceSelectors.updateSelectors( selectors, scope );
 		expect( result.upeThemeTextSelectors ).toEqual( [
 			'form.checkout',
-			'.woocommerce',
+			'.poocommerce',
 		] );
 	} );
 
 	it( 'keeps array selectors when at least one primary matches', () => {
 		document.body.innerHTML =
-			'<div class="woocommerce-checkout">' +
+			'<div class="poocommerce-checkout">' +
 			'<div class="form-row">content</div>' +
 			'</div>';
 
 		const selectors = {
 			upeThemeTextSelectors: [
 				'#payment .payment_methods li .payment_box fieldset',
-				'.woocommerce-checkout .form-row',
+				'.poocommerce-checkout .form-row',
 			],
 			alternateSelectors: {
-				upeThemeTextSelectors: [ 'form.checkout', '.woocommerce' ],
+				upeThemeTextSelectors: [ 'form.checkout', '.poocommerce' ],
 			},
 		};
 
 		const result = appearanceSelectors.updateSelectors( selectors, scope );
 		expect( result.upeThemeTextSelectors ).toEqual( [
 			'#payment .payment_methods li .payment_box fieldset',
-			'.woocommerce-checkout .form-row',
+			'.poocommerce-checkout .form-row',
 		] );
 	} );
 } );
@@ -154,7 +154,7 @@ describe( 'Getting styles for automated theming', () => {
 		};
 
 		const fieldStyles = upeStyles.getFieldStyles(
-			'.woocommerce-checkout .form-row input',
+			'.poocommerce-checkout .form-row input',
 			'.Input',
 			null,
 			scope
@@ -380,7 +380,7 @@ describe( 'Getting styles for automated theming', () => {
 		};
 
 		const fieldStyles = upeStyles.getFieldStyles(
-			[ 'form.checkout a', '.woocommerce a', 'a' ],
+			[ 'form.checkout a', '.poocommerce a', 'a' ],
 			'.Label',
 			null,
 			scope

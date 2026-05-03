@@ -41,43 +41,43 @@ const iconComponent = (
 
 export const AmericanExpressIcon = iconComponent(
 	AmexAsset,
-	__( 'American Express', 'woocommerce-payments' )
+	__( 'American Express', 'poocommerce-payments' )
 );
 export const CBIcon = iconComponent(
 	CBAsset,
-	__( 'Cartes Bancaires', 'woocommerce-payments' )
+	__( 'Cartes Bancaires', 'poocommerce-payments' )
 );
 export const DinersClubIcon = iconComponent(
 	DinersClubAsset,
-	__( 'Diners Club', 'woocommerce-payments' )
+	__( 'Diners Club', 'poocommerce-payments' )
 );
 export const DiscoverIcon = iconComponent(
 	DiscoverAsset,
-	__( 'Discover', 'woocommerce-payments' )
+	__( 'Discover', 'poocommerce-payments' )
 );
 export const JCBIcon = iconComponent(
 	JCBAsset,
-	__( 'JCB', 'woocommerce-payments' )
+	__( 'JCB', 'poocommerce-payments' )
 );
 export const MastercardIcon = iconComponent(
 	MasterCardAsset,
-	__( 'Mastercard', 'woocommerce-payments' )
+	__( 'Mastercard', 'poocommerce-payments' )
 );
 export const UnionPayIcon = iconComponent(
 	UnionPayAsset,
-	__( 'UnionPay', 'woocommerce-payments' )
+	__( 'UnionPay', 'poocommerce-payments' )
 );
 export const VisaIcon = iconComponent(
 	VisaAsset,
-	__( 'Visa', 'woocommerce-payments' )
+	__( 'Visa', 'poocommerce-payments' )
 );
 export const WooIcon = iconComponent(
 	WooAsset,
-	__( 'WooPay', 'woocommerce-payments' ),
+	__( 'WooPay', 'poocommerce-payments' ),
 	false
 );
 export const WooIconShort = iconComponent(
 	WooAssetShort,
-	__( 'WooPay', 'woocommerce-payments' ),
+	__( 'WooPay', 'poocommerce-payments' ),
 	false
 );

@@ -69,7 +69,7 @@ All test suites, CI workflows, and release processes are owned and maintained by
 | `phpunit-src.xml.dist` | Coverage for `src/` directory (PSR-4) |
 
 - **PHPUnit version:** 9.6.34
-- **Bootstrap:** `tests/unit/bootstrap.php` (loads WP test library, WooCommerce, WooPayments; handles PHP 8+ compat)
+- **Bootstrap:** `tests/unit/bootstrap.php` (loads WP test library, PooCommerce, WooPayments; handles PHP 8+ compat)
 - **CI matrix:** PHP 7.4 + latest Gutenberg; includes PHP 7.4 + Gutenberg 22.3.0
 - **Max parallel jobs:** 10
 
@@ -200,7 +200,7 @@ All test suites, CI workflows, and release processes are owned and maintained by
 
 **CI matrix (extended):**
 
-| WooCommerce Version | PHP | WordPress | Notes |
+| PooCommerce Version | PHP | WordPress | Notes |
 |---------------------|-----|-----------|-------|
 | 7.7.0 (legacy) | 7.4 | latest | Blocks tests excluded |
 | L-1 | 8.3 | latest | |
@@ -291,10 +291,10 @@ Extended matrix including WC L-1, latest, nightly, beta, RC, plus WP nightly and
 | **Category** | E2E |
 | **Specs** | Same QIT specs |
 | **CI Workflow** | `qit-e2e-prerelease.yml` |
-| **Trigger** | `workflow_dispatch` (manual, requires `woocommerce-version` input) |
+| **Trigger** | `workflow_dispatch` (manual, requires `poocommerce-version` input) |
 | **Required** | No |
 | **Status** | Active |
-| **Gates release** | Yes (run during WooCommerce pre-release cycle) |
+| **Gates release** | Yes (run during PooCommerce pre-release cycle) |
 
 Used to test against pre-release/beta WC versions (e.g., `10.5.0-dev`, `9.7.0-beta.1`). 3 combinations (shopper, merchant, subscriptions).
 
@@ -347,7 +347,7 @@ Visual diff-based performance testing for payment method rendering. Retries: 2 o
 | **Status** | Active |
 
 - **Config:** `phpcs.xml.dist`
-- **Standards:** WordPress coding standards, WooCommerce sniffs, Slevomat coding standard
+- **Standards:** WordPress coding standards, PooCommerce sniffs, Slevomat coding standard
 - **Includes:** PHP compatibility sniffs (`phpcs-compat.xml.dist` for compat-only checks)
 
 ---
@@ -420,7 +420,7 @@ Validates PHP version compatibility using `bin/phpcs-compat.sh`.
 
 **Main matrix (required):**
 
-| WooCommerce | WordPress | Gutenberg | PHP |
+| PooCommerce | WordPress | Gutenberg | PHP |
 |-------------|-----------|-----------|-----|
 | 7.6.0 (min) | latest | latest | 7.4 |
 | latest | latest | latest | 7.4 |
@@ -617,7 +617,7 @@ The March 1–9 baseline reflects the suite's actual reliability excluding these
 | Test | Location | Issue |
 |------|----------|-------|
 | Alipay Checkout (QIT) | `tests/qit/.../alipay-checkout-purchase.spec.ts` | Entire suite skipped — Alipay sandbox unavailable in QIT environment |
-| Account Balance | `tests/e2e/.../merchant-admin-account-balance.spec.ts` | Tagged `@todo` — step implementations are empty placeholders ([#9188](https://github.com/Automattic/woocommerce-payments/issues/9188)) |
+| Account Balance | `tests/e2e/.../merchant-admin-account-balance.spec.ts` | Tagged `@todo` — step implementations are empty placeholders ([#9188](https://github.com/Automattic/poocommerce-payments/issues/9188)) |
 | WC 7.7.0 + Subscriptions | CI matrix (`e2e-test.yml`) | Disabled — fatal error with `WC_Site_Tracking` class |
 | Multi-currency Storefront tests (QIT) | `tests/qit/.../multi-currency-on-boarding.spec.ts` | Dynamically skipped when Storefront theme unavailable |
 
@@ -648,7 +648,7 @@ Multiple specs have screenshot assertions commented out due to flakiness. These 
 
 - **E2E two-pass retry strategy:** Instead of Playwright's built-in retries, the CI uses a two-pass approach: run all specs, then re-run only failed specs. This avoids masking flaky tests while still recovering from transient failures.
 
-- **Compatibility matrix beta tolerance:** The WC/WP compatibility workflow allows beta matrix combinations to fail without blocking PRs. This prevents unreleased WooCommerce changes from blocking WooPayments development.
+- **Compatibility matrix beta tolerance:** The WC/WP compatibility workflow allows beta matrix combinations to fail without blocking PRs. This prevents unreleased PooCommerce changes from blocking WooPayments development.
 
 - **Performance tests are manual-only:** The single performance spec (`payment-methods.spec.ts`) is not part of any automated CI workflow. It must be triggered manually via `npm run test:e2e-performance`.
 

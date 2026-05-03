@@ -1,4 +1,4 @@
-/* global jQuery,woocommerce_admin_meta_boxes */
+/* global jQuery,poocommerce_admin_meta_boxes */
 /** @format */
 /**
  * External dependencies
@@ -57,11 +57,11 @@ const RefundConfirmationModal = ( {
 	const handleRefundConfirm = () => {
 		jQuery.ajax( {
 			type: 'post',
-			url: woocommerce_admin_meta_boxes.ajax_url,
+			url: poocommerce_admin_meta_boxes.ajax_url,
 			data: {
-				action: 'woocommerce_refund_line_items',
-				order_id: woocommerce_admin_meta_boxes.post_id,
-				security: woocommerce_admin_meta_boxes.order_item_nonce,
+				action: 'poocommerce_refund_line_items',
+				order_id: poocommerce_admin_meta_boxes.post_id,
+				security: poocommerce_admin_meta_boxes.order_item_nonce,
 				refund_amount: refundAmount,
 				refunded_amount: refundedAmount,
 				api_refund: true,
@@ -93,7 +93,7 @@ const RefundConfirmationModal = ( {
 				<ConfirmationModal
 					title={ __(
 						'Refund order in full',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 					isDismissible={ false }
 					className="refund-confirmation-modal"
@@ -104,7 +104,7 @@ const RefundConfirmationModal = ( {
 								onClick={ handleRefundCancel }
 								__next40pxDefaultSize
 							>
-								{ __( 'Cancel', 'woocommerce-payments' ) }
+								{ __( 'Cancel', 'poocommerce-payments' ) }
 							</Button>
 							<Button
 								variant="primary"
@@ -112,7 +112,7 @@ const RefundConfirmationModal = ( {
 								__next40pxDefaultSize
 							>
 								{ sprintf(
-									__( 'Refund %s', 'woocommerce-payments' ),
+									__( 'Refund %s', 'poocommerce-payments' ),
 									formattedRefundAmount
 								) }
 							</Button>
@@ -126,7 +126,7 @@ const RefundConfirmationModal = ( {
 								"Issue a full refund back to your customer's payment method using %s. " +
 									'This action can not be undone. To issue a partial refund, click "Cancel", and use ' +
 									'the "Refund" button in the order details below.',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							'WooPayments'
 						) }

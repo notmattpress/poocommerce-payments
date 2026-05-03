@@ -5,17 +5,17 @@
 | Term | Context |
 |------|---------|
 | **WooPayments** | Official brand name. Use in UI text, docs, user-facing copy. |
-| **WooCommerce Payments** | Legacy name. Still appears in code, class names, directory names. |
+| **PooCommerce Payments** | Legacy name. Still appears in code, class names, directory names. |
 | **WCPay** | Internal shorthand. Used in code prefixes (`wcpay_`, `WCPay`), conversation. |
-| **woocommerce-payments** | Plugin slug, text domain, repo name, directory name. Frozen for backward compatibility — cannot change without breaking updates for existing installs. |
+| **poocommerce-payments** | Plugin slug, text domain, repo name, directory name. Frozen for backward compatibility — cannot change without breaking updates for existing installs. |
 
 ## Repository Overview
 
-WooPayments is a WordPress/WooCommerce plugin for payment processing. PHP backend + React admin interface.
+WooPayments is a WordPress/PooCommerce plugin for payment processing. PHP backend + React admin interface.
 
 - **License:** GPL-3.0-or-later
-- **Repository:** github:Automattic/woocommerce-payments
-- **Version & requirements:** See `woocommerce-payments.php` header and `package.json` engines field
+- **Repository:** github:Automattic/poocommerce-payments
+- **Version & requirements:** See `poocommerce-payments.php` header and `package.json` engines field
 
 ## Architecture — Payment Request Flow
 
@@ -56,7 +56,7 @@ Checkout Form (JS) → WC_Payment_Gateway_WCPay::process_payment()
 5. **Frontend** (`client/`)
    - React 18.3 + TypeScript. State via `@wordpress/data` stores (one per domain in `client/data/`).
    - Checkout JS creates Stripe PaymentMethod/confirmation token client-side, passes ID to PHP.
-   - Check WordPress/WooCommerce Storybooks before building custom components.
+   - Check WordPress/PooCommerce Storybooks before building custom components.
 
 ### Key Docs
 
@@ -73,22 +73,22 @@ Checkout Form (JS) → WC_Payment_Gateway_WCPay::process_payment()
 
 **External:**
 - [WordPress Components Storybook](https://wordpress.github.io/gutenberg/?path=/docs/) — Check first for UI components
-- [WooCommerce Components Storybook](https://woocommerce.github.io/woocommerce/?path=/docs/docs-introduction--docs) — WC-specific UI patterns
+- [PooCommerce Components Storybook](https://poocommerce.github.io/poocommerce/?path=/docs/docs-introduction--docs) — WC-specific UI patterns
 - [Stripe API Reference](https://docs.stripe.com/api) — Payment intents, methods, charges, refunds, disputes
 
-## WooCommerce Core Reference
+## PooCommerce Core Reference
 
-WooPayments integrates with WooCommerce core via hooks, filters, and APIs.
+WooPayments integrates with PooCommerce core via hooks, filters, and APIs.
 
 **Locations (priority order):**
-1. `../woocommerce/plugins/woocommerce/` — Full monorepo (if available), has git history
-2. `docker/wordpress/wp-content/plugins/woocommerce/` — Always available, no git history
-3. CI: `./woocommerce/plugins/woocommerce/`
+1. `../poocommerce/plugins/poocommerce/` — Full monorepo (if available), has git history
+2. `docker/wordpress/wp-content/plugins/poocommerce/` — Always available, no git history
+3. CI: `./poocommerce/plugins/poocommerce/`
 
 **Key paths:** `includes/` (core classes), `src/` (modern PSR-4), `includes/emails/` (email hooks)
 
-**Proactively check WooCommerce core when you encounter:**
-- `WC_*` base classes, `woocommerce_`/`wc_` hooks, `WC()` singleton
+**Proactively check PooCommerce core when you encounter:**
+- `WC_*` base classes, `poocommerce_`/`wc_` hooks, `WC()` singleton
 - Order/product/customer manipulation code
 - `$order->set_status()`/`$order->update_status()` — always trace what hooks and emails fire
 - Code hooking into `admin_init` or `init` — trace performance implications
@@ -116,7 +116,7 @@ WooPayments integrates with WooCommerce core via hooks, filters, and APIs.
 
 | Layer | Technologies |
 |-------|-------------|
-| Backend | PHP, WordPress APIs, WooCommerce hooks, Composer |
+| Backend | PHP, WordPress APIs, PooCommerce hooks, Composer |
 | Frontend | React 18.3, TypeScript, @wordpress/data (Redux), SCSS |
 | Build | Webpack, Babel, PostCSS, @wordpress/scripts |
 | Testing | PHPUnit, Jest, Playwright, React Testing Library |
@@ -141,7 +141,7 @@ npm run test:php-coverage           # With coverage
 
 # Specific test (after initial npm run test:php setup):
 docker compose exec -u www-data wordpress bash -c \
-  "cd /var/www/html/wp-content/plugins/woocommerce-payments && \
+  "cd /var/www/html/wp-content/plugins/poocommerce-payments && \
   vendor/bin/phpunit --configuration phpunit.xml.dist --filter 'TestClassName::test_method_name'"
 ```
 
@@ -323,7 +323,7 @@ npm run tube:stop
 ## Version Support
 
 - **WordPress:** Strict L-2 (current + 2 previous major versions)
-- **WooCommerce:** Loose L-2
+- **PooCommerce:** Loose L-2
 - Details: `docs/version-support-policy.md`
 
 ## Documentation Index
@@ -375,4 +375,4 @@ Skip persisting trivial lookups, single-file reads, simple Q&A.
 - Always pull with rebase: `git pull origin $(git branch --show-current) --rebase`
 - **PHPCS class structure ordering:** `SlevomatCodingStandard.Classes.ClassStructure.IncorrectGroupOrder` requires methods in order: public → protected → private. When adding new private methods, place them after all public and protected methods. Run `vendor/bin/phpcbf --standard=phpcs.xml.dist <file>` to auto-fix ordering violations.
 - **Migration version_compare:** When adding a migration class in `includes/migrations/`, the `version_compare()` threshold must match the version in the `@since` tag (e.g., `version_compare('10.6.0', $previous_version, '>')` for `@since 10.6.0`). The version represents when the migration ships, not when the old behavior was introduced.
-- **Styles cache invalidation on plugin update:** `WC_Payments_Utils::compute_styles_cache_version()` uses `WCPAY_VERSION_NUMBER` in its hash, but the cached WP option persists across updates. Hook `invalidate_styles_cache_version` to `woocommerce_woocommerce_payments_updated` to clear stale caches.
+- **Styles cache invalidation on plugin update:** `WC_Payments_Utils::compute_styles_cache_version()` uses `WCPAY_VERSION_NUMBER` in its hash, but the cached WP option persists across updates. Hook `invalidate_styles_cache_version` to `poocommerce_poocommerce_payments_updated` to clear stale caches.

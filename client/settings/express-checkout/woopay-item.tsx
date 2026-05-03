@@ -49,7 +49,7 @@ const WooPayExpressCheckoutItem = (): React.ReactElement | null => {
 			id="express-checkouts-woopay"
 		>
 			<PaymentMethodItem.Checkbox
-				label={ __( 'WooPay', 'woocommerce-payments' ) }
+				label={ __( 'WooPay', 'poocommerce-payments' ) }
 				checked={ isWooPayEnabled }
 				disabled={ isStripeLinkEnabled }
 				onChange={ updateIsWooPayEnabled }
@@ -59,7 +59,7 @@ const WooPayExpressCheckoutItem = (): React.ReactElement | null => {
 				<div>
 					<PaymentMethodItem.Subgroup
 						Icon={ WooIcon }
-						label={ __( 'WooPay', 'woocommerce-payments' ) }
+						label={ __( 'WooPay', 'poocommerce-payments' ) }
 					>
 						{
 							/* eslint-disable jsx-a11y/anchor-has-content */
@@ -67,7 +67,7 @@ const WooPayExpressCheckoutItem = (): React.ReactElement | null => {
 								? __(
 										'Boost conversion and customer loyalty by' +
 											' offering a single click, secure way to pay.',
-										'woocommerce-payments'
+										'poocommerce-payments'
 								  )
 								: interpolateComponents( {
 										mixedString: __(
@@ -75,11 +75,11 @@ const WooPayExpressCheckoutItem = (): React.ReactElement | null => {
 											'Boost conversion and customer loyalty by offering a single click, secure way to pay. ' +
 												'In order to use {{wooPayLink}}WooPay{{/wooPayLink}},' +
 												' you must agree to our ' +
-												'{{tosLink}}WooCommerce Terms of Service{{/tosLink}} ' +
+												'{{tosLink}}PooCommerce Terms of Service{{/tosLink}} ' +
 												'and {{privacyLink}}Privacy Policy{{/privacyLink}}. ' +
 												'{{trackingLink}}Click here{{/trackingLink}} to learn more about the ' +
 												'data you will be sharing and opt-out options.',
-											'woocommerce-payments'
+											'poocommerce-payments'
 										),
 										components: {
 											wooPayLink: (
@@ -87,7 +87,7 @@ const WooPayExpressCheckoutItem = (): React.ReactElement | null => {
 													target="_blank"
 													rel="noreferrer"
 													// eslint-disable-next-line max-len
-													href="https://woocommerce.com/document/woopay-merchant-documentation/"
+													href="https://poocommerce.com/document/woopay-merchant-documentation/"
 												/>
 											),
 											tosLink: (
@@ -108,7 +108,7 @@ const WooPayExpressCheckoutItem = (): React.ReactElement | null => {
 												<a
 													target="_blank"
 													rel="noreferrer"
-													href="https://woocommerce.com/usage-tracking/"
+													href="https://poocommerce.com/usage-tracking/"
 												/>
 											),
 										},
@@ -122,7 +122,7 @@ const WooPayExpressCheckoutItem = (): React.ReactElement | null => {
 						href={ getPaymentMethodSettingsUrl( 'woopay' ) }
 						isSecondary
 					>
-						{ __( 'Customize', 'woocommerce-payments' ) }
+						{ __( 'Customize', 'poocommerce-payments' ) }
 					</Button>
 				</PaymentMethodItem.Action>
 			</PaymentMethodItem.Body>
@@ -130,7 +130,7 @@ const WooPayExpressCheckoutItem = (): React.ReactElement | null => {
 				<InlineNotice status="warning" isDismissible={ false }>
 					{ __(
 						'To enable WooPay, you must first disable Link by Stripe.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 				</InlineNotice>
 			) }

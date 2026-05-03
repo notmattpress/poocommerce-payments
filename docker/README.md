@@ -36,7 +36,7 @@ npm run up:recreate
 This will:
 1. Auto-start shared infrastructure (database, phpMyAdmin) if not already running
 2. Create/recreate the WordPress container (uses port 8082 and container ID "default" if `.env` doesn't exist)
-3. Run the setup script to install WordPress, WooCommerce, and WooPayments
+3. Run the setup script to install WordPress, PooCommerce, and WooPayments
 
 **Note:** The shared infrastructure (database and phpMyAdmin) is started automatically from your main checkout when needed. If you're in a worktree, the infrastructure will be started from the main checkout directory. You can also start it manually with `npm run infra:up` if you prefer explicit control.
 
@@ -181,19 +181,19 @@ The Docker setup is designed for multiple worktrees to share a single database w
 | Resource | Shared/Per-Worktree | Location |
 |----------|---------------------|----------|
 | Database (MySQL) | Shared | `wcpay_db` container |
-| Plugins (WooCommerce, etc.) | Shared | `./docker/wordpress/wp-content/plugins` |
+| Plugins (PooCommerce, etc.) | Shared | `./docker/wordpress/wp-content/plugins` |
 | Themes | Shared | `./docker/wordpress/wp-content/themes` |
 | Uploads (media) | Shared | `./docker/wordpress/wp-content/uploads` |
 | mu-plugins | Shared | `./docker/wordpress/wp-content/mu-plugins` |
 | **WooPayments plugin code** | **Per-worktree** | Bind mount from repo root |
 | WordPress container | Per-worktree | `wcpay_wp_<WORKTREE_ID>` |
-| WooCommerce logs | Per-worktree | `./docker/logs/wc-logs` |
+| PooCommerce logs | Per-worktree | `./docker/logs/wc-logs` |
 | Apache logs | Per-worktree | `./docker/logs/apache2` |
 
 **Why this design?**
 - Installing a plugin or theme in one worktree makes it available to all (matches the shared DB state)
 - Each worktree tests its own WooPayments code changes in isolation
-- Logs (WooCommerce and Apache) stay separate per worktree for easier debugging
+- Logs (PooCommerce and Apache) stay separate per worktree for easier debugging
 
 > [!WARNING]
 > Shared database means shared state. If you're testing destructive operations (database migrations, data deletions, etc.), changes will affect all your running worktrees. Consider backing up the database first or testing destructive changes in isolation.
@@ -277,31 +277,31 @@ To apply the change, restart your containers using `npm run down && npm run up`
 
 Add the following path mappings to your IDE so it can find the correct code when debugging:
 
-* `<project folder>/` → `/var/www/html/wp-content/plugins/woocommerce-payments`
+* `<project folder>/` → `/var/www/html/wp-content/plugins/poocommerce-payments`
 * `<project folder>/docker/wordpress` → `/var/www/html`
 
 For WordPress core function hinting, add `docker/wordpress` to your IDE's PHP include path.
 
-**Note:** Plugins (like WooCommerce) are stored in shared Docker volumes, not locally. For plugin hinting, you can copy files locally:
+**Note:** Plugins (like PooCommerce) are stored in shared Docker volumes, not locally. For plugin hinting, you can copy files locally:
 ```bash
 # Get your container name from .env (WORKTREE_ID) or use 'default' for main checkout
-docker cp wcpay_wp_<worktree_id>:/var/www/html/wp-content/plugins/woocommerce ./docker/wordpress/wp-content/plugins/
+docker cp wcpay_wp_<worktree_id>:/var/www/html/wp-content/plugins/poocommerce ./docker/wordpress/wp-content/plugins/
 ```
 
-### Mapping WooCommerce development repo plugin folder
+### Mapping PooCommerce development repo plugin folder
 
-If you also work on [WooCommerce core](https://github.com/woocommerce/woocommerce) that you want to use in your Docker environment, you can map it by adding a volume mapping to `docker-compose.override.yml`.
+If you also work on [PooCommerce core](https://github.com/poocommerce/poocommerce) that you want to use in your Docker environment, you can map it by adding a volume mapping to `docker-compose.override.yml`.
 
-For example: if your WooCommerce core repo path is `/path/to/your/repo/woocommerce`, you should append `plugins/woocommerce` to this path and configure it like this.
+For example: if your PooCommerce core repo path is `/path/to/your/repo/poocommerce`, you should append `plugins/poocommerce` to this path and configure it like this.
 
 ```
 services:
   wordpress:
     volumes:
-      - /path/to/your/repo/woocommerce/plugins/woocommerce:/var/www/html/wp-content/plugins/woocommerce
+      - /path/to/your/repo/poocommerce/plugins/poocommerce:/var/www/html/wp-content/plugins/poocommerce
 ```
 
-To apply the change, restart your containers using `npm run down && npm run up`. In case, it's not working properly yet, ensure that you follow the WooCommerce code README.md and build the plugin there.
+To apply the change, restart your containers using `npm run down && npm run up`. In case, it's not working properly yet, ensure that you follow the PooCommerce code README.md and build the plugin there.
 
 ### Adding local helper scripts/hacks
 

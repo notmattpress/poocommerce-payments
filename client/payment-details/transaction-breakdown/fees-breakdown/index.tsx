@@ -144,7 +144,7 @@ const FeesBreakdown: React.FC< {
 			role="table"
 			aria-label={ __(
 				'Transaction fees breakdown',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			) }
 		>
 			{ fees }

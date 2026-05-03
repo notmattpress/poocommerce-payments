@@ -97,7 +97,7 @@ exports[`Multi-Currency enabled currencies list Enabled currencies list renders 
         Accept payments in multiple currencies. Prices are converted based on exchange rates and rounding rules. 
         <a
           class="components-external-link"
-          href="https://woocommerce.com/document/woopayments/currencies/multi-currency-setup/#enabled-currencies"
+          href="https://poocommerce.com/document/woopayments/currencies/multi-currency-setup/#enabled-currencies"
           rel="external noreferrer noopener"
           target="_blank"
         >
@@ -465,7 +465,7 @@ exports[`Multi-Currency enabled currencies list Remove currency modal renders co
       <ul>
         <li>
           <span
-            class="woocommerce-payments__payment-method-icon"
+            class="poocommerce-payments__payment-method-icon"
           >
             <img
               alt="Giropay"
@@ -473,7 +473,7 @@ exports[`Multi-Currency enabled currencies list Remove currency modal renders co
               src="assets/images/icon-giropay.svg"
             />
             <span
-              class="woocommerce-payments__payment-method-icon__label"
+              class="poocommerce-payments__payment-method-icon__label"
             >
               Giropay
             </span>
@@ -481,7 +481,7 @@ exports[`Multi-Currency enabled currencies list Remove currency modal renders co
         </li>
         <li>
           <span
-            class="woocommerce-payments__payment-method-icon"
+            class="poocommerce-payments__payment-method-icon"
           >
             <img
               alt="Sofort"
@@ -489,7 +489,7 @@ exports[`Multi-Currency enabled currencies list Remove currency modal renders co
               src="assets/images/icon-sofort.svg"
             />
             <span
-              class="woocommerce-payments__payment-method-icon__label"
+              class="poocommerce-payments__payment-method-icon__label"
             >
               Sofort
             </span>
@@ -497,7 +497,7 @@ exports[`Multi-Currency enabled currencies list Remove currency modal renders co
         </li>
         <li>
           <span
-            class="woocommerce-payments__payment-method-icon"
+            class="poocommerce-payments__payment-method-icon"
           >
             <img
               alt="SEPA Direct Debit"
@@ -505,7 +505,7 @@ exports[`Multi-Currency enabled currencies list Remove currency modal renders co
               src="assets/images/icon-sepa_debit.svg"
             />
             <span
-              class="woocommerce-payments__payment-method-icon__label"
+              class="poocommerce-payments__payment-method-icon__label"
             >
               SEPA Direct Debit
             </span>

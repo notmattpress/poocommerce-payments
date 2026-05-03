@@ -2,7 +2,7 @@
 /**
  * Class WooPay_Webhooks
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\WooPay;
@@ -30,7 +30,7 @@ class WooPay_Order_Status_Sync {
 	private $account;
 
 	/**
-	 * Client for making requests to the WooCommerce Payments API
+	 * Client for making requests to the PooCommerce Payments API
 	 *
 	 * @var WC_Payments_API_Client
 	 */
@@ -39,19 +39,19 @@ class WooPay_Order_Status_Sync {
 	/**
 	 * Setup webhook for the WooPay Order Status Sync.
 	 *
-	 * @param WC_Payments_API_Client $payments_api_client - WooCommerce Payments API client.
-	 * @param WC_Payments_Account    $account - WooCommerce Payments account.
+	 * @param WC_Payments_API_Client $payments_api_client - PooCommerce Payments API client.
+	 * @param WC_Payments_Account    $account - PooCommerce Payments account.
 	 */
 	public function __construct( WC_Payments_API_Client $payments_api_client, WC_Payments_Account $account ) {
 
 		$this->payments_api_client = $payments_api_client;
 		$this->account             = $account;
 
-		add_filter( 'woocommerce_webhook_topic_hooks', [ __CLASS__, 'add_topics' ], 20, 2 );
-		add_filter( 'woocommerce_webhook_payload', [ __CLASS__, 'create_payload' ], 10, 4 );
-		add_filter( 'woocommerce_valid_webhook_resources', [ __CLASS__, 'add_resource' ], 10, 1 );
-		add_filter( 'woocommerce_valid_webhook_events', [ __CLASS__, 'add_event' ], 10, 1 );
-		add_action( 'woocommerce_order_status_changed', [ __CLASS__, 'send_webhook' ], 10, 3 );
+		add_filter( 'poocommerce_webhook_topic_hooks', [ __CLASS__, 'add_topics' ], 20, 2 );
+		add_filter( 'poocommerce_webhook_payload', [ __CLASS__, 'create_payload' ], 10, 4 );
+		add_filter( 'poocommerce_valid_webhook_resources', [ __CLASS__, 'add_resource' ], 10, 1 );
+		add_filter( 'poocommerce_valid_webhook_events', [ __CLASS__, 'add_event' ], 10, 1 );
+		add_action( 'poocommerce_order_status_changed', [ __CLASS__, 'send_webhook' ], 10, 3 );
 
 		add_action( 'admin_init', [ $this, 'maybe_create_woopay_order_webhook' ], 10 );
 	}
@@ -62,14 +62,14 @@ class WooPay_Order_Status_Sync {
 	 * @return string
 	 */
 	private static function get_webhook_name() {
-		return __( 'WooPayments woopay order status sync', 'woocommerce-payments' );
+		return __( 'WooPayments woopay order status sync', 'poocommerce-payments' );
 	}
 
 	/**
 	 * Maybe create the WooPay webhook under certain conditions.
 	 */
 	public function maybe_create_woopay_order_webhook() {
-		if ( ! current_user_can( 'manage_woocommerce' ) || self::is_webhook_created() ) {
+		if ( ! current_user_can( 'manage_poocommerce' ) || self::is_webhook_created() ) {
 			return;
 		}
 
@@ -108,7 +108,7 @@ class WooPay_Order_Status_Sync {
 	}
 
 	/**
-	 * Register the webhook on WooCommerce.
+	 * Register the webhook on PooCommerce.
 	 *
 	 * @return void
 	 */
@@ -132,7 +132,7 @@ class WooPay_Order_Status_Sync {
 	/**
 	 * Add order webhook topic
 	 *
-	 * @param array $topic_hooks List of WooCommerce's standard webhook topics and hooks.
+	 * @param array $topic_hooks List of PooCommerce's standard webhook topics and hooks.
 	 */
 	public static function add_topics( $topic_hooks ) {
 		$topic_hooks['order.status_changed'][] = self::WCPAY_WEBHOOK_WOOPAY_ORDER_STATUS_CHANGED;
@@ -192,8 +192,8 @@ class WooPay_Order_Status_Sync {
 	 * Trigger webhook delivery.
 	 *
 	 * @param int    $order_id Order id.
-	 * @param string $previous_status the old WooCommerce order status.
-	 * @param string $next_status the new WooCommerce order status.
+	 * @param string $previous_status the old PooCommerce order status.
+	 * @param string $next_status the new PooCommerce order status.
 	 * @return void
 	 */
 	public static function send_webhook( $order_id, $previous_status, $next_status ) {
