@@ -6,6 +6,7 @@
 * Add - Add Dev Mode row to WooPayments system status report showing whether dev mode is active and which condition(s) triggered it
 * Add - Added a banner that nudges WooPayments merchants who've been in test mode for at least 7 days to switch to live payments.
 * Add - Added a banner that nudges WooPayments merchants who've taken exactly one live transaction toward Marketing tools 7 days after that transaction.
+* Add - Added staged activation emails that nudge WooPayments merchants who've completed KYC but haven't taken their first live sale toward activating live payments.
 * Add - Add EFTPOS and Cartes Bancaires card brand artwork for terminal payment details and receipts.
 * Add - Display new transaction type 'network_costs' on the Transactions list.
 * Add - Enable dispute additional evidence types feature by default
@@ -14,6 +15,7 @@
 * Fix - Address remaining paths where payment method change for subscription could reduce stock amounts
 * Fix - Allow rejected and under-review merchants to access Disputes and Transactions pages.
 * Fix - Clear cached account data when Jetpack site is disconnected
+* Fix - Constrain one-and-done and test-to-live recovery banner width on WC Admin SPA pages so they match the narrow content column instead of spanning full width.
 * Fix - Don't mark an order as Failed when a third-party plugin throws after the payment intent has already succeeded
 * Fix - fix: dependency extraction of @woocommerce/blocks-checkout
 * Fix - fix: express checkout to show recurring subscription info for free trial subscriptions with sign-up fees, not just pure $0 free trials
