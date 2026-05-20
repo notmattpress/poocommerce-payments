@@ -1,4 +1,5 @@
 /** @format */
+/* eslint-disable testing-library/no-unnecessary-act */
 /**
  * External dependencies
  */
@@ -192,6 +193,7 @@ describe( 'PaymentDetailsSummary', () => {
 			timeFormat: 'g:ia',
 			featureFlags: {
 				isDisputeIssuerEvidenceEnabled: false,
+				isDisputeOutcomeViewEnabled: false,
 			},
 		};
 
@@ -1039,6 +1041,127 @@ describe( 'PaymentDetailsSummary', () => {
 			expect(
 				screen.queryByLabelText( 'Transaction actions' )
 			).not.toBeInTheDocument();
+		} );
+	} );
+
+	describe( 'Dispute outcome view feature flag', () => {
+		const getResolvedCharge = ( status ) => {
+			const charge = getBaseCharge();
+			charge.disputed = true;
+			charge.dispute = getBaseDispute();
+			charge.dispute.status = status;
+			charge.dispute.metadata = {
+				__dispute_closed_at: '1693626817',
+				// Set a real product type so `resolveProductType()` lands
+				// on a real matrix cell. Drives the matrix-derived rows
+				// (e.g., "Customer communication"), not just the universal
+				// cover letter row, so the tests exercise the data path.
+				__product_type: 'physical_product',
+			};
+			// Top up evidence with rows the matrix expects for
+			// fraudulent × physical_product so we get at least one
+			// matrix-driven "provided" row alongside the cover letter.
+			charge.dispute.evidence = {
+				...charge.dispute.evidence,
+				shipping_date: '2026-01-01',
+				customer_communication: 'Email thread with the customer',
+			};
+			return charge;
+		};
+
+		test( 'renders DisputeResolutionFooter for a resolved dispute when the flag is off', () => {
+			renderCharge( getResolvedCharge( 'won' ) );
+
+			expect(
+				screen.getByText( /Good news/i, {
+					ignore: '.a11y-speak-region',
+				} )
+			).toBeInTheDocument();
+		} );
+
+		// Returns the `.dispute-outcome-view` section wrapping the
+		// Evidence Submitted heading, so list-item assertions don't
+		// accidentally count `<li>` elements from other parts of the
+		// PaymentDetailsSummary page (e.g. the meta row).
+		const getOutcomeViewSection = () => {
+			const heading = screen.getByRole( 'heading', {
+				name: 'Evidence Submitted',
+			} );
+			const section = heading.closest( '.dispute-outcome-view' );
+			expect( section ).not.toBeNull();
+			return section;
+		};
+
+		test( 'renders the Outcome View Evidence Submitted section for a won dispute when the flag is on', () => {
+			global.wcpaySettings.featureFlags.isDisputeOutcomeViewEnabled = true;
+
+			renderCharge( getResolvedCharge( 'won' ) );
+
+			expect(
+				screen.queryByText( /Good news/i, {
+					ignore: '.a11y-speak-region',
+				} )
+			).not.toBeInTheDocument();
+			const section = getOutcomeViewSection();
+			// Real-data path: the fixture sets product type + matching
+			// evidence, so the helper produces a non-empty list and at
+			// least one provided row makes it to the DOM.
+			expect(
+				within( section ).getAllByRole( 'listitem' ).length
+			).toBeGreaterThan( 0 );
+			expect(
+				within( section ).getByText( /Customer communication/i )
+			).toBeInTheDocument();
+		} );
+
+		test( 'renders the Outcome View Evidence Submitted section for a lost dispute when the flag is on', () => {
+			global.wcpaySettings.featureFlags.isDisputeOutcomeViewEnabled = true;
+
+			renderCharge( getResolvedCharge( 'lost' ) );
+
+			expect(
+				screen.queryByText( /you've lost this dispute/i, {
+					ignore: '.a11y-speak-region',
+				} )
+			).not.toBeInTheDocument();
+			const section = getOutcomeViewSection();
+			expect(
+				within( section ).getAllByRole( 'listitem' ).length
+			).toBeGreaterThan( 0 );
+			expect(
+				within( section ).getByText( /Customer communication/i )
+			).toBeInTheDocument();
+		} );
+
+		test( 'still renders DisputeResolutionFooter for an under_review dispute when the flag is on', () => {
+			global.wcpaySettings.featureFlags.isDisputeOutcomeViewEnabled = true;
+
+			renderCharge( getResolvedCharge( 'under_review' ) );
+
+			expect(
+				screen.getByText(
+					/is currently reviewing the evidence you submitted/i,
+					{ ignore: '.a11y-speak-region' }
+				)
+			).toBeInTheDocument();
+		} );
+
+		test( 'still renders DisputeAwaitingResponseDetails for an unresolved dispute when the flag is on', () => {
+			global.wcpaySettings.featureFlags.isDisputeOutcomeViewEnabled = true;
+
+			const charge = getBaseCharge();
+			charge.disputed = true;
+			charge.dispute = getBaseDispute();
+			charge.dispute.status = 'needs_response';
+
+			renderCharge( charge );
+
+			expect(
+				screen.getByText(
+					/The cardholder claims this is an unauthorized transaction/,
+					{ ignore: '.a11y-speak-region' }
+				)
+			).toBeInTheDocument();
 		} );
 	} );
 } );
