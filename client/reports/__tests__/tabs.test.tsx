@@ -15,6 +15,15 @@ import { STORE_NAME as WCPAY_STORE_NAME } from 'wcpay/data/constants';
 import { getQuery, updateQueryString } from '@woocommerce/navigation';
 import { useDispatch } from '@wordpress/data';
 
+jest.mock( '../fees', () => ( {
+	FeesReport: ( { onReload }: { onReload?: () => void } ) => (
+		<div>
+			<div>Fees ledger table</div>
+			<button onClick={ onReload }>Reload</button>
+		</div>
+	),
+} ) );
+
 jest.mock( '@woocommerce/navigation', () => ( {
 	getQuery: jest.fn(),
 	updateQueryString: jest.fn(),
@@ -61,6 +70,7 @@ declare const global: {
 
 describe( 'Reports page tabs', () => {
 	const invalidateResolution = jest.fn();
+	const invalidateResolutionForStoreSelector = jest.fn();
 
 	const renderReportsPage = async ( props = {} ) => {
 		const result = render( <ReportsPage { ...props } /> );
@@ -82,9 +92,13 @@ describe( 'Reports page tabs', () => {
 		mockGetQuery.mockReturnValue( {} );
 		mockUpdateQueryString.mockClear();
 		invalidateResolution.mockClear();
+		invalidateResolutionForStoreSelector.mockClear();
 		mockUseDispatch.mockImplementation( ( storeName ) => {
 			if ( WCPAY_STORE_NAME === storeName ) {
-				return { invalidateResolution };
+				return {
+					invalidateResolution,
+					invalidateResolutionForStoreSelector,
+				};
 			}
 			return {};
 		} );
@@ -178,7 +192,7 @@ describe( 'Reports page tabs', () => {
 		expect( screen.getByRole( 'tab', { name: 'Fees' } ) ).toHaveFocus();
 	} );
 
-	it( 'reloads the active tab in place by invalidating the placeholder resolver', async () => {
+	it( 'reloads the Balance tab in place by invalidating the Balance selector', async () => {
 		await renderReportsPage( {
 			tabStatus: 'error',
 			now: new Date( '2026-05-06T12:00:00Z' ),
@@ -189,7 +203,7 @@ describe( 'Reports page tabs', () => {
 		);
 
 		expect( invalidateResolution ).toHaveBeenCalledWith(
-			expect.any( String ),
+			'getReportsBalanceSummary',
 			[
 				{
 					start: '2026-04-01T00:00:00.000Z',
@@ -199,7 +213,7 @@ describe( 'Reports page tabs', () => {
 		);
 	} );
 
-	it( 'reloads the Fees tab with the current period range', async () => {
+	it( 'reloads the Fees tab by invalidating all Fees selector resolutions', async () => {
 		mockGetQuery.mockReturnValue( { tab: 'fees' } );
 
 		await renderReportsPage( {
@@ -211,14 +225,21 @@ describe( 'Reports page tabs', () => {
 			screen.getByRole( 'button', { name: /Reload/i } )
 		);
 
-		expect( invalidateResolution ).toHaveBeenCalledWith(
-			expect.any( String ),
-			[
-				{
-					start: '2026-04-01T00:00:00.000Z',
-					end: '2026-04-30T23:59:59.999Z',
-				},
-			]
+		expect( invalidateResolutionForStoreSelector ).toHaveBeenCalledWith(
+			'getReportsFees'
 		);
+		expect( invalidateResolutionForStoreSelector ).toHaveBeenCalledWith(
+			'getReportsFeesSummary'
+		);
+	} );
+
+	it( 'renders the Fees report when Fees tab is active', async () => {
+		mockGetQuery.mockReturnValue( { tab: 'fees' } );
+
+		await renderReportsPage( {
+			now: new Date( '2026-05-06T12:00:00Z' ),
+		} );
+
+		expect( screen.getByText( 'Fees ledger table' ) ).toBeInTheDocument();
 	} );
 } );

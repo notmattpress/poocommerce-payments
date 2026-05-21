@@ -24,7 +24,7 @@ interface ReportsPageProps {
 }
 
 export const ReportsPage: React.FC< ReportsPageProps > = ( {
-	tabStatus = 'empty',
+	tabStatus,
 	now,
 } ) => {
 	const [ activeTab, setActiveTab ] = useState( () =>
@@ -37,6 +37,7 @@ export const ReportsPage: React.FC< ReportsPageProps > = ( {
 		() => getLastFullCalendarMonthUTC( now ?? new Date() ),
 		[ now ]
 	);
+	const currentTabStatus = tabStatus ?? 'ready';
 	const reload = useReportsTabReload( activeTab, period );
 
 	useEffect( () => {
@@ -97,7 +98,7 @@ export const ReportsPage: React.FC< ReportsPageProps > = ( {
 						<div className="wcpay-reports-content">
 							<ReportsTabPanel
 								tab={ tab.name as ReportsTab }
-								status={ tabStatus }
+								status={ currentTabStatus }
 								onReload={ reload }
 							/>
 						</div>
