@@ -2,7 +2,7 @@
 /**
  * Class Tracking
  *
- * @package WooCommerce\Payments\MultiCurrency
+ * @package PooCommerce\Payments\MultiCurrency
  */
 
 namespace WCPay\MultiCurrency;
@@ -35,7 +35,7 @@ class Tracking {
 	 * @return void
 	 */
 	public function init_hooks() {
-		add_filter( 'woocommerce_tracker_data', [ $this, 'add_tracker_data' ], 50 );
+		add_filter( 'poocommerce_tracker_data', [ $this, 'add_tracker_data' ], 50 );
 	}
 
 	/**
@@ -166,8 +166,8 @@ class Tracking {
 			GROUP BY currency, gateway
 		";
 
-		if ( class_exists( 'Automattic\WooCommerce\Utilities\OrderUtil' ) &&
-				\Automattic\WooCommerce\Utilities\OrderUtil::custom_orders_table_usage_is_enabled() ) {
+		if ( class_exists( 'Automattic\PooCommerce\Utilities\OrderUtil' ) &&
+				\Automattic\PooCommerce\Utilities\OrderUtil::custom_orders_table_usage_is_enabled() ) {
 			$orders_by_currency = $wpdb->get_results( $query_on_orders ); //phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 		} else {
 			$orders_by_currency = $wpdb->get_results( $query_on_posts ); //phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared

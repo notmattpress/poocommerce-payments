@@ -2,14 +2,14 @@
 /**
  * Class Compatibility
  *
- * @package WooCommerce\Payments\Compatibility
+ * @package PooCommerce\Payments\Compatibility
  */
 
 namespace WCPay\MultiCurrency;
 
-use Automattic\WooCommerce\Blocks\Package;
-use Automattic\WooCommerce\Blocks\Assets\AssetDataRegistry;
-use Automattic\WooCommerce\Utilities\OrderUtil;
+use Automattic\PooCommerce\Blocks\Package;
+use Automattic\PooCommerce\Blocks\Assets\AssetDataRegistry;
+use Automattic\PooCommerce\Utilities\OrderUtil;
 use WC_Order;
 use WC_Order_Refund;
 use WCPay\MultiCurrency\Interfaces\MultiCurrencySettingsInterface;
@@ -17,7 +17,7 @@ use WCPay\MultiCurrency\Interfaces\MultiCurrencySettingsInterface;
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Class that contains Multi-Currency related support for WooCommerce analytics.
+ * Class that contains Multi-Currency related support for PooCommerce analytics.
  */
 class Analytics {
 	const PRIORITY_EARLY   = 1;
@@ -67,21 +67,21 @@ class Analytics {
 	 * @return void
 	 */
 	public function init() {
-		if ( is_admin() && current_user_can( 'manage_woocommerce' ) ) {
+		if ( is_admin() && current_user_can( 'manage_poocommerce' ) ) {
 			add_filter( 'admin_enqueue_scripts', [ $this, 'enqueue_admin_scripts' ] );
 			$this->register_customer_currencies();
 		}
 
 		if ( $this->settings_service->is_dev_mode() ) {
-			add_filter( 'woocommerce_analytics_report_should_use_cache', [ $this, 'disable_report_caching' ] );
+			add_filter( 'poocommerce_analytics_report_should_use_cache', [ $this, 'disable_report_caching' ] );
 		}
 
 		// Add a filter when the order stats table is updated.
-		add_filter( 'woocommerce_analytics_update_order_stats_data', [ $this, 'update_order_stats_data' ], self::PRIORITY_LATEST, 2 );
+		add_filter( 'poocommerce_analytics_update_order_stats_data', [ $this, 'update_order_stats_data' ], self::PRIORITY_LATEST, 2 );
 
 		// Add filters when the query args are updated.
-		add_filter( 'woocommerce_analytics_orders_query_args', [ $this, 'apply_customer_currency_args' ] );
-		add_filter( 'woocommerce_analytics_orders_stats_query_args', [ $this, 'apply_customer_currency_args' ] );
+		add_filter( 'poocommerce_analytics_orders_query_args', [ $this, 'apply_customer_currency_args' ] );
+		add_filter( 'poocommerce_analytics_orders_stats_query_args', [ $this, 'apply_customer_currency_args' ] );
 
 		// If we aren't making a REST request, or no multi currency orders exist in the merchant's store,
 		// return before adding these filters.
@@ -93,18 +93,18 @@ class Analytics {
 		$this->set_sql_replacements();
 
 		// Add the filters that are applied in each analytics query.
-		add_filter( 'woocommerce_analytics_clauses_select', [ $this, 'filter_select_clauses' ], self::PRIORITY_LATE, 2 );
-		add_filter( 'woocommerce_analytics_clauses_join', [ $this, 'filter_join_clauses' ], self::PRIORITY_LATE, 2 );
+		add_filter( 'poocommerce_analytics_clauses_select', [ $this, 'filter_select_clauses' ], self::PRIORITY_LATE, 2 );
+		add_filter( 'poocommerce_analytics_clauses_join', [ $this, 'filter_join_clauses' ], self::PRIORITY_LATE, 2 );
 
 		// Add the WHERE clause filter which is applied only on Order related queries.
-		add_filter( 'woocommerce_analytics_clauses_where_orders_subquery', [ $this, 'filter_where_clauses' ] );
-		add_filter( 'woocommerce_analytics_clauses_where_orders_stats_total', [ $this, 'filter_where_clauses' ] );
-		add_filter( 'woocommerce_analytics_clauses_where_orders_stats_interval', [ $this, 'filter_where_clauses' ] );
+		add_filter( 'poocommerce_analytics_clauses_where_orders_subquery', [ $this, 'filter_where_clauses' ] );
+		add_filter( 'poocommerce_analytics_clauses_where_orders_stats_total', [ $this, 'filter_where_clauses' ] );
+		add_filter( 'poocommerce_analytics_clauses_where_orders_stats_interval', [ $this, 'filter_where_clauses' ] );
 
 		// phpcs:disable WordPress.Security.NonceVerification.Recommended
 		if ( ! empty( $_GET['currency'] ) && $_GET['currency'] !== $this->multi_currency->get_default_currency()->get_code() ) {
-			add_filter( 'woocommerce_analytics_clauses_select_orders_subquery', [ $this, 'filter_select_orders_clauses' ] );
-			add_filter( 'woocommerce_analytics_clauses_select_orders_stats_total', [ $this, 'filter_select_orders_clauses' ] );
+			add_filter( 'poocommerce_analytics_clauses_select_orders_subquery', [ $this, 'filter_select_orders_clauses' ] );
+			add_filter( 'poocommerce_analytics_clauses_select_orders_stats_total', [ $this, 'filter_select_orders_clauses' ] );
 		}
 	}
 

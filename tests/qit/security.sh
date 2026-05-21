@@ -13,7 +13,7 @@ done
 
 echo "Running security tests..." >&2
 set +e
-RAW="$($QIT_BINARY run:security woocommerce-payments --zip=woocommerce-payments.zip --wait 2>&1)"
+RAW="$($QIT_BINARY run:security poocommerce-payments --zip=poocommerce-payments.zip --wait 2>&1)"
 EXIT_CODE=$?
 set -e
 

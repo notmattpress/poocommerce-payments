@@ -2,7 +2,7 @@
 /**
  * Subscription helpers.
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 // WC_Mock_WC_Data is needed to mock '*_meta_data' methods required in tests.

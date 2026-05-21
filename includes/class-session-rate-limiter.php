@@ -2,7 +2,7 @@
 /**
  * Class Session_Rate_Limiter
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay;

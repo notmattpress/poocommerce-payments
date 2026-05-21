@@ -1,6 +1,6 @@
 /** @format */
 
-.woocommerce-payments-page {
+.poocommerce-payments-page {
 	.components-card__header {
 		font-size: 20px;
 	}
@@ -126,7 +126,7 @@
 	}
 }
 
-.woocommerce-list--horizontal {
+.poocommerce-list--horizontal {
 	margin-top: 0 !important;
 }
 
@@ -141,7 +141,7 @@
 		 * This should be taken care of by the dropdown menu component's CSS, but we seem to be relying in outdated
 		 * wordpress/components styles.
 		 *
-		 * Github issue: https://github.com/Automattic/woocommerce-payments/issues/8012
+		 * Github issue: https://github.com/Automattic/poocommerce-payments/issues/8012
 		 */
 		.components-popover {
 			position: fixed;

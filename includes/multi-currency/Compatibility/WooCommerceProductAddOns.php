@@ -1,6 +1,6 @@
 <?php
 /**
- * Class WooCommerceProductAddOns
+ * Class PooCommerceProductAddOns
  *
  * @package WCPay\MultiCurrency\Compatibility
  */
@@ -12,9 +12,9 @@ use WCPay\MultiCurrency\MultiCurrency;
 use WCPay\MultiCurrency\Utils;
 
 /**
- * Class that controls Multi Currency Compatibility with WooCommerce Product Add Ons Plugin.
+ * Class that controls Multi Currency Compatibility with PooCommerce Product Add Ons Plugin.
  */
-class WooCommerceProductAddOns extends BaseCompatibility {
+class PooCommerceProductAddOns extends BaseCompatibility {
 
 	const ADDONS_CONVERTED_META_KEY = '_wcpay_multi_currency_addons_converted';
 
@@ -27,18 +27,18 @@ class WooCommerceProductAddOns extends BaseCompatibility {
 		// Add needed actions and filters if Product Add Ons is active.
 		if ( class_exists( 'WC_Product_Addons' ) ) {
 			if ( ! is_admin() && ! defined( 'DOING_CRON' ) ) {
-				add_filter( 'woocommerce_product_addons_option_price_raw', [ $this, 'get_addons_price' ], 50, 2 );
-				add_filter( 'woocommerce_product_addons_price_raw', [ $this, 'get_addons_price' ], 50, 2 );
-				add_filter( 'woocommerce_product_addons_params', [ $this, 'product_addons_params' ], 50, 1 );
-				add_filter( 'woocommerce_product_addons_get_item_data', [ $this, 'get_item_data' ], 50, 3 );
-				add_filter( 'woocommerce_product_addons_update_product_price', [ $this, 'update_product_price' ], 50, 4 );
-				add_filter( 'woocommerce_product_addons_order_line_item_meta', [ $this, 'order_line_item_meta' ], 50, 4 );
+				add_filter( 'poocommerce_product_addons_option_price_raw', [ $this, 'get_addons_price' ], 50, 2 );
+				add_filter( 'poocommerce_product_addons_price_raw', [ $this, 'get_addons_price' ], 50, 2 );
+				add_filter( 'poocommerce_product_addons_params', [ $this, 'product_addons_params' ], 50, 1 );
+				add_filter( 'poocommerce_product_addons_get_item_data', [ $this, 'get_item_data' ], 50, 3 );
+				add_filter( 'poocommerce_product_addons_update_product_price', [ $this, 'update_product_price' ], 50, 4 );
+				add_filter( 'poocommerce_product_addons_order_line_item_meta', [ $this, 'order_line_item_meta' ], 50, 4 );
 				add_filter( MultiCurrency::FILTER_PREFIX . 'should_convert_product_price', [ $this, 'should_convert_product_price' ], 50, 2 );
 			}
 
 			if ( wp_doing_ajax() ) {
-				add_filter( 'woocommerce_product_addons_ajax_get_product_price_including_tax', [ $this, 'get_product_calculation_price' ], 50, 3 );
-				add_filter( 'woocommerce_product_addons_ajax_get_product_price_excluding_tax', [ $this, 'get_product_calculation_price' ], 50, 3 );
+				add_filter( 'poocommerce_product_addons_ajax_get_product_price_including_tax', [ $this, 'get_product_calculation_price' ], 50, 3 );
+				add_filter( 'poocommerce_product_addons_ajax_get_product_price_excluding_tax', [ $this, 'get_product_calculation_price' ], 50, 3 );
 			}
 		}
 	}
@@ -66,7 +66,7 @@ class WooCommerceProductAddOns extends BaseCompatibility {
 	}
 
 	/**
-	 * Converts the price of an addon from WooCommerce Products Add-on extension.
+	 * Converts the price of an addon from PooCommerce Products Add-on extension.
 	 *
 	 * @param mixed $price   The price to be filtered.
 	 * @param array $type    The type of the addon.
@@ -113,14 +113,14 @@ class WooCommerceProductAddOns extends BaseCompatibility {
 		$value = $addon['value'];
 
 		/*
-		 * 'woocommerce_addons_add_cart_price_to_value'
+		 * 'poocommerce_addons_add_cart_price_to_value'
 		 *
 		 * Use this filter to display the price next to each selected add-on option.
 		 * By default, add-on prices show up only next to flat fee add-ons.
 		 *
 		 * @param boolean
 		 */
-		$add_price_to_value = apply_filters( 'woocommerce_addons_add_cart_price_to_value', false, $cart_item );
+		$add_price_to_value = apply_filters( 'poocommerce_addons_add_cart_price_to_value', false, $cart_item );
 
 		if ( 0.0 === (float) $addon['price'] ) {
 			$value .= '';
@@ -130,7 +130,7 @@ class WooCommerceProductAddOns extends BaseCompatibility {
 			if ( class_exists( 'WC_Product_Addons_Helper' ) ) {
 				$addon_price = wc_price( \WC_Product_Addons_Helper::get_product_addon_price_for_display( $addon['price'], $cart_item['data'] ) );
 				/* translators: %1$s custom addon price in cart */
-				$value           .= sprintf( _x( ' (%1$s)', 'custom price addon price in cart', 'woocommerce-payments' ), $addon_price );
+				$value           .= sprintf( _x( ' (%1$s)', 'custom price addon price in cart', 'poocommerce-payments' ), $addon_price );
 				$addon['display'] = $value;
 			}
 		} elseif ( 'flat_fee' === $addon['price_type'] && $addon['price'] ) {
@@ -142,7 +142,7 @@ class WooCommerceProductAddOns extends BaseCompatibility {
 				}
 				$addon_price = wc_price( \WC_Product_Addons_Helper::get_product_addon_price_for_display( $addon_price, $cart_item['data'] ) );
 				/* translators: %1$s flat fee addon price in order */
-				$value .= sprintf( _x( ' (+ %1$s)', 'flat fee addon price in cart', 'woocommerce-payments' ), $addon_price );
+				$value .= sprintf( _x( ' (+ %1$s)', 'flat fee addon price in cart', 'poocommerce-payments' ), $addon_price );
 			}
 		} elseif ( 'quantity_based' === $addon['price_type'] && $addon['price'] && $add_price_to_value ) {
 			if ( class_exists( 'WC_Product_Addons_Helper' ) ) {
@@ -153,7 +153,7 @@ class WooCommerceProductAddOns extends BaseCompatibility {
 				}
 				$addon_price = wc_price( \WC_Product_Addons_Helper::get_product_addon_price_for_display( $addon_price, $cart_item['data'] ) );
 				/* translators: %1$s addon price in order */
-				$value .= sprintf( _x( ' (%1$s)', 'quantity based addon price in cart', 'woocommerce-payments' ), $addon_price );
+				$value .= sprintf( _x( ' (%1$s)', 'quantity based addon price in cart', 'poocommerce-payments' ), $addon_price );
 			}
 		} elseif ( 'percentage_based' === $addon['price_type'] && $addon['price'] && $add_price_to_value ) {
 			// Get the percentage cost in the currency in use, and set the meta data on the product that the value was converted.
@@ -162,7 +162,7 @@ class WooCommerceProductAddOns extends BaseCompatibility {
 			$_product->set_price( $price * ( $addon['price'] / 100 ) );
 			$_product->update_meta_data( self::ADDONS_CONVERTED_META_KEY, 1 );
 			/* translators: %1$s addon price in order */
-			$value .= sprintf( _x( ' (%1$s)', 'percentage based addon price in cart', 'woocommerce-payments' ), WC()->cart->get_product_price( $_product ) );
+			$value .= sprintf( _x( ' (%1$s)', 'percentage based addon price in cart', 'poocommerce-payments' ), WC()->cart->get_product_price( $_product ) );
 		}
 
 		return [
@@ -264,7 +264,7 @@ class WooCommerceProductAddOns extends BaseCompatibility {
 	 */
 	public function order_line_item_meta( array $meta_data, array $addon, \WC_Order_Item_Product $item, array $values ): array {
 
-		$add_price_to_value = apply_filters( 'woocommerce_addons_add_order_price_to_value', false, $item );
+		$add_price_to_value = apply_filters( 'poocommerce_addons_add_order_price_to_value', false, $item );
 
 		$value = $addon['value'];
 
@@ -300,13 +300,13 @@ class WooCommerceProductAddOns extends BaseCompatibility {
 
 			if ( 'flat_fee' === $addon['price_type'] && $addon['price'] && $add_price_to_value ) {
 				/* translators: %1$s flat fee addon price in order */
-				$value .= sprintf( _x( ' (+ %1$s)', 'flat fee addon price in order', 'woocommerce-payments' ), $price );
+				$value .= sprintf( _x( ' (+ %1$s)', 'flat fee addon price in order', 'poocommerce-payments' ), $price );
 			} elseif ( ( 'quantity_based' === $addon['price_type'] || 'percentage_based' === $addon['price_type'] ) && $addon['price'] && $add_price_to_value ) {
 				/* translators: %1$s addon price in order */
-				$value .= sprintf( _x( ' (%1$s)', 'addon price in order', 'woocommerce-payments' ), $price );
+				$value .= sprintf( _x( ' (%1$s)', 'addon price in order', 'poocommerce-payments' ), $price );
 			} elseif ( 'custom_price' === $addon['field_type'] ) {
 				/* translators: %1$s custom addon price in order */
-				$value = sprintf( _x( ' (%1$s)', 'custom addon price in order', 'woocommerce-payments' ), $price );
+				$value = sprintf( _x( ' (%1$s)', 'custom addon price in order', 'poocommerce-payments' ), $price );
 			}
 
 			$meta_data['raw_price'] = $this->multi_currency->get_price( $addon['price'], 'product' );

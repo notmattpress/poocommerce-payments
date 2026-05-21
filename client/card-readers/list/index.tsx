@@ -17,16 +17,16 @@ import { useReaders } from 'wcpay/data';
 
 const ReadersListDescription = () => (
 	<>
-		<h2>{ __( 'Connected card readers', 'woocommerce-payments' ) }</h2>
+		<h2>{ __( 'Connected card readers', 'poocommerce-payments' ) }</h2>
 		<p>
 			{ sprintf(
 				/* translators: %s: WooPayments */
 				__(
 					'Card readers are marked as active if they’ve processed one or more transactions during the current billing cycle. ' +
 						'To connect or disconnect card readers, use the %s mobile application.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
-				'WooCommerce'
+				'PooCommerce'
 			) }
 		</p>
 	</>
@@ -42,13 +42,13 @@ const ReadersList = (): JSX.Element => {
 					<Card className="card-readers-list__wrapper">
 						<CardBody className="card-readers-list__header">
 							<div className="card-readers-list__header-id">
-								{ __( 'Reader ID', 'woocommerce-payments' ) }
+								{ __( 'Reader ID', 'poocommerce-payments' ) }
 							</div>
 							<div className="card-readers-list__header-model">
-								{ __( 'Model', 'woocommerce-payments' ) }
+								{ __( 'Model', 'poocommerce-payments' ) }
 							</div>
 							<div className="card-readers-list__header-status">
-								{ __( 'Status', 'woocommerce-payments' ) }
+								{ __( 'Status', 'poocommerce-payments' ) }
 							</div>
 						</CardBody>
 						<CardDivider />

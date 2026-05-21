@@ -10,8 +10,8 @@ updates:
       ignore:
         # For @wordpress dependencies, ignore all updates as most of them need to be synced to the min WP version
         - dependency-name: "@wordpress/*"
-        # For @woocommerce dependencies, ignore all updates as most of them need to be synced to the min WC version
-        - dependency-name: "@woocommerce/*"
+        # For @poocommerce dependencies, ignore all updates as most of them need to be synced to the min WC version
+        - dependency-name: "@poocommerce/*"
       # Reviewers for issues created
       reviewers:
         - 'Automattic/gamma'

@@ -2,7 +2,7 @@
 /**
  * Class WC_REST_Payments_Orders_Controller
  *
- * @package WooCommerce\Payments\Admin
+ * @package PooCommerce\Payments\Admin
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -54,8 +54,8 @@ class WC_REST_Payments_Orders_Controller extends WC_Payments_REST_Controller {
 	/**
 	 * WC_Payments_REST_Controller constructor.
 	 *
-	 * @param WC_Payments_API_Client       $api_client       WooCommerce Payments API client.
-	 * @param WC_Payment_Gateway_WCPay     $gateway          WooCommerce Payments payment gateway.
+	 * @param WC_Payments_API_Client       $api_client       PooCommerce Payments API client.
+	 * @param WC_Payment_Gateway_WCPay     $gateway          PooCommerce Payments payment gateway.
 	 * @param WC_Payments_Customer_Service $customer_service Customer class instance.
 	 * @param WC_Payments_Order_Service    $order_service    Order Service class instance.
 	 */
@@ -166,14 +166,14 @@ class WC_REST_Payments_Orders_Controller extends WC_Payments_REST_Controller {
 			// Do not process non-existing orders.
 			$order = wc_get_order( $order_id );
 			if ( false === $order ) {
-				return new WP_Error( 'wcpay_missing_order', __( 'Order not found', 'woocommerce-payments' ), [ 'status' => 404 ] );
+				return new WP_Error( 'wcpay_missing_order', __( 'Order not found', 'poocommerce-payments' ), [ 'status' => 404 ] );
 			}
 
 			// Do not process orders with refund(s).
 			if ( 0 < $order->get_total_refunded() ) {
 				return new WP_Error(
 					'wcpay_refunded_order_uncapturable',
-					__( 'Payment cannot be captured for partially or fully refunded orders.', 'woocommerce-payments' ),
+					__( 'Payment cannot be captured for partially or fully refunded orders.', 'poocommerce-payments' ),
 					[ 'status' => 400 ]
 				);
 			}
@@ -190,7 +190,7 @@ class WC_REST_Payments_Orders_Controller extends WC_Payments_REST_Controller {
 				in_array( $stored_intent_status, $processed_order_intent_statuses, true ) ||
 				( $stored_intent_id && $stored_intent_id !== $intent_id )
 			) {
-				return new WP_Error( 'wcpay_payment_uncapturable', __( 'The payment cannot be captured for completed or processed orders.', 'woocommerce-payments' ), [ 'status' => 409 ] );
+				return new WP_Error( 'wcpay_payment_uncapturable', __( 'The payment cannot be captured for completed or processed orders.', 'poocommerce-payments' ), [ 'status' => 409 ] );
 			}
 
 			// Do not process intents that can't be captured.
@@ -203,15 +203,15 @@ class WC_REST_Payments_Orders_Controller extends WC_Payments_REST_Controller {
 			$intent_meta_order_id     = is_numeric( $intent_meta_order_id_raw ) ? intval( $intent_meta_order_id_raw ) : 0;
 			if ( $intent_meta_order_id !== $order->get_id() ) {
 				Logger::error( 'Payment capture rejected due to failed validation: order id on intent is incorrect or missing.' );
-				return new WP_Error( 'wcpay_intent_order_mismatch', __( 'The payment cannot be captured', 'woocommerce-payments' ), [ 'status' => 409 ] );
+				return new WP_Error( 'wcpay_intent_order_mismatch', __( 'The payment cannot be captured', 'poocommerce-payments' ), [ 'status' => 409 ] );
 			}
 			if ( ! $intent->is_authorized() ) {
-				return new WP_Error( 'wcpay_payment_uncapturable', __( 'The payment cannot be captured', 'woocommerce-payments' ), [ 'status' => 409 ] );
+				return new WP_Error( 'wcpay_payment_uncapturable', __( 'The payment cannot be captured', 'poocommerce-payments' ), [ 'status' => 409 ] );
 			}
 
 			// Update the order: set the payment method and attach intent attributes.
 			$order->set_payment_method( WC_Payment_Gateway_WCPay::GATEWAY_ID );
-			$order->set_payment_method_title( __( 'WooCommerce In-Person Payments', 'woocommerce-payments' ) );
+			$order->set_payment_method_title( __( 'PooCommerce In-Person Payments', 'poocommerce-payments' ) );
 			$this->order_service->attach_intent_info_to_order( $order, $intent );
 
 			$this->order_service->update_order_status_from_intent( $order, $intent );
@@ -235,8 +235,8 @@ class WC_REST_Payments_Orders_Controller extends WC_Payments_REST_Controller {
 
 				$message = sprintf(
 					// translators: %s: the error message.
-					__( 'Payment capture failed to complete with the following message: %s', 'woocommerce-payments' ),
-					$result['message'] ?? __( 'Unknown error', 'woocommerce-payments' )
+					__( 'Payment capture failed to complete with the following message: %s', 'poocommerce-payments' ),
+					$result['message'] ?? __( 'Unknown error', 'poocommerce-payments' )
 				);
 
 				if ( 'amount_too_small' === $error_type && ! empty( $extra_details ) ) {
@@ -288,7 +288,7 @@ class WC_REST_Payments_Orders_Controller extends WC_Payments_REST_Controller {
 			);
 		} catch ( \Throwable $e ) {
 			Logger::error( 'Failed to capture a terminal payment via REST API: ' . $e );
-			return new WP_Error( 'wcpay_server_error', __( 'Unexpected server error', 'woocommerce-payments' ), [ 'status' => 500 ] );
+			return new WP_Error( 'wcpay_server_error', __( 'Unexpected server error', 'poocommerce-payments' ), [ 'status' => 500 ] );
 		}
 	}
 
@@ -306,14 +306,14 @@ class WC_REST_Payments_Orders_Controller extends WC_Payments_REST_Controller {
 			// Do not process non-existing orders.
 			$order = wc_get_order( $order_id );
 			if ( false === $order ) {
-				return new WP_Error( 'wcpay_missing_order', __( 'Order not found', 'woocommerce-payments' ), [ 'status' => 404 ] );
+				return new WP_Error( 'wcpay_missing_order', __( 'Order not found', 'poocommerce-payments' ), [ 'status' => 404 ] );
 			}
 
 			// Match the export download route pattern: allow future Stripe ID formats while blocking path traversal.
 			if ( ! is_string( $intent_id ) || 1 !== preg_match( '/^[^\/\\\\%]+$/', $intent_id ) ) {
 				return new WP_Error(
 					'wcpay_invalid_payment_intent_id',
-					__( 'Invalid payment intent ID.', 'woocommerce-payments' ),
+					__( 'Invalid payment intent ID.', 'poocommerce-payments' ),
 					[ 'status' => 400 ]
 				);
 			}
@@ -322,7 +322,7 @@ class WC_REST_Payments_Orders_Controller extends WC_Payments_REST_Controller {
 			if ( 0 < $order->get_total_refunded() ) {
 				return new WP_Error(
 					'wcpay_refunded_order_unpreparable',
-					__( 'Terminal payments cannot be prepared for partially or fully refunded orders.', 'woocommerce-payments' ),
+					__( 'Terminal payments cannot be prepared for partially or fully refunded orders.', 'poocommerce-payments' ),
 					[ 'status' => 400 ]
 				);
 			}
@@ -341,7 +341,7 @@ class WC_REST_Payments_Orders_Controller extends WC_Payments_REST_Controller {
 		} catch ( Invalid_Request_Parameter_Exception $e ) {
 			return new WP_Error(
 				'wcpay_invalid_payment_intent_id',
-				__( 'Invalid payment intent ID.', 'woocommerce-payments' ),
+				__( 'Invalid payment intent ID.', 'poocommerce-payments' ),
 				[ 'status' => 400 ]
 			);
 		} catch ( API_Exception $e ) {
@@ -354,7 +354,7 @@ class WC_REST_Payments_Orders_Controller extends WC_Payments_REST_Controller {
 			);
 		} catch ( \Throwable $e ) {
 			Logger::error( 'Failed to prepare a terminal payment via REST API: ' . $e );
-			return new WP_Error( 'wcpay_server_error', __( 'Unexpected server error', 'woocommerce-payments' ), [ 'status' => 500 ] );
+			return new WP_Error( 'wcpay_server_error', __( 'Unexpected server error', 'poocommerce-payments' ), [ 'status' => 500 ] );
 		}
 	}
 
@@ -373,14 +373,14 @@ class WC_REST_Payments_Orders_Controller extends WC_Payments_REST_Controller {
 			// Do not process non-existing orders.
 			$order = wc_get_order( $order_id );
 			if ( false === $order ) {
-				return new WP_Error( 'wcpay_missing_order', __( 'Order not found', 'woocommerce-payments' ), [ 'status' => 404 ] );
+				return new WP_Error( 'wcpay_missing_order', __( 'Order not found', 'poocommerce-payments' ), [ 'status' => 404 ] );
 			}
 
 			// Do not process orders with refund(s).
 			if ( 0 < $order->get_total_refunded() ) {
 				return new WP_Error(
 					'wcpay_refunded_order_uncapturable',
-					__( 'Payment cannot be captured for partially or fully refunded orders.', 'woocommerce-payments' ),
+					__( 'Payment cannot be captured for partially or fully refunded orders.', 'poocommerce-payments' ),
 					[ 'status' => 400 ]
 				);
 			}
@@ -395,10 +395,10 @@ class WC_REST_Payments_Orders_Controller extends WC_Payments_REST_Controller {
 			$intent_meta_order_id     = is_numeric( $intent_meta_order_id_raw ) ? intval( $intent_meta_order_id_raw ) : 0;
 			if ( $intent_meta_order_id !== $order->get_id() ) {
 				Logger::error( 'Payment capture rejected due to failed validation: order id on intent is incorrect or missing.' );
-				return new WP_Error( 'wcpay_intent_order_mismatch', __( 'The payment cannot be captured', 'woocommerce-payments' ), [ 'status' => 409 ] );
+				return new WP_Error( 'wcpay_intent_order_mismatch', __( 'The payment cannot be captured', 'poocommerce-payments' ), [ 'status' => 409 ] );
 			}
 			if ( ! $intent->is_authorized() ) {
-				return new WP_Error( 'wcpay_payment_uncapturable', __( 'The payment cannot be captured', 'woocommerce-payments' ), [ 'status' => 409 ] );
+				return new WP_Error( 'wcpay_payment_uncapturable', __( 'The payment cannot be captured', 'poocommerce-payments' ), [ 'status' => 409 ] );
 			}
 
 			$this->add_fraud_outcome_manual_entry( $order, 'approve' );
@@ -412,8 +412,8 @@ class WC_REST_Payments_Orders_Controller extends WC_Payments_REST_Controller {
 					'wcpay_capture_error',
 					sprintf(
 					// translators: %s: the error message.
-						__( 'Payment capture failed to complete with the following message: %s', 'woocommerce-payments' ),
-						$result['message'] ?? __( 'Unknown error', 'woocommerce-payments' )
+						__( 'Payment capture failed to complete with the following message: %s', 'poocommerce-payments' ),
+						$result['message'] ?? __( 'Unknown error', 'poocommerce-payments' )
 					),
 					[
 						'status'        => $result['http_code'] ?? 502,
@@ -433,7 +433,7 @@ class WC_REST_Payments_Orders_Controller extends WC_Payments_REST_Controller {
 			);
 		} catch ( \Throwable $e ) {
 			Logger::error( 'Failed to capture an authorization via REST API: ' . $e );
-			return new WP_Error( 'wcpay_server_error', __( 'Unexpected server error', 'woocommerce-payments' ), [ 'status' => 500 ] );
+			return new WP_Error( 'wcpay_server_error', __( 'Unexpected server error', 'poocommerce-payments' ), [ 'status' => 500 ] );
 		}
 	}
 
@@ -453,7 +453,7 @@ class WC_REST_Payments_Orders_Controller extends WC_Payments_REST_Controller {
 			// Do not process non-existing orders.
 			$order = wc_get_order( $order_id );
 			if ( false === $order || ! ( $order instanceof WC_Order ) ) {
-				return new WP_Error( 'wcpay_missing_order', __( 'Order not found', 'woocommerce-payments' ), [ 'status' => 404 ] );
+				return new WP_Error( 'wcpay_missing_order', __( 'Order not found', 'poocommerce-payments' ), [ 'status' => 404 ] );
 			}
 
 			$disallowed_order_statuses = apply_filters(
@@ -466,7 +466,7 @@ class WC_REST_Payments_Orders_Controller extends WC_Payments_REST_Controller {
 				]
 			);
 			if ( $order->has_status( $disallowed_order_statuses ) ) {
-				return new WP_Error( 'wcpay_invalid_order_status', __( 'Invalid order status', 'woocommerce-payments' ), [ 'status' => 400 ] );
+				return new WP_Error( 'wcpay_invalid_order_status', __( 'Invalid order status', 'poocommerce-payments' ), [ 'status' => 400 ] );
 			}
 
 			$order_user        = $order->get_user();
@@ -494,7 +494,7 @@ class WC_REST_Payments_Orders_Controller extends WC_Payments_REST_Controller {
 			);
 		} catch ( \Throwable $e ) {
 			Logger::error( 'Failed to create / update customer from order via REST API: ' . $e );
-			return new WP_Error( 'wcpay_server_error', __( 'Unexpected server error', 'woocommerce-payments' ), [ 'status' => 500 ] );
+			return new WP_Error( 'wcpay_server_error', __( 'Unexpected server error', 'poocommerce-payments' ), [ 'status' => 500 ] );
 		}
 	}
 
@@ -509,7 +509,7 @@ class WC_REST_Payments_Orders_Controller extends WC_Payments_REST_Controller {
 		// Do not process non-existing orders.
 		$order = wc_get_order( $request['order_id'] );
 		if ( false === $order ) {
-			return new WP_Error( 'wcpay_missing_order', __( 'Order not found', 'woocommerce-payments' ), [ 'status' => 404 ] );
+			return new WP_Error( 'wcpay_missing_order', __( 'Order not found', 'poocommerce-payments' ), [ 'status' => 404 ] );
 		}
 		try {
 			$currency                 = strtolower( $order->get_currency() );
@@ -536,7 +536,7 @@ class WC_REST_Payments_Orders_Controller extends WC_Payments_REST_Controller {
 			);
 		} catch ( \Throwable $e ) {
 			Logger::error( 'Failed to create an intention via REST API: ' . $e );
-			return new WP_Error( 'wcpay_server_error', __( 'Unexpected server error', 'woocommerce-payments' ), [ 'status' => 500 ] );
+			return new WP_Error( 'wcpay_server_error', __( 'Unexpected server error', 'poocommerce-payments' ), [ 'status' => 500 ] );
 		}
 	}
 
@@ -605,14 +605,14 @@ class WC_REST_Payments_Orders_Controller extends WC_Payments_REST_Controller {
 			// Do not process non-existing orders.
 			$order = wc_get_order( $order_id );
 			if ( false === $order ) {
-				return new WP_Error( 'wcpay_missing_order', __( 'Order not found', 'woocommerce-payments' ), [ 'status' => 404 ] );
+				return new WP_Error( 'wcpay_missing_order', __( 'Order not found', 'poocommerce-payments' ), [ 'status' => 404 ] );
 			}
 
 			// Do not process orders with refund(s).
 			if ( 0 < $order->get_total_refunded() ) {
 				return new WP_Error(
 					'wcpay_refunded_order_uncapturable',
-					__( 'Payment cannot be canceled for partially or fully refunded orders.', 'woocommerce-payments' ),
+					__( 'Payment cannot be canceled for partially or fully refunded orders.', 'poocommerce-payments' ),
 					[ 'status' => 400 ]
 				);
 			}
@@ -627,10 +627,10 @@ class WC_REST_Payments_Orders_Controller extends WC_Payments_REST_Controller {
 			$intent_meta_order_id     = is_numeric( $intent_meta_order_id_raw ) ? intval( $intent_meta_order_id_raw ) : 0;
 			if ( $intent_meta_order_id !== $order->get_id() ) {
 				Logger::error( 'Payment cancellation rejected due to failed validation: order id on intent is incorrect or missing.' );
-				return new WP_Error( 'wcpay_intent_order_mismatch', __( 'The payment cannot be canceled', 'woocommerce-payments' ), [ 'status' => 409 ] );
+				return new WP_Error( 'wcpay_intent_order_mismatch', __( 'The payment cannot be canceled', 'poocommerce-payments' ), [ 'status' => 409 ] );
 			}
 			if ( ! in_array( $intent->get_status(), [ Intent_Status::REQUIRES_CAPTURE ], true ) ) {
-				return new WP_Error( 'wcpay_payment_uncapturable', __( 'The payment cannot be canceled', 'woocommerce-payments' ), [ 'status' => 409 ] );
+				return new WP_Error( 'wcpay_payment_uncapturable', __( 'The payment cannot be canceled', 'poocommerce-payments' ), [ 'status' => 409 ] );
 			}
 
 			$this->add_fraud_outcome_manual_entry( $order, 'block' );
@@ -642,8 +642,8 @@ class WC_REST_Payments_Orders_Controller extends WC_Payments_REST_Controller {
 					'wcpay_cancel_error',
 					sprintf(
 					// translators: %s: the error message.
-						__( 'Payment cancel failed to complete with the following message: %s', 'woocommerce-payments' ),
-						$result['message'] ?? __( 'Unknown error', 'woocommerce-payments' )
+						__( 'Payment cancel failed to complete with the following message: %s', 'poocommerce-payments' ),
+						$result['message'] ?? __( 'Unknown error', 'poocommerce-payments' )
 					),
 					[ 'status' => $result['http_code'] ?? 502 ]
 				);
@@ -659,7 +659,7 @@ class WC_REST_Payments_Orders_Controller extends WC_Payments_REST_Controller {
 			);
 		} catch ( \Throwable $e ) {
 			Logger::error( 'Failed to cancel an authorization via REST API: ' . $e );
-			return new WP_Error( 'wcpay_server_error', __( 'Unexpected server error', 'woocommerce-payments' ), [ 'status' => 500 ] );
+			return new WP_Error( 'wcpay_server_error', __( 'Unexpected server error', 'poocommerce-payments' ), [ 'status' => 500 ] );
 		}
 	}
 

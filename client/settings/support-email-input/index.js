@@ -23,7 +23,7 @@ const SupportEmailInput = ( { setInputValid } ) => {
 	if ( supportEmail === '' && currentEmail !== '' ) {
 		supportEmailError = __(
 			'Support email cannot be empty once it has been set before, please specify.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		);
 	}
 
@@ -33,7 +33,7 @@ const SupportEmailInput = ( { setInputValid } ) => {
 		hasBlurred && hasInvalidFormat
 			? __(
 					'Please enter a valid email address.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 			  )
 			: null;
 
@@ -61,9 +61,9 @@ const SupportEmailInput = ( { setInputValid } ) => {
 				className="settings__account-business-support-email-input"
 				help={ __(
 					'This may be visible on receipts, invoices, and automated emails from your store.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				) }
-				label={ __( 'Support email', 'woocommerce-payments' ) }
+				label={ __( 'Support email', 'poocommerce-payments' ) }
 				value={ supportEmail }
 				onChange={ setSupportEmail }
 				onBlur={ () => setHasBlurred( true ) }

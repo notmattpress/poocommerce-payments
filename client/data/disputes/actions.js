@@ -74,11 +74,11 @@ export function* acceptDispute( dispute ) {
 					/* translators: #%s is an order number, e.g. 15 */
 					__(
 						'You have accepted the dispute for order #%s.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					updatedDispute.order.number
 			  )
-			: __( 'You have accepted the dispute.', 'woocommerce-payments' );
+			: __( 'You have accepted the dispute.', 'poocommerce-payments' );
 		yield controls.dispatch(
 			'core/notices',
 			'createSuccessNotice',
@@ -87,7 +87,7 @@ export function* acceptDispute( dispute ) {
 	} catch ( e ) {
 		const message = __(
 			'There has been an error accepting the dispute. Please try again later.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		);
 		yield controls.dispatch( 'core/notices', 'createErrorNotice', message );
 		yield controls.dispatch( STORE_NAME, 'finishResolution', 'getDispute', [

@@ -1,18 +1,18 @@
 <?php
 /**
- * Class WCPay_Multi_Currency_WooCommerceProductAddOns_Tests
+ * Class WCPay_Multi_Currency_PooCommerceProductAddOns_Tests
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
-use WCPay\MultiCurrency\Compatibility\WooCommerceProductAddOns;
+use WCPay\MultiCurrency\Compatibility\PooCommerceProductAddOns;
 use WCPay\MultiCurrency\MultiCurrency;
 use WCPay\MultiCurrency\Utils;
 
 /**
- * WCPay\MultiCurrency\Compatibility\WooCommerceProductAddOns unit tests.
+ * WCPay\MultiCurrency\Compatibility\PooCommerceProductAddOns unit tests.
  */
-class WCPay_Multi_Currency_WooCommerceProductAddOns_Tests extends WCPAY_UnitTestCase {
+class WCPay_Multi_Currency_PooCommerceProductAddOns_Tests extends WCPAY_UnitTestCase {
 
 	/**
 	 * Mock WCPay\MultiCurrency\MultiCurrency.
@@ -29,11 +29,11 @@ class WCPay_Multi_Currency_WooCommerceProductAddOns_Tests extends WCPAY_UnitTest
 	private $mock_utils;
 
 	/**
-	 * WCPay\MultiCurrency\Compatibility\WooCommerceProductAddOns instance.
+	 * WCPay\MultiCurrency\Compatibility\PooCommerceProductAddOns instance.
 	 *
-	 * @var WCPay\MultiCurrency\Compatibility\WooCommerceProductAddOns
+	 * @var WCPay\MultiCurrency\Compatibility\PooCommerceProductAddOns
 	 */
-	private $woocommerce_product_add_ons;
+	private $poocommerce_product_add_ons;
 
 	/**
 	 * Pre-test setup
@@ -43,14 +43,14 @@ class WCPay_Multi_Currency_WooCommerceProductAddOns_Tests extends WCPAY_UnitTest
 
 		$this->mock_multi_currency         = $this->createMock( MultiCurrency::class );
 		$this->mock_utils                  = $this->createMock( Utils::class );
-		$this->woocommerce_product_add_ons = new WooCommerceProductAddOns( $this->mock_multi_currency, $this->mock_utils );
+		$this->poocommerce_product_add_ons = new PooCommerceProductAddOns( $this->mock_multi_currency, $this->mock_utils );
 	}
 
 	/**
-	 * @dataProvider woocommerce_filter_provider
+	 * @dataProvider poocommerce_filter_provider
 	 */
-	public function test_registers_woocommerce_filters_properly( $filter, $function_name ) {
-		$priority = has_filter( $filter, [ $this->woocommerce_product_add_ons, $function_name ] );
+	public function test_registers_poocommerce_filters_properly( $filter, $function_name ) {
+		$priority = has_filter( $filter, [ $this->poocommerce_product_add_ons, $function_name ] );
 		$this->assertGreaterThan(
 			10,
 			$priority,
@@ -63,15 +63,15 @@ class WCPay_Multi_Currency_WooCommerceProductAddOns_Tests extends WCPAY_UnitTest
 		);
 	}
 
-	public function woocommerce_filter_provider() {
+	public function poocommerce_filter_provider() {
 		return [
 			// Product Add Ons filters.
-			[ 'woocommerce_product_addons_option_price_raw', 'get_addons_price' ],
-			[ 'woocommerce_product_addons_price_raw', 'get_addons_price' ],
-			[ 'woocommerce_product_addons_params', 'product_addons_params' ],
-			[ 'woocommerce_product_addons_get_item_data', 'get_item_data' ],
-			[ 'woocommerce_product_addons_update_product_price', 'update_product_price' ],
-			[ 'woocommerce_product_addons_order_line_item_meta', 'order_line_item_meta' ],
+			[ 'poocommerce_product_addons_option_price_raw', 'get_addons_price' ],
+			[ 'poocommerce_product_addons_price_raw', 'get_addons_price' ],
+			[ 'poocommerce_product_addons_params', 'product_addons_params' ],
+			[ 'poocommerce_product_addons_get_item_data', 'get_item_data' ],
+			[ 'poocommerce_product_addons_update_product_price', 'update_product_price' ],
+			[ 'poocommerce_product_addons_order_line_item_meta', 'order_line_item_meta' ],
 		];
 	}
 
@@ -79,11 +79,11 @@ class WCPay_Multi_Currency_WooCommerceProductAddOns_Tests extends WCPAY_UnitTest
 	 * @dataProvider ajax_filter_provider
 	 */
 	public function test_registers_ajax_filters_properly( $filter, $function_name ) {
-		// Add filter to make it seem like it is an ajax request, then re-init WooCommerceProductAddOns.
+		// Add filter to make it seem like it is an ajax request, then re-init PooCommerceProductAddOns.
 		add_filter( 'wp_doing_ajax', '__return_true' );
-		$this->woocommerce_product_add_ons = new WooCommerceProductAddOns( $this->mock_multi_currency, $this->mock_utils );
+		$this->poocommerce_product_add_ons = new PooCommerceProductAddOns( $this->mock_multi_currency, $this->mock_utils );
 
-		$priority = has_filter( $filter, [ $this->woocommerce_product_add_ons, $function_name ] );
+		$priority = has_filter( $filter, [ $this->poocommerce_product_add_ons, $function_name ] );
 		$this->assertGreaterThan(
 			10,
 			$priority,
@@ -95,32 +95,32 @@ class WCPay_Multi_Currency_WooCommerceProductAddOns_Tests extends WCPAY_UnitTest
 			"Filter '$filter' was registered with '$function_name' with a priority higher than than 100, which can cause double conversions."
 		);
 
-		// Remove all ajax filters, and re-init WooCommerceProductAddOns again.
+		// Remove all ajax filters, and re-init PooCommerceProductAddOns again.
 		remove_all_filters( 'wp_doing_ajax' );
-		$this->woocommerce_product_add_ons = new WooCommerceProductAddOns( $this->mock_multi_currency, $this->mock_utils );
+		$this->poocommerce_product_add_ons = new PooCommerceProductAddOns( $this->mock_multi_currency, $this->mock_utils );
 	}
 
 	public function ajax_filter_provider() {
 		return [
 			// Product Add-Ons filters.
-			[ 'woocommerce_product_addons_ajax_get_product_price_including_tax', 'get_product_calculation_price' ],
-			[ 'woocommerce_product_addons_ajax_get_product_price_excluding_tax', 'get_product_calculation_price' ],
+			[ 'poocommerce_product_addons_ajax_get_product_price_including_tax', 'get_product_calculation_price' ],
+			[ 'poocommerce_product_addons_ajax_get_product_price_excluding_tax', 'get_product_calculation_price' ],
 		];
 	}
 
 	public function test_should_convert_product_price_return_false_when_product_meta_addons_converted_set() {
 		$product = WC_Helper_Product::create_simple_product();
 		$product->update_meta_data( '_wcpay_multi_currency_addons_converted', 1 );
-		$this->assertFalse( $this->woocommerce_product_add_ons->should_convert_product_price( true, $product ) );
+		$this->assertFalse( $this->poocommerce_product_add_ons->should_convert_product_price( true, $product ) );
 	}
 
 	public function test_get_addons_price_returns_percentage_without_conversion() {
-		$this->assertEquals( 50, $this->woocommerce_product_add_ons->get_addons_price( 50, [ 'price_type' => 'percentage_based' ] ) );
+		$this->assertEquals( 50, $this->poocommerce_product_add_ons->get_addons_price( 50, [ 'price_type' => 'percentage_based' ] ) );
 	}
 
 	public function test_get_addons_price_returns_converted_price() {
 		$this->mock_multi_currency->method( 'get_price' )->with( 50, 'product' )->willReturn( 75.00 );
-		$this->assertEquals( 75.00, $this->woocommerce_product_add_ons->get_addons_price( 50, [ 'price_type' => 'flat_fee' ] ) );
+		$this->assertEquals( 75.00, $this->poocommerce_product_add_ons->get_addons_price( 50, [ 'price_type' => 'flat_fee' ] ) );
 	}
 
 	public function test_get_product_calculation_price_returns_correctly() {
@@ -128,7 +128,7 @@ class WCPay_Multi_Currency_WooCommerceProductAddOns_Tests extends WCPAY_UnitTest
 		$this->mock_multi_currency->method( 'get_price' )->with( $price, 'product' )->willReturn( (float) $price );
 		for ( $i = 1; $i < 5; $i++ ) {
 			$expected = $price * $i;
-			$this->assertEquals( $expected, $this->woocommerce_product_add_ons->get_product_calculation_price( $expected, $i, WC_Helper_Product::create_simple_product() ) );
+			$this->assertEquals( $expected, $this->poocommerce_product_add_ons->get_product_calculation_price( $expected, $i, WC_Helper_Product::create_simple_product() ) );
 		}
 	}
 
@@ -152,7 +152,7 @@ class WCPay_Multi_Currency_WooCommerceProductAddOns_Tests extends WCPAY_UnitTest
 			'key'   => 'checkboxes',
 			'value' => 'flat fee (+ $84.00)',
 		];
-		$this->assertSame( $expected, $this->woocommerce_product_add_ons->order_line_item_meta( [ 'key' => 'checkboxes' ], $addon, $item, [ 'data' => '' ] ) );
+		$this->assertSame( $expected, $this->poocommerce_product_add_ons->order_line_item_meta( [ 'key' => 'checkboxes' ], $addon, $item, [ 'data' => '' ] ) );
 	}
 
 	public function test_order_line_item_meta_returns_percentage_data_correctly() {
@@ -174,7 +174,7 @@ class WCPay_Multi_Currency_WooCommerceProductAddOns_Tests extends WCPAY_UnitTest
 			'key'   => 'checkboxes',
 			'value' => 'percentage based',
 		];
-		$this->assertSame( $expected, $this->woocommerce_product_add_ons->order_line_item_meta( [ 'key' => 'checkboxes' ], $addon, $item, [ 'data' => '' ] ) );
+		$this->assertSame( $expected, $this->poocommerce_product_add_ons->order_line_item_meta( [ 'key' => 'checkboxes' ], $addon, $item, [ 'data' => '' ] ) );
 	}
 
 	public function test_order_line_item_meta_returns_input_multiplier_data_correctly() {
@@ -198,7 +198,7 @@ class WCPay_Multi_Currency_WooCommerceProductAddOns_Tests extends WCPAY_UnitTest
 			'key'   => 'quantity',
 			'value' => 2,
 		];
-		$this->assertSame( $expected, $this->woocommerce_product_add_ons->order_line_item_meta( [ 'key' => 'quantity' ], $addon, $item, [ 'data' => '' ] ) );
+		$this->assertSame( $expected, $this->poocommerce_product_add_ons->order_line_item_meta( [ 'key' => 'quantity' ], $addon, $item, [ 'data' => '' ] ) );
 	}
 
 	public function test_order_line_item_meta_returns_custom_price_data_correctly() {
@@ -221,7 +221,7 @@ class WCPay_Multi_Currency_WooCommerceProductAddOns_Tests extends WCPAY_UnitTest
 			'key'   => 'checkboxes',
 			'value' => 42.0,
 		];
-		$actual   = $this->woocommerce_product_add_ons->order_line_item_meta( [ 'key' => 'checkboxes' ], $addon, $item, [ 'data' => '' ] );
+		$actual   = $this->poocommerce_product_add_ons->order_line_item_meta( [ 'key' => 'checkboxes' ], $addon, $item, [ 'data' => '' ] );
 		$this->assertSame( $expected, $actual );
 	}
 
@@ -261,7 +261,7 @@ class WCPay_Multi_Currency_WooCommerceProductAddOns_Tests extends WCPAY_UnitTest
 			)
 			->willReturn( 15.0, 15.0, 0.0, 63.0 );
 
-		$this->assertSame( $expected, $this->woocommerce_product_add_ons->update_product_price( [], $cart_item, $prices ) );
+		$this->assertSame( $expected, $this->poocommerce_product_add_ons->update_product_price( [], $cart_item, $prices ) );
 		$this->assertEquals( 1, $cart_item['data']->get_meta( '_wcpay_multi_currency_addons_converted' ) );
 	}
 
@@ -303,7 +303,7 @@ class WCPay_Multi_Currency_WooCommerceProductAddOns_Tests extends WCPAY_UnitTest
 			)
 			->willReturn( 15.0, 15.0, 0.0 );
 
-		$this->assertSame( $expected, $this->woocommerce_product_add_ons->update_product_price( [], $cart_item, $prices ) );
+		$this->assertSame( $expected, $this->poocommerce_product_add_ons->update_product_price( [], $cart_item, $prices ) );
 	}
 
 	public function test_update_product_price_returns_custom_price_data_correctly() {
@@ -341,7 +341,7 @@ class WCPay_Multi_Currency_WooCommerceProductAddOns_Tests extends WCPAY_UnitTest
 			)
 			->willReturn( 15.0, 15.0, 0.0 );
 
-		$this->assertSame( $expected, $this->woocommerce_product_add_ons->update_product_price( [], $cart_item, $prices ) );
+		$this->assertSame( $expected, $this->poocommerce_product_add_ons->update_product_price( [], $cart_item, $prices ) );
 	}
 
 	public function test_update_product_price_returns_multiplier_data_correctly() {
@@ -380,7 +380,7 @@ class WCPay_Multi_Currency_WooCommerceProductAddOns_Tests extends WCPAY_UnitTest
 			)
 			->willReturn( 15.0, 15.0, 0.0, 63.0 );
 
-		$this->assertSame( $expected, $this->woocommerce_product_add_ons->update_product_price( [], $cart_item, $prices ) );
+		$this->assertSame( $expected, $this->poocommerce_product_add_ons->update_product_price( [], $cart_item, $prices ) );
 		$this->assertEquals( 1, $cart_item['data']->get_meta( '_wcpay_multi_currency_addons_converted' ) );
 	}
 
@@ -404,7 +404,7 @@ class WCPay_Multi_Currency_WooCommerceProductAddOns_Tests extends WCPAY_UnitTest
 			'display' => 'display',
 		];
 
-		$actual = $this->woocommerce_product_add_ons->get_item_data( [], $addon, $cart_item );
+		$actual = $this->poocommerce_product_add_ons->get_item_data( [], $addon, $cart_item );
 		$this->assertSame( $expected, $this->array_strip_tags( $actual ) );
 	}
 
@@ -428,7 +428,7 @@ class WCPay_Multi_Currency_WooCommerceProductAddOns_Tests extends WCPAY_UnitTest
 			'display' => '',
 		];
 
-		$actual = $this->woocommerce_product_add_ons->get_item_data( [], $addon, $cart_item );
+		$actual = $this->poocommerce_product_add_ons->get_item_data( [], $addon, $cart_item );
 		$this->assertSame( $expected, $this->array_strip_tags( $actual ) );
 	}
 
@@ -452,7 +452,7 @@ class WCPay_Multi_Currency_WooCommerceProductAddOns_Tests extends WCPAY_UnitTest
 			'display' => ' (&#36;42.00)',
 		];
 
-		$actual = $this->woocommerce_product_add_ons->get_item_data( [], $addon, $cart_item );
+		$actual = $this->poocommerce_product_add_ons->get_item_data( [], $addon, $cart_item );
 		$this->assertSame( $expected, $this->array_strip_tags( $actual ) );
 	}
 
@@ -489,7 +489,7 @@ class WCPay_Multi_Currency_WooCommerceProductAddOns_Tests extends WCPAY_UnitTest
 				(float) $price / $value
 			);
 
-		$actual = $this->woocommerce_product_add_ons->get_item_data( [], $addon, $cart_item );
+		$actual = $this->poocommerce_product_add_ons->get_item_data( [], $addon, $cart_item );
 		$this->assertSame( $expected, $this->array_strip_tags( $actual ) );
 	}
 
@@ -515,7 +515,7 @@ class WCPay_Multi_Currency_WooCommerceProductAddOns_Tests extends WCPAY_UnitTest
 		];
 
 		$this->mock_multi_currency->method( 'get_price' )->with( $price, 'product' )->willReturn( (float) $price );
-		$actual = $this->woocommerce_product_add_ons->get_item_data( [], $addon, $cart_item );
+		$actual = $this->poocommerce_product_add_ons->get_item_data( [], $addon, $cart_item );
 		$this->assertSame( $expected, $this->array_strip_tags( $actual ) );
 	}
 
@@ -542,7 +542,7 @@ class WCPay_Multi_Currency_WooCommerceProductAddOns_Tests extends WCPAY_UnitTest
 		];
 
 		$this->mock_multi_currency->method( 'get_price' )->with( 10, 'product' )->willReturn( 10.00 );
-		$actual = $this->woocommerce_product_add_ons->get_item_data( [], $addon, $cart_item );
+		$actual = $this->poocommerce_product_add_ons->get_item_data( [], $addon, $cart_item );
 		$this->assertSame( $expected, $this->array_strip_tags( $actual ) );
 	}
 

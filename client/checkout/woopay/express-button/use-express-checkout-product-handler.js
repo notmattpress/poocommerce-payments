@@ -61,7 +61,7 @@ const useExpressCheckoutProductHandler = ( api ) => {
 				alert(
 					__(
 						'Please fill out all required fields',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					)
 				);
 				return false;
@@ -77,7 +77,7 @@ const useExpressCheckoutProductHandler = ( api ) => {
 				alert(
 					__(
 						'Please type only valid emails',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					)
 				);
 				return false;
@@ -89,7 +89,7 @@ const useExpressCheckoutProductHandler = ( api ) => {
 				alert(
 					__(
 						'Please type only valid emails',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					)
 				);
 				return false;

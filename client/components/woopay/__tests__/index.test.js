@@ -41,7 +41,7 @@ describe( 'woopayPaymentMethod', () => {
 		expect( method ).toEqual(
 			expect.objectContaining( {
 				name: 'woopay',
-				paymentMethodId: 'woocommerce_payments',
+				paymentMethodId: 'poocommerce_payments',
 			} )
 		);
 	} );

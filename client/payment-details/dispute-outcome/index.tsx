@@ -45,7 +45,7 @@ const DisputeOutcomeView: React.FC< DisputeOutcomeViewProps > = ( {
 		<section className="dispute-outcome-view">
 			<CardDivider />
 			<h3 className="dispute-outcome-view__section-heading">
-				{ __( 'Evidence Submitted', 'woocommerce-payments' ) }
+				{ __( 'Evidence Submitted', 'poocommerce-payments' ) }
 			</h3>
 			<EvidenceSubmittedList
 				fields={ fields }

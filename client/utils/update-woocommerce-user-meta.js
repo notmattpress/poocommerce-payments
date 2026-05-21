@@ -21,8 +21,8 @@ export async function updateWoocommerceUserMeta( newMetaData ) {
 	}, {} );
 	const updatedUser = await dispatch( 'core' ).saveUser( {
 		id: user.id,
-		woocommerce_meta: {
-			...user.woocommerce_meta,
+		poocommerce_meta: {
+			...user.poocommerce_meta,
 			...metaData,
 		},
 	} );
@@ -41,5 +41,5 @@ export async function updateWoocommerceUserMeta( newMetaData ) {
 		};
 	}
 
-	return updatedUser.woocommerce_meta;
+	return updatedUser.poocommerce_meta;
 }

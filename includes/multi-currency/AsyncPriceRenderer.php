@@ -2,7 +2,7 @@
 /**
  * Class AsyncPriceRenderer
  *
- * @package WooCommerce\Payments\MultiCurrency
+ * @package PooCommerce\Payments\MultiCurrency
  */
 
 namespace WCPay\MultiCurrency;
@@ -55,8 +55,8 @@ class AsyncPriceRenderer {
 		}
 
 		add_filter( 'wc_price', [ $this, 'wrap_price_with_skeleton' ], 999, 5 );
-		add_filter( 'woocommerce_format_sale_price', [ $this, 'annotate_sale_price_sr_text' ], 999, 3 );
-		add_filter( 'woocommerce_format_price_range', [ $this, 'annotate_price_range_sr_text' ], 999, 3 );
+		add_filter( 'poocommerce_format_sale_price', [ $this, 'annotate_sale_price_sr_text' ], 999, 3 );
+		add_filter( 'poocommerce_format_price_range', [ $this, 'annotate_price_range_sr_text' ], 999, 3 );
 		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_async_renderer' ] );
 	}
 
@@ -86,13 +86,13 @@ class AsyncPriceRenderer {
 		// price so crawlers and screen readers on slow connections see a real
 		// price before JS loads. JS removes it after successful conversion.
 		//
-		// The wrapper reuses the woocommerce-Price-amount/amount classes so the
+		// The wrapper reuses the poocommerce-Price-amount/amount classes so the
 		// DOM hierarchy matches what wc_price() normally produces. This avoids
 		// an extra nesting level that could break theme CSS selectors like
-		// `.price > .woocommerce-Price-amount`. JS replaces the <bdi> contents
+		// `.price > .poocommerce-Price-amount`. JS replaces the <bdi> contents
 		// in-place rather than appending a new child element.
 		return sprintf(
-			'<span class="woocommerce-Price-amount amount wcpay-async-price" data-wcpay-price="%s" data-wcpay-price-type="%s"><bdi class="wcpay-price-skeleton"></bdi><span class="screen-reader-text wcpay-price-placeholder">%s</span></span>',
+			'<span class="poocommerce-Price-amount amount wcpay-async-price" data-wcpay-price="%s" data-wcpay-price-type="%s"><bdi class="wcpay-price-skeleton"></bdi><span class="screen-reader-text wcpay-price-placeholder">%s</span></span>',
 			esc_attr( $unformatted_price ),
 			esc_attr( $price_type ),
 			wp_kses_post( $return )
@@ -116,21 +116,21 @@ class AsyncPriceRenderer {
 			[
 				'apiUrl'          => rest_url( 'wc/v3/payments/multi-currency/public/config' ),
 				'defaultCurrency' => [
-					'symbol'       => html_entity_decode( get_woocommerce_currency_symbol(), ENT_QUOTES | ENT_HTML5, 'UTF-8' ),
+					'symbol'       => html_entity_decode( get_poocommerce_currency_symbol(), ENT_QUOTES | ENT_HTML5, 'UTF-8' ),
 					'decimals'     => wc_get_price_decimals(),
 					'decimal_sep'  => wc_get_price_decimal_separator(),
 					'thousand_sep' => wc_get_price_thousand_separator(),
-					'symbol_pos'   => get_option( 'woocommerce_currency_pos' ),
+					'symbol_pos'   => get_option( 'poocommerce_currency_pos' ),
 				],
 				// Uses WC's text domain so translations match WC core output in every locale.
 				// phpcs:disable WordPress.WP.I18n.TextDomainMismatch
 				'srText'          => [
 					/* translators: %s: formatted price */
-					'sale_original' => __( 'Original price was: %s.', 'woocommerce' ),
+					'sale_original' => __( 'Original price was: %s.', 'poocommerce' ),
 					/* translators: %s: formatted price */
-					'sale_current'  => __( 'Current price is: %s.', 'woocommerce' ),
+					'sale_current'  => __( 'Current price is: %s.', 'poocommerce' ),
 					/* translators: %1$s: minimum price, %2$s: maximum price */
-					'range'         => __( 'Price range: %1$s through %2$s', 'woocommerce' ),
+					'range'         => __( 'Price range: %1$s through %2$s', 'poocommerce' ),
 				],
 				// phpcs:enable WordPress.WP.I18n.TextDomainMismatch
 			]

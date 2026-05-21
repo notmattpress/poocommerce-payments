@@ -107,7 +107,7 @@
 
 		&:not( :disabled ):not( .is-placeholder ) {
 			&:focus-visible {
-				box-shadow: inset 0 0 0 2px $studio-woocommerce-purple-60;
+				box-shadow: inset 0 0 0 2px $studio-poocommerce-purple-60;
 				outline: none;
 			}
 
@@ -130,7 +130,7 @@
 		}
 
 		svg {
-			fill: $studio-woocommerce-purple-60;
+			fill: $studio-poocommerce-purple-60;
 			width: 99px;
 		}
 
@@ -176,9 +176,9 @@
 		}
 
 		&[data-theme='dark'] {
-			background: $studio-woocommerce-purple-40;
+			background: $studio-poocommerce-purple-40;
 			color: $white;
-			border-color: $studio-woocommerce-purple-40;
+			border-color: $studio-poocommerce-purple-40;
 
 			svg {
 				fill: $white;
@@ -189,12 +189,12 @@
 			}
 
 			&:not( :disabled ):not( .is-placeholder ):hover {
-				border-color: $studio-woocommerce-purple-30;
-				background: $studio-woocommerce-purple-30;
+				border-color: $studio-poocommerce-purple-30;
+				background: $studio-poocommerce-purple-30;
 			}
 			&:not( :disabled ):not( .is-placeholder ):focus-visible {
 				box-shadow: none;
-				outline: 2px solid $studio-woocommerce-purple-80;
+				outline: 2px solid $studio-poocommerce-purple-80;
 				outline-offset: 2px;
 			}
 		}

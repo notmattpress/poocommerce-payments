@@ -16,7 +16,7 @@ import { STORE_NAME } from 'wcpay/data/constants';
 import { useAuthorization, useChargeFromOrder, useTimeline } from 'wcpay/data';
 import { ApiError } from 'wcpay/types/errors';
 
-// Suppress React 18 deprecation warnings from external @woocommerce/components
+// Suppress React 18 deprecation warnings from external @poocommerce/components
 // eslint-disable-next-line no-console
 const originalError = console.error;
 beforeAll( () => {

@@ -4,7 +4,7 @@
  */
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { updateQueryString } from '@woocommerce/navigation';
+import { updateQueryString } from '@poocommerce/navigation';
 import os from 'os';
 
 /**
@@ -12,14 +12,14 @@ import os from 'os';
  */
 import PaymentCardReaderChargeDetails from '../';
 import { useCardReaderStats } from 'wcpay/data';
-import { downloadCSVFile } from '@woocommerce/csv-export';
+import { downloadCSVFile } from '@poocommerce/csv-export';
 
 jest.mock( 'wcpay/data', () => ( {
 	useCardReaderStats: jest.fn(),
 } ) );
 
-jest.mock( '@woocommerce/csv-export', () => {
-	const actualModule = jest.requireActual( '@woocommerce/csv-export' );
+jest.mock( '@poocommerce/csv-export', () => {
+	const actualModule = jest.requireActual( '@poocommerce/csv-export' );
 
 	return {
 		...actualModule,

@@ -55,7 +55,7 @@ const NotificationsEmailInput: React.FC< NotificationsEmailInputProps > = ( {
 		! isEmail( accountCommunicationsEmail );
 
 	const clientValidationError = showClientValidationError
-		? __( 'Please enter a valid email address.', 'woocommerce-payments' )
+		? __( 'Please enter a valid email address.', 'poocommerce-payments' )
 		: null;
 
 	// Server error takes precedence over client validation error
@@ -70,7 +70,7 @@ const NotificationsEmailInput: React.FC< NotificationsEmailInputProps > = ( {
 	const mismatchError = showMismatchError
 		? __(
 				'Email addresses do not match. Please re-enter your email address.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 		  )
 		: null;
 
@@ -89,11 +89,11 @@ const NotificationsEmailInput: React.FC< NotificationsEmailInputProps > = ( {
 
 	return (
 		<>
-			<h4>{ __( 'Notifications email', 'woocommerce-payments' ) }</h4>
+			<h4>{ __( 'Notifications email', 'poocommerce-payments' ) }</h4>
 			<p className="settings__notifications-email-description">
 				{ __(
 					'Provide an email address where you would like to receive communications about your WooPayments account.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				) }
 			</p>
 
@@ -105,7 +105,7 @@ const NotificationsEmailInput: React.FC< NotificationsEmailInputProps > = ( {
 				<span>
 					{ __(
 						'Anyone with access to this email address will be treated as the account owner. Please verify the address carefully.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 				</span>
 			</Notice>
@@ -124,7 +124,7 @@ const NotificationsEmailInput: React.FC< NotificationsEmailInputProps > = ( {
 
 			<TextControl
 				className="settings__notifications-email-input"
-				label={ __( 'Email address', 'woocommerce-payments' ) }
+				label={ __( 'Email address', 'poocommerce-payments' ) }
 				value={ accountCommunicationsEmail }
 				onChange={ setAccountCommunicationsEmail }
 				onBlur={ () => setHasBlurred( true ) }
@@ -155,7 +155,7 @@ const NotificationsEmailInput: React.FC< NotificationsEmailInputProps > = ( {
 						className="settings__notifications-email-confirm-input"
 						label={ __(
 							'Confirm email address',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 						value={ confirmEmail }
 						onChange={ setConfirmEmail }

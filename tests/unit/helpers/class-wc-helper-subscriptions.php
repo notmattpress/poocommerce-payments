@@ -2,7 +2,7 @@
 /**
  * Subscriptions helpers.
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 // Set up subscriptions mocks.

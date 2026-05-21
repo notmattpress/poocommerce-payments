@@ -2,7 +2,7 @@
 /**
  * Class Fraud_Risk_Tools
  *
- * @package WooCommerce\Payments\Fraud_Risk_Tools
+ * @package PooCommerce\Payments\Fraud_Risk_Tools
  */
 
 namespace WCPay\Fraud_Prevention;
@@ -75,7 +75,7 @@ class Fraud_Risk_Tools {
 	 * @return void
 	 */
 	public function init_hooks() {
-		if ( is_admin() && current_user_can( 'manage_woocommerce' ) ) {
+		if ( is_admin() && current_user_can( 'manage_poocommerce' ) ) {
 			add_action( 'admin_menu', [ $this, 'init_advanced_settings_page' ] );
 		}
 	}
@@ -102,7 +102,7 @@ class Fraud_Risk_Tools {
 		wc_admin_register_page(
 			[
 				'id'       => 'wc-payments-fraud-protection',
-				'title'    => __( 'Fraud protection', 'woocommerce-payments' ),
+				'title'    => __( 'Fraud protection', 'poocommerce-payments' ),
 				'parent'   => 'wc-payments',
 				'path'     => '/payments/fraud-protection',
 				'nav_args' => [
@@ -318,7 +318,7 @@ class Fraud_Risk_Tools {
 	 * @return  string  The related operator.
 	 */
 	private static function get_selling_locations_type_operator() {
-		$selling_locations_type = get_option( 'woocommerce_allowed_countries', 'all' );
+		$selling_locations_type = get_option( 'poocommerce_allowed_countries', 'all' );
 		if ( 'specific' === $selling_locations_type ) {
 				return Check::OPERATOR_NOT_IN;
 		}
@@ -331,12 +331,12 @@ class Fraud_Risk_Tools {
 	 * @return  string  The array imploded with | character.
 	 */
 	private static function get_selling_locations_string() {
-		$selling_locations_type = get_option( 'woocommerce_allowed_countries', 'all' );
+		$selling_locations_type = get_option( 'poocommerce_allowed_countries', 'all' );
 		switch ( $selling_locations_type ) {
 			case 'specific':
-				return strtolower( implode( '|', get_option( 'woocommerce_specific_allowed_countries', [] ) ) );
+				return strtolower( implode( '|', get_option( 'poocommerce_specific_allowed_countries', [] ) ) );
 			case 'all_except':
-				return strtolower( implode( '|', get_option( 'woocommerce_all_except_countries', [] ) ) );
+				return strtolower( implode( '|', get_option( 'poocommerce_all_except_countries', [] ) ) );
 			case 'all':
 				return '';
 			default:

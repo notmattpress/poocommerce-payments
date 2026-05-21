@@ -22,14 +22,14 @@ import BannerNotice from 'wcpay/components/banner-notice';
 const PaymentMethodsDescription = () => (
 	<>
 		<h2>
-			{ __( 'Payments accepted on checkout', 'woocommerce-payments' ) }
+			{ __( 'Payments accepted on checkout', 'poocommerce-payments' ) }
 		</h2>
 		<p>
 			{ __(
 				'Add and edit payments available to customers at checkout. ' +
 					'Based on their device type, location, and purchase history, ' +
 					'your customers will only see the most relevant payment methods.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			) }
 		</p>
 	</>
@@ -73,7 +73,7 @@ const PaymentMethodsSection = () => {
 								<h3 className="payment-methods__heading">
 									{ __(
 										'Payment methods',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									) }
 								</h3>
 							</div>
@@ -90,7 +90,7 @@ const PaymentMethodsSection = () => {
 									{ __(
 										'Manual capture is enabled, so any payment methods that ' +
 											"don't support it have been automatically disabled.",
-										'woocommerce-payments'
+										'poocommerce-payments'
 									) }
 								</BannerNotice>
 							) }

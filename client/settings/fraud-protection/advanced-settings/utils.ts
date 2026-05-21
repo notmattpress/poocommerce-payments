@@ -15,7 +15,7 @@ import {
 
 export const getSupportedCountriesType = (): string => {
 	return wcSettings.admin.preloadSettings.general
-		.woocommerce_allowed_countries;
+		.poocommerce_allowed_countries;
 };
 export const getSettingCountries = (): string[] => {
 	const supportedCountriesType = getSupportedCountriesType();
@@ -24,10 +24,10 @@ export const getSettingCountries = (): string[] => {
 			return [];
 		case 'all_except':
 			return wcSettings.admin.preloadSettings.general
-				.woocommerce_all_except_countries;
+				.poocommerce_all_except_countries;
 		case 'specific':
 			return wcSettings.admin.preloadSettings.general
-				.woocommerce_specific_allowed_countries;
+				.poocommerce_specific_allowed_countries;
 		default:
 			return [];
 	}

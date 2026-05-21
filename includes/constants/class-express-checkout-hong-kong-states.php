@@ -2,7 +2,7 @@
 /**
  * Class Express_Checkout_Hong_Kong_States
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Constants;
@@ -20,8 +20,8 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * More info in pc4etw-bY-p2.
  *
- * Note: The following code has been kindly sourced from the WooCommerce Stripe Payment Gateway implementation,
- * which addresses the same issue in that plugin. See https://github.com/woocommerce/woocommerce-gateway-stripe/pull/1593.
+ * Note: The following code has been kindly sourced from the PooCommerce Stripe Payment Gateway implementation,
+ * which addresses the same issue in that plugin. See https://github.com/poocommerce/poocommerce-gateway-stripe/pull/1593.
  *
  * @since x.x.x
  */

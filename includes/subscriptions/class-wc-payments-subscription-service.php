@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Subscription_Service
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 use WCPay\Constants\Order_Mode;
@@ -141,29 +141,29 @@ class WC_Payments_Subscription_Service {
 		}
 
 		if ( WC_Payments_Features::should_use_stripe_billing() ) {
-			add_action( 'woocommerce_checkout_subscription_created', [ $this, 'create_subscription' ] );
-			add_action( 'woocommerce_renewal_order_payment_complete', [ $this, 'create_subscription_for_manual_renewal' ] );
-			add_action( 'woocommerce_subscription_payment_method_updated', [ $this, 'maybe_create_subscription_from_update_payment_method' ], 10, 2 );
+			add_action( 'poocommerce_checkout_subscription_created', [ $this, 'create_subscription' ] );
+			add_action( 'poocommerce_renewal_order_payment_complete', [ $this, 'create_subscription_for_manual_renewal' ] );
+			add_action( 'poocommerce_subscription_payment_method_updated', [ $this, 'maybe_create_subscription_from_update_payment_method' ], 10, 2 );
 		}
 
 		if ( class_exists( 'WC_Subscription' ) ) {
 			// Save the new token on the WCPay subscription when it's added to a WC subscription.
-			add_action( 'woocommerce_payment_token_added_to_order', [ $this, 'update_wcpay_subscription_payment_method' ], 10, 3 );
+			add_action( 'poocommerce_payment_token_added_to_order', [ $this, 'update_wcpay_subscription_payment_method' ], 10, 3 );
 
-			add_action( 'woocommerce_subscription_status_cancelled', [ $this, 'cancel_subscription' ] );
-			add_action( 'woocommerce_subscription_status_expired', [ $this, 'cancel_subscription' ] );
-			add_action( 'woocommerce_subscription_status_on-hold', [ $this, 'handle_subscription_status_on_hold' ] );
-			add_action( 'woocommerce_subscription_status_pending-cancel', [ $this, 'set_pending_cancel_for_subscription' ] );
-			add_action( 'woocommerce_subscription_status_pending-cancel_to_active', [ $this, 'reactivate_subscription' ] );
-			add_action( 'woocommerce_subscription_status_on-hold_to_active', [ $this, 'reactivate_subscription' ] );
+			add_action( 'poocommerce_subscription_status_cancelled', [ $this, 'cancel_subscription' ] );
+			add_action( 'poocommerce_subscription_status_expired', [ $this, 'cancel_subscription' ] );
+			add_action( 'poocommerce_subscription_status_on-hold', [ $this, 'handle_subscription_status_on_hold' ] );
+			add_action( 'poocommerce_subscription_status_pending-cancel', [ $this, 'set_pending_cancel_for_subscription' ] );
+			add_action( 'poocommerce_subscription_status_pending-cancel_to_active', [ $this, 'reactivate_subscription' ] );
+			add_action( 'poocommerce_subscription_status_on-hold_to_active', [ $this, 'reactivate_subscription' ] );
 
-			add_filter( 'woocommerce_subscription_payment_gateway_supports', [ $this, 'prevent_wcpay_subscription_changes' ], 10, 3 );
-			add_filter( 'woocommerce_order_actions', [ $this, 'prevent_wcpay_manual_renewal' ], 11, 1 );
+			add_filter( 'poocommerce_subscription_payment_gateway_supports', [ $this, 'prevent_wcpay_subscription_changes' ], 10, 3 );
+			add_filter( 'poocommerce_order_actions', [ $this, 'prevent_wcpay_manual_renewal' ], 11, 1 );
 
-			add_action( 'woocommerce_payments_changed_subscription_payment_method', [ $this, 'maybe_attempt_payment_for_subscription' ], 10, 2 );
-			add_action( 'woocommerce_admin_order_data_after_billing_address', [ $this, 'show_wcpay_subscription_id' ] );
+			add_action( 'poocommerce_payments_changed_subscription_payment_method', [ $this, 'maybe_attempt_payment_for_subscription' ], 10, 2 );
+			add_action( 'poocommerce_admin_order_data_after_billing_address', [ $this, 'show_wcpay_subscription_id' ] );
 
-			add_action( 'woocommerce_subscription_payment_method_updated_from_' . WC_Payment_Gateway_WCPay::GATEWAY_ID, [ $this, 'maybe_cancel_subscription' ], 10, 2 );
+			add_action( 'poocommerce_subscription_payment_method_updated_from_' . WC_Payment_Gateway_WCPay::GATEWAY_ID, [ $this, 'maybe_cancel_subscription' ], 10, 2 );
 
 			add_action( 'wcs_renewal_order_items', [ $this, 'check_wcpay_mode_for_subscription' ], 10, 3 );
 		}
@@ -344,7 +344,7 @@ class WC_Payments_Subscription_Service {
 					'currency'   => $subscription->get_currency(),
 					'duration'   => $duration,
 					// Translators: %s Coupon code.
-					'name'       => sprintf( __( 'Coupon - %s', 'woocommerce-payments' ), $code ),
+					'name'       => sprintf( __( 'Coupon - %s', 'poocommerce-payments' ), $code ),
 				];
 			}
 		}
@@ -394,7 +394,7 @@ class WC_Payments_Subscription_Service {
 			return;
 		}
 
-		$checkout_error_message = __( 'There was a problem creating your subscription. Please try again or contact us for assistance.', 'woocommerce-payments' );
+		$checkout_error_message = __( 'There was a problem creating your subscription. Please try again or contact us for assistance.', 'poocommerce-payments' );
 		$wcpay_customer_id      = $this->customer_service->get_customer_id_for_order( $subscription );
 
 		if ( ! $wcpay_customer_id ) {
@@ -427,7 +427,7 @@ class WC_Payments_Subscription_Service {
 				throw new Exception(
 					sprintf(
 						// Translators: The %1 placeholder is a currency formatted price string ($0.50). The %2 and %3 placeholders are opening and closing strong HTML tags.
-						__( 'There was a problem creating your subscription. %1$s doesn\'t meet the %2$sminimum recurring amount%3$s this payment method can process.', 'woocommerce-payments' ),
+						__( 'There was a problem creating your subscription. %1$s doesn\'t meet the %2$sminimum recurring amount%3$s this payment method can process.', 'poocommerce-payments' ),
 						wc_price( $subscription->get_total() ),
 						'<strong>',
 						'</strong>'
@@ -437,7 +437,7 @@ class WC_Payments_Subscription_Service {
 				throw new Exception(
 					sprintf(
 						// Translators: %1$s and %2$s are both currency codes, e.g. `USD` or `EUR`.
-						__( 'The subscription couldn\'t be created because it uses a different currency (%1$s) from your existing subscriptions (%2$s). Please ensure all subscriptions use the same currency.', 'woocommerce-payments' ),
+						__( 'The subscription couldn\'t be created because it uses a different currency (%1$s) from your existing subscriptions (%2$s). Please ensure all subscriptions use the same currency.', 'poocommerce-payments' ),
 						$subscription->get_currency(),
 						$e->get_currency()
 					)
@@ -512,7 +512,7 @@ class WC_Payments_Subscription_Service {
 		$this->suspend_subscription( $subscription );
 
 		// Add an order note as a visible record of suspend.
-		$subscription->add_order_note( __( 'Suspended WooPayments Subscription because subscription status changed to on-hold.', 'woocommerce-payments' ) );
+		$subscription->add_order_note( __( 'Suspended WooPayments Subscription because subscription status changed to on-hold.', 'poocommerce-payments' ) );
 
 		// Log that the subscription was suspended.
 		// Include a brief stack trace to help determine where status change originated.
@@ -653,7 +653,7 @@ class WC_Payments_Subscription_Service {
 
 				// Reinstate the "is request to change payment method" flag.
 				WC_Subscriptions_Change_Payment_Gateway::$is_request_to_change_payment = $is_change_payment_request;
-				wc_add_notice( __( "We've successfully collected payment for your subscription using your new payment method.", 'woocommerce-payments' ) );
+				wc_add_notice( __( "We've successfully collected payment for your subscription using your new payment method.", 'poocommerce-payments' ) );
 			}
 		}
 	}
@@ -727,7 +727,7 @@ class WC_Payments_Subscription_Service {
 
 		echo '<p><strong>' . sprintf(
 			/* translators: %s: WooPayments */
-			esc_html__( '%s Subscription ID', 'woocommerce-payments' ),
+			esc_html__( '%s Subscription ID', 'poocommerce-payments' ),
 			'WooPayments'
 		) . ':</strong> ' . esc_html( $wcpay_subscription_id ) . '</p>';
 	}
@@ -750,7 +750,7 @@ class WC_Payments_Subscription_Service {
 		$next_payment_time_difference = absint( $wcpay_subscription['current_period_end'] - $subscription->get_time( 'next_payment' ) );
 
 		if ( $next_payment_time_difference > 0 && $next_payment_time_difference >= 12 * HOUR_IN_SECONDS ) {
-			$subscription->add_order_note( __( 'The subscription\'s next payment date has been updated to match WooPayments server.', 'woocommerce-payments' ) );
+			$subscription->add_order_note( __( 'The subscription\'s next payment date has been updated to match WooPayments server.', 'poocommerce-payments' ) );
 		}
 
 		// Remove the 'subscription_date_changes' exception.
@@ -904,9 +904,9 @@ class WC_Payments_Subscription_Service {
 
 			if ( is_string( $subscription_mode ) && '' !== $subscription_mode && $subscription_mode !== $current_mode ) {
 				if ( Order_Mode::TEST === $subscription_mode ) {
-					throw new Subscription_Mode_Mismatch_Exception( __( 'Subscription was made when WooPayments was in the test mode and cannot be renewed in the live mode.', 'woocommerce-payments' ) );
+					throw new Subscription_Mode_Mismatch_Exception( __( 'Subscription was made when WooPayments was in the test mode and cannot be renewed in the live mode.', 'poocommerce-payments' ) );
 				} else {
-					throw new Subscription_Mode_Mismatch_Exception( __( 'Subscription was made when WooPayments was in the live mode and cannot be renewed in the test mode.', 'woocommerce-payments' ) );
+					throw new Subscription_Mode_Mismatch_Exception( __( 'Subscription was made when WooPayments was in the live mode and cannot be renewed in the test mode.', 'poocommerce-payments' ) );
 				}
 			}
 		}
@@ -1025,7 +1025,7 @@ class WC_Payments_Subscription_Service {
 				Logger::log(
 					sprintf(
 						// Translators: %s Stripe subscription item ID.
-						__( 'Unable to set subscription item ID meta for WooPayments subscription item %s.', 'woocommerce-payments' ),
+						__( 'Unable to set subscription item ID meta for WooPayments subscription item %s.', 'poocommerce-payments' ),
 						$wcpay_subscription_item_id
 					)
 				);

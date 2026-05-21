@@ -1,8 +1,8 @@
 <?php
 /**
- * WooCommerce Payments Currency Switcher Widget
+ * PooCommerce Payments Currency Switcher Widget
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\MultiCurrency;
@@ -58,13 +58,13 @@ class CurrencySwitcherBlock {
 	 */
 	public function init_block_widget() {
 		// Automatically load dependencies and version.
-		$this->multi_currency->register_script_with_dependencies( 'woocommerce-payments/multi-currency-switcher', 'dist/multi-currency-switcher-block', [ 'wp-components' ] );
+		$this->multi_currency->register_script_with_dependencies( 'poocommerce-payments/multi-currency-switcher', 'dist/multi-currency-switcher-block', [ 'wp-components' ] );
 
 		register_block_type(
-			'woocommerce-payments/multi-currency-switcher',
+			'poocommerce-payments/multi-currency-switcher',
 			[
 				'api_version'     => '3',
-				'editor_script'   => 'woocommerce-payments/multi-currency-switcher',
+				'editor_script'   => 'poocommerce-payments/multi-currency-switcher',
 				'render_callback' => [ $this, 'render_block_widget' ],
 				'attributes'      => [
 					'symbol'          => [

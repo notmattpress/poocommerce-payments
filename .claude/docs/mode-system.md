@@ -29,7 +29,7 @@ dev_mode = true
 
 3. **`test_mode`** — `true` if:
    - `test_mode_onboarding` is `true` (forced to `true`), **OR**
-   - The gateway setting `test_mode` is `'yes'` (from `woocommerce_woocommerce_payments_settings` option)
+   - The gateway setting `test_mode` is `'yes'` (from `poocommerce_poocommerce_payments_settings` option)
    - Can be overridden by `wcpay_test_mode` filter
 
 ### Key Implication

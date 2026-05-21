@@ -2,7 +2,7 @@
 /**
  * These tests make assertions against class WC_Payments_Express_Checkout_Ajax_Handler.
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\Constants\Country_Code;
@@ -346,7 +346,7 @@ class WC_Payments_Express_Checkout_Ajax_Handler_Test extends WCPAY_UnitTestCase 
 	}
 
 	/**
-	 * When the `九龍` Hong Kong region is delivered in the postcode field, it should be adjusted for WooCommerce to be able to handle it.
+	 * When the `九龍` Hong Kong region is delivered in the postcode field, it should be adjusted for PooCommerce to be able to handle it.
 	 */
 	public function test_tokenized_cart_hk_postcode_with_九龍_region() {
 		$request = new WP_REST_Request();

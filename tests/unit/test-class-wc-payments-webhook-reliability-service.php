@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Webhook_Reliability_Service
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use PHPUnit\Framework\MockObject\MockObject;
@@ -77,7 +77,7 @@ class WC_Payments_Webhook_Reliability_Service_Test extends WCPAY_UnitTestCase {
 	 * @return void
 	 */
 	public function test_filters_registered_properly() {
-		$this->assertNotFalse( has_filter( 'woocommerce_payments_account_refreshed', [ $this->webhook_reliability_service, 'maybe_schedule_fetch_events' ] ) );
+		$this->assertNotFalse( has_filter( 'poocommerce_payments_account_refreshed', [ $this->webhook_reliability_service, 'maybe_schedule_fetch_events' ] ) );
 		$this->assertNotFalse(
 			has_filter(
 				WC_Payments_Webhook_Reliability_Service::WEBHOOK_FETCH_EVENTS_ACTION,
@@ -93,7 +93,7 @@ class WC_Payments_Webhook_Reliability_Service_Test extends WCPAY_UnitTestCase {
 	/**
 	 * Test properly scheduling fetch_events job.
 	 *
-	 * @param  mixed|array $account_data  Account data retrieved from WooCommerce Payments server.
+	 * @param  mixed|array $account_data  Account data retrieved from PooCommerce Payments server.
 	 * @param  bool        $will_schedule Whether schedule fetch_events.
 	 *
 	 * @dataProvider provider_maybe_schedule_events

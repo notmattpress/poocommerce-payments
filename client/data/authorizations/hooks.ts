@@ -3,7 +3,7 @@
  * External dependencies
  */
 import { useDispatch, useSelect } from '@wordpress/data';
-import type { Query } from '@woocommerce/navigation';
+import type { Query } from '@poocommerce/navigation';
 
 /**
  * Internal dependencies

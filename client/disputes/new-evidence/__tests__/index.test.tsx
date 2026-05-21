@@ -490,7 +490,7 @@ describe( 'NewEvidence - Visa Compliance Flow', () => {
 				{ timeout: 3000 }
 			);
 
-			// The WooCommerce List component shows a deprecation warning
+			// The PooCommerce List component shows a deprecation warning
 			expect( console ).toHaveWarned();
 		} );
 

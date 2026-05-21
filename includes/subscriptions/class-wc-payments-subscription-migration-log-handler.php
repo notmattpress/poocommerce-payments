@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Migration_Log_Handler
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 use Automattic\Jetpack\Constants;
@@ -48,10 +48,10 @@ class WC_Payments_Subscription_Migration_Log_Handler {
 	public function __construct() {
 		// WC Core will delete logs on priority 10, so we need to run before that.
 		if ( $this->has_file_logger_enabled() ) {
-			add_action( 'woocommerce_cleanup_logs', [ $this, 'extend_life_of_migration_file_logs' ], 5 );
+			add_action( 'poocommerce_cleanup_logs', [ $this, 'extend_life_of_migration_file_logs' ], 5 );
 		} elseif ( $this->has_db_logger_enabled() ) {
-			add_action( 'woocommerce_cleanup_logs', [ $this, 'extend_life_of_migration_db_logs' ], 5 );
-			add_action( 'woocommerce_cleanup_logs', [ $this, 'restore_db_log_timestamps' ], 100 );
+			add_action( 'poocommerce_cleanup_logs', [ $this, 'extend_life_of_migration_db_logs' ], 5 );
+			add_action( 'poocommerce_cleanup_logs', [ $this, 'restore_db_log_timestamps' ], 100 );
 		}
 	}
 
@@ -124,7 +124,7 @@ class WC_Payments_Subscription_Migration_Log_Handler {
 
 		$wpdb->query(
 			$wpdb->prepare(
-				"UPDATE {$wpdb->prefix}woocommerce_log
+				"UPDATE {$wpdb->prefix}poocommerce_log
 				SET timestamp = DATE_ADD( timestamp, INTERVAL %d YEAR ), context = %s
 				WHERE source = %s",
 				self::DB_ENTRY_EXTENSION_IN_YEARS,
@@ -147,7 +147,7 @@ class WC_Payments_Subscription_Migration_Log_Handler {
 
 		$wpdb->query(
 			$wpdb->prepare(
-				"UPDATE {$wpdb->prefix}woocommerce_log
+				"UPDATE {$wpdb->prefix}poocommerce_log
 				SET timestamp = DATE_SUB( timestamp, INTERVAL %d YEAR ), context = NULL
 				WHERE source = %s AND context = %s",
 				self::DB_ENTRY_EXTENSION_IN_YEARS,

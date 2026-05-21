@@ -2,7 +2,7 @@
 /**
  * Class Compatibility_Service_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use PHPUnit\Framework\MockObject\MockObject;
@@ -39,8 +39,8 @@ class Compatibility_Service_Test extends WCPAY_UnitTestCase {
 	 * @var array
 	 */
 	private $active_plugins = [
-		'woocommerce/woocommerce.php',
-		'woocommerce-payments/woocommerce-payments.php',
+		'poocommerce/poocommerce.php',
+		'poocommerce-payments/poocommerce-payments.php',
 	];
 
 	/**
@@ -94,23 +94,23 @@ class Compatibility_Service_Test extends WCPAY_UnitTestCase {
 	 * @param string $filter            The filter name.
 	 * @param string $method            The method being called in the class.
 	 *
-	 * @dataProvider provider_test_registers_woocommerce_filters_properly
+	 * @dataProvider provider_test_registers_poocommerce_filters_properly
 	 *
 	 * @return void
 	 */
-	public function test_registers_woocommerce_filters_properly( string $filter, string $method ) {
+	public function test_registers_poocommerce_filters_properly( string $filter, string $method ) {
 		$priority = has_filter( $filter, [ $this->compatibility_service, $method ] );
 		$this->assertEquals( 10, $priority );
 	}
 
-	public function provider_test_registers_woocommerce_filters_properly(): array {
+	public function provider_test_registers_poocommerce_filters_properly(): array {
 		return [
-			'woocommerce_payments_account_refreshed' => [
-				'filter' => 'woocommerce_payments_account_refreshed',
+			'poocommerce_payments_account_refreshed' => [
+				'filter' => 'poocommerce_payments_account_refreshed',
 				'method' => 'update_compatibility_data',
 			],
 			'after_switch_theme'                     => [
-				'filter' => 'woocommerce_payments_account_refreshed',
+				'filter' => 'poocommerce_payments_account_refreshed',
 				'method' => 'update_compatibility_data',
 			],
 			'wc_payments_get_onboarding_data_args'   => [
@@ -198,12 +198,12 @@ class Compatibility_Service_Test extends WCPAY_UnitTestCase {
 		// Arrange: Create the expected value to be passed to update_compatibility_data.
 		$expected = $this->get_mock_compatibility_data(
 			[
-				'woocommerce_' . $page_name => 'Not set',
+				'poocommerce_' . $page_name => 'Not set',
 			]
 		);
 
 		// Arrange: Delete the page id reference from the database.
-		delete_option( 'woocommerce_' . $page_name . '_page_id' );
+		delete_option( 'poocommerce_' . $page_name . '_page_id' );
 
 		// Arrange/Assert: Set the expectations for update_compatibility_data.
 		$this->mock_api_client
@@ -242,11 +242,11 @@ class Compatibility_Service_Test extends WCPAY_UnitTestCase {
 		return array_merge(
 			[
 				'woopayments_version'    => WCPAY_VERSION_NUMBER,
-				'woocommerce_version'    => WC_VERSION,
-				'woocommerce_permalinks' => get_option( 'woocommerce_permalinks', [] ),
-				'woocommerce_shop'       => get_permalink( wc_get_page_id( 'shop' ) ),
-				'woocommerce_cart'       => get_permalink( wc_get_page_id( 'cart' ) ),
-				'woocommerce_checkout'   => get_permalink( wc_get_page_id( 'checkout' ) ),
+				'poocommerce_version'    => WC_VERSION,
+				'poocommerce_permalinks' => get_option( 'poocommerce_permalinks', [] ),
+				'poocommerce_shop'       => get_permalink( wc_get_page_id( 'shop' ) ),
+				'poocommerce_cart'       => get_permalink( wc_get_page_id( 'cart' ) ),
+				'poocommerce_checkout'   => get_permalink( wc_get_page_id( 'checkout' ) ),
 				'blog_theme'             => $this->stylesheet,
 				'active_plugins'         => $this->active_plugins,
 				'post_types_count'       => $this->post_types_count,
@@ -325,9 +325,9 @@ class Compatibility_Service_Test extends WCPAY_UnitTestCase {
 		$post_types = ! empty( $post_types ) ? $post_types : $this->post_types_count;
 		$post_ids   = [];
 		foreach ( $post_types as $post_type => $count ) {
-			// Let's create the default WooCommerce pages for the test pages.
+			// Let's create the default PooCommerce pages for the test pages.
 			if ( 'page' === $post_type ) {
-				$post_ids = array_merge( $post_ids, $this->create_woocommerce_default_pages() );
+				$post_ids = array_merge( $post_ids, $this->create_poocommerce_default_pages() );
 				continue;
 			}
 			$title_content = 'This is a ' . $post_type . ' test post';
@@ -360,11 +360,11 @@ class Compatibility_Service_Test extends WCPAY_UnitTestCase {
 	}
 
 	/**
-	 * Creates the default WooCommerce pages for test purposes.
+	 * Creates the default PooCommerce pages for test purposes.
 	 *
 	 * @return array Array of post IDs that were created.
 	 */
-	private function create_woocommerce_default_pages(): array {
+	private function create_poocommerce_default_pages(): array {
 		// Note: Inspired by WC_Install::create_pages().
 
 		$pages = [
@@ -400,7 +400,7 @@ class Compatibility_Service_Test extends WCPAY_UnitTestCase {
 		foreach ( $pages as $key => $page ) {
 			$page_ids[] = wc_create_page(
 				esc_sql( $page['name'] ),
-				'woocommerce_' . $key . '_page_id',
+				'poocommerce_' . $key . '_page_id',
 				$page['title'],
 				$page['content'],
 				'',

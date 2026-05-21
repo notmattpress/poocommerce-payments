@@ -2,16 +2,16 @@
 /**
  * Class WC_Payments_Blocks_Payment_Method
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
-use Automattic\WooCommerce\Blocks\Payments\Integrations\AbstractPaymentMethodType;
+use Automattic\PooCommerce\Blocks\Payments\Integrations\AbstractPaymentMethodType;
 use WCPay\Fraud_Prevention\Fraud_Prevention_Service;
 use WCPay\WC_Payments_Checkout;
 use WCPay\WooPay\WooPay_Utilities;
 
 /**
- * The payment method, which allows the gateway to work with WooCommerce Blocks.
+ * The payment method, which allows the gateway to work with PooCommerce Blocks.
  */
 class WC_Payments_Blocks_Payment_Method extends AbstractPaymentMethodType {
 	/**
@@ -52,7 +52,7 @@ class WC_Payments_Blocks_Payment_Method extends AbstractPaymentMethodType {
 	 * @return string[] A list of script handles.
 	 */
 	public function get_payment_method_script_handles() {
-		if ( ( is_cart() || is_checkout() || is_product() || has_block( 'woocommerce/checkout' ) || has_block( 'woocommerce/cart' ) || is_admin() ) ) {
+		if ( ( is_cart() || is_checkout() || is_product() || has_block( 'poocommerce/checkout' ) || has_block( 'poocommerce/cart' ) || is_admin() ) ) {
 			WC_Payments_Utils::enqueue_style(
 				'wc-blocks-checkout-style',
 				plugins_url( 'dist/blocks-checkout.css', WCPAY_PLUGIN_FILE ),
@@ -72,7 +72,7 @@ class WC_Payments_Blocks_Payment_Method extends AbstractPaymentMethodType {
 
 		WC_Payments::register_script_with_dependencies( 'WCPAY_BLOCKS_CHECKOUT', 'dist/blocks-checkout', [ 'stripe' ] );
 
-		wp_set_script_translations( 'WCPAY_BLOCKS_CHECKOUT', 'woocommerce-payments' );
+		wp_set_script_translations( 'WCPAY_BLOCKS_CHECKOUT', 'poocommerce-payments' );
 
 		Fraud_Prevention_Service::maybe_append_fraud_prevention_token();
 

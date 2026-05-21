@@ -31,9 +31,9 @@ const stateModifiers: Record< EvidenceFieldState, string > = {
 };
 
 const stateLabels: Record< EvidenceFieldState, string > = {
-	provided: __( 'Provided', 'woocommerce-payments' ),
-	expected_missing: __( 'Not provided', 'woocommerce-payments' ),
-	optional_missing: __( 'Not provided', 'woocommerce-payments' ),
+	provided: __( 'Provided', 'poocommerce-payments' ),
+	expected_missing: __( 'Not provided', 'poocommerce-payments' ),
+	optional_missing: __( 'Not provided', 'poocommerce-payments' ),
 };
 
 // Severity qualifier surfaced only to screen readers. The visible copy is
@@ -44,10 +44,10 @@ const stateSeverityHints: Record< EvidenceFieldState, string | null > = {
 	provided: null,
 	// translators: severity of a missing evidence field; surfaced only
 	// to screen readers as the suffix to "Not provided".
-	expected_missing: __( 'required', 'woocommerce-payments' ),
+	expected_missing: __( 'required', 'poocommerce-payments' ),
 	// translators: severity of a missing evidence field; surfaced only
 	// to screen readers as the suffix to "Not provided".
-	optional_missing: __( 'optional', 'woocommerce-payments' ),
+	optional_missing: __( 'optional', 'poocommerce-payments' ),
 };
 
 const stateIcons: Record< EvidenceFieldState, JSX.Element > = {
@@ -127,7 +127,7 @@ const EvidenceSubmittedList: React.FC< Props > = ( {
 			'%d optional evidence field not provided',
 			'%d optional evidence fields not provided',
 			collapsedFields.length,
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		collapsedFields.length
 	);

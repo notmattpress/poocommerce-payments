@@ -2,7 +2,7 @@
 /**
  * Class WC_REST_Payments_Tos_Controller
  *
- * @package WooCommerce\Payments\Admin
+ * @package PooCommerce\Payments\Admin
  */
 
 use WCPay\Core\Server\Request\Add_Account_Tos_Agreement;
@@ -106,7 +106,7 @@ class WC_REST_Payments_Tos_Controller extends WC_Payments_REST_Controller {
 
 		try {
 			if ( ! isset( $body['accept'] ) ) {
-				throw new Rest_Request_Exception( __( 'ToS accept parameter is missing', 'woocommerce-payments' ) );
+				throw new Rest_Request_Exception( __( 'ToS accept parameter is missing', 'poocommerce-payments' ) );
 			}
 
 			$is_accepted = (bool) $body['accept'];

@@ -2,7 +2,7 @@
 /**
  * Class Update_Service_Data_From_Server_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 namespace WCPay\Migrations;
