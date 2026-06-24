@@ -108,6 +108,7 @@ You can read our Terms of Service and other policies [here](https://woocommerce.
 * Add - feat: warn merchants on the AVS Mismatch fraud filter when their selling locations don't support AVS checks.
 * Add - Register WooPayments with the WordPress Abilities API. Initial set of 15 read-only abilities gated behind the `woocommerce_payments_abilities_enabled` filter (default off).
 * Add - Support a caller-supplied idempotency key on outbound payment API requests.
+* Fix - Default the payments reports date filter to the Between operator so its date range presets are offered by default.
 * Fix - Security hardening for dispute evidence abilities and fraud prevention token handling
 * Fix - Add compatibility with the IAPI product variations block
 * Fix - Align checkout card fields with themes that restyle the block checkout: respect static label patterns, stop shrinking the Payment Element base font size, and match the WooPay dial code size to the phone input.
