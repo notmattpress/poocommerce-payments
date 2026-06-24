@@ -33,10 +33,12 @@ declare global {
 			isDisputeIssuerEvidenceEnabled: boolean;
 			isDisputeAdditionalEvidenceTypesEnabled: boolean;
 			isDisputeOutcomeViewEnabled: boolean;
+			isDisputeReadinessOverviewEnabled: boolean;
 			multiCurrency?: boolean;
 			isFRTReviewFeatureActive: boolean;
 			isDynamicCheckoutPlaceOrderButtonEnabled: boolean;
 			amazonPay: boolean;
+			reportsArea: boolean;
 		};
 		accountFees: Record< string, any >;
 		fraudServices: unknown[];
@@ -49,6 +51,8 @@ declare global {
 		isAccountValid: boolean;
 		accountStatus: Partial< {
 			email?: string;
+			businessName?: string;
+			accountId?: string;
 			created: string;
 			isLive?: boolean;
 			testDrive?: boolean;
