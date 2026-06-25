@@ -405,7 +405,7 @@ describe( 'Deposits Overview information', () => {
 		const { getByRole, getByText } = render( <DepositsOverview /> );
 
 		getByText(
-			'deposit will include funds from your WooCommerce Capital loan',
+			'deposit will include funds from your PooCommerce Capital loan',
 			{
 				exact: false,
 				ignore: '.a11y-speak-region',
@@ -417,7 +417,7 @@ describe( 'Deposits Overview information', () => {
 			} )
 		).toHaveAttribute(
 			'href',
-			'https://woocommerce.com/document/woopayments/stripe-capital/overview/'
+			'https://poocommerce.com/document/woopayments/stripe-capital/overview/'
 		);
 	} );
 
@@ -437,7 +437,7 @@ describe( 'Deposits Overview information', () => {
 
 		expect(
 			queryByText(
-				'payout will include funds from your WooCommerce Capital loan',
+				'payout will include funds from your PooCommerce Capital loan',
 				{
 					exact: false,
 					ignore: '.a11y-speak-region',
@@ -498,7 +498,7 @@ describe( 'Deposits Overview information', () => {
 		);
 		expect( getByRole( 'link', { name: /Learn more/ } ) ).toHaveAttribute(
 			'href',
-			'https://woocommerce.com/document/woopayments/payouts/payout-schedule/#new-accounts'
+			'https://poocommerce.com/document/woopayments/payouts/payout-schedule/#new-accounts'
 		);
 	} );
 } );

@@ -1,8 +1,8 @@
 <?php
 /**
- * WooCommerce Deposits helpers.
+ * PooCommerce Deposits helpers.
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 // phpcs:disable Generic.Files.OneObjectStructurePerFile.MultipleFound
@@ -74,7 +74,7 @@ class WC_Deposits_Product_Manager {
 	 */
 	public static function get_product( $product ) {
 		if ( ! is_object( $product ) ) {
-			$product = apply_filters( 'test_deposit_get_product', wc_get_product( $product ) ); // phpcs:ignore WooCommerce.Commenting.CommentHooks.MissingHookComment
+			$product = apply_filters( 'test_deposit_get_product', wc_get_product( $product ) ); // phpcs:ignore PooCommerce.Commenting.CommentHooks.MissingHookComment
 		}
 
 		return $product;

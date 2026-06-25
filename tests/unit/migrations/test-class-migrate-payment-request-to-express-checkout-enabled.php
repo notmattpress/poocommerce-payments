@@ -2,7 +2,7 @@
 /**
  * Class Migrate_Payment_Request_To_Express_Checkout_Enabled_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 namespace unit\migrations;
@@ -15,9 +15,9 @@ use WCPAY_UnitTestCase;
  */
 class Migrate_Payment_Request_To_Express_Checkout_Enabled_Test extends WCPAY_UnitTestCase {
 
-	const CARD_SETTINGS_OPTION_KEY = 'woocommerce_woocommerce_payments_settings';
-	const GOOGLE_PAY_OPTION_KEY    = 'woocommerce_woocommerce_payments_google_pay_settings';
-	const APPLE_PAY_OPTION_KEY     = 'woocommerce_woocommerce_payments_apple_pay_settings';
+	const CARD_SETTINGS_OPTION_KEY = 'poocommerce_poocommerce_payments_settings';
+	const GOOGLE_PAY_OPTION_KEY    = 'poocommerce_poocommerce_payments_google_pay_settings';
+	const APPLE_PAY_OPTION_KEY     = 'poocommerce_poocommerce_payments_apple_pay_settings';
 
 	/**
 	 * @var Migrate_Payment_Request_To_Express_Checkout_Enabled
@@ -31,11 +31,11 @@ class Migrate_Payment_Request_To_Express_Checkout_Enabled_Test extends WCPAY_Uni
 
 		delete_option( self::GOOGLE_PAY_OPTION_KEY );
 		delete_option( self::APPLE_PAY_OPTION_KEY );
-		update_option( 'woocommerce_woocommerce_payments_version', '10.3.0' );
+		update_option( 'poocommerce_poocommerce_payments_version', '10.3.0' );
 	}
 
 	public function tear_down() {
-		delete_option( 'woocommerce_woocommerce_payments_version' );
+		delete_option( 'poocommerce_poocommerce_payments_version' );
 		delete_option( self::CARD_SETTINGS_OPTION_KEY );
 		delete_option( self::GOOGLE_PAY_OPTION_KEY );
 		delete_option( self::APPLE_PAY_OPTION_KEY );
@@ -47,7 +47,7 @@ class Migrate_Payment_Request_To_Express_Checkout_Enabled_Test extends WCPAY_Uni
 	 * @dataProvider versions_that_should_skip_migration_provider
 	 */
 	public function test_it_does_nothing_if_version_is_10_4_0_or_higher( string $stored_version ) {
-		update_option( 'woocommerce_woocommerce_payments_version', $stored_version );
+		update_option( 'poocommerce_poocommerce_payments_version', $stored_version );
 		update_option( self::CARD_SETTINGS_OPTION_KEY, [ 'payment_request' => 'yes' ] );
 
 		$this->migration->maybe_migrate();

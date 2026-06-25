@@ -2,7 +2,7 @@
 /**
  * Class Country_Test_Cards
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Constants;

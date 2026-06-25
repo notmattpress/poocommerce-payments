@@ -25,12 +25,12 @@ const OneAndDoneNotice: React.FC = () => {
 			} }
 			actions={ [
 				{
-					label: __( 'Promote my store', 'woocommerce-payments' ),
+					label: __( 'Promote my store', 'poocommerce-payments' ),
 					variant: 'primary',
 					url: ctaUrl,
 				},
 				{
-					label: __( 'Maybe later', 'woocommerce-payments' ),
+					label: __( 'Maybe later', 'poocommerce-payments' ),
 					variant: 'link',
 					url: snoozeUrl,
 				},
@@ -39,7 +39,7 @@ const OneAndDoneNotice: React.FC = () => {
 			{ createInterpolateElement(
 				__(
 					"<strong>Your store made its first sale.</strong> Now bring more shoppers in with Woo's marketing tools.",
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				{ strong: <strong /> }
 			) }

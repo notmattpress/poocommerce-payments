@@ -1,6 +1,6 @@
 # `Get_Reporting_Balance_Summary` request class
 
-[ℹ️ This document is a part of **WooCommerce Payments Server Requests**](../README.md)
+[ℹ️ This document is a part of **PooCommerce Payments Server Requests**](../README.md)
 
 ## Description
 

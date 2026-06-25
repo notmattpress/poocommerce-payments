@@ -2,7 +2,7 @@
 /**
  * Class WC_REST_Payments_Webhook_Controller
  *
- * @package WooCommerce\Payments\Admin
+ * @package PooCommerce\Payments\Admin
  */
 
 use WCPay\Exceptions\Invalid_Webhook_Data_Exception;

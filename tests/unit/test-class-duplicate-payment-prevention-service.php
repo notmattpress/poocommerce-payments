@@ -2,7 +2,7 @@
 /**
  * Class WC_Payment_Gateway_WCPay_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\Constants\Intent_Status;
@@ -84,7 +84,7 @@ class Duplicate_Payment_Prevention_Service_Test extends WCPAY_UnitTestCase {
 		// Assert: the behaviors of check_against_session_processing_order.
 		$notes = wc_get_order_notes( [ 'order_id' => $session_order->get_id() ] );
 		$this->assertStringContainsString(
-			'WooCommerce Payments: detected and deleted order ID ' . $current_order_id,
+			'PooCommerce Payments: detected and deleted order ID ' . $current_order_id,
 			$notes[0]->content
 		);
 		$this->assertSame( Order_Status::TRASH, wc_get_order( $current_order_id )->get_status() );
