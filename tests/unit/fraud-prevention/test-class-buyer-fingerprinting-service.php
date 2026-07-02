@@ -2,7 +2,7 @@
 /**
  * Class Buyer_Fingerprinting_Service_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\Constants\Country_Code;
@@ -48,7 +48,7 @@ class Buyer_Fingerprinting_Service_Test extends WCPAY_UnitTestCase {
 		$fingerprint = 'abc123';
 		$ip_country  = Country_Code::UNITED_KINGDOM;
 		add_filter(
-			'woocommerce_geolocate_ip',
+			'poocommerce_geolocate_ip',
 			function () use ( $ip_country ) {
 				return $ip_country;
 			}
@@ -64,6 +64,6 @@ class Buyer_Fingerprinting_Service_Test extends WCPAY_UnitTestCase {
 
 		$this->assertSame( $order_hashes, $expected_hashed_array );
 
-		remove_all_filters( 'woocommerce_geolocate_ip' );
+		remove_all_filters( 'poocommerce_geolocate_ip' );
 	}
 }

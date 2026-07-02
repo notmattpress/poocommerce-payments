@@ -7,7 +7,7 @@ import { apiFetch } from '@wordpress/data-controls';
 import { controls } from '@wordpress/data';
 import { addQueryArgs } from '@wordpress/url';
 import { __ } from '@wordpress/i18n';
-import { Query } from '@woocommerce/navigation';
+import { Query } from '@poocommerce/navigation';
 
 /**
  * Internal dependencies
@@ -59,7 +59,7 @@ export function* getAuthorizations( query: Query ): Generator< unknown > {
 			'createErrorNotice',
 			__(
 				'Error retrieving uncaptured transactions.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			)
 		);
 		yield updateErrorForAuthorizations( query, error as ApiError );
@@ -94,7 +94,7 @@ export function* getAuthorization(
 			yield controls.dispatch(
 				'core/notices',
 				'createErrorNotice',
-				__( 'Error retrieving authorization.', 'woocommerce-payments' )
+				__( 'Error retrieving authorization.', 'poocommerce-payments' )
 			);
 		}
 	}
@@ -117,7 +117,7 @@ export function* getAuthorizationsSummary( query: Query ): any {
 			'createErrorNotice',
 			__(
 				'Error retrieving uncaptured transactions.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			)
 		);
 		yield updateErrorForAuthorizationsSummary( query, e as Error );

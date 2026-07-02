@@ -2,7 +2,7 @@
 /**
  * Class WC_REST_Payments_Reports_Balance_Controller
  *
- * @package WooCommerce\Payments\Reports
+ * @package PooCommerce\Payments\Reports
  */
 
 use WCPay\Core\Server\Request\Get_Reporting_Balance_Summary;
@@ -74,7 +74,7 @@ class WC_REST_Payments_Reports_Balance_Controller extends WC_Payments_REST_Contr
 	public function get_collection_params() {
 		return [
 			'date_start' => [
-				'description'       => __( 'Balance report period start date.', 'woocommerce-payments' ),
+				'description'       => __( 'Balance report period start date.', 'poocommerce-payments' ),
 				'type'              => 'string',
 				'format'            => 'date-time',
 				'required'          => true,
@@ -82,7 +82,7 @@ class WC_REST_Payments_Reports_Balance_Controller extends WC_Payments_REST_Contr
 				'validate_callback' => 'rest_validate_request_arg',
 			],
 			'date_end'   => [
-				'description'       => __( 'Balance report period end date.', 'woocommerce-payments' ),
+				'description'       => __( 'Balance report period end date.', 'poocommerce-payments' ),
 				'type'              => 'string',
 				'format'            => 'date-time',
 				'required'          => true,
@@ -90,7 +90,7 @@ class WC_REST_Payments_Reports_Balance_Controller extends WC_Payments_REST_Contr
 				'validate_callback' => 'rest_validate_request_arg',
 			],
 			'currency'   => [
-				'description'       => __( 'Balance report currency.', 'woocommerce-payments' ),
+				'description'       => __( 'Balance report currency.', 'poocommerce-payments' ),
 				'type'              => 'string',
 				'required'          => true,
 				'sanitize_callback' => static function ( $currency ) {
@@ -103,7 +103,7 @@ class WC_REST_Payments_Reports_Balance_Controller extends WC_Payments_REST_Contr
 
 					return new WP_Error(
 						'rest_invalid_param',
-						__( 'Currency must be an ISO 4217 three-letter code.', 'woocommerce-payments' )
+						__( 'Currency must be an ISO 4217 three-letter code.', 'poocommerce-payments' )
 					);
 				},
 			],

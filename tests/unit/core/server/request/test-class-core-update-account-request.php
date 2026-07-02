@@ -2,7 +2,7 @@
 /**
  * Class Update_Account_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\Core\Exceptions\Server\Request\Invalid_Request_Parameter_Exception;

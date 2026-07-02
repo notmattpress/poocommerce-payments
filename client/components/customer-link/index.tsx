@@ -3,7 +3,7 @@
 /**
  * External dependencies
  */
-import { Link } from '@woocommerce/components';
+import { Link } from '@poocommerce/components';
 import React from 'react';
 
 /**

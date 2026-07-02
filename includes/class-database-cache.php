@@ -2,7 +2,7 @@
 /**
  * Class Database_Cache
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay;

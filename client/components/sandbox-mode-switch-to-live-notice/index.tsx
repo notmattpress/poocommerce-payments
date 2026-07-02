@@ -11,7 +11,7 @@ import HelpOutlineIcon from 'gridicons/dist/help-outline';
  */
 import BannerNotice from '../banner-notice';
 import interpolateComponents from '@automattic/interpolate-components';
-import { Link } from '@woocommerce/components';
+import { Link } from '@poocommerce/components';
 import { recordEvent } from 'wcpay/tracks';
 import { ClickTooltip } from 'wcpay/components/tooltip';
 import ErrorBoundary from 'wcpay/components/error-boundary';
@@ -55,7 +55,7 @@ const SandboxModeSwitchToLiveNotice: React.FC< Props > = ( {
 							__(
 								// eslint-disable-next-line max-len
 								"{{div}}{{strong}}You're using a test account.{{/strong}} To accept payments from shoppers, {{switchToLiveLink}}activate your %1$s account.{{/switchToLiveLink}}{{/div}}{{learnMoreIcon/}}",
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							'WooPayments'
 						),
@@ -67,7 +67,7 @@ const SandboxModeSwitchToLiveNotice: React.FC< Props > = ( {
 									buttonIcon={ <HelpOutlineIcon /> }
 									buttonLabel={ __(
 										'Learn more about test accounts',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									) }
 									maxWidth={ '250px' }
 									content={
@@ -78,7 +78,7 @@ const SandboxModeSwitchToLiveNotice: React.FC< Props > = ( {
 													__(
 														// eslint-disable-next-line max-len
 														'A test account gives you access to all %1$s features while checkout transactions are simulated. {{learnMoreLink}}Learn more{{/learnMoreLink}}',
-														'woocommerce-payments'
+														'poocommerce-payments'
 													),
 													'WooPayments'
 												),
@@ -88,7 +88,7 @@ const SandboxModeSwitchToLiveNotice: React.FC< Props > = ( {
 														<Link
 															href={
 																// eslint-disable-next-line max-len
-																'https://woocommerce.com/document/woopayments/testing-and-troubleshooting/test-accounts/'
+																'https://poocommerce.com/document/woopayments/testing-and-troubleshooting/test-accounts/'
 															}
 															target="_blank"
 															rel="noreferrer"
@@ -129,7 +129,7 @@ const SandboxModeSwitchToLiveNotice: React.FC< Props > = ( {
 							__(
 								// eslint-disable-next-line max-len
 								"{{div}}{{strong}}You're using a test account.{{/strong}} ⚠️ Development mode is enabled for the store! There can be no live onboarding process while using development, testing, or staging WordPress environments!{{/div}}{{learnMoreIcon/}}",
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							'WooPayments'
 						),
@@ -141,7 +141,7 @@ const SandboxModeSwitchToLiveNotice: React.FC< Props > = ( {
 									buttonIcon={ <HelpOutlineIcon /> }
 									buttonLabel={ __(
 										'Learn more about development mode',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									) }
 									maxWidth={ '250px' }
 									content={
@@ -152,7 +152,7 @@ const SandboxModeSwitchToLiveNotice: React.FC< Props > = ( {
 													__(
 														// eslint-disable-next-line max-len
 														'To begin accepting real payments, please go to the live store or change your {{wpEnvLink}}WordPress environment{{/wpEnvLink}} to a production one. {{learnMoreLink}}Learn more{{/learnMoreLink}}',
-														'woocommerce-payments'
+														'poocommerce-payments'
 													),
 													'WooPayments'
 												),
@@ -173,7 +173,7 @@ const SandboxModeSwitchToLiveNotice: React.FC< Props > = ( {
 														<Link
 															href={
 																// eslint-disable-next-line max-len
-																'https://woocommerce.com/document/woopayments/testing-and-troubleshooting/test-accounts/#developer-notes'
+																'https://poocommerce.com/document/woopayments/testing-and-troubleshooting/test-accounts/#developer-notes'
 															}
 															target="_blank"
 															rel="noreferrer"
@@ -207,7 +207,7 @@ const SandboxModeSwitchToLiveNotice: React.FC< Props > = ( {
 							__(
 								// eslint-disable-next-line max-len
 								"{{div}}{{strong}}You're using a sandbox test account.{{/strong}} To accept real payments from shoppers, you will need to first {{resetAccountLink}}reset your account{{/resetAccountLink}} and, then, provide additional details about your business.{{/div}}{{learnMoreIcon/}}",
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							'WooPayments'
 						),
@@ -218,7 +218,7 @@ const SandboxModeSwitchToLiveNotice: React.FC< Props > = ( {
 								// eslint-disable-next-line jsx-a11y/anchor-has-content
 								<Link
 									href={
-										'https://woocommerce.com/document/woopayments/startup-guide/#resetting'
+										'https://poocommerce.com/document/woopayments/startup-guide/#resetting'
 									}
 									target="_blank"
 									rel="noreferrer"
@@ -230,7 +230,7 @@ const SandboxModeSwitchToLiveNotice: React.FC< Props > = ( {
 									buttonIcon={ <HelpOutlineIcon /> }
 									buttonLabel={ __(
 										'Learn more about sandbox accounts',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									) }
 									maxWidth={ '250px' }
 									content={
@@ -241,7 +241,7 @@ const SandboxModeSwitchToLiveNotice: React.FC< Props > = ( {
 													__(
 														// eslint-disable-next-line max-len
 														'A sandbox account gives you access to all %1$s features while checkout transactions are simulated. {{learnMoreLink}}Learn more{{/learnMoreLink}}',
-														'woocommerce-payments'
+														'poocommerce-payments'
 													),
 													'WooPayments'
 												),
@@ -251,7 +251,7 @@ const SandboxModeSwitchToLiveNotice: React.FC< Props > = ( {
 														<Link
 															href={
 																// eslint-disable-next-line max-len
-																'https://woocommerce.com/document/woopayments/startup-guide/#sign-up-process'
+																'https://poocommerce.com/document/woopayments/startup-guide/#sign-up-process'
 															}
 															target="_blank"
 															rel="noreferrer"
@@ -285,7 +285,7 @@ const SandboxModeSwitchToLiveNotice: React.FC< Props > = ( {
 							__(
 								// eslint-disable-next-line max-len
 								'{{div}}{{strong}}You are using a sandbox test account.{{/strong}} ⚠️ Development mode is enabled for the store! There can be no live onboarding process while using development, testing, or staging WordPress environments!{{/div}}{{learnMoreIcon/}}',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							'WooPayments'
 						),
@@ -297,7 +297,7 @@ const SandboxModeSwitchToLiveNotice: React.FC< Props > = ( {
 									buttonIcon={ <HelpOutlineIcon /> }
 									buttonLabel={ __(
 										'Learn more about development mode',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									) }
 									maxWidth={ '250px' }
 									content={
@@ -308,7 +308,7 @@ const SandboxModeSwitchToLiveNotice: React.FC< Props > = ( {
 													__(
 														// eslint-disable-next-line max-len
 														'To begin accepting real payments, please go to the live store or change your {{wpEnvLink}}WordPress environment{{/wpEnvLink}} to a production one. {{learnMoreLink}}Learn more{{/learnMoreLink}}',
-														'woocommerce-payments'
+														'poocommerce-payments'
 													),
 													'WooPayments'
 												),
@@ -329,7 +329,7 @@ const SandboxModeSwitchToLiveNotice: React.FC< Props > = ( {
 														<Link
 															href={
 																// eslint-disable-next-line max-len
-																'https://woocommerce.com/document/woopayments/testing-and-troubleshooting/test-accounts/#developer-notes'
+																'https://poocommerce.com/document/woopayments/testing-and-troubleshooting/test-accounts/#developer-notes'
 															}
 															target="_blank"
 															rel="noreferrer"

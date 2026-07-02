@@ -2,7 +2,7 @@
 /**
  * Class DisputeReadinessServiceTest
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 namespace WCPay\Tests\Internal\Service;
@@ -37,8 +37,8 @@ class DisputeReadinessServiceTest extends WCPAY_UnitTestCase {
 	}
 
 	public function tear_down() {
-		delete_option( 'woocommerce_refund_returns_page_id' );
-		delete_option( 'woocommerce_terms_page_id' );
+		delete_option( 'poocommerce_refund_returns_page_id' );
+		delete_option( 'poocommerce_terms_page_id' );
 		delete_option( DisputeReadinessService::DISMISSAL_OPTION );
 		delete_option( DisputeReadinessService::STATEMENT_DESCRIPTOR_CONFIRMATION_OPTION );
 
@@ -65,7 +65,7 @@ class DisputeReadinessServiceTest extends WCPAY_UnitTestCase {
 				'post_content' => 'Refunds are available within 30 days.',
 			]
 		);
-		update_option( 'woocommerce_refund_returns_page_id', $page_id );
+		update_option( 'poocommerce_refund_returns_page_id', $page_id );
 
 		$overview = $this->service->get_overview_payload()['overview'];
 		$signal   = $this->get_signal( $overview, 'refund_policy' );
@@ -82,7 +82,7 @@ class DisputeReadinessServiceTest extends WCPAY_UnitTestCase {
 				'post_content' => '   ',
 			]
 		);
-		update_option( 'woocommerce_terms_page_id', $page_id );
+		update_option( 'poocommerce_terms_page_id', $page_id );
 
 		$overview = $this->service->get_overview_payload()['overview'];
 		$signal   = $this->get_signal( $overview, 'terms_and_conditions' );
@@ -99,7 +99,7 @@ class DisputeReadinessServiceTest extends WCPAY_UnitTestCase {
 				'post_content' => 'Draft refund policy.',
 			]
 		);
-		update_option( 'woocommerce_refund_returns_page_id', $page_id );
+		update_option( 'poocommerce_refund_returns_page_id', $page_id );
 
 		add_filter( 'get_edit_post_link', '__return_empty_string' );
 		$overview = $this->service->get_overview_payload()['overview'];
@@ -109,8 +109,8 @@ class DisputeReadinessServiceTest extends WCPAY_UnitTestCase {
 		$this->assertSame( admin_url( 'post.php?post=' . $page_id . '&action=edit' ), $signal['actionUrl'] );
 	}
 
-	public function test_terms_signal_uses_woocommerce_advanced_settings_url_when_no_page_is_assigned() {
-		delete_option( 'woocommerce_terms_page_id' );
+	public function test_terms_signal_uses_poocommerce_advanced_settings_url_when_no_page_is_assigned() {
+		delete_option( 'poocommerce_terms_page_id' );
 
 		$overview = $this->service->get_overview_payload()['overview'];
 		$signal   = $this->get_signal( $overview, 'terms_and_conditions' );
@@ -118,7 +118,7 @@ class DisputeReadinessServiceTest extends WCPAY_UnitTestCase {
 		$this->assertSame( admin_url( 'admin.php?page=wc-settings&tab=advanced' ), $signal['actionUrl'] );
 	}
 
-	public function test_terms_signal_uses_woocommerce_advanced_settings_url_when_page_is_assigned() {
+	public function test_terms_signal_uses_poocommerce_advanced_settings_url_when_page_is_assigned() {
 		$page_id = self::factory()->post->create(
 			[
 				'post_type'    => 'page',
@@ -126,7 +126,7 @@ class DisputeReadinessServiceTest extends WCPAY_UnitTestCase {
 				'post_content' => 'Store terms apply.',
 			]
 		);
-		update_option( 'woocommerce_terms_page_id', $page_id );
+		update_option( 'poocommerce_terms_page_id', $page_id );
 
 		$overview = $this->service->get_overview_payload()['overview'];
 		$signal   = $this->get_signal( $overview, 'terms_and_conditions' );
@@ -321,7 +321,7 @@ class DisputeReadinessServiceTest extends WCPAY_UnitTestCase {
 				'post_content' => 'Refunds are available within 30 days.',
 			]
 		);
-		update_option( 'woocommerce_refund_returns_page_id', $page_id );
+		update_option( 'poocommerce_refund_returns_page_id', $page_id );
 		$this->mock_account_data(
 			[
 				'statement_descriptor' => '',

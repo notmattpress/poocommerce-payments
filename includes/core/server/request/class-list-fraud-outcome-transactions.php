@@ -2,7 +2,7 @@
 /**
  * Class file for WCPay\Core\Server\Request\List_Fraud_Outcome_Transactions.
  *
- * @package WooCommerce Payments
+ * @package PooCommerce Payments
  */
 
 namespace WCPay\Core\Server\Request;

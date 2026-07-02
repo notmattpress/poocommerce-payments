@@ -7,7 +7,7 @@ import React from 'react';
 import { Button } from '@wordpress/components';
 import { select, useDispatch } from '@wordpress/data';
 import { __, sprintf } from '@wordpress/i18n';
-import { getQuery } from '@woocommerce/navigation';
+import { getQuery } from '@poocommerce/navigation';
 import { recordEvent } from 'tracks';
 
 /**
@@ -142,7 +142,7 @@ export const FeesExportButton: React.FC = () => {
 					/* translators: %d: number of fees to be exported. */
 					__(
 						"You are about to export %d fees. If you'd like to reduce the size of your export, you can use one or more filters. Would you like to continue?",
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					exportTotalRows
 				)
@@ -191,7 +191,7 @@ export const FeesExportButton: React.FC = () => {
 				/* translators: %s: the user's email address */
 				__(
 					'We’re processing your export. 🎉 The file will download automatically and be emailed to %s.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				userEmail
 			)
@@ -208,7 +208,7 @@ export const FeesExportButton: React.FC = () => {
 			isBusy={ isExportInProgress }
 			__next40pxDefaultSize
 		>
-			{ __( 'Export', 'woocommerce-payments' ) }
+			{ __( 'Export', 'poocommerce-payments' ) }
 		</Button>
 	);
 };

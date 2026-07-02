@@ -63,7 +63,7 @@ const AccountFees = ( props ) => {
 				<div className="account-fees">
 					<CardDivider />
 					<h4>
-						{ __( 'Active discounts', 'woocommerce-payments' ) }
+						{ __( 'Active discounts', 'poocommerce-payments' ) }
 					</h4>
 				</div>
 			) }

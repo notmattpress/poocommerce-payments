@@ -1,8 +1,8 @@
 <?php
 /**
- * Helper class to mock get_woocommerce_currency global function.
+ * Helper class to mock get_poocommerce_currency global function.
  *
- * @package WooCommerce\Tests
+ * @package PooCommerce\Tests
  */
 
 namespace WCPay\Payment_Methods;
@@ -10,8 +10,8 @@ namespace WCPay\Payment_Methods;
 /**
  * If mock value is set, return mock value. Otherwise, return the global function value.
  */
-function get_woocommerce_currency() {
-	return WC_Helper_Site_Currency::$mock_site_currency ? WC_Helper_Site_Currency::$mock_site_currency : \get_woocommerce_currency();
+function get_poocommerce_currency() {
+	return WC_Helper_Site_Currency::$mock_site_currency ? WC_Helper_Site_Currency::$mock_site_currency : \get_poocommerce_currency();
 }
 
 /**

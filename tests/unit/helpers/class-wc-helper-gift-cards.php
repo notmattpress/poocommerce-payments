@@ -2,12 +2,12 @@
 /**
  * Gift Cards helpers.
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 // phpcs:disable
 
-use Automattic\WooCommerce\Blocks\Integrations\IntegrationInterface;
+use Automattic\PooCommerce\Blocks\Integrations\IntegrationInterface;
 
 /**
  * Class WC_GC_Gift_Card_Data.

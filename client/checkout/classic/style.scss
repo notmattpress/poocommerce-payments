@@ -1,6 +1,6 @@
 @import '../style';
 
-#payment .payment_method_woocommerce_payments .testmode-info {
+#payment .payment_method_poocommerce_payments .testmode-info {
 	margin-bottom: 0.5em;
 }
 
@@ -16,7 +16,7 @@
 
 // Logo styles.
 #payment .payment_methods {
-	li[class*='payment_method_woocommerce_payments'] label {
+	li[class*='payment_method_poocommerce_payments'] label {
 		display: inline;
 		.payment-methods--logos {
 			float: right;
@@ -91,7 +91,7 @@
 			}
 
 			// This makes sure labels that don't have the pmme container are displayed correctly.
-			li[class*='payment_method_woocommerce_payments'] {
+			li[class*='payment_method_poocommerce_payments'] {
 				> input + label {
 					display: block;
 				}

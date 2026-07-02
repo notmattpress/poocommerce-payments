@@ -9,13 +9,13 @@ const mockGetQuery = jest.fn( () => ( {} ) );
 const mockUpdateUserPreferences = jest.fn();
 let mockUserPrefs: Record< string, unknown > = {};
 
-jest.mock( '@woocommerce/navigation', () => ( {
+jest.mock( '@poocommerce/navigation', () => ( {
 	getQuery: () => mockGetQuery(),
 	updateQueryString: ( args: Record< string, unknown >, path?: string ) =>
 		mockUpdateQueryString( args, path ),
 } ) );
 
-jest.mock( '@woocommerce/data', () => ( {
+jest.mock( '@poocommerce/data', () => ( {
 	useUserPreferences: () => ( {
 		...mockUserPrefs,
 		updateUserPreferences: mockUpdateUserPreferences,

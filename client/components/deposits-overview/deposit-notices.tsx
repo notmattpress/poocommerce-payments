@@ -4,7 +4,7 @@
 import React from 'react';
 import { __, sprintf } from '@wordpress/i18n';
 import interpolateComponents from '@automattic/interpolate-components';
-import { Link } from '@woocommerce/components';
+import { Link } from '@poocommerce/components';
 import { ExternalLink } from '@wordpress/components';
 import { addQueryArgs } from '@wordpress/url';
 
@@ -29,14 +29,14 @@ export const SuspendedDepositNotice: React.FC = () => {
 				/** translators: {{strong}}: placeholders are opening and closing strong tags. {{suspendLink}}: is a <a> link element */
 				mixedString: __(
 					'Your payouts are {{strong}}temporarily suspended{{/strong}}. {{suspendLink}}Learn more{{/suspendLink}}',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				components: {
 					strong: <strong />,
 					suspendLink: (
 						<Link
 							href={
-								'https://woocommerce.com/document/woopayments/payouts/why-payouts-suspended/'
+								'https://poocommerce.com/document/woopayments/payouts/why-payouts-suspended/'
 							}
 						/>
 					),
@@ -59,7 +59,7 @@ export const NewAccountWaitingPeriodNotice: React.FC = () => (
 		{ interpolateComponents( {
 			mixedString: __(
 				'Payout scheduling becomes available after the standard 7-day waiting period for new accounts is complete. {{learnMoreLink}}Learn more{{/learnMoreLink}}',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			components: {
 				learnMoreLink: (
@@ -68,7 +68,7 @@ export const NewAccountWaitingPeriodNotice: React.FC = () => (
 					<a
 						target="_blank"
 						rel="noopener noreferrer"
-						href="https://woocommerce.com/document/woopayments/payouts/payout-schedule/#new-accounts"
+						href="https://poocommerce.com/document/woopayments/payouts/payout-schedule/#new-accounts"
 					/>
 				),
 			},
@@ -91,7 +91,7 @@ export const NegativeBalanceDepositsPausedNotice: React.FC = () => (
 				/* translators: %s: WooPayments */
 				__(
 					'Payouts may be interrupted while your %s balance remains negative. {{whyLink}}Why?{{/whyLink}}',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				'WooPayments'
 			),
@@ -102,7 +102,7 @@ export const NegativeBalanceDepositsPausedNotice: React.FC = () => (
 					<a
 						target="_blank"
 						rel="noopener noreferrer"
-						href="https://woocommerce.com/document/woopayments/fees/account-showing-negative-balance/"
+						href="https://poocommerce.com/document/woopayments/fees/account-showing-negative-balance/"
 					/>
 				),
 			},
@@ -126,7 +126,7 @@ export const DepositMinimumBalanceNotice: React.FC< {
 					/* translators: %s: a formatted currency amount, e.g. $5.00 USD */
 					__(
 						'Payouts are paused while your available funds balance remains below %s. {{learnMoreLink}}Learn more{{/learnMoreLink}}',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					minimumDepositAmountFormatted
 				),
@@ -137,7 +137,7 @@ export const DepositMinimumBalanceNotice: React.FC< {
 						<a
 							target="_blank"
 							rel="noopener noreferrer"
-							href="https://woocommerce.com/document/woopayments/payouts/payout-schedule/#minimum-payout-amounts"
+							href="https://poocommerce.com/document/woopayments/payouts/payout-schedule/#minimum-payout-amounts"
 						/>
 					),
 				},
@@ -154,7 +154,7 @@ export const NoFundsAvailableForDepositNotice: React.FC = () => (
 		{ interpolateComponents( {
 			mixedString: __(
 				'You have no funds available. {{whyLink}}Why?{{/whyLink}}',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			components: {
 				whyLink: (
@@ -163,7 +163,7 @@ export const NoFundsAvailableForDepositNotice: React.FC = () => (
 					<a
 						target="_blank"
 						rel="noopener noreferrer"
-						href="https://woocommerce.com/document/woopayments/payouts/payout-schedule/#pending-funds"
+						href="https://poocommerce.com/document/woopayments/payouts/payout-schedule/#pending-funds"
 					/>
 				),
 			},
@@ -197,7 +197,7 @@ export const DepositFailureNotice: React.FC< {
 			{ interpolateComponents( {
 				mixedString: __(
 					'Payouts are currently paused because a recent payout failed. Please {{updateLink}}update your bank account details{{/updateLink}}.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				components: {
 					updateLink: (

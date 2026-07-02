@@ -2,7 +2,7 @@
 /**
  * Class FileService
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 declare( strict_types=1 );

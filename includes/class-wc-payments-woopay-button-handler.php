@@ -5,7 +5,7 @@
  *
  * Borrowed heavily from the WC_Payments_Payment_Request_Button_Handler class.
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -181,7 +181,7 @@ class WC_Payments_WooPay_Button_Handler {
 			'before'
 		);
 
-		wp_set_script_translations( 'WCPAY_WOOPAY_EXPRESS_BUTTON', 'woocommerce-payments' );
+		wp_set_script_translations( 'WCPAY_WOOPAY_EXPRESS_BUTTON', 'poocommerce-payments' );
 
 		wp_enqueue_script( 'WCPAY_WOOPAY_EXPRESS_BUTTON' );
 
@@ -202,7 +202,7 @@ class WC_Payments_WooPay_Button_Handler {
 
 		if ( ! $is_nonce_valid ) {
 			wp_send_json_error(
-				__( 'You aren’t authorized to do that.', 'woocommerce-payments' ),
+				__( 'You aren’t authorized to do that.', 'poocommerce-payments' ),
 				403
 			);
 		}
@@ -245,7 +245,7 @@ class WC_Payments_WooPay_Button_Handler {
 	public function should_show_woopay_button() {
 		// WCPay is not available.
 		$gateways = WC()->payment_gateways->get_available_payment_gateways();
-		if ( ! isset( $gateways['woocommerce_payments'] ) ) {
+		if ( ! isset( $gateways['poocommerce_payments'] ) ) {
 			return false;
 		}
 
@@ -343,7 +343,7 @@ class WC_Payments_WooPay_Button_Handler {
 		<div id="wcpay-woopay-button" data-product_page=<?php echo esc_attr( $this->express_checkout_helper->is_product() ); ?>>
 			<div
 				class="woopay-express-button is-placeholder"
-				aria-label="<?php esc_attr_e( 'WooPay', 'woocommerce-payments' ); ?>"
+				aria-label="<?php esc_attr_e( 'WooPay', 'poocommerce-payments' ); ?>"
 				data-type="<?php echo esc_attr( $settings['type'] ); ?>"
 				data-theme="<?php echo esc_attr( $settings['theme'] ); ?>"
 				data-size="<?php echo esc_attr( $settings['size'] ); ?>"

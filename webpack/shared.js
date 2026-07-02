@@ -3,7 +3,7 @@ const path = require( 'path' );
 const { mapValues } = require( 'lodash' );
 const { ProvidePlugin } = require( 'webpack' );
 const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
-const WooCommerceDependencyExtractionWebpackPlugin = require( '@woocommerce/dependency-extraction-webpack-plugin' );
+const PooCommerceDependencyExtractionWebpackPlugin = require( '@poocommerce/dependency-extraction-webpack-plugin' );
 const WebpackRTLPlugin = require( './webpack-rtl-plugin' );
 
 module.exports = {
@@ -71,13 +71,13 @@ module.exports = {
 	},
 	module: {
 		rules: [
-			// `@woocommerce/onboarding` does not declare `sideEffects: false`
+			// `@poocommerce/onboarding` does not declare `sideEffects: false`
 			// in its package.json, which prevents webpack from tree-shaking
 			// its (large) per-icon SVG modules even when only a single named
 			// export (e.g. `Loader`) is imported. Marking it as side-effect
 			// free here lets webpack drop the unused branches.
 			{
-				test: /node_modules\/@woocommerce\/onboarding\//,
+				test: /node_modules\/@poocommerce\/onboarding\//,
 				sideEffects: false,
 			},
 			{
@@ -179,7 +179,7 @@ module.exports = {
 		new WebpackRTLPlugin( {
 			filenameSuffix: '-rtl.css',
 		} ),
-		new WooCommerceDependencyExtractionWebpackPlugin( {
+		new PooCommerceDependencyExtractionWebpackPlugin( {
 			injectPolyfill: true,
 			requestToExternal( request ) {
 				if ( request.startsWith( '@wordpress/dataviews' ) ) {

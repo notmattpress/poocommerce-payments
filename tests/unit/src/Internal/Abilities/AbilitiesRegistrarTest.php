@@ -2,7 +2,7 @@
 /**
  * Class AbilitiesRegistrarTest
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Tests\Internal\Abilities;
@@ -15,7 +15,7 @@ use WCPay\Internal\Abilities\AbilitiesRegistrar;
  */
 class AbilitiesRegistrarTest extends WCPAY_UnitTestCase {
 
-	const FEATURE_FILTER = 'woocommerce_payments_abilities_enabled';
+	const FEATURE_FILTER = 'poocommerce_payments_abilities_enabled';
 
 	/**
 	 * Reset filters and the current user between tests. The upstream
@@ -36,26 +36,26 @@ class AbilitiesRegistrarTest extends WCPAY_UnitTestCase {
 
 		$this->assertFalse(
 			has_filter(
-				'woocommerce_ability_definition_classes',
+				'poocommerce_ability_definition_classes',
 				[ AbilitiesRegistrar::class, 'append_classes' ]
 			),
 			'Expected init() to skip the WC 10.9 filter wire when the feature filter is unset.'
 		);
 	}
 
-	public function test_current_user_can_manage_woocommerce_matches_capability(): void {
+	public function test_current_user_can_manage_poocommerce_matches_capability(): void {
 		$subscriber_id = self::factory()->user->create( [ 'role' => 'subscriber' ] );
 		wp_set_current_user( $subscriber_id );
 		$this->assertFalse(
-			AbilitiesRegistrar::current_user_can_manage_woocommerce(),
-			'Subscribers must not pass the manage_woocommerce capability check.'
+			AbilitiesRegistrar::current_user_can_manage_poocommerce(),
+			'Subscribers must not pass the manage_poocommerce capability check.'
 		);
 
 		$admin_id = self::factory()->user->create( [ 'role' => 'administrator' ] );
 		wp_set_current_user( $admin_id );
 		$this->assertTrue(
-			AbilitiesRegistrar::current_user_can_manage_woocommerce(),
-			'Administrators must pass the manage_woocommerce capability check.'
+			AbilitiesRegistrar::current_user_can_manage_poocommerce(),
+			'Administrators must pass the manage_poocommerce capability check.'
 		);
 	}
 
@@ -194,15 +194,15 @@ class AbilitiesRegistrarTest extends WCPAY_UnitTestCase {
 	// -------------------------------------------------------------------------
 
 	public function test_init_wires_filter_when_loader_present_and_feature_enabled(): void {
-		if ( ! class_exists( '\\Automattic\\WooCommerce\\Internal\\Abilities\\AbilitiesLoader' ) ) {
-			$this->markTestSkipped( 'WooCommerce 10.9 AbilitiesLoader required.' );
+		if ( ! class_exists( '\\Automattic\\PooCommerce\\Internal\\Abilities\\AbilitiesLoader' ) ) {
+			$this->markTestSkipped( 'PooCommerce 10.9 AbilitiesLoader required.' );
 		}
 
 		add_filter( self::FEATURE_FILTER, '__return_true' );
 		AbilitiesRegistrar::init();
 
 		$this->assertNotFalse(
-			has_filter( 'woocommerce_ability_definition_classes', [ AbilitiesRegistrar::class, 'append_classes' ] )
+			has_filter( 'poocommerce_ability_definition_classes', [ AbilitiesRegistrar::class, 'append_classes' ] )
 		);
 
 		remove_filter( self::FEATURE_FILTER, '__return_true' );
@@ -226,8 +226,8 @@ class AbilitiesRegistrarTest extends WCPAY_UnitTestCase {
 	}
 
 	public function test_every_ability_class_implements_ability_definition(): void {
-		if ( ! interface_exists( '\\Automattic\\WooCommerce\\Abilities\\AbilityDefinition' ) ) {
-			$this->markTestSkipped( 'WooCommerce 10.9 AbilityDefinition interface required.' );
+		if ( ! interface_exists( '\\Automattic\\PooCommerce\\Abilities\\AbilityDefinition' ) ) {
+			$this->markTestSkipped( 'PooCommerce 10.9 AbilityDefinition interface required.' );
 		}
 
 		$reflection = new \ReflectionClass( AbilitiesRegistrar::class );
@@ -235,7 +235,7 @@ class AbilitiesRegistrarTest extends WCPAY_UnitTestCase {
 
 		foreach ( $classes as $class ) {
 			$this->assertContains(
-				'Automattic\\WooCommerce\\Abilities\\AbilityDefinition',
+				'Automattic\\PooCommerce\\Abilities\\AbilityDefinition',
 				class_implements( $class ),
 				"$class should implement AbilityDefinition."
 			);
@@ -243,8 +243,8 @@ class AbilitiesRegistrarTest extends WCPAY_UnitTestCase {
 	}
 
 	public function test_every_ability_class_has_a_well_formed_slug(): void {
-		if ( ! interface_exists( '\\Automattic\\WooCommerce\\Abilities\\AbilityDefinition' ) ) {
-			$this->markTestSkipped( 'WooCommerce 10.9 AbilityDefinition interface required.' );
+		if ( ! interface_exists( '\\Automattic\\PooCommerce\\Abilities\\AbilityDefinition' ) ) {
+			$this->markTestSkipped( 'PooCommerce 10.9 AbilityDefinition interface required.' );
 		}
 
 		$reflection = new \ReflectionClass( AbilitiesRegistrar::class );
@@ -254,9 +254,9 @@ class AbilitiesRegistrarTest extends WCPAY_UnitTestCase {
 			$this->assertTrue( method_exists( $class, 'get_name' ), "$class should define get_name()." );
 			$name = $class::get_name();
 			// Namespace (not category) — plugin ownership lives in the ability
-			// name's leading prefix. Category is the broader `woocommerce`
+			// name's leading prefix. Category is the broader `poocommerce`
 			// discoverability bucket and would not match here.
-			$this->assertStringStartsWith( 'woocommerce-payments/', $name );
+			$this->assertStringStartsWith( 'poocommerce-payments/', $name );
 		}
 	}
 }
