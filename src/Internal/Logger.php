@@ -2,7 +2,7 @@
 /**
  * Class Logger
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Internal;
@@ -84,7 +84,7 @@ class Logger {
 		}
 
 		// Getting the gateway settings directly from the database so the gateway doesn't need to be initialized.
-		$settings_option_name = 'woocommerce_' . WC_Payment_Gateway_WCPay::GATEWAY_ID . '_settings';
+		$settings_option_name = 'poocommerce_' . WC_Payment_Gateway_WCPay::GATEWAY_ID . '_settings';
 		$wcpay_settings       = get_option( $settings_option_name );
 
 		return 'yes' === ( $wcpay_settings['enable_logging'] ?? false );

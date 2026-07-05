@@ -13,7 +13,7 @@ import * as shopper from '../../../utils/shopper';
 import * as navigation from '../../../utils/shopper-navigation';
 
 const changePaymentMethodButtonSelector =
-	'button[name="woocommerce_change_payment"], #place_order';
+	'button[name="poocommerce_change_payment"], #place_order';
 
 const navigateToSubscriptionDetails = async (
 	page: Page,

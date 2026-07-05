@@ -113,7 +113,7 @@ export const useExpressCheckout = ( {
 							id: 'pending',
 							displayName: __(
 								'Pending',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							amount: 0,
 						},

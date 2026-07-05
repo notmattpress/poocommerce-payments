@@ -25,12 +25,12 @@ import {
 	useBlockProps,
 } from '@wordpress/block-editor';
 
-registerBlockType( 'woocommerce-payments/multi-currency-switcher', {
+registerBlockType( 'poocommerce-payments/multi-currency-switcher', {
 	apiVersion: 3,
-	title: __( 'Currency Switcher Block', 'woocommerce-payments' ),
+	title: __( 'Currency Switcher Block', 'poocommerce-payments' ),
 	description: __(
 		'Let your customers switch between your enabled currencies',
-		'woocommerce-payments'
+		'poocommerce-payments'
 	),
 	icon: (
 		<svg
@@ -209,7 +209,7 @@ registerBlockType( 'woocommerce-payments/multi-currency-switcher', {
 					<PanelBody
 						title={ __(
 							'Multi-Currency settings',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 					>
 						<ExternalLink
@@ -219,15 +219,15 @@ registerBlockType( 'woocommerce-payments/multi-currency-switcher', {
 						>
 							{ __(
 								'Adjust and edit your Multi-Currency settings',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 						</ExternalLink>
 					</PanelBody>
-					<PanelBody title={ __( 'Layout', 'woocommerce-payments' ) }>
+					<PanelBody title={ __( 'Layout', 'poocommerce-payments' ) }>
 						<CheckboxControl
 							label={ __(
 								'Display flags',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 							checked={ flag }
 							onChange={ onChangeFlag }
@@ -237,7 +237,7 @@ registerBlockType( 'woocommerce-payments/multi-currency-switcher', {
 						<CheckboxControl
 							label={ __(
 								'Display currency symbols',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 							checked={ symbol }
 							onChange={ onChangeSymbol }
@@ -245,7 +245,7 @@ registerBlockType( 'woocommerce-payments/multi-currency-switcher', {
 						/>
 
 						<CheckboxControl
-							label={ __( 'Border', 'woocommerce-payments' ) }
+							label={ __( 'Border', 'poocommerce-payments' ) }
 							checked={ border }
 							onChange={ onChangeBorder }
 							__nextHasNoMarginBottom
@@ -254,7 +254,7 @@ registerBlockType( 'woocommerce-payments/multi-currency-switcher', {
 						<RangeControl
 							label={ __(
 								'Border radius',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 							value={ borderRadius }
 							onChange={ onChangeBorderRadius }
@@ -265,10 +265,10 @@ registerBlockType( 'woocommerce-payments/multi-currency-switcher', {
 						/>
 					</PanelBody>
 					<PanelBody
-						title={ __( 'Typography', 'woocommerce-payments' ) }
+						title={ __( 'Typography', 'poocommerce-payments' ) }
 					>
 						<RangeControl
-							label={ __( 'Size', 'woocommerce-payments' ) }
+							label={ __( 'Size', 'poocommerce-payments' ) }
 							value={ fontSize }
 							onChange={ onChangeFontSize }
 							min={ 6 }
@@ -279,7 +279,7 @@ registerBlockType( 'woocommerce-payments/multi-currency-switcher', {
 						<RangeControl
 							label={ __(
 								'Line height',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 							value={ fontLineHeight }
 							onChange={ onChangeFontLineHeight }
@@ -291,24 +291,24 @@ registerBlockType( 'woocommerce-payments/multi-currency-switcher', {
 						/>
 					</PanelBody>
 					<PanelBody
-						title={ __( 'Color settings', 'woocommerce-payments' ) }
+						title={ __( 'Color settings', 'poocommerce-payments' ) }
 					>
 						<ColorPaletteControl
 							onChange={ onChangeFontColor }
 							value={ fontColor }
-							label={ __( 'Text', 'woocommerce-payments' ) }
+							label={ __( 'Text', 'poocommerce-payments' ) }
 						/>
 
 						<ColorPaletteControl
 							onChange={ onChangeBackgroundColor }
 							value={ backgroundColor }
-							label={ __( 'Background', 'woocommerce-payments' ) }
+							label={ __( 'Background', 'poocommerce-payments' ) }
 						/>
 
 						<ColorPaletteControl
 							onChange={ onChangeBorderColor }
 							value={ borderColor }
-							label={ __( 'Border', 'woocommerce-payments' ) }
+							label={ __( 'Border', 'poocommerce-payments' ) }
 						/>
 					</PanelBody>
 				</InspectorControls>
@@ -321,7 +321,7 @@ registerBlockType( 'woocommerce-payments/multi-currency-switcher', {
 					>
 						{ isLoading && (
 							<option>
-								{ __( 'Loading…', 'woocommerce-payments' ) }
+								{ __( 'Loading…', 'poocommerce-payments' ) }
 							</option>
 						) }
 						{ ! isLoading &&

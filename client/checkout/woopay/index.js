@@ -27,14 +27,14 @@ const renderSaveUserSection = () => {
 
 		if ( ! checkoutPageSaveUserContainer ) {
 			const paymentOptions = document.getElementsByClassName(
-				'wp-block-woocommerce-checkout-payment-block'
+				'wp-block-poocommerce-checkout-payment-block'
 			)?.[ 0 ];
 
 			checkoutPageSaveUserContainer =
 				document.createElement( 'fieldset' );
 
 			checkoutPageSaveUserContainer.className =
-				'wc-block-checkout__payment-method wp-block-woocommerce-checkout-remember-block wc-block-components-checkout-step ';
+				'wc-block-checkout__payment-method wp-block-poocommerce-checkout-remember-block wc-block-components-checkout-step ';
 			checkoutPageSaveUserContainer.id = 'remember-me';
 
 			if ( paymentOptions ) {
@@ -74,8 +74,8 @@ window.addEventListener( 'load', () => {
 	renderSaveUserSection();
 } );
 
-// mount component again if parent fragment if re-rendered after ajax request by woocommerce core
-// https://github.com/woocommerce/woocommerce/blob/trunk/plugins/woocommerce/legacy/js/frontend/checkout.js#L372
+// mount component again if parent fragment if re-rendered after ajax request by poocommerce core
+// https://github.com/poocommerce/poocommerce/blob/trunk/plugins/poocommerce/legacy/js/frontend/checkout.js#L372
 jQuery( function ( $ ) {
 	$( document ).ajaxComplete( function () {
 		renderSaveUserSection();

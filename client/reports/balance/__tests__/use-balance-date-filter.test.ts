@@ -6,7 +6,7 @@ import { act, renderHook } from '@testing-library/react-hooks';
 const mockUpdateQueryString = jest.fn();
 const mockGetQuery = jest.fn( () => ( {} ) );
 
-jest.mock( '@woocommerce/navigation', () => ( {
+jest.mock( '@poocommerce/navigation', () => ( {
 	getQuery: () => mockGetQuery(),
 	updateQueryString: ( args: Record< string, unknown >, path?: string ) =>
 		mockUpdateQueryString( args, path ),

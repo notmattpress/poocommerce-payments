@@ -6,9 +6,9 @@
 import { __ } from '@wordpress/i18n';
 
 export default {
-	normal: __( 'Normal', 'woocommerce-payments' ),
-	elevated: __( 'Elevated', 'woocommerce-payments' ),
-	highest: __( 'Highest', 'woocommerce-payments' ),
-	not_assessed: __( 'N/A', 'woocommerce-payments' ),
-	unknown: __( 'N/A', 'woocommerce-payments' ),
+	normal: __( 'Normal', 'poocommerce-payments' ),
+	elevated: __( 'Elevated', 'poocommerce-payments' ),
+	highest: __( 'Highest', 'poocommerce-payments' ),
+	not_assessed: __( 'N/A', 'poocommerce-payments' ),
+	unknown: __( 'N/A', 'poocommerce-payments' ),
 };

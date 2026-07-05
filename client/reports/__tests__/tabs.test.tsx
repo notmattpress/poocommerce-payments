@@ -13,7 +13,7 @@ import { recordEvent } from 'tracks';
  */
 import { ReportsPage } from '..';
 import { REPORTS_STORE_NAME as WCPAY_STORE_NAME } from 'wcpay/data/store-names';
-import { getQuery, updateQueryString } from '@woocommerce/navigation';
+import { getQuery, updateQueryString } from '@poocommerce/navigation';
 import { useDispatch } from '@wordpress/data';
 
 jest.mock( 'tracks', () => ( {
@@ -93,7 +93,7 @@ jest.mock( '../balance', () => ( {
 	),
 } ) );
 
-jest.mock( '@woocommerce/navigation', () => ( {
+jest.mock( '@poocommerce/navigation', () => ( {
 	getQuery: jest.fn(),
 	updateQueryString: jest.fn(),
 } ) );

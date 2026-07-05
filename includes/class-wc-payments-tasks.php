@@ -2,11 +2,11 @@
 /**
  * WC_Payments_Tasks class
  *
- * @package WooCommerce\Payments\Tasks
+ * @package PooCommerce\Payments\Tasks
  */
 
-use Automattic\WooCommerce\Admin\Features\OnboardingTasks\TaskLists;
-use WooCommerce\Payments\Tasks\WC_Payments_Task_Disputes;
+use Automattic\PooCommerce\Admin\Features\OnboardingTasks\TaskLists;
+use PooCommerce\Payments\Tasks\WC_Payments_Task_Disputes;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -21,9 +21,9 @@ class WC_Payments_Tasks {
 	 * WC_Payments_Admin_Tasks constructor.
 	 */
 	public static function init() {
-		// As WooCommerce Onboarding tasks need to hook into 'init' and requires an API call.
-		// We only add this task for users who can manage_woocommerce / view the task.
-		if ( ! current_user_can( 'manage_woocommerce' ) ) {
+		// As PooCommerce Onboarding tasks need to hook into 'init' and requires an API call.
+		// We only add this task for users who can manage_poocommerce / view the task.
+		if ( ! current_user_can( 'manage_poocommerce' ) ) {
 			return;
 		}
 
@@ -41,7 +41,7 @@ class WC_Payments_Tasks {
 		}
 		include_once WCPAY_ABSPATH . 'includes/admin/tasks/class-wc-payments-task-disputes.php';
 
-		// 'extended' = 'Things to do next' task list on WooCommerce > Home.
+		// 'extended' = 'Things to do next' task list on PooCommerce > Home.
 		TaskLists::add_task( 'extended', new WC_Payments_Task_Disputes() );
 	}
 }

@@ -2,7 +2,7 @@
 /**
  * Class DisputeServiceTest
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 namespace WCPay\Tests\Internal\Service;

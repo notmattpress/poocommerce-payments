@@ -88,7 +88,7 @@ const formatRateText = ( rate, storeCurrency ) => {
 		const capCurrency = rate.fixed_currency || storeCurrency;
 		return sprintf(
 			/* translators: %s is a monetary amount */
-			__( 'capped at %s', 'woocommerce-payments' ),
+			__( 'capped at %s', 'poocommerce-payments' ),
 			formatCurrency( capAmount, capCurrency, storeCurrency )
 		);
 	}
@@ -157,14 +157,14 @@ const composeAdjustmentSplitFeeRow = (
 				<li key="variable">
 					{ sprintf(
 						/* translators: %s is a percentage */
-						__( 'Variable fee: %s', 'woocommerce-payments' ),
+						__( 'Variable fee: %s', 'poocommerce-payments' ),
 						variableText
 					) }
 				</li>
 				<li key="fixed">
 					{ sprintf(
 						/* translators: %s is a monetary amount */
-						__( 'Fixed fee: %s', 'woocommerce-payments' ),
+						__( 'Fixed fee: %s', 'poocommerce-payments' ),
 						fixedText
 					) }
 				</li>
@@ -209,7 +209,7 @@ const composeTaxLineFromBreakdown = ( breakdown, storeCurrency ) => {
 
 	return sprintf(
 		/* translators: 1: tax description 2: tax percentage 3: tax amount */
-		__( 'Tax%1$s%2$s: %3$s', 'woocommerce-payments' ),
+		__( 'Tax%1$s%2$s: %3$s', 'poocommerce-payments' ),
 		taxDescription,
 		taxPercentage,
 		taxAmountText
@@ -279,21 +279,21 @@ export const composeCapturedBodyFromBreakdown = ( event ) => {
 		breakdown.totals.fee.key ?? '',
 		null
 	);
-	const defaultFeeLabel = __( 'Fee', 'woocommerce-payments' );
+	const defaultFeeLabel = __( 'Fee', 'poocommerce-payments' );
 	const feeLineLabel =
 		totalFeeLabel && totalFeeLabel !== '' ? totalFeeLabel : defaultFeeLabel;
 	lines.push(
 		totalRateText
 			? sprintf(
 					/* translators: 1: fee label (e.g. "Fee") 2: fee rate (e.g. 2.9% + $0.30) 3: monetary amount */
-					__( '%1$s (%2$s): %3$s', 'woocommerce-payments' ),
+					__( '%1$s (%2$s): %3$s', 'poocommerce-payments' ),
 					feeLineLabel,
 					totalRateTextWithSuffix,
 					feeAmountText
 			  )
 			: sprintf(
 					/* translators: 1: fee label (e.g. "Fee" or "Processing fee") 2: monetary amount */
-					__( '%1$s: %2$s', 'woocommerce-payments' ),
+					__( '%1$s: %2$s', 'poocommerce-payments' ),
 					feeLineLabel,
 					feeAmountText
 			  )
@@ -344,7 +344,7 @@ export const composeCapturedBodyFromBreakdown = ( event ) => {
 	lines.push(
 		sprintf(
 			/* translators: %s is a monetary amount */
-			__( 'Net payout: %s', 'woocommerce-payments' ),
+			__( 'Net payout: %s', 'poocommerce-payments' ),
 			formatExplicitCurrency(
 				breakdown.totals.capture_net.amount,
 				breakdown.totals.capture_net.currency,
