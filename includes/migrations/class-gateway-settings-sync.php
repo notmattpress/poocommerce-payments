@@ -2,7 +2,7 @@
 /**
  * Class Gateway_Settings_Sync
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Migrations;
@@ -55,7 +55,7 @@ class Gateway_Settings_Sync {
 	 * Checks whether we should trigger the event.
 	 */
 	public function maybe_sync() {
-		$previous_version = get_option( 'woocommerce_woocommerce_payments_version' );
+		$previous_version = get_option( 'poocommerce_poocommerce_payments_version' );
 		if ( version_compare( self::VERSION_SINCE, $previous_version, '>' ) ) {
 			$this->sync();
 		}

@@ -58,7 +58,7 @@ const StoreSettingsTask = () => {
 			title={ interpolateComponents( {
 				mixedString: __(
 					'{{wrapper}}Review store settings{{/wrapper}}',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				components: {
 					wrapper: <span />,
@@ -66,7 +66,7 @@ const StoreSettingsTask = () => {
 			} ) }
 			visibleDescription={ __(
 				'These settings can be changed any time by visiting the Multi-Currency settings',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			) }
 			index={ 2 }
 		>
@@ -74,7 +74,7 @@ const StoreSettingsTask = () => {
 				<p className="wcpay-wizard-task__description-element is-muted-color">
 					{ __(
 						'These settings can be changed any time by visiting the Multi-Currency settings',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 				</p>
 				<Card className="multi-currency-settings-task__wrapper">
@@ -94,11 +94,11 @@ const StoreSettingsTask = () => {
 									data-testid={ 'enable_auto_currency' }
 									label={ __(
 										'Automatically switch customers to their local currency if it has been enabled',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									) }
 									help={ __(
 										'Customers will be notified via store alert banner.',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									) }
 									__nextHasNoMarginBottom
 								/>
@@ -119,11 +119,11 @@ const StoreSettingsTask = () => {
 										}
 										label={ __(
 											'Add a currency switcher to the Storefront theme on breadcrumb section.',
-											'woocommerce-payments'
+											'poocommerce-payments'
 										) }
 										help={ __(
 											'A currency switcher is also available in your widgets.',
-											'woocommerce-payments'
+											'poocommerce-payments'
 										) }
 										__nextHasNoMarginBottom
 									/>
@@ -139,7 +139,7 @@ const StoreSettingsTask = () => {
 					variant="primary"
 					__next40pxDefaultSize
 				>
-					{ __( 'Continue', 'woocommerce-payments' ) }
+					{ __( 'Continue', 'poocommerce-payments' ) }
 				</Button>
 				<Button
 					isBusy={ isSavingStoreSettings || isSaving }
@@ -149,7 +149,7 @@ const StoreSettingsTask = () => {
 					variant="tertiary"
 					__next40pxDefaultSize
 				>
-					{ __( 'Preview', 'woocommerce-payments' ) }
+					{ __( 'Preview', 'poocommerce-payments' ) }
 				</Button>
 				<PreviewModal
 					isPreviewModalOpen={ isPreviewModalOpen }

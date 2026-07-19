@@ -17,13 +17,13 @@ export const ReportsHeader: React.FC< ReportsHeaderProps > = ( {
 	return (
 		<div className="wcpay-reports-header">
 			<h1 className="screen-reader-text">
-				{ __( 'Reports', 'woocommerce-payments' ) }
+				{ __( 'Reports', 'poocommerce-payments' ) }
 			</h1>
 			<div className="wcpay-reports-header__intro">
 				<p>
 					{ __(
 						'View your reconciliation reports.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 				</p>
 			</div>

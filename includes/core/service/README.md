@@ -1,8 +1,8 @@
-# WooCommerce Payments Services
+# PooCommerce Payments Services
 
 ## Purpose
 
-Expose WooCommerce Payments functionality through Services. Extensions should use these integration points provided in the `WCPay\Core` namespace, and should not use any methods from other classes, which are considered internal to WCPay. 
+Expose PooCommerce Payments functionality through Services. Extensions should use these integration points provided in the `WCPay\Core` namespace, and should not use any methods from other classes, which are considered internal to WCPay. 
 
 In this way, extensions will be able to use services in a reliable, and compatible manner. 
 
@@ -18,4 +18,4 @@ In this way, extensions will be able to use services in a reliable, and compatib
 - Add tests in `tests\unit\core\service`.
 - Expose service via `WC_Payments`.
 
-[🔗 More about services within WooCommerce Payments Core](../CONTRIBUTING.md)
+[🔗 More about services within PooCommerce Payments Core](../CONTRIBUTING.md)

@@ -2,7 +2,7 @@
 /**
  * Product Add Ons helpers.
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 /**

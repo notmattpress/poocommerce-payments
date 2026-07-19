@@ -1,6 +1,6 @@
 # WooPayments Unit Tests
 
-This guide follows the [WooCommerce guide to unit tests](https://github.com/woocommerce/woocommerce/tree/master/tests).
+This guide follows the [PooCommerce guide to unit tests](https://github.com/poocommerce/poocommerce/tree/master/tests).
 
 ## Setup for running tests in the docker containers
 

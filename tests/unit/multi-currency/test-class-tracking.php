@@ -2,7 +2,7 @@
 /**
  * Class WCPay_Multi_Currency_Tracking_Tests
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\MultiCurrency\Currency;
@@ -111,7 +111,7 @@ class WCPay_Multi_Currency_Tracking_Tests extends WCPAY_UnitTestCase {
 
 		$this->set_up_mock_enabled_currencies();
 		$this->add_mock_orders_with_meta();
-		$this->mock_default_currency = new WCPay\MultiCurrency\Currency( $this->localization_service, get_woocommerce_currency(), 1 );
+		$this->mock_default_currency = new WCPay\MultiCurrency\Currency( $this->localization_service, get_poocommerce_currency(), 1 );
 
 		$this->mock_multi_currency = $this->createMock( WCPay\MultiCurrency\MultiCurrency::class );
 		$this->mock_multi_currency
@@ -132,9 +132,9 @@ class WCPay_Multi_Currency_Tracking_Tests extends WCPAY_UnitTestCase {
 	}
 
 	/**
-	 * @dataProvider woocommerce_filter_provider
+	 * @dataProvider poocommerce_filter_provider
 	 */
-	public function test_registers_woocommerce_filters_properly( $filter, $function_name ) {
+	public function test_registers_poocommerce_filters_properly( $filter, $function_name ) {
 		$priority = has_filter( $filter, [ $this->tracking, $function_name ] );
 		$this->assertGreaterThan(
 			10,
@@ -143,9 +143,9 @@ class WCPay_Multi_Currency_Tracking_Tests extends WCPAY_UnitTestCase {
 		);
 	}
 
-	public function woocommerce_filter_provider() {
+	public function poocommerce_filter_provider() {
 		return [
-			[ 'woocommerce_tracker_data', 'add_tracker_data' ],
+			[ 'poocommerce_tracker_data', 'add_tracker_data' ],
 		];
 	}
 
@@ -221,7 +221,7 @@ class WCPay_Multi_Currency_Tracking_Tests extends WCPAY_UnitTestCase {
 									'counts' => 3,
 									'totals' => 37035,
 								],
-								'woocommerce_payments' => [
+								'poocommerce_payments' => [
 									'counts' => 3,
 									'totals' => 37035,
 								],
@@ -239,7 +239,7 @@ class WCPay_Multi_Currency_Tracking_Tests extends WCPAY_UnitTestCase {
 									'counts' => 3,
 									'totals' => 370.35,
 								],
-								'woocommerce_payments' => [
+								'poocommerce_payments' => [
 									'counts' => 3,
 									'totals' => 370.35,
 								],
@@ -296,13 +296,13 @@ class WCPay_Multi_Currency_Tracking_Tests extends WCPAY_UnitTestCase {
 		];
 
 		$post_meta_data = [
-			[ 2, 'woocommerce_payments', 12345, 'BIF' ],
+			[ 2, 'poocommerce_payments', 12345, 'BIF' ],
 			[ 2, 'stripe', 12345, 'BIF' ],
 			[ 2, null, 0, 'BIF' ],
-			[ 2, 'woocommerce_payments', 123.45, 'CAD' ],
+			[ 2, 'poocommerce_payments', 123.45, 'CAD' ],
 			[ 2, 'stripe', 123.45, 'CAD' ],
 			[ 2, null, 0, 'CAD' ],
-			[ null, 'woocommerce_payments', 123.45, 'USD' ],
+			[ null, 'poocommerce_payments', 123.45, 'USD' ],
 			[ null, 'stripe', 123.45, 'USD' ],
 			[ null, null, 0, 'USD' ],
 		];

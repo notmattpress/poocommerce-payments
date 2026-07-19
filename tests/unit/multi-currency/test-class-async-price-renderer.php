@@ -2,7 +2,7 @@
 /**
  * Class WCPay_Multi_Currency_Async_Price_Renderer_Tests
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\MultiCurrency\AsyncPriceRenderer;
@@ -44,7 +44,7 @@ class WCPay_Multi_Currency_Async_Price_Renderer_Tests extends WCPAY_UnitTestCase
 	 * Test that wrap_price_with_skeleton produces correct HTML.
 	 */
 	public function test_wrap_price_with_skeleton_produces_correct_html() {
-		$original_price_html = '<span class="woocommerce-Price-amount amount">$10.00</span>';
+		$original_price_html = '<span class="poocommerce-Price-amount amount">$10.00</span>';
 		$result              = $this->renderer->wrap_price_with_skeleton(
 			$original_price_html,
 			10.00,
@@ -53,7 +53,7 @@ class WCPay_Multi_Currency_Async_Price_Renderer_Tests extends WCPAY_UnitTestCase
 			10.00
 		);
 
-		$this->assertStringContainsString( 'woocommerce-Price-amount', $result );
+		$this->assertStringContainsString( 'poocommerce-Price-amount', $result );
 		$this->assertStringContainsString( 'wcpay-async-price', $result );
 		$this->assertStringContainsString( 'data-wcpay-price="10"', $result );
 		$this->assertStringContainsString( 'data-wcpay-price-type="product"', $result );
@@ -165,7 +165,7 @@ class WCPay_Multi_Currency_Async_Price_Renderer_Tests extends WCPAY_UnitTestCase
 	/**
 	 * Test that enqueue_async_renderer decodes HTML entities in the currency symbol.
 	 *
-	 * get_woocommerce_currency_symbol() returns HTML entities (e.g. &euro; for EUR).
+	 * get_poocommerce_currency_symbol() returns HTML entities (e.g. &euro; for EUR).
 	 * The localized data must contain the decoded character, not the raw entity.
 	 */
 	public function test_enqueue_async_renderer_decodes_currency_symbol_entities() {
@@ -174,7 +174,7 @@ class WCPay_Multi_Currency_Async_Price_Renderer_Tests extends WCPAY_UnitTestCase
 		$force_eur = function () {
 			return 'EUR';
 		};
-		add_filter( 'woocommerce_currency', $force_eur, 901 );
+		add_filter( 'poocommerce_currency', $force_eur, 901 );
 
 		wp_register_script( 'wcpay-multi-currency-async-renderer', false, [], '1.0', true );
 
@@ -194,16 +194,16 @@ class WCPay_Multi_Currency_Async_Price_Renderer_Tests extends WCPAY_UnitTestCase
 		$this->assertStringNotContainsString( '&euro;', $data );
 		$this->assertStringNotContainsString( '&#', $data );
 
-		remove_filter( 'woocommerce_currency', $force_eur, 901 );
+		remove_filter( 'poocommerce_currency', $force_eur, 901 );
 	}
 
 	/**
 	 * Test that annotate_sale_price_sr_text adds data attributes to both screen-reader-text spans.
 	 */
 	public function test_annotate_sale_price_sr_text_adds_data_attributes() {
-		$html = '<del aria-hidden="true"><span class="woocommerce-Price-amount amount"><bdi>$50.00</bdi></span></del>'
+		$html = '<del aria-hidden="true"><span class="poocommerce-Price-amount amount"><bdi>$50.00</bdi></span></del>'
 			. ' <span class="screen-reader-text">Original price was: $50.00.</span>'
-			. ' <ins aria-hidden="true"><span class="woocommerce-Price-amount amount"><bdi>$35.00</bdi></span></ins>'
+			. ' <ins aria-hidden="true"><span class="poocommerce-Price-amount amount"><bdi>$35.00</bdi></span></ins>'
 			. ' <span class="screen-reader-text">Current price is: $35.00.</span>';
 
 		$result = $this->renderer->annotate_sale_price_sr_text( $html, '50', '35' );
@@ -230,9 +230,9 @@ class WCPay_Multi_Currency_Async_Price_Renderer_Tests extends WCPAY_UnitTestCase
 	 * Test that annotate_price_range_sr_text adds data attributes.
 	 */
 	public function test_annotate_price_range_sr_text_adds_data_attributes() {
-		$html = '<span class="woocommerce-Price-amount amount"><bdi>$10.00</bdi></span>'
+		$html = '<span class="poocommerce-Price-amount amount"><bdi>$10.00</bdi></span>'
 			. ' &ndash; '
-			. '<span class="woocommerce-Price-amount amount"><bdi>$30.00</bdi></span>'
+			. '<span class="poocommerce-Price-amount amount"><bdi>$30.00</bdi></span>'
 			. ' <span class="screen-reader-text">Price range: $10.00 through $30.00</span>';
 
 		$result = $this->renderer->annotate_price_range_sr_text( $html, '10', '30' );
@@ -269,11 +269,11 @@ class WCPay_Multi_Currency_Async_Price_Renderer_Tests extends WCPAY_UnitTestCase
 
 		$this->assertSame(
 			999,
-			has_filter( 'woocommerce_format_sale_price', [ $this->renderer, 'annotate_sale_price_sr_text' ] )
+			has_filter( 'poocommerce_format_sale_price', [ $this->renderer, 'annotate_sale_price_sr_text' ] )
 		);
 		$this->assertSame(
 			999,
-			has_filter( 'woocommerce_format_price_range', [ $this->renderer, 'annotate_price_range_sr_text' ] )
+			has_filter( 'poocommerce_format_price_range', [ $this->renderer, 'annotate_price_range_sr_text' ] )
 		);
 	}
 

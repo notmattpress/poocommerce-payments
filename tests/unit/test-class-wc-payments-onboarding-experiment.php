@@ -2,7 +2,7 @@
 /**
  * Class Onboarding_Experiment_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\Experimental_Abtest;

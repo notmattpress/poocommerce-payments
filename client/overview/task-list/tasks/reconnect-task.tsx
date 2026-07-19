@@ -31,21 +31,21 @@ export const getReconnectWpcomTask = (
 		content: '',
 		title: sprintf(
 			/* translators: %s: WooPayments */
-			__( 'Reconnect %s', 'woocommerce-payments' ),
+			__( 'Reconnect %s', 'poocommerce-payments' ),
 			'WooPayments'
 		),
 		additionalInfo: sprintf(
 			/* translators: %s: WooPayments */
 			__(
 				'%s is missing a connected WordPress.com account. Some functionality will be limited without a connected account.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			'WooPayments'
 		),
 		completed: false,
 		onClick: handleClick,
 		action: handleClick,
-		actionLabel: __( 'Reconnect', 'woocommerce-payments' ),
+		actionLabel: __( 'Reconnect', 'poocommerce-payments' ),
 		expandable: true,
 		expanded: true,
 		showActionButton: true,

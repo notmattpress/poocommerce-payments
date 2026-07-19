@@ -12,7 +12,7 @@ import { render } from '@testing-library/react';
 import '../wc-product-page';
 
 const ATTR_CLASS =
-	'wp-block-woocommerce-add-to-cart-with-options-variation-selector-attribute';
+	'wp-block-poocommerce-add-to-cart-with-options-variation-selector-attribute';
 
 // A rendered IAPI variation attribute group with a single pill option.
 const iapiAttribute = ( name, value, checked = true ) =>

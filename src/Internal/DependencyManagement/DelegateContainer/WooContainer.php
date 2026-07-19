@@ -2,7 +2,7 @@
 /**
  * Class WooContainer
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Internal\DependencyManagement\DelegateContainer;
@@ -10,9 +10,9 @@ namespace WCPay\Internal\DependencyManagement\DelegateContainer;
 use WCPay\Vendor\Psr\Container\ContainerInterface;
 
 /**
- * WooCommerce container delegate.
+ * PooCommerce container delegate.
  *
- * This class refers to the WooCommerce container to allow
+ * This class refers to the PooCommerce container to allow
  * delegation within from within our primary container.
  */
 class WooContainer implements ContainerInterface {

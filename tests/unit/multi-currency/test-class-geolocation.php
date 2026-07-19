@@ -2,7 +2,7 @@
 /**
  * Class WCPay_Multi_Currency_Geolocation_Tests
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 /**
@@ -39,15 +39,15 @@ class WCPay_Multi_Currency_Geolocation_Tests extends WCPAY_UnitTestCase {
 	 * @return void
 	 */
 	public function tear_down() {
-		remove_all_filters( 'woocommerce_geolocate_ip' );
-		remove_all_filters( 'woocommerce_customer_default_location' );
+		remove_all_filters( 'poocommerce_geolocate_ip' );
+		remove_all_filters( 'poocommerce_customer_default_location' );
 
 		parent::tear_down();
 	}
 
 	public function test_get_country_by_customer_location_returns_geolocation_country() {
 		add_filter(
-			'woocommerce_geolocate_ip',
+			'poocommerce_geolocate_ip',
 			function () {
 				return 'CA';
 			}
@@ -57,14 +57,14 @@ class WCPay_Multi_Currency_Geolocation_Tests extends WCPAY_UnitTestCase {
 
 	public function test_get_country_by_customer_location_returns_default_country_when_no_geolocation() {
 		add_filter(
-			'woocommerce_geolocate_ip',
+			'poocommerce_geolocate_ip',
 			function () {
 				return '';
 			}
 		);
 
 		add_filter(
-			'woocommerce_customer_default_location',
+			'poocommerce_customer_default_location',
 			function () {
 				return 'BR';
 			}
@@ -77,7 +77,7 @@ class WCPay_Multi_Currency_Geolocation_Tests extends WCPAY_UnitTestCase {
 		$this->mock_localization_service->method( 'get_country_locale_data' )->with( 'CA' )->willReturn( [ 'currency_code' => 'CAD' ] );
 
 		add_filter(
-			'woocommerce_geolocate_ip',
+			'poocommerce_geolocate_ip',
 			function () {
 				return 'CA';
 			}
@@ -90,13 +90,13 @@ class WCPay_Multi_Currency_Geolocation_Tests extends WCPAY_UnitTestCase {
 		$this->mock_localization_service->method( 'get_country_locale_data' )->with( 'BR' )->willReturn( [ 'currency_code' => 'BRL' ] );
 
 		add_filter(
-			'woocommerce_geolocate_ip',
+			'poocommerce_geolocate_ip',
 			function () {
 				return '';
 			}
 		);
 		add_filter(
-			'woocommerce_customer_default_location',
+			'poocommerce_customer_default_location',
 			function () {
 				return 'BR';
 			}
@@ -107,13 +107,13 @@ class WCPay_Multi_Currency_Geolocation_Tests extends WCPAY_UnitTestCase {
 
 	public function test_get_currency_by_customer_location_returns_null() {
 		add_filter(
-			'woocommerce_geolocate_ip',
+			'poocommerce_geolocate_ip',
 			function () {
 				return '';
 			}
 		);
 		add_filter(
-			'woocommerce_customer_default_location',
+			'poocommerce_customer_default_location',
 			function () {
 				return '';
 			}

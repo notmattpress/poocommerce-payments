@@ -77,10 +77,10 @@ export const RECOMMENDATIONS_CATALOG: Recommendation[] = [
 	{
 		id: 'c1-shipping-evidence-strong',
 		urgency: 'positive',
-		title: __( 'Strong shipping evidence', 'woocommerce-payments' ),
+		title: __( 'Strong shipping evidence', 'poocommerce-payments' ),
 		body: __(
 			'Your tracking number and carrier info helped demonstrate delivery.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		when: {
 			outcome: 'keep_doing',
@@ -97,11 +97,11 @@ export const RECOMMENDATIONS_CATALOG: Recommendation[] = [
 		urgency: 'critical',
 		title: __(
 			'Add shipping tracking for every order',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		body: __(
 			'Shipping tracking that shows delivery is among the strongest evidence for product-not-received disputes.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		when: {
 			outcome: 'could_help',
@@ -115,11 +115,11 @@ export const RECOMMENDATIONS_CATALOG: Recommendation[] = [
 		urgency: 'tip',
 		title: __(
 			'Strengthen your shipping evidence',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		body: __(
 			'Adding carrier info or a delivery date alongside tracking gives a fuller picture for physical goods disputes.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		when: {
 			outcome: 'keep_doing',
@@ -141,10 +141,10 @@ export const RECOMMENDATIONS_CATALOG: Recommendation[] = [
 	{
 		id: 'c2-receipt-provided',
 		urgency: 'positive',
-		title: __( 'Clear proof of purchase', 'woocommerce-payments' ),
+		title: __( 'Clear proof of purchase', 'poocommerce-payments' ),
 		body: __(
 			'A receipt added support to your defense.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		when: {
 			outcome: 'keep_doing',
@@ -161,10 +161,10 @@ export const RECOMMENDATIONS_CATALOG: Recommendation[] = [
 	{
 		id: 'c2-receipt-include',
 		urgency: 'critical',
-		title: __( 'Include the order receipt', 'woocommerce-payments' ),
+		title: __( 'Include the order receipt', 'poocommerce-payments' ),
 		body: __(
 			'A clear receipt is one of the more reliable pieces of evidence across dispute types.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		when: {
 			outcome: 'could_help',
@@ -183,11 +183,11 @@ export const RECOMMENDATIONS_CATALOG: Recommendation[] = [
 		urgency: 'tip',
 		title: __(
 			'Include a receipt with your evidence',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		body: __(
 			'Receipts tend to strengthen evidence packages across most dispute types, even when you win without one.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		when: {
 			outcome: 'keep_doing',
@@ -206,10 +206,10 @@ export const RECOMMENDATIONS_CATALOG: Recommendation[] = [
 	{
 		id: 'c3-communication-provided',
 		urgency: 'positive',
-		title: __( 'Customer communication on file', 'woocommerce-payments' ),
+		title: __( 'Customer communication on file', 'poocommerce-payments' ),
 		body: __(
 			'Your correspondence with the customer added helpful context.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		when: {
 			outcome: 'keep_doing',
@@ -226,10 +226,10 @@ export const RECOMMENDATIONS_CATALOG: Recommendation[] = [
 	{
 		id: 'c3-communication-include',
 		urgency: 'critical',
-		title: __( 'Include customer correspondence', 'woocommerce-payments' ),
+		title: __( 'Include customer correspondence', 'poocommerce-payments' ),
 		body: __(
 			'Emails or messages with the customer can add helpful context to your defense.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		when: {
 			outcome: 'could_help',
@@ -248,11 +248,11 @@ export const RECOMMENDATIONS_CATALOG: Recommendation[] = [
 		urgency: 'tip',
 		title: __(
 			'Consider attaching customer correspondence',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		body: __(
 			'Relevant correspondence tends to help across dispute types where the conversation supports your position.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		when: {
 			outcome: 'keep_doing',
@@ -278,10 +278,10 @@ export const RECOMMENDATIONS_CATALOG: Recommendation[] = [
 	{
 		id: 'c5-refund-policy-provided',
 		urgency: 'positive',
-		title: __( 'Clear refund policy', 'woocommerce-payments' ),
+		title: __( 'Clear refund policy', 'poocommerce-payments' ),
 		body: __(
 			'Your refund policy gave context for how returns work in your store.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		when: {
 			outcome: 'keep_doing',
@@ -297,10 +297,10 @@ export const RECOMMENDATIONS_CATALOG: Recommendation[] = [
 	{
 		id: 'c5-refund-policy-publish-won',
 		urgency: 'tip',
-		title: __( 'Publish a clear refund policy', 'woocommerce-payments' ),
+		title: __( 'Publish a clear refund policy', 'poocommerce-payments' ),
 		body: __(
 			'A published refund policy gives customers context for how returns work in your store, and ties together your other refund-related evidence.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		when: {
 			outcome: 'keep_doing',
@@ -316,10 +316,10 @@ export const RECOMMENDATIONS_CATALOG: Recommendation[] = [
 	{
 		id: 'c5-refund-policy-publish-lost',
 		urgency: 'tip',
-		title: __( 'Publish a clear refund policy', 'woocommerce-payments' ),
+		title: __( 'Publish a clear refund policy', 'poocommerce-payments' ),
 		body: __(
 			'A published refund policy gives customers context for how returns work in your store, and ties together your other refund-related evidence.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		when: {
 			outcome: 'could_help',
@@ -339,10 +339,10 @@ export const RECOMMENDATIONS_CATALOG: Recommendation[] = [
 	{
 		id: 'c6-cancellation-provided',
 		urgency: 'positive',
-		title: __( 'Cancellation policy on record', 'woocommerce-payments' ),
+		title: __( 'Cancellation policy on record', 'poocommerce-payments' ),
 		body: __(
 			'Your cancellation policy and supporting records helped clarify the subscription terms.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		when: {
 			outcome: 'keep_doing',
@@ -356,10 +356,10 @@ export const RECOMMENDATIONS_CATALOG: Recommendation[] = [
 	{
 		id: 'c6-cancellation-document',
 		urgency: 'critical',
-		title: __( 'Document your cancellation terms', 'woocommerce-payments' ),
+		title: __( 'Document your cancellation terms', 'poocommerce-payments' ),
 		body: __(
 			'Cancellation policies, terms shown at checkout, and cancellation records are central to subscription disputes.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		when: {
 			outcome: 'could_help',
@@ -373,10 +373,10 @@ export const RECOMMENDATIONS_CATALOG: Recommendation[] = [
 	{
 		id: 'c6-cancellation-add-exactly-one',
 		urgency: 'tip',
-		title: __( 'Add cancellation documentation', 'woocommerce-payments' ),
+		title: __( 'Add cancellation documentation', 'poocommerce-payments' ),
 		body: __(
 			'Documented cancellation terms and supporting records help defend subscription disputes.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		when: {
 			outcome: 'keep_doing',
@@ -391,10 +391,10 @@ export const RECOMMENDATIONS_CATALOG: Recommendation[] = [
 	{
 		id: 'c6-cancellation-add-exactly-one-lost',
 		urgency: 'tip',
-		title: __( 'Add cancellation documentation', 'woocommerce-payments' ),
+		title: __( 'Add cancellation documentation', 'poocommerce-payments' ),
 		body: __(
 			'Documented cancellation terms and supporting records help defend subscription disputes.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		when: {
 			outcome: 'could_help',
@@ -409,10 +409,10 @@ export const RECOMMENDATIONS_CATALOG: Recommendation[] = [
 	{
 		id: 'c6-cancellation-add-none-on-won',
 		urgency: 'tip',
-		title: __( 'Add cancellation documentation', 'woocommerce-payments' ),
+		title: __( 'Add cancellation documentation', 'poocommerce-payments' ),
 		body: __(
 			'Documented cancellation terms and supporting records help defend subscription disputes.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		when: {
 			outcome: 'keep_doing',
@@ -431,10 +431,10 @@ export const RECOMMENDATIONS_CATALOG: Recommendation[] = [
 	{
 		id: 'c7-duplicate-charge-explained',
 		urgency: 'positive',
-		title: __( 'Two charges, clearly documented', 'woocommerce-payments' ),
+		title: __( 'Two charges, clearly documented', 'poocommerce-payments' ),
 		body: __(
 			'Documentation distinguishing the two charges helped make your case.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		when: {
 			outcome: 'keep_doing',
@@ -445,10 +445,10 @@ export const RECOMMENDATIONS_CATALOG: Recommendation[] = [
 	{
 		id: 'c7-duplicate-charge-explain',
 		urgency: 'critical',
-		title: __( 'Document the duplicate charge', 'woocommerce-payments' ),
+		title: __( 'Document the duplicate charge', 'poocommerce-payments' ),
 		body: __(
 			'Documentation distinguishing the two charges is central evidence for duplicate disputes.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		when: {
 			outcome: 'could_help',
@@ -472,10 +472,10 @@ export const RECOMMENDATIONS_CATALOG: Recommendation[] = [
 	{
 		id: 'c8b-shipping-date-provided',
 		urgency: 'positive',
-		title: __( 'Shipping date on record', 'woocommerce-payments' ),
+		title: __( 'Shipping date on record', 'poocommerce-payments' ),
 		body: __(
 			"Documenting the shipping date tied this order to a verifiable event at the cardholder's address.",
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		when: {
 			outcome: 'keep_doing',
@@ -487,10 +487,10 @@ export const RECOMMENDATIONS_CATALOG: Recommendation[] = [
 	{
 		id: 'c8b-shipping-date-document',
 		urgency: 'tip',
-		title: __( 'Document the shipping date', 'woocommerce-payments' ),
+		title: __( 'Document the shipping date', 'poocommerce-payments' ),
 		body: __(
 			"Including the shipping date ties an order to a verifiable event at the cardholder's address.",
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		when: {
 			outcome: 'keep_doing',
@@ -502,10 +502,10 @@ export const RECOMMENDATIONS_CATALOG: Recommendation[] = [
 	{
 		id: 'c8b-shipping-date-document-lost',
 		urgency: 'tip',
-		title: __( 'Document the shipping date', 'woocommerce-payments' ),
+		title: __( 'Document the shipping date', 'poocommerce-payments' ),
 		body: __(
 			"Including the shipping date ties an order to a verifiable event at the cardholder's address.",
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		when: {
 			outcome: 'could_help',
@@ -519,10 +519,10 @@ export const RECOMMENDATIONS_CATALOG: Recommendation[] = [
 	{
 		id: 'c9-service-documentation-provided',
 		urgency: 'positive',
-		title: __( 'Proof of service delivered', 'woocommerce-payments' ),
+		title: __( 'Proof of service delivered', 'poocommerce-payments' ),
 		body: __(
 			'Service documentation helped establish that the service was delivered.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		when: {
 			outcome: 'keep_doing',
@@ -544,11 +544,11 @@ export const RECOMMENDATIONS_CATALOG: Recommendation[] = [
 		urgency: 'tip',
 		title: __(
 			'Attach proof the service was delivered',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		body: __(
 			'Records showing the event, reservation, or service was completed help defend service-based disputes.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		when: {
 			outcome: 'keep_doing',
@@ -570,11 +570,11 @@ export const RECOMMENDATIONS_CATALOG: Recommendation[] = [
 		urgency: 'tip',
 		title: __(
 			'Attach proof the service was delivered',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		body: __(
 			'Records showing the event, reservation, or service was completed help defend service-based disputes.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		when: {
 			outcome: 'could_help',
@@ -596,10 +596,10 @@ export const RECOMMENDATIONS_CATALOG: Recommendation[] = [
 	{
 		id: 'c10-access-log-provided',
 		urgency: 'positive',
-		title: __( 'Usage records on file', 'woocommerce-payments' ),
+		title: __( 'Usage records on file', 'poocommerce-payments' ),
 		body: __(
 			'Your access logs helped show the customer used the product.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		when: {
 			outcome: 'keep_doing',
@@ -617,11 +617,11 @@ export const RECOMMENDATIONS_CATALOG: Recommendation[] = [
 		urgency: 'critical',
 		title: __(
 			'Include usage records for digital products',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		body: __(
 			'Access logs showing the customer used the product are central evidence for digital product-quality disputes.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		when: {
 			outcome: 'could_help',
@@ -633,10 +633,10 @@ export const RECOMMENDATIONS_CATALOG: Recommendation[] = [
 	{
 		id: 'c10-access-log-add',
 		urgency: 'tip',
-		title: __( 'Add access logs to your evidence', 'woocommerce-payments' ),
+		title: __( 'Add access logs to your evidence', 'poocommerce-payments' ),
 		body: __(
 			'Usage records help defend digital product disputes by showing the customer accessed the product.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		when: {
 			outcome: 'keep_doing',
@@ -654,10 +654,10 @@ export const RECOMMENDATIONS_CATALOG: Recommendation[] = [
 	{
 		id: 'c11a-signature-provided',
 		urgency: 'positive',
-		title: __( 'Signed delivery proof', 'woocommerce-payments' ),
+		title: __( 'Signed delivery proof', 'poocommerce-payments' ),
 		body: __(
 			'Signed delivery records helped confirm the customer received the product.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		when: {
 			outcome: 'keep_doing',
@@ -669,10 +669,10 @@ export const RECOMMENDATIONS_CATALOG: Recommendation[] = [
 	{
 		id: 'c11a-signature-include',
 		urgency: 'critical',
-		title: __( 'Include signed delivery proof', 'woocommerce-payments' ),
+		title: __( 'Include signed delivery proof', 'poocommerce-payments' ),
 		body: __(
 			'Signed proof of delivery confirms the customer received the product, which is central to product-not-received disputes.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		when: {
 			outcome: 'could_help',
@@ -684,10 +684,10 @@ export const RECOMMENDATIONS_CATALOG: Recommendation[] = [
 	{
 		id: 'c11a-signature-add',
 		urgency: 'tip',
-		title: __( 'Add signed delivery proof', 'woocommerce-payments' ),
+		title: __( 'Add signed delivery proof', 'poocommerce-payments' ),
 		body: __(
 			'Where signed delivery records are available, they tend to strengthen physical goods dispute evidence.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		when: {
 			outcome: 'keep_doing',
@@ -703,11 +703,11 @@ export const RECOMMENDATIONS_CATALOG: Recommendation[] = [
 		urgency: 'positive',
 		title: __(
 			'Signed delivery proof (refund case)',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		body: __(
 			'Signed delivery proof from the original order showed the customer received the product before disputing the refund.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		when: {
 			outcome: 'keep_doing',
@@ -721,11 +721,11 @@ export const RECOMMENDATIONS_CATALOG: Recommendation[] = [
 		urgency: 'critical',
 		title: __(
 			'Include signed delivery proof from the original order',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		body: __(
 			'For refund disputes on physical goods, signed delivery proof from the original order establishes the customer received the product before the dispute.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		when: {
 			outcome: 'could_help',
@@ -739,11 +739,11 @@ export const RECOMMENDATIONS_CATALOG: Recommendation[] = [
 		urgency: 'tip',
 		title: __(
 			'Consider attaching signed delivery proof',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		body: __(
 			'Signed delivery records from the original order can support refund disputes on physical goods.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		when: {
 			outcome: 'keep_doing',
@@ -761,11 +761,11 @@ export const RECOMMENDATIONS_CATALOG: Recommendation[] = [
 		urgency: 'tip',
 		title: __(
 			'Include a cover letter with your evidence',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		body: __(
 			'The cover letter is how you introduce your case and tie your evidence together.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		when: {
 			outcome: 'could_help',
@@ -795,11 +795,11 @@ export const RECOMMENDATIONS_CATALOG: Recommendation[] = [
 		urgency: 'tip',
 		title: __(
 			'Mention prior good history with the customer',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		body: __(
 			"Where possible, mention in your cover letter the customer's prior successful orders, and attach proof from their order history.",
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		when: {
 			outcome: 'could_help',
@@ -813,11 +813,11 @@ export const RECOMMENDATIONS_CATALOG: Recommendation[] = [
 		urgency: 'critical',
 		title: __(
 			'Submit evidence with your dispute response',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		body: __(
 			"Without evidence to weigh against the customer's claim, disputes generally default in the customer's favor.",
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		when: {
 			outcome: 'could_help',

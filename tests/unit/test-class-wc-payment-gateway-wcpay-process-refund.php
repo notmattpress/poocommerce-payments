@@ -2,7 +2,7 @@
 /**
  * Class WC_Payment_Gateway_WCPay_Process_Refund_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\Core\Server\Request\Get_Intention;

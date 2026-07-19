@@ -2,9 +2,9 @@
 /**
  * Class WC_Payments_Apple_Pay_Registration
  *
- * Adapted from WooCommerce Stripe Gateway extension.
+ * Adapted from PooCommerce Stripe Gateway extension.
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -21,7 +21,7 @@ use WCPay\Tracker;
 class WC_Payments_Apple_Pay_Registration {
 
 	/**
-	 * Client for making requests to the WooCommerce Payments API
+	 * Client for making requests to the PooCommerce Payments API
 	 *
 	 * @var WC_Payments_API_Client
 	 */
@@ -58,9 +58,9 @@ class WC_Payments_Apple_Pay_Registration {
 	/**
 	 * Initialize class actions.
 	 *
-	 * @param WC_Payments_API_Client   $payments_api_client WooCommerce Payments API client.
-	 * @param WC_Payments_Account      $account WooCommerce Payments account.
-	 * @param WC_Payment_Gateway_WCPay $gateway WooCommerce Payments gateway.
+	 * @param WC_Payments_API_Client   $payments_api_client PooCommerce Payments API client.
+	 * @param WC_Payments_Account      $account PooCommerce Payments account.
+	 * @param WC_Payment_Gateway_WCPay $gateway PooCommerce Payments gateway.
 	 */
 	public function __construct( WC_Payments_API_Client $payments_api_client, WC_Payments_Account $account, WC_Payment_Gateway_WCPay $gateway ) {
 		$this->domain_name         = wp_parse_url( get_site_url(), PHP_URL_HOST );
@@ -86,14 +86,14 @@ class WC_Payments_Apple_Pay_Registration {
 	public function init() {
 		add_action( 'admin_init', [ $this, 'verify_domain_on_domain_name_change' ] );
 
-		add_action( 'woocommerce_woocommerce_payments_admin_notices', [ $this, 'display_error_notice' ] );
+		add_action( 'poocommerce_poocommerce_payments_admin_notices', [ $this, 'display_error_notice' ] );
 
 		// Listen to Apple Pay gateway settings changes for domain verification.
-		add_action( 'add_option_woocommerce_woocommerce_payments_apple_pay_settings', [ $this, 'verify_domain_on_new_settings' ], 10, 2 );
-		add_action( 'update_option_woocommerce_woocommerce_payments_apple_pay_settings', [ $this, 'verify_domain_on_updated_settings' ], 10, 2 );
+		add_action( 'add_option_poocommerce_poocommerce_payments_apple_pay_settings', [ $this, 'verify_domain_on_new_settings' ], 10, 2 );
+		add_action( 'update_option_poocommerce_poocommerce_payments_apple_pay_settings', [ $this, 'verify_domain_on_updated_settings' ], 10, 2 );
 
 		// Also listen to main gateway settings changes, since it's a prerequisite for Apple Pay.
-		add_action( 'update_option_woocommerce_woocommerce_payments_settings', [ $this, 'verify_domain_on_updated_main_gateway_settings' ], 10, 2 );
+		add_action( 'update_option_poocommerce_poocommerce_payments_settings', [ $this, 'verify_domain_on_updated_main_gateway_settings' ], 10, 2 );
 	}
 
 	/**
@@ -171,7 +171,7 @@ class WC_Payments_Apple_Pay_Registration {
 				$this->gateway->update_option( 'apple_pay_domain_set', 'yes' );
 				delete_option( self::APPLE_PAY_DOMAIN_ERROR_OPTION );
 
-				Logger::log( __( 'Your domain has been verified with Apple Pay!', 'woocommerce-payments' ) );
+				Logger::log( __( 'Your domain has been verified with Apple Pay!', 'poocommerce-payments' ) );
 				Tracker::track_admin(
 					'wcpay_apple_pay_domain_registration_success',
 					[
@@ -290,27 +290,27 @@ class WC_Payments_Apple_Pay_Registration {
 			],
 		];
 		$verification_failed = $empty_notice
-			? __( 'Apple Pay domain verification failed.', 'woocommerce-payments' )
-			: __( 'Apple Pay domain verification failed with the following error:', 'woocommerce-payments' );
+			? __( 'Apple Pay domain verification failed.', 'poocommerce-payments' )
+			: __( 'Apple Pay domain verification failed with the following error:', 'poocommerce-payments' );
 		$check_log_text      = WC_Payments_Utils::esc_interpolated_html(
 			/* translators: a: Link to the logs page */
-			__( 'Please check the <a>logs</a> for more details on this issue. Debug log must be enabled under <strong>Advanced settings</strong> to see recorded logs.', 'woocommerce-payments' ),
+			__( 'Please check the <a>logs</a> for more details on this issue. Debug log must be enabled under <strong>Advanced settings</strong> to see recorded logs.', 'poocommerce-payments' ),
 			[
 				'a'      => '<a href="' . admin_url( 'admin.php?page=wc-status&tab=logs' ) . '">',
 				'strong' => '<strong>',
 			]
 		);
 		$learn_more_text = WC_Payments_Utils::esc_interpolated_html(
-			__( '<a>Learn more</a>.', 'woocommerce-payments' ),
+			__( '<a>Learn more</a>.', 'poocommerce-payments' ),
 			[
-				'a' => '<a href="https://woocommerce.com/document/woopayments/payment-methods/apple-pay/#domain-registration" target="_blank">',
+				'a' => '<a href="https://poocommerce.com/document/woopayments/payment-methods/apple-pay/#domain-registration" target="_blank">',
 			]
 		);
 
 		?>
 		<div class="notice notice-error apple-pay-message">
 			<p>
-				<strong><?php esc_html_e( 'Express checkouts:', 'woocommerce-payments' ); ?></strong>
+				<strong><?php esc_html_e( 'Express checkouts:', 'poocommerce-payments' ); ?></strong>
 				<?php echo esc_html( $verification_failed ); ?>
 				<?php echo $learn_more_text; /* @codingStandardsIgnoreLine */ ?>
 			</p>
