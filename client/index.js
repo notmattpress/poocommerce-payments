@@ -129,8 +129,8 @@ const FraudProtectionAdvancedSettingsPage = withSuspense(
 );
 
 addFilter(
-	'woocommerce_admin_pages_list',
-	'woocommerce-payments',
+	'poocommerce_admin_pages_list',
+	'poocommerce-payments',
 	( pages ) => {
 		const { menuID, rootLink } = getMenuSettings();
 
@@ -138,7 +138,7 @@ addFilter(
 			window.wcAdminFeatures && window.wcAdminFeatures.navigation;
 		const connectionPageTitle = isNavigationEnabled
 			? 'WooPayments'
-			: __( 'Connect', 'woocommerce-payments' );
+			: __( 'Connect', 'poocommerce-payments' );
 
 		pages.push( {
 			container: ConnectAccountPage,
@@ -148,7 +148,7 @@ addFilter(
 			navArgs: {
 				id: 'wc-payments',
 			},
-			capability: 'manage_woocommerce',
+			capability: 'manage_poocommerce',
 		} );
 
 		pages.push( {
@@ -157,12 +157,12 @@ addFilter(
 			wpOpenMenu: menuID,
 			breadcrumbs: [
 				rootLink,
-				__( 'Onboarding', 'woocommerce-payments' ),
+				__( 'Onboarding', 'poocommerce-payments' ),
 			],
 			navArgs: {
 				id: 'wc-payments-onboarding',
 			},
-			capability: 'manage_woocommerce',
+			capability: 'manage_poocommerce',
 		} );
 
 		pages.push( {
@@ -171,34 +171,34 @@ addFilter(
 			wpOpenMenu: menuID,
 			breadcrumbs: [
 				rootLink,
-				__( 'Continue onboarding', 'woocommerce-payments' ),
+				__( 'Continue onboarding', 'poocommerce-payments' ),
 			],
 			navArgs: {
 				id: 'wc-payments-continue-onboarding',
 			},
-			capability: 'manage_woocommerce',
+			capability: 'manage_poocommerce',
 		} );
 
 		pages.push( {
 			container: OverviewPage,
 			path: '/payments/overview',
 			wpOpenMenu: menuID,
-			breadcrumbs: [ rootLink, __( 'Overview', 'woocommerce-payments' ) ],
+			breadcrumbs: [ rootLink, __( 'Overview', 'poocommerce-payments' ) ],
 			navArgs: {
 				id: 'wc-payments-overview',
 			},
-			capability: 'manage_woocommerce',
+			capability: 'manage_poocommerce',
 		} );
 
 		pages.push( {
 			container: DepositsPage,
 			path: '/payments/payouts',
 			wpOpenMenu: menuID,
-			breadcrumbs: [ rootLink, __( 'Payouts', 'woocommerce-payments' ) ],
+			breadcrumbs: [ rootLink, __( 'Payouts', 'poocommerce-payments' ) ],
 			navArgs: {
 				id: 'wc-payments-deposits',
 			},
-			capability: 'manage_woocommerce',
+			capability: 'manage_poocommerce',
 		} );
 		pages.push( {
 			container: DepositDetailsPage,
@@ -208,15 +208,15 @@ addFilter(
 				rootLink,
 				[
 					'/payments/payouts',
-					__( 'Payouts', 'woocommerce-payments' ),
+					__( 'Payouts', 'poocommerce-payments' ),
 				],
-				__( 'Payout details', 'woocommerce-payments' ),
+				__( 'Payout details', 'poocommerce-payments' ),
 			],
 			navArgs: {
 				id: 'wc-payments-deposit-details',
 				parentPath: '/payments/payouts',
 			},
-			capability: 'manage_woocommerce',
+			capability: 'manage_poocommerce',
 		} );
 		pages.push( {
 			container: TransactionsPage,
@@ -224,12 +224,12 @@ addFilter(
 			wpOpenMenu: menuID,
 			breadcrumbs: [
 				rootLink,
-				__( 'Transactions', 'woocommerce-payments' ),
+				__( 'Transactions', 'poocommerce-payments' ),
 			],
 			navArgs: {
 				id: 'wc-payments-transactions',
 			},
-			capability: 'manage_woocommerce',
+			capability: 'manage_poocommerce',
 		} );
 		pages.push( {
 			container: PaymentDetailsPage,
@@ -239,25 +239,25 @@ addFilter(
 				rootLink,
 				[
 					'/payments/transactions',
-					__( 'Transactions', 'woocommerce-payments' ),
+					__( 'Transactions', 'poocommerce-payments' ),
 				],
-				__( 'Payment details', 'woocommerce-payments' ),
+				__( 'Payment details', 'poocommerce-payments' ),
 			],
 			navArgs: {
 				id: 'wc-payments-transaction-details',
 				parentPath: '/payments/transactions',
 			},
-			capability: 'manage_woocommerce',
+			capability: 'manage_poocommerce',
 		} );
 		pages.push( {
 			container: DisputesPage,
 			path: '/payments/disputes',
 			wpOpenMenu: menuID,
-			breadcrumbs: [ rootLink, __( 'Disputes', 'woocommerce-payments' ) ],
+			breadcrumbs: [ rootLink, __( 'Disputes', 'poocommerce-payments' ) ],
 			navArgs: {
 				id: 'wc-payments-disputes',
 			},
-			capability: 'manage_woocommerce',
+			capability: 'manage_poocommerce',
 		} );
 
 		pages.push( {
@@ -268,15 +268,15 @@ addFilter(
 				rootLink,
 				[
 					'/payments/disputes',
-					__( 'Disputes', 'woocommerce-payments' ),
+					__( 'Disputes', 'poocommerce-payments' ),
 				],
-				__( 'Dispute details', 'woocommerce-payments' ),
+				__( 'Dispute details', 'poocommerce-payments' ),
 			],
 			navArgs: {
 				id: 'wc-payments-disputes-details-legacy-redirect',
 				parentPath: '/payments/disputes',
 			},
-			capability: 'manage_woocommerce',
+			capability: 'manage_poocommerce',
 		} );
 
 		pages.push( {
@@ -287,15 +287,15 @@ addFilter(
 				rootLink,
 				[
 					'/payments/disputes',
-					__( 'Disputes', 'woocommerce-payments' ),
+					__( 'Disputes', 'poocommerce-payments' ),
 				],
-				__( 'Challenge dispute', 'woocommerce-payments' ),
+				__( 'Challenge dispute', 'poocommerce-payments' ),
 			],
 			navArgs: {
 				id: 'wc-payments-disputes-challenge',
 				parentPath: '/payments/disputes',
 			},
-			capability: 'manage_woocommerce',
+			capability: 'manage_poocommerce',
 		} );
 		// Reports has additional feature-flag setup, so its route config lives with the Reports shell.
 		maybeAddReportsPage( pages, {
@@ -310,9 +310,9 @@ addFilter(
 			wpOpenMenu: menuID,
 			breadcrumbs: [
 				rootLink,
-				__( 'Set up multiple currencies', 'woocommerce-payments' ),
+				__( 'Set up multiple currencies', 'poocommerce-payments' ),
 			],
-			capability: 'manage_woocommerce',
+			capability: 'manage_poocommerce',
 		} );
 		pages.push( {
 			container: CardReadersPage,
@@ -320,12 +320,12 @@ addFilter(
 			wpOpenMenu: menuID,
 			breadcrumbs: [
 				rootLink,
-				__( 'Card readers', 'woocommerce-payments' ),
+				__( 'Card readers', 'poocommerce-payments' ),
 			],
 			navArgs: {
 				id: 'wc-payments-card-readers',
 			},
-			capability: 'manage_woocommerce',
+			capability: 'manage_poocommerce',
 		} );
 		pages.push( {
 			container: CapitalPage,
@@ -333,12 +333,12 @@ addFilter(
 			wpOpenMenu: menuID,
 			breadcrumbs: [
 				rootLink,
-				__( 'Capital Loans', 'woocommerce-payments' ),
+				__( 'Capital Loans', 'poocommerce-payments' ),
 			],
 			navArgs: {
 				id: 'wc-payments-capital',
 			},
-			capability: 'manage_woocommerce',
+			capability: 'manage_poocommerce',
 		} );
 		if ( wcpaySettings && wcpaySettings.featureFlags.documents ) {
 			pages.push( {
@@ -347,12 +347,12 @@ addFilter(
 				wpOpenMenu: menuID,
 				breadcrumbs: [
 					rootLink,
-					__( 'Documents', 'woocommerce-payments' ),
+					__( 'Documents', 'poocommerce-payments' ),
 				],
 				navArgs: {
 					id: 'wc-payments-documents',
 				},
-				capability: 'manage_woocommerce',
+				capability: 'manage_poocommerce',
 			} );
 		}
 		if ( wcpaySettings ) {
@@ -361,7 +361,7 @@ addFilter(
 				path: '/payments/fraud-protection',
 				wpOpenMenu: menuID,
 				breadcrumbs: [ rootLink, 'Settings' ], // to align with the WooPayments settings pages.
-				capability: 'manage_woocommerce',
+				capability: 'manage_poocommerce',
 			} );
 		}
 		return pages;
@@ -383,14 +383,14 @@ function getMenuSettings() {
 		menuID: `toplevel_page_wc-admin-path--payments-${ topLevelPage }`,
 		rootLink: [
 			`/payments/${ topLevelPage }`,
-			__( 'Payments', 'woocommerce-payments' ),
+			__( 'Payments', 'poocommerce-payments' ),
 		],
 	};
 }
 
 addFilter(
-	'woocommerce_admin_onboarding_task_list',
-	'woocommerce-payments',
+	'poocommerce_admin_onboarding_task_list',
+	'poocommerce-payments',
 	( tasks ) => {
 		const { showUpdateDetailsTask, wpcomReconnectUrl } = wcpaySettings;
 

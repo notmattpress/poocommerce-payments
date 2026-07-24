@@ -25,7 +25,7 @@ const WooPay = ( { isStatic, api }: woopayButtonProps ) => {
 			{ interpolateComponents( {
 				mixedString: __(
 					'Buy now with{{br/}}woopay',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				components: { br: <br /> },
 			} ) }
@@ -86,7 +86,7 @@ export const woopayPaymentMethod = ( api: {
 	content: <WooPay api={ api } />,
 	edit: <WooPay isStatic={ true } api={ api } />,
 	canMakePayment: () => true,
-	paymentMethodId: 'woocommerce_payments',
+	paymentMethodId: 'poocommerce_payments',
 	supports: {
 		features: getConfig( 'features' ),
 	},

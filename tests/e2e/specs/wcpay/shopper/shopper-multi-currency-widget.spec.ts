@@ -94,7 +94,7 @@ test.describe( 'Shopper Multi-Currency widget', () => {
 			await navigation.goToOrders( shopperPage );
 			await expect(
 				shopperPage
-					.locator( '.woocommerce-orders-table__cell-order-number' )
+					.locator( '.poocommerce-orders-table__cell-order-number' )
 					.getByRole( 'link', { name: orderId } )
 			).toBeVisible();
 		} );

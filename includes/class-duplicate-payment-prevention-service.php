@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Duplicate_Payment_Prevention_Service
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay;
@@ -129,7 +129,7 @@ class Duplicate_Payment_Prevention_Service {
 			throw new Process_Payment_Exception(
 				sprintf(
 					/* translators: 1: charged amount, 2: current order total */
-					__( 'This order was already paid for %1$s, but the order total has since changed to %2$s, so we prevented an overpayment. Please create a new order for any additional items.', 'woocommerce-payments' ),
+					__( 'This order was already paid for %1$s, but the order total has since changed to %2$s, so we prevented an overpayment. Please create a new order for any additional items.', 'poocommerce-payments' ),
 					wc_price( \WC_Payments_Utils::interpret_stripe_amount( $charged_amount, $order->get_currency() ), [ 'currency' => $order->get_currency() ] ),
 					wc_price( \WC_Payments_Utils::interpret_stripe_amount( $order_total_in_cents, $order->get_currency() ), [ 'currency' => $order->get_currency() ] )
 				),
@@ -142,7 +142,7 @@ class Duplicate_Payment_Prevention_Service {
 
 		$return_url = $this->gateway->get_return_url( $order );
 		$return_url = add_query_arg( self::FLAG_PREVIOUS_SUCCESSFUL_INTENT, 'yes', $return_url );
-		return [ // nosemgrep: audit.php.wp.security.xss.query-arg -- https://woocommerce.github.io/code-reference/classes/WC-Payment-Gateway.html#method_get_return_url is passed in.
+		return [ // nosemgrep: audit.php.wp.security.xss.query-arg -- https://poocommerce.github.io/code-reference/classes/WC-Payment-Gateway.html#method_get_return_url is passed in.
 			'result'   => 'success',
 			'redirect' => $return_url,
 		];
@@ -188,7 +188,7 @@ class Duplicate_Payment_Prevention_Service {
 		$session_order->add_order_note(
 			sprintf(
 				/* translators: order ID integer number */
-				__( 'WooCommerce Payments: detected and deleted order ID %d, which has duplicate cart content with this order.', 'woocommerce-payments' ),
+				__( 'PooCommerce Payments: detected and deleted order ID %d, which has duplicate cart content with this order.', 'poocommerce-payments' ),
 				$current_order->get_id()
 			)
 		);
@@ -199,7 +199,7 @@ class Duplicate_Payment_Prevention_Service {
 		$return_url = $this->gateway->get_return_url( $session_order );
 		$return_url = add_query_arg( self::FLAG_PREVIOUS_ORDER_PAID, 'yes', $return_url );
 
-		return [ // nosemgrep: audit.php.wp.security.xss.query-arg -- https://woocommerce.github.io/code-reference/classes/WC-Payment-Gateway.html#method_get_return_url is passed in.
+		return [ // nosemgrep: audit.php.wp.security.xss.query-arg -- https://poocommerce.github.io/code-reference/classes/WC-Payment-Gateway.html#method_get_return_url is passed in.
 			'result'   => 'success',
 			'redirect' => $return_url,
 		];

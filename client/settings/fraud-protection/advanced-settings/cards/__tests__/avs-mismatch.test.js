@@ -44,9 +44,9 @@ describe( 'AVS mismatch card', () => {
 			admin: {
 				preloadSettings: {
 					general: {
-						woocommerce_allowed_countries: 'all',
-						woocommerce_all_except_countries: [],
-						woocommerce_specific_allowed_countries: [],
+						poocommerce_allowed_countries: 'all',
+						poocommerce_all_except_countries: [],
+						poocommerce_specific_allowed_countries: [],
 					},
 				},
 			},
@@ -65,9 +65,9 @@ describe( 'AVS mismatch card', () => {
 	} );
 
 	test( 'does not warn when a specific selling location supports AVS', () => {
-		global.wcSettings.admin.preloadSettings.general.woocommerce_allowed_countries =
+		global.wcSettings.admin.preloadSettings.general.poocommerce_allowed_countries =
 			'specific';
-		global.wcSettings.admin.preloadSettings.general.woocommerce_specific_allowed_countries =
+		global.wcSettings.admin.preloadSettings.general.poocommerce_specific_allowed_countries =
 			[ 'US', 'DE' ];
 		const { container } = renderCard();
 		expect(
@@ -76,9 +76,9 @@ describe( 'AVS mismatch card', () => {
 	} );
 
 	test( 'warns when no specific selling location supports AVS', () => {
-		global.wcSettings.admin.preloadSettings.general.woocommerce_allowed_countries =
+		global.wcSettings.admin.preloadSettings.general.poocommerce_allowed_countries =
 			'specific';
-		global.wcSettings.admin.preloadSettings.general.woocommerce_specific_allowed_countries =
+		global.wcSettings.admin.preloadSettings.general.poocommerce_specific_allowed_countries =
 			[ 'DE' ];
 		const { container } = renderCard();
 		expect(
@@ -87,9 +87,9 @@ describe( 'AVS mismatch card', () => {
 	} );
 
 	test( 'warns when every AVS-supported country is excluded', () => {
-		global.wcSettings.admin.preloadSettings.general.woocommerce_allowed_countries =
+		global.wcSettings.admin.preloadSettings.general.poocommerce_allowed_countries =
 			'all_except';
-		global.wcSettings.admin.preloadSettings.general.woocommerce_all_except_countries =
+		global.wcSettings.admin.preloadSettings.general.poocommerce_all_except_countries =
 			[ 'US', 'CA', 'GB' ];
 		const { container } = renderCard();
 		expect(
@@ -98,9 +98,9 @@ describe( 'AVS mismatch card', () => {
 	} );
 
 	test( 'does not warn when only some AVS-supported countries are excluded', () => {
-		global.wcSettings.admin.preloadSettings.general.woocommerce_allowed_countries =
+		global.wcSettings.admin.preloadSettings.general.poocommerce_allowed_countries =
 			'all_except';
-		global.wcSettings.admin.preloadSettings.general.woocommerce_all_except_countries =
+		global.wcSettings.admin.preloadSettings.general.poocommerce_all_except_countries =
 			[ 'US', 'CA' ];
 		const { container } = renderCard();
 		expect(

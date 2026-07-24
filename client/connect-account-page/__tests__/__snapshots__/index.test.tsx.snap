@@ -40,7 +40,7 @@ exports[`ConnectAccountPage should render correctly 1`] = `
 
 <div>
   <div
-    class="connect-account-page woocommerce-payments-page is-narrow"
+    class="connect-account-page poocommerce-payments-page is-narrow"
     id="connect-account-page"
   >
     <div
@@ -324,7 +324,7 @@ exports[`ConnectAccountPage should render correctly when on-boarding disabled 1`
 
 <div>
   <div
-    class="connect-account-page woocommerce-payments-page is-narrow"
+    class="connect-account-page poocommerce-payments-page is-narrow"
     id="connect-account-page"
   >
     <div
@@ -400,7 +400,7 @@ exports[`ConnectAccountPage should render correctly with WooPay eligible 1`] = `
 
 <div>
   <div
-    class="connect-account-page woocommerce-payments-page is-narrow"
+    class="connect-account-page poocommerce-payments-page is-narrow"
     id="connect-account-page"
   >
     <div
@@ -667,7 +667,7 @@ exports[`ConnectAccountPage should render correctly with an incentive 1`] = `
 
 <div>
   <div
-    class="connect-account-page woocommerce-payments-page is-narrow"
+    class="connect-account-page poocommerce-payments-page is-narrow"
     id="connect-account-page"
   >
     <div

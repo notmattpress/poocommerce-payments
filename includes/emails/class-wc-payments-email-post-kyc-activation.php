@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Email_Post_Kyc_Activation file
  *
- * @package WooCommerce\Emails
+ * @package PooCommerce\Emails
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -31,12 +31,12 @@ if ( ! class_exists( 'WC_Payments_Email_Post_Kyc_Activation' ) ) :
 		public function __construct() {
 			$this->id             = 'wcpay_post_kyc_activation';
 			$this->customer_email = false;
-			$this->title          = __( 'First sale reminder', 'woocommerce-payments' );
-			$this->description    = __( "We'll send a couple of reminders during your first month of accepting payments, to help you bring in your first sale. Stops automatically once you've taken one.", 'woocommerce-payments' );
+			$this->title          = __( 'First sale reminder', 'poocommerce-payments' );
+			$this->description    = __( "We'll send a couple of reminders during your first month of accepting payments, to help you bring in your first sale. Stops automatically once you've taken one.", 'poocommerce-payments' );
 			$this->template_base  = WCPAY_ABSPATH . 'templates/';
 			$this->template_html  = 'emails/post-kyc-activation.php';
 			$this->template_plain = 'emails/plain/post-kyc-activation.php';
-			$this->plugin_id      = 'woocommerce_woocommerce_payments_';
+			$this->plugin_id      = 'poocommerce_poocommerce_payments_';
 			$this->placeholders   = [
 				'{stage}'      => '',
 				'{site_title}' => $this->get_blogname(),
@@ -53,7 +53,7 @@ if ( ! class_exists( 'WC_Payments_Email_Post_Kyc_Activation' ) ) :
 		 * @return string
 		 */
 		public function get_default_subject(): string {
-			return __( 'Ready for your first sale on {site_title}?', 'woocommerce-payments' );
+			return __( 'Ready for your first sale on {site_title}?', 'poocommerce-payments' );
 		}
 
 		/**
@@ -62,7 +62,7 @@ if ( ! class_exists( 'WC_Payments_Email_Post_Kyc_Activation' ) ) :
 		 * @return string
 		 */
 		public function get_default_heading(): string {
-			return __( 'Your store is ready — let’s make your first sale', 'woocommerce-payments' );
+			return __( 'Your store is ready — let’s make your first sale', 'poocommerce-payments' );
 		}
 
 		/**
@@ -140,7 +140,7 @@ if ( ! class_exists( 'WC_Payments_Email_Post_Kyc_Activation' ) ) :
 		 * @return string
 		 */
 		public function get_cta_label(): string {
-			return __( 'Promote my store', 'woocommerce-payments' );
+			return __( 'Promote my store', 'poocommerce-payments' );
 		}
 
 		/**
@@ -195,7 +195,7 @@ if ( ! class_exists( 'WC_Payments_Email_Post_Kyc_Activation' ) ) :
 		 * @return string
 		 */
 		public function get_default_additional_content(): string {
-			return __( 'Thanks for choosing WooPayments.', 'woocommerce-payments' );
+			return __( 'Thanks for choosing WooPayments.', 'poocommerce-payments' );
 		}
 	}
 
