@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Express_Checkout_Button_Helper
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -77,7 +77,7 @@ class WC_Payments_Express_Checkout_Button_Helper {
 
 		$items     = [];
 		$discounts = 0;
-		$currency  = get_woocommerce_currency();
+		$currency  = get_poocommerce_currency();
 
 		/**
 		 * Filters whether to hide itemization and show only the subtotal in Express Checkout.
@@ -122,7 +122,7 @@ class WC_Payments_Express_Checkout_Button_Helper {
 
 		if ( ! $this->cart_prices_include_tax() ) {
 			$items[] = [
-				'label'  => esc_html( __( 'Tax', 'woocommerce-payments' ) ),
+				'label'  => esc_html( __( 'Tax', 'poocommerce-payments' ) ),
 				'amount' => WC_Payments_Utils::prepare_amount( $tax, $currency ),
 			];
 		}
@@ -131,7 +131,7 @@ class WC_Payments_Express_Checkout_Button_Helper {
 			$shipping_tax = $this->cart_prices_include_tax() ? WC()->cart->shipping_tax_total : 0;
 			$items[]      = [
 				'key'    => 'total_shipping',
-				'label'  => esc_html( __( 'Shipping', 'woocommerce-payments' ) ),
+				'label'  => esc_html( __( 'Shipping', 'poocommerce-payments' ) ),
 				'amount' => WC_Payments_Utils::prepare_amount( $shipping + $shipping_tax, $currency ),
 			];
 		}
@@ -139,7 +139,7 @@ class WC_Payments_Express_Checkout_Button_Helper {
 		if ( WC()->cart->has_discount() ) {
 			$items[] = [
 				'key'    => 'total_discount',
-				'label'  => esc_html( __( 'Discount', 'woocommerce-payments' ) ),
+				'label'  => esc_html( __( 'Discount', 'poocommerce-payments' ) ),
 				'amount' => WC_Payments_Utils::prepare_amount( $discounts, $currency ),
 			];
 		}
@@ -169,7 +169,7 @@ class WC_Payments_Express_Checkout_Button_Helper {
 				 *
 				 * @param int      $prepared_total The prepared (Stripe-formatted) order total.
 				 * @param string   $order_total    The raw cart total, as a numeric string.
-				 * @param WC_Cart  $cart           The WooCommerce cart object.
+				 * @param WC_Cart  $cart           The PooCommerce cart object.
 				 */
 				'amount'  => max( 0, apply_filters( 'wcpay_calculated_total', WC_Payments_Utils::prepare_amount( $order_total, $currency ), $order_total, WC()->cart ) ),
 				'pending' => false,
@@ -184,7 +184,7 @@ class WC_Payments_Express_Checkout_Button_Helper {
 	 * @return boolean
 	 */
 	public function cart_prices_include_tax() {
-		return ! wc_tax_enabled() || 'incl' === get_option( 'woocommerce_tax_display_cart' );
+		return ! wc_tax_enabled() || 'incl' === get_option( 'poocommerce_tax_display_cart' );
 	}
 
 	/**
@@ -202,7 +202,7 @@ class WC_Payments_Express_Checkout_Button_Helper {
 		 *
 		 * @param string $suffix The total label suffix.
 		 */
-		return str_replace( "'", '', $statement_descriptor ) . apply_filters( 'wcpay_payment_request_total_label_suffix', ' (via WooCommerce)' );
+		return str_replace( "'", '', $statement_descriptor ) . apply_filters( 'wcpay_payment_request_total_label_suffix', ' (via PooCommerce)' );
 	}
 
 	/**
@@ -245,7 +245,7 @@ class WC_Payments_Express_Checkout_Button_Helper {
 	 * @return boolean
 	 */
 	public function is_cart() {
-		return is_cart() || has_block( 'woocommerce/cart' );
+		return is_cart() || has_block( 'poocommerce/cart' );
 	}
 
 	/**
@@ -254,7 +254,7 @@ class WC_Payments_Express_Checkout_Button_Helper {
 	 * @return boolean
 	 */
 	public function is_checkout() {
-		return is_checkout() || has_block( 'woocommerce/checkout' );
+		return is_checkout() || has_block( 'poocommerce/checkout' );
 	}
 
 	/**
@@ -352,7 +352,7 @@ class WC_Payments_Express_Checkout_Button_Helper {
 		}
 
 		// Amazon Pay doesn't support taxes based on billing address.
-		if ( wc_tax_enabled() && 'billing' === get_option( 'woocommerce_tax_based_on' ) && ! $this->is_pay_for_order_page() ) {
+		if ( wc_tax_enabled() && 'billing' === get_option( 'poocommerce_tax_based_on' ) && ! $this->is_pay_for_order_page() ) {
 			return false;
 		}
 
@@ -579,8 +579,8 @@ class WC_Payments_Express_Checkout_Button_Helper {
 
 			// ...and tax is calculated based on billing address.
 			&& wc_tax_enabled()
-			&& 'billing' === get_option( 'woocommerce_tax_based_on' )
-			&& 'yes' !== get_option( 'woocommerce_prices_include_tax' )
+			&& 'billing' === get_option( 'poocommerce_tax_based_on' )
+			&& 'yes' !== get_option( 'poocommerce_prices_include_tax' )
 		) {
 			return false;
 		}
@@ -657,8 +657,8 @@ class WC_Payments_Express_Checkout_Button_Helper {
 		}
 
 		foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
-			// phpcs:ignore WooCommerce.Commenting.CommentHooks.MissingHookComment -- WooCommerce core hook, not defined by WooPayments.
-			$_product = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
+			// phpcs:ignore PooCommerce.Commenting.CommentHooks.MissingHookComment -- PooCommerce core hook, not defined by WooPayments.
+			$_product = apply_filters( 'poocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
 
 			if ( ! in_array( $_product->get_type(), $this->supported_product_types(), true ) ) {
 				return false;
@@ -698,7 +698,7 @@ class WC_Payments_Express_Checkout_Button_Helper {
 
 		/** @var WC_Product_Variable $product */ // phpcs:ignore
 		$product  = $this->get_product();
-		$currency = get_woocommerce_currency();
+		$currency = get_poocommerce_currency();
 
 		if ( 'variable' === $product->get_type() || 'variable-subscription' === $product->get_type() ) {
 			$variation_attributes = $product->get_variation_attributes();
@@ -741,7 +741,7 @@ class WC_Payments_Express_Checkout_Button_Helper {
 			$total_tax += $tax;
 
 			$items[] = [
-				'label'   => __( 'Tax', 'woocommerce-payments' ),
+				'label'   => __( 'Tax', 'poocommerce-payments' ),
 				'amount'  => WC_Payments_Utils::prepare_amount( $tax, $currency ),
 				'pending' => 0 === $tax,
 			];
@@ -749,14 +749,14 @@ class WC_Payments_Express_Checkout_Button_Helper {
 
 		if ( wc_shipping_enabled() && 0 !== wc_get_shipping_method_count( true ) && $product->needs_shipping() ) {
 			$items[] = [
-				'label'   => __( 'Shipping', 'woocommerce-payments' ),
+				'label'   => __( 'Shipping', 'poocommerce-payments' ),
 				'amount'  => 0,
 				'pending' => true,
 			];
 
 			$data['shippingOptions'] = [
 				'id'     => 'pending',
-				'label'  => __( 'Pending', 'woocommerce-payments' ),
+				'label'  => __( 'Pending', 'poocommerce-payments' ),
 				'detail' => '',
 				'amount' => 0,
 			];
@@ -778,7 +778,7 @@ class WC_Payments_Express_Checkout_Button_Helper {
 
 		$data['needs_shipping'] = ( wc_shipping_enabled() && 0 !== wc_get_shipping_method_count( true ) && $product->needs_shipping() );
 		$data['currency']       = strtolower( $currency );
-		$data['country_code']   = substr( get_option( 'woocommerce_default_country' ), 0, 2 );
+		$data['country_code']   = substr( get_option( 'poocommerce_default_country' ), 0, 2 );
 		$data['product_type']   = $product->get_type();
 
 		/**
@@ -794,7 +794,7 @@ class WC_Payments_Express_Checkout_Button_Helper {
 
 	/**
 	 * The Store API doesn't allow checkout without the billing email address present on the order data.
-	 * https://github.com/woocommerce/woocommerce/issues/48540
+	 * https://github.com/poocommerce/poocommerce/issues/48540
 	 *
 	 * @return bool
 	 */
@@ -899,7 +899,7 @@ class WC_Payments_Express_Checkout_Button_Helper {
 			$base_price = wc_get_price_excluding_tax( $product );
 		}
 
-		// If WooCommerce Deposits is active, we need to get the correct price for the product.
+		// If PooCommerce Deposits is active, we need to get the correct price for the product.
 		if ( class_exists( 'WC_Deposits_Product_Manager' ) && class_exists( 'WC_Deposits_Plans_Manager' ) && WC_Deposits_Product_Manager::deposits_enabled( $product->get_id() ) ) {
 			// If is_deposit is null, we use the default deposit type for the product.
 			if ( is_null( $is_deposit ) ) {
@@ -934,7 +934,7 @@ class WC_Payments_Express_Checkout_Button_Helper {
 		if ( ! is_numeric( $base_price ) || ! is_numeric( $sign_up_fee ) ) {
 			$error_message = sprintf(
 				// Translators: %d is the numeric ID of the product without a price.
-				__( 'Express checkout does not support products without prices! Please add a price to product #%d', 'woocommerce-payments' ),
+				__( 'Express checkout does not support products without prices! Please add a price to product #%d', 'poocommerce-payments' ),
 				(int) $product->get_id()
 			);
 			throw new Invalid_Price_Exception(
@@ -961,7 +961,7 @@ class WC_Payments_Express_Checkout_Button_Helper {
 		// Follows the way `WC_Cart_Totals::get_item_tax_rates()` works.
 		$tax_class = $product->get_tax_class();
 		$rates     = WC_Tax::get_rates( $tax_class );
-		// No cart item, `woocommerce_cart_totals_get_item_tax_rates` can't be applied here.
+		// No cart item, `poocommerce_cart_totals_get_item_tax_rates` can't be applied here.
 
 		// Normally there should be a single tax, but `calc_tax` returns an array, let's use it.
 		return WC_Tax::calc_tax( $price, $rates, false );

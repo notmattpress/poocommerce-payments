@@ -19,8 +19,8 @@
 // wrapper, the <ul>, and each <li>. This clips Stripe's iframe bleed
 // (margin: -4px; width: calc(100% + 8px)) and focus outlines/borders.
 // Override the entire chain and add padding for breathing room.
-.wp-block-woocommerce-cart-express-payment-block,
-.wp-block-woocommerce-checkout-express-payment-block {
+.wp-block-poocommerce-cart-express-payment-block,
+.wp-block-poocommerce-checkout-express-payment-block {
 	overflow: visible !important;
 }
 
@@ -42,7 +42,7 @@
 // Preview button
 @supports not ( -webkit-appearance: -apple-pay-button ) {
 	/* stylelint-disable-next-line selector-id-pattern */
-	#express-payment-method-woocommerce_payments_express_checkout_applePay:has( #express-checkout-button-preview-applePay ) {
+	#express-payment-method-poocommerce_payments_express_checkout_applePay:has( #express-checkout-button-preview-applePay ) {
 		display: none;
 	}
 }

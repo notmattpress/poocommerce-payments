@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Express_Checkout_Button_Display_Handler
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -90,10 +90,10 @@ class WC_Payments_Express_Checkout_Button_Display_Handler {
 		}
 
 		if ( $is_woopay_enabled || $is_payment_request_enabled || $is_amazon_pay_enabled ) {
-			add_action( 'woocommerce_after_add_to_cart_form', [ $this, 'display_express_checkout_buttons' ], 1 );
-			add_action( 'woocommerce_proceed_to_checkout', [ $this, 'display_express_checkout_buttons' ], 21 );
-			add_action( 'woocommerce_checkout_before_customer_details', [ $this, 'display_express_checkout_buttons' ], 1 );
-			add_action( 'woocommerce_pay_order_before_payment', [ $this, 'display_express_checkout_buttons' ], 1 );
+			add_action( 'poocommerce_after_add_to_cart_form', [ $this, 'display_express_checkout_buttons' ], 1 );
+			add_action( 'poocommerce_proceed_to_checkout', [ $this, 'display_express_checkout_buttons' ], 21 );
+			add_action( 'poocommerce_checkout_before_customer_details', [ $this, 'display_express_checkout_buttons' ], 1 );
+			add_action( 'poocommerce_pay_order_before_payment', [ $this, 'display_express_checkout_buttons' ], 1 );
 		}
 
 		add_filter( 'wcpay_tracks_event_properties', [ $this, 'record_all_ece_tracks_events' ], 10, 2 );
@@ -112,7 +112,7 @@ class WC_Payments_Express_Checkout_Button_Display_Handler {
 	public function display_express_checkout_separator_if_necessary( $separator_starts_hidden = false ) {
 		if ( $this->express_checkout_helper->is_checkout() ) {
 			?>
-			<p id="wcpay-express-checkout-button-separator" style="margin-top:1.5em;text-align:center;<?php echo $separator_starts_hidden ? 'display:none;' : ''; ?>">&mdash; <?php esc_html_e( 'OR', 'woocommerce-payments' ); ?> &mdash;</p>
+			<p id="wcpay-express-checkout-button-separator" style="margin-top:1.5em;text-align:center;<?php echo $separator_starts_hidden ? 'display:none;' : ''; ?>">&mdash; <?php esc_html_e( 'OR', 'poocommerce-payments' ); ?> &mdash;</p>
 			<?php
 		}
 	}
@@ -127,7 +127,7 @@ class WC_Payments_Express_Checkout_Button_Display_Handler {
 		$should_show_express_checkout_button = $this->express_checkout_helper->should_show_express_checkout_button();
 
 		// When Express Checkout button is enabled, we need the separator markup on the page, but hidden in case the browser doesn't have any express payment methods to display.
-		// More details: https://github.com/Automattic/woocommerce-payments/pull/5399#discussion_r1073633776.
+		// More details: https://github.com/Automattic/poocommerce-payments/pull/5399#discussion_r1073633776.
 		$separator_starts_hidden = ! $should_show_woopay;
 		if ( $should_show_woopay || $should_show_express_checkout_button ) {
 			?>
@@ -140,7 +140,7 @@ class WC_Payments_Express_Checkout_Button_Display_Handler {
 			$this->express_checkout_button_handler->display_express_checkout_button_html();
 
 			if ( is_cart() ) {
-				add_action( 'woocommerce_after_cart', [ $this, 'add_order_attribution_inputs' ], 1 );
+				add_action( 'poocommerce_after_cart', [ $this, 'add_order_attribution_inputs' ], 1 );
 			} else {
 				$this->add_order_attribution_inputs();
 			}
@@ -166,7 +166,7 @@ class WC_Payments_Express_Checkout_Button_Display_Handler {
 	 * @return bool
 	 */
 	private function is_pay_for_order_flow_supported() {
-		return ( class_exists( '\Automattic\WooCommerce\Blocks\Package' ) && version_compare( \Automattic\WooCommerce\Blocks\Package::get_version(), '11.1.0', '>=' ) );
+		return ( class_exists( '\Automattic\PooCommerce\Blocks\Package' ) && version_compare( \Automattic\PooCommerce\Blocks\Package::get_version(), '11.1.0', '>=' ) );
 	}
 
 	/**

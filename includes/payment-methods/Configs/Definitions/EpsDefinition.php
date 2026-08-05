@@ -62,7 +62,7 @@ class EpsDefinition implements PaymentMethodDefinitionInterface {
 	 * @return string
 	 */
 	public static function get_title( ?string $account_country = null ): string {
-		return __( 'EPS', 'woocommerce-payments' );
+		return __( 'EPS', 'poocommerce-payments' );
 	}
 
 	/**
@@ -95,7 +95,7 @@ class EpsDefinition implements PaymentMethodDefinitionInterface {
 	 * @return string
 	 */
 	public static function get_description( ?string $account_country = null ): string {
-		return __( 'Accept your payment with EPS — a common payment method in Austria.', 'woocommerce-payments' );
+		return __( 'Accept your payment with EPS — a common payment method in Austria.', 'poocommerce-payments' );
 	}
 
 	/**

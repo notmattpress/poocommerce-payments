@@ -8,7 +8,7 @@ import { Button, RadioControl } from '@wordpress/components';
 import { __, sprintf } from '@wordpress/i18n';
 import { useState, createInterpolateElement } from '@wordpress/element';
 import interpolateComponents from '@automattic/interpolate-components';
-import { Link } from '@woocommerce/components';
+import { Link } from '@poocommerce/components';
 
 /**
  * Internal dependencies.
@@ -82,7 +82,7 @@ const RefundModal: React.FC< RefundModalProps > = ( {
 	return (
 		<ConfirmationModal
 			className="wcpay-refund-modal"
-			title={ __( 'Refund transaction', 'woocommerce-payments' ) }
+			title={ __( 'Refund transaction', 'poocommerce-payments' ) }
 			actions={
 				<>
 					<Button
@@ -90,7 +90,7 @@ const RefundModal: React.FC< RefundModalProps > = ( {
 						variant="secondary"
 						__next40pxDefaultSize
 					>
-						{ __( 'Cancel', 'woocommerce-payments' ) }
+						{ __( 'Cancel', 'poocommerce-payments' ) }
 					</Button>
 					<Button
 						onClick={ handleRefund }
@@ -99,7 +99,7 @@ const RefundModal: React.FC< RefundModalProps > = ( {
 						disabled={ isRefundInProgress }
 						__next40pxDefaultSize
 					>
-						{ __( 'Refund transaction', 'woocommerce-payments' ) }
+						{ __( 'Refund transaction', 'poocommerce-payments' ) }
 					</Button>
 				</>
 			}
@@ -109,7 +109,7 @@ const RefundModal: React.FC< RefundModalProps > = ( {
 				<p>
 					{ __(
 						'Issuing a refund will close the inquiry, returning the amount in question back to the cardholder. No additional fees apply.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 				</p>
 			) }
@@ -118,7 +118,7 @@ const RefundModal: React.FC< RefundModalProps > = ( {
 					mixedString: sprintf(
 						__(
 							'This will issue a full refund of {{strong}}%s{{/strong}} to the customer.',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						),
 						formattedAmount
 					),
@@ -131,27 +131,27 @@ const RefundModal: React.FC< RefundModalProps > = ( {
 				className="wcpay-refund-modal__reason"
 				label={ __(
 					'Select a reason (Optional)',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				) }
 				selected={ reason || undefined }
 				options={ [
 					{
-						label: __( 'Duplicate order', 'woocommerce-payments' ),
+						label: __( 'Duplicate order', 'poocommerce-payments' ),
 						value: 'duplicate',
 					},
 					{
-						label: __( 'Fraudulent', 'woocommerce-payments' ),
+						label: __( 'Fraudulent', 'poocommerce-payments' ),
 						value: 'fraudulent',
 					},
 					{
 						label: __(
 							'Requested by customer',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						),
 						value: 'requested_by_customer',
 					},
 					{
-						label: __( 'Other', 'woocommerce-payments' ),
+						label: __( 'Other', 'poocommerce-payments' ),
 						value: 'other',
 					},
 				] }
@@ -162,7 +162,7 @@ const RefundModal: React.FC< RefundModalProps > = ( {
 					{ createInterpolateElement(
 						__(
 							'Need to refund part of the order? <link>Go to the order</link>.',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						),
 						{
 							link: (

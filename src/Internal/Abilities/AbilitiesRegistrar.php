@@ -2,12 +2,12 @@
 /**
  * Class AbilitiesRegistrar
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Internal\Abilities;
 
-use Automattic\WooCommerce\Abilities\AbilityDefinition;
+use Automattic\PooCommerce\Abilities\AbilityDefinition;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -15,22 +15,22 @@ defined( 'ABSPATH' ) || exit;
  * Registers WooPayments with the WordPress Abilities API.
  *
  * Registers WooPayments read and write abilities under the shared
- * `woocommerce` category.
- * All abilities gate on `manage_woocommerce` and are gated by the
- * `woocommerce_payments_abilities_enabled` filter (default `false`).
+ * `poocommerce` category.
+ * All abilities gate on `manage_poocommerce` and are gated by the
+ * `poocommerce_payments_abilities_enabled` filter (default `false`).
  *
  * Delegation errors are logged under the `woopayments-abilities` source.
  */
 class AbilitiesRegistrar {
 
 	/**
-	 * Category slug for every WooPayments ability. The `woocommerce`
-	 * category is registered by WooCommerce Core; plugin ownership lives
-	 * in the ability namespace (`woocommerce-payments/*`).
+	 * Category slug for every WooPayments ability. The `poocommerce`
+	 * category is registered by PooCommerce Core; plugin ownership lives
+	 * in the ability namespace (`poocommerce-payments/*`).
 	 *
 	 * @var string
 	 */
-	const CATEGORY_SLUG = 'woocommerce';
+	const CATEGORY_SLUG = 'poocommerce';
 
 	/**
 	 * Maps WP-Core REST pagination/sort keys (used by ability input_schema)
@@ -90,17 +90,17 @@ class AbilitiesRegistrar {
 		 * @param bool $enabled Whether to register WooPayments abilities. Default false.
 		 * @return bool
 		 */
-		if ( false === apply_filters( 'woocommerce_payments_abilities_enabled', false ) ) {
+		if ( false === apply_filters( 'poocommerce_payments_abilities_enabled', false ) ) {
 			return;
 		}
 
 		if ( self::woo_abilities_loader_available() ) {
-			add_filter( 'woocommerce_ability_definition_classes', [ __CLASS__, 'append_classes' ] );
+			add_filter( 'poocommerce_ability_definition_classes', [ __CLASS__, 'append_classes' ] );
 		}
 	}
 
 	/**
-	 * Filter callback for `woocommerce_ability_definition_classes`.
+	 * Filter callback for `poocommerce_ability_definition_classes`.
 	 *
 	 * @param array $classes Class names accumulated by the loader.
 	 * @return array
@@ -115,8 +115,8 @@ class AbilitiesRegistrar {
 	 *
 	 * @return bool
 	 */
-	public static function current_user_can_manage_woocommerce() {
-		return current_user_can( 'manage_woocommerce' );
+	public static function current_user_can_manage_poocommerce() {
+		return current_user_can( 'manage_poocommerce' );
 	}
 
 	/**
@@ -174,11 +174,11 @@ class AbilitiesRegistrar {
 	}
 
 	/**
-	 * Whether WooCommerce 10.9's AbilitiesLoader is available.
+	 * Whether PooCommerce 10.9's AbilitiesLoader is available.
 	 *
 	 * @return bool
 	 */
 	private static function woo_abilities_loader_available(): bool {
-		return class_exists( '\\Automattic\\WooCommerce\\Internal\\Abilities\\AbilitiesLoader' );
+		return class_exists( '\\Automattic\\PooCommerce\\Internal\\Abilities\\AbilitiesLoader' );
 	}
 }

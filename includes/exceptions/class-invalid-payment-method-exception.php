@@ -2,7 +2,7 @@
 /**
  * Class Invalid_Payment_Method_Exception
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Exceptions;

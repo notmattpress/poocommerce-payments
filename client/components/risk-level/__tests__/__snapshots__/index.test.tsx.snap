@@ -12,7 +12,7 @@ exports[`RiskLevel Renders elevated risk correctly. 1`] = `
 
 <div>
   <span
-    class="components-truncate components-text woocommerce-pill wcpay-pill__alert emotion-0 emotion-1"
+    class="components-truncate components-text poocommerce-pill wcpay-pill__alert emotion-0 emotion-1"
     data-wp-c16t="true"
     data-wp-component="Text"
   >
@@ -33,7 +33,7 @@ exports[`RiskLevel Renders highest risk correctly. 1`] = `
 
 <div>
   <span
-    class="components-truncate components-text woocommerce-pill wcpay-pill__danger emotion-0 emotion-1"
+    class="components-truncate components-text poocommerce-pill wcpay-pill__danger emotion-0 emotion-1"
     data-wp-c16t="true"
     data-wp-component="Text"
   >
@@ -54,7 +54,7 @@ exports[`RiskLevel Renders normal risk correctly. 1`] = `
 
 <div>
   <span
-    class="components-truncate components-text woocommerce-pill wcpay-pill__success emotion-0 emotion-1"
+    class="components-truncate components-text poocommerce-pill wcpay-pill__success emotion-0 emotion-1"
     data-wp-c16t="true"
     data-wp-component="Text"
   >
@@ -75,7 +75,7 @@ exports[`RiskLevel Renders not assessed risk correctly. 1`] = `
 
 <div>
   <span
-    class="components-truncate components-text woocommerce-pill wcpay-pill emotion-0 emotion-1"
+    class="components-truncate components-text poocommerce-pill wcpay-pill emotion-0 emotion-1"
     data-wp-c16t="true"
     data-wp-component="Text"
   >

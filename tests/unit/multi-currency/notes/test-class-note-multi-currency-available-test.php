@@ -2,7 +2,7 @@
 /**
  * Class Note_Multi_Currency_Available_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\MultiCurrency\Notes\NoteMultiCurrencyAvailable;
@@ -31,7 +31,7 @@ class Note_Multi_Currency_Available_Test extends WCPAY_UnitTestCase {
 		$this->assertSame( 'Boost your international sales by allowing your customers to shop and pay in their local currency.', $note->get_content() );
 		$this->assertSame( 'info', $note->get_type() );
 		$this->assertSame( 'wc-payments-notes-multi-currency-available', $note->get_name() );
-		$this->assertSame( 'woocommerce-payments', $note->get_source() );
+		$this->assertSame( 'poocommerce-payments', $note->get_source() );
 
 		list( $actions ) = $note->get_actions();
 		$this->assertSame( 'wc-payments-notes-multi-currency-available', $actions->name );
@@ -39,9 +39,9 @@ class Note_Multi_Currency_Available_Test extends WCPAY_UnitTestCase {
 		$this->assertStringStartsWith( 'admin.php?page=wc-admin&path=/payments/multi-currency-setup', $actions->query );
 
 		/**
-		 * The $primary property was deprecated from WooCommerce core. Keeping this to maintain the compatibility with old WooCommerce versions.
-		 * @see https://github.com/woocommerce/woocommerce/blob/ff2d7d704a8f72aeb4990811b6972097aa167bea/plugins/woocommerce/src/Admin/Notes/Note.php#L623-L623.
-		 * @see https://github.com/woocommerce/woocommerce-admin/pull/8474
+		 * The $primary property was deprecated from PooCommerce core. Keeping this to maintain the compatibility with old PooCommerce versions.
+		 * @see https://github.com/poocommerce/poocommerce/blob/ff2d7d704a8f72aeb4990811b6972097aa167bea/plugins/poocommerce/src/Admin/Notes/Note.php#L623-L623.
+		 * @see https://github.com/poocommerce/poocommerce-admin/pull/8474
 		 */
 		if ( isset( $actions->primary ) ) {
 			$this->assertSame( true, $actions->primary );

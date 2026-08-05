@@ -4,7 +4,7 @@
  * External dependencies
  */
 import { useEffect, useCallback, useRef } from '@wordpress/element';
-import { getHistory } from '@woocommerce/navigation';
+import { getHistory } from '@poocommerce/navigation';
 
 /**
  * Hook for displaying an optional confirmation message.

@@ -8,7 +8,7 @@ import { Button, Modal, ExternalLink } from '@wordpress/components';
  * Internal dependencies
  */
 import { __, sprintf } from '@wordpress/i18n';
-import { List } from '@woocommerce/components';
+import { List } from '@poocommerce/components';
 import { useState } from '@wordpress/element';
 import './style.scss';
 
@@ -44,14 +44,14 @@ const OnboardingLocationCheckModal = ( {
 					'In order to complete the set up of %1$s, your store is required to have a business ' +
 					'entity in one of the following countries: {{list /}} ' +
 					'{{link}}Learn more{{/link}} about setting up business entities in foreign countries.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			'WooPayments'
 		),
 		components: {
 			link: (
 				// @ts-expect-error: children is provided when interpolating the component
-				<ExternalLink href="https://woocommerce.com/document/woopayments/compatibility/countries/" />
+				<ExternalLink href="https://poocommerce.com/document/woopayments/compatibility/countries/" />
 			),
 			list: <List items={ countries } />,
 		},
@@ -64,20 +64,20 @@ const OnboardingLocationCheckModal = ( {
 			shouldCloseOnClickOutside={ true }
 			shouldCloseOnEsc={ true }
 			onRequestClose={ handleDeclinedRequest }
-			className="woocommerce-payments__onboarding_location_check-modal"
+			className="poocommerce-payments__onboarding_location_check-modal"
 		>
-			<div className="woocommerce-payments__onboarding_location_check-wrapper">
-				<div className="woocommerce-payments__onboarding_location_check-modal-message">
+			<div className="poocommerce-payments__onboarding_location_check-wrapper">
+				<div className="poocommerce-payments__onboarding_location_check-modal-message">
 					{ message }
 				</div>
-				<div className="woocommerce-payments__onboarding_location_check-footer">
+				<div className="poocommerce-payments__onboarding_location_check-footer">
 					<Button
 						variant="secondary"
 						onClick={ handleConfirmedRequest }
 						isBusy={ isProcessingContinue }
 						__next40pxDefaultSize
 					>
-						{ __( 'Continue', 'woocommerce-payments' ) }
+						{ __( 'Continue', 'poocommerce-payments' ) }
 					</Button>
 
 					<Button
@@ -86,7 +86,7 @@ const OnboardingLocationCheckModal = ( {
 						disabled={ isProcessingContinue }
 						__next40pxDefaultSize
 					>
-						{ __( 'Cancel', 'woocommerce-payments' ) }
+						{ __( 'Cancel', 'poocommerce-payments' ) }
 					</Button>
 				</div>
 			</div>

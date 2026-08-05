@@ -10,7 +10,7 @@ module.exports = {
 				[
 					'@wordpress/babel-plugin-makepot',
 					{
-						output: 'languages/woocommerce-payments-client.pot',
+						output: 'languages/poocommerce-payments-client.pot',
 					},
 				],
 			],

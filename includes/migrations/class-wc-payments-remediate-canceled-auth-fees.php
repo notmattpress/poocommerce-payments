@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Remediate_Canceled_Auth_Fees
  *
- * @package WooCommerce\Payments\Migrations
+ * @package PooCommerce\Payments\Migrations
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -445,7 +445,7 @@ class WC_Payments_Remediate_Canceled_Auth_Fees {
 		}
 
 		// This can affect the order transitions by unnecessarily reaching out to Stripe.
-		remove_action( 'woocommerce_order_status_cancelled', [ WC_Payments::get_order_service(), 'cancel_authorizations_on_order_status_change' ] );
+		remove_action( 'poocommerce_order_status_cancelled', [ WC_Payments::get_order_service(), 'cancel_authorizations_on_order_status_change' ] );
 
 		$start_time = microtime( true );
 		$batch_size = $this->get_batch_size();
@@ -567,7 +567,7 @@ class WC_Payments_Remediate_Canceled_Auth_Fees {
 			time() + 60, // 1 minute from now.
 			self::ACTION_HOOK,
 			[],
-			'woocommerce-payments'
+			'poocommerce-payments'
 		);
 	}
 
@@ -589,7 +589,7 @@ class WC_Payments_Remediate_Canceled_Auth_Fees {
 			time() + 60, // 1 minute from now.
 			self::DRY_RUN_ACTION_HOOK,
 			[],
-			'woocommerce-payments'
+			'poocommerce-payments'
 		);
 	}
 
@@ -620,7 +620,7 @@ class WC_Payments_Remediate_Canceled_Auth_Fees {
 		$stats = $this->get_stats();
 		wc_get_logger()->info(
 			sprintf(
-				'[DRY RUN] Complete. Found %d orders that would be remediated. No changes were made. Check the WooCommerce logs for details on each order.',
+				'[DRY RUN] Complete. Found %d orders that would be remediated. No changes were made. Check the PooCommerce logs for details on each order.',
 				$stats['remediated']
 			),
 			[ 'source' => 'wcpay-fee-remediation' ]
@@ -710,14 +710,14 @@ class WC_Payments_Remediate_Canceled_Auth_Fees {
 				$refund_id = $refund->get_id();
 
 				// Delete refund stats BEFORE deleting the refund (while it still exists).
-				// We do this proactively because the woocommerce_before_delete_order hook
+				// We do this proactively because the poocommerce_before_delete_order hook
 				// may not have its handlers registered in Action Scheduler context.
 				$this->delete_order_stats( $refund_id );
 
 				$refund->delete( true ); // Force delete, bypass trash.
 
 				// Fire the hook WC expects for refund deletion.
-				do_action( 'woocommerce_refund_deleted', $refund_id, $parent_order_id );
+				do_action( 'poocommerce_refund_deleted', $refund_id, $parent_order_id );
 			}
 
 			// Remove fee metadata from the order.
@@ -743,7 +743,7 @@ class WC_Payments_Remediate_Canceled_Auth_Fees {
 			$order->add_order_note( implode( "\n", $note_parts ) );
 			$order->save();
 
-			// Fallback sync in case the woocommerce_refund_deleted hook doesn't
+			// Fallback sync in case the poocommerce_refund_deleted hook doesn't
 			// fully update analytics for edge cases.
 			$this->sync_order_stats( $order->get_id() );
 
@@ -780,22 +780,22 @@ class WC_Payments_Remediate_Canceled_Auth_Fees {
 	}
 
 	/**
-	 * Sync order stats to WooCommerce Analytics.
+	 * Sync order stats to PooCommerce Analytics.
 	 *
-	 * Fallback sync in case the woocommerce_refund_deleted hook doesn't
+	 * Fallback sync in case the poocommerce_refund_deleted hook doesn't
 	 * fully update analytics for edge cases.
 	 *
 	 * @param int $order_id Order ID to sync.
 	 * @return void
 	 */
 	protected function sync_order_stats( int $order_id ): void {
-		// Check if the OrdersStatsDataStore class exists (requires WooCommerce Admin / WooCommerce 4.0+).
-		if ( ! class_exists( 'Automattic\WooCommerce\Admin\API\Reports\Orders\Stats\DataStore' ) ) {
+		// Check if the OrdersStatsDataStore class exists (requires PooCommerce Admin / PooCommerce 4.0+).
+		if ( ! class_exists( 'Automattic\PooCommerce\Admin\API\Reports\Orders\Stats\DataStore' ) ) {
 			return;
 		}
 
 		try {
-			\Automattic\WooCommerce\Admin\API\Reports\Orders\Stats\DataStore::sync_order( $order_id );
+			\Automattic\PooCommerce\Admin\API\Reports\Orders\Stats\DataStore::sync_order( $order_id );
 		} catch ( Exception $e ) {
 			// Log but don't fail - analytics sync is not critical.
 			wc_get_logger()->warning(
@@ -806,9 +806,9 @@ class WC_Payments_Remediate_Canceled_Auth_Fees {
 	}
 
 	/**
-	 * Delete order stats from WooCommerce Analytics.
+	 * Delete order stats from PooCommerce Analytics.
 	 *
-	 * Uses WooCommerce's DataStore::delete_order() API to properly remove
+	 * Uses PooCommerce's DataStore::delete_order() API to properly remove
 	 * the order/refund stats row from the wc_order_stats table.
 	 *
 	 * This must be called BEFORE the refund is deleted, while it still exists,
@@ -818,15 +818,15 @@ class WC_Payments_Remediate_Canceled_Auth_Fees {
 	 * @return void
 	 */
 	protected function delete_order_stats( int $order_id ): void {
-		// Check if the DataStore class exists (requires WooCommerce Admin / WooCommerce 4.0+).
-		if ( ! class_exists( 'Automattic\WooCommerce\Admin\API\Reports\Orders\Stats\DataStore' ) ) {
+		// Check if the DataStore class exists (requires PooCommerce Admin / PooCommerce 4.0+).
+		if ( ! class_exists( 'Automattic\PooCommerce\Admin\API\Reports\Orders\Stats\DataStore' ) ) {
 			return;
 		}
 
 		try {
-			// Use WooCommerce's proper API to delete the stats row.
+			// Use PooCommerce's proper API to delete the stats row.
 			// This handles all internal state management and fires appropriate hooks.
-			\Automattic\WooCommerce\Admin\API\Reports\Orders\Stats\DataStore::delete_order( $order_id );
+			\Automattic\PooCommerce\Admin\API\Reports\Orders\Stats\DataStore::delete_order( $order_id );
 
 			wc_get_logger()->info(
 				sprintf( 'Deleted stats row for refund %d via WC DataStore API', $order_id ),
@@ -844,7 +844,7 @@ class WC_Payments_Remediate_Canceled_Auth_Fees {
 	/**
 	 * Schedule remediation to run in the background.
 	 *
-	 * This is the public method called from the WooCommerce Tools page.
+	 * This is the public method called from the PooCommerce Tools page.
 	 *
 	 * @return void
 	 */
@@ -858,11 +858,11 @@ class WC_Payments_Remediate_Canceled_Auth_Fees {
 				time() + 10, // Start in 10 seconds.
 				self::ACTION_HOOK,
 				[],
-				'woocommerce-payments'
+				'poocommerce-payments'
 			);
 
 			wc_get_logger()->info(
-				'Scheduled fee remediation from WooCommerce Tools.',
+				'Scheduled fee remediation from PooCommerce Tools.',
 				[ 'source' => 'wcpay-fee-remediation' ]
 			);
 		}
@@ -886,11 +886,11 @@ class WC_Payments_Remediate_Canceled_Auth_Fees {
 				time() + 10, // Start in 10 seconds.
 				self::DRY_RUN_ACTION_HOOK,
 				[],
-				'woocommerce-payments'
+				'poocommerce-payments'
 			);
 
 			wc_get_logger()->info(
-				'Scheduled fee remediation DRY RUN from WooCommerce Tools.',
+				'Scheduled fee remediation DRY RUN from PooCommerce Tools.',
 				[ 'source' => 'wcpay-fee-remediation' ]
 			);
 		}

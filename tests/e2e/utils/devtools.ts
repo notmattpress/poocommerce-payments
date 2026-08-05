@@ -3,7 +3,7 @@
  */
 import { Page, expect } from '@playwright/test';
 
-// The dev-tools settings page (served by the woocommerce-payments-dev-tools
+// The dev-tools settings page (served by the poocommerce-payments-dev-tools
 // plugin, pulled from its own trunk during E2E setup) is intermittently truncated
 // mid-render by a PHP fatal, which drops its "Save Changes" submit button. A bare
 // click on the missing button would wait out the full 120s test timeout, so we

@@ -62,7 +62,7 @@ class SepaDefinition implements PaymentMethodDefinitionInterface {
 	 * @return string
 	 */
 	public static function get_title( ?string $account_country = null ): string {
-		return __( 'SEPA Direct Debit', 'woocommerce-payments' );
+		return __( 'SEPA Direct Debit', 'poocommerce-payments' );
 	}
 
 	/**
@@ -97,7 +97,7 @@ class SepaDefinition implements PaymentMethodDefinitionInterface {
 	public static function get_description( ?string $account_country = null ): string {
 		return __(
 			'Reach 500 million customers and over 20 million businesses across the European Union.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		);
 	}
 
@@ -215,7 +215,7 @@ class SepaDefinition implements PaymentMethodDefinitionInterface {
 	 * @return string HTML string containing testing instructions
 	 */
 	public static function get_testing_instructions( string $account_country ): string {
-		return __( '<strong>Test mode:</strong> use the test account number <number>AT611904300234573201</number>. Other payment methods may redirect to a Stripe test page to authorize payment. More test card numbers are listed <a>here</a>.', 'woocommerce-payments' );
+		return __( '<strong>Test mode:</strong> use the test account number <number>AT611904300234573201</number>. Other payment methods may redirect to a Stripe test page to authorize payment. More test card numbers are listed <a>here</a>.', 'poocommerce-payments' );
 	}
 
 	/**

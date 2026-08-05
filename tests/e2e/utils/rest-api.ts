@@ -43,7 +43,7 @@ class RestAPI {
 	/**
 	 * Deletes a customer account by their email address if the user exists.
 	 *
-	 * Copied from https://github.com/woocommerce/woocommerce/blob/trunk/packages/js/e2e-utils/src/flows/with-rest-api.js#L374
+	 * Copied from https://github.com/poocommerce/poocommerce/blob/trunk/packages/js/e2e-utils/src/flows/with-rest-api.js#L374
 	 *
 	 * @param {string} emailAddress Customer user account email address.
 	 * @return {Promise<void>}

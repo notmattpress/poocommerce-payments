@@ -1,4 +1,4 @@
-# Creating new request classes for WooCommerce Payments
+# Creating new request classes for PooCommerce Payments
 
 1. [Creating new requests](#creating-new-requests)
     1. [Basic methods](#basic-methods)

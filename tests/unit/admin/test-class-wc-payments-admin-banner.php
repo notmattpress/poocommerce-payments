@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Admin_Banner_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use PHPUnit\Framework\MockObject\MockObject;
@@ -86,7 +86,7 @@ class WC_Payments_Admin_Banner_Test extends WCPAY_UnitTestCase {
 
 		if ( $has_orders ) {
 			$order = wc_create_order();
-			$order->set_payment_method( 'woocommerce_payments' );
+			$order->set_payment_method( 'poocommerce_payments' );
 			$order->set_status( 'completed' );
 			$order->update_meta_data( WC_Payments_Order_Service::WCPAY_MODE_META_KEY, \WCPay\Constants\Order_Mode::TEST );
 			$order->save();
@@ -119,7 +119,7 @@ class WC_Payments_Admin_Banner_Test extends WCPAY_UnitTestCase {
 		$this->tear_down_notice_global_state();
 	}
 
-	public function test_should_show_test_to_live_notice_returns_false_when_user_cannot_manage_woocommerce(): void {
+	public function test_should_show_test_to_live_notice_returns_false_when_user_cannot_manage_poocommerce(): void {
 		$this->set_up_notice_global_state();
 		$subscriber = self::factory()->user->create( [ 'role' => 'subscriber' ] );
 		wp_set_current_user( $subscriber );
@@ -376,10 +376,10 @@ class WC_Payments_Admin_Banner_Test extends WCPAY_UnitTestCase {
 		$banner->init_hooks();
 
 		$this->assertNotFalse(
-			has_action( 'woocommerce_sections_general', [ $banner, 'maybe_show_test_to_live_notice' ] )
+			has_action( 'poocommerce_sections_general', [ $banner, 'maybe_show_test_to_live_notice' ] )
 		);
 
-		remove_action( 'woocommerce_sections_general', [ $banner, 'maybe_show_test_to_live_notice' ] );
+		remove_action( 'poocommerce_sections_general', [ $banner, 'maybe_show_test_to_live_notice' ] );
 		unset( $_GET['page'], $_GET['tab'] );
 	}
 
@@ -391,10 +391,10 @@ class WC_Payments_Admin_Banner_Test extends WCPAY_UnitTestCase {
 		$banner->init_hooks();
 
 		$this->assertNotFalse(
-			has_action( 'woocommerce_sections_checkout', [ $banner, 'maybe_show_test_to_live_notice' ] )
+			has_action( 'poocommerce_sections_checkout', [ $banner, 'maybe_show_test_to_live_notice' ] )
 		);
 
-		remove_action( 'woocommerce_sections_checkout', [ $banner, 'maybe_show_test_to_live_notice' ] );
+		remove_action( 'poocommerce_sections_checkout', [ $banner, 'maybe_show_test_to_live_notice' ] );
 		unset( $_GET['page'], $_GET['tab'] );
 	}
 
@@ -406,10 +406,10 @@ class WC_Payments_Admin_Banner_Test extends WCPAY_UnitTestCase {
 		$banner->init_hooks();
 
 		$this->assertNotFalse(
-			has_action( 'woocommerce_sections_general', [ $banner, 'maybe_show_test_to_live_notice' ] )
+			has_action( 'poocommerce_sections_general', [ $banner, 'maybe_show_test_to_live_notice' ] )
 		);
 
-		remove_action( 'woocommerce_sections_general', [ $banner, 'maybe_show_test_to_live_notice' ] );
+		remove_action( 'poocommerce_sections_general', [ $banner, 'maybe_show_test_to_live_notice' ] );
 		unset( $_GET['page'] );
 	}
 
@@ -421,7 +421,7 @@ class WC_Payments_Admin_Banner_Test extends WCPAY_UnitTestCase {
 		$banner->init_hooks();
 
 		$this->assertFalse(
-			has_action( 'woocommerce_sections_checkout', [ $banner, 'maybe_show_test_to_live_notice' ] )
+			has_action( 'poocommerce_sections_checkout', [ $banner, 'maybe_show_test_to_live_notice' ] )
 		);
 
 		unset( $_GET['page'], $_GET['tab'] );
@@ -434,7 +434,7 @@ class WC_Payments_Admin_Banner_Test extends WCPAY_UnitTestCase {
 		$banner->init_hooks();
 
 		$this->assertFalse(
-			has_action( 'woocommerce_sections_general', [ $banner, 'maybe_show_test_to_live_notice' ] )
+			has_action( 'poocommerce_sections_general', [ $banner, 'maybe_show_test_to_live_notice' ] )
 		);
 	}
 
@@ -477,7 +477,7 @@ class WC_Payments_Admin_Banner_Test extends WCPAY_UnitTestCase {
 
 		for ( $i = 0; $i < $live_order_count; $i++ ) {
 			$order = wc_create_order();
-			$order->set_payment_method( 'woocommerce_payments' );
+			$order->set_payment_method( 'poocommerce_payments' );
 			$order->set_status( 'completed' );
 			$order->update_meta_data( WC_Payments_Order_Service::WCPAY_MODE_META_KEY, \WCPay\Constants\Order_Mode::PRODUCTION );
 			// Stagger ages so the first (oldest) order is exactly $first_order_age_days old.
@@ -513,7 +513,7 @@ class WC_Payments_Admin_Banner_Test extends WCPAY_UnitTestCase {
 		$this->tear_down_one_and_done_global_state();
 	}
 
-	public function test_should_show_one_and_done_notice_returns_false_when_user_cannot_manage_woocommerce(): void {
+	public function test_should_show_one_and_done_notice_returns_false_when_user_cannot_manage_poocommerce(): void {
 		$this->set_up_one_and_done_global_state();
 		$subscriber = self::factory()->user->create( [ 'role' => 'subscriber' ] );
 		wp_set_current_user( $subscriber );
@@ -673,7 +673,7 @@ class WC_Payments_Admin_Banner_Test extends WCPAY_UnitTestCase {
 
 		// A test-mode WCPay order also exists; test orders must not count toward the live count.
 		$test_order = wc_create_order();
-		$test_order->set_payment_method( 'woocommerce_payments' );
+		$test_order->set_payment_method( 'poocommerce_payments' );
 		$test_order->set_status( 'completed' );
 		$test_order->update_meta_data( WC_Payments_Order_Service::WCPAY_MODE_META_KEY, \WCPay\Constants\Order_Mode::TEST );
 		$test_order->save();
@@ -726,7 +726,7 @@ class WC_Payments_Admin_Banner_Test extends WCPAY_UnitTestCase {
 
 		for ( $i = 0; $i < 25; $i++ ) {
 			$test_order = wc_create_order();
-			$test_order->set_payment_method( 'woocommerce_payments' );
+			$test_order->set_payment_method( 'poocommerce_payments' );
 			$test_order->set_status( 'completed' );
 			$test_order->update_meta_data( WC_Payments_Order_Service::WCPAY_MODE_META_KEY, \WCPay\Constants\Order_Mode::TEST );
 			$test_order->save();
@@ -792,7 +792,7 @@ class WC_Payments_Admin_Banner_Test extends WCPAY_UnitTestCase {
 
 	public function test_should_show_one_and_done_notice_caches_expensive_checks(): void {
 		// Memoization: even when called multiple times in the same request (once
-		// from admin_enqueue_scripts and once from the woocommerce_sections_*
+		// from admin_enqueue_scripts and once from the poocommerce_sections_*
 		// render hook), the public method must only run the expensive backing
 		// computation once.
 		$this->set_up_one_and_done_global_state();
@@ -935,7 +935,7 @@ class WC_Payments_Admin_Banner_Test extends WCPAY_UnitTestCase {
 		set_transient( WC_Payments_Admin_Banner::TRANSIENT_ONE_AND_DONE_NOTICE_ELIGIBLE, '1', HOUR_IN_SECONDS );
 
 		$order = wc_create_order();
-		$order->set_payment_method( 'woocommerce_payments' );
+		$order->set_payment_method( 'poocommerce_payments' );
 		$order->update_meta_data( WC_Payments_Order_Service::WCPAY_MODE_META_KEY, \WCPay\Constants\Order_Mode::PRODUCTION );
 		$order->save();
 		$this->one_and_done_order_ids[] = $order->get_id();
@@ -953,7 +953,7 @@ class WC_Payments_Admin_Banner_Test extends WCPAY_UnitTestCase {
 		set_transient( WC_Payments_Admin_Banner::TRANSIENT_ONE_AND_DONE_NOTICE_ELIGIBLE, '1', HOUR_IN_SECONDS );
 
 		$order = wc_create_order();
-		$order->set_payment_method( 'woocommerce_payments' );
+		$order->set_payment_method( 'poocommerce_payments' );
 		$order->update_meta_data( WC_Payments_Order_Service::WCPAY_MODE_META_KEY, \WCPay\Constants\Order_Mode::TEST );
 		$order->save();
 		$this->one_and_done_order_ids[] = $order->get_id();
@@ -994,11 +994,11 @@ class WC_Payments_Admin_Banner_Test extends WCPAY_UnitTestCase {
 		$banner->init_hooks();
 
 		$this->assertNotFalse(
-			has_action( 'woocommerce_sections_general', [ $banner, 'maybe_show_one_and_done_notice' ] )
+			has_action( 'poocommerce_sections_general', [ $banner, 'maybe_show_one_and_done_notice' ] )
 		);
 
-		remove_action( 'woocommerce_sections_general', [ $banner, 'maybe_show_one_and_done_notice' ] );
-		remove_action( 'woocommerce_sections_general', [ $banner, 'maybe_show_test_to_live_notice' ] );
+		remove_action( 'poocommerce_sections_general', [ $banner, 'maybe_show_one_and_done_notice' ] );
+		remove_action( 'poocommerce_sections_general', [ $banner, 'maybe_show_test_to_live_notice' ] );
 		unset( $_GET['page'], $_GET['tab'] );
 	}
 
@@ -1008,21 +1008,21 @@ class WC_Payments_Admin_Banner_Test extends WCPAY_UnitTestCase {
 		$banner->init_global_hooks();
 
 		$this->assertNotFalse(
-			has_action( 'woocommerce_payment_complete', [ $banner, 'invalidate_one_and_done_notice_cache_on_order' ] ),
-			'woocommerce_payment_complete must register globally so storefront checkout / REST webhook flows clear the eligibility transient.'
+			has_action( 'poocommerce_payment_complete', [ $banner, 'invalidate_one_and_done_notice_cache_on_order' ] ),
+			'poocommerce_payment_complete must register globally so storefront checkout / REST webhook flows clear the eligibility transient.'
 		);
 		$this->assertNotFalse(
-			has_action( 'woocommerce_order_status_completed', [ $banner, 'invalidate_one_and_done_notice_cache_on_order' ] ),
-			'woocommerce_order_status_completed must register globally; order status transitions to completed can fire outside admin context.'
+			has_action( 'poocommerce_order_status_completed', [ $banner, 'invalidate_one_and_done_notice_cache_on_order' ] ),
+			'poocommerce_order_status_completed must register globally; order status transitions to completed can fire outside admin context.'
 		);
 		$this->assertNotFalse(
-			has_action( 'woocommerce_order_status_processing', [ $banner, 'invalidate_one_and_done_notice_cache_on_order' ] ),
-			'woocommerce_order_status_processing must register globally so cheque/COD/bank-transfer orders moving to processing also invalidate the cache.'
+			has_action( 'poocommerce_order_status_processing', [ $banner, 'invalidate_one_and_done_notice_cache_on_order' ] ),
+			'poocommerce_order_status_processing must register globally so cheque/COD/bank-transfer orders moving to processing also invalidate the cache.'
 		);
 
-		remove_action( 'woocommerce_payment_complete', [ $banner, 'invalidate_one_and_done_notice_cache_on_order' ] );
-		remove_action( 'woocommerce_order_status_completed', [ $banner, 'invalidate_one_and_done_notice_cache_on_order' ] );
-		remove_action( 'woocommerce_order_status_processing', [ $banner, 'invalidate_one_and_done_notice_cache_on_order' ] );
+		remove_action( 'poocommerce_payment_complete', [ $banner, 'invalidate_one_and_done_notice_cache_on_order' ] );
+		remove_action( 'poocommerce_order_status_completed', [ $banner, 'invalidate_one_and_done_notice_cache_on_order' ] );
+		remove_action( 'poocommerce_order_status_processing', [ $banner, 'invalidate_one_and_done_notice_cache_on_order' ] );
 	}
 
 	public function test_init_hooks_does_not_register_order_completion_listeners(): void {
@@ -1033,13 +1033,13 @@ class WC_Payments_Admin_Banner_Test extends WCPAY_UnitTestCase {
 		$banner->init_hooks();
 
 		$this->assertFalse(
-			has_action( 'woocommerce_payment_complete', [ $banner, 'invalidate_one_and_done_notice_cache_on_order' ] )
+			has_action( 'poocommerce_payment_complete', [ $banner, 'invalidate_one_and_done_notice_cache_on_order' ] )
 		);
 		$this->assertFalse(
-			has_action( 'woocommerce_order_status_completed', [ $banner, 'invalidate_one_and_done_notice_cache_on_order' ] )
+			has_action( 'poocommerce_order_status_completed', [ $banner, 'invalidate_one_and_done_notice_cache_on_order' ] )
 		);
 		$this->assertFalse(
-			has_action( 'woocommerce_order_status_processing', [ $banner, 'invalidate_one_and_done_notice_cache_on_order' ] )
+			has_action( 'poocommerce_order_status_processing', [ $banner, 'invalidate_one_and_done_notice_cache_on_order' ] )
 		);
 	}
 
@@ -1065,7 +1065,7 @@ class WC_Payments_Admin_Banner_Test extends WCPAY_UnitTestCase {
 
 		if ( $has_orders ) {
 			$order = wc_create_order();
-			$order->set_payment_method( 'woocommerce_payments' );
+			$order->set_payment_method( 'poocommerce_payments' );
 			$order->set_status( 'completed' );
 			$order->update_meta_data( WC_Payments_Order_Service::WCPAY_MODE_META_KEY, \WCPay\Constants\Order_Mode::PRODUCTION );
 			$order->save();
@@ -1243,7 +1243,7 @@ class WC_Payments_Admin_Banner_Test extends WCPAY_UnitTestCase {
 		$this->set_up_post_kyc_global_state();
 
 		$order = wc_create_order();
-		$order->set_payment_method( 'woocommerce_payments' );
+		$order->set_payment_method( 'poocommerce_payments' );
 		$order->set_status( 'completed' );
 		$order->update_meta_data( WC_Payments_Order_Service::WCPAY_MODE_META_KEY, \WCPay\Constants\Order_Mode::TEST );
 		$order->save();

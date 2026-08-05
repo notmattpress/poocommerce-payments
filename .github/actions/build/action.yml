@@ -1,5 +1,5 @@
-name: "Build WooCommerce Payments"
-description: "Build WooCommerce Payments"
+name: "Build PooCommerce Payments"
+description: "Build PooCommerce Payments"
     
 outputs:
   release-filename:
@@ -13,7 +13,7 @@ runs:
       id: build_plugin
       shell: bash
       env:
-        RELEASE_FILENAME: "woocommerce-payments.zip"
+        RELEASE_FILENAME: "poocommerce-payments.zip"
       run: |
         npm ci
         npm run build

@@ -85,7 +85,7 @@ class My_Feature_Test extends WCPAY_UnitTestCase {
         wcpay_get_test_container()->reset_all_replacements();
 
         // 3. Clean up options/transients
-        delete_option( 'woocommerce_woocommerce_payments_settings' );
+        delete_option( 'poocommerce_poocommerce_payments_settings' );
 
         parent::tear_down();  // Always call parent
     }

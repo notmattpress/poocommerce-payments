@@ -1,6 +1,6 @@
 <?php
 /**
- * Class WooCommerceDeposits
+ * Class PooCommerceDeposits
  *
  * @package WCPay\MultiCurrency\Compatibility
  */
@@ -11,9 +11,9 @@ use WC_Product;
 use WCPay\MultiCurrency\MultiCurrency;
 
 /**
- * Class that controls Multi Currency Compatibility with WooCommerce Deposits Plugin.
+ * Class that controls Multi Currency Compatibility with PooCommerce Deposits Plugin.
  */
-class WooCommerceDeposits extends BaseCompatibility {
+class PooCommerceDeposits extends BaseCompatibility {
 
 	/**
 	 * Init the class.
@@ -23,22 +23,22 @@ class WooCommerceDeposits extends BaseCompatibility {
 	public function init() {
 		if ( class_exists( 'WC_Deposits' ) ) {
 			/*
-			 * Multi-currency support was added to WooCommerce Deposits in version 2.0.1.
+			 * Multi-currency support was added to PooCommerce Deposits in version 2.0.1.
 			 *
 			 * This prevents the loading of the compatibility class for Deposits in versions
 			 * of Deposits that support multi-currency.
 			 *
-			 * @see https://github.com/woocommerce/woocommerce-deposits/pull/425
-			 * @see https://github.com/woocommerce/woocommerce-deposits/issues/506
+			 * @see https://github.com/poocommerce/poocommerce-deposits/pull/425
+			 * @see https://github.com/poocommerce/poocommerce-deposits/issues/506
 			 */
 			if ( version_compare( WC_DEPOSITS_VERSION, '2.0.1', '>=' ) ) {
 				return;
 			}
 
 			// Add compatibility filters here.
-			add_action( 'woocommerce_deposits_create_order', [ $this, 'modify_order_currency' ] );
-			add_filter( 'woocommerce_get_cart_contents', [ $this, 'modify_cart_item_deposit_amounts' ] );
-			add_filter( 'woocommerce_product_get__wc_deposit_amount', [ $this, 'modify_cart_item_deposit_amount_meta' ], 10, 2 );
+			add_action( 'poocommerce_deposits_create_order', [ $this, 'modify_order_currency' ] );
+			add_filter( 'poocommerce_get_cart_contents', [ $this, 'modify_cart_item_deposit_amounts' ] );
+			add_filter( 'poocommerce_product_get__wc_deposit_amount', [ $this, 'modify_cart_item_deposit_amount_meta' ], 10, 2 );
 			add_filter( MultiCurrency::FILTER_PREFIX . 'should_convert_product_price', [ $this, 'maybe_convert_product_prices_for_deposits' ], 10, 2 );
 		}
 	}

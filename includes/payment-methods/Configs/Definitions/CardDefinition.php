@@ -61,7 +61,7 @@ class CardDefinition implements PaymentMethodDefinitionInterface {
 	 * @return string
 	 */
 	public static function get_title( ?string $account_country = null ): string {
-		return __( 'Card', 'woocommerce-payments' );
+		return __( 'Card', 'poocommerce-payments' );
 	}
 
 	/**
@@ -82,10 +82,10 @@ class CardDefinition implements PaymentMethodDefinitionInterface {
 
 		$details       = $payment_details[ self::get_id() ];
 		$funding_types = [
-			'credit'  => __( 'credit', 'woocommerce-payments' ),
-			'debit'   => __( 'debit', 'woocommerce-payments' ),
-			'prepaid' => __( 'prepaid', 'woocommerce-payments' ),
-			'unknown' => __( 'unknown', 'woocommerce-payments' ),
+			'credit'  => __( 'credit', 'poocommerce-payments' ),
+			'debit'   => __( 'debit', 'poocommerce-payments' ),
+			'prepaid' => __( 'prepaid', 'poocommerce-payments' ),
+			'unknown' => __( 'unknown', 'poocommerce-payments' ),
 		];
 
 		$card_network = $details['display_brand'] ?? $details['network'] ?? $details['networks']['preferred'] ?? $details['networks']['available'][0] ?? 'card';
@@ -94,7 +94,7 @@ class CardDefinition implements PaymentMethodDefinitionInterface {
 
 		$payment_method_title = sprintf(
 			// Translators: %1$s card brand, %2$s card funding (prepaid, credit, etc.).
-			__( '%1$s %2$s card', 'woocommerce-payments' ),
+			__( '%1$s %2$s card', 'poocommerce-payments' ),
 			ucwords( $card_network ),
 			$funding_types[ $details['funding'] ?? 'unknown' ]
 		);
@@ -110,7 +110,7 @@ class CardDefinition implements PaymentMethodDefinitionInterface {
 	 * @return string
 	 */
 	public static function get_settings_label( ?string $account_country = null ): string {
-		return __( 'Credit / Debit Cards', 'woocommerce-payments' );
+		return __( 'Credit / Debit Cards', 'poocommerce-payments' );
 	}
 
 	/**
@@ -122,7 +122,7 @@ class CardDefinition implements PaymentMethodDefinitionInterface {
 	public static function get_description( ?string $account_country = null ): string {
 		return __(
 			'Let your customers pay with major credit and debit cards without leaving your store.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		);
 	}
 
@@ -205,7 +205,7 @@ class CardDefinition implements PaymentMethodDefinitionInterface {
 
 		return sprintf(
 			// Translators: %s is a test card number.
-			__( 'Use test card <number>%s</number> or refer to our <a>testing guide</a>.', 'woocommerce-payments' ),
+			__( 'Use test card <number>%s</number> or refer to our <a>testing guide</a>.', 'poocommerce-payments' ),
 			$test_card_number
 		);
 	}

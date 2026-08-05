@@ -80,8 +80,8 @@ export const isIAPIBlock = () => {
  * variation has been fully resolved.
  *
  * The hidden input is the only stable surface to read this from: the binding
- * target behind it has changed across WooCommerce releases (the private
- * `woocommerce/product-data` store became `woocommerce/products`, and the
+ * target behind it has changed across PooCommerce releases (the private
+ * `poocommerce/product-data` store became `poocommerce/products`, and the
  * state path changed too), but the rendered `input[name="variation_id"]` has
  * stayed the same. Reading the DOM avoids coupling to that locked, renamed
  * store — and is the interim integration the block maintainers themselves
@@ -106,7 +106,7 @@ export const getIAPIVariationId = () => {
  */
 export const getIAPIVariationSelectorGroups = () =>
 	document.querySelectorAll(
-		'.wp-block-add-to-cart-with-options .wp-block-woocommerce-add-to-cart-with-options-variation-selector-attribute'
+		'.wp-block-add-to-cart-with-options .wp-block-poocommerce-add-to-cart-with-options-variation-selector-attribute'
 	);
 
 /**
@@ -114,7 +114,7 @@ export const getIAPIVariationSelectorGroups = () =>
  *
  * The product ID alone is not enough: when the matched variation is "Any" on
  * an attribute, that attribute has no value on the variation, so the Store API
- * rejects the request (`woocommerce_rest_missing_variation_data`) until the
+ * rejects the request (`poocommerce_rest_missing_variation_data`) until the
  * shopper's chosen value is posted. Posting the selected attributes lets the
  * Store API resolve the variation and record the choice — the same data the
  * block's own `addToCart` action sends.
@@ -177,13 +177,13 @@ export const getClassicVariationAttributes = () => {
 			}
 
 			// The Store API matches on the attribute's registered key, which
-			// differs between WooCommerce versions: older ones expect the
+			// differs between PooCommerce versions: older ones expect the
 			// human label, newer ones the `attribute_*` slug. We send both so
 			// the backend resolves one of them — the label form is fragile when
 			// labels contain special characters.
 			// The Store API accepts the variable attribute's label, rather than an internal identifier:
-			// https://github.com/woocommerce/woocommerce-blocks/blob/trunk/src/StoreApi/docs/cart.md#add-item
-			// fallback until https://github.com/woocommerce/woocommerce/pull/55317 has been consolidated in WC Core.
+			// https://github.com/poocommerce/poocommerce-blocks/blob/trunk/src/StoreApi/docs/cart.md#add-item
+			// fallback until https://github.com/poocommerce/poocommerce/pull/55317 has been consolidated in WC Core.
 			const label = document.querySelector(
 				`label[for="${ attributeName.replace( 'attribute_', '' ) }"]`
 			);
@@ -194,7 +194,7 @@ export const getClassicVariationAttributes = () => {
 				} );
 			}
 
-			// proper logic for https://github.com/woocommerce/woocommerce/pull/55317 .
+			// proper logic for https://github.com/poocommerce/poocommerce/pull/55317 .
 			attributes.push( {
 				attribute: attributeName,
 				value: select.value || '',

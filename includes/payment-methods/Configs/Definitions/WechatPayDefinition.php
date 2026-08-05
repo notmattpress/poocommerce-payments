@@ -62,7 +62,7 @@ class WechatPayDefinition implements PaymentMethodDefinitionInterface {
 	 * @return string
 	 */
 	public static function get_title( ?string $account_country = null ): string {
-		return __( 'WeChat Pay', 'woocommerce-payments' );
+		return __( 'WeChat Pay', 'poocommerce-payments' );
 	}
 
 	/**
@@ -95,7 +95,7 @@ class WechatPayDefinition implements PaymentMethodDefinitionInterface {
 	 * @return string
 	 */
 	public static function get_description( ?string $account_country = null ): string {
-		return __( 'A digital wallet for customers with mainland China WeChat Pay wallets. Regional versions like WeChat Pay HK are not supported.', 'woocommerce-payments' );
+		return __( 'A digital wallet for customers with mainland China WeChat Pay wallets. Regional versions like WeChat Pay HK are not supported.', 'poocommerce-payments' );
 	}
 
 	/**

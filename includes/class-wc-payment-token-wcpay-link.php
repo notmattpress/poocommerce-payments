@@ -2,7 +2,7 @@
 /**
  * Class WC_Payment_Token_WCPay_Link
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * WooCommerce Stripe Link Payment Token.
+ * PooCommerce Stripe Link Payment Token.
  *
  * Representation of a payment token for Link.
  *
@@ -44,13 +44,13 @@ class WC_Payment_Token_WCPay_Link extends WC_Payment_Token {
 	/**
 	 * Get payment method type to display to user.
 	 *
-	 * @param  string $deprecated Deprecated since WooCommerce 3.0.
+	 * @param  string $deprecated Deprecated since PooCommerce 3.0.
 	 * @return string
 	 */
 	public function get_display_name( $deprecated = '' ) {
 		$display = sprintf(
 			/* translators: customer email */
-			__( 'Stripe Link email ending in %s', 'woocommerce-payments' ),
+			__( 'Stripe Link email ending in %s', 'poocommerce-payments' ),
 			$this->get_redacted_email()
 		);
 
@@ -61,7 +61,7 @@ class WC_Payment_Token_WCPay_Link extends WC_Payment_Token {
 	 * Hook prefix.
 	 */
 	protected function get_hook_prefix() {
-		return 'woocommerce_payments_token_wcpay_link_get_';
+		return 'poocommerce_payments_token_wcpay_link_get_';
 	}
 
 	/**
@@ -97,7 +97,7 @@ class WC_Payment_Token_WCPay_Link extends WC_Payment_Token {
 	/**
 	 * Returns the type of this payment token (CC, eCheck, or something else).
 	 *
-	 * @param  string $deprecated Deprecated since WooCommerce 3.0.
+	 * @param  string $deprecated Deprecated since PooCommerce 3.0.
 	 * @return string Payment Token Type (CC, eCheck)
 	 */
 	public function get_type( $deprecated = '' ) {

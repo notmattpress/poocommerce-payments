@@ -2,23 +2,23 @@
 /**
  * Get Balance ability definition.
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Internal\Abilities\Domain;
 
-use Automattic\WooCommerce\Abilities\AbilityDefinition;
+use Automattic\PooCommerce\Abilities\AbilityDefinition;
 use WCPay\Internal\Abilities\AbilitiesRegistrar;
 
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Registers the `woocommerce-payments/get-balance` ability.
+ * Registers the `poocommerce-payments/get-balance` ability.
  *
  * Returns the balance summary (available, pending, and on-hold movements) for
  * a currency over a date range. Backed by the balance report endpoint.
  *
- * @internal Only loaded when WooCommerce 10.9+ is active.
+ * @internal Only loaded when PooCommerce 10.9+ is active.
  *
  * @see \WC_REST_Payments_Reports_Balance_Controller::get_balance_summary()
  */
@@ -32,7 +32,7 @@ class GetBalance extends AbstractWCPayAbility implements AbilityDefinition {
 	 * @return string
 	 */
 	public static function get_name(): string {
-		return 'woocommerce-payments/get-balance';
+		return 'poocommerce-payments/get-balance';
 	}
 
 	/**
@@ -42,8 +42,8 @@ class GetBalance extends AbstractWCPayAbility implements AbilityDefinition {
 	 */
 	public static function get_registration_args(): array {
 		return [
-			'label'               => __( 'Get balance summary', 'woocommerce-payments' ),
-			'description'         => __( 'Return the balance summary (charges, refunds, disputes, fees, payouts, ending balance) for a currency over a date range.', 'woocommerce-payments' ),
+			'label'               => __( 'Get balance summary', 'poocommerce-payments' ),
+			'description'         => __( 'Return the balance summary (charges, refunds, disputes, fees, payouts, ending balance) for a currency over a date range.', 'poocommerce-payments' ),
 			'category'            => AbilitiesRegistrar::CATEGORY_SLUG,
 			'input_schema'        => [
 				'type'                 => 'object',
@@ -51,21 +51,21 @@ class GetBalance extends AbstractWCPayAbility implements AbilityDefinition {
 				'properties'           => [
 					'date_start' => [
 						'type'        => 'string',
-						'description' => __( 'Start of the period (ISO-8601 date-time).', 'woocommerce-payments' ),
+						'description' => __( 'Start of the period (ISO-8601 date-time).', 'poocommerce-payments' ),
 					],
 					'date_end'   => [
 						'type'        => 'string',
-						'description' => __( 'End of the period (ISO-8601 date-time).', 'woocommerce-payments' ),
+						'description' => __( 'End of the period (ISO-8601 date-time).', 'poocommerce-payments' ),
 					],
 					'currency'   => [
 						'type'        => 'string',
-						'description' => __( 'Three-letter ISO-4217 currency code.', 'woocommerce-payments' ),
+						'description' => __( 'Three-letter ISO-4217 currency code.', 'poocommerce-payments' ),
 					],
 				],
 				'additionalProperties' => false,
 			],
 			'execute_callback'    => [ self::class, 'execute' ],
-			'permission_callback' => [ AbilitiesRegistrar::class, 'current_user_can_manage_woocommerce' ],
+			'permission_callback' => [ AbilitiesRegistrar::class, 'current_user_can_manage_poocommerce' ],
 			'meta'                => [
 				'annotations'  => [
 					'readonly'    => true,
@@ -97,7 +97,7 @@ class GetBalance extends AbstractWCPayAbility implements AbilityDefinition {
 					'wcpay_missing_' . $field,
 					sprintf(
 						/* translators: %s: required field name. */
-						__( 'A %s is required to read the balance summary.', 'woocommerce-payments' ),
+						__( 'A %s is required to read the balance summary.', 'poocommerce-payments' ),
 						$field
 					)
 				);

@@ -2,7 +2,7 @@
 /**
  * Class WCPay_Multi_Currency_Rest_Controller_Tests
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use PHPUnit\Framework\MockObject\MockObject;

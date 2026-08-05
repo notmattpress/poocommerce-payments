@@ -21,7 +21,7 @@ interface CompletionOption {
 
 const setupAutocompleter = ( status: string ): unknown => ( {
 	name: 'transactions',
-	className: 'woocommerce-search__transactions-result',
+	className: 'poocommerce-search__transactions-result',
 	async options( term: string ): Promise< CompletionOption[] > {
 		const query = term ? { search_term: term } : {};
 		const options: CompletionOption[] = await apiFetch( {
@@ -58,7 +58,7 @@ const setupAutocompleter = ( status: string ): unknown => ( {
 		return (
 			<span
 				key="name"
-				className="woocommerce-search__result-name"
+				className="poocommerce-search__result-name"
 				aria-label={ option.label }
 			>
 				{ match?.suggestionBeforeMatch }

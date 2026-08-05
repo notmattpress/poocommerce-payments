@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { TaskItem } from '@woocommerce/experimental';
+import { TaskItem } from '@poocommerce/experimental';
 
 export interface TaskItemProps extends React.ComponentProps< typeof TaskItem > {
 	/**

@@ -2,7 +2,7 @@
 /**
  * Class Refund_Failure_Reason_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\Constants\Refund_Failure_Reason;

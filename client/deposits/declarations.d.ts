@@ -1,9 +1,9 @@
 /**
- * The types for the `@woocommerce/components` package are being declared here
+ * The types for the `@poocommerce/components` package are being declared here
  * because it does not have its own types (as of version 5.1.2).
- * We should remove this file once we've updated to a version of `@woocommerce/components` with type defs.
+ * We should remove this file once we've updated to a version of `@poocommerce/components` with type defs.
  */
-declare module '@woocommerce/components' {
+declare module '@poocommerce/components' {
 	const SummaryListPlaceholder: ( props: {
 		numberOfItems: number;
 	} ) => JSX.Element;

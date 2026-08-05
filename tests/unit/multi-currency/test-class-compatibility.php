@@ -2,7 +2,7 @@
 /**
  * Class WCPay_Multi_Currency_Compatibility_Tests
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\MultiCurrency\Compatibility;
@@ -86,7 +86,7 @@ class WCPay_Multi_Currency_Compatibility_Tests extends WCPAY_UnitTestCase {
 		$this->assertTrue( $this->compatibility->should_convert_product_price( null ) );
 	}
 
-	public function test_filter_woocommerce_order_query_with_call_not_in_backtrace() {
+	public function test_filter_poocommerce_order_query_with_call_not_in_backtrace() {
 		$order = wc_create_order();
 		$order->set_total( 1000 );
 		$order->set_currency( 'GBP' );
@@ -95,15 +95,15 @@ class WCPay_Multi_Currency_Compatibility_Tests extends WCPAY_UnitTestCase {
 			->method( 'is_call_in_backtrace' )
 			->with(
 				[
-					'Automattic\WooCommerce\Admin\Notes\NewSalesRecord::sum_sales_for_date',
-					'Automattic\WooCommerce\Admin\Notes\NewSalesRecord::possibly_add_note',
+					'Automattic\PooCommerce\Admin\Notes\NewSalesRecord::sum_sales_for_date',
+					'Automattic\PooCommerce\Admin\Notes\NewSalesRecord::possibly_add_note',
 				]
 			)->willReturn( false );
 
 		$this->assertEquals( [ $order ], $this->compatibility->convert_order_prices( [ $order ], [] ) );
 	}
 
-	public function test_filter_woocommerce_order_query_with_order_in_default_currency() {
+	public function test_filter_poocommerce_order_query_with_order_in_default_currency() {
 		$order = wc_create_order();
 		$order->set_total( 1000 );
 		$order->set_currency( 'USD' );
@@ -120,15 +120,15 @@ class WCPay_Multi_Currency_Compatibility_Tests extends WCPAY_UnitTestCase {
 			->method( 'is_call_in_backtrace' )
 			->with(
 				[
-					'Automattic\WooCommerce\Admin\Notes\NewSalesRecord::sum_sales_for_date',
-					'Automattic\WooCommerce\Admin\Notes\NewSalesRecord::possibly_add_note',
+					'Automattic\PooCommerce\Admin\Notes\NewSalesRecord::sum_sales_for_date',
+					'Automattic\PooCommerce\Admin\Notes\NewSalesRecord::possibly_add_note',
 				]
 			)->willReturn( true );
 
 		$this->assertEquals( [ $order ], $this->compatibility->convert_order_prices( [ $order ], [] ) );
 	}
 
-	public function test_filter_woocommerce_order_query_with_order_with_no_exchange_rate_meta() {
+	public function test_filter_poocommerce_order_query_with_order_with_no_exchange_rate_meta() {
 		$order = wc_create_order();
 		$order->set_total( 1000 );
 		$order->set_currency( 'GBP' );
@@ -144,15 +144,15 @@ class WCPay_Multi_Currency_Compatibility_Tests extends WCPAY_UnitTestCase {
 			->method( 'is_call_in_backtrace' )
 			->with(
 				[
-					'Automattic\WooCommerce\Admin\Notes\NewSalesRecord::sum_sales_for_date',
-					'Automattic\WooCommerce\Admin\Notes\NewSalesRecord::possibly_add_note',
+					'Automattic\PooCommerce\Admin\Notes\NewSalesRecord::sum_sales_for_date',
+					'Automattic\PooCommerce\Admin\Notes\NewSalesRecord::possibly_add_note',
 				]
 			)->willReturn( true );
 
 		$this->assertEquals( [ $order ], $this->compatibility->convert_order_prices( [ $order ], [] ) );
 	}
 
-	public function test_filter_woocommerce_order_query_with_no_meta() {
+	public function test_filter_poocommerce_order_query_with_no_meta() {
 		$order = wc_create_order();
 		$order->set_total( 1000 );
 		$order->set_currency( 'USD' );
@@ -165,15 +165,15 @@ class WCPay_Multi_Currency_Compatibility_Tests extends WCPAY_UnitTestCase {
 			->method( 'is_call_in_backtrace' )
 			->with(
 				[
-					'Automattic\WooCommerce\Admin\Notes\NewSalesRecord::sum_sales_for_date',
-					'Automattic\WooCommerce\Admin\Notes\NewSalesRecord::possibly_add_note',
+					'Automattic\PooCommerce\Admin\Notes\NewSalesRecord::sum_sales_for_date',
+					'Automattic\PooCommerce\Admin\Notes\NewSalesRecord::possibly_add_note',
 				]
 			)->willReturn( true );
 
 		$this->assertEquals( [ $order ], $this->compatibility->convert_order_prices( [ $order ], [] ) );
 	}
 
-	public function test_filter_woocommerce_order_query() {
+	public function test_filter_poocommerce_order_query() {
 		$order = wc_create_order();
 		$order->set_total( 1000 );
 		$order->set_currency( 'GBP' );
@@ -189,8 +189,8 @@ class WCPay_Multi_Currency_Compatibility_Tests extends WCPAY_UnitTestCase {
 			->method( 'is_call_in_backtrace' )
 			->with(
 				[
-					'Automattic\WooCommerce\Admin\Notes\NewSalesRecord::sum_sales_for_date',
-					'Automattic\WooCommerce\Admin\Notes\NewSalesRecord::possibly_add_note',
+					'Automattic\PooCommerce\Admin\Notes\NewSalesRecord::sum_sales_for_date',
+					'Automattic\PooCommerce\Admin\Notes\NewSalesRecord::possibly_add_note',
 				]
 			)->willReturn( true );
 
@@ -205,7 +205,7 @@ class WCPay_Multi_Currency_Compatibility_Tests extends WCPAY_UnitTestCase {
 		$this->assertEquals( 1000, $order->get_total() );
 	}
 
-	public function test_filter_woocommerce_order_query_with_object_not_array() {
+	public function test_filter_poocommerce_order_query_with_object_not_array() {
 		$order = wc_create_order();
 		$order->set_total( 1000 );
 		$order->set_currency( 'GBP' );

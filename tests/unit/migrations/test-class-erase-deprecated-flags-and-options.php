@@ -2,7 +2,7 @@
 /**
  * Class Erase_Deprecated_Flags_And_Options_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 namespace unit\migrations;
@@ -60,7 +60,7 @@ class Erase_Deprecated_Flags_And_Options_Test extends WCPAY_UnitTestCase {
 	}
 
 	private function setup_environment( $stored_wcpay_version ) {
-		update_option( 'woocommerce_woocommerce_payments_version', $stored_wcpay_version );
+		update_option( 'poocommerce_poocommerce_payments_version', $stored_wcpay_version );
 	}
 
 	public function versions_not_applying_migration_provider() {

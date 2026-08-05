@@ -151,7 +151,7 @@ Column behavior:
 | Transaction ID  | `transaction_id`       | Links to the transaction detail view.                       |
 | Method          | `payment_method.type`  | Rendered through the payment-method label map.              |
 | Type            | `type`                 | Rendered through the transaction-type label map.            |
-| Order ID        | `order_id`             | Links to the WooCommerce order when present.                |
+| Order ID        | `order_id`             | Links to the PooCommerce order when present.                |
 | Currency        | `transaction_currency` | Customer/presentment currency.                              |
 | Gross amount    | `amount`               | Rendered in `deposit_currency`.                             |
 | Fees total      | `fees`                 | Rendered in `deposit_currency`.                             |

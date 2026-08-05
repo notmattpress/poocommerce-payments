@@ -7,7 +7,7 @@ import { submitFullRefund } from '../../../utils/merchant-orders';
 import { placeOrderWithCurrency } from '../../../utils/shopper';
 
 test.describe(
-	'WooCommerce Payments - Full Refund',
+	'PooCommerce Payments - Full Refund',
 	{ tag: '@merchant' },
 	() => {
 		let orderId: string;

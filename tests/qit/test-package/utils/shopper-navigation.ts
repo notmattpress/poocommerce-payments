@@ -18,7 +18,7 @@ const ensureAuthAfterNavigation = async (
 	page: Page,
 	targetUrl: string
 ): Promise< void > => {
-	const loginForm = page.locator( 'form.woocommerce-form-login' );
+	const loginForm = page.locator( 'form.poocommerce-form-login' );
 	const loginFormVisible = await loginForm.isVisible().catch( () => false );
 
 	if ( loginFormVisible ) {

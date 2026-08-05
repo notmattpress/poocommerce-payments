@@ -164,7 +164,7 @@ test.describe(
 		} ) => {
 			await goToOrder( adminPage, orderId );
 			await expect(
-				adminPage.locator( '.woocommerce-order-data__meta' )
+				adminPage.locator( '.poocommerce-order-data__meta' )
 			).toContainText( 'seti_' );
 
 			await goToSubscriptions( adminPage );

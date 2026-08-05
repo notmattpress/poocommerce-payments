@@ -35,7 +35,7 @@ assert_contains() {
 make_fixture() {
 	local dir
 	dir="$(mktemp -d "${TMPDIR:-/tmp}/bump-version-test.XXXXXX")"
-	cat > "$dir/woocommerce-payments.php" <<'PHP'
+	cat > "$dir/poocommerce-payments.php" <<'PHP'
 <?php
 /**
  * Plugin Name: WooPayments
@@ -68,7 +68,7 @@ TXT
 # Test: write mode rewrites all three files
 DIR=$(make_fixture)
 ( cd "$DIR" && "$BUMP" 10.7.0 > /dev/null )
-assert_contains "$(cat "$DIR/woocommerce-payments.php")" "* Version: 10.7.0" "php header bumped"
+assert_contains "$(cat "$DIR/poocommerce-payments.php")" "* Version: 10.7.0" "php header bumped"
 assert_eq "$(jq -r .version "$DIR/package.json")" "10.7.0" "package.json bumped"
 assert_eq "$(jq -r .version "$DIR/package-lock.json")" "10.7.0" "package-lock.json bumped"
 assert_contains "$(cat "$DIR/readme.txt")" "Stable tag: 10.7.0" "readme stable tag bumped"
@@ -126,12 +126,12 @@ rm -rf "$DIR"
 
 # Test: --dry-run leaves files untouched
 DIR=$(make_fixture)
-BEFORE_PHP=$(shasum "$DIR/woocommerce-payments.php" | awk '{print $1}')
+BEFORE_PHP=$(shasum "$DIR/poocommerce-payments.php" | awk '{print $1}')
 BEFORE_PKG=$(shasum "$DIR/package.json" | awk '{print $1}')
 BEFORE_LOCK=$(shasum "$DIR/package-lock.json" | awk '{print $1}')
 BEFORE_README=$(shasum "$DIR/readme.txt" | awk '{print $1}')
 DRY_OUT=$( cd "$DIR" && "$BUMP" 10.7.0 --dry-run 2>&1 )
-assert_eq "$(shasum "$DIR/woocommerce-payments.php" | awk '{print $1}')" "$BEFORE_PHP" "dry-run leaves php header untouched"
+assert_eq "$(shasum "$DIR/poocommerce-payments.php" | awk '{print $1}')" "$BEFORE_PHP" "dry-run leaves php header untouched"
 assert_eq "$(shasum "$DIR/package.json" | awk '{print $1}')" "$BEFORE_PKG" "dry-run leaves package.json untouched"
 assert_eq "$(shasum "$DIR/package-lock.json" | awk '{print $1}')" "$BEFORE_LOCK" "dry-run leaves package-lock.json untouched"
 assert_eq "$(shasum "$DIR/readme.txt" | awk '{print $1}')" "$BEFORE_README" "dry-run leaves readme.txt untouched"

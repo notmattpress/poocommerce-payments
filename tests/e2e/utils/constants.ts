@@ -14,14 +14,14 @@ export const shouldRunWCBlocksTests = process.env.SKIP_WC_BLOCKS_TESTS !== '1';
 export const wooCoreVersion = process.env.E2E_WC_VERSION;
 
 /**
- * Compares WooCommerce version strings.
+ * Compares PooCommerce version strings.
  * Returns true if the current version is greater than or equal to the target version.
  * Handles semantic versions (e.g., "10.5.0") and special values ("latest", "beta").
  *
  * @param targetVersion - The version to compare against (e.g., "10.5.0")
  * @return true if wooCoreVersion >= targetVersion
  */
-export const isWooCommerceVersionAtLeast = (
+export const isPooCommerceVersionAtLeast = (
 	targetVersion: string
 ): boolean => {
 	const currentVersion = wooCoreVersion;
