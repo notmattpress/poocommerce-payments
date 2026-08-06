@@ -2,18 +2,18 @@
 /**
  * Get Transactions ability definition.
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Internal\Abilities\Domain;
 
-use Automattic\WooCommerce\Abilities\AbilityDefinition;
+use Automattic\PooCommerce\Abilities\AbilityDefinition;
 use WCPay\Internal\Abilities\AbilitiesRegistrar;
 
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Registers the `woocommerce-payments/get-transactions` ability.
+ * Registers the `poocommerce-payments/get-transactions` ability.
  *
  * Paginated list of transactions. Returns the WC 10.9 paginated envelope:
  * `{ transactions: [...], total_pages, page, per_page }`. `page` / `per_page`
@@ -33,7 +33,7 @@ class GetTransactions extends AbstractWCPayAbility implements AbilityDefinition 
 	 * @return string
 	 */
 	public static function get_name(): string {
-		return 'woocommerce-payments/get-transactions';
+		return 'poocommerce-payments/get-transactions';
 	}
 
 	/**
@@ -86,8 +86,8 @@ class GetTransactions extends AbstractWCPayAbility implements AbilityDefinition 
 		];
 
 		return [
-			'label'               => __( 'List transactions', 'woocommerce-payments' ),
-			'description'         => __( 'List WooPayments transactions with filters (date range, type, source device, channel, customer country, risk level, currency, search). Answers \'show me transactions where X\'.', 'woocommerce-payments' ),
+			'label'               => __( 'List transactions', 'poocommerce-payments' ),
+			'description'         => __( 'List WooPayments transactions with filters (date range, type, source device, channel, customer country, risk level, currency, search). Answers \'show me transactions where X\'.', 'poocommerce-payments' ),
 			'category'            => AbilitiesRegistrar::CATEGORY_SLUG,
 			'input_schema'        => [
 				'type'                 => 'object',
@@ -103,7 +103,7 @@ class GetTransactions extends AbstractWCPayAbility implements AbilityDefinition 
 				[ 'type' => 'object' ]
 			),
 			'execute_callback'    => [ self::class, 'execute' ],
-			'permission_callback' => [ AbilitiesRegistrar::class, 'current_user_can_manage_woocommerce' ],
+			'permission_callback' => [ AbilitiesRegistrar::class, 'current_user_can_manage_poocommerce' ],
 			'meta'                => [
 				'annotations'  => [
 					'readonly'    => true,

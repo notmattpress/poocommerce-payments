@@ -2,7 +2,7 @@
 /**
  * Class Subscription_Mode_Mismatch_Exception
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Exceptions;

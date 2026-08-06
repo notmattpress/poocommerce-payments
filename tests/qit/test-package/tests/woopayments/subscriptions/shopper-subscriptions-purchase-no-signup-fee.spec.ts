@@ -72,7 +72,7 @@ test.describe(
 
 			// Get the order ID
 			const orderIdField = customerPage.locator(
-				'.woocommerce-order-overview__order.order > strong'
+				'.poocommerce-order-overview__order.order > strong'
 			);
 			orderId = ( await orderIdField.textContent() ) ?? '';
 

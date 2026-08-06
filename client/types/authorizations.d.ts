@@ -2,7 +2,7 @@
  * External Dependencies
  */
 
-import { Query } from '@woocommerce/navigation';
+import { Query } from '@poocommerce/navigation';
 
 export type RiskLevel = 'high' | 'elevated' | 'normal';
 

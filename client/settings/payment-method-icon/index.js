@@ -14,10 +14,10 @@ const PaymentMethodIcon = ( { Icon, label } ) => {
 	if ( ! Icon ) return null;
 
 	return (
-		<span className={ clsx( 'woocommerce-payments__payment-method-icon' ) }>
+		<span className={ clsx( 'poocommerce-payments__payment-method-icon' ) }>
 			<Icon />
 			{ label && (
-				<span className="woocommerce-payments__payment-method-icon__label">
+				<span className="poocommerce-payments__payment-method-icon__label">
 					{ label }
 				</span>
 			) }

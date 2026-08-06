@@ -39,13 +39,13 @@
       <code>WC_Subscriptions_Product</code>
     </UndefinedClass>
   </file>
-  <file src="includes/multi-currency/Compatibility/WooCommerceProductAddOns.php">
+  <file src="includes/multi-currency/Compatibility/PooCommerceProductAddOns.php">
     <UndefinedClass occurrences="2">
       <code>\WC_Product_Addons_Helper</code>
       <code>\WC_Product_Addons_Helper</code>
     </UndefinedClass>
   </file>
-  <file src="includes/multi-currency/Compatibility/WooCommerceNameYourPrice.php">
+  <file src="includes/multi-currency/Compatibility/PooCommerceNameYourPrice.php">
     <UndefinedClass occurrences="2">
       <code>\WC_Name_Your_Price_Helpers</code>
       <code>\WC_Name_Your_Price_Helpers</code>
@@ -68,7 +68,7 @@
       <code>Automattic\Jetpack\Connection\Client::wpcom_json_api_request_as_user( $path, $version, $args, $body, $base_api_path )</code>
     </UndefinedDocblockClass>
   </file>
-  <file src="woocommerce-payments.php">
+  <file src="poocommerce-payments.php">
     <UndefinedClass occurrences="1">
       <code>WC_Subscriptions_Core_Plugin</code>
     </UndefinedClass>
@@ -83,7 +83,7 @@
   </file>
   <file src="includes/class-wc-payments-utils.php">
     <UndefinedClass occurrences="1">
-      <code>\Automattic\WooCommerce\Utilities\OrderUtil</code>
+      <code>\Automattic\PooCommerce\Utilities\OrderUtil</code>
     </UndefinedClass>
   </file>
   <file src="includes/compat/blocks/class-blocks-data-extractor.php">

@@ -2,8 +2,8 @@
  * External dependencies
  */
 import React from 'react';
-import { ReportFilters } from '@woocommerce/components';
-import { getQuery } from '@woocommerce/navigation';
+import { ReportFilters } from '@poocommerce/components';
+import { getQuery } from '@poocommerce/navigation';
 
 /**
  * Internal dependencies
@@ -12,7 +12,7 @@ import { filters, advancedFilters } from './config';
 
 export const DocumentsFilters = (): JSX.Element => {
 	return (
-		<div className="woocommerce-filters-documents">
+		<div className="poocommerce-filters-documents">
 			<ReportFilters
 				filters={ filters }
 				advancedFilters={ advancedFilters }

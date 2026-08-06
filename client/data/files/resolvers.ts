@@ -30,7 +30,7 @@ export function* getFile( id: string ): Generator< unknown > {
 		yield controls.dispatch(
 			'core/notices',
 			'createErrorNotice',
-			__( 'Error retrieving file.', 'woocommerce-payments' )
+			__( 'Error retrieving file.', 'poocommerce-payments' )
 		);
 		yield updateErrorForFiles( id, e as ApiError );
 	}

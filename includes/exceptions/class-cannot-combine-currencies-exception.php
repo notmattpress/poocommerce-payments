@@ -2,7 +2,7 @@
 /**
  * Class Cannot_Combine_Currencies_Exception
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Exceptions;

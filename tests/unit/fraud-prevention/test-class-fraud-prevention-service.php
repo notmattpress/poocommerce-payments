@@ -2,7 +2,7 @@
 /**
  * Class Fraud_Prevention_Service_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\Fraud_Prevention\Fraud_Prevention_Service;

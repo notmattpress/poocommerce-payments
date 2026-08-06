@@ -94,13 +94,13 @@ export const CompanyDataTask = ( {
 			index={ 2 }
 			title={ __(
 				'Confirm your business details',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			) }
 		>
 			<CollapsibleBody>
 				<TextControl
 					className="wcpay-company-data-task__text-control"
-					label={ __( 'Business name', 'woocommerce-payments' ) }
+					label={ __( 'Business name', 'poocommerce-payments' ) }
 					value={ companyName }
 					onChange={ setCompanyName }
 					__nextHasNoMarginBottom
@@ -109,7 +109,7 @@ export const CompanyDataTask = ( {
 
 				<TextareaControl
 					className="wcpay-company-data-task__textarea-control"
-					label={ __( 'Address', 'woocommerce-payments' ) }
+					label={ __( 'Address', 'poocommerce-payments' ) }
 					value={ companyAddress }
 					onChange={ setCompanyAddress }
 					__nextHasNoMarginBottom
@@ -122,7 +122,7 @@ export const CompanyDataTask = ( {
 					onClick={ submit }
 					__next40pxDefaultSize
 				>
-					{ __( 'Confirm', 'woocommerce-payments' ) }
+					{ __( 'Confirm', 'poocommerce-payments' ) }
 				</Button>
 
 				{ saveDetailsError && (

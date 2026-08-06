@@ -1,10 +1,10 @@
 # `Get_PM_Promotions` request class
 
-[ℹ️ This document is a part of __WooCommerce Payments Server Requests__](../README.md)
+[ℹ️ This document is a part of __PooCommerce Payments Server Requests__](../README.md)
 
 ## Description
 
-The `WCPay\Core\Server\Request\Get_PM_Promotions` class is used to construct the request for retrieving available payment method (PM) promotions from the WooCommerce Payments server. These promotions offer merchants discounts on processing fees for specific payment methods.
+The `WCPay\Core\Server\Request\Get_PM_Promotions` class is used to construct the request for retrieving available payment method (PM) promotions from the PooCommerce Payments server. These promotions offer merchants discounts on processing fees for specific payment methods.
 
 ## Parameters
 

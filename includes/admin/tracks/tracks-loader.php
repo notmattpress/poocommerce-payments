@@ -2,7 +2,7 @@
 /**
  * Class Core Tracks Wrapper
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay;

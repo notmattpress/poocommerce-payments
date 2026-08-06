@@ -73,7 +73,7 @@ let preferences = {
 	wc_payments_review_prompt_dismissed: undefined,
 	wc_payments_review_prompt_maybe_later: undefined,
 };
-jest.mock( '@woocommerce/data', () => {
+jest.mock( '@poocommerce/data', () => {
 	return {
 		useUserPreferences: jest.fn( () => ( {
 			...preferences,
@@ -125,7 +125,7 @@ describe( 'ReviewPrompt', () => {
 		).toBeInTheDocument();
 		expect(
 			screen.getByText(
-				'Your feedback shapes our roadmap and supports the WooCommerce community. We are all ears!'
+				'Your feedback shapes our roadmap and supports the PooCommerce community. We are all ears!'
 			)
 		).toBeInTheDocument();
 		expect( screen.getByText( 'Leave review' ) ).toBeInTheDocument();
@@ -167,7 +167,7 @@ describe( 'ReviewPrompt', () => {
 			'unknown variant fallback',
 			'mystery_variant',
 			'Enjoying WooPayments so far?',
-			'Your feedback shapes our roadmap and supports the WooCommerce community. We are all ears!',
+			'Your feedback shapes our roadmap and supports the PooCommerce community. We are all ears!',
 		],
 	] )( 'renders %s copy', ( label, variant, heading, description ) => {
 		global.wcpayReviewPromptSettings.variant = variant;
@@ -207,7 +207,7 @@ describe( 'ReviewPrompt', () => {
 		const url = new URL( openedUrl );
 
 		expect( url.origin + url.pathname ).toBe(
-			'https://woocommerce.com/products/woopayments/'
+			'https://poocommerce.com/products/woopayments/'
 		);
 		expect( url.searchParams.has( 'review' ) ).toBe( true );
 		expect( url.searchParams.get( 'utm_content' ) ).toBe(
@@ -314,13 +314,13 @@ describe( 'ReviewPrompt', () => {
 		await waitFor( () => {
 			expect( mockWindowOpen ).toHaveBeenCalledWith(
 				expect.stringContaining(
-					'https://woocommerce.com/products/woopayments/'
+					'https://poocommerce.com/products/woopayments/'
 				),
 				'_blank'
 			);
 
 			expect( window.location.href ).toContain(
-				'https://woocommerce.com/products/woopayments/'
+				'https://poocommerce.com/products/woopayments/'
 			);
 		} );
 	} );

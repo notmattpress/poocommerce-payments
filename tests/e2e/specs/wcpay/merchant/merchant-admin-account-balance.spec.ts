@@ -53,7 +53,7 @@ test.describe( 'Merchant account balance overview', () => {
 	);
 
 	// Multi-deposit-currency coverage tracked in
-	// https://github.com/Automattic/woocommerce-payments/issues/9188 — blocked
+	// https://github.com/Automattic/poocommerce-payments/issues/9188 — blocked
 	// on test-environment fixture work. Re-add the spec when a merchant
 	// account with multiple deposit currencies is available in CI.
 } );

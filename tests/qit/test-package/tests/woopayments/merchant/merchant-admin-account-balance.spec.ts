@@ -73,7 +73,7 @@ test.describe(
 					{
 						type: 'issue',
 						description:
-							'https://github.com/Automattic/woocommerce-payments/issues/9188',
+							'https://github.com/Automattic/poocommerce-payments/issues/9188',
 					},
 					{
 						type: 'description',
@@ -86,49 +86,49 @@ test.describe(
 				await test.step(
 					'Navigate to the Payments Overview screen',
 					() => {
-						// @todo https://github.com/Automattic/woocommerce-payments/issues/9188
+						// @todo https://github.com/Automattic/poocommerce-payments/issues/9188
 					}
 				);
 
 				await test.step(
 					'Select a deposit currency using the currency select input',
 					async () => {
-						// @todo https://github.com/Automattic/woocommerce-payments/issues/9188
+						// @todo https://github.com/Automattic/poocommerce-payments/issues/9188
 					}
 				);
 
 				await test.step(
 					'Observe the total account balance for the selected currency, ensuring it is correctly formatted with the currency symbol',
 					async () => {
-						// @todo https://github.com/Automattic/woocommerce-payments/issues/9188
+						// @todo https://github.com/Automattic/poocommerce-payments/issues/9188
 					}
 				);
 
 				await test.step(
 					'Observe the available account balance the selected currency, ensuring it is correctly formatted with the currency symbol',
 					async () => {
-						// @todo https://github.com/Automattic/woocommerce-payments/issues/9188
+						// @todo https://github.com/Automattic/poocommerce-payments/issues/9188
 					}
 				);
 
 				await test.step(
 					'Select a second deposit currency using the currency select input',
 					async () => {
-						// @todo https://github.com/Automattic/woocommerce-payments/issues/9188
+						// @todo https://github.com/Automattic/poocommerce-payments/issues/9188
 					}
 				);
 
 				await test.step(
 					'Observe the total account balance for the selected currency, ensuring it is correctly formatted with the currency symbol',
 					async () => {
-						// @todo https://github.com/Automattic/woocommerce-payments/issues/9188
+						// @todo https://github.com/Automattic/poocommerce-payments/issues/9188
 					}
 				);
 
 				await test.step(
 					'Observe the available account balance the selected currency, ensuring it is correctly formatted with the currency symbol',
 					async () => {
-						// @todo https://github.com/Automattic/woocommerce-payments/issues/9188
+						// @todo https://github.com/Automattic/poocommerce-payments/issues/9188
 					}
 				);
 			}

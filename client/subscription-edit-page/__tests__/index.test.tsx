@@ -45,7 +45,7 @@ describe( 'PaymentMethodSelect Component', () => {
 		test( 'renders "please select customer" message when userId is 0', () => {
 			render(
 				<PaymentMethodSelect
-					gatewayId="woocommerce_payments"
+					gatewayId="poocommerce_payments"
 					inputName="payment_method"
 					initialValue={ 0 }
 					initialUserId={ 0 }
@@ -62,7 +62,7 @@ describe( 'PaymentMethodSelect Component', () => {
 		test( 'renders "please select customer" message when userId is negative', () => {
 			render(
 				<PaymentMethodSelect
-					gatewayId="woocommerce_payments"
+					gatewayId="poocommerce_payments"
 					inputName="payment_method"
 					initialValue={ 0 }
 					initialUserId={ -1 }
@@ -82,7 +82,7 @@ describe( 'PaymentMethodSelect Component', () => {
 			// because the component only fetches on customer select change
 			render(
 				<PaymentMethodSelect
-					gatewayId="woocommerce_payments"
+					gatewayId="poocommerce_payments"
 					inputName="payment_method"
 					initialValue={ 0 }
 					initialUserId={ 1 }
@@ -112,7 +112,7 @@ describe( 'PaymentMethodSelect Component', () => {
 
 			render(
 				<PaymentMethodSelect
-					gatewayId="woocommerce_payments"
+					gatewayId="poocommerce_payments"
 					inputName="payment_method"
 					initialValue={ 0 }
 					initialUserId={ 0 }
@@ -151,7 +151,7 @@ describe( 'PaymentMethodSelect Component', () => {
 
 			render(
 				<PaymentMethodSelect
-					gatewayId="woocommerce_payments"
+					gatewayId="poocommerce_payments"
 					inputName="payment_method"
 					initialValue={ 0 }
 					initialUserId={ 0 }
@@ -190,7 +190,7 @@ describe( 'PaymentMethodSelect Component', () => {
 
 			render(
 				<PaymentMethodSelect
-					gatewayId="woocommerce_payments"
+					gatewayId="poocommerce_payments"
 					inputName="payment_method"
 					initialValue={ 0 }
 					initialUserId={ 0 }
@@ -229,7 +229,7 @@ describe( 'PaymentMethodSelect Component', () => {
 
 			render(
 				<PaymentMethodSelect
-					gatewayId="woocommerce_payments"
+					gatewayId="poocommerce_payments"
 					inputName="payment_method"
 					initialValue={ 0 }
 					initialUserId={ 0 }
@@ -271,7 +271,7 @@ describe( 'PaymentMethodSelect Component', () => {
 
 			render(
 				<PaymentMethodSelect
-					gatewayId="woocommerce_payments"
+					gatewayId="poocommerce_payments"
 					inputName="payment_method"
 					initialValue={ 0 }
 					initialUserId={ 0 }
@@ -320,7 +320,7 @@ describe( 'PaymentMethodSelect Component', () => {
 
 			render(
 				<PaymentMethodSelect
-					gatewayId="woocommerce_payments"
+					gatewayId="poocommerce_payments"
 					inputName="payment_method"
 					initialValue={ 0 }
 					initialUserId={ 0 }
@@ -360,7 +360,7 @@ describe( 'PaymentMethodSelect Component', () => {
 
 			render(
 				<PaymentMethodSelect
-					gatewayId="woocommerce_payments"
+					gatewayId="poocommerce_payments"
 					inputName="payment_method"
 					initialValue={ 0 }
 					initialUserId={ 0 }
@@ -393,7 +393,7 @@ describe( 'PaymentMethodSelect Component', () => {
 			// the component renders with the initial value
 			render(
 				<PaymentMethodSelect
-					gatewayId="woocommerce_payments"
+					gatewayId="poocommerce_payments"
 					inputName="payment_method"
 					initialValue={ 2 }
 					initialUserId={ 1 }
@@ -421,7 +421,7 @@ describe( 'PaymentMethodSelect Component', () => {
 
 			render(
 				<PaymentMethodSelect
-					gatewayId="woocommerce_payments"
+					gatewayId="poocommerce_payments"
 					inputName="payment_method"
 					initialValue={ 0 }
 					initialUserId={ 0 }
@@ -500,7 +500,7 @@ describe( 'fetchUserTokens', () => {
 			123,
 			'http://test.com/ajax',
 			'test-nonce',
-			'woocommerce_payments'
+			'poocommerce_payments'
 		);
 
 		expect( capturedUrl ).toBe( 'http://test.com/ajax' );
@@ -528,7 +528,7 @@ describe( 'fetchUserTokens', () => {
 			1,
 			'http://test.com/ajax',
 			'nonce',
-			'woocommerce_payments'
+			'poocommerce_payments'
 		);
 
 		expect( result ).toEqual( mockTokens );
@@ -544,7 +544,7 @@ describe( 'fetchUserTokens', () => {
 				1,
 				'http://test.com/ajax',
 				'nonce',
-				'woocommerce_payments'
+				'poocommerce_payments'
 			)
 		).rejects.toThrow( 'Failed to fetch user tokens' );
 	} );
@@ -560,7 +560,7 @@ describe( 'fetchUserTokens', () => {
 				1,
 				'http://test.com/ajax',
 				'nonce',
-				'woocommerce_payments'
+				'poocommerce_payments'
 			)
 		).rejects.toThrow(
 			'Failed to fetch user tokens. Please reload the page and try again.'

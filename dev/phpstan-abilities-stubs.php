@@ -1,9 +1,9 @@
 <?php
 /**
- * Stub for the WooCommerce 10.9 Abilities API interface.
+ * Stub for the PooCommerce 10.9 Abilities API interface.
  *
  * `AbilityDefinition` is the interface every per-ability Domain class in
- * `src/Internal/Abilities/Domain/` implements. It ships in WooCommerce
+ * `src/Internal/Abilities/Domain/` implements. It ships in PooCommerce
  * 10.9; environments still on an older WC version need this stub so the
  * Domain class files can parse without the real interface present.
  *
@@ -15,10 +15,10 @@
  * touching any Domain class on WC < 10.9, so this stub is not required
  * outside static analysis and the test suite.
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
-namespace Automattic\WooCommerce\Abilities {
+namespace Automattic\PooCommerce\Abilities {
 	if ( ! interface_exists( __NAMESPACE__ . '\\AbilityDefinition' ) ) {
 		interface AbilityDefinition {
 			public static function get_name(): string;
@@ -27,7 +27,7 @@ namespace Automattic\WooCommerce\Abilities {
 	}
 }
 
-namespace Automattic\WooCommerce\Internal\Abilities {
+namespace Automattic\PooCommerce\Internal\Abilities {
 	if ( ! class_exists( __NAMESPACE__ . '\\AbilitiesLoader' ) ) {
 		/**
 		 * Marker stub for the WC 10.9 loader. AbilitiesRegistrar only checks

@@ -1,5 +1,5 @@
 name: "Compare release files between trunk and develop"
-description: "Checks changelog.txt, readme.txt, and version fields (woocommerce-payments.php, package.json, package-lock.json) between trunk and develop. Posts a Step Summary and sends a Slack notification when drift is detected."
+description: "Checks changelog.txt, readme.txt, and version fields (poocommerce-payments.php, package.json, package-lock.json) between trunk and develop. Posts a Step Summary and sends a Slack notification when drift is detected."
 
 inputs:
   slack-webhook:
@@ -38,16 +38,16 @@ runs:
         done
 
         # Check version fields between trunk and develop.
-        # Extract the plugin header version from woocommerce-payments.php.
-        PHP_TRUNK=$(git show origin/trunk:woocommerce-payments.php \
+        # Extract the plugin header version from poocommerce-payments.php.
+        PHP_TRUNK=$(git show origin/trunk:poocommerce-payments.php \
           | grep -E '^\s*\*\s*Version:' | head -n1 \
           | sed -E 's/^[[:space:]]*\*[[:space:]]*Version:[[:space:]]*//')
-        PHP_DEV=$(git show origin/develop:woocommerce-payments.php \
+        PHP_DEV=$(git show origin/develop:poocommerce-payments.php \
           | grep -E '^\s*\*\s*Version:' | head -n1 \
           | sed -E 's/^[[:space:]]*\*[[:space:]]*Version:[[:space:]]*//')
         if [ "$PHP_TRUNK" != "$PHP_DEV" ]; then
           HAS_DRIFT=true
-          SUMMARY+="### \`woocommerce-payments.php\` (plugin header version)"$'\n'
+          SUMMARY+="### \`poocommerce-payments.php\` (plugin header version)"$'\n'
           SUMMARY+="- trunk: \`$PHP_TRUNK\`"$'\n'
           SUMMARY+="- develop: \`$PHP_DEV\`"$'\n\n'
         fi
@@ -111,7 +111,7 @@ runs:
                 "type": "section",
                 "text": {
                   "type": "mrkdwn",
-                  "text": "`changelog.txt`, `readme.txt`, or version fields (`woocommerce-payments.php`, `package.json`, `package-lock.json`) differ between `trunk` and `develop`. The release lead should review and manually sync them."
+                  "text": "`changelog.txt`, `readme.txt`, or version fields (`poocommerce-payments.php`, `package.json`, `package-lock.json`) differ between `trunk` and `develop`. The release lead should review and manually sync them."
                 }
               },
               {

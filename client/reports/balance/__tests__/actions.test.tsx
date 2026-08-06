@@ -3,7 +3,7 @@
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { downloadCSVFile } from '@woocommerce/csv-export';
+import { downloadCSVFile } from '@poocommerce/csv-export';
 import { recordEvent } from 'tracks';
 
 const mockCreateNotice = jest.fn();
@@ -17,8 +17,8 @@ jest.mock( '@wordpress/data', () => ( {
 	} ),
 } ) );
 
-jest.mock( '@woocommerce/csv-export', () => {
-	const actual = jest.requireActual( '@woocommerce/csv-export' );
+jest.mock( '@poocommerce/csv-export', () => {
+	const actual = jest.requireActual( '@poocommerce/csv-export' );
 	return {
 		...actual,
 		downloadCSVFile: jest.fn(),

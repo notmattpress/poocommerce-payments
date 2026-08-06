@@ -1,18 +1,18 @@
 <?php
 /**
- * Class WCPay_Multi_Currency_WooCommerceFedEx_Tests
+ * Class WCPay_Multi_Currency_PooCommerceFedEx_Tests
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
-use WCPay\MultiCurrency\Compatibility\WooCommerceFedEx;
+use WCPay\MultiCurrency\Compatibility\PooCommerceFedEx;
 use WCPay\MultiCurrency\MultiCurrency;
 use WCPay\MultiCurrency\Utils;
 
 /**
- * WCPay\MultiCurrency\Compatibility\WooCommerceFedEx unit tests.
+ * WCPay\MultiCurrency\Compatibility\PooCommerceFedEx unit tests.
  */
-class WCPay_Multi_Currency_WooCommerceFedEx_Tests extends WCPAY_UnitTestCase {
+class WCPay_Multi_Currency_PooCommerceFedEx_Tests extends WCPAY_UnitTestCase {
 
 	/**
 	 * Mock WCPay\MultiCurrency\MultiCurrency.
@@ -29,18 +29,18 @@ class WCPay_Multi_Currency_WooCommerceFedEx_Tests extends WCPAY_UnitTestCase {
 	private $mock_utils;
 
 	/**
-	 * WCPay\MultiCurrency\Compatibility\WooCommerceFedEx instance.
+	 * WCPay\MultiCurrency\Compatibility\PooCommerceFedEx instance.
 	 *
-	 * @var WCPay\MultiCurrency\Compatibility\WooCommerceFedEx
+	 * @var WCPay\MultiCurrency\Compatibility\PooCommerceFedEx
 	 */
-	private $woocommerce_fedex;
+	private $poocommerce_fedex;
 
 	/**
 	 * Calls to check in the backtrace.
 	 *
 	 * @var array
 	 */
-	private $woocommerce_fedex_calls = [
+	private $poocommerce_fedex_calls = [
 		'WC_Shipping_Fedex->set_settings',
 		'WC_Shipping_Fedex->per_item_shipping',
 		'WC_Shipping_Fedex->box_shipping',
@@ -57,13 +57,13 @@ class WCPay_Multi_Currency_WooCommerceFedEx_Tests extends WCPAY_UnitTestCase {
 
 		$this->mock_multi_currency = $this->createMock( MultiCurrency::class );
 		$this->mock_utils          = $this->createMock( Utils::class );
-		$this->woocommerce_fedex   = new WooCommerceFedEx( $this->mock_multi_currency, $this->mock_utils );
+		$this->poocommerce_fedex   = new PooCommerceFedEx( $this->mock_multi_currency, $this->mock_utils );
 	}
 
 	// If true is passed, it should automatically return true.
 	public function test_should_return_store_currency_returns_true_if_true_passed() {
 		$this->mock_utils->expects( $this->exactly( 0 ) )->method( 'is_call_in_backtrace' );
-		$this->assertTrue( $this->woocommerce_fedex->should_return_store_currency( true ) );
+		$this->assertTrue( $this->poocommerce_fedex->should_return_store_currency( true ) );
 	}
 
 	// If the calls are found, it should return true.
@@ -71,10 +71,10 @@ class WCPay_Multi_Currency_WooCommerceFedEx_Tests extends WCPAY_UnitTestCase {
 		$this->mock_utils
 			->expects( $this->once() )
 			->method( 'is_call_in_backtrace' )
-			->with( $this->woocommerce_fedex_calls )
+			->with( $this->poocommerce_fedex_calls )
 			->willReturn( true );
 
-		$this->assertTrue( $this->woocommerce_fedex->should_return_store_currency( false ) );
+		$this->assertTrue( $this->poocommerce_fedex->should_return_store_currency( false ) );
 	}
 
 	// If the calls are not found, it should return false.
@@ -82,10 +82,10 @@ class WCPay_Multi_Currency_WooCommerceFedEx_Tests extends WCPAY_UnitTestCase {
 		$this->mock_utils
 			->expects( $this->once() )
 			->method( 'is_call_in_backtrace' )
-			->with( $this->woocommerce_fedex_calls )
+			->with( $this->poocommerce_fedex_calls )
 			->willReturn( false );
 
-		$this->assertFalse( $this->woocommerce_fedex->should_return_store_currency( false ) );
+		$this->assertFalse( $this->poocommerce_fedex->should_return_store_currency( false ) );
 	}
 
 	// If true is passed to should_convert_product_price and no calls are found, it should return true.
@@ -93,10 +93,10 @@ class WCPay_Multi_Currency_WooCommerceFedEx_Tests extends WCPAY_UnitTestCase {
 		$this->mock_utils
 			->expects( $this->once() )
 			->method( 'is_call_in_backtrace' )
-			->with( $this->woocommerce_fedex_calls )
+			->with( $this->poocommerce_fedex_calls )
 			->willReturn( false );
 
-		$this->assertTrue( $this->woocommerce_fedex->should_convert_product_price( true ) );
+		$this->assertTrue( $this->poocommerce_fedex->should_convert_product_price( true ) );
 	}
 
 	// If calls are found, should_convert_product_price should return false even if true was passed.
@@ -104,9 +104,9 @@ class WCPay_Multi_Currency_WooCommerceFedEx_Tests extends WCPAY_UnitTestCase {
 		$this->mock_utils
 			->expects( $this->once() )
 			->method( 'is_call_in_backtrace' )
-			->with( $this->woocommerce_fedex_calls )
+			->with( $this->poocommerce_fedex_calls )
 			->willReturn( true );
 
-		$this->assertFalse( $this->woocommerce_fedex->should_convert_product_price( true ) );
+		$this->assertFalse( $this->poocommerce_fedex->should_convert_product_price( true ) );
 	}
 }
