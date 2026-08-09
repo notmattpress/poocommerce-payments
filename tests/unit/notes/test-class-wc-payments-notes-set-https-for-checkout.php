@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Notes_Set_Https_For_Checkout_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 /**
@@ -27,7 +27,7 @@ class WC_Payments_Notes_Set_Https_For_Checkout_Test extends WCPAY_UnitTestCase {
 			WC_Payments::add_woo_admin_notes();
 
 			$note_id = WC_Payments_Notes_Set_Https_For_Checkout::NOTE_NAME;
-			if ( 'yes' === get_option( 'woocommerce_force_ssl_checkout' ) || wc_site_is_https() ) {
+			if ( 'yes' === get_option( 'poocommerce_force_ssl_checkout' ) || wc_site_is_https() ) {
 				$this->assertSame( [], ( WC_Data_Store::load( 'admin-note' ) )->get_notes_with_name( $note_id ) );
 			} else {
 				$this->assertNotSame( [], ( WC_Data_Store::load( 'admin-note' ) )->get_notes_with_name( $note_id ) );

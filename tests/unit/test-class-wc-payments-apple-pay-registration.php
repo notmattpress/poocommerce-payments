@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Apple_Pay_Registration_Test
  *
- * @package WooCommerce\\Payments\\Tests
+ * @package PooCommerce\\Payments\\Tests
  */
 
 /**

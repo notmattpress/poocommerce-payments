@@ -2,7 +2,7 @@
 /**
  * Class file for WCPay\Core\Server\Request\Get_Account_Login_Data.
  *
- * @package WooCommerce Payments
+ * @package PooCommerce Payments
  */
 
 namespace WCPay\Core\Server\Request;

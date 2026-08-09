@@ -123,7 +123,7 @@ const assertCheckoutError = async (
 };
 
 test.describe(
-	'WooCommerce Blocks > Checkout failures',
+	'PooCommerce Blocks > Checkout failures',
 	{ tag: [ '@shopper', '@critical', '@blocks' ] },
 	() => {
 		let shopperContext: BrowserContext;

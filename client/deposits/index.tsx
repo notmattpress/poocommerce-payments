@@ -116,7 +116,7 @@ const DepositFailureNotice: React.FC = () => {
 			{ interpolateComponents( {
 				mixedString: __(
 					'Payouts are currently paused because a recent payout failed. Please {{updateLink/}}.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				components: {
 					updateLink: (
@@ -134,7 +134,7 @@ const DepositFailureNotice: React.FC = () => {
 						>
 							{ __(
 								'update your bank account details',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 						</ExternalLink>
 					),

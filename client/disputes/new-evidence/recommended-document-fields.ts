@@ -48,19 +48,19 @@ const getRecommendedDocumentFields = (
 			return [
 				{
 					key: DOCUMENT_FIELD_KEYS.CUSTOMER_COMMUNICATION,
-					label: __( 'Upload evidence', 'woocommerce-payments' ),
+					label: __( 'Upload evidence', 'poocommerce-payments' ),
 					description: __(
 						'Submit any files you find relevant to this dispute.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					order: 0,
 				},
 				{
 					key: DOCUMENT_FIELD_KEYS.UNCATEGORIZED_FILE,
-					label: __( 'Other documents', 'woocommerce-payments' ),
+					label: __( 'Other documents', 'poocommerce-payments' ),
 					description: __(
 						'Any other relevant documents that will support your case.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					order: 0,
 				},
@@ -90,11 +90,11 @@ const getRecommendedDocumentFields = (
 					key: DOCUMENT_FIELD_KEYS.CUSTOMER_COMMUNICATION,
 					label: __(
 						'Customer communication',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					description: __(
 						'Any correspondence with the customer regarding this purchase.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					order: 20,
 				};
@@ -127,28 +127,28 @@ const getRecommendedDocumentFields = (
 		// Default fields that apply to all dispute types
 		{
 			key: DOCUMENT_FIELD_KEYS.RECEIPT,
-			label: __( 'Order receipt', 'woocommerce-payments' ),
+			label: __( 'Order receipt', 'poocommerce-payments' ),
 			description: __(
 				"A copy of the customer's receipt, which can be found in the receipt history for this transaction.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 10,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.CUSTOMER_COMMUNICATION,
-			label: __( 'Customer communication', 'woocommerce-payments' ),
+			label: __( 'Customer communication', 'poocommerce-payments' ),
 			description: __(
 				'Any correspondence with the customer regarding this purchase.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 20,
 		},
 		{
 			key: DOCUMENT_FIELD_KEYS.UNCATEGORIZED_FILE,
-			label: __( 'Other documents', 'woocommerce-payments' ),
+			label: __( 'Other documents', 'poocommerce-payments' ),
 			description: __(
 				'Any other relevant documents that will support your case.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 100, // Always last
 		},
@@ -167,11 +167,11 @@ const getRecommendedDocumentFields = (
 							key: DOCUMENT_FIELD_KEYS.REFUND_POLICY,
 							label: __(
 								'Store refund policy',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							description: __(
 								"A screenshot of your store's refund policy.",
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							order: 40,
 						},
@@ -182,11 +182,11 @@ const getRecommendedDocumentFields = (
 							key: DOCUMENT_FIELD_KEYS.CUSTOMER_SIGNATURE,
 							label: __(
 								"Customer's signature",
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							description: __(
 								"Any relevant documents showing the customer's signature, such as signed proof of delivery.",
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							order: 30,
 						},
@@ -194,11 +194,11 @@ const getRecommendedDocumentFields = (
 							key: DOCUMENT_FIELD_KEYS.REFUND_POLICY,
 							label: __(
 								'Store refund policy',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							description: __(
 								"A screenshot of your store's refund policy.",
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							order: 40,
 						},
@@ -206,11 +206,11 @@ const getRecommendedDocumentFields = (
 							key: DOCUMENT_FIELD_KEYS.SERVICE_DOCUMENTATION,
 							label: __(
 								'Item condition',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							description: __(
 								'A screenshot of the item condition.',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							order: 50,
 						},
@@ -223,11 +223,11 @@ const getRecommendedDocumentFields = (
 							key: DOCUMENT_FIELD_KEYS.ACCESS_ACTIVITY_LOG,
 							label: __(
 								'Proof of active subscription',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							description: __(
 								'Any documents showing the billing history, subscription status, or cancellation logs, for example.',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							order: 30,
 						},
@@ -235,11 +235,11 @@ const getRecommendedDocumentFields = (
 							key: DOCUMENT_FIELD_KEYS.REFUND_POLICY,
 							label: __(
 								'Store refund policy',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							description: __(
 								"A screenshot of your store's refund policy.",
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							order: 40,
 						},
@@ -247,11 +247,11 @@ const getRecommendedDocumentFields = (
 							key: DOCUMENT_FIELD_KEYS.CANCELLATION_POLICY,
 							label: __(
 								'Terms of service',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							description: __(
 								"A screenshot of your store's terms of service.",
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							order: 50,
 						},
@@ -261,11 +261,11 @@ const getRecommendedDocumentFields = (
 							key: DOCUMENT_FIELD_KEYS.REFUND_POLICY,
 							label: __(
 								'Store refund policy',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							description: __(
 								"A screenshot of your store's refund policy.",
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							order: 30,
 						},
@@ -276,29 +276,29 @@ const getRecommendedDocumentFields = (
 				key: DOCUMENT_FIELD_KEYS.ACCESS_ACTIVITY_LOG,
 				label: __(
 					'Proof of active subscription',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				description: __(
 					'Any documents showing the billing history, subscription status, or cancellation logs, for example.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				order: 30,
 			},
 			{
 				key: DOCUMENT_FIELD_KEYS.REFUND_POLICY,
-				label: __( 'Store refund policy', 'woocommerce-payments' ),
+				label: __( 'Store refund policy', 'poocommerce-payments' ),
 				description: __(
 					"A screenshot of your store's refund policy.",
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				order: 40,
 			},
 			{
 				key: DOCUMENT_FIELD_KEYS.CANCELLATION_POLICY,
-				label: __( 'Terms of service', 'woocommerce-payments' ),
+				label: __( 'Terms of service', 'poocommerce-payments' ),
 				description: __(
 					"A screenshot of your store's terms of service.",
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				order: 50,
 			},
@@ -306,19 +306,19 @@ const getRecommendedDocumentFields = (
 		fraudulent: [
 			{
 				key: DOCUMENT_FIELD_KEYS.CUSTOMER_SIGNATURE,
-				label: __( "Customer's signature", 'woocommerce-payments' ),
+				label: __( "Customer's signature", 'poocommerce-payments' ),
 				description: __(
 					"Any relevant documents showing the customer's signature, such as signed proof of delivery.",
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				order: 30,
 			},
 			{
 				key: DOCUMENT_FIELD_KEYS.REFUND_POLICY,
-				label: __( 'Store refund policy', 'woocommerce-payments' ),
+				label: __( 'Store refund policy', 'poocommerce-payments' ),
 				description: __(
 					"A screenshot of your store's refund policy.",
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				order: 40,
 			},
@@ -326,19 +326,19 @@ const getRecommendedDocumentFields = (
 		product_not_received: [
 			{
 				key: DOCUMENT_FIELD_KEYS.CUSTOMER_SIGNATURE,
-				label: __( "Customer's signature", 'woocommerce-payments' ),
+				label: __( "Customer's signature", 'poocommerce-payments' ),
 				description: __(
 					"Any relevant documents showing the customer's signature, such as signed proof of delivery.",
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				order: 30,
 			},
 			{
 				key: DOCUMENT_FIELD_KEYS.REFUND_POLICY,
-				label: __( 'Store refund policy', 'woocommerce-payments' ),
+				label: __( 'Store refund policy', 'poocommerce-payments' ),
 				description: __(
 					"A screenshot of your store's refund policy.",
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				order: 40,
 			},
@@ -346,28 +346,28 @@ const getRecommendedDocumentFields = (
 		product_unacceptable: [
 			{
 				key: DOCUMENT_FIELD_KEYS.CUSTOMER_SIGNATURE,
-				label: __( "Customer's signature", 'woocommerce-payments' ),
+				label: __( "Customer's signature", 'poocommerce-payments' ),
 				description: __(
 					"Any relevant documents showing the customer's signature, such as signed proof of delivery.",
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				order: 30,
 			},
 			{
 				key: DOCUMENT_FIELD_KEYS.SERVICE_DOCUMENTATION,
-				label: __( 'Item condition', 'woocommerce-payments' ),
+				label: __( 'Item condition', 'poocommerce-payments' ),
 				description: __(
 					'A screenshot of the item condition.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				order: 40,
 			},
 			{
 				key: DOCUMENT_FIELD_KEYS.REFUND_POLICY,
-				label: __( 'Store refund policy', 'woocommerce-payments' ),
+				label: __( 'Store refund policy', 'poocommerce-payments' ),
 				description: __(
 					"A screenshot of your store's refund policy.",
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				order: 50,
 			},
@@ -375,10 +375,10 @@ const getRecommendedDocumentFields = (
 		unrecognized: [
 			{
 				key: DOCUMENT_FIELD_KEYS.CUSTOMER_SIGNATURE,
-				label: __( "Customer's signature", 'woocommerce-payments' ),
+				label: __( "Customer's signature", 'poocommerce-payments' ),
 				description: __(
 					"Any relevant documents showing the customer's signature, such as signed proof of delivery.",
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				order: 30,
 			},
@@ -386,11 +386,11 @@ const getRecommendedDocumentFields = (
 				key: DOCUMENT_FIELD_KEYS.ACCESS_ACTIVITY_LOG,
 				label: __(
 					'Proof of active subscription',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				description: __(
 					'Such as billing history, subscription status, or cancellation logs.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				order: 40,
 			},
@@ -400,29 +400,29 @@ const getRecommendedDocumentFields = (
 				key: DOCUMENT_FIELD_KEYS.ACCESS_ACTIVITY_LOG,
 				label: __(
 					'Proof of active subscription',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				description: __(
 					'Such as billing history, subscription status, or cancellation logs.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				order: 40,
 			},
 			{
 				key: DOCUMENT_FIELD_KEYS.REFUND_POLICY,
-				label: __( 'Store refund policy', 'woocommerce-payments' ),
+				label: __( 'Store refund policy', 'poocommerce-payments' ),
 				description: __(
 					"A screenshot of your store's refund policy.",
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				order: 50,
 			},
 			{
 				key: DOCUMENT_FIELD_KEYS.SERVICE_DOCUMENTATION,
-				label: __( 'Terms of service', 'woocommerce-payments' ),
+				label: __( 'Terms of service', 'poocommerce-payments' ),
 				description: __(
 					"A screenshot of your store's terms of service.",
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				order: 60,
 			},
@@ -453,10 +453,10 @@ const getRecommendedShippingDocumentFields = (
 	const fields: Array< RecommendedDocument > = [
 		{
 			key: DOCUMENT_FIELD_KEYS.SHIPPING_DOCUMENTATION,
-			label: __( 'Proof of shipping', 'woocommerce-payments' ),
+			label: __( 'Proof of shipping', 'poocommerce-payments' ),
 			description: __(
 				'A receipt from the shipping carrier or a tracking number, for example.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 0,
 		},
@@ -468,10 +468,10 @@ const getRecommendedShippingDocumentFields = (
 	) {
 		fields.push( {
 			key: DOCUMENT_FIELD_KEYS.CUSTOMER_SIGNATURE,
-			label: __( 'Proof of delivery', 'woocommerce-payments' ),
+			label: __( 'Proof of delivery', 'poocommerce-payments' ),
 			description: __(
 				'A confirmation that the product was delivered.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			order: 1,
 		} );

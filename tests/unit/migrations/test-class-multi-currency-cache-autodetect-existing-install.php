@@ -2,7 +2,7 @@
 /**
  * Class Multi_Currency_Cache_Autodetect_Existing_Install_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 namespace unit\migrations;
@@ -17,7 +17,7 @@ use WCPAY_UnitTestCase;
 class Multi_Currency_Cache_Autodetect_Existing_Install_Test extends WCPAY_UnitTestCase {
 
 	const DONE_OPTION    = 'wcpay_multi_currency_cache_autodetect_done';
-	const VERSION_OPTION = 'woocommerce_woocommerce_payments_version';
+	const VERSION_OPTION = 'poocommerce_poocommerce_payments_version';
 
 	/**
 	 * @var Multi_Currency_Cache_Autodetect_Existing_Install

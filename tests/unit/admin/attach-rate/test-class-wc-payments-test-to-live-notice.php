@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Test_To_Live_Notice_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\Constants\Order_Mode;
@@ -74,11 +74,11 @@ class WC_Payments_Test_To_Live_Notice_Test extends WCPAY_UnitTestCase {
 			$captured[] = $args;
 			return $args;
 		};
-		add_filter( 'woocommerce_order_query_args', $capture );
+		add_filter( 'poocommerce_order_query_args', $capture );
 
 		$notice->should_show();
 
-		remove_filter( 'woocommerce_order_query_args', $capture );
+		remove_filter( 'poocommerce_order_query_args', $capture );
 
 		// Only assert on the eligibility query, which constrains payment_method.
 		// WC core's internal refund fetch leaves payment_method empty; out of scope.
@@ -299,9 +299,9 @@ class WC_Payments_Test_To_Live_Notice_Test extends WCPAY_UnitTestCase {
 
 		$notice->init_hooks();
 
-		$this->assertNotFalse( has_action( 'woocommerce_sections_checkout', [ $notice, 'maybe_show' ] ) );
+		$this->assertNotFalse( has_action( 'poocommerce_sections_checkout', [ $notice, 'maybe_show' ] ) );
 
-		remove_action( 'woocommerce_sections_checkout', [ $notice, 'maybe_show' ] );
+		remove_action( 'poocommerce_sections_checkout', [ $notice, 'maybe_show' ] );
 		$this->cleanup_admin_init_hooks( $notice );
 		unset( $_GET['page'], $_GET['tab'] );
 	}
@@ -312,7 +312,7 @@ class WC_Payments_Test_To_Live_Notice_Test extends WCPAY_UnitTestCase {
 
 		$notice->init_hooks();
 
-		$this->assertFalse( has_action( 'woocommerce_sections_general', [ $notice, 'maybe_show' ] ) );
+		$this->assertFalse( has_action( 'poocommerce_sections_general', [ $notice, 'maybe_show' ] ) );
 
 		$this->cleanup_admin_init_hooks( $notice );
 		unset( $_GET['page'] );
@@ -367,7 +367,7 @@ class WC_Payments_Test_To_Live_Notice_Test extends WCPAY_UnitTestCase {
 	 */
 	private function create_wcpay_test_order(): int {
 		$order = wc_create_order();
-		$order->set_payment_method( 'woocommerce_payments' );
+		$order->set_payment_method( 'poocommerce_payments' );
 		$order->set_status( 'completed' );
 		$order->update_meta_data( WC_Payments_Order_Service::WCPAY_MODE_META_KEY, Order_Mode::TEST );
 		$order->save();

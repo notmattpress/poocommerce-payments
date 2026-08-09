@@ -17,8 +17,8 @@ import {
 } from '../../../utils/merchant';
 import { placeOrderWithCurrency } from '../../../utils/shopper';
 
-const getWooCommerceVersion = async () => {
-	const result = await qit.wp( 'plugin get woocommerce --field=version', true );
+const getPooCommerceVersion = async () => {
+	const result = await qit.wp( 'plugin get poocommerce --field=version', true );
 	if ( typeof result === 'string' ) {
 		return result.trim();
 	}
@@ -28,12 +28,12 @@ const getWooCommerceVersion = async () => {
 test.describe( 'Admin order analytics', { tag: '@merchant' }, () => {
 	// Extend timeout for the entire test suite to allow order processing
 	test.setTimeout( 120000 );
-	let woocommerceVersion = '';
+	let poocommerceVersion = '';
 
 	test.beforeAll( async ( { adminPage, customerPage } ) => {
 		// Set explicit timeout for this beforeAll hook
 		test.setTimeout( 120000 );
-		woocommerceVersion = await getWooCommerceVersion();
+		poocommerceVersion = await getPooCommerceVersion();
 
 		// Ensure multi-currency is enabled for the analytics tests
 		if ( false === ( await isMulticurrencyEnabled( adminPage ) ) ) {
@@ -53,7 +53,7 @@ test.describe( 'Admin order analytics', { tag: '@merchant' }, () => {
 		await tableDataHasLoaded( adminPage );
 		await waitAndSkipTourComponent(
 			adminPage,
-			'.woocommerce-revenue-report-date-tour'
+			'.poocommerce-revenue-report-date-tour'
 		);
 
 		const ordersTitle = adminPage.getByRole( 'heading', {
@@ -81,7 +81,7 @@ test.describe( 'Admin order analytics', { tag: '@merchant' }, () => {
 				await tableDataHasLoaded( adminPage );
 				await waitAndSkipTourComponent(
 					adminPage,
-					'.woocommerce-revenue-report-date-tour'
+					'.poocommerce-revenue-report-date-tour'
 				);
 				// Wait a bit more for data to load after refresh
 				await adminPage.waitForTimeout( 2000 );
@@ -102,15 +102,15 @@ test.describe( 'Admin order analytics', { tag: '@merchant' }, () => {
 		adminPage,
 	} ) => {
 		test.skip(
-			woocommerceVersion === '9.9.7',
-			'WooCommerce 9.9.7 crashes before rendering the Orders report table.'
+			poocommerceVersion === '9.9.7',
+			'PooCommerce 9.9.7 crashes before rendering the Orders report table.'
 		);
 
 		await goToOrderAnalytics( adminPage );
 		await tableDataHasLoaded( adminPage );
 		await waitAndSkipTourComponent(
 			adminPage,
-			'.woocommerce-revenue-report-date-tour'
+			'.poocommerce-revenue-report-date-tour'
 		);
 
 		const columnToggle = adminPage.getByTitle(

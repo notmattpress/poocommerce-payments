@@ -4,7 +4,7 @@
  * External dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { Timeline } from '@woocommerce/components';
+import { Timeline } from '@poocommerce/components';
 import { Card, CardBody, CardHeader } from '@wordpress/components';
 /**
  * Internal dependencies
@@ -30,7 +30,7 @@ const PaymentDetailsTimeline = ( {
 			<CardHeader>
 				<Loadable
 					isLoading={ isLoading }
-					value={ __( 'Timeline', 'woocommerce-payments' ) }
+					value={ __( 'Timeline', 'poocommerce-payments' ) }
 				/>
 			</CardHeader>
 			<CardBody>
@@ -38,10 +38,10 @@ const PaymentDetailsTimeline = ( {
 					{ timelineError instanceof Error ? (
 						__(
 							'Error while loading timeline',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						)
 					) : (
-						// Older WooCommerce versions ignore the timezone prop and keep the previous browser-timezone behavior.
+						// Older PooCommerce versions ignore the timezone prop and keep the previous browser-timezone behavior.
 						<Timeline items={ items } timezone="site" />
 					) }
 				</LoadableBlock>

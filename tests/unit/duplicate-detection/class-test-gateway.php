@@ -2,7 +2,7 @@
 /**
  * Class Test_Gateway
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 /**

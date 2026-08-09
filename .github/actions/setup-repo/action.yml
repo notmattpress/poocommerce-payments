@@ -1,4 +1,4 @@
-name: "Setup WooCommerce Payments repository"
+name: "Setup PooCommerce Payments repository"
 description: "Handles the installation, building, and caching of the projects within the repository."
 
 runs:

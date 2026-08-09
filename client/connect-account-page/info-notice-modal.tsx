@@ -98,7 +98,7 @@ const InfoNoticeModal: React.FC = () => {
 							onClick={ handleModalClose }
 							__next40pxDefaultSize
 						>
-							{ __( 'Got it', 'woocommerce-payments' ) }
+							{ __( 'Got it', 'poocommerce-payments' ) }
 						</Button>
 					</div>
 				</Modal>

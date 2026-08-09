@@ -17,7 +17,7 @@ let root: Root | null = null;
 /**
  * Try to mount the notice in the DOM. Idempotent: if the previously-mounted
  * container is still attached, this is a no-op; if it's been detached (e.g.
- * the WC Admin SPA replaced .woocommerce-layout__main on navigation), the
+ * the WC Admin SPA replaced .poocommerce-layout__main on navigation), the
  * old root is unmounted and a fresh container is inserted and re-rendered.
  */
 const tryMount = () => {
@@ -42,7 +42,7 @@ const tryMount = () => {
 
 	// If the container is not found, create it.
 	// The bundle is only enqueued on WC screens on the backend, so falling back to inserting
-	// into the main content area is safe as we are always inside WooCommerce when this script runs.
+	// into the main content area is safe as we are always inside PooCommerce when this script runs.
 	if ( ! container ) {
 		container = document.createElement( 'div' );
 		container.id = containerId;
@@ -58,10 +58,10 @@ const tryMount = () => {
 		if ( settingsAnchor ) {
 			settingsAnchor.after( container );
 		} else {
-			// WC Admin SPA pages render .woocommerce-layout__main; classic WC
+			// WC Admin SPA pages render .poocommerce-layout__main; classic WC
 			// pages (Products, Orders list …) use #wpbody-content .wrap.
 			const target =
-				document.querySelector( '.woocommerce-layout__main' ) ??
+				document.querySelector( '.poocommerce-layout__main' ) ??
 				document.querySelector( '#wpbody-content .wrap' );
 
 			if ( ! target ) {
@@ -89,7 +89,7 @@ const tryMount = () => {
 };
 
 // Keep the observer running for the lifetime of the page: WC Admin's SPA
-// can replace .woocommerce-layout__main on route changes, which detaches
+// can replace .poocommerce-layout__main on route changes, which detaches
 // our container — we re-mount on the next mutation. Observing
 // #wpbody-content (the stable WP admin content wrapper) instead of body
 // scopes mutations to the area we actually care about; fall back to body

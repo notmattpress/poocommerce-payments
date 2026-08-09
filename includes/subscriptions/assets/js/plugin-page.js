@@ -10,7 +10,7 @@ jQuery( function ( $ ) {
 		// Initialise handlers for WC Pay deactivate warning.
 		init_deactivate_wcpay_warning() {
 			// Intercept click on WCPay deactivate link to show modal.
-			$( '#deactivate-woocommerce-payments' ).on(
+			$( '#deactivate-poocommerce-payments' ).on(
 				'click',
 				this.display_wcpay_warning
 			);
@@ -35,7 +35,7 @@ jQuery( function ( $ ) {
 		redirect_deactivate_wcpay: function ( event ) {
 			$( '#wcpay-plugin-deactivate-modal-submit' ).addClass( 'busy' );
 
-			window.location = $( '#deactivate-woocommerce-payments' ).attr(
+			window.location = $( '#deactivate-poocommerce-payments' ).attr(
 				'href'
 			);
 		},
@@ -75,16 +75,16 @@ jQuery( function ( $ ) {
 					wc_payments_plugin.get_woo_subscriptions_plugin_slug()
 			).attr( 'href' );
 		},
-		// Gets the Woo Subscriptions plugin slug. When the site is connected to WooCommerce.com, the slug is different and includes a woocommerce-com- prefix.
+		// Gets the Woo Subscriptions plugin slug. When the site is connected to PooCommerce.com, the slug is different and includes a poocommerce-com- prefix.
 		get_woo_subscriptions_plugin_slug() {
 			const element = document.querySelector(
-				'[data-slug="woocommerce-com-woocommerce-subscriptions"]'
+				'[data-slug="poocommerce-com-poocommerce-subscriptions"]'
 			);
 
 			if ( element ) {
-				return 'woocommerce-com-woocommerce-subscriptions';
+				return 'poocommerce-com-poocommerce-subscriptions';
 			} else {
-				return 'woocommerce-subscriptions';
+				return 'poocommerce-subscriptions';
 			}
 		},
 	};

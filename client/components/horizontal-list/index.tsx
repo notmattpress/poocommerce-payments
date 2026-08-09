@@ -4,7 +4,7 @@
  * External dependencies
  */
 import React from 'react';
-import { List } from '@woocommerce/components';
+import { List } from '@poocommerce/components';
 
 /**
  * Internal dependencies.
@@ -32,5 +32,5 @@ interface Props {
 export const HorizontalList: React.FunctionComponent< Props > = ( {
 	items,
 } ) => {
-	return <List className="woocommerce-list--horizontal" items={ items } />;
+	return <List className="poocommerce-list--horizontal" items={ items } />;
 };
