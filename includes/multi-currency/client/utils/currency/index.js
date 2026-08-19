@@ -2,20 +2,20 @@
  * External dependencies
  */
 import { __, sprintf } from '@wordpress/i18n';
-import Currency from '@woocommerce/currency';
+import Currency from '@poocommerce/currency';
 import { endsWith, find, trimEnd } from 'lodash';
 
 const currencyNames = {
-	aud: __( 'Australian dollar', 'woocommerce-payments' ),
-	cad: __( 'Canadian dollar', 'woocommerce-payments' ),
-	chf: __( 'Swiss franc', 'woocommerce-payments' ),
-	dkk: __( 'Danish krone', 'woocommerce-payments' ),
-	eur: __( 'Euro', 'woocommerce-payments' ),
-	gbp: __( 'Pound sterling', 'woocommerce-payments' ),
-	nok: __( 'Norwegian krone', 'woocommerce-payments' ),
-	nzd: __( 'New Zealand dollar', 'woocommerce-payments' ),
-	sek: __( 'Swedish krona', 'woocommerce-payments' ),
-	usd: __( 'United States (US) dollar', 'woocommerce-payments' ),
+	aud: __( 'Australian dollar', 'poocommerce-payments' ),
+	cad: __( 'Canadian dollar', 'poocommerce-payments' ),
+	chf: __( 'Swiss franc', 'poocommerce-payments' ),
+	dkk: __( 'Danish krone', 'poocommerce-payments' ),
+	eur: __( 'Euro', 'poocommerce-payments' ),
+	gbp: __( 'Pound sterling', 'poocommerce-payments' ),
+	nok: __( 'Norwegian krone', 'poocommerce-payments' ),
+	nzd: __( 'New Zealand dollar', 'poocommerce-payments' ),
+	sek: __( 'Swedish krona', 'poocommerce-payments' ),
+	usd: __( 'United States (US) dollar', 'poocommerce-payments' ),
 };
 
 /**

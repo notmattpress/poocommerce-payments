@@ -3,7 +3,7 @@
 # bump-version.sh — single source of truth for WooPayments release version bumps.
 #
 # Writes (or verifies) the release version across:
-#   - woocommerce-payments.php         ( * Version: X.Y.Z header )
+#   - poocommerce-payments.php         ( * Version: X.Y.Z header )
 #   - package.json                     ( .version )
 #   - package-lock.json                ( .version, .packages[""].version )
 #   - readme.txt                       ( Stable tag: X.Y.Z )
@@ -74,7 +74,7 @@ cross_sed() {
 }
 
 read_php_header() {
-	grep -E '^\s*\*\s*Version:' woocommerce-payments.php \
+	grep -E '^\s*\*\s*Version:' poocommerce-payments.php \
 		| head -n1 \
 		| sed -E 's/^[[:space:]]*\*[[:space:]]*Version:[[:space:]]*//'
 }
@@ -97,7 +97,7 @@ read_readme_stable_tag() {
 write_all() {
 	local v="$1"
 
-	cross_sed "s/^ \\* Version: .*$/ * Version: $v/" woocommerce-payments.php
+	cross_sed "s/^ \\* Version: .*$/ * Version: $v/" poocommerce-payments.php
 
 	if command -v npm > /dev/null 2>&1 && [ -f package.json ]; then
 		# --allow-same-version so reruns with the same version don't fail.

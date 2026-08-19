@@ -7,7 +7,7 @@ import {
 } from '@stripe/react-stripe-js';
 import { select } from '@wordpress/data';
 // eslint-disable-next-line import/no-unresolved
-import { ExperimentalOrderMeta } from '@woocommerce/blocks-checkout';
+import { ExperimentalOrderMeta } from '@poocommerce/blocks-checkout';
 
 /**
  * Internal dependencies
@@ -79,7 +79,7 @@ const ProductDetail = ( { cart, context } ) => {
 		return null;
 	}
 
-	if ( context !== 'woocommerce/cart' ) {
+	if ( context !== 'poocommerce/cart' ) {
 		return null;
 	}
 

@@ -2,18 +2,18 @@
 /**
  * Get Deposits ability definition.
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Internal\Abilities\Domain;
 
-use Automattic\WooCommerce\Abilities\AbilityDefinition;
+use Automattic\PooCommerce\Abilities\AbilityDefinition;
 use WCPay\Internal\Abilities\AbilitiesRegistrar;
 
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Registers the `woocommerce-payments/get-deposits` ability.
+ * Registers the `poocommerce-payments/get-deposits` ability.
  *
  * Paginated list of payouts (Stripe deposits). Returns the WC 10.9 paginated
  * envelope: `{ deposits: [...], total_pages, page, per_page }`. `page` /
@@ -33,7 +33,7 @@ class GetDeposits extends AbstractWCPayAbility implements AbilityDefinition {
 	 * @return string
 	 */
 	public static function get_name(): string {
-		return 'woocommerce-payments/get-deposits';
+		return 'poocommerce-payments/get-deposits';
 	}
 
 	/**
@@ -64,8 +64,8 @@ class GetDeposits extends AbstractWCPayAbility implements AbilityDefinition {
 		];
 
 		return [
-			'label'               => __( 'List payouts', 'woocommerce-payments' ),
-			'description'         => __( 'List payouts (Stripe deposits) with status, date-range, and currency filters. Answers \'show me my recent payouts\'.', 'woocommerce-payments' ),
+			'label'               => __( 'List payouts', 'poocommerce-payments' ),
+			'description'         => __( 'List payouts (Stripe deposits) with status, date-range, and currency filters. Answers \'show me my recent payouts\'.', 'poocommerce-payments' ),
 			'category'            => AbilitiesRegistrar::CATEGORY_SLUG,
 			'input_schema'        => [
 				'type'                 => 'object',
@@ -81,7 +81,7 @@ class GetDeposits extends AbstractWCPayAbility implements AbilityDefinition {
 				[ 'type' => 'object' ]
 			),
 			'execute_callback'    => [ self::class, 'execute' ],
-			'permission_callback' => [ AbilitiesRegistrar::class, 'current_user_can_manage_woocommerce' ],
+			'permission_callback' => [ AbilitiesRegistrar::class, 'current_user_can_manage_poocommerce' ],
 			'meta'                => [
 				'annotations'  => [
 					'readonly'    => true,

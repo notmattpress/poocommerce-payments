@@ -2,7 +2,7 @@
 /**
  * Class Create_Intention_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use PHPUnit\Framework\MockObject\MockObject;
@@ -76,7 +76,7 @@ class Create_Intention_Test extends WCPAY_UnitTestCase {
 				return $new_class;
 			}
 		);
-		$request->apply_filters( 'test_exception_will_throw_if_immutable_parameter_is_changed_when_filter_is_applied' ); // phpcs:ignore WooCommerce.Commenting.CommentHooks.MissingHookComment
+		$request->apply_filters( 'test_exception_will_throw_if_immutable_parameter_is_changed_when_filter_is_applied' ); // phpcs:ignore PooCommerce.Commenting.CommentHooks.MissingHookComment
 	}
 
 	public function test_create_intent_request_will_be_created() {

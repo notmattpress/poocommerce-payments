@@ -6,7 +6,7 @@ import showErrorCheckout from 'wcpay/checkout/utils/show-error-checkout';
 
 export const shouldSavePaymentPaymentMethod = () => {
 	return (
-		document.querySelector( '#wc-woocommerce_payments-new-payment-method' )
+		document.querySelector( '#wc-poocommerce_payments-new-payment-method' )
 			?.checked ?? false
 	);
 };

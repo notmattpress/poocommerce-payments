@@ -2,7 +2,7 @@
 /**
  * Class ReviewPromptExperimentTest
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Tests\Internal\Experiment;
@@ -175,7 +175,7 @@ class ReviewPromptExperimentTest extends WCPAY_UnitTestCase {
 					[ 'class_exists', '\WC_Tracks_Client', $tracks_client ],
 					// Consent falls back to the option, keeping call_static free for get_identity.
 					[ 'class_exists', '\WC_Site_Tracking', false ],
-					[ 'get_option', 'woocommerce_allow_tracking', 'yes' ],
+					[ 'get_option', 'poocommerce_allow_tracking', 'yes' ],
 				]
 			);
 	}

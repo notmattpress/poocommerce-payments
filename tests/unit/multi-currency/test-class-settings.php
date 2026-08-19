@@ -2,7 +2,7 @@
 /**
  * Class WCPay_Multi_Currency_Settings_Tests
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 /**
@@ -32,13 +32,13 @@ class WCPay_Multi_Currency_Settings_Tests extends WCPAY_UnitTestCase {
 		/** @var WCPay\MultiCurrency\MultiCurrency|PHPUnit_Framework_MockObject_MockObject */
 		$this->mock_multi_currency = $this->createMock( WCPay\MultiCurrency\MultiCurrency::class );
 
-		// The settings pages file is only included in woocommerce_get_settings_pages, so we need to manually include it here.
+		// The settings pages file is only included in poocommerce_get_settings_pages, so we need to manually include it here.
 		$this->settings = new WCPay\MultiCurrency\Settings( $this->mock_multi_currency );
 		$this->settings->init_hooks();
 	}
 
 	/**
-	 * @dataProvider woocommerce_action_provider
+	 * @dataProvider poocommerce_action_provider
 	 */
 	public function test_registers_internal_actions_with_account( $action, $function_name ) {
 		$this->assertNotFalse(
@@ -47,9 +47,9 @@ class WCPay_Multi_Currency_Settings_Tests extends WCPAY_UnitTestCase {
 		);
 	}
 
-	public function woocommerce_action_provider() {
+	public function poocommerce_action_provider() {
 		return [
-			[ 'woocommerce_admin_field_wcpay_multi_currency_settings_page', 'wcpay_multi_currency_settings_page' ],
+			[ 'poocommerce_admin_field_wcpay_multi_currency_settings_page', 'wcpay_multi_currency_settings_page' ],
 			[ 'admin_print_scripts', 'maybe_add_print_emoji_detection_script' ],
 		];
 	}

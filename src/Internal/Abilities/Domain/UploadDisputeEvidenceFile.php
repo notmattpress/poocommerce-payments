@@ -2,19 +2,19 @@
 /**
  * Upload Dispute Evidence File ability definition.
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Internal\Abilities\Domain;
 
-use Automattic\WooCommerce\Abilities\AbilityDefinition;
+use Automattic\PooCommerce\Abilities\AbilityDefinition;
 use WCPay\Internal\Abilities\AbilitiesRegistrar;
 use WCPay\Internal\Service\FileService;
 
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Registers the `woocommerce-payments/upload-dispute-evidence-file` ability.
+ * Registers the `poocommerce-payments/upload-dispute-evidence-file` ability.
  *
  * Uploads a document (PDF/PNG/JPEG) to the Files API for use as dispute
  * evidence and returns the created file object. The file `id` it returns is
@@ -24,7 +24,7 @@ defined( 'ABSPATH' ) || exit;
  * creates a new file). mcp.public is false: the whole evidence flow is
  * operator-gated, so this is not auto-invocable.
  *
- * @internal Only loaded when WooCommerce 10.9+ is active.
+ * @internal Only loaded when PooCommerce 10.9+ is active.
  *
  * @see \WCPay\Internal\Service\FileService::upload_evidence_file()
  */
@@ -56,7 +56,7 @@ class UploadDisputeEvidenceFile extends AbstractWCPayAbility implements AbilityD
 	 * @return string
 	 */
 	public static function get_name(): string {
-		return 'woocommerce-payments/upload-dispute-evidence-file';
+		return 'poocommerce-payments/upload-dispute-evidence-file';
 	}
 
 	/**
@@ -66,8 +66,8 @@ class UploadDisputeEvidenceFile extends AbstractWCPayAbility implements AbilityD
 	 */
 	public static function get_registration_args(): array {
 		return [
-			'label'               => __( 'Upload dispute evidence file', 'woocommerce-payments' ),
-			'description'         => __( 'Upload a document (PDF, PNG, or JPEG) to use as dispute evidence. Returns a file object whose id can be passed to the document fields of woocommerce-payments/submit-dispute-evidence.', 'woocommerce-payments' ),
+			'label'               => __( 'Upload dispute evidence file', 'poocommerce-payments' ),
+			'description'         => __( 'Upload a document (PDF, PNG, or JPEG) to use as dispute evidence. Returns a file object whose id can be passed to the document fields of poocommerce-payments/submit-dispute-evidence.', 'poocommerce-payments' ),
 			'category'            => AbilitiesRegistrar::CATEGORY_SLUG,
 			'input_schema'        => [
 				'type'                 => 'object',
@@ -75,22 +75,22 @@ class UploadDisputeEvidenceFile extends AbstractWCPayAbility implements AbilityD
 				'properties'           => [
 					'file_name'     => [
 						'type'        => 'string',
-						'description' => __( 'File name including extension (e.g. receipt.pdf).', 'woocommerce-payments' ),
+						'description' => __( 'File name including extension (e.g. receipt.pdf).', 'poocommerce-payments' ),
 					],
 					'file_type'     => [
 						'type'        => 'string',
 						'enum'        => self::ACCEPTED_FILE_TYPES,
-						'description' => __( 'File MIME type. One of application/pdf, image/jpeg, or image/png.', 'woocommerce-payments' ),
+						'description' => __( 'File MIME type. One of application/pdf, image/jpeg, or image/png.', 'poocommerce-payments' ),
 					],
 					'file_contents' => [
 						'type'        => 'string',
-						'description' => __( 'Base64-encoded file contents. The decoded size must not exceed the dispute-evidence size limit.', 'woocommerce-payments' ),
+						'description' => __( 'Base64-encoded file contents. The decoded size must not exceed the dispute-evidence size limit.', 'poocommerce-payments' ),
 					],
 				],
 				'additionalProperties' => false,
 			],
 			'execute_callback'    => [ self::class, 'execute' ],
-			'permission_callback' => [ AbilitiesRegistrar::class, 'current_user_can_manage_woocommerce' ],
+			'permission_callback' => [ AbilitiesRegistrar::class, 'current_user_can_manage_poocommerce' ],
 			'meta'                => [
 				'annotations'  => [
 					'readonly'    => false,
@@ -123,14 +123,14 @@ class UploadDisputeEvidenceFile extends AbstractWCPayAbility implements AbilityD
 		if ( '' === $file_name || '' === $file_type || '' === $file_contents ) {
 			return new \WP_Error(
 				'wcpay_missing_file_input',
-				__( 'file_name, file_type, and file_contents are all required to upload a file.', 'woocommerce-payments' )
+				__( 'file_name, file_type, and file_contents are all required to upload a file.', 'poocommerce-payments' )
 			);
 		}
 
 		if ( ! in_array( $file_type, self::ACCEPTED_FILE_TYPES, true ) ) {
 			return new \WP_Error(
 				'wcpay_unsupported_file_type',
-				__( 'file_type must be one of application/pdf, image/jpeg, or image/png.', 'woocommerce-payments' )
+				__( 'file_type must be one of application/pdf, image/jpeg, or image/png.', 'poocommerce-payments' )
 			);
 		}
 
@@ -141,7 +141,7 @@ class UploadDisputeEvidenceFile extends AbstractWCPayAbility implements AbilityD
 		if ( false === $decoded ) {
 			return new \WP_Error(
 				'wcpay_invalid_file_contents',
-				__( 'file_contents must be base64-encoded.', 'woocommerce-payments' )
+				__( 'file_contents must be base64-encoded.', 'poocommerce-payments' )
 			);
 		}
 
@@ -150,7 +150,7 @@ class UploadDisputeEvidenceFile extends AbstractWCPayAbility implements AbilityD
 				'wcpay_file_too_large',
 				sprintf(
 					/* translators: %d: maximum file size in bytes. */
-					__( 'The file exceeds the %d-byte dispute-evidence size limit.', 'woocommerce-payments' ),
+					__( 'The file exceeds the %d-byte dispute-evidence size limit.', 'poocommerce-payments' ),
 					self::MAX_FILE_SIZE_BYTES
 				)
 			);

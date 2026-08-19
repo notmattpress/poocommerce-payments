@@ -36,14 +36,14 @@ const OnboardingKycPage: React.FC = () => {
 
 	useEffect( () => {
 		// Remove loading class and add those required for full screen.
-		document.body.classList.remove( 'woocommerce-admin-is-loading' );
-		document.body.classList.add( 'woocommerce-admin-full-screen' );
+		document.body.classList.remove( 'poocommerce-admin-is-loading' );
+		document.body.classList.add( 'poocommerce-admin-full-screen' );
 		document.body.classList.add( 'is-wp-toolbar-disabled' );
 		document.body.classList.add( 'wcpay-onboarding__body' );
 
 		// Remove full screen classes on unmount.
 		return () => {
-			document.body.classList.remove( 'woocommerce-admin-full-screen' );
+			document.body.classList.remove( 'poocommerce-admin-full-screen' );
 			document.body.classList.remove( 'is-wp-toolbar-disabled' );
 			document.body.classList.remove( 'wcpay-onboarding__body' );
 		};

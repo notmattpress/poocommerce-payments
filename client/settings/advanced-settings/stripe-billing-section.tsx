@@ -111,14 +111,14 @@ const StripeBillingSection: React.FC = () => {
 
 	return (
 		<StripeBillingMigrationNoticeContext.Provider value={ noticeContext }>
-			<h4>{ __( 'Subscriptions', 'woocommerce-payments' ) }</h4>
+			<h4>{ __( 'Subscriptions', 'poocommerce-payments' ) }</h4>
 			<Notices />
 			<StripeBillingToggle onChange={ stripeBillingSettingToggle } />
 			{ isStripeBillingManualCaptureConflictModalOpen && (
 				<ConfirmationModal
 					title={ __(
 						'Enable Stripe Billing',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 					actions={
 						<>
@@ -128,7 +128,7 @@ const StripeBillingSection: React.FC = () => {
 								}
 								isPrimary
 							>
-								{ __( 'OK', 'woocommerce-payments' ) }
+								{ __( 'OK', 'poocommerce-payments' ) }
 							</Button>
 						</>
 					}
@@ -140,7 +140,7 @@ const StripeBillingSection: React.FC = () => {
 						{ createInterpolateElement(
 							__(
 								'Stripe Billing is not available with <b>manual capture enabled</b>. To use Stripe Billing, disable manual capture in your settings list.',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							{
 								b: <strong />,

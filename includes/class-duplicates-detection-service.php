@@ -2,7 +2,7 @@
 /**
  * Class Duplicates_Detection_Service
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay;
@@ -66,7 +66,7 @@ class Duplicates_Detection_Service {
 	 */
 	private function search_for_cc() {
 		$keywords         = [ 'credit_card', 'creditcard', 'cc', 'card' ];
-		$special_keywords = [ 'woocommerce_payments', 'stripe' ];
+		$special_keywords = [ 'poocommerce_payments', 'stripe' ];
 
 		foreach ( $this->get_enabled_gateways() as $gateway ) {
 			if ( $this->gateway_contains_keyword( $gateway->id, $keywords ) || in_array( $gateway->id, $special_keywords, true ) ) {
@@ -132,7 +132,7 @@ class Duplicates_Detection_Service {
 					if ( strpos( $gateway->id, $keyword ) !== false ) {
 						$this->gateways_qualified_by_duplicates_detector[ $prb_payment_method ][] = $gateway->id;
 						break;
-					} elseif ( 'woocommerce_payments' === $gateway->id && method_exists( $gateway, 'is_payment_request_enabled' ) && $gateway->is_payment_request_enabled() ) {
+					} elseif ( 'poocommerce_payments' === $gateway->id && method_exists( $gateway, 'is_payment_request_enabled' ) && $gateway->is_payment_request_enabled() ) {
 						$this->gateways_qualified_by_duplicates_detector[ $prb_payment_method ][] = $gateway->id;
 						break;
 					} elseif ( 'stripe' === $gateway->id && 'yes' === $gateway->get_option( 'payment_request' ) ) {
@@ -150,7 +150,7 @@ class Duplicates_Detection_Service {
 	}
 
 		/**
-		 * Keep only WooCommerce Payments enabled gateways.
+		 * Keep only PooCommerce Payments enabled gateways.
 		 *
 		 * @return Duplicates_Detection_Service
 		 */
