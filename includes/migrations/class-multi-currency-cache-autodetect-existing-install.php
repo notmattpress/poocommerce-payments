@@ -2,7 +2,7 @@
 /**
  * Class Multi_Currency_Cache_Autodetect_Existing_Install
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Migrations;
@@ -48,7 +48,7 @@ class Multi_Currency_Cache_Autodetect_Existing_Install {
 	 * @return void
 	 */
 	public function maybe_migrate() {
-		$previous_version = get_option( 'woocommerce_woocommerce_payments_version' );
+		$previous_version = get_option( 'poocommerce_poocommerce_payments_version' );
 
 		// Fresh installs have no previous version — let auto-detection run for them. Installs already
 		// on this version (or newer) have nothing to migrate. Only existing installs upgrading from an

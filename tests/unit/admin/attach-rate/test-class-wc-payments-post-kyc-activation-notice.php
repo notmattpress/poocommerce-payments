@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Post_Kyc_Activation_Notice_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\Constants\Order_Mode;
@@ -138,7 +138,7 @@ class WC_Payments_Post_Kyc_Activation_Notice_Test extends WCPAY_UnitTestCase {
 
 	public function test_should_show_returns_true_when_only_test_orders_present(): void {
 		$order = wc_create_order();
-		$order->set_payment_method( 'woocommerce_payments' );
+		$order->set_payment_method( 'poocommerce_payments' );
 		$order->set_status( 'completed' );
 		$order->update_meta_data( WC_Payments_Order_Service::WCPAY_MODE_META_KEY, Order_Mode::TEST );
 		$order->save();

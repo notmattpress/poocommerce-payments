@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_PM_Promotions_Service
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -110,8 +110,8 @@ class WC_Payments_PM_Promotions_Service {
 	 * @return array|null The promotions or null if there is no eligible promotion.
 	 */
 	public function get_visible_promotions(): ?array {
-		// Promotions are only visible to users who can manage WooCommerce (aka act on the promotions).
-		if ( ! current_user_can( 'manage_woocommerce' ) ) {
+		// Promotions are only visible to users who can manage PooCommerce (aka act on the promotions).
+		if ( ! current_user_can( 'manage_poocommerce' ) ) {
 			return null;
 		}
 
@@ -851,7 +851,7 @@ class WC_Payments_PM_Promotions_Service {
 			// Apply fallback for cta_label using the final payment_method_title.
 			if ( empty( $promotion['cta_label'] ) ) {
 				/* translators: %s is the payment method title, e.g., "Klarna" */
-				$promotion['cta_label'] = sprintf( __( 'Enable %s', 'woocommerce-payments' ), $promotion['payment_method_title'] );
+				$promotion['cta_label'] = sprintf( __( 'Enable %s', 'poocommerce-payments' ), $promotion['payment_method_title'] );
 			}
 
 			// Apply type-specific sanitization BEFORE tc_label fallback.
@@ -862,7 +862,7 @@ class WC_Payments_PM_Promotions_Service {
 			// If tc_url is in the description, leaving tc_label empty signals frontend to not add a link.
 			if ( empty( $promotion['tc_label'] ) ) {
 				if ( strpos( $promotion['description'], $tc_url ) === false ) {
-					$promotion['tc_label'] = __( 'See terms', 'woocommerce-payments' );
+					$promotion['tc_label'] = __( 'See terms', 'poocommerce-payments' );
 				} else {
 					// Explicitly set to empty string when skipping fallback.
 					$promotion['tc_label'] = '';

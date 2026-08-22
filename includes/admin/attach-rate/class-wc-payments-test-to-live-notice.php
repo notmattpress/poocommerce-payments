@@ -2,7 +2,7 @@
 /**
  * Test-to-live activation notice.
  *
- * @package WooCommerce\Payments\Admin
+ * @package PooCommerce\Payments\Admin
  */
 
 use WCPay\Constants\Order_Mode;
@@ -138,7 +138,7 @@ class WC_Payments_Test_To_Live_Notice extends WC_Payments_Abstract_Admin_Notice 
 		// filesort over every matching order on large stores (WOOPMNT-6240).
 		$orders = wc_get_orders(
 			[
-				'payment_method' => 'woocommerce_payments',
+				'payment_method' => 'poocommerce_payments',
 				'limit'          => 1,
 				'orderby'        => 'none',
 				'return'         => 'ids',

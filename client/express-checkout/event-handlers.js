@@ -63,7 +63,7 @@ const getCurrencyMismatchMessage = ( cartData ) =>
 			'This express payment started in %1$s and cannot switch to %2$s ' +
 				'for the address you selected. Choose a different shipping ' +
 				'address, or use the regular checkout to pay in %2$s.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		getElementCurrency().toUpperCase(),
 		cartData.totals.currency_code.toUpperCase()
@@ -265,7 +265,7 @@ export const onConfirmHandler = async (
 					)?.value ||
 					__(
 						'There was a problem processing the order.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					)
 			)
 		);

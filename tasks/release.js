@@ -21,7 +21,7 @@ const filesToCopy = [
 	'src',
 	'templates',
 	'vendor',
-	'woocommerce-payments.php',
+	'poocommerce-payments.php',
 	'changelog.txt',
 	'readme.txt',
 	'SECURITY.md',

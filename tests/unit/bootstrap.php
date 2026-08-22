@@ -2,7 +2,7 @@
 /**
  * PHPUnit bootstrap file
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 use WCPay\Container;
@@ -38,8 +38,8 @@ function _manually_load_plugin() {
 	// needs to still make sure that all dependencies exist for it to successfully run.
 	define( 'WCPAY_TEST_ENV', true );
 
-	// Load the WooCommerce plugin so we can use its classes in our WooPayments plugin.
-	require_once WP_PLUGIN_DIR . '/woocommerce/woocommerce.php';
+	// Load the PooCommerce plugin so we can use its classes in our WooPayments plugin.
+	require_once WP_PLUGIN_DIR . '/poocommerce/poocommerce.php';
 
 	// AbilityDefinition stub for WC < 10.9 test environments. The file's own
 	// `interface_exists()` guard keeps the real interface canonical when WC
@@ -48,7 +48,7 @@ function _manually_load_plugin() {
 
 	// Set a default currency to be used for the multi-currency tests because the default
 	// is not loaded even though it's set during the tests setup.
-	update_option( 'woocommerce_currency', 'USD' );
+	update_option( 'poocommerce_currency', 'USD' );
 
 	// Enable the WCPay Subscriptions feature flag in tests to ensure we can test
 	// subscriptions functionality. Using 'default_option_' filter provides a default
@@ -65,7 +65,7 @@ function _manually_load_plugin() {
 
 	$_plugin_dir = __DIR__ . '/../../';
 
-	require $_plugin_dir . 'woocommerce-payments.php';
+	require $_plugin_dir . 'poocommerce-payments.php';
 
 	require_once $_plugin_dir . 'includes/class-wc-payments-db.php';
 	require_once $_plugin_dir . 'includes/wc-payment-api/models/class-wc-payments-api-charge.php';

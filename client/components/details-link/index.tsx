@@ -5,7 +5,7 @@
  */
 import React from 'react';
 import InfoOutlineIcon from 'gridicons/dist/info-outline';
-import { Link } from '@woocommerce/components';
+import { Link } from '@poocommerce/components';
 
 /**
  * Internal dependencies

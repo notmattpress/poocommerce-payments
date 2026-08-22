@@ -65,7 +65,7 @@ describe( 'renderSaveUserSection - Blocks checkout', () => {
 	it( 'creates the React root once and reuses it across re-renders', () => {
 		document.body.innerHTML = `
 			<div class="wc-block-checkout">
-				<div class="wp-block-woocommerce-checkout-payment-block"></div>
+				<div class="wp-block-poocommerce-checkout-payment-block"></div>
 			</div>
 		`;
 		const { triggerLoad, triggerAjaxComplete } = loadCheckoutEntry();
@@ -83,7 +83,7 @@ describe( 'renderSaveUserSection - Blocks checkout', () => {
 	it( 'unmounts the previous root and mounts a fresh one when the container is recreated', () => {
 		document.body.innerHTML = `
 			<div class="wc-block-checkout">
-				<div class="wp-block-woocommerce-checkout-payment-block"></div>
+				<div class="wp-block-poocommerce-checkout-payment-block"></div>
 			</div>
 		`;
 		const { triggerLoad, triggerAjaxComplete } = loadCheckoutEntry();
@@ -115,7 +115,7 @@ describe( 'renderSaveUserSection - Blocks checkout', () => {
 		expect( document.querySelector( '#remember-me' ) ).toBeNull();
 
 		const paymentBlock = document.createElement( 'div' );
-		paymentBlock.className = 'wp-block-woocommerce-checkout-payment-block';
+		paymentBlock.className = 'wp-block-poocommerce-checkout-payment-block';
 		document
 			.querySelector( '.wc-block-checkout' )
 			.appendChild( paymentBlock );

@@ -77,7 +77,7 @@ const MigrateAutomaticallyNotice: React.FC< Props > = ( {
 							' built into %s once Stripe Billing is disabled.' +
 							' {{learnMoreLink}}Learn more{{/learnMoreLink}}',
 						stripeBillingSubscriptionCount,
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					stripeBillingSubscriptionCount,
 					'Woo Subscriptions'
@@ -86,7 +86,7 @@ const MigrateAutomaticallyNotice: React.FC< Props > = ( {
 					learnMoreLink: (
 						// eslint-disable-next-line max-len
 						// @ts-expect-error: children is provided when interpolating the component
-						<ExternalLink href="https://woocommerce.com/document/woopayments/subscriptions/stripe-billing/#disabling" />
+						<ExternalLink href="https://poocommerce.com/document/woopayments/subscriptions/stripe-billing/#disabling" />
 					),
 				},
 			} ) }

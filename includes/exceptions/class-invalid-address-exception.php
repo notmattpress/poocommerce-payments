@@ -2,7 +2,7 @@
 /**
  * Class Invalid_Address_Exception
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Exceptions;

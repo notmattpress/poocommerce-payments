@@ -2,7 +2,7 @@
 /**
  * Class Order_Fraud_And_Risk_Meta_Box_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\Constants\Fraud_Meta_Box_Type;
@@ -43,7 +43,7 @@ class Order_Fraud_And_Risk_Meta_Box_Test extends WCPAY_UnitTestCase {
 
 		// Create the mock order and set the gateway.
 		$this->order = WC_Helper_Order::create_order();
-		$this->order->set_payment_method( 'woocommerce_payments' );
+		$this->order->set_payment_method( 'poocommerce_payments' );
 		$this->order->save();
 	}
 
@@ -216,19 +216,19 @@ class Order_Fraud_And_Risk_Meta_Box_Test extends WCPAY_UnitTestCase {
 	public function display_order_fraud_and_risk_meta_box_message_not_card_provider() {
 		return [
 			'simulate legacy UPE Popular payment methods' => [
-				'payment_method_id'    => 'woocommerce_payments',
+				'payment_method_id'    => 'poocommerce_payments',
 				'payment_method_title' => 'Popular payment methods',
-				'expected_output'      => '<p>Risk filtering is only available for orders processed using credit cards with WooPayments.</p><p><a href="https://woocommerce.com/document/woopayments/fraud-and-disputes/fraud-protection/?status_is=fraud-meta-box-not-wcpay-learn-more" target="_blank" rel="noopener noreferrer">Learn more</a></p>',
+				'expected_output'      => '<p>Risk filtering is only available for orders processed using credit cards with WooPayments.</p><p><a href="https://poocommerce.com/document/woopayments/fraud-and-disputes/fraud-protection/?status_is=fraud-meta-box-not-wcpay-learn-more" target="_blank" rel="noopener noreferrer">Learn more</a></p>',
 			],
 			'simulate legacy UPE Bancontact'              => [
-				'payment_method_id'    => 'woocommerce_payments',
+				'payment_method_id'    => 'poocommerce_payments',
 				'payment_method_title' => 'Bancontact',
-				'expected_output'      => '<p>Risk filtering is only available for orders processed using credit cards with WooPayments. This order was processed with Bancontact.</p><p><a href="https://woocommerce.com/document/woopayments/fraud-and-disputes/fraud-protection/?status_is=fraud-meta-box-not-wcpay-learn-more" target="_blank" rel="noopener noreferrer">Learn more</a></p>',
+				'expected_output'      => '<p>Risk filtering is only available for orders processed using credit cards with WooPayments. This order was processed with Bancontact.</p><p><a href="https://poocommerce.com/document/woopayments/fraud-and-disputes/fraud-protection/?status_is=fraud-meta-box-not-wcpay-learn-more" target="_blank" rel="noopener noreferrer">Learn more</a></p>',
 			],
 			'simulate split UPE Bancontact'               => [
-				'payment_method_id'    => 'woocommerce_payments_bancontact',
+				'payment_method_id'    => 'poocommerce_payments_bancontact',
 				'payment_method_title' => 'Bancontact',
-				'expected_output'      => '<p>Risk filtering is only available for orders processed using credit cards with WooPayments. This order was processed with Bancontact.</p><p><a href="https://woocommerce.com/document/woopayments/fraud-and-disputes/fraud-protection/?status_is=fraud-meta-box-not-wcpay-learn-more" target="_blank" rel="noopener noreferrer">Learn more</a></p>',
+				'expected_output'      => '<p>Risk filtering is only available for orders processed using credit cards with WooPayments. This order was processed with Bancontact.</p><p><a href="https://poocommerce.com/document/woopayments/fraud-and-disputes/fraud-protection/?status_is=fraud-meta-box-not-wcpay-learn-more" target="_blank" rel="noopener noreferrer">Learn more</a></p>',
 			],
 		];
 	}
@@ -263,7 +263,7 @@ class Order_Fraud_And_Risk_Meta_Box_Test extends WCPAY_UnitTestCase {
 		$this->order_fraud_and_risk_meta_box->display_order_fraud_and_risk_meta_box_message( $this->order );
 
 		// Assert: Check to make sure the expected string has been output.
-		$this->expectOutputString( $this->compose_fraud_and_risk_actions_block( '<p>Risk filtering is only available for orders processed using credit cards with WooPayments. This order was processed with Direct bank transfer.</p><p><a href="https://woocommerce.com/document/woopayments/fraud-and-disputes/fraud-protection/?status_is=fraud-meta-box-not-wcpay-learn-more" target="_blank" rel="noopener noreferrer">Learn more</a></p>', false ) );
+		$this->expectOutputString( $this->compose_fraud_and_risk_actions_block( '<p>Risk filtering is only available for orders processed using credit cards with WooPayments. This order was processed with Direct bank transfer.</p><p><a href="https://poocommerce.com/document/woopayments/fraud-and-disputes/fraud-protection/?status_is=fraud-meta-box-not-wcpay-learn-more" target="_blank" rel="noopener noreferrer">Learn more</a></p>', false ) );
 	}
 
 	public function test_display_order_fraud_and_risk_meta_box_message_default() {
@@ -437,7 +437,7 @@ class Order_Fraud_And_Risk_Meta_Box_Test extends WCPAY_UnitTestCase {
 		$output .= $content;
 
 		if ( $show_adjust_risk_filters_link ) {
-			$output .= '<p><a href="http://example.org/wp-admin/admin.php?page=wc-settings&#038;tab=checkout&#038;section=woocommerce_payments&#038;anchor=%23fp-settings" target="_blank" rel="noopener noreferrer">Adjust risk filters</a></p>';
+			$output .= '<p><a href="http://example.org/wp-admin/admin.php?page=wc-settings&#038;tab=checkout&#038;section=poocommerce_payments&#038;anchor=%23fp-settings" target="_blank" rel="noopener noreferrer">Adjust risk filters</a></p>';
 		}
 
 		$output .= '</div>';

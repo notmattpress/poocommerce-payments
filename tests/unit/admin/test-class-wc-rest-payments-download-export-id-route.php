@@ -2,7 +2,7 @@
 /**
  * Class WC_REST_Payments_Download_Export_Id_Route_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 /**

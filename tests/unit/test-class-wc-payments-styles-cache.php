@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Styles_Cache_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 /**
@@ -49,8 +49,8 @@ class WC_Payments_Styles_Cache_Test extends WCPAY_UnitTestCase {
 			'customize_save_after hook not registered.'
 		);
 		$this->assertNotFalse(
-			has_action( 'woocommerce_woocommerce_payments_updated', [ 'WC_Payments_Styles_Cache', 'handle_theme_change' ] ),
-			'woocommerce_woocommerce_payments_updated hook not registered.'
+			has_action( 'poocommerce_poocommerce_payments_updated', [ 'WC_Payments_Styles_Cache', 'handle_theme_change' ] ),
+			'poocommerce_poocommerce_payments_updated hook not registered.'
 		);
 	}
 
@@ -911,7 +911,7 @@ class WC_Payments_Styles_Cache_Test extends WCPAY_UnitTestCase {
 			'attrs'        => [
 				'slug'  => 'checkout-header',
 				'area'  => 'header',
-				'theme' => 'woocommerce/woocommerce',
+				'theme' => 'poocommerce/poocommerce',
 			],
 			'innerBlocks'  => [],
 			'innerHTML'    => '',

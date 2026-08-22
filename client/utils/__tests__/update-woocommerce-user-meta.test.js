@@ -6,7 +6,7 @@ import { dispatch, select } from '@wordpress/data';
 /**
  * Internal dependencies
  */
-import { updateWoocommerceUserMeta } from '../update-woocommerce-user-meta';
+import { updateWoocommerceUserMeta } from '../update-poocommerce-user-meta';
 
 jest.mock( '@wordpress/data', () => ( {
 	dispatch: jest.fn(),
@@ -18,7 +18,7 @@ describe( 'updateWoocommerceUserMeta', () => {
 	beforeEach( () => {
 		getCurrentUser = jest
 			.fn()
-			.mockReturnValue( { id: 2, woocommerce_meta: { data: 'test' } } );
+			.mockReturnValue( { id: 2, poocommerce_meta: { data: 'test' } } );
 		getLastEntitySaveError = jest.fn();
 		select.mockReturnValue( {
 			getCurrentUser,
@@ -43,7 +43,7 @@ describe( 'updateWoocommerceUserMeta', () => {
 		await updateWoocommerceUserMeta( { newvalue: 'test' } );
 		expect( saveUser ).toHaveBeenCalledWith( {
 			id: 2,
-			woocommerce_meta: {
+			poocommerce_meta: {
 				data: 'test',
 				newvalue: 'test',
 			},
@@ -57,7 +57,7 @@ describe( 'updateWoocommerceUserMeta', () => {
 		} );
 		expect( saveUser ).toHaveBeenCalledWith( {
 			id: 2,
-			woocommerce_meta: {
+			poocommerce_meta: {
 				data: 'test',
 				newvalue: 'test',
 				anumber: '123',
@@ -75,10 +75,10 @@ describe( 'updateWoocommerceUserMeta', () => {
 		expect( data.error ).toEqual( 'a error' );
 	} );
 
-	test( 'it should return the users woocommerce_meta after successful save', async () => {
+	test( 'it should return the users poocommerce_meta after successful save', async () => {
 		saveUser.mockReturnValue(
 			Promise.resolve( {
-				woocommerce_meta: {
+				poocommerce_meta: {
 					updated: 'updated',
 				},
 			} )

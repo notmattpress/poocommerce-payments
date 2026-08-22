@@ -29,7 +29,7 @@ const RefundStatus: React.FC< RefundStatusProps > = ( {
 	return (
 		<section className="wcpay-dispute-evidence-refund-status">
 			<h3 className="wcpay-dispute-evidence-refund-status__heading">
-				{ __( 'Refund status', 'woocommerce-payments' ) }
+				{ __( 'Refund status', 'poocommerce-payments' ) }
 			</h3>
 			<div className="wcpay-dispute-evidence-refund-status__field-group">
 				<RadioControl
@@ -38,14 +38,14 @@ const RefundStatus: React.FC< RefundStatusProps > = ( {
 						{
 							label: __(
 								'Refund has been issued',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							value: 'refund_has_been_issued',
 						},
 						{
 							label: __(
 								'Refund was not owed',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							value: 'refund_was_not_owed',
 						},
