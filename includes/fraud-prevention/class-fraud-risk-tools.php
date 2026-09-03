@@ -2,7 +2,7 @@
 /**
  * Class Fraud_Risk_Tools
  *
- * @package WooCommerce\Payments\Fraud_Risk_Tools
+ * @package PooCommerce\Payments\Fraud_Risk_Tools
  */
 
 namespace WCPay\Fraud_Prevention;
@@ -76,7 +76,7 @@ class Fraud_Risk_Tools {
 	 * @return void
 	 */
 	public function init_hooks() {
-		if ( is_admin() && current_user_can( 'manage_woocommerce' ) ) {
+		if ( is_admin() && current_user_can( 'manage_poocommerce' ) ) {
 			add_action( 'admin_menu', [ $this, 'init_advanced_settings_page' ] );
 		}
 	}
@@ -103,7 +103,7 @@ class Fraud_Risk_Tools {
 		wc_admin_register_page(
 			[
 				'id'       => 'wc-payments-fraud-protection',
-				'title'    => __( 'Fraud protection', 'woocommerce-payments' ),
+				'title'    => __( 'Fraud protection', 'poocommerce-payments' ),
 				'parent'   => 'wc-payments',
 				'path'     => '/payments/fraud-protection',
 				'nav_args' => [
@@ -315,20 +315,20 @@ class Fraud_Risk_Tools {
 	public static function get_ruleset_result_labels( array $ruleset_results ): array {
 		$mapping = [
 			Rule::FRAUD_OUTCOME_REVIEW => [
-				self::RULE_AVS_VERIFICATION         => __( 'Place in review if the AVS verification fails', 'woocommerce-payments' ),
-				self::RULE_ADDRESS_MISMATCH         => __( 'Place in review if the shipping address country differs from the billing address country', 'woocommerce-payments' ),
-				self::RULE_INTERNATIONAL_IP_ADDRESS => __( 'Place in review if the country resolved from customer IP is not listed in your selling countries', 'woocommerce-payments' ),
-				self::RULE_IP_ADDRESS_MISMATCH      => __( 'Place in review if the order originates from a country different from the shipping address country', 'woocommerce-payments' ),
-				self::RULE_ORDER_ITEMS_THRESHOLD    => __( 'Place in review if the items count is not in your defined range', 'woocommerce-payments' ),
-				self::RULE_PURCHASE_PRICE_THRESHOLD => __( 'Place in review if the purchase price is not in your defined range', 'woocommerce-payments' ),
+				self::RULE_AVS_VERIFICATION         => __( 'Place in review if the AVS verification fails', 'poocommerce-payments' ),
+				self::RULE_ADDRESS_MISMATCH         => __( 'Place in review if the shipping address country differs from the billing address country', 'poocommerce-payments' ),
+				self::RULE_INTERNATIONAL_IP_ADDRESS => __( 'Place in review if the country resolved from customer IP is not listed in your selling countries', 'poocommerce-payments' ),
+				self::RULE_IP_ADDRESS_MISMATCH      => __( 'Place in review if the order originates from a country different from the shipping address country', 'poocommerce-payments' ),
+				self::RULE_ORDER_ITEMS_THRESHOLD    => __( 'Place in review if the items count is not in your defined range', 'poocommerce-payments' ),
+				self::RULE_PURCHASE_PRICE_THRESHOLD => __( 'Place in review if the purchase price is not in your defined range', 'poocommerce-payments' ),
 			],
 			Rule::FRAUD_OUTCOME_BLOCK  => [
-				self::RULE_AVS_VERIFICATION         => __( 'Block if the AVS verification fails', 'woocommerce-payments' ),
-				self::RULE_ADDRESS_MISMATCH         => __( 'Block if the shipping address differs from the billing address', 'woocommerce-payments' ),
-				self::RULE_INTERNATIONAL_IP_ADDRESS => __( 'Block if the country resolved from customer IP is not listed in your selling countries', 'woocommerce-payments' ),
-				self::RULE_IP_ADDRESS_MISMATCH      => __( 'Block if the order originates from a country different from the shipping address country', 'woocommerce-payments' ),
-				self::RULE_ORDER_ITEMS_THRESHOLD    => __( 'Block if the items count is not in your defined range', 'woocommerce-payments' ),
-				self::RULE_PURCHASE_PRICE_THRESHOLD => __( 'Block if the purchase price is not in your defined range', 'woocommerce-payments' ),
+				self::RULE_AVS_VERIFICATION         => __( 'Block if the AVS verification fails', 'poocommerce-payments' ),
+				self::RULE_ADDRESS_MISMATCH         => __( 'Block if the shipping address differs from the billing address', 'poocommerce-payments' ),
+				self::RULE_INTERNATIONAL_IP_ADDRESS => __( 'Block if the country resolved from customer IP is not listed in your selling countries', 'poocommerce-payments' ),
+				self::RULE_IP_ADDRESS_MISMATCH      => __( 'Block if the order originates from a country different from the shipping address country', 'poocommerce-payments' ),
+				self::RULE_ORDER_ITEMS_THRESHOLD    => __( 'Block if the items count is not in your defined range', 'poocommerce-payments' ),
+				self::RULE_PURCHASE_PRICE_THRESHOLD => __( 'Block if the purchase price is not in your defined range', 'poocommerce-payments' ),
 			],
 		];
 
@@ -366,7 +366,7 @@ class Fraud_Risk_Tools {
 	 * @return  string  The related operator.
 	 */
 	private static function get_selling_locations_type_operator() {
-		$selling_locations_type = get_option( 'woocommerce_allowed_countries', 'all' );
+		$selling_locations_type = get_option( 'poocommerce_allowed_countries', 'all' );
 		if ( 'specific' === $selling_locations_type ) {
 				return Check::OPERATOR_NOT_IN;
 		}
@@ -379,12 +379,12 @@ class Fraud_Risk_Tools {
 	 * @return  string  The array imploded with | character.
 	 */
 	private static function get_selling_locations_string() {
-		$selling_locations_type = get_option( 'woocommerce_allowed_countries', 'all' );
+		$selling_locations_type = get_option( 'poocommerce_allowed_countries', 'all' );
 		switch ( $selling_locations_type ) {
 			case 'specific':
-				return strtolower( implode( '|', get_option( 'woocommerce_specific_allowed_countries', [] ) ) );
+				return strtolower( implode( '|', get_option( 'poocommerce_specific_allowed_countries', [] ) ) );
 			case 'all_except':
-				return strtolower( implode( '|', get_option( 'woocommerce_all_except_countries', [] ) ) );
+				return strtolower( implode( '|', get_option( 'poocommerce_all_except_countries', [] ) ) );
 			case 'all':
 				return '';
 			default:

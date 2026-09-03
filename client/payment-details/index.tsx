@@ -2,7 +2,7 @@
  * External dependencies
  */
 import React from 'react';
-import { getQuery, updateQueryString } from '@woocommerce/navigation';
+import { getQuery, updateQueryString } from '@poocommerce/navigation';
 
 /**
  * Internal dependencies

@@ -27,28 +27,28 @@ function disableWooOrderRefundButton( disputeStatus ) {
 	if ( isAwaitingResponse( disputeStatus ) ) {
 		tooltipText = __(
 			'Refunds and order editing are disabled during disputes.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		);
 	} else if ( isUnderReview( disputeStatus ) ) {
 		tooltipText = __(
 			'Refunds and order editing are disabled during an active dispute.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		);
 	} else if ( disputeStatus === 'lost' ) {
 		tooltipText = __(
 			'Refunds and order editing have been disabled as a result of a lost dispute.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		);
 	} else if ( disputeStatus === 'charge_refunded' ) {
 		tooltipText = __(
 			'Refunds and order editing have been disabled because the payment was refunded to resolve a dispute.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		);
 	}
 
 	jQuery( refundButton )
 		.parent()
-		.find( '.woocommerce-help-tip' )
+		.find( '.poocommerce-help-tip' )
 		.attr( {
 			// jQuery.tipTip uses the title attribute to generate the tooltip.
 			title: tooltipText,
@@ -69,7 +69,7 @@ jQuery( function ( $ ) {
 
 	maybeShowOrderNotices();
 
-	$( '#woocommerce-order-items' ).on(
+	$( '#poocommerce-order-items' ).on(
 		'click',
 		'button.refund-items',
 		function () {
@@ -92,7 +92,7 @@ jQuery( function ( $ ) {
 	);
 
 	// The Fraud & Risk metabox "Refund this payment" CTA: the refund is
-	// managed on this very screen, so open WooCommerce's inline refund panel
+	// managed on this very screen, so open PooCommerce's inline refund panel
 	// instead of leaving the page. When the panel is unavailable (e.g. refunds
 	// disabled during a dispute), fall back to the payment details link.
 	$( document ).on( 'click', '.wcpay-efw-refund-link', function ( event ) {
@@ -104,7 +104,7 @@ jQuery( function ( $ ) {
 		$( refundButton ).trigger( 'click' );
 		const refundPanel =
 			document.querySelector( '.wc-order-refund-items' ) ||
-			document.querySelector( '#woocommerce-order-items' );
+			document.querySelector( '#poocommerce-order-items' );
 		refundPanel?.scrollIntoView( {
 			behavior: 'smooth',
 			block: 'center',
@@ -116,7 +116,7 @@ jQuery( function ( $ ) {
 		let originalStatus =
 			$( 'input#original_post_status' ).val() ||
 			$( 'input#original_order_status' ).val();
-		//TODO: Remove this after https://github.com/woocommerce/woocommerce/issues/40871 is fixed.
+		//TODO: Remove this after https://github.com/poocommerce/poocommerce/issues/40871 is fixed.
 		if ( originalStatus && ! originalStatus.startsWith( 'wc-' ) ) {
 			originalStatus = 'wc-' + originalStatus;
 		}

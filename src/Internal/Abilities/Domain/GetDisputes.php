@@ -2,18 +2,18 @@
 /**
  * Get Disputes ability definition.
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Internal\Abilities\Domain;
 
-use Automattic\WooCommerce\Abilities\AbilityDefinition;
+use Automattic\PooCommerce\Abilities\AbilityDefinition;
 use WCPay\Internal\Abilities\AbilitiesRegistrar;
 
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Registers the `woocommerce-payments/get-disputes` ability.
+ * Registers the `poocommerce-payments/get-disputes` ability.
  *
  * Paginated list of disputes. Returns the WC 10.9 paginated envelope:
  * `{ disputes: [...], total_pages, page, per_page }`. `page` / `per_page`
@@ -33,7 +33,7 @@ class GetDisputes extends AbstractWCPayAbility implements AbilityDefinition {
 	 * @return string
 	 */
 	public static function get_name(): string {
-		return 'woocommerce-payments/get-disputes';
+		return 'poocommerce-payments/get-disputes';
 	}
 
 	/**
@@ -68,8 +68,8 @@ class GetDisputes extends AbstractWCPayAbility implements AbilityDefinition {
 		];
 
 		return [
-			'label'               => __( 'List disputes', 'woocommerce-payments' ),
-			'description'         => __( 'List disputes with status and date-range filters. Answers \'which disputes need response?\'.', 'woocommerce-payments' ),
+			'label'               => __( 'List disputes', 'poocommerce-payments' ),
+			'description'         => __( 'List disputes with status and date-range filters. Answers \'which disputes need response?\'.', 'poocommerce-payments' ),
 			'category'            => AbilitiesRegistrar::CATEGORY_SLUG,
 			'input_schema'        => [
 				'type'                 => 'object',
@@ -85,7 +85,7 @@ class GetDisputes extends AbstractWCPayAbility implements AbilityDefinition {
 				[ 'type' => 'object' ]
 			),
 			'execute_callback'    => [ self::class, 'execute' ],
-			'permission_callback' => [ AbilitiesRegistrar::class, 'current_user_can_manage_woocommerce' ],
+			'permission_callback' => [ AbilitiesRegistrar::class, 'current_user_can_manage_poocommerce' ],
 			'meta'                => [
 				'annotations'  => [
 					'readonly'    => true,

@@ -17,13 +17,13 @@ const formatDate = ( ymd: string ): string =>
 export const operatorLabel = ( operator: DateOperator ): string => {
 	switch ( operator ) {
 		case 'on':
-			return __( 'On', 'woocommerce-payments' );
+			return __( 'On', 'poocommerce-payments' );
 		case 'before':
-			return __( 'Before', 'woocommerce-payments' );
+			return __( 'Before', 'poocommerce-payments' );
 		case 'after':
-			return __( 'After', 'woocommerce-payments' );
+			return __( 'After', 'poocommerce-payments' );
 		case 'between':
-			return __( 'Between', 'woocommerce-payments' );
+			return __( 'Between', 'poocommerce-payments' );
 	}
 };
 
@@ -36,7 +36,7 @@ export const formatDateFilterSummary = ( value: DateFilterValue ): string => {
 	if ( value.operator === 'between' ) {
 		return sprintf(
 			/* translators: 1: range start date, 2: range end date. */
-			__( '%1$s and %2$s', 'woocommerce-payments' ),
+			__( '%1$s and %2$s', 'poocommerce-payments' ),
 			formatDate( value.value[ 0 ] ),
 			formatDate( value.value[ 1 ] )
 		);
@@ -51,7 +51,7 @@ export const formatDateFilterSummary = ( value: DateFilterValue ): string => {
 export const formatDateFilterChipLabel = ( value: DateFilterValue ): string => {
 	return sprintf(
 		/* translators: 1: operator name (On/Before/After/Between (inc)), 2: formatted date(s). */
-		__( '%1$s: %2$s', 'woocommerce-payments' ),
+		__( '%1$s: %2$s', 'poocommerce-payments' ),
 		operatorLabel( value.operator ),
 		formatDateFilterSummary( value )
 	);

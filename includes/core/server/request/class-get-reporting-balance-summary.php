@@ -2,7 +2,7 @@
 /**
  * Class file for WCPay\Core\Server\Request\Get_Reporting_Balance_Summary.
  *
- * @package WooCommerce Payments
+ * @package PooCommerce Payments
  */
 
 namespace WCPay\Core\Server\Request;
@@ -99,7 +99,7 @@ class Get_Reporting_Balance_Summary extends Request {
 				esc_html(
 					sprintf(
 						// Translators: %s is a currency code.
-						__( '%s is not a valid currency code.', 'woocommerce-payments' ),
+						__( '%s is not a valid currency code.', 'poocommerce-payments' ),
 						$currency
 					)
 				),

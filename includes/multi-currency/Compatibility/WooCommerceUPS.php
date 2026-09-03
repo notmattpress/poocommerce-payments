@@ -1,6 +1,6 @@
 <?php
 /**
- * Class WooCommerceUPS
+ * Class PooCommerceUPS
  *
  * @package WCPay\MultiCurrency\Compatibility
  */
@@ -11,9 +11,9 @@ use WCPay\MultiCurrency\MultiCurrency;
 use WCPay\MultiCurrency\Utils;
 
 /**
- * Class that controls Multi Currency Compatibility with WooCommerce UPS Plugin.
+ * Class that controls Multi Currency Compatibility with PooCommerce UPS Plugin.
  */
-class WooCommerceUPS extends BaseCompatibility {
+class PooCommerceUPS extends BaseCompatibility {
 
 	/**
 	 * Init the class.

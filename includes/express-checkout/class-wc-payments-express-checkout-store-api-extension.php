@@ -5,12 +5,12 @@
  * `payment_method_types` when the resolved currency differs from the one
  * localized at page render.
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 defined( 'ABSPATH' ) || exit;
 
-use Automattic\WooCommerce\StoreApi\Schemas\V1\CartSchema;
+use Automattic\PooCommerce\StoreApi\Schemas\V1\CartSchema;
 
 /**
  * Registers the Store API cart extension.
@@ -46,10 +46,10 @@ class WC_Payments_Express_Checkout_Store_API_Extension {
 	}
 
 	/**
-	 * Register the extension. Safe to call once on `woocommerce_blocks_loaded`.
+	 * Register the extension. Safe to call once on `poocommerce_blocks_loaded`.
 	 */
 	public function init() {
-		if ( ! function_exists( 'woocommerce_store_api_register_endpoint_data' ) ) {
+		if ( ! function_exists( 'poocommerce_store_api_register_endpoint_data' ) ) {
 			return;
 		}
 
@@ -57,7 +57,7 @@ class WC_Payments_Express_Checkout_Store_API_Extension {
 			return;
 		}
 
-		woocommerce_store_api_register_endpoint_data(
+		poocommerce_store_api_register_endpoint_data(
 			[
 				'endpoint'        => CartSchema::IDENTIFIER,
 				'namespace'       => self::NAMESPACE_KEY,
@@ -100,7 +100,7 @@ class WC_Payments_Express_Checkout_Store_API_Extension {
 	public function extend_cart_schema() {
 		return [
 			'express_checkout_methods' => [
-				'description' => __( 'Express Checkout methods available for the cart\'s current currency.', 'woocommerce-payments' ),
+				'description' => __( 'Express Checkout methods available for the cart\'s current currency.', 'poocommerce-payments' ),
 				'type'        => 'array',
 				'context'     => [ 'view', 'edit' ],
 				'readonly'    => true,

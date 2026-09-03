@@ -2,7 +2,7 @@
 /**
  * Class WCPay_Multi_Currency_Caching_Environment_Tests
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\MultiCurrency\CachingEnvironment;

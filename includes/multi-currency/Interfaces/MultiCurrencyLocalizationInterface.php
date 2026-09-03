@@ -2,7 +2,7 @@
 /**
  * Interface MultiCurrencyLocalizationInterface
  *
- * @package WooCommerce\Payments\MultiCurrency\Interfaces
+ * @package PooCommerce\Payments\MultiCurrency\Interfaces
  */
 
 namespace WCPay\MultiCurrency\Interfaces;

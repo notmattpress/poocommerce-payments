@@ -13,47 +13,47 @@ import { __ } from '@wordpress/i18n';
  */
 const taxDescriptions: Record< string, string > = {
 	// European Union VAT
-	'AT VAT': __( 'AT VAT', 'woocommerce-payments' ), // Austria
-	'BE VAT': __( 'BE VAT', 'woocommerce-payments' ), // Belgium
-	'BG VAT': __( 'BG VAT', 'woocommerce-payments' ), // Bulgaria
-	'CY VAT': __( 'CY VAT', 'woocommerce-payments' ), // Cyprus
-	'CZ VAT': __( 'CZ VAT', 'woocommerce-payments' ), // Czech Republic
-	'DE VAT': __( 'DE VAT', 'woocommerce-payments' ), // Germany
-	'DK VAT': __( 'DK VAT', 'woocommerce-payments' ), // Denmark
-	'EE VAT': __( 'EE VAT', 'woocommerce-payments' ), // Estonia
-	'ES VAT': __( 'ES VAT', 'woocommerce-payments' ), // Spain
-	'FI VAT': __( 'FI VAT', 'woocommerce-payments' ), // Finland
-	'FR VAT': __( 'FR VAT', 'woocommerce-payments' ), // France
-	'GB VAT': __( 'UK VAT', 'woocommerce-payments' ), // United Kingdom
-	'GR VAT': __( 'GR VAT', 'woocommerce-payments' ), // Greece
-	'HR VAT': __( 'HR VAT', 'woocommerce-payments' ), // Croatia
-	'HU VAT': __( 'HU VAT', 'woocommerce-payments' ), // Hungary
-	'IE VAT': __( 'IE VAT', 'woocommerce-payments' ), // Ireland
-	'IT VAT': __( 'IT VAT', 'woocommerce-payments' ), // Italy
-	'LT VAT': __( 'LT VAT', 'woocommerce-payments' ), // Lithuania
-	'LU VAT': __( 'LU VAT', 'woocommerce-payments' ), // Luxembourg
-	'LV VAT': __( 'LV VAT', 'woocommerce-payments' ), // Latvia
-	'MT VAT': __( 'MT VAT', 'woocommerce-payments' ), // Malta
-	'NO VAT': __( 'NO VAT', 'woocommerce-payments' ), // Norway
-	'NL VAT': __( 'NL VAT', 'woocommerce-payments' ), // Netherlands
-	'PL VAT': __( 'PL VAT', 'woocommerce-payments' ), // Poland
-	'PT VAT': __( 'PT VAT', 'woocommerce-payments' ), // Portugal
-	'RO VAT': __( 'RO VAT', 'woocommerce-payments' ), // Romania
-	'SE VAT': __( 'SE VAT', 'woocommerce-payments' ), // Sweden
-	'SI VAT': __( 'SI VAT', 'woocommerce-payments' ), // Slovenia
-	'SK VAT': __( 'SK VAT', 'woocommerce-payments' ), // Slovakia
+	'AT VAT': __( 'AT VAT', 'poocommerce-payments' ), // Austria
+	'BE VAT': __( 'BE VAT', 'poocommerce-payments' ), // Belgium
+	'BG VAT': __( 'BG VAT', 'poocommerce-payments' ), // Bulgaria
+	'CY VAT': __( 'CY VAT', 'poocommerce-payments' ), // Cyprus
+	'CZ VAT': __( 'CZ VAT', 'poocommerce-payments' ), // Czech Republic
+	'DE VAT': __( 'DE VAT', 'poocommerce-payments' ), // Germany
+	'DK VAT': __( 'DK VAT', 'poocommerce-payments' ), // Denmark
+	'EE VAT': __( 'EE VAT', 'poocommerce-payments' ), // Estonia
+	'ES VAT': __( 'ES VAT', 'poocommerce-payments' ), // Spain
+	'FI VAT': __( 'FI VAT', 'poocommerce-payments' ), // Finland
+	'FR VAT': __( 'FR VAT', 'poocommerce-payments' ), // France
+	'GB VAT': __( 'UK VAT', 'poocommerce-payments' ), // United Kingdom
+	'GR VAT': __( 'GR VAT', 'poocommerce-payments' ), // Greece
+	'HR VAT': __( 'HR VAT', 'poocommerce-payments' ), // Croatia
+	'HU VAT': __( 'HU VAT', 'poocommerce-payments' ), // Hungary
+	'IE VAT': __( 'IE VAT', 'poocommerce-payments' ), // Ireland
+	'IT VAT': __( 'IT VAT', 'poocommerce-payments' ), // Italy
+	'LT VAT': __( 'LT VAT', 'poocommerce-payments' ), // Lithuania
+	'LU VAT': __( 'LU VAT', 'poocommerce-payments' ), // Luxembourg
+	'LV VAT': __( 'LV VAT', 'poocommerce-payments' ), // Latvia
+	'MT VAT': __( 'MT VAT', 'poocommerce-payments' ), // Malta
+	'NO VAT': __( 'NO VAT', 'poocommerce-payments' ), // Norway
+	'NL VAT': __( 'NL VAT', 'poocommerce-payments' ), // Netherlands
+	'PL VAT': __( 'PL VAT', 'poocommerce-payments' ), // Poland
+	'PT VAT': __( 'PT VAT', 'poocommerce-payments' ), // Portugal
+	'RO VAT': __( 'RO VAT', 'poocommerce-payments' ), // Romania
+	'SE VAT': __( 'SE VAT', 'poocommerce-payments' ), // Sweden
+	'SI VAT': __( 'SI VAT', 'poocommerce-payments' ), // Slovenia
+	'SK VAT': __( 'SK VAT', 'poocommerce-payments' ), // Slovakia
 
 	// GST Countries
-	'AU GST': __( 'AU GST', 'woocommerce-payments' ), // Australia
-	'NZ GST': __( 'NZ GST', 'woocommerce-payments' ), // New Zealand
-	'SG GST': __( 'SG GST', 'woocommerce-payments' ), // Singapore
+	'AU GST': __( 'AU GST', 'poocommerce-payments' ), // Australia
+	'NZ GST': __( 'NZ GST', 'poocommerce-payments' ), // New Zealand
+	'SG GST': __( 'SG GST', 'poocommerce-payments' ), // Singapore
 
 	// Other Tax Systems
-	'CH VAT': __( 'CH VAT', 'woocommerce-payments' ), // Switzerland
-	'JP JCT': __( 'JP JCT', 'woocommerce-payments' ), // Japan Consumption Tax
+	'CH VAT': __( 'CH VAT', 'poocommerce-payments' ), // Switzerland
+	'JP JCT': __( 'JP JCT', 'poocommerce-payments' ), // Japan Consumption Tax
 
 	// Fallback for unknown tax descriptions
-	default: __( 'Tax', 'woocommerce-payments' ),
+	default: __( 'Tax', 'poocommerce-payments' ),
 };
 
 /**

@@ -2,7 +2,7 @@
 /**
  * Class file for WCPay\Core\WC_Payments_Customer_Service_API.
  *
- * @package WooCommerce Payments
+ * @package PooCommerce Payments
  */
 
 namespace WCPay\Core;

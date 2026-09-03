@@ -50,17 +50,17 @@ const formatPaymentMethodDetails = ( charge ) => {
  * Placeholders to display while loading.
  */
 const paymentMethodPlaceholders = {
-	bankCode: __( 'bank code placeholder', 'woocommerce-payments' ),
-	bankName: __( 'bank name placeholder', 'woocommerce-payments' ),
-	bic: __( 'bic placeholder', 'woocommerce-payments' ),
+	bankCode: __( 'bank code placeholder', 'poocommerce-payments' ),
+	bankName: __( 'bank name placeholder', 'poocommerce-payments' ),
+	bic: __( 'bic placeholder', 'poocommerce-payments' ),
 	last4: '0000',
-	verifiedName: __( 'verified name placeholder', 'woocommerce-payments' ),
-	fingerprint: __( 'fingerprint placeholder', 'woocommerce-payments' ),
-	id: __( 'id placeholder', 'woocommerce-payments' ),
-	name: __( 'name placeholder', 'woocommerce-payments' ),
-	email: __( 'email placeholder', 'woocommerce-payments' ),
-	formattedAddress: __( 'address placeholder', 'woocommerce-payments' ),
-	country: __( 'country placeholder', 'woocommerce-payments' ),
+	verifiedName: __( 'verified name placeholder', 'poocommerce-payments' ),
+	fingerprint: __( 'fingerprint placeholder', 'poocommerce-payments' ),
+	id: __( 'id placeholder', 'poocommerce-payments' ),
+	name: __( 'name placeholder', 'poocommerce-payments' ),
+	email: __( 'email placeholder', 'poocommerce-payments' ),
+	formattedAddress: __( 'address placeholder', 'poocommerce-payments' ),
+	country: __( 'country placeholder', 'poocommerce-payments' ),
 };
 
 const SofortDetails = ( { charge = {}, isLoading } ) => {
@@ -89,35 +89,35 @@ const SofortDetails = ( { charge = {}, isLoading } ) => {
 			<div className="payment-method-details__column">
 				<Detail
 					isLoading={ isLoading }
-					label={ __( 'ID', 'woocommerce-payments' ) }
+					label={ __( 'ID', 'poocommerce-payments' ) }
 				>
 					{ id }
 				</Detail>
 
 				<Detail
 					isLoading={ isLoading }
-					label={ __( 'Bank code', 'woocommerce-payments' ) }
+					label={ __( 'Bank code', 'poocommerce-payments' ) }
 				>
 					{ bankCode }
 				</Detail>
 
 				<Detail
 					isLoading={ isLoading }
-					label={ __( 'Bank name', 'woocommerce-payments' ) }
+					label={ __( 'Bank name', 'poocommerce-payments' ) }
 				>
 					{ bankName }
 				</Detail>
 
 				<Detail
 					isLoading={ isLoading }
-					label={ __( 'BIC', 'woocommerce-payments' ) }
+					label={ __( 'BIC', 'poocommerce-payments' ) }
 				>
 					{ bic }
 				</Detail>
 
 				<Detail
 					isLoading={ isLoading }
-					label={ __( 'IBAN', 'woocommerce-payments' ) }
+					label={ __( 'IBAN', 'poocommerce-payments' ) }
 				>
 					&bull;&bull;&bull;&bull;&nbsp;{ last4 }
 				</Detail>
@@ -126,28 +126,28 @@ const SofortDetails = ( { charge = {}, isLoading } ) => {
 			<div className="payment-method-details__column">
 				<Detail
 					isLoading={ isLoading }
-					label={ __( 'Verified name', 'woocommerce-payments' ) }
+					label={ __( 'Verified name', 'poocommerce-payments' ) }
 				>
 					{ verifiedName }
 				</Detail>
 
 				<Detail
 					isLoading={ isLoading }
-					label={ __( 'Owner', 'woocommerce-payments' ) }
+					label={ __( 'Owner', 'poocommerce-payments' ) }
 				>
 					{ name }
 				</Detail>
 
 				<Detail
 					isLoading={ isLoading }
-					label={ __( 'Owner email', 'woocommerce-payments' ) }
+					label={ __( 'Owner email', 'poocommerce-payments' ) }
 				>
 					{ email }
 				</Detail>
 
 				<Detail
 					isLoading={ isLoading }
-					label={ __( 'Address', 'woocommerce-payments' ) }
+					label={ __( 'Address', 'poocommerce-payments' ) }
 				>
 					<span
 						dangerouslySetInnerHTML={ {
@@ -158,7 +158,7 @@ const SofortDetails = ( { charge = {}, isLoading } ) => {
 
 				<Detail
 					isLoading={ isLoading }
-					label={ __( 'Origin', 'woocommerce-payments' ) }
+					label={ __( 'Origin', 'poocommerce-payments' ) }
 				>
 					{ country }
 				</Detail>

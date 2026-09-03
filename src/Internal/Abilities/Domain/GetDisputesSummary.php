@@ -2,18 +2,18 @@
 /**
  * Get Disputes Summary ability definition.
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Internal\Abilities\Domain;
 
-use Automattic\WooCommerce\Abilities\AbilityDefinition;
+use Automattic\PooCommerce\Abilities\AbilityDefinition;
 use WCPay\Internal\Abilities\AbilitiesRegistrar;
 
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Registers the `woocommerce-payments/get-disputes-summary` ability.
+ * Registers the `poocommerce-payments/get-disputes-summary` ability.
  *
  * Filters-only read that returns aggregate counts of disputes by status.
  * Answers "how many disputes are pending response right now?".
@@ -28,7 +28,7 @@ class GetDisputesSummary implements AbilityDefinition {
 	 * @return string
 	 */
 	public static function get_name(): string {
-		return 'woocommerce-payments/get-disputes-summary';
+		return 'poocommerce-payments/get-disputes-summary';
 	}
 
 	/**
@@ -38,8 +38,8 @@ class GetDisputesSummary implements AbilityDefinition {
 	 */
 	public static function get_registration_args(): array {
 		return [
-			'label'               => __( 'Get disputes summary', 'woocommerce-payments' ),
-			'description'         => __( 'Return aggregate counts of disputes by status. Answers \'how many disputes are pending response right now?\'.', 'woocommerce-payments' ),
+			'label'               => __( 'Get disputes summary', 'poocommerce-payments' ),
+			'description'         => __( 'Return aggregate counts of disputes by status. Answers \'how many disputes are pending response right now?\'.', 'poocommerce-payments' ),
 			'category'            => AbilitiesRegistrar::CATEGORY_SLUG,
 			'input_schema'        => [
 				'type'                 => 'object',
@@ -66,7 +66,7 @@ class GetDisputesSummary implements AbilityDefinition {
 				'additionalProperties' => false,
 			],
 			'execute_callback'    => [ self::class, 'execute' ],
-			'permission_callback' => [ AbilitiesRegistrar::class, 'current_user_can_manage_woocommerce' ],
+			'permission_callback' => [ AbilitiesRegistrar::class, 'current_user_can_manage_poocommerce' ],
 			'meta'                => [
 				'annotations'  => [
 					'readonly'    => true,

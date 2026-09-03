@@ -15,7 +15,7 @@ import request from '../../utils/request';
 import usePreferredCard from './use-preferred-card';
 
 export const PAYMENT_METHOD_NAME_WOOPAY_EXPRESS_CHECKOUT =
-	'woocommerce_payments_woopay_express_checkout';
+	'poocommerce_payments_woopay_express_checkout';
 
 // Create an API object, which will be used throughout the checkout.
 const api = new WCPayAPI(
@@ -70,9 +70,9 @@ const wooPayExpressCheckoutPaymentMethod = () => ( {
 	title: 'WooPayments - WooPay',
 	description: __(
 		'A one-click, high-converting, secure checkout built for Woo — themed to your brand.',
-		'woocommerce-payments'
+		'poocommerce-payments'
 	),
-	gatewayId: 'woocommerce_payments',
+	gatewayId: 'poocommerce_payments',
 	content: <WooPayExpressCheckoutButtonContainer />,
 	edit: (
 		<WoopayExpressCheckoutButton
