@@ -54,7 +54,7 @@ export function* getDocuments( query ) {
 		yield controls.dispatch(
 			'core/notices',
 			'createErrorNotice',
-			__( 'Error retrieving documents.', 'woocommerce-payments' )
+			__( 'Error retrieving documents.', 'poocommerce-payments' )
 		);
 		yield updateErrorForDocuments( query, null, e );
 	}

@@ -15,23 +15,23 @@ export interface FeeBreakdownLabelContext {
 }
 
 const rowLabels: Record< string, string > = {
-	base: __( 'Base fee', 'woocommerce-payments' ),
+	base: __( 'Base fee', 'poocommerce-payments' ),
 	'additional.international': __(
 		'International card fee',
-		'woocommerce-payments'
+		'poocommerce-payments'
 	),
-	'additional.fx': __( 'Currency conversion fee', 'woocommerce-payments' ),
+	'additional.fx': __( 'Currency conversion fee', 'poocommerce-payments' ),
 	'additional.wcpay-subscription': __(
 		'Subscription transaction fee',
-		'woocommerce-payments'
+		'poocommerce-payments'
 	),
-	'additional.device': __( 'Device fee', 'woocommerce-payments' ),
-	dispute_fee: __( 'Dispute fee', 'woocommerce-payments' ),
-	dispute_fee_refund: __( 'Dispute fee refund', 'woocommerce-payments' ),
+	'additional.device': __( 'Device fee', 'poocommerce-payments' ),
+	dispute_fee: __( 'Dispute fee', 'poocommerce-payments' ),
+	dispute_fee_refund: __( 'Dispute fee refund', 'poocommerce-payments' ),
 	// Server emits this on totals.fee.key when our application fee was
 	// refunded — the merchant's effective fee is only Stripe's passthrough,
 	// so the headline must not still say "WooPayments fee".
-	processing_fee: __( 'Processing fee', 'woocommerce-payments' ),
+	processing_fee: __( 'Processing fee', 'poocommerce-payments' ),
 };
 
 /**
@@ -56,14 +56,14 @@ export function resolveFeeRowLabel(
 		return rowLabels[ key ];
 	}
 	if ( key.startsWith( 'discount.' ) ) {
-		return __( 'Discount', 'woocommerce-payments' );
+		return __( 'Discount', 'poocommerce-payments' );
 	}
 	if ( key === 'tax_on_fee' ) {
 		const description =
 			typeof context.meta?.description === 'string'
 				? context.meta.description
 				: undefined;
-		return description ?? __( 'Tax on fee', 'woocommerce-payments' );
+		return description ?? __( 'Tax on fee', 'poocommerce-payments' );
 	}
 	return key;
 }
@@ -102,7 +102,7 @@ export function resolveNoteText(
 	if ( refundedAmount === undefined || ! refundedCurrency ) {
 		return __(
 			'WooPayments refunded its application fee on this transaction.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		);
 	}
 
@@ -117,7 +117,7 @@ export function resolveNoteText(
 			/* translators: %s is a monetary amount */
 			__(
 				'WooPayments refunded its %s application fee on this transaction.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			refundedFormatted
 		);
@@ -133,7 +133,7 @@ export function resolveNoteText(
 		/* translators: %1$s is the refunded amount, %2$s is the pre-refund fee amount */
 		__(
 			'WooPayments refunded %1$s of its %2$s application fee on this transaction.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		refundedFormatted,
 		originalFormatted

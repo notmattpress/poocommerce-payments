@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_In_Person_Payments_Receipts_Service_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 /**

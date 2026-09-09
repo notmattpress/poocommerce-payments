@@ -32,7 +32,7 @@ test.describe( 'Disputes > View dispute details via disputed order notice', () =
 
 		// Get the order ID
 		const orderIdField = shopperPage.locator(
-			'.woocommerce-order-overview__order.order > strong'
+			'.poocommerce-order-overview__order.order > strong'
 		);
 		orderId = await orderIdField.innerText();
 	} );

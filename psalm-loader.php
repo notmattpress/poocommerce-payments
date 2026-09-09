@@ -2,15 +2,15 @@
 // phpcs:ignoreFile - This is related to the Psalm static code analysis, and not part of the plugin.
 
 require_once __DIR__ . '/vendor/php-stubs/wordpress-stubs/wordpress-stubs.php';
-require_once __DIR__ . '/vendor/php-stubs/woocommerce-stubs/woocommerce-stubs.php';
-require_once __DIR__ . '/vendor/php-stubs/woocommerce-stubs/woocommerce-packages-stubs.php';
+require_once __DIR__ . '/vendor/php-stubs/poocommerce-stubs/poocommerce-stubs.php';
+require_once __DIR__ . '/vendor/php-stubs/poocommerce-stubs/poocommerce-packages-stubs.php';
 
 require_once __DIR__ . '/vendor/autoload.php';
 
 /* required in order to load the classes included later on */
 define( 'ABSPATH', __DIR__ );
 define( 'WCPAY_ABSPATH', __DIR__ . '/' );
-define( 'WCPAY_PLUGIN_FILE', __DIR__ . '/woocommerce-payments.php' );
+define( 'WCPAY_PLUGIN_FILE', __DIR__ . '/poocommerce-payments.php' );
 
 require_once __DIR__ . '/includes/class-wc-payments-features.php';
 require_once __DIR__ . '/includes/class-wc-payments.php';

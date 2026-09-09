@@ -49,7 +49,7 @@ const CaptureAuthorizationButton: React.FC<
 			disabled={ ( isLoading && isCaptureRequested ) || isRequesting } // Button should be disabled when the capture is requested
 			__next40pxDefaultSize
 		>
-			{ children || __( 'Capture', 'woocommerce-payments' ) }
+			{ children || __( 'Capture', 'poocommerce-payments' ) }
 		</Button>
 	);
 };

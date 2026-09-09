@@ -2,7 +2,7 @@
 /**
  * Class Payment_Method_Deprecation_Settings_Update
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Migrations;
@@ -64,7 +64,7 @@ class Payment_Method_Deprecation_Settings_Update {
 	 * Checks whether we should trigger the event.
 	 */
 	public function maybe_migrate() {
-		$previous_version = get_option( 'woocommerce_woocommerce_payments_version' );
+		$previous_version = get_option( 'poocommerce_poocommerce_payments_version' );
 		if ( version_compare( $this->migration_version, $previous_version, '>' ) ) {
 			$this->migrate();
 		}

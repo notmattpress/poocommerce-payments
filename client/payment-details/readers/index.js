@@ -4,13 +4,13 @@
 import React from 'react';
 import { __ } from '@wordpress/i18n';
 import { Card, CardBody } from '@wordpress/components';
-import { getQuery } from '@woocommerce/navigation';
+import { getQuery } from '@poocommerce/navigation';
 import {
 	downloadCSVFile,
 	generateCSVDataFromTable,
 	generateCSVFileName,
-} from '@woocommerce/csv-export';
-import { TableCard } from '@woocommerce/components';
+} from '@poocommerce/csv-export';
+import { TableCard } from '@poocommerce/components';
 
 /**
  * Internal dependencies
@@ -39,7 +39,7 @@ const PaymentCardReaderChargeDetails = ( props ) => {
 					<CardBody>
 						{ __(
 							'Readers details not loaded',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 					</CardBody>
 				</Card>
@@ -62,25 +62,25 @@ const RenderPaymentCardReaderChargeDetails = ( props ) => {
 	const headers = [
 		{
 			key: 'reader_id',
-			label: __( 'Reader id', 'woocommerce-payments' ),
+			label: __( 'Reader id', 'poocommerce-payments' ),
 			visible: true,
 			isLeftAligned: true,
 		},
 		{
 			key: 'status',
-			label: __( 'Status', 'woocommerce-payments' ),
+			label: __( 'Status', 'poocommerce-payments' ),
 			visible: true,
 			isLeftAligned: true,
 		},
 		{
 			key: 'count',
-			label: __( 'Transactions', 'woocommerce-payments' ),
+			label: __( 'Transactions', 'poocommerce-payments' ),
 			visible: true,
 			isLeftAligned: true,
 		},
 		{
 			key: 'fee',
-			label: __( 'Fee', 'woocommerce-payments' ),
+			label: __( 'Fee', 'poocommerce-payments' ),
 			visible: true,
 			isLeftAligned: true,
 		},
@@ -136,8 +136,8 @@ const RenderPaymentCardReaderChargeDetails = ( props ) => {
 		<Page maxWidth={ 1032 } className="wcpay-payment-details">
 			<TestModeNotice currentPage="payments" isDetailsView={ true } />
 			<TableCard
-				className="transactions-list woocommerce-report-table has-search"
-				title={ __( 'Card readers', 'woocommerce-payments' ) }
+				className="transactions-list poocommerce-report-table has-search"
+				title={ __( 'Card readers', 'poocommerce-payments' ) }
 				isLoading={ isLoading }
 				rowsPerPage={ parseInt( getQuery().per_page ?? '', 10 ) || 25 }
 				totalRows={ rows.length }

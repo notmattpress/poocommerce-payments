@@ -2,7 +2,7 @@
 /**
  * Tests for WCPay\Internal\Abilities\Domain\GetFeesSummary.
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 namespace WCPay\Tests\Internal\Abilities\Domain;
@@ -17,7 +17,7 @@ use WCPay\Internal\Abilities\Domain\GetFeesSummary;
 class GetFeesSummaryTest extends WCPAY_UnitTestCase {
 
 	public function test_name(): void {
-		$this->assertSame( 'woocommerce-payments/get-fees-summary', GetFeesSummary::get_name() );
+		$this->assertSame( 'poocommerce-payments/get-fees-summary', GetFeesSummary::get_name() );
 	}
 
 	public function test_registration_args_read_annotations(): void {

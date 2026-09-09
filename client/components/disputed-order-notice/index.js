@@ -105,7 +105,7 @@ const DisputedOrderNoticeHandler = ( { chargeId, onDisableOrderRefund } ) => {
 				<DisputeOrderLockedNotice
 					message={ __(
 						'This order has an active payment dispute. Refunds and order editing are disabled.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 					disputeDetailsUrl={ disputeDetailsUrl }
 				/>
@@ -117,13 +117,13 @@ const DisputedOrderNoticeHandler = ( { chargeId, onDisableOrderRefund } ) => {
 		// been refunded as part of `charge.dispute.closed` webhook handler.
 		// This may be dead code. Leaving in for now as this is consistent with
 		// the logic before this PR.
-		// https://github.com/Automattic/woocommerce-payments/pull/7557
+		// https://github.com/Automattic/poocommerce-payments/pull/7557
 		if ( disputes.some( ( dispute ) => dispute.status === 'lost' ) ) {
 			return (
 				<DisputeOrderLockedNotice
 					message={ __(
 						'Refunds and order editing have been disabled as a result of a lost dispute.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 					disputeDetailsUrl={ disputeDetailsUrl }
 				/>
@@ -204,12 +204,12 @@ const UrgentDisputeNoticeBody = ( {
 		? __(
 				// Translators: %1$s is the formatted dispute amount, %2$s is the dispute reason, %3$s is the due date.
 				"Please resolve the inquiry on this order of %1$s labeled '%2$s' by %3$s.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 		  )
 		: __(
 				// Translators: %1$s is the formatted dispute amount, %2$s is the dispute reason, %3$s is the due date.
 				"Please resolve the dispute on this order of %1$s labeled '%2$s' by %3$s.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 		  );
 
 	const message = sprintf(
@@ -225,12 +225,12 @@ const UrgentDisputeNoticeBody = ( {
 			'(%s day left)',
 			'(%s days left)',
 			countdownDays,
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		countdownDays
 	);
 	if ( countdownDays < 1 ) {
-		suffix = __( '(Last day today)', 'woocommerce-payments' );
+		suffix = __( '(Last day today)', 'poocommerce-payments' );
 	}
 
 	return (
@@ -250,12 +250,12 @@ const RegularDisputeNoticeBody = ( {
 		? __(
 				// Translators: %1$s is the formatted dispute amount, %2$s is the dispute reason.
 				"Please resolve the inquiry on this order of %1$s with reason '%2$s'.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 		  )
 		: __(
 				// Translators: %1$s is the formatted dispute amount, %2$s is the dispute reason.
 				"This order has a payment dispute for %1$s for the reason '%2$s'. ",
-				'woocommerce-payments'
+				'poocommerce-payments'
 		  );
 
 	const boldMessage = sprintf(
@@ -266,7 +266,7 @@ const RegularDisputeNoticeBody = ( {
 
 	const suffix = sprintf(
 		// Translators: %1$s is the dispute due date.
-		__( 'Please respond before %1$s.', 'woocommerce-payments' ),
+		__( 'Please respond before %1$s.', 'poocommerce-payments' ),
 		formatDateTimeFromString( dueBy.toISOString() )
 	);
 
@@ -297,8 +297,8 @@ const DisputeNeedsResponseNotice = ( {
 
 	const buttonLabel =
 		countdownDays < 1
-			? __( 'Respond today', 'woocommerce-payments' )
-			: __( 'Respond now', 'woocommerce-payments' );
+			? __( 'Respond today', 'poocommerce-payments' )
+			: __( 'Respond now', 'poocommerce-payments' );
 
 	const noticeBody = isUrgent ? (
 		<UrgentDisputeNoticeBody
@@ -365,15 +365,15 @@ const MultipleDisputesNeedsResponseNotice = ( {
 
 	const buttonLabel =
 		countdownDays < 1
-			? __( 'Respond today', 'woocommerce-payments' )
-			: __( 'Respond now', 'woocommerce-payments' );
+			? __( 'Respond today', 'poocommerce-payments' )
+			: __( 'Respond now', 'poocommerce-payments' );
 
 	const message = isPreDisputeInquiry
 		? sprintf(
 				// Translators: %1$d is the number of inquiries on the order, %2$s is the combined amount.
 				__(
 					'This order has %1$d payment inquiries totaling %2$s.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				disputeCount,
 				formattedAmount
@@ -382,7 +382,7 @@ const MultipleDisputesNeedsResponseNotice = ( {
 				// Translators: %1$d is the number of disputes on the order, %2$s is the combined disputed amount.
 				__(
 					'This order has %1$d payment disputes totaling %2$s.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				disputeCount,
 				formattedAmount
@@ -390,20 +390,20 @@ const MultipleDisputesNeedsResponseNotice = ( {
 
 	let suffix = sprintf(
 		// Translators: %1$s is the earliest dispute due date.
-		__( 'Please respond before %1$s.', 'woocommerce-payments' ),
+		__( 'Please respond before %1$s.', 'poocommerce-payments' ),
 		formatDateTimeFromString( dueBy.toISOString() )
 	);
 	if ( countdownDays < 7 ) {
 		const daysLeft =
 			countdownDays < 1
-				? __( '(Last day today)', 'woocommerce-payments' )
+				? __( '(Last day today)', 'poocommerce-payments' )
 				: sprintf(
 						// Translators: %s is the number of days left to respond to the earliest dispute.
 						_n(
 							'(%s day left)',
 							'(%s days left)',
 							countdownDays,
-							'woocommerce-payments'
+							'poocommerce-payments'
 						),
 						countdownDays
 				  );
@@ -440,7 +440,7 @@ const DisputeOrderLockedNotice = ( { message, disputeDetailsUrl } ) => {
 		<InlineNotice status="warning" isDismissible={ false }>
 			{ message }
 			{ createInterpolateElement(
-				__( ' <a>View details</a>', 'woocommerce-payments' ),
+				__( ' <a>View details</a>', 'poocommerce-payments' ),
 				{
 					// createInterpolateElement is incompatible with this eslint rule as the <a> is decoupled from content.
 					// eslint-disable-next-line jsx-a11y/anchor-has-content

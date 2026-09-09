@@ -24,7 +24,7 @@ export function* getSettings() {
 		yield updateSettings( result );
 	} catch ( e ) {
 		yield dispatch( 'core/notices' ).createErrorNotice(
-			__( 'Error retrieving settings.', 'woocommerce-payments' )
+			__( 'Error retrieving settings.', 'poocommerce-payments' )
 		);
 	}
 }

@@ -58,7 +58,7 @@ const AmazonPayDetails = ( { charge = {}, isLoading } ) => {
 					isLoading={ isLoading }
 					label={ __(
 						'Amazon Transaction ID',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 				>
 					{ transactionId || '–' }
@@ -66,7 +66,7 @@ const AmazonPayDetails = ( { charge = {}, isLoading } ) => {
 
 				<Detail
 					isLoading={ isLoading }
-					label={ __( 'ID', 'woocommerce-payments' ) }
+					label={ __( 'ID', 'poocommerce-payments' ) }
 				>
 					{ id || '–' }
 				</Detail>
@@ -75,21 +75,21 @@ const AmazonPayDetails = ( { charge = {}, isLoading } ) => {
 			<div className="payment-method-details__column">
 				<Detail
 					isLoading={ isLoading }
-					label={ __( 'Owner', 'woocommerce-payments' ) }
+					label={ __( 'Owner', 'poocommerce-payments' ) }
 				>
 					{ name || '–' }
 				</Detail>
 
 				<Detail
 					isLoading={ isLoading }
-					label={ __( 'Owner email', 'woocommerce-payments' ) }
+					label={ __( 'Owner email', 'poocommerce-payments' ) }
 				>
 					{ email || '–' }
 				</Detail>
 
 				<Detail
 					isLoading={ isLoading }
-					label={ __( 'Address', 'woocommerce-payments' ) }
+					label={ __( 'Address', 'poocommerce-payments' ) }
 				>
 					<span
 						dangerouslySetInnerHTML={ {
