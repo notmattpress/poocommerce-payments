@@ -7,7 +7,7 @@ import { render } from '@testing-library/react';
 /**
  * Internal dependencies
  */
-import { updateWoocommerceUserMeta } from 'utils/update-woocommerce-user-meta';
+import { updateWoocommerceUserMeta } from 'utils/update-poocommerce-user-meta';
 import InboxPanel from '..';
 
 jest.mock( '@wordpress/data', () => ( {
@@ -25,13 +25,13 @@ jest.mock( '@wordpress/data', () => ( {
 	useSelect: jest.fn(),
 } ) );
 
-jest.mock( '@woocommerce/components', () => {
+jest.mock( '@poocommerce/components', () => {
 	return {
 		EmptyContent: () => <div>empty-content</div>,
 		Section: ( { children } ) => <>{ children }</>,
 	};
 } );
-jest.mock( '@woocommerce/experimental', () => {
+jest.mock( '@poocommerce/experimental', () => {
 	return {
 		__esModule: true,
 		InboxNoteCard: ( { note } ) => <div>{ note.title }</div>,
@@ -40,7 +40,7 @@ jest.mock( '@woocommerce/experimental', () => {
 	};
 } );
 
-jest.mock( 'utils/update-woocommerce-user-meta', () => ( {
+jest.mock( 'utils/update-poocommerce-user-meta', () => ( {
 	__esModule: true,
 	updateWoocommerceUserMeta: jest.fn(),
 } ) );
@@ -146,7 +146,7 @@ describe( 'InboxPanel', () => {
 		const { container } = render( <InboxPanel /> );
 
 		expect(
-			container.querySelector( '.woocommerce-empty-activity-card' )
+			container.querySelector( '.poocommerce-empty-activity-card' )
 		).toBeInTheDocument();
 	} );
 } );

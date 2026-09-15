@@ -1,8 +1,8 @@
 <?php
 /**
- * WooCommerce Payments Currency Switcher Widget
+ * PooCommerce Payments Currency Switcher Widget
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\MultiCurrency;
@@ -58,13 +58,13 @@ class CurrencySwitcherBlock {
 	 */
 	public function init_block_widget() {
 		// Automatically load dependencies and version.
-		$this->multi_currency->register_script_with_dependencies( 'woocommerce-payments/multi-currency-switcher', 'dist/multi-currency-switcher-block', [ 'wp-components' ] );
+		$this->multi_currency->register_script_with_dependencies( 'poocommerce-payments/multi-currency-switcher', 'dist/multi-currency-switcher-block', [ 'wp-components' ] );
 
 		register_block_type(
-			'woocommerce-payments/multi-currency-switcher',
+			'poocommerce-payments/multi-currency-switcher',
 			[
 				'api_version'     => '3',
-				'editor_script'   => 'woocommerce-payments/multi-currency-switcher',
+				'editor_script'   => 'poocommerce-payments/multi-currency-switcher',
 				'render_callback' => [ $this, 'render_block_widget' ],
 				'attributes'      => [
 					'symbol'          => [
@@ -140,7 +140,7 @@ class CurrencySwitcherBlock {
 		$widget_content  = '<form>';
 		$widget_content .= $this->get_get_params();
 		$widget_content .= '<div class="currency-switcher-holder" style="' . esc_attr( $div_styles ) . '">';
-		$widget_content .= '<select name="currency" class="js-woopayments-currency-switcher" aria-label="' . esc_attr__( 'Select your currency', 'woocommerce-payments' ) . '" onchange="this.form.submit()" style="' . esc_attr( $select_styles ) . '">';
+		$widget_content .= '<select name="currency" class="js-woopayments-currency-switcher" aria-label="' . esc_attr__( 'Select your currency', 'poocommerce-payments' ) . '" onchange="this.form.submit()" style="' . esc_attr( $select_styles ) . '">';
 
 		foreach ( $enabled_currencies as $currency ) {
 			$widget_content .= $this->render_currency_option( $currency, $with_symbol, $with_flag );

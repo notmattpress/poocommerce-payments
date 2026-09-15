@@ -2,7 +2,7 @@
 /**
  * Class WC_REST_Payments_Files_Controller
  *
- * @package WooCommerce\Payments\Admin
+ * @package PooCommerce\Payments\Admin
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -62,7 +62,7 @@ class WC_REST_Payments_Files_Controller extends WC_Payments_REST_Controller {
 				// Intentionally public: authorization is enforced per file purpose inside get_file().
 				// Public branding assets (business_logo/business_icon) must be served to logged-out
 				// shoppers (e.g. the WooPay checkout store logo); every other purpose still requires
-				// manage_woocommerce. A static permission_callback can't express that split because the
+				// manage_poocommerce. A static permission_callback can't express that split because the
 				// decision depends on the fetched file's purpose.
 				'permission_callback' => [],
 			]
@@ -106,7 +106,7 @@ class WC_REST_Payments_Files_Controller extends WC_Payments_REST_Controller {
 		if ( ! $file_service->is_file_public( $purpose ) && ! $this->check_permission() ) {
 			return new WP_Error(
 				'rest_forbidden',
-				__( 'Sorry, you are not allowed to do that.', 'woocommerce-payments' ),
+				__( 'Sorry, you are not allowed to do that.', 'poocommerce-payments' ),
 				[ 'status' => rest_authorization_required_code() ]
 			);
 		}

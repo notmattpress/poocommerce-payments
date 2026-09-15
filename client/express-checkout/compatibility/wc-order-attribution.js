@@ -73,7 +73,7 @@ addFilter(
 
 		return {
 			...extensionData,
-			'woocommerce/order-attribution': orderAttributionData,
+			'poocommerce/order-attribution': orderAttributionData,
 		};
 	}
 );

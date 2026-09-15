@@ -56,7 +56,7 @@ const PaymentDetails: React.FC< PaymentDetailsProps > = ( {
 					<CardBody>
 						{ __(
 							'Payment details not loaded',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 					</CardBody>
 				</Card>

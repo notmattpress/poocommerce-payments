@@ -2,7 +2,7 @@
 /**
  * Class ExtendedContainer
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Internal\DependencyManagement;

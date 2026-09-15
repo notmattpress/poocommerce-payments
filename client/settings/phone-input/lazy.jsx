@@ -34,10 +34,10 @@ const PhoneInputPlaceholder = ( { id, inputProps = {}, isBlocksCheckout } ) => (
 				type="tel"
 				id={ id }
 				className="phone-input input-text"
-				placeholder={ __( 'Mobile number', 'woocommerce-payments' ) }
+				placeholder={ __( 'Mobile number', 'poocommerce-payments' ) }
 				aria-label={
 					inputProps.ariaLabel ||
-					__( 'Mobile phone number', 'woocommerce-payments' )
+					__( 'Mobile phone number', 'poocommerce-payments' )
 				}
 				name={ inputProps.name }
 				disabled
@@ -85,10 +85,10 @@ const PlainPhoneInput = ( {
 				id={ id }
 				value={ value }
 				className="phone-input input-text"
-				placeholder={ __( 'Mobile number', 'woocommerce-payments' ) }
+				placeholder={ __( 'Mobile number', 'poocommerce-payments' ) }
 				aria-label={
 					inputProps.ariaLabel ||
-					__( 'Mobile phone number', 'woocommerce-payments' )
+					__( 'Mobile phone number', 'poocommerce-payments' )
 				}
 				name={ inputProps.name }
 				onChange={ ( event ) => onValueChange( event.target.value ) }

@@ -1,18 +1,18 @@
 <?php
 /**
- * Class WCPay_Multi_Currency_WooCommerceDeposits_Tests
+ * Class WCPay_Multi_Currency_PooCommerceDeposits_Tests
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
-use WCPay\MultiCurrency\Compatibility\WooCommerceDeposits;
+use WCPay\MultiCurrency\Compatibility\PooCommerceDeposits;
 use WCPay\MultiCurrency\MultiCurrency;
 use WCPay\MultiCurrency\Utils;
 
 /**
- * WCPay\MultiCurrency\Compatibility\WooCommerceDeposits unit tests.
+ * WCPay\MultiCurrency\Compatibility\PooCommerceDeposits unit tests.
  */
-class WCPay_Multi_Currency_WooCommerceDeposits_Tests extends WCPAY_UnitTestCase {
+class WCPay_Multi_Currency_PooCommerceDeposits_Tests extends WCPAY_UnitTestCase {
 
 	/**
 	 * Mock WCPay\MultiCurrency\MultiCurrency.
@@ -29,11 +29,11 @@ class WCPay_Multi_Currency_WooCommerceDeposits_Tests extends WCPAY_UnitTestCase 
 	private $mock_utils;
 
 	/**
-	 * WCPay\MultiCurrency\Compatibility\WooCommerceDeposits instance.
+	 * WCPay\MultiCurrency\Compatibility\PooCommerceDeposits instance.
 	 *
-	 * @var WCPay\MultiCurrency\Compatibility\WooCommerceDeposits
+	 * @var WCPay\MultiCurrency\Compatibility\PooCommerceDeposits
 	 */
-	private $woocommerce_deposits;
+	private $poocommerce_deposits;
 
 	/**
 	 * Pre-test setup
@@ -43,7 +43,7 @@ class WCPay_Multi_Currency_WooCommerceDeposits_Tests extends WCPAY_UnitTestCase 
 
 		$this->mock_multi_currency  = $this->createMock( MultiCurrency::class );
 		$this->mock_utils           = $this->createMock( Utils::class );
-		$this->woocommerce_deposits = new WooCommerceDeposits( $this->mock_multi_currency, $this->mock_utils );
+		$this->poocommerce_deposits = new PooCommerceDeposits( $this->mock_multi_currency, $this->mock_utils );
 	}
 
 	public function test_should_modify_cart_item_deposit_amounts_when_item_is_a_deposit() {
@@ -69,7 +69,7 @@ class WCPay_Multi_Currency_WooCommerceDeposits_Tests extends WCPAY_UnitTestCase 
 			],
 		];
 
-		$cart_contents_modified = $this->woocommerce_deposits->modify_cart_item_deposit_amounts( $cart_contents_mock );
+		$cart_contents_modified = $this->poocommerce_deposits->modify_cart_item_deposit_amounts( $cart_contents_mock );
 
 		$this->assertEquals( 500, $cart_contents_modified[0]['deposit_amount'] );
 		$this->assertEquals( 100, $cart_contents_modified[1]['deposit_amount'] );
@@ -97,12 +97,12 @@ class WCPay_Multi_Currency_WooCommerceDeposits_Tests extends WCPAY_UnitTestCase 
 		$product->add_meta_data( '_wc_deposit_type', 'plan' );
 		$product->save();
 
-		$this->assertEquals( $amount, $this->woocommerce_deposits->modify_cart_item_deposit_amount_meta( $amount, $product ) );
+		$this->assertEquals( $amount, $this->poocommerce_deposits->modify_cart_item_deposit_amount_meta( $amount, $product ) );
 
 		$product->update_meta_data( '_wc_deposit_type', 'percent' );
 		$product->save();
 
-		$this->assertEquals( $amount * 2, $this->woocommerce_deposits->modify_cart_item_deposit_amount_meta( $amount, $product ) );
+		$this->assertEquals( $amount * 2, $this->poocommerce_deposits->modify_cart_item_deposit_amount_meta( $amount, $product ) );
 	}
 
 	public function test_maybe_convert_product_prices_for_deposits() {
@@ -116,12 +116,12 @@ class WCPay_Multi_Currency_WooCommerceDeposits_Tests extends WCPAY_UnitTestCase 
 		$product->add_meta_data( '_wc_deposit_type', 'plan' );
 		$product->save();
 
-		$this->assertEquals( false, $this->woocommerce_deposits->maybe_convert_product_prices_for_deposits( true, $product ) );
+		$this->assertEquals( false, $this->poocommerce_deposits->maybe_convert_product_prices_for_deposits( true, $product ) );
 
 		$product->update_meta_data( '_wc_deposit_type', 'percent' );
 		$product->save();
 
-		$this->assertEquals( true, $this->woocommerce_deposits->maybe_convert_product_prices_for_deposits( true, $product ) );
+		$this->assertEquals( true, $this->poocommerce_deposits->maybe_convert_product_prices_for_deposits( true, $product ) );
 	}
 
 	public function test_should_modify_order_currency() {
@@ -137,7 +137,7 @@ class WCPay_Multi_Currency_WooCommerceDeposits_Tests extends WCPAY_UnitTestCase 
 			$item->save();
 		}
 
-		$this->woocommerce_deposits->modify_order_currency( $next_order->get_id() );
+		$this->poocommerce_deposits->modify_order_currency( $next_order->get_id() );
 
 		// Refresh the order.
 		$next_order = wc_get_order( $next_order->get_id() );

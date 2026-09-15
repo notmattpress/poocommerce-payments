@@ -12,7 +12,7 @@ export const LoadingReportState = ( { headingRef, headingTabIndex } = {} ) => (
 		role="status"
 	>
 		<h2 ref={ headingRef } tabIndex={ headingTabIndex }>
-			{ __( 'Loading report', 'woocommerce-payments' ) }
+			{ __( 'Loading report', 'poocommerce-payments' ) }
 		</h2>
 	</div>
 );

@@ -2,18 +2,18 @@
 /**
  * Get Timeline ability definition.
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Internal\Abilities\Domain;
 
-use Automattic\WooCommerce\Abilities\AbilityDefinition;
+use Automattic\PooCommerce\Abilities\AbilityDefinition;
 use WCPay\Internal\Abilities\AbilitiesRegistrar;
 
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Registers the `woocommerce-payments/get-timeline` ability.
+ * Registers the `poocommerce-payments/get-timeline` ability.
  *
  * Return the chronological event timeline for a payment intent. Returns
  * `WP_Error( 'wcpay_missing_intention_id' )` when `intention_id` is missing,
@@ -31,7 +31,7 @@ class GetTimeline implements AbilityDefinition {
 	 * @return string
 	 */
 	public static function get_name(): string {
-		return 'woocommerce-payments/get-timeline';
+		return 'poocommerce-payments/get-timeline';
 	}
 
 	/**
@@ -41,8 +41,8 @@ class GetTimeline implements AbilityDefinition {
 	 */
 	public static function get_registration_args(): array {
 		return [
-			'label'               => __( 'Get timeline for payment intent', 'woocommerce-payments' ),
-			'description'         => __( 'Return the chronological event timeline for a payment intent (created → succeeded → refunded → disputed). Helps reconstruct what happened to one transaction. Takes `intention_id` (the same Stripe `pi_…` identifier accepted by `get-payment-intent` as `payment_intent_id` — both names exist because they mirror the underlying REST route parameters).', 'woocommerce-payments' ),
+			'label'               => __( 'Get timeline for payment intent', 'poocommerce-payments' ),
+			'description'         => __( 'Return the chronological event timeline for a payment intent (created → succeeded → refunded → disputed). Helps reconstruct what happened to one transaction. Takes `intention_id` (the same Stripe `pi_…` identifier accepted by `get-payment-intent` as `payment_intent_id` — both names exist because they mirror the underlying REST route parameters).', 'poocommerce-payments' ),
 			'category'            => AbilitiesRegistrar::CATEGORY_SLUG,
 			'input_schema'        => [
 				'type'                 => 'object',
@@ -57,7 +57,7 @@ class GetTimeline implements AbilityDefinition {
 				'additionalProperties' => false,
 			],
 			'execute_callback'    => [ self::class, 'execute' ],
-			'permission_callback' => [ AbilitiesRegistrar::class, 'current_user_can_manage_woocommerce' ],
+			'permission_callback' => [ AbilitiesRegistrar::class, 'current_user_can_manage_poocommerce' ],
 			'meta'                => [
 				'annotations'  => [
 					'readonly'    => true,
@@ -84,7 +84,7 @@ class GetTimeline implements AbilityDefinition {
 		if ( ! is_array( $input ) || empty( $input['intention_id'] ) || ! is_string( $input['intention_id'] ) ) {
 			return new \WP_Error(
 				'wcpay_missing_intention_id',
-				__( 'A non-empty `intention_id` is required.', 'woocommerce-payments' )
+				__( 'A non-empty `intention_id` is required.', 'poocommerce-payments' )
 			);
 		}
 		$intent_id = $input['intention_id'];

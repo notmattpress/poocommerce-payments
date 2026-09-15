@@ -12,11 +12,11 @@ import { getExpressCheckoutData } from './utils';
 // Failures that happen before the Store API persists the billing address to the order, so the
 // email we sent was not stored and should not be remembered for the next attempt.
 const ERRORS_BEFORE_PERSISTENCE = [
-	'woocommerce_rest_invalid_billing_email',
-	'woocommerce_rest_invalid_order',
-	'woocommerce_rest_invalid_user',
-	'woocommerce_rest_invalid_address',
-	'woocommerce_rest_invalid_address_country',
+	'poocommerce_rest_invalid_billing_email',
+	'poocommerce_rest_invalid_order',
+	'poocommerce_rest_invalid_user',
+	'poocommerce_rest_invalid_address',
+	'poocommerce_rest_invalid_address_country',
 ];
 
 export default class ExpressCheckoutOrderApi {
@@ -43,7 +43,7 @@ export default class ExpressCheckoutOrderApi {
 
 	/**
 	 * Creates an order from the cart object.
-	 * See https://github.com/woocommerce/woocommerce/blob/trunk/plugins/woocommerce/src/StoreApi/docs/checkout-order.md
+	 * See https://github.com/poocommerce/poocommerce/blob/trunk/plugins/poocommerce/src/StoreApi/docs/checkout-order.md
 	 *
 	 * @param {{
 	 *          billing_address: Object,
@@ -57,7 +57,7 @@ export default class ExpressCheckoutOrderApi {
 		// Keep the merchant's address (it determines tax) and only fill the contact fields a
 		// merchant-created pay-for-order may be missing (email, phone). The Store API needs them to
 		// take payment and the wallet provides them, so backfilling is safe and tax stays untouched.
-		// See https://github.com/woocommerce/woocommerce/issues/48540
+		// See https://github.com/poocommerce/poocommerce/issues/48540
 		const walletEmail = paymentData.billing_address?.email;
 		const walletPhone = paymentData.billing_address?.phone;
 
@@ -119,7 +119,7 @@ export default class ExpressCheckoutOrderApi {
 
 	/**
 	 * Returns the customer's order object.
-	 * See https://github.com/woocommerce/woocommerce/blob/trunk/plugins/woocommerce/src/StoreApi/docs/order.md
+	 * See https://github.com/poocommerce/poocommerce/blob/trunk/plugins/poocommerce/src/StoreApi/docs/order.md
 	 *
 	 * @return {Promise} Cart response object.
 	 */

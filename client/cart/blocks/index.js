@@ -11,5 +11,5 @@ import './style.scss';
 
 registerPlugin( 'bnpl-site-messaging', {
 	render: renderBNPLCartMessaging,
-	scope: 'woocommerce-checkout',
+	scope: 'poocommerce-checkout',
 } );

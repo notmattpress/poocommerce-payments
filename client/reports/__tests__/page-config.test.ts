@@ -63,7 +63,7 @@ describe( 'Reports page config', () => {
 					'Reports',
 				],
 				navArgs: { id: 'wc-payments-reports' },
-				capability: 'manage_woocommerce',
+				capability: 'manage_poocommerce',
 			} )
 		);
 	} );

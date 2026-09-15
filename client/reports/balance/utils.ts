@@ -72,7 +72,7 @@ export const hasBalanceActivity = (
 export const formatUtcDate = ( value: string ): string =>
 	sprintf(
 		/* translators: %s: date rendered in the site's date format. */
-		__( '%s UTC', 'woocommerce-payments' ),
+		__( '%s UTC', 'poocommerce-payments' ),
 		formatDateTimeFromString( value, { timezone: 'UTC' } )
 	);
 
@@ -83,7 +83,7 @@ export const getRowLabel = (
 	if ( row.key === 'starting_balance' ) {
 		return sprintf(
 			/* translators: %s: period start date. */
-			__( 'Starting balance - %s', 'woocommerce-payments' ),
+			__( 'Starting balance - %s', 'poocommerce-payments' ),
 			formatUtcDate( period.start )
 		);
 	}
@@ -91,7 +91,7 @@ export const getRowLabel = (
 	if ( row.key === 'ending_balance' ) {
 		return sprintf(
 			/* translators: %s: period end date. */
-			__( 'Ending balance - %s', 'woocommerce-payments' ),
+			__( 'Ending balance - %s', 'poocommerce-payments' ),
 			formatUtcDate( period.end )
 		);
 	}

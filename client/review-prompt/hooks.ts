@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { useUserPreferences } from '@woocommerce/data';
+import { useUserPreferences } from '@poocommerce/data';
 
 interface UserPreferences extends ReturnType< typeof useUserPreferences > {
 	wc_payments_review_prompt_dismissed?: number;

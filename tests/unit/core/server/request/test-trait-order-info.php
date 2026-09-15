@@ -2,7 +2,7 @@
 /**
  * Class Trait_Order_Info_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\Core\Server\Request\Order_Info;

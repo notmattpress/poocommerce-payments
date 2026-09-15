@@ -21,7 +21,7 @@ document.addEventListener(
 
 		if ( ! navigator.clipboard ) {
 			prompt(
-				__( 'Copy the test number:', 'woocommerce-payments' ),
+				__( 'Copy the test number:', 'poocommerce-payments' ),
 				number
 			);
 			return;
@@ -33,7 +33,7 @@ document.addEventListener(
 			?.createInfoNotice(
 				__(
 					'Test number copied to your clipboard!',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				{
 					// the unique `id` prevents the JS from creating multiple notices with the same text before they're dismissed.

@@ -40,17 +40,17 @@ const startOfDay = ( now: Date ): Date =>
 	new Date( now.getFullYear(), now.getMonth(), now.getDate() );
 
 const singleDatePresetLabels = (): Record< SingleDatePreset, string > => ( {
-	today: __( 'Today', 'woocommerce-payments' ),
-	yesterday: __( 'Yesterday', 'woocommerce-payments' ),
-	past_week: __( 'Past week', 'woocommerce-payments' ),
-	past_month: __( 'Past month', 'woocommerce-payments' ),
+	today: __( 'Today', 'poocommerce-payments' ),
+	yesterday: __( 'Yesterday', 'poocommerce-payments' ),
+	past_week: __( 'Past week', 'poocommerce-payments' ),
+	past_month: __( 'Past month', 'poocommerce-payments' ),
 } );
 
 const rangePresetLabels = (): Record< RangePreset, string > => ( {
-	last_month: __( 'Previous month', 'woocommerce-payments' ),
-	month_to_date: __( 'Month to date', 'woocommerce-payments' ),
-	last_year: __( 'Previous year', 'woocommerce-payments' ),
-	year_to_date: __( 'Year to date', 'woocommerce-payments' ),
+	last_month: __( 'Previous month', 'poocommerce-payments' ),
+	month_to_date: __( 'Month to date', 'poocommerce-payments' ),
+	last_year: __( 'Previous year', 'poocommerce-payments' ),
+	year_to_date: __( 'Year to date', 'poocommerce-payments' ),
 } );
 
 export const getRangePresetLabel = ( preset: RangePreset ): string =>
@@ -63,7 +63,7 @@ export const getRangePresetLabel = ( preset: RangePreset ): string =>
 export const getPresetsForOperator = (
 	operator: DateOperator
 ): DateFilterPresetElement[] => {
-	const customLabel = __( 'Custom', 'woocommerce-payments' );
+	const customLabel = __( 'Custom', 'poocommerce-payments' );
 
 	if ( operator === 'between' ) {
 		const labels = rangePresetLabels();

@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Action_Scheduler_Service_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use PHPUnit\Framework\MockObject\MockObject;
