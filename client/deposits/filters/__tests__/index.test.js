@@ -5,7 +5,7 @@
  */
 import { act, render, screen } from '@testing-library/react';
 import { userEvent as user } from 'jest-utils/user-event-timers';
-import { getQuery, updateQueryString } from '@woocommerce/navigation';
+import { getQuery, updateQueryString } from '@poocommerce/navigation';
 
 /**
  * Internal dependencies

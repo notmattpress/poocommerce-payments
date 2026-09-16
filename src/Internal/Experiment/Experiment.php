@@ -2,7 +2,7 @@
 /**
  * Class Experiment
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Internal\Experiment;
@@ -102,7 +102,7 @@ abstract class Experiment {
 	 *
 	 * Delegates to the predicate that gates the Tracks events, so an assignment
 	 * is never recorded for an admin whose events cannot fire. The raw option
-	 * misses the woocommerce_apply_user_tracking kill-switch filters.
+	 * misses the poocommerce_apply_user_tracking kill-switch filters.
 	 *
 	 * @return bool
 	 */
@@ -111,7 +111,7 @@ abstract class Experiment {
 			return (bool) $this->legacy_proxy->call_static( '\WC_Site_Tracking', 'is_tracking_enabled' );
 		}
 
-		return 'yes' === $this->legacy_proxy->call_function( 'get_option', 'woocommerce_allow_tracking' );
+		return 'yes' === $this->legacy_proxy->call_function( 'get_option', 'poocommerce_allow_tracking' );
 	}
 
 	/**
@@ -121,7 +121,7 @@ abstract class Experiment {
 	 * @return Experimental_Abtest
 	 */
 	protected function create_abtest( string $anon_id ): Experimental_Abtest {
-		return new Experimental_Abtest( $anon_id, 'woocommerce', true );
+		return new Experimental_Abtest( $anon_id, 'poocommerce', true );
 	}
 
 	/**

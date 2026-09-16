@@ -90,7 +90,7 @@ export function* getReportsFees( query ) {
 		yield controls.dispatch(
 			'core/notices',
 			'createErrorNotice',
-			__( 'Error retrieving fees report.', 'woocommerce-payments' )
+			__( 'Error retrieving fees report.', 'poocommerce-payments' )
 		);
 		yield updateErrorForReportsFees( query, e );
 	}
@@ -144,7 +144,7 @@ export function* getReportsFeesSummary( query ) {
 			'createErrorNotice',
 			__(
 				'Error retrieving fees report summary.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			)
 		);
 		yield updateErrorForReportsFeesSummary( query, e );
@@ -171,7 +171,7 @@ export function* getReportsBalanceSummary( query ) {
 			'createErrorNotice',
 			__(
 				'Error retrieving balance report summary.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			)
 		);
 		// eslint-disable-next-line no-console

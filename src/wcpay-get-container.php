@@ -2,7 +2,7 @@
 /**
  * WCPay container loader
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 use WCPay\Container;

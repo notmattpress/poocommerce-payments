@@ -53,7 +53,7 @@ test.describe(
 			// Get prices from order items table and confirm they are in EUR
 			const orderItemPrices = await adminPage
 				.locator(
-					'#woocommerce-order-items .woocommerce-Price-amount'
+					'#poocommerce-order-items .poocommerce-Price-amount'
 				)
 				.all();
 
@@ -109,7 +109,7 @@ test.describe(
 					.getByRole( 'row', {
 						name: 'Total available to refund',
 					} )
-					.locator( '.woocommerce-Price-amount' )
+					.locator( '.poocommerce-Price-amount' )
 					.textContent() ) ?? '';
 
 			// Set the refund quantity to 1 for the first line item
@@ -147,13 +147,13 @@ test.describe(
 			// Verify refund details show EUR currency with the correct amount
 			await expect(
 				adminPage
-					.locator( '.refund .woocommerce-Price-amount' )
+					.locator( '.refund .poocommerce-Price-amount' )
 					.first()
 			).toContainText( refundAmount );
 
 			// Verify the refund note contains the EUR amount
 			const refundNote = adminPage
-				.locator( '#woocommerce-order-notes .note_content' )
+				.locator( '#poocommerce-order-notes .note_content' )
 				.filter( { hasText: 'A refund of' } )
 				.filter( { hasText: 'was successfully processed' } );
 			await expect( refundNote ).toContainText( refundAmount );

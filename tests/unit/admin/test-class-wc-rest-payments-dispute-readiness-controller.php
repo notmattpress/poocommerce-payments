@@ -2,7 +2,7 @@
 /**
  * Class WC_REST_Payments_Dispute_Readiness_Controller_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\Internal\Service\DisputeReadinessService;

@@ -17,16 +17,16 @@ type TimeOfDay = 'morning' | 'afternoon' | 'evening';
 const greetingStrings = {
 	withName: {
 		/** translators: %s name of the person being greeted. */
-		morning: __( 'Good morning, %s', 'woocommerce-payments' ),
+		morning: __( 'Good morning, %s', 'poocommerce-payments' ),
 		/** translators: %s name of the person being greeted. */
-		afternoon: __( 'Good afternoon, %s', 'woocommerce-payments' ),
+		afternoon: __( 'Good afternoon, %s', 'poocommerce-payments' ),
 		/** translators: %s name of the person being greeted. */
-		evening: __( 'Good evening, %s', 'woocommerce-payments' ),
+		evening: __( 'Good evening, %s', 'poocommerce-payments' ),
 	},
 	withoutName: {
-		morning: __( 'Good morning', 'woocommerce-payments' ),
-		afternoon: __( 'Good afternoon', 'woocommerce-payments' ),
-		evening: __( 'Good evening', 'woocommerce-payments' ),
+		morning: __( 'Good morning', 'poocommerce-payments' ),
+		afternoon: __( 'Good afternoon', 'poocommerce-payments' ),
+		evening: __( 'Good evening', 'poocommerce-payments' ),
 	},
 };
 

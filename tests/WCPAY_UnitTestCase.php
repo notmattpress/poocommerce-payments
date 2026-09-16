@@ -2,7 +2,7 @@
 /**
  * Class WP_UnitTestCase
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use PHPUnit\Framework\MockObject\MockObject;
@@ -22,18 +22,18 @@ class WCPAY_UnitTestCase extends WP_UnitTestCase {
 		// to hook in with the regular 10 priority and do their thing.
 		// But by default we will intercept all external requests.
 		add_filter( 'pre_http_request', [ $this, 'filter_intercept_external_requests' ], 9, 3 );
-		add_filter( 'woocommerce_get_geolocation', [ $this, 'filter_mock_wc_geolocation' ], 9, 2 );
+		add_filter( 'poocommerce_get_geolocation', [ $this, 'filter_mock_wc_geolocation' ], 9, 2 );
 
 		// WC 10.9+ EmailLogger adds order notes after every transactional email. Suppress in tests
 		// so note-count and note-index assertions remain stable across WC versions. Priority 9
 		// matches the other filters here, so a test that wants notes back can re-enable at 10.
-		add_filter( 'woocommerce_email_log_add_order_note', '__return_false', 9 );
+		add_filter( 'poocommerce_email_log_add_order_note', '__return_false', 9 );
 	}
 
 	public function tear_down() {
 		remove_filter( 'pre_http_request', [ $this, 'filter_intercept_external_requests' ], 9, 3 );
-		remove_filter( 'woocommerce_get_geolocation', [ $this, 'filter_mock_wc_geolocation' ], 9, 2 );
-		remove_filter( 'woocommerce_email_log_add_order_note', '__return_false', 9 );
+		remove_filter( 'poocommerce_get_geolocation', [ $this, 'filter_mock_wc_geolocation' ], 9, 2 );
+		remove_filter( 'poocommerce_email_log_add_order_note', '__return_false', 9 );
 
 		parent::tear_down();
 	}

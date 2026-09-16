@@ -5,12 +5,12 @@
  * placement, which can happen when a multi-currency plugin flips the cart
  * based on the shipping address chosen inside the wallet sheet.
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 defined( 'ABSPATH' ) || exit;
 
-use Automattic\WooCommerce\StoreApi\Exceptions\RouteException;
+use Automattic\PooCommerce\StoreApi\Exceptions\RouteException;
 use WCPay\Logger;
 
 /**
@@ -32,7 +32,7 @@ class WC_Payments_Express_Checkout_Currency_Guard {
 	public static function register() {
 		$guard = new self();
 		add_action(
-			'woocommerce_store_api_checkout_update_order_from_request',
+			'poocommerce_store_api_checkout_update_order_from_request',
 			[ $guard, 'assert_currency_matches_element' ],
 			10,
 			2
@@ -81,7 +81,7 @@ class WC_Payments_Express_Checkout_Currency_Guard {
 				/* translators: 1: expected currency code, 2: actual currency code */
 				__(
 					'The shipping address you selected requires a different currency (%2$s) than the one this payment was started with (%1$s). You have not been charged — please reload the page and try again.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				strtoupper( $expected ),
 				strtoupper( $actual )

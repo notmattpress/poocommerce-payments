@@ -2,7 +2,7 @@
 /**
  * Class Amount_Too_Large_Exception
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Exceptions;

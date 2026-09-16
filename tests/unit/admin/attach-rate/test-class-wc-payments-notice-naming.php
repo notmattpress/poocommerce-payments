@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Notice_Naming_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 /**

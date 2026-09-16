@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Remote_Note_Service_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\Exceptions\Rest_Request_Exception;

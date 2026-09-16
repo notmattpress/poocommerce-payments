@@ -2,14 +2,14 @@
 /**
  * Class ContainerTest
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Tests;
 
 use WCPAY_UnitTestCase;
-use Automattic\WooCommerce\Proxies\LegacyProxy;
-use Automattic\WooCommerce\Utilities\PluginUtil;
+use Automattic\PooCommerce\Proxies\LegacyProxy;
+use Automattic\PooCommerce\Utilities\PluginUtil;
 use stdClass;
 use WCPay\Container;
 use WCPay\Core\Mode;
@@ -131,7 +131,7 @@ class ContainerTest extends WCPAY_UnitTestCase {
 	}
 
 	/**
-	 * Checks if the delegate container provides a WooCommerce instance.
+	 * Checks if the delegate container provides a PooCommerce instance.
 	 */
 	public function test_container_delegates() {
 		$proxy = new LegacyProxy();

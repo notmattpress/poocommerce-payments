@@ -2,7 +2,7 @@
 /**
  * Class Currency_Code
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Constants;

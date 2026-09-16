@@ -2,7 +2,7 @@
 /**
  * Class Erase_Deprecated_Flags_And_Options
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Migrations;
@@ -21,7 +21,7 @@ class Erase_Deprecated_Flags_And_Options {
 	 * Checks whether it's worth doing the migration.
 	 */
 	public function maybe_migrate() {
-		$previous_version = get_option( 'woocommerce_woocommerce_payments_version' );
+		$previous_version = get_option( 'poocommerce_poocommerce_payments_version' );
 		// feel free to modify the version here to the next one, if you add a new flag to be deleted in the `migrate` method.
 		if ( version_compare( '9.8.0', $previous_version, '>' ) ) {
 			$this->migrate();
