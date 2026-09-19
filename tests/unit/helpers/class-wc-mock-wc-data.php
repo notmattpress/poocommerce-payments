@@ -3,7 +3,7 @@
  * Helper class to provide mock functionality to abstract methods of
  * WC_Data
  *
- * @package WooCommerce\Tests
+ * @package PooCommerce\Tests
  */
 
 // Need to use WC_Mock_Data_Store.

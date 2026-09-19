@@ -2,7 +2,7 @@
 /**
  * Tests for WCPay\Internal\Abilities\Domain\GetAuthorizations.
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 namespace WCPay\Tests\Internal\Abilities\Domain;
@@ -18,7 +18,7 @@ class GetAuthorizationsTest extends WCPAY_UnitTestCase {
 
 
 	public function test_name(): void {
-		$this->assertSame( 'woocommerce-payments/get-authorizations', GetAuthorizations::get_name() );
+		$this->assertSame( 'poocommerce-payments/get-authorizations', GetAuthorizations::get_name() );
 	}
 
 	public function test_registration_args_uses_paginated_input_and_envelope_output(): void {
@@ -47,7 +47,7 @@ class GetAuthorizationsTest extends WCPAY_UnitTestCase {
 
 		$this->assertSame( AbilitiesRegistrar::CATEGORY_SLUG, $args['category'] );
 		$this->assertSame( [ GetAuthorizations::class, 'execute' ], $args['execute_callback'] );
-		$this->assertSame( [ AbilitiesRegistrar::class, 'current_user_can_manage_woocommerce' ], $args['permission_callback'] );
+		$this->assertSame( [ AbilitiesRegistrar::class, 'current_user_can_manage_poocommerce' ], $args['permission_callback'] );
 		$this->assertTrue( $args['meta']['annotations']['readonly'] );
 		$this->assertFalse( $args['meta']['annotations']['destructive'] );
 		$this->assertTrue( $args['meta']['annotations']['idempotent'] );

@@ -2,7 +2,7 @@
 /**
  * Mock payment method definitions for testing.
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 namespace WCPay\Tests\PaymentMethods\Configs;

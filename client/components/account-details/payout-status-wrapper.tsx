@@ -30,7 +30,7 @@ const PayoutStatus: React.FC< {
 					buttonIcon={ <HelpOutlineIcon /> }
 					buttonLabel={ __(
 						'More information about payout status',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 					buttonSize={ 24 }
 					maxWidth={ '300px' }
@@ -77,7 +77,7 @@ const PayoutStatusWrapper: React.FC< PayoutStatusWrapperProps > = ( {
 			className="woopayments-account-details__payout-status-item"
 		>
 			<FlexItem className="item-label">
-				{ __( 'Payouts:', 'woocommerce-payments' ) }
+				{ __( 'Payouts:', 'poocommerce-payments' ) }
 			</FlexItem>
 			<FlexBlock className="item-value">
 				<PayoutStatus payoutStatus={ payoutStatus } />

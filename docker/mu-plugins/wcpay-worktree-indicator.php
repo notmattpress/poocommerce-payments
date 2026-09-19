@@ -26,7 +26,7 @@ function wcpay_worktree_parse_env() {
 	}
 
 	$env_cache = [];
-	$env_file  = ABSPATH . 'wp-content/plugins/woocommerce-payments/.env';
+	$env_file  = ABSPATH . 'wp-content/plugins/poocommerce-payments/.env';
 
 	if ( ! file_exists( $env_file ) ) {
 		return $env_cache;

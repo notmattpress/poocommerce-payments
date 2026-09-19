@@ -20,7 +20,7 @@ const AVSMismatchRuleCard: React.FC = () => {
 
 	return (
 		<FraudProtectionRuleCard
-			title={ __( 'AVS Mismatch', 'woocommerce-payments' ) }
+			title={ __( 'AVS Mismatch', 'poocommerce-payments' ) }
 			id="avs-mismatch-card"
 		>
 			{ ! isSellingToSupportedLocations && (
@@ -30,7 +30,7 @@ const AVSMismatchRuleCard: React.FC = () => {
 							'AVS checks are commonly supported only for cards issued in the United States, Canada, ' +
 								'and the United Kingdom. None of your {{sellingLocationsLink}}selling locations{{/sellingLocationsLink}} ' +
 								'support AVS, so this filter is unlikely to block any payments.',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						),
 						components: {
 							sellingLocationsLink: (
@@ -50,14 +50,14 @@ const AVSMismatchRuleCard: React.FC = () => {
 				setting="avs_verification"
 				label={ __(
 					'Enable AVS Mismatch filter',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				) }
 				description={ __(
 					'This filter compares the post code submitted by the customer against the post code on ' +
 						'file with the card issuer. The payment will be blocked if the two post codes do not match. ' +
 						'AVS checks are not supported by every country or card issuer, so this filter will not block ' +
 						'all payments with a mismatched post code.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				) }
 			/>
 
@@ -65,7 +65,7 @@ const AVSMismatchRuleCard: React.FC = () => {
 				{ __(
 					'Buyers who can provide correct post code on file with the issuing bank ' +
 						'are more likely to be the actual account holder.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				) }
 			</FraudProtectionRuleDescription>
 		</FraudProtectionRuleCard>

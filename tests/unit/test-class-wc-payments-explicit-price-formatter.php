@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Explicit_Price_Formatter_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\Database_Cache;
@@ -122,7 +122,7 @@ class WC_Payments_Explicit_Price_Formatter_Test extends WCPAY_UnitTestCase {
 		remove_all_filters( 'wcpay_multi_currency_apply_charm_only_to_products' );
 		remove_all_filters( 'wcpay_multi_currency_available_currencies' );
 		remove_all_filters( 'wcpay_multi_currency_should_output_explicit_price' );
-		remove_all_filters( 'woocommerce_currency' );
+		remove_all_filters( 'poocommerce_currency' );
 		remove_all_filters( 'stylesheet' );
 
 		delete_user_meta( self::LOGGED_IN_USER_ID, MultiCurrency::CURRENCY_META_KEY );

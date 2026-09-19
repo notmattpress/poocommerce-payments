@@ -29,7 +29,7 @@ const SubscriptionProductOnboardingToast = () => {
 				/* translators: %s: WooPayments */
 				__(
 					'Thank you for setting up %s! We’ve published your first subscription product.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				'WooPayments'
 			)

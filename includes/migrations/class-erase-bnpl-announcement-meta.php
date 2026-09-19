@@ -2,7 +2,7 @@
 /**
  * Class Erase_Bnpl_Announcement_Meta
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Migrations;
@@ -21,7 +21,7 @@ class Erase_Bnpl_Announcement_Meta {
 	 * Checks whether it's worth doing the migration.
 	 */
 	public function maybe_migrate() {
-		$previous_version = get_option( 'woocommerce_woocommerce_payments_version' );
+		$previous_version = get_option( 'poocommerce_poocommerce_payments_version' );
 		if ( version_compare( '8.1.0', $previous_version, '>' ) ) {
 			$this->migrate();
 		}

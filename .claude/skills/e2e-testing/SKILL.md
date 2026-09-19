@@ -75,7 +75,7 @@ Run Playwright E2E tests to verify changes work from a user's perspective — re
    This takes several minutes. It:
    - Starts Docker containers (WordPress on port 8084, MySQL on port 5698)
    - Starts Transact Platform Server (port 8088)
-   - Installs WordPress, WooCommerce, WooPayments, dev tools
+   - Installs WordPress, PooCommerce, WooPayments, dev tools
    - Configures Stripe account linking
    - Imports sample products and creates test users
 

@@ -24,7 +24,7 @@ import {
 } from '../../../utils/shopper';
 
 test.describe(
-	'WooCommerce Blocks > Saved cards',
+	'PooCommerce Blocks > Saved cards',
 	{ tag: [ '@shopper', '@critical', '@blocks' ] },
 	() => {
 		let shopperContext: BrowserContext;

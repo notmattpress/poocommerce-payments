@@ -41,15 +41,15 @@
 	flex-shrink: 0;
 }
 
-.wcpay-dispute-readiness-card__task-list.woocommerce-experimental-list {
-	.woocommerce-task-list__item {
+.wcpay-dispute-readiness-card__task-list.poocommerce-experimental-list {
+	.poocommerce-task-list__item {
 		grid-template-columns: 72px minmax( 0, 1fr ) 24px;
 
 		&::before {
 			background: transparent;
 		}
 
-		&[data-status='incomplete'] .woocommerce-task__icon {
+		&[data-status='incomplete'] .poocommerce-task__icon {
 			position: relative;
 			border: 2px solid #f0b849;
 
@@ -66,20 +66,20 @@
 			}
 		}
 
-		.woocommerce-task-list__item-title {
+		.poocommerce-task-list__item-title {
 			color: var( --wp-admin-theme-color );
 			font-weight: 600;
 		}
 
-		&.complete .woocommerce-task-list__item-title {
+		&.complete .poocommerce-task-list__item-title {
 			color: var( --wp-admin-theme-color );
 		}
 
-		&.complete .woocommerce-task-list__item-expandable-content {
+		&.complete .poocommerce-task-list__item-expandable-content {
 			display: block;
 		}
 
-		.woocommerce-task-list__item-expandable-content {
+		.poocommerce-task-list__item-expandable-content {
 			max-width: 449px;
 			line-height: 16px;
 		}

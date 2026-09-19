@@ -2,7 +2,7 @@
 /**
  * Class Intent_Authentication_Exception
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Exceptions;
