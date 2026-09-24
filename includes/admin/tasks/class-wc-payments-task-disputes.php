@@ -2,12 +2,12 @@
 /**
  * Class WC_Payments_Task_Disputes
  *
- * @package WooCommerce\Payments\Tasks
+ * @package PooCommerce\Payments\Tasks
  */
 
-namespace WooCommerce\Payments\Tasks;
+namespace PooCommerce\Payments\Tasks;
 
-use Automattic\WooCommerce\Admin\Features\OnboardingTasks\Task;
+use Automattic\PooCommerce\Admin\Features\OnboardingTasks\Task;
 use WCPay\Database_Cache;
 use WC_Payments_Utils;
 use WC_Payments_API_Client;
@@ -21,7 +21,7 @@ defined( 'ABSPATH' ) || exit;
  */
 class WC_Payments_Task_Disputes extends Task {
 	/**
-	 * Client for making requests to the WooCommerce Payments API
+	 * Client for making requests to the PooCommerce Payments API
 	 *
 	 * @var WC_Payments_API_Client
 	 */
@@ -80,7 +80,7 @@ class WC_Payments_Task_Disputes extends Task {
 	 * @return string
 	 */
 	public function get_id() {
-		return 'woocommerce_payments_disputes_task';
+		return 'poocommerce_payments_disputes_task';
 	}
 
 	/**
@@ -99,13 +99,13 @@ class WC_Payments_Task_Disputes extends Task {
 			if ( count( (array) $this->disputes_due_within_1d ) > 0 ) {
 				return sprintf(
 					/* translators: %s is a currency formatted amount */
-					__( 'Respond to a dispute for %s – Last day', 'woocommerce-payments' ),
+					__( 'Respond to a dispute for %s – Last day', 'poocommerce-payments' ),
 					$amount_formatted
 				);
 			}
 			return sprintf(
 				/* translators: %s is a currency formatted amount */
-				__( 'Respond to a dispute for %s', 'woocommerce-payments' ),
+				__( 'Respond to a dispute for %s', 'poocommerce-payments' ),
 				$amount_formatted
 			);
 		}
@@ -121,7 +121,7 @@ class WC_Payments_Task_Disputes extends Task {
 		if ( count( $dispute_currencies ) > 1 ) {
 			return sprintf(
 				// translators: %d is a number greater than 1.
-				__( 'Respond to %d active disputes', 'woocommerce-payments' ),
+				__( 'Respond to %d active disputes', 'poocommerce-payments' ),
 				count( $active_disputes )
 			);
 		}
@@ -142,7 +142,7 @@ class WC_Payments_Task_Disputes extends Task {
 
 		return sprintf(
 			/* translators: %d is a number greater than 1. %s is a formatted amount, eg: $10.00 */
-			__( 'Respond to %1$d active disputes for a total of %2$s', 'woocommerce-payments' ),
+			__( 'Respond to %1$d active disputes for a total of %2$s', 'poocommerce-payments' ),
 			count( $active_disputes ),
 			$dispute_total_formatted
 		);
@@ -180,7 +180,7 @@ class WC_Payments_Task_Disputes extends Task {
 			if ( count( (array) $this->disputes_due_within_1d ) > 0 ) {
 				return sprintf(
 					/* translators: %s is time, eg: 11:59 PM */
-					__( 'Respond today by %s', 'woocommerce-payments' ),
+					__( 'Respond today by %s', 'poocommerce-payments' ),
 					date_i18n( wc_time_format(), $due_by_ts )
 				);
 			}
@@ -190,10 +190,10 @@ class WC_Payments_Task_Disputes extends Task {
 
 			return sprintf(
 				/* translators: %1$s is a date, eg: Jan 1, 2021. %2$s is the number of days left, eg: 2 days. */
-				__( 'By %1$s – %2$s left to respond', 'woocommerce-payments' ),
+				__( 'By %1$s – %2$s left to respond', 'poocommerce-payments' ),
 				date_i18n( wc_date_format(), $due_by_ts ),
 				/* translators: %s is the number of days left, e.g. 1 day. */
-				sprintf( _n( '%d day', '%d days', $diff->days, 'woocommerce-payments' ), $diff->days )
+				sprintf( _n( '%d day', '%d days', $diff->days, 'poocommerce-payments' ), $diff->days )
 			);
 		}
 
@@ -202,7 +202,7 @@ class WC_Payments_Task_Disputes extends Task {
 				/* translators: %d is the number of disputes. */
 				__(
 					'Final day to respond to %d of the disputes',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				count( (array) $this->disputes_due_within_1d )
 			);
@@ -212,7 +212,7 @@ class WC_Payments_Task_Disputes extends Task {
 			/* translators: %d is the number of disputes. */
 			__(
 				'Last week to respond to %d of the disputes',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			count( (array) $this->disputes_due_within_7d )
 		);

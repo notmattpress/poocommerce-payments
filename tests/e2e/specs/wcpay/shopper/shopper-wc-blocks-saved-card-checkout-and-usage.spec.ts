@@ -29,7 +29,7 @@ import {
 import { config } from '../../../config/default';
 
 describeif( shouldRunWCBlocksTests )(
-	'WooCommerce Blocks > Saved cards',
+	'PooCommerce Blocks > Saved cards',
 	{ tag: [ '@critical', '@blocks' ] },
 	() => {
 		let shopperPage: Page;

@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Subscription_Service_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use PHPUnit\Framework\MockObject\MockObject;
@@ -355,7 +355,7 @@ class WC_Payments_Subscription_Service_Test extends WCPAY_UnitTestCase {
 		$input_data                 = [ 'pause_collection' => [ 'behavior' => 'void' ] ];
 
 		$mock_subscription->update_meta_data( self::SUBSCRIPTION_ID_META_KEY, $mock_wcpay_subscription_id );
-		$mock_subscription->payment_method = 'woocommerce_payments';
+		$mock_subscription->payment_method = 'poocommerce_payments';
 
 		$this->mock_api_client->expects( $this->once() )
 			->method( 'update_subscription' )
@@ -629,7 +629,7 @@ class WC_Payments_Subscription_Service_Test extends WCPAY_UnitTestCase {
 
 		$mock_subscription->update_meta_data( WC_Payments_Invoice_Service_Test::PENDING_INVOICE_ID_KEY, $mock_pending_invoice_id );
 		$mock_subscription->update_meta_data( self::SUBSCRIPTION_ID_META_KEY, 'sub_123' );
-		$mock_subscription->payment_method = 'woocommerce_payments';
+		$mock_subscription->payment_method = 'poocommerce_payments';
 		$mock_subscription->save();
 
 		WC_Subscriptions::set_wcs_is_subscription(
@@ -659,7 +659,7 @@ class WC_Payments_Subscription_Service_Test extends WCPAY_UnitTestCase {
 
 		$this->assertTrue( $this->subscription_service->prevent_wcpay_subscription_changes( true, 'random_feature', $mock_subscription ) );
 
-		$mock_subscription->payment_method = 'woocommerce_payments';
+		$mock_subscription->payment_method = 'poocommerce_payments';
 		$mock_subscription->update_meta_data( self::SUBSCRIPTION_ID_META_KEY, $mock_wcpay_subscription_id );
 
 		$this->assertFalse( $this->subscription_service->prevent_wcpay_subscription_changes( true, 'random_feature', $mock_subscription ) );
@@ -750,7 +750,7 @@ class WC_Payments_Subscription_Service_Test extends WCPAY_UnitTestCase {
 		$subscription = new WC_Subscription();
 		$this->assertFalse( WC_Payments_Subscription_Service::is_wcpay_subscription( $subscription ) );
 
-		$subscription->payment_method = 'woocommerce_payments';
+		$subscription->payment_method = 'poocommerce_payments';
 		$this->assertFalse( WC_Payments_Subscription_Service::is_wcpay_subscription( $subscription ) );
 
 		$subscription->update_meta_data( self::SUBSCRIPTION_ID_META_KEY, 'test_is_wcpay_subscription' );
@@ -763,7 +763,7 @@ class WC_Payments_Subscription_Service_Test extends WCPAY_UnitTestCase {
 	 */
 	public function test_is_wcpay_subscription_order_with_stripe_billed_subscription() {
 		$subscription                 = new WC_Subscription();
-		$subscription->payment_method = 'woocommerce_payments';
+		$subscription->payment_method = 'poocommerce_payments';
 		$subscription->update_meta_data( self::SUBSCRIPTION_ID_META_KEY, 'sub_test123' );
 
 		$this->mock_wcs_get_subscriptions_for_order( [ $subscription ] );
@@ -777,7 +777,7 @@ class WC_Payments_Subscription_Service_Test extends WCPAY_UnitTestCase {
 	 */
 	public function test_is_wcpay_subscription_order_with_tokenised_subscription() {
 		$subscription                 = new WC_Subscription();
-		$subscription->payment_method = 'woocommerce_payments';
+		$subscription->payment_method = 'poocommerce_payments';
 		// No _wcpay_subscription_id: never created in Stripe Billing.
 
 		$this->mock_wcs_get_subscriptions_for_order( [ $subscription ] );
@@ -791,10 +791,10 @@ class WC_Payments_Subscription_Service_Test extends WCPAY_UnitTestCase {
 	 */
 	public function test_is_wcpay_subscription_order_with_mixed_subscriptions() {
 		$tokenised                 = new WC_Subscription();
-		$tokenised->payment_method = 'woocommerce_payments';
+		$tokenised->payment_method = 'poocommerce_payments';
 
 		$stripe_billed                 = new WC_Subscription();
-		$stripe_billed->payment_method = 'woocommerce_payments';
+		$stripe_billed->payment_method = 'poocommerce_payments';
 		$stripe_billed->update_meta_data( self::SUBSCRIPTION_ID_META_KEY, 'sub_test456' );
 
 		$this->mock_wcs_get_subscriptions_for_order( [ $tokenised, $stripe_billed ] );

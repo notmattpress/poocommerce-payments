@@ -1,16 +1,16 @@
 <?php
 /**
  *
- * This template can be overridden by copying it to yourtheme/woocommerce/emails/email-ipp-receipt-store-details.php
+ * This template can be overridden by copying it to yourtheme/poocommerce/emails/email-ipp-receipt-store-details.php
  *
- * HOWEVER, on occasion WooCommerce will need to update template files and you
+ * HOWEVER, on occasion PooCommerce will need to update template files and you
  * (the theme developer) will need to copy the new files to your theme to
  * maintain compatibility. We try to do this as little as possible, but it does
  * happen. When this occurs the version of the template file will be bumped and
  * the readme will list any important changes.
  *
- * @see https://woocommerce.com/document/template-structure/
- * @package WooCommerce\Payments\Templates\Emails
+ * @see https://poocommerce.com/document/template-structure/
+ * @package PooCommerce\Payments\Templates\Emails
  * @version 1.0.0
  */
 
@@ -18,14 +18,14 @@ defined( 'ABSPATH' ) || exit;
 ?>
 
 <div style="margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #e5e5e5; border-top: 1px solid #e5e5e5; padding-top: 24px;">
-	<h2 style="display: block; font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif; font-size: 18px; font-weight: bold; line-height: 130%; margin: 0 0 18px; text-align: left;" class="woocommerce-email-store-details__heading">
-		<?php esc_html_e( 'Store Details', 'woocommerce-payments' ); ?>
+	<h2 style="display: block; font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif; font-size: 18px; font-weight: bold; line-height: 130%; margin: 0 0 18px; text-align: left;" class="poocommerce-email-store-details__heading">
+		<?php esc_html_e( 'Store Details', 'poocommerce-payments' ); ?>
 	</h2>
 	<table class="td" cellspacing="0" cellpadding="6" style="width: 100%; font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;" border="1">
 		<tbody>
 			<tr>
 				<th class="td" scope="row" style="text-align: left; width: 30%;">
-					<?php esc_html_e( 'Store Name:', 'woocommerce-payments' ); ?>
+					<?php esc_html_e( 'Store Name:', 'poocommerce-payments' ); ?>
 				</th>
 				<td class="td" style="text-align: left;">
 					<?php echo esc_html( $business_name ); ?>
@@ -34,7 +34,7 @@ defined( 'ABSPATH' ) || exit;
 			<?php if ( ! empty( $support_address ) && is_array( $support_address ) ) : ?>
 				<tr>
 					<th class="td" scope="row" style="text-align: left;">
-						<?php esc_html_e( 'Address:', 'woocommerce-payments' ); ?>
+						<?php esc_html_e( 'Address:', 'poocommerce-payments' ); ?>
 					</th>
 					<td class="td" style="text-align: left;">
 						<?php
@@ -71,7 +71,7 @@ defined( 'ABSPATH' ) || exit;
 			<?php if ( ! empty( $support_phone ) || ! empty( $support_email ) ) : ?>
 				<tr>
 					<th class="td" scope="row" style="text-align: left;">
-						<?php esc_html_e( 'Contact:', 'woocommerce-payments' ); ?>
+						<?php esc_html_e( 'Contact:', 'poocommerce-payments' ); ?>
 					</th>
 					<td class="td" style="text-align: left;">
 						<?php
@@ -89,7 +89,7 @@ defined( 'ABSPATH' ) || exit;
 			<?php endif; ?>
 			<tr>
 				<th class="td" scope="row" style="text-align: left;">
-					<?php esc_html_e( 'Date:', 'woocommerce-payments' ); ?>
+					<?php esc_html_e( 'Date:', 'poocommerce-payments' ); ?>
 				</th>
 				<td class="td" style="text-align: left;">
 					<?php echo esc_html( gmdate( 'Y-m-d H:iA' ) ); ?>

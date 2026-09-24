@@ -6,7 +6,7 @@
  * This is necessary because WP-CLI commands registered via eval-file are not
  * persisted across separate wp command invocations.
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 if ( ! defined( 'WP_CLI' ) || ! WP_CLI ) {

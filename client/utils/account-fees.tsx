@@ -20,7 +20,7 @@ import { createInterpolateElement } from '@wordpress/element';
 import PAYMENT_METHOD_IDS from 'constants/payment-method';
 
 const countryFeeDocsBaseLink =
-	'https://woocommerce.com/document/woopayments/fees/';
+	'https://poocommerce.com/document/woopayments/fees/';
 
 // Keyed on the Stripe account country — the same account the fees in this
 // tooltip come from. Values are the fees page's URL fragment slugs, not
@@ -134,7 +134,7 @@ export const formatMethodFeesTooltip = (
 			? 1 - accountFees.discount[ 0 ].discount
 			: 1;
 
-	// Per https://woocommerce.com/terms-conditions/woopayments-promotion-2023/ we exclude FX fees from discounts.
+	// Per https://poocommerce.com/terms-conditions/woopayments-promotion-2023/ we exclude FX fees from discounts.
 	const total = {
 		percentage_rate:
 			accountFees.base.percentage_rate * discountAdjustedFeeRate +
@@ -167,7 +167,7 @@ export const formatMethodFeesTooltip = (
 	return (
 		<div className={ 'wcpay-fees-tooltip' }>
 			<div>
-				<div>{ __( 'Base fee', 'woocommerce-payments' ) }</div>
+				<div>{ __( 'Base fee', 'poocommerce-payments' ) }</div>
 				<div>
 					{ getFeeDescriptionString(
 						accountFees.base,
@@ -180,7 +180,7 @@ export const formatMethodFeesTooltip = (
 					<div>
 						{ __(
 							'International payment method fee',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 					</div>
 					<div>
@@ -198,7 +198,7 @@ export const formatMethodFeesTooltip = (
 					<div>
 						{ __(
 							'Currency conversion fee',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 					</div>
 					<div>{ getFeeDescriptionString( accountFees.fx ) }</div>
@@ -208,7 +208,7 @@ export const formatMethodFeesTooltip = (
 			) }
 			<div>
 				<div>
-					{ __( 'Total per transaction', 'woocommerce-payments' ) }
+					{ __( 'Total per transaction', 'poocommerce-payments' ) }
 				</div>
 				<div className={ 'wcpay-fees-tooltip__bold' }>
 					{ getFeeDescriptionString( total ) }
@@ -225,7 +225,7 @@ export const formatMethodFeesTooltip = (
 									/* translators: %s: WooPayments */
 									__(
 										'{{linkToStripePage}}Learn more{{/linkToStripePage}} about %s Fees in your country',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									),
 									'WooPayments'
 							  )
@@ -233,7 +233,7 @@ export const formatMethodFeesTooltip = (
 									/* translators: %s: WooPayments */
 									__(
 										'{{linkToStripePage}}Learn more{{/linkToStripePage}} about %s Fees',
-										'woocommerce-payments'
+										'poocommerce-payments'
 									),
 									'WooPayments'
 							  ),
@@ -260,9 +260,9 @@ export const formatAccountFeesDescription = (
 	// Default formats will be used if no matching field was passed in the `formats` parameter.
 	const formats = {
 		/* translators: %1: Percentage part of the fee. %2: Fixed part of the fee */
-		fee: __( '%1$f%% + %2$s per transaction', 'woocommerce-payments' ),
+		fee: __( '%1$f%% + %2$s per transaction', 'poocommerce-payments' ),
 		/* translators: %f percentage discount to apply */
-		discount: __( '(%f%% discount)', 'woocommerce-payments' ),
+		discount: __( '(%f%% discount)', 'poocommerce-payments' ),
 		displayBaseFeeIfDifferent: true,
 		...customFormats,
 	};
@@ -301,7 +301,7 @@ export const formatAccountFeesDescription = (
 			currentBaseFeeDescription = sprintf(
 				// eslint-disable-next-line max-len
 				/* translators: %1 Base fee (that don't apply to this account at this moment), %2: Current fee (e.g: "2.9% + $.30 per transaction") */
-				__( '<s>%1$s</s> %2$s', 'woocommerce-payments' ),
+				__( '<s>%1$s</s> %2$s', 'poocommerce-payments' ),
 				feeDescription,
 				currentBaseFeeDescription
 			);
@@ -330,11 +330,11 @@ export const formatMethodFeesDescription = (
 	methodFees: FeeStructure | undefined
 ): string | JSX.Element => {
 	if ( ! methodFees ) {
-		return __( 'missing fees', 'woocommerce-payments' );
+		return __( 'missing fees', 'poocommerce-payments' );
 	}
 
 	/* translators: %1: Percentage part of the fee. %2: Fixed part of the fee */
-	const format = __( 'From %1$f%% + %2$s', 'woocommerce-payments' );
+	const format = __( 'From %1$f%% + %2$s', 'poocommerce-payments' );
 
 	return formatAccountFeesDescription( methodFees, {
 		fee: format,
@@ -350,9 +350,9 @@ export const getTransactionsPaymentMethodName = (
 	// `card` WILL be in that config, but it's title is "Cards" and we want to show "Card transactions."
 	switch ( paymentMethod ) {
 		case 'card':
-			return __( 'Card transactions', 'woocommerce-payments' );
+			return __( 'Card transactions', 'poocommerce-payments' );
 		case 'card_present':
-			return __( 'In-person transactions', 'woocommerce-payments' );
+			return __( 'In-person transactions', 'poocommerce-payments' );
 	}
 
 	// Try to get the title from wooPaymentsPaymentMethodsConfig
@@ -360,13 +360,13 @@ export const getTransactionsPaymentMethodName = (
 	if ( methodConfig?.title ) {
 		return sprintf(
 			/* translators: %s: Payment method title */
-			__( '%s transactions', 'woocommerce-payments' ),
+			__( '%s transactions', 'poocommerce-payments' ),
 			methodConfig.title
 		);
 	}
 
 	// Fallback for unknown payment methods
-	return __( 'Unknown transactions', 'woocommerce-payments' );
+	return __( 'Unknown transactions', 'poocommerce-payments' );
 };
 
 export const getDiscountBadgeText = ( discountFee: DiscountFee ): string => {
@@ -379,7 +379,7 @@ export const getDiscountBadgeText = ( discountFee: DiscountFee ): string => {
 	if ( discountFee.end_time ) {
 		return sprintf(
 			/* translators: %1$s: discount percentage, %2$s: expiration date */
-			__( '%1$s%% off fees through %2$s', 'woocommerce-payments' ),
+			__( '%1$s%% off fees through %2$s', 'poocommerce-payments' ),
 			discountPercentage,
 			formatDateTimeFromString( discountFee.end_time )
 		);
@@ -387,7 +387,7 @@ export const getDiscountBadgeText = ( discountFee: DiscountFee ): string => {
 
 	return sprintf(
 		/* translators: %s: discount percentage */
-		__( '%s%% off fees', 'woocommerce-payments' ),
+		__( '%s%% off fees', 'poocommerce-payments' ),
 		discountPercentage
 	);
 };
@@ -405,7 +405,7 @@ export const getDiscountTooltipText = ( discountFee: DiscountFee ): string => {
 			/* translators: %1$s: discount percentage, %2$s: total payment volume until this promotion expires, %3$s: End date of the promotion */
 			__(
 				'You are saving %1$s%% on processing fees for the first %2$s of total payment volume or through %3$s.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			discountPercentage,
 			formatCurrency( discountFee.volume_allowance, currencyCode ),
@@ -416,7 +416,7 @@ export const getDiscountTooltipText = ( discountFee: DiscountFee ): string => {
 			/* translators: %1$s: discount percentage, %2$s: total payment volume until this promotion expires */
 			__(
 				'You are saving %1$s%% on processing fees for the first %2$s of total payment volume.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			discountPercentage,
 			formatCurrency( discountFee.volume_allowance, currencyCode )
@@ -426,7 +426,7 @@ export const getDiscountTooltipText = ( discountFee: DiscountFee ): string => {
 			/* translators: %1$s: discount percentage, %2$s: End date of the promotion */
 			__(
 				'You are saving %1$s%% on processing fees through %2$s.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			discountPercentage,
 			formatDateTimeFromString( discountFee.end_time )
@@ -435,7 +435,7 @@ export const getDiscountTooltipText = ( discountFee: DiscountFee ): string => {
 
 	return sprintf(
 		/* translators: %s: discount percentage */
-		__( 'You are saving %s%% on processing fees.', 'woocommerce-payments' ),
+		__( 'You are saving %s%% on processing fees.', 'poocommerce-payments' ),
 		discountPercentage
 	);
 };

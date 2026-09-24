@@ -2,7 +2,7 @@
 /**
  * Intention helpers.
  *
- * @package WooCommerce/Tests
+ * @package PooCommerce/Tests
  */
 
 use WCPay\Constants\Intent_Status;
