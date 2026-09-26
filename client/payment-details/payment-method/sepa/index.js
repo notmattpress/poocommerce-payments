@@ -45,12 +45,12 @@ const formatPaymentMethodDetails = ( charge ) => {
  */
 const paymentMethodPlaceholders = {
 	last4: '0000',
-	fingerprint: __( 'fingerprint placeholder', 'woocommerce-payments' ),
-	id: __( 'id placeholder', 'woocommerce-payments' ),
-	name: __( 'name placeholder', 'woocommerce-payments' ),
-	email: __( 'email placeholder', 'woocommerce-payments' ),
-	formattedAddress: __( 'address placeholder', 'woocommerce-payments' ),
-	country: __( 'country placeholder', 'woocommerce-payments' ),
+	fingerprint: __( 'fingerprint placeholder', 'poocommerce-payments' ),
+	id: __( 'id placeholder', 'poocommerce-payments' ),
+	name: __( 'name placeholder', 'poocommerce-payments' ),
+	email: __( 'email placeholder', 'poocommerce-payments' ),
+	formattedAddress: __( 'address placeholder', 'poocommerce-payments' ),
+	country: __( 'country placeholder', 'poocommerce-payments' ),
 };
 
 const SepaDetails = ( { charge = {}, isLoading } ) => {
@@ -69,14 +69,14 @@ const SepaDetails = ( { charge = {}, isLoading } ) => {
 			<div className="payment-method-details__column">
 				<Detail
 					isLoading={ isLoading }
-					label={ __( 'IBAN', 'woocommerce-payments' ) }
+					label={ __( 'IBAN', 'poocommerce-payments' ) }
 				>
 					&bull;&bull;&bull;&bull;&nbsp;{ last4 }
 				</Detail>
 
 				<Detail
 					isLoading={ isLoading }
-					label={ __( 'ID', 'woocommerce-payments' ) }
+					label={ __( 'ID', 'poocommerce-payments' ) }
 				>
 					{ id }
 				</Detail>
@@ -85,21 +85,21 @@ const SepaDetails = ( { charge = {}, isLoading } ) => {
 			<div className="payment-method-details__column">
 				<Detail
 					isLoading={ isLoading }
-					label={ __( 'Owner', 'woocommerce-payments' ) }
+					label={ __( 'Owner', 'poocommerce-payments' ) }
 				>
 					{ name }
 				</Detail>
 
 				<Detail
 					isLoading={ isLoading }
-					label={ __( 'Owner email', 'woocommerce-payments' ) }
+					label={ __( 'Owner email', 'poocommerce-payments' ) }
 				>
 					{ email }
 				</Detail>
 
 				<Detail
 					isLoading={ isLoading }
-					label={ __( 'Address', 'woocommerce-payments' ) }
+					label={ __( 'Address', 'poocommerce-payments' ) }
 				>
 					<span
 						dangerouslySetInnerHTML={ {
@@ -110,7 +110,7 @@ const SepaDetails = ( { charge = {}, isLoading } ) => {
 
 				<Detail
 					isLoading={ isLoading }
-					label={ __( 'Origin', 'woocommerce-payments' ) }
+					label={ __( 'Origin', 'poocommerce-payments' ) }
 				>
 					{ country }
 				</Detail>

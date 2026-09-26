@@ -2,7 +2,7 @@
 /**
  * Variant of Experimental_Abtest used by the accelerated-onboarding experiment.
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay;

@@ -29,7 +29,7 @@ const DuplicateStatus: React.FC< DuplicateStatusProps > = ( {
 	return (
 		<section className="wcpay-dispute-evidence-duplicate-status">
 			<h3 className="wcpay-dispute-evidence-duplicate-status__heading">
-				{ __( 'Was this charge a duplicate?', 'woocommerce-payments' ) }
+				{ __( 'Was this charge a duplicate?', 'poocommerce-payments' ) }
 			</h3>
 			<div className="wcpay-dispute-evidence-duplicate-status__field-group">
 				<RadioControl
@@ -40,11 +40,11 @@ const DuplicateStatus: React.FC< DuplicateStatusProps > = ( {
 							// @ts-ignore - description is a valid prop for RadioControl on newer versions of wordpress/components
 							description: __(
 								'A refund has been issued',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							label: __(
 								'It was a duplicate',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							value: 'is_duplicate',
 						},
@@ -53,11 +53,11 @@ const DuplicateStatus: React.FC< DuplicateStatusProps > = ( {
 							// @ts-ignore - description is a valid prop for RadioControl on newer versions of wordpress/components
 							description: __(
 								'No refund needed',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							label: __(
 								'It was not a duplicate',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							value: 'is_not_duplicate',
 						},

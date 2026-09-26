@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Payment_Method_Service
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -19,7 +19,7 @@ use WCPay\Logger;
  */
 class WC_Payments_Payment_Method_Service {
 	/**
-	 * Client for making requests to the WooCommerce Payments API
+	 * Client for making requests to the PooCommerce Payments API
 	 *
 	 * @var WC_Payments_API_Client
 	 */
@@ -35,7 +35,7 @@ class WC_Payments_Payment_Method_Service {
 	/**
 	 * Constructor for WC_Payments_Payment_Method_Service.
 	 *
-	 * @param WC_Payments_API_Client    $payments_api_client Client for making requests to the WooCommerce Payments API.
+	 * @param WC_Payments_API_Client    $payments_api_client Client for making requests to the PooCommerce Payments API.
 	 * @param WC_Payments_Order_Service $order_service Order service.
 	 */
 	public function __construct(

@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import { calendar } from '@wordpress/icons';
-import { Link } from '@woocommerce/components';
+import { Link } from '@poocommerce/components';
 import { __ } from '@wordpress/i18n';
 import {
 	CardBody,
@@ -63,13 +63,13 @@ const RecentDepositsList: React.FC< RecentDepositsProps > = ( {
 			<CardBody className={ `${ tableClass }__container` }>
 				<Flex className={ `${ tableClass }__row__header` }>
 					<FlexItem className={ `${ tableClass }__cell` }>
-						{ __( 'Dispatch date', 'woocommerce-payments' ) }
+						{ __( 'Dispatch date', 'poocommerce-payments' ) }
 					</FlexItem>
 					<FlexItem className={ `${ tableClass }__cell` }>
-						{ __( 'Status', 'woocommerce-payments' ) }
+						{ __( 'Status', 'poocommerce-payments' ) }
 					</FlexItem>
 					<FlexItem className={ `${ tableClass }__cell` }>
-						{ __( 'Amount', 'woocommerce-payments' ) }
+						{ __( 'Amount', 'poocommerce-payments' ) }
 					</FlexItem>
 				</Flex>
 			</CardBody>

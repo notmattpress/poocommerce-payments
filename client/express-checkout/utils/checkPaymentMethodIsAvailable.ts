@@ -206,7 +206,7 @@ export async function checkPaymentMethodIsAvailable(
 	cart: Cart,
 	api: WCPayAPI
 ): Promise< boolean > {
-	// Guard against empty currency code during WooCommerce Blocks store
+	// Guard against empty currency code during PooCommerce Blocks store
 	// hydration. The cart store initialises with currency_code: '' before
 	// server-side preloaded data is applied. Passing an empty string to
 	// Stripe Elements throws. Returning false here lets WC Blocks
