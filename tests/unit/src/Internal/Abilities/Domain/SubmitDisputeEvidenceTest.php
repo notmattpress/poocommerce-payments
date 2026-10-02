@@ -2,7 +2,7 @@
 /**
  * Tests for WCPay\Internal\Abilities\Domain\SubmitDisputeEvidence.
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 namespace WCPay\Tests\Internal\Abilities\Domain;
@@ -17,7 +17,7 @@ use WCPay\Internal\Abilities\Domain\SubmitDisputeEvidence;
 class SubmitDisputeEvidenceTest extends WCPAY_UnitTestCase {
 
 	public function test_name(): void {
-		$this->assertSame( 'woocommerce-payments/submit-dispute-evidence', SubmitDisputeEvidence::get_name() );
+		$this->assertSame( 'poocommerce-payments/submit-dispute-evidence', SubmitDisputeEvidence::get_name() );
 	}
 
 	public function test_registration_args_has_destructive_write_annotations(): void {

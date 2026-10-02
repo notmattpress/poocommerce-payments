@@ -115,7 +115,7 @@ const Spotlight: React.FC< SpotlightProps > = ( {
 			speak(
 				sprintf(
 					/* translators: %s: heading text of the spotlight dialog */
-					__( 'Dialog opened: %s', 'woocommerce-payments' ),
+					__( 'Dialog opened: %s', 'poocommerce-payments' ),
 					heading
 				),
 				'polite'
@@ -299,7 +299,7 @@ const Spotlight: React.FC< SpotlightProps > = ( {
 							{ ( image || icon ) && <span /> }
 							<Button
 								className="wcpay-spotlight__close-btn"
-								label={ __( 'Close', 'woocommerce-payments' ) }
+								label={ __( 'Close', 'poocommerce-payments' ) }
 								icon={
 									<Icon
 										icon={ closeSmall }

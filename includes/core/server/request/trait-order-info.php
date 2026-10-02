@@ -2,12 +2,12 @@
 /**
  * Trait file for WCPay\Core\Server\Request\Order_info.
  *
- * @package WooCommerce Payments
+ * @package PooCommerce Payments
  */
 
 namespace WCPay\Core\Server\Request;
 
-use Automattic\WooCommerce\Admin\API\Reports\Customers\DataStore;
+use Automattic\PooCommerce\Admin\API\Reports\Customers\DataStore;
 use WC_Order;
 
 /**

@@ -31,29 +31,29 @@ const illustrationBanner = ( src: string ): JSX.Element => (
 
 const variants: Record< string, ReviewPromptVariantContent > = {
 	[ controlVariant ]: {
-		heading: __( 'Enjoying WooPayments so far?', 'woocommerce-payments' ),
+		heading: __( 'Enjoying WooPayments so far?', 'poocommerce-payments' ),
 		description: __(
-			'Your feedback shapes our roadmap and supports the WooCommerce community. We are all ears!',
-			'woocommerce-payments'
+			'Your feedback shapes our roadmap and supports the PooCommerce community. We are all ears!',
+			'poocommerce-payments'
 		),
 		icon: <MegaphoneIcon />,
 	},
 	treatment_illustration: {
 		heading: __(
 			'We built it. You use it. What do you think?',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		description: __(
 			'Leave a quick review and help shape what WooPayments does next.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		image: illustrationBanner( builtItIllustration ),
 	},
 	treatment_revised: {
-		heading: __( 'Quick check-in?', 'woocommerce-payments' ),
+		heading: __( 'Quick check-in?', 'poocommerce-payments' ),
 		description: __(
 			'Your review helps us improve WooPayments and build a better experience for every store owner.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		image: illustrationBanner( checkInIllustration ),
 	},

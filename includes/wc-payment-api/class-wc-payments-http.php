@@ -2,7 +2,7 @@
 /**
  * WC_Payments_Http class.
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -59,7 +59,7 @@ class WC_Payments_Http implements WC_Payments_Http_Interface {
 		if ( ! $this->is_connected() ) {
 			Logger::error( 'HTTP_REQUEST_ERROR Site is not connected to WordPress.com' );
 			throw new API_Exception(
-				__( 'Site is not connected to WordPress.com', 'woocommerce-payments' ),
+				__( 'Site is not connected to WordPress.com', 'poocommerce-payments' ),
 				'wcpay_wpcom_not_connected',
 				409 // HTTP Conflict status code.
 			);
@@ -118,7 +118,7 @@ class WC_Payments_Http implements WC_Payments_Http_Interface {
 			Logger::error( 'HTTP_REQUEST_ERROR ' . var_export( $response, true ) ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_var_export
 			$message = sprintf(
 				// translators: %1: original error message.
-				__( 'Http request failed. Reason: %1$s', 'woocommerce-payments' ),
+				__( 'Http request failed. Reason: %1$s', 'poocommerce-payments' ),
 				$response->get_error_message()
 			);
 			throw new Connection_Exception( $message, 'wcpay_http_request_failed', 500 );
@@ -199,8 +199,8 @@ class WC_Payments_Http implements WC_Payments_Http_Interface {
 		wp_safe_redirect(
 			add_query_arg(
 				[
-					'from'        => 'woocommerce-core-profiler',
-					'plugin_name' => 'woocommerce-payments',
+					'from'        => 'poocommerce-core-profiler',
+					'plugin_name' => 'poocommerce-payments',
 					'calypso_env' => $calypso_env,
 				],
 				$this->connection_manager->get_authorization_url( null, $redirect )

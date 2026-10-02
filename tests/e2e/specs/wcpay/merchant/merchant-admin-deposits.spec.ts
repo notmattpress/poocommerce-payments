@@ -15,7 +15,7 @@ test.describe( 'Merchant deposits', () => {
 
 		// Wait for the deposits table to load.
 		await page
-			.locator( '.woocommerce-table__table.is-loading' )
+			.locator( '.poocommerce-table__table.is-loading' )
 			.waitFor( { state: 'hidden' } );
 
 		await expect(
@@ -32,7 +32,7 @@ test.describe( 'Merchant deposits', () => {
 
 		// Wait for the deposits table to load.
 		await page
-			.locator( '.woocommerce-table__table.is-loading' )
+			.locator( '.poocommerce-table__table.is-loading' )
 			.waitFor( { state: 'hidden' } );
 
 		// Open the advanced filters.
@@ -59,7 +59,7 @@ test.describe( 'Merchant deposits', () => {
 		await page.getByRole( 'link', { name: 'Filter', exact: true } ).click();
 		await expect( page ).toHaveURL( /status_is=/ );
 		await expect(
-			page.locator( '.woocommerce-table__table.is-loading' )
+			page.locator( '.poocommerce-table__table.is-loading' )
 		).toHaveCount( 0 );
 	} );
 } );

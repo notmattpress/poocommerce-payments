@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Incentives_Service_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\Database_Cache;
@@ -81,7 +81,7 @@ class WC_Payments_Incentives_Service_Test extends WCPAY_UnitTestCase {
 		];
 
 		// Ensure no payment gateways are available.
-		add_filter( 'woocommerce_available_payment_gateways', '__return_empty_array' );
+		add_filter( 'poocommerce_available_payment_gateways', '__return_empty_array' );
 	}
 
 	/**
@@ -94,12 +94,12 @@ class WC_Payments_Incentives_Service_Test extends WCPAY_UnitTestCase {
 		$menu = null; // phpcs:ignore: WordPress.WP.GlobalVariablesOverride.Prohibited
 
 		remove_all_filters( 'pre_http_request' );
-		remove_all_filters( 'woocommerce_order_query' );
-		remove_all_filters( 'woocommerce_order_query_args' );
-		remove_filter( 'woocommerce_available_payment_gateways', '__return_empty_array' );
+		remove_all_filters( 'poocommerce_order_query' );
+		remove_all_filters( 'poocommerce_order_query_args' );
+		remove_filter( 'poocommerce_available_payment_gateways', '__return_empty_array' );
 
-		delete_option( 'woocommerce_admin_pes_incentive_woopayments_store_had_woopayments' );
-		delete_option( 'woocommerce_admin_pes_incentive_woopayments_store_had_woopayments_version' );
+		delete_option( 'poocommerce_admin_pes_incentive_woopayments_store_had_woopayments' );
+		delete_option( 'poocommerce_admin_pes_incentive_woopayments_store_had_woopayments_version' );
 
 		$this->incentives_service->clear_cache();
 
@@ -109,8 +109,8 @@ class WC_Payments_Incentives_Service_Test extends WCPAY_UnitTestCase {
 	public function test_filters_registered_properly() {
 		// Assert.
 		$this->assertNotFalse( has_action( 'admin_menu', [ $this->incentives_service, 'add_payments_menu_badge' ] ) );
-		$this->assertNotFalse( has_filter( 'woocommerce_admin_allowed_promo_notes', [ $this->incentives_service, 'allowed_promo_notes' ] ) );
-		$this->assertNotFalse( has_filter( 'woocommerce_admin_woopayments_onboarding_task_badge', [ $this->incentives_service, 'onboarding_task_badge' ] ) );
+		$this->assertNotFalse( has_filter( 'poocommerce_admin_allowed_promo_notes', [ $this->incentives_service, 'allowed_promo_notes' ] ) );
+		$this->assertNotFalse( has_filter( 'poocommerce_admin_woopayments_onboarding_task_badge', [ $this->incentives_service, 'onboarding_task_badge' ] ) );
 	}
 
 	public function test_add_payments_menu_badge_without_incentive() {
@@ -199,7 +199,7 @@ class WC_Payments_Incentives_Service_Test extends WCPAY_UnitTestCase {
 	public function test_get_connect_incentive_non_supported_country() {
 		// Arrange.
 		add_filter(
-			'woocommerce_countries_base_country',
+			'poocommerce_countries_base_country',
 			function () {
 				return '__';
 			}
@@ -209,7 +209,7 @@ class WC_Payments_Incentives_Service_Test extends WCPAY_UnitTestCase {
 		$this->assertNull( $this->incentives_service->get_connect_incentive() );
 
 		// Clean up.
-		remove_all_filters( 'woocommerce_countries_base_country' );
+		remove_all_filters( 'poocommerce_countries_base_country' );
 	}
 
 	public function test_get_connect_incentive_cached_error() {
@@ -378,7 +378,7 @@ class WC_Payments_Incentives_Service_Test extends WCPAY_UnitTestCase {
 		update_option( $had_woopayments_option_key . '_version', 2 );
 		$call_count = 0;
 		add_filter(
-			'woocommerce_order_query_args',
+			'poocommerce_order_query_args',
 			function ( $args ) use ( &$call_count ) {
 				$call_count++;
 
@@ -428,7 +428,7 @@ class WC_Payments_Incentives_Service_Test extends WCPAY_UnitTestCase {
 		$this->incentives_service->get_connect_incentive();
 
 		// Clean up.
-		remove_all_filters( 'woocommerce_order_query' );
+		remove_all_filters( 'poocommerce_order_query' );
 		remove_all_filters( 'pre_set_transient_' . $this->transient_has_orders_key );
 	}
 
@@ -456,14 +456,14 @@ class WC_Payments_Incentives_Service_Test extends WCPAY_UnitTestCase {
 		$this->incentives_service->get_connect_incentive();
 
 		// Clean up.
-		remove_all_filters( 'woocommerce_order_query' );
+		remove_all_filters( 'poocommerce_order_query' );
 		remove_all_filters( 'pre_set_transient_' . $this->transient_has_orders_key );
 	}
 
 	public function test_has_wcpay_ignores_test_mode_orders() {
 		// Arrange.
 		$order = WC_Helper_Order::create_order();
-		$order->set_payment_method( 'woocommerce_payments' );
+		$order->set_payment_method( 'poocommerce_payments' );
 		$order->update_meta_data( '_wcpay_mode', 'test' );
 		$order->save();
 
@@ -472,8 +472,8 @@ class WC_Payments_Incentives_Service_Test extends WCPAY_UnitTestCase {
 
 		// Assert.
 		$this->assertFalse( $result );
-		$this->assertSame( 'no', get_option( 'woocommerce_admin_pes_incentive_woopayments_store_had_woopayments' ) );
-		$this->assertSame( 2, (int) get_option( 'woocommerce_admin_pes_incentive_woopayments_store_had_woopayments_version' ) );
+		$this->assertSame( 'no', get_option( 'poocommerce_admin_pes_incentive_woopayments_store_had_woopayments' ) );
+		$this->assertSame( 2, (int) get_option( 'poocommerce_admin_pes_incentive_woopayments_store_had_woopayments_version' ) );
 
 		// Clean up.
 		$order->delete( true );
@@ -482,7 +482,7 @@ class WC_Payments_Incentives_Service_Test extends WCPAY_UnitTestCase {
 	public function test_has_wcpay_counts_live_mode_orders() {
 		// Arrange.
 		$order = WC_Helper_Order::create_order();
-		$order->set_payment_method( 'woocommerce_payments' );
+		$order->set_payment_method( 'poocommerce_payments' );
 		$order->update_meta_data( '_wcpay_mode', 'prod' );
 		$order->save();
 
@@ -491,7 +491,7 @@ class WC_Payments_Incentives_Service_Test extends WCPAY_UnitTestCase {
 
 		// Assert.
 		$this->assertTrue( $result );
-		$this->assertSame( 'yes', get_option( 'woocommerce_admin_pes_incentive_woopayments_store_had_woopayments' ) );
+		$this->assertSame( 'yes', get_option( 'poocommerce_admin_pes_incentive_woopayments_store_had_woopayments' ) );
 
 		// Clean up.
 		$order->delete( true );
@@ -504,7 +504,7 @@ class WC_Payments_Incentives_Service_Test extends WCPAY_UnitTestCase {
 	public function test_has_wcpay_ignores_orders_without_mode_meta() {
 		// Arrange.
 		$order = WC_Helper_Order::create_order();
-		$order->set_payment_method( 'woocommerce_payments' );
+		$order->set_payment_method( 'poocommerce_payments' );
 		$order->save();
 
 		// Act.
@@ -512,7 +512,7 @@ class WC_Payments_Incentives_Service_Test extends WCPAY_UnitTestCase {
 
 		// Assert.
 		$this->assertFalse( $result );
-		$this->assertSame( 'no', get_option( 'woocommerce_admin_pes_incentive_woopayments_store_had_woopayments' ) );
+		$this->assertSame( 'no', get_option( 'poocommerce_admin_pes_incentive_woopayments_store_had_woopayments' ) );
 
 		// Clean up.
 		$order->delete( true );
@@ -530,7 +530,7 @@ class WC_Payments_Incentives_Service_Test extends WCPAY_UnitTestCase {
 
 		// Act & assert.
 		$this->assertFalse( $this->invoke_has_wcpay( $service ) );
-		$this->assertSame( 'no', get_option( 'woocommerce_admin_pes_incentive_woopayments_store_had_woopayments' ) );
+		$this->assertSame( 'no', get_option( 'poocommerce_admin_pes_incentive_woopayments_store_had_woopayments' ) );
 	}
 
 	public function test_has_wcpay_ignores_sandbox_account_data() {
@@ -544,7 +544,7 @@ class WC_Payments_Incentives_Service_Test extends WCPAY_UnitTestCase {
 
 		// Act & assert.
 		$this->assertFalse( $this->invoke_has_wcpay( $service ) );
-		$this->assertSame( 'no', get_option( 'woocommerce_admin_pes_incentive_woopayments_store_had_woopayments' ) );
+		$this->assertSame( 'no', get_option( 'poocommerce_admin_pes_incentive_woopayments_store_had_woopayments' ) );
 	}
 
 	public function test_has_wcpay_counts_live_account_data() {
@@ -559,7 +559,7 @@ class WC_Payments_Incentives_Service_Test extends WCPAY_UnitTestCase {
 
 		// Act & assert.
 		$this->assertTrue( $this->invoke_has_wcpay( $service ) );
-		$this->assertSame( 'yes', get_option( 'woocommerce_admin_pes_incentive_woopayments_store_had_woopayments' ) );
+		$this->assertSame( 'yes', get_option( 'poocommerce_admin_pes_incentive_woopayments_store_had_woopayments' ) );
 	}
 
 	/**
@@ -572,7 +572,7 @@ class WC_Payments_Incentives_Service_Test extends WCPAY_UnitTestCase {
 
 		// Act & assert.
 		$this->assertTrue( $this->invoke_has_wcpay( $service ) );
-		$this->assertSame( 'yes', get_option( 'woocommerce_admin_pes_incentive_woopayments_store_had_woopayments' ) );
+		$this->assertSame( 'yes', get_option( 'poocommerce_admin_pes_incentive_woopayments_store_had_woopayments' ) );
 	}
 
 	/**
@@ -584,23 +584,23 @@ class WC_Payments_Incentives_Service_Test extends WCPAY_UnitTestCase {
 	public function test_has_wcpay_redetermines_stale_positive() {
 		// Arrange.
 		// A positive stored without a logic version, as an earlier revision would have left it.
-		update_option( 'woocommerce_admin_pes_incentive_woopayments_store_had_woopayments', 'yes' );
-		delete_option( 'woocommerce_admin_pes_incentive_woopayments_store_had_woopayments_version' );
+		update_option( 'poocommerce_admin_pes_incentive_woopayments_store_had_woopayments', 'yes' );
+		delete_option( 'poocommerce_admin_pes_incentive_woopayments_store_had_woopayments_version' );
 
 		// Act & assert.
 		$this->assertFalse( $this->invoke_has_wcpay( $this->incentives_service ) );
-		$this->assertSame( 'no', get_option( 'woocommerce_admin_pes_incentive_woopayments_store_had_woopayments' ) );
-		$this->assertSame( 2, (int) get_option( 'woocommerce_admin_pes_incentive_woopayments_store_had_woopayments_version' ) );
+		$this->assertSame( 'no', get_option( 'poocommerce_admin_pes_incentive_woopayments_store_had_woopayments' ) );
+		$this->assertSame( 2, (int) get_option( 'poocommerce_admin_pes_incentive_woopayments_store_had_woopayments_version' ) );
 	}
 
 	public function test_has_wcpay_trusts_current_positive() {
 		// Arrange.
-		update_option( 'woocommerce_admin_pes_incentive_woopayments_store_had_woopayments', 'yes' );
-		update_option( 'woocommerce_admin_pes_incentive_woopayments_store_had_woopayments_version', 2 );
+		update_option( 'poocommerce_admin_pes_incentive_woopayments_store_had_woopayments', 'yes' );
+		update_option( 'poocommerce_admin_pes_incentive_woopayments_store_had_woopayments_version', 2 );
 
 		// Act & assert.
 		$this->assertTrue( $this->invoke_has_wcpay( $this->incentives_service ) );
-		$this->assertSame( 'yes', get_option( 'woocommerce_admin_pes_incentive_woopayments_store_had_woopayments' ) );
+		$this->assertSame( 'yes', get_option( 'poocommerce_admin_pes_incentive_woopayments_store_had_woopayments' ) );
 	}
 
 	/**
@@ -613,17 +613,17 @@ class WC_Payments_Incentives_Service_Test extends WCPAY_UnitTestCase {
 		// Arrange.
 		// A live-mode order that would determine a positive if the stored value were re-determined.
 		$order = WC_Helper_Order::create_order();
-		$order->set_payment_method( 'woocommerce_payments' );
+		$order->set_payment_method( 'poocommerce_payments' );
 		$order->update_meta_data( '_wcpay_mode', 'prod' );
 		$order->save();
 
 		// A negative stored without a logic version, as an earlier revision would have left it.
-		update_option( 'woocommerce_admin_pes_incentive_woopayments_store_had_woopayments', 'no' );
-		delete_option( 'woocommerce_admin_pes_incentive_woopayments_store_had_woopayments_version' );
+		update_option( 'poocommerce_admin_pes_incentive_woopayments_store_had_woopayments', 'no' );
+		delete_option( 'poocommerce_admin_pes_incentive_woopayments_store_had_woopayments_version' );
 
 		// Act & assert.
 		$this->assertFalse( $this->invoke_has_wcpay( $this->incentives_service ) );
-		$this->assertSame( 'no', get_option( 'woocommerce_admin_pes_incentive_woopayments_store_had_woopayments' ) );
+		$this->assertSame( 'no', get_option( 'poocommerce_admin_pes_incentive_woopayments_store_had_woopayments' ) );
 
 		// Clean up.
 		$order->delete( true );
@@ -672,7 +672,7 @@ class WC_Payments_Incentives_Service_Test extends WCPAY_UnitTestCase {
 	 */
 	private function mock_wc_get_orders( $orders ) {
 		add_filter(
-			'woocommerce_order_query',
+			'poocommerce_order_query',
 			function () use ( $orders ) {
 				return $orders;
 			}

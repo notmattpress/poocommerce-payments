@@ -2,7 +2,7 @@
 /**
  * Tests for WCPay\Internal\Abilities\Domain\GetDisputesSummary.
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 namespace WCPay\Tests\Internal\Abilities\Domain;
@@ -18,7 +18,7 @@ class GetDisputesSummaryTest extends WCPAY_UnitTestCase {
 
 
 	public function test_name(): void {
-		$this->assertSame( 'woocommerce-payments/get-disputes-summary', GetDisputesSummary::get_name() );
+		$this->assertSame( 'poocommerce-payments/get-disputes-summary', GetDisputesSummary::get_name() );
 	}
 
 	public function test_registration_args_shape(): void {
@@ -26,7 +26,7 @@ class GetDisputesSummaryTest extends WCPAY_UnitTestCase {
 
 		$this->assertSame( AbilitiesRegistrar::CATEGORY_SLUG, $args['category'] );
 		$this->assertSame( [ GetDisputesSummary::class, 'execute' ], $args['execute_callback'] );
-		$this->assertSame( [ AbilitiesRegistrar::class, 'current_user_can_manage_woocommerce' ], $args['permission_callback'] );
+		$this->assertSame( [ AbilitiesRegistrar::class, 'current_user_can_manage_poocommerce' ], $args['permission_callback'] );
 		$this->assertTrue( $args['meta']['show_in_rest'] );
 		$this->assertTrue( $args['meta']['annotations']['readonly'] );
 		$this->assertSame( 'object', $args['input_schema']['type'] );

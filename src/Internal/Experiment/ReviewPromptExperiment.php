@@ -2,7 +2,7 @@
 /**
  * Class ReviewPromptExperiment
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Internal\Experiment;
@@ -15,7 +15,7 @@ namespace WCPay\Internal\Experiment;
  */
 final class ReviewPromptExperiment extends Experiment {
 	/**
-	 * ExPlat experiment slug (platform: woocommerce).
+	 * ExPlat experiment slug (platform: poocommerce).
 	 *
 	 * @var string
 	 */

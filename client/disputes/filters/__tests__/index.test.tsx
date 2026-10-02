@@ -6,7 +6,7 @@
 import React from 'react';
 import { act, render, screen } from '@testing-library/react';
 import user from '@testing-library/user-event';
-import { getQuery, updateQueryString } from '@woocommerce/navigation';
+import { getQuery, updateQueryString } from '@poocommerce/navigation';
 
 /**
  * Internal dependencies

@@ -17,7 +17,7 @@ interface RefundOptions {
  * Assumes the admin page is already on the order edit screen.
  *
  * Drives the line-item quantity rather than typing the total into the price
- * field: WooCommerce then computes the refund amount in the store's own currency
+ * field: PooCommerce then computes the refund amount in the store's own currency
  * format, which avoids locale parsing issues (e.g. EUR "16,00 €" being read as
  * 1600). Assertions stay currency-agnostic for the same reason.
  */
@@ -34,7 +34,7 @@ export const submitFullRefund = async (
 		const max = await qtyInputs.nth( i ).getAttribute( 'max' );
 		await qtyInputs.nth( i ).fill( max ?? '1' );
 	}
-	// Tab triggers WooCommerce's refund-total calculation.
+	// Tab triggers PooCommerce's refund-total calculation.
 	await page.keyboard.press( 'Tab' );
 	await expect( page.getByLabel( 'Refund amount' ) ).not.toHaveValue( '' );
 
@@ -57,7 +57,7 @@ export const submitFullRefund = async (
 	// ("was successfully processed"), while methods like Bancontact/Alipay/BNPL
 	// settle asynchronously ("is pending") — so match on the common substrings.
 	const refundNote = page
-		.locator( '#woocommerce-order-notes .note_content' )
+		.locator( '#poocommerce-order-notes .note_content' )
 		.filter( { hasText: 'A refund of' } )
 		.filter( { hasText: 'using WooPayments' } )
 		.filter( { hasText: `Reason: ${ reason }` } );

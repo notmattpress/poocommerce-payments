@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Express_Checkout_Store_API_Extension_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use PHPUnit\Framework\MockObject\MockObject;

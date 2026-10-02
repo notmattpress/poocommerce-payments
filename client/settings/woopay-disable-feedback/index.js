@@ -20,7 +20,7 @@ const WooPayDisableFeedback = ( { onRequestClose } ) => {
 			title={
 				<img
 					src={ WooPayIcon }
-					alt={ __( 'WooPay Logo', 'woocommerce-payments' ) }
+					alt={ __( 'WooPay Logo', 'poocommerce-payments' ) }
 					className="woopay-disable-feedback-logo"
 				/>
 			}
@@ -34,9 +34,9 @@ const WooPayDisableFeedback = ( { onRequestClose } ) => {
 				<iframe
 					title={ __(
 						'WooPay Disable Feedback',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
-					src="https://woocommerce.survey.fm/woopay-disabled-merchants-feedback-triggered"
+					src="https://poocommerce.survey.fm/woopay-disabled-merchants-feedback-triggered"
 					className="woopay-disable-feedback-iframe"
 					onLoad={ () => {
 						setIsLoading( false );

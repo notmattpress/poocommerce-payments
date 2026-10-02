@@ -2,7 +2,7 @@
 /**
  * Admin notices for Multi-Currency.
  *
- * @package WooCommerce\Payments\MultiCurrency
+ * @package PooCommerce\Payments\MultiCurrency
  */
 
 namespace WCPay\MultiCurrency;
@@ -34,7 +34,7 @@ class AdminNotices {
 	 * Display any notices we've collected thus far.
 	 */
 	public function admin_notices() {
-		if ( ! current_user_can( 'manage_woocommerce' ) ) {
+		if ( ! current_user_can( 'manage_poocommerce' ) ) {
 			return;
 		}
 
@@ -45,7 +45,7 @@ class AdminNotices {
 
 			if ( $notice['dismissible'] ) {
 				?>
-				<a href="<?php echo esc_url( wp_nonce_url( add_query_arg( 'wcpay-multi-currency-hide-notice', $notice_key ), 'wcpay_multi_currency_hide_notices_nonce', '_wcpay_multi_currency_notice_nonce' ) ); ?>" class="woocommerce-message-close notice-dismiss" style="position:relative;float:right;padding:9px 0 9px 9px;text-decoration:none;"></a>
+				<a href="<?php echo esc_url( wp_nonce_url( add_query_arg( 'wcpay-multi-currency-hide-notice', $notice_key ), 'wcpay_multi_currency_hide_notices_nonce', '_wcpay_multi_currency_notice_nonce' ) ); ?>" class="poocommerce-message-close notice-dismiss" style="position:relative;float:right;padding:9px 0 9px 9px;text-decoration:none;"></a>
 				<?php
 			}
 
@@ -69,11 +69,11 @@ class AdminNotices {
 	public function hide_notices() {
 		if ( isset( $_GET['wcpay-multi-currency-hide-notice'] ) && isset( $_GET['_wcpay_multi_currency_notice_nonce'] ) ) {
 			if ( ! wp_verify_nonce( wc_clean( wp_unslash( $_GET['_wcpay_multi_currency_notice_nonce'] ) ), 'wcpay_multi_currency_hide_notices_nonce' ) ) {
-				wp_die( esc_html__( 'Action failed. Please refresh the page and retry.', 'woocommerce-payments' ) );
+				wp_die( esc_html__( 'Action failed. Please refresh the page and retry.', 'poocommerce-payments' ) );
 			}
 
-			if ( ! current_user_can( 'manage_woocommerce' ) ) {
-				wp_die( esc_html__( 'Cheatin&#8217; huh?', 'woocommerce-payments' ) );
+			if ( ! current_user_can( 'manage_poocommerce' ) ) {
+				wp_die( esc_html__( 'Cheatin&#8217; huh?', 'poocommerce-payments' ) );
 			}
 
 			$notice = wc_clean( wp_unslash( $_GET['wcpay-multi-currency-hide-notice'] ) );
@@ -108,8 +108,8 @@ class AdminNotices {
 
 		if ( is_array( $manual_currencies ) ) {
 			$currencies = implode( ', ', $manual_currencies );
-			// translators: %s List of currencies that are already translated in WooCommerce core.
-			$this->add_admin_notice( 'currency_changed', 'notice notice-warning', sprintf( __( 'The store currency was recently changed. The following currencies are set to manual rates and may need updates: %s', 'woocommerce-payments' ), $currencies ), true );
+			// translators: %s List of currencies that are already translated in PooCommerce core.
+			$this->add_admin_notice( 'currency_changed', 'notice notice-warning', sprintf( __( 'The store currency was recently changed. The following currencies are set to manual rates and may need updates: %s', 'poocommerce-payments' ), $currencies ), true );
 		}
 	}
 }

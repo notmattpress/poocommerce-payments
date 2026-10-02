@@ -2,7 +2,7 @@
 /**
  * Class file for WCPay\Core\Server\Request.
  *
- * @package WooCommerce Payments
+ * @package PooCommerce Payments
  */
 
 namespace WCPay\Core\Server;
@@ -350,7 +350,7 @@ abstract class Request {
 		}
 
 		return $this->format_response(
-			$this->api_client->send_request( $this->apply_filters( $hook, ...$this->hook_args ) ) // phpcs:ignore WooCommerce.Commenting.CommentHooks.MissingHookComment -- Calls the request's own apply_filters() method with a dynamic hook name.
+			$this->api_client->send_request( $this->apply_filters( $hook, ...$this->hook_args ) ) // phpcs:ignore PooCommerce.Commenting.CommentHooks.MissingHookComment -- Calls the request's own apply_filters() method with a dynamic hook name.
 		);
 	}
 
@@ -525,7 +525,7 @@ abstract class Request {
 	 * @throws Immutable_Parameter_Exception           In case an immutable propery is tried to change.
 	 * @throws Invalid_Request_Parameter_Exception     In case an invalid property is passed.
 	 */
-	final public function apply_filters( $hook, ...$args ) { // phpcs:ignore WooCommerce.Commenting.CommentHooks.MissingSinceComment -- Method named apply_filters; the dispatched hook name is dynamic so no fixed @since applies.
+	final public function apply_filters( $hook, ...$args ) { // phpcs:ignore PooCommerce.Commenting.CommentHooks.MissingSinceComment -- Method named apply_filters; the dispatched hook name is dynamic so no fixed @since applies.
 		// Lock the class in order to prevent `set_param` for protected props.
 		$this->protected_mode = true;
 		$this->base_class     = get_class( $this );
@@ -540,7 +540,7 @@ abstract class Request {
 		 * @param mixed   ...$args Other provided parameters for the hook.
 		 * @return Request         Either the same request, or a sub-class.
 		 */
-		$replacement = apply_filters( $hook, $this, ...$args ); // phpcs:ignore WooCommerce.Commenting.CommentHooks.MissingSinceComment -- Dynamic hook name resolved at runtime; no fixed @since applies.
+		$replacement = apply_filters( $hook, $this, ...$args ); // phpcs:ignore PooCommerce.Commenting.CommentHooks.MissingSinceComment -- Dynamic hook name resolved at runtime; no fixed @since applies.
 
 		// Exit protected mode right after `apply_filters`.
 		$this->protected_mode = false;
@@ -669,7 +669,7 @@ abstract class Request {
 	protected function validate_stripe_id( $id, $prefixes = null ) {
 		if ( empty( $id ) ) {
 			throw new Invalid_Request_Parameter_Exception(
-				esc_html__( 'Empty parameter is not allowed', 'woocommerce-payments' ),
+				esc_html__( 'Empty parameter is not allowed', 'poocommerce-payments' ),
 				'wcpay_core_invalid_request_parameter_stripe_id'
 			);
 		}
@@ -700,7 +700,7 @@ abstract class Request {
 			esc_html(
 				sprintf(
 				// Translators: %s is a Stripe ID.
-					__( '%s is not a valid Stripe identifier', 'woocommerce-payments' ),
+					__( '%s is not a valid Stripe identifier', 'poocommerce-payments' ),
 					$id
 				)
 			),
@@ -725,7 +725,7 @@ abstract class Request {
 			esc_html(
 				sprintf(
 				/* translators: %1$s and %2$s are both numbers */
-					__( 'Invalid number passed. Number %1$s needs to be larger than %2$s', 'woocommerce-payments' ),
+					__( 'Invalid number passed. Number %1$s needs to be larger than %2$s', 'poocommerce-payments' ),
 					$value_to_validate,
 					$value_to_compare
 				)
@@ -749,7 +749,7 @@ abstract class Request {
 				esc_html(
 					sprintf(
 					// Translators: %s is a currency code.
-						__( '%s is not a supported currency for payments.', 'woocommerce-payments' ),
+						__( '%s is not a supported currency for payments.', 'poocommerce-payments' ),
 						$currency_code
 					)
 				),
@@ -799,7 +799,7 @@ abstract class Request {
 				esc_html(
 					sprintf(
 					// Translators: %1$s is a provided date string, %2$s is a date format.
-						__( '%1$s is not a valid date for format %2$s.', 'woocommerce-payments' ),
+						__( '%1$s is not a valid date for format %2$s.', 'poocommerce-payments' ),
 						$date,
 						$format
 					)
@@ -826,7 +826,7 @@ abstract class Request {
 			esc_html(
 				sprintf(
 				// Translators: %s is a date-time string.
-					__( '%s is not a valid date-time value.', 'woocommerce-payments' ),
+					__( '%s is not a valid date-time value.', 'poocommerce-payments' ),
 					$date_time
 				)
 			),
@@ -849,7 +849,7 @@ abstract class Request {
 				esc_html(
 					sprintf(
 					// Translators: %s is a currency code.
-						__( '%1$s is not a valid redirect URL. Use a URL in the allowed_redirect_hosts filter.', 'woocommerce-payments' ),
+						__( '%1$s is not a valid redirect URL. Use a URL in the allowed_redirect_hosts filter.', 'poocommerce-payments' ),
 						$redirect_url
 					)
 				),
@@ -873,7 +873,7 @@ abstract class Request {
 				esc_html(
 					sprintf(
 					// Translators: %s is a provided username.
-						__( '%s is not a valid username.', 'woocommerce-payments' ),
+						__( '%s is not a valid username.', 'poocommerce-payments' ),
 						$user_name
 					)
 				),

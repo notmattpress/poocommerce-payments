@@ -104,7 +104,7 @@ export const ExpressCheckoutPreviewComponent = ( {
 					'Ensure your store uses HTTPS on a publicly available domain ' +
 					"and you're viewing this page in a Safari or Chrome browser. " +
 					'Your device must be configured to use Apple Pay or Google Pay.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			) }
 		</InlineNotice>
 	);

@@ -2,7 +2,7 @@
 /**
  * Class Update_Service_Data_From_Server
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Migrations;

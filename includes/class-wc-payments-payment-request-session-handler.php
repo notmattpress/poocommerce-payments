@@ -2,12 +2,12 @@
 /**
  * Class WC_Payments_Payment_Request_Session_Handler
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 defined( 'ABSPATH' ) || exit;
 
-use Automattic\WooCommerce\StoreApi\Utilities\JsonWebToken;
+use Automattic\PooCommerce\StoreApi\Utilities\JsonWebToken;
 
 /**
  * WC_Payments_Payment_Request_Session_Handler class
@@ -62,20 +62,20 @@ final class WC_Payments_Payment_Request_Session_Handler extends WC_Session_Handl
 			);
 
 			// throwing an exception here to prevent further processing of the request.
-			throw new Exception( __( 'Invalid token: cookie and session customer mismatch', 'woocommerce-payments' ) );
+			throw new Exception( __( 'Invalid token: cookie and session customer mismatch', 'poocommerce-payments' ) );
 		}
 
 		// saving the session and sending new cookies only when we're not dealing with an ephemeral cart.
 		if ( wc_clean( wp_unslash( $_SERVER['HTTP_X_WOOPAYMENTS_TOKENIZED_CART_IS_EPHEMERAL_CART'] ?? '' ) ) !== '1' ) {
 			add_action( 'shutdown', [ $this, 'save_data' ], 20 );
-			add_action( 'woocommerce_set_cart_cookies', [ $this, 'set_customer_session_cookie' ] );
+			add_action( 'poocommerce_set_cart_cookies', [ $this, 'set_customer_session_cookie' ] );
 		}
 	}
 
 	/**
 	 * Setup cookie and customer ID.
 	 * We need to ensure that we _also_ call `init_session_from_token` when `init_session_cookie` is called.
-	 * Otherwise, this clears everything: https://github.com/woocommerce/woocommerce/blob/de4a8ffdd474ca1879d4aa16487d6c52472a861b/plugins/woocommerce/src/StoreApi/Routes/V1/Checkout.php#L556-L558
+	 * Otherwise, this clears everything: https://github.com/poocommerce/poocommerce/blob/de4a8ffdd474ca1879d4aa16487d6c52472a861b/plugins/poocommerce/src/StoreApi/Routes/V1/Checkout.php#L556-L558
 	 */
 	public function init_session_cookie() {
 		// If an account has been created after the session has been initialized, update the session.

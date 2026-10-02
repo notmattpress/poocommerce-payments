@@ -2,10 +2,10 @@
 /**
  * Class WC_Payments_Express_Checkout_Currency_Guard_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
-use Automattic\WooCommerce\StoreApi\Exceptions\RouteException;
+use Automattic\PooCommerce\StoreApi\Exceptions\RouteException;
 use PHPUnit\Framework\MockObject\MockObject;
 
 /**
@@ -116,8 +116,8 @@ class WC_Payments_Express_Checkout_Currency_Guard_Test extends WCPAY_UnitTestCas
 		WC_Payments_Express_Checkout_Currency_Guard::register();
 
 		$this->assertNotFalse(
-			has_action( 'woocommerce_store_api_checkout_update_order_from_request' ),
-			'Expected register() to hook woocommerce_store_api_checkout_update_order_from_request.'
+			has_action( 'poocommerce_store_api_checkout_update_order_from_request' ),
+			'Expected register() to hook poocommerce_store_api_checkout_update_order_from_request.'
 		);
 	}
 

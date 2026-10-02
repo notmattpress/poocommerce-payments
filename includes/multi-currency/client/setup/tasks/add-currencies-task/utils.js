@@ -60,7 +60,7 @@ export const ConcatenateCurrencyStrings = (
 			'%1$s and %2$s',
 			'%1$s, and %2$s',
 			currencyStrings.length,
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		remainingCurrencies,
 		lastCurrency

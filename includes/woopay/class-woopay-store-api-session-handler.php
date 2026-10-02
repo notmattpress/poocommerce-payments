@@ -2,15 +2,15 @@
 /**
  * Class SessionHandler
  *
- * This is a copy of the Automattic\WooCommerce\StoreApi\SessionHandler class with the addition of an `init_session_cookie` method.
+ * This is a copy of the Automattic\PooCommerce\StoreApi\SessionHandler class with the addition of an `init_session_cookie` method.
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Platform_Checkout;
 
 use Automattic\Jetpack\Constants;
-use Automattic\WooCommerce\StoreApi\Utilities\JsonWebToken;
+use Automattic\PooCommerce\StoreApi\Utilities\JsonWebToken;
 use WC_Session;
 
 defined( 'ABSPATH' ) || exit;
@@ -45,7 +45,7 @@ final class SessionHandler extends WC_Session {
 	 */
 	public function __construct() {
 		$this->token = wc_clean( wp_unslash( $_SERVER['HTTP_CART_TOKEN'] ?? '' ) );
-		$this->table = $GLOBALS['wpdb']->prefix . 'woocommerce_sessions';
+		$this->table = $GLOBALS['wpdb']->prefix . 'poocommerce_sessions';
 	}
 
 	/**

@@ -10,7 +10,7 @@ exports[`Onboarding: location check dialog renders correctly when continue butto
 
 <div
   aria-labelledby="components-modal-header-1"
-  class="components-modal__frame woocommerce-payments__onboarding_location_check-modal"
+  class="components-modal__frame poocommerce-payments__onboarding_location_check-modal"
   role="dialog"
   style="--modal-frame-animation-duration: 200ms;"
   tabindex="-1"
@@ -58,27 +58,27 @@ exports[`Onboarding: location check dialog renders correctly when continue butto
     </div>
     <div>
       <div
-        class="woocommerce-payments__onboarding_location_check-wrapper"
+        class="poocommerce-payments__onboarding_location_check-wrapper"
       >
         <div
-          class="woocommerce-payments__onboarding_location_check-modal-message"
+          class="poocommerce-payments__onboarding_location_check-modal-message"
         >
           It appears you're attempting to set up WooPayments from an unsupported country. In order to complete the set up of WooPayments, your store is required to have a business entity in one of the following countries: 
           <ul
-            class="woocommerce-list"
+            class="poocommerce-list"
             role="menu"
           >
             <li
-              class="woocommerce-list__item"
+              class="poocommerce-list__item"
             >
               <div
-                class="woocommerce-list__item-inner"
+                class="poocommerce-list__item-inner"
               >
                 <div
-                  class="woocommerce-list__item-text"
+                  class="poocommerce-list__item-text"
                 >
                   <span
-                    class="woocommerce-list__item-title"
+                    class="poocommerce-list__item-title"
                   >
                     United Kingdom (UK)
                   </span>
@@ -86,16 +86,16 @@ exports[`Onboarding: location check dialog renders correctly when continue butto
               </div>
             </li>
             <li
-              class="woocommerce-list__item"
+              class="poocommerce-list__item"
             >
               <div
-                class="woocommerce-list__item-inner"
+                class="poocommerce-list__item-inner"
               >
                 <div
-                  class="woocommerce-list__item-text"
+                  class="poocommerce-list__item-text"
                 >
                   <span
-                    class="woocommerce-list__item-title"
+                    class="poocommerce-list__item-title"
                   >
                     United States (US)
                   </span>
@@ -106,7 +106,7 @@ exports[`Onboarding: location check dialog renders correctly when continue butto
            
           <a
             class="components-external-link"
-            href="https://woocommerce.com/document/woopayments/compatibility/countries/"
+            href="https://poocommerce.com/document/woopayments/compatibility/countries/"
             rel="external noreferrer noopener"
             target="_blank"
           >
@@ -125,7 +125,7 @@ exports[`Onboarding: location check dialog renders correctly when continue butto
            about setting up business entities in foreign countries.
         </div>
         <div
-          class="woocommerce-payments__onboarding_location_check-footer"
+          class="poocommerce-payments__onboarding_location_check-footer"
         >
           <button
             class="components-button is-next-40px-default-size is-secondary is-busy"
@@ -155,7 +155,7 @@ exports[`Onboarding: location check dialog renders correctly when opened 1`] = `
 
 <div
   aria-labelledby="components-modal-header-0"
-  class="components-modal__frame woocommerce-payments__onboarding_location_check-modal"
+  class="components-modal__frame poocommerce-payments__onboarding_location_check-modal"
   role="dialog"
   style="--modal-frame-animation-duration: 200ms;"
   tabindex="-1"
@@ -203,27 +203,27 @@ exports[`Onboarding: location check dialog renders correctly when opened 1`] = `
     </div>
     <div>
       <div
-        class="woocommerce-payments__onboarding_location_check-wrapper"
+        class="poocommerce-payments__onboarding_location_check-wrapper"
       >
         <div
-          class="woocommerce-payments__onboarding_location_check-modal-message"
+          class="poocommerce-payments__onboarding_location_check-modal-message"
         >
           It appears you're attempting to set up WooPayments from an unsupported country. In order to complete the set up of WooPayments, your store is required to have a business entity in one of the following countries: 
           <ul
-            class="woocommerce-list"
+            class="poocommerce-list"
             role="menu"
           >
             <li
-              class="woocommerce-list__item"
+              class="poocommerce-list__item"
             >
               <div
-                class="woocommerce-list__item-inner"
+                class="poocommerce-list__item-inner"
               >
                 <div
-                  class="woocommerce-list__item-text"
+                  class="poocommerce-list__item-text"
                 >
                   <span
-                    class="woocommerce-list__item-title"
+                    class="poocommerce-list__item-title"
                   >
                     United Kingdom (UK)
                   </span>
@@ -231,16 +231,16 @@ exports[`Onboarding: location check dialog renders correctly when opened 1`] = `
               </div>
             </li>
             <li
-              class="woocommerce-list__item"
+              class="poocommerce-list__item"
             >
               <div
-                class="woocommerce-list__item-inner"
+                class="poocommerce-list__item-inner"
               >
                 <div
-                  class="woocommerce-list__item-text"
+                  class="poocommerce-list__item-text"
                 >
                   <span
-                    class="woocommerce-list__item-title"
+                    class="poocommerce-list__item-title"
                   >
                     United States (US)
                   </span>
@@ -251,7 +251,7 @@ exports[`Onboarding: location check dialog renders correctly when opened 1`] = `
            
           <a
             class="components-external-link"
-            href="https://woocommerce.com/document/woopayments/compatibility/countries/"
+            href="https://poocommerce.com/document/woopayments/compatibility/countries/"
             rel="external noreferrer noopener"
             target="_blank"
           >
@@ -270,7 +270,7 @@ exports[`Onboarding: location check dialog renders correctly when opened 1`] = `
            about setting up business entities in foreign countries.
         </div>
         <div
-          class="woocommerce-payments__onboarding_location_check-footer"
+          class="poocommerce-payments__onboarding_location_check-footer"
         >
           <button
             class="components-button is-next-40px-default-size is-secondary"

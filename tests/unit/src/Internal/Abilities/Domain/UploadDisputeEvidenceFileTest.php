@@ -2,7 +2,7 @@
 /**
  * Tests for WCPay\Internal\Abilities\Domain\UploadDisputeEvidenceFile.
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 namespace WCPay\Tests\Internal\Abilities\Domain;
@@ -18,14 +18,14 @@ use WCPay\Internal\Service\FileService;
 class UploadDisputeEvidenceFileTest extends WCPAY_UnitTestCase {
 
 	public function test_name(): void {
-		$this->assertSame( 'woocommerce-payments/upload-dispute-evidence-file', UploadDisputeEvidenceFile::get_name() );
+		$this->assertSame( 'poocommerce-payments/upload-dispute-evidence-file', UploadDisputeEvidenceFile::get_name() );
 	}
 
 	public function test_registration_args_has_non_destructive_write_annotations(): void {
 		$args = UploadDisputeEvidenceFile::get_registration_args();
 
 		$this->assertSame( AbilitiesRegistrar::CATEGORY_SLUG, $args['category'] );
-		$this->assertSame( [ AbilitiesRegistrar::class, 'current_user_can_manage_woocommerce' ], $args['permission_callback'] );
+		$this->assertSame( [ AbilitiesRegistrar::class, 'current_user_can_manage_poocommerce' ], $args['permission_callback'] );
 		$this->assertFalse( $args['meta']['annotations']['readonly'] );
 		$this->assertFalse( $args['meta']['annotations']['destructive'] );
 		$this->assertFalse( $args['meta']['annotations']['idempotent'] );

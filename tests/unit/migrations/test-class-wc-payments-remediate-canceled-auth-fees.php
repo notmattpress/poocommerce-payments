@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Remediate_Canceled_Auth_Fees_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\Constants\Intent_Status;
@@ -406,7 +406,7 @@ class WC_Payments_Remediate_Canceled_Auth_Fees_Test extends WCPAY_UnitTestCase {
 		$new_notes = array_slice( $notes, 0, count( $notes ) - $initial_notes_count );
 
 		// Check that our remediation note contains the status change info.
-		// Note: WooCommerce may add additional notes when status changes.
+		// Note: PooCommerce may add additional notes when status changes.
 		$found_remediation_note = false;
 		foreach ( $new_notes as $note ) {
 			if ( strpos( $note->content, 'Changed order status from "Refunded" to "Cancelled"' ) !== false ) {
@@ -703,7 +703,7 @@ class WC_Payments_Remediate_Canceled_Auth_Fees_Test extends WCPAY_UnitTestCase {
 		$mock_remediation->remediate_order( $order );
 	}
 
-	public function test_remediate_order_fires_woocommerce_refund_deleted_hook() {
+	public function test_remediate_order_fires_poocommerce_refund_deleted_hook() {
 		$order = WC_Helper_Order::create_order();
 		$order->save();
 
@@ -727,7 +727,7 @@ class WC_Payments_Remediate_Canceled_Auth_Fees_Test extends WCPAY_UnitTestCase {
 		$hook_order_id  = null;
 
 		add_action(
-			'woocommerce_refund_deleted',
+			'poocommerce_refund_deleted',
 			function ( $fired_refund_id, $fired_order_id ) use ( &$hook_fired, &$hook_refund_id, &$hook_order_id ) {
 				$hook_fired     = true;
 				$hook_refund_id = $fired_refund_id;
@@ -744,7 +744,7 @@ class WC_Payments_Remediate_Canceled_Auth_Fees_Test extends WCPAY_UnitTestCase {
 
 		$mock_remediation->remediate_order( $order );
 
-		$this->assertTrue( $hook_fired, 'woocommerce_refund_deleted hook should be fired' );
+		$this->assertTrue( $hook_fired, 'poocommerce_refund_deleted hook should be fired' );
 		$this->assertEquals( $refund_id, $hook_refund_id, 'Hook should receive correct refund ID' );
 		$this->assertEquals( $order_id, $hook_order_id, 'Hook should receive correct order ID' );
 	}
