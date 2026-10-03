@@ -26,12 +26,12 @@ export const reportsTabs: Array< {
 } > = [
 	{
 		name: 'balance',
-		title: __( 'Balance', 'woocommerce-payments' ),
+		title: __( 'Balance', 'poocommerce-payments' ),
 		className: 'wcpay-reports-tab--balance',
 	},
 	{
 		name: 'fees',
-		title: __( 'Fees', 'woocommerce-payments' ),
+		title: __( 'Fees', 'poocommerce-payments' ),
 		className: 'wcpay-reports-tab--fees',
 	},
 ];

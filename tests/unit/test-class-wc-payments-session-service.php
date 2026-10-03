@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Session_Service_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use PHPUnit\Framework\MockObject\MockObject;
@@ -87,11 +87,11 @@ class WC_Payments_Session_Service_Test extends WCPAY_UnitTestCase {
 			->addMethods( [ 'set' ] )
 			->getMock();
 
-		add_filter( 'woocommerce_session_handler', [ $this, 'return_stdclass' ] );
+		add_filter( 'poocommerce_session_handler', [ $this, 'return_stdclass' ] );
 
 		$this->assertFalse( $this->session_service->user_just_logged_in() );
 
-		remove_filter( 'woocommerce_session_handler', [ $this, 'return_stdclass' ] );
+		remove_filter( 'poocommerce_session_handler', [ $this, 'return_stdclass' ] );
 
 		WC()->session = $tmp_session;
 	}
@@ -210,11 +210,11 @@ class WC_Payments_Session_Service_Test extends WCPAY_UnitTestCase {
 			->addMethods( [ 'set' ] )
 			->getMock();
 
-		add_filter( 'woocommerce_session_handler', [ $this, 'return_stdclass' ] );
+		add_filter( 'poocommerce_session_handler', [ $this, 'return_stdclass' ] );
 
 		$this->assertNull( $this->session_service->get_sift_session_id() );
 
-		remove_filter( 'woocommerce_session_handler', [ $this, 'return_stdclass' ] );
+		remove_filter( 'poocommerce_session_handler', [ $this, 'return_stdclass' ] );
 
 		WC()->session = $tmp_session;
 	}
@@ -240,11 +240,11 @@ class WC_Payments_Session_Service_Test extends WCPAY_UnitTestCase {
 			->addMethods( [ 'set' ] )
 			->getMock();
 
-		add_filter( 'woocommerce_session_handler', [ $this, 'return_stdclass' ] );
+		add_filter( 'poocommerce_session_handler', [ $this, 'return_stdclass' ] );
 
 		$this->assertNull( $this->session_service->get_cookie_session_id() );
 
-		remove_filter( 'woocommerce_session_handler', [ $this, 'return_stdclass' ] );
+		remove_filter( 'poocommerce_session_handler', [ $this, 'return_stdclass' ] );
 
 		WC()->session = $tmp_session;
 	}

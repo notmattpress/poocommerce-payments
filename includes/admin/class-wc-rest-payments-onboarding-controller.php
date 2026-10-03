@@ -2,7 +2,7 @@
 /**
  * Class WC_REST_Payments_Onboarding_Controller
  *
- * @package WooCommerce\Payments\Admin
+ * @package PooCommerce\Payments\Admin
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -34,7 +34,7 @@ class WC_REST_Payments_Onboarding_Controller extends WC_Payments_REST_Controller
 	/**
 	 * Constructor.
 	 *
-	 * @param WC_Payments_API_Client         $api_client         WooCommerce Payments API client.
+	 * @param WC_Payments_API_Client         $api_client         PooCommerce Payments API client.
 	 * @param WC_Payments_Onboarding_Service $onboarding_service Onboarding Service class instance.
 	 */
 	public function __construct(
@@ -370,7 +370,7 @@ class WC_REST_Payments_Onboarding_Controller extends WC_Payments_REST_Controller
 		try {
 			$success = $this->onboarding_service->init_test_drive_account( $country, $request->get_param( 'capabilities' ) ?? [], $request->get_param( 'account_data' ) ?? [] );
 		} catch ( API_Exception $e ) {
-			// Forward the structured error details so consumers (e.g. the WooCommerce NOX onboarding)
+			// Forward the structured error details so consumers (e.g. the PooCommerce NOX onboarding)
 			// can distinguish non-recoverable errors from transient ones.
 			$http_code = $e->get_http_code();
 			return new WP_Error(

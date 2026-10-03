@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Add_Address_Provider_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use PHPUnit\Framework\MockObject\MockObject;
@@ -89,7 +89,7 @@ class WC_Payments_Add_Address_Provider_Test extends WCPAY_UnitTestCase {
 	}
 
 	public function test_add_address_provider_adds_provider_when_account_is_active() {
-		if ( ! class_exists( 'Automattic\\WooCommerce\\Internal\\AddressProvider\\AbstractAutomatticAddressProvider' ) ) {
+		if ( ! class_exists( 'Automattic\\PooCommerce\\Internal\\AddressProvider\\AbstractAutomatticAddressProvider' ) ) {
 			$this->markTestSkipped( 'AbstractAutomatticAddressProvider not available (requires WC 10.3+).' );
 		}
 
@@ -108,7 +108,7 @@ class WC_Payments_Add_Address_Provider_Test extends WCPAY_UnitTestCase {
 		$this->mock_account->method( 'is_account_rejected' )->willReturn( false );
 		$this->mock_account->method( 'is_account_under_review' )->willReturn( false );
 
-		if ( class_exists( 'Automattic\\WooCommerce\\Internal\\AddressProvider\\AbstractAutomatticAddressProvider' ) ) {
+		if ( class_exists( 'Automattic\\PooCommerce\\Internal\\AddressProvider\\AbstractAutomatticAddressProvider' ) ) {
 			$this->markTestSkipped( 'AbstractAutomatticAddressProvider is available; cannot test missing-class guard.' );
 		}
 

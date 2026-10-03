@@ -131,7 +131,7 @@ const TotalRow: React.FC< {
 		align="end"
 	>
 		<FlexItem className="wcpay-transaction-breakdown__fee_name">
-			{ label ?? __( 'Total', 'woocommerce-payments' ) }
+			{ label ?? __( 'Total', 'poocommerce-payments' ) }
 		</FlexItem>
 		<FlexItem className="wcpay-transaction-breakdown__fee_rate">
 			{ formatCurrency( amount, currency, storeCurrency ) }
@@ -201,7 +201,7 @@ const FeesBreakdownV1: React.FC< Props > = ( { data } ) => {
 			role="table"
 			aria-label={ __(
 				'Transaction fees breakdown',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			) }
 		>
 			{ data.rows.map( ( row, idx ) => (
@@ -218,7 +218,7 @@ const FeesBreakdownV1: React.FC< Props > = ( { data } ) => {
 			/>
 			{ data.totals.tax.amount !== 0 && (
 				<TotalRow
-					label={ __( 'Tax on fee', 'woocommerce-payments' ) }
+					label={ __( 'Tax on fee', 'poocommerce-payments' ) }
 					amount={ data.totals.tax.amount }
 					currency={ data.totals.tax.currency }
 					storeCurrency={ storeCurrency }

@@ -111,7 +111,7 @@ export const transformCartDataForDisplayItems = ( rawCartData ) => {
 					: shippingAmount,
 				cartData.totals
 			),
-			name: __( 'Shipping', 'woocommerce-payments' ),
+			name: __( 'Shipping', 'poocommerce-payments' ),
 		} );
 	}
 
@@ -131,7 +131,7 @@ export const transformCartDataForDisplayItems = ( rawCartData ) => {
 					: discountsAmount,
 				cartData.totals
 			),
-			name: __( 'Discount', 'woocommerce-payments' ),
+			name: __( 'Discount', 'poocommerce-payments' ),
 		} );
 	}
 
@@ -148,7 +148,7 @@ export const transformCartDataForDisplayItems = ( rawCartData ) => {
 					: feesAmount,
 				cartData.totals
 			),
-			name: __( 'Fees', 'woocommerce-payments' ),
+			name: __( 'Fees', 'poocommerce-payments' ),
 		} );
 	}
 
@@ -156,7 +156,7 @@ export const transformCartDataForDisplayItems = ( rawCartData ) => {
 	if ( taxAmount && ! displayPriceIncludingTax ) {
 		displayItems.push( {
 			amount: transformPrice( taxAmount, cartData.totals ),
-			name: __( 'Tax', 'woocommerce-payments' ),
+			name: __( 'Tax', 'poocommerce-payments' ),
 		} );
 	}
 
@@ -164,7 +164,7 @@ export const transformCartDataForDisplayItems = ( rawCartData ) => {
 	if ( refundAmount ) {
 		displayItems.push( {
 			amount: -transformPrice( refundAmount, cartData.totals ),
-			name: __( 'Refund', 'woocommerce-payments' ),
+			name: __( 'Refund', 'poocommerce-payments' ),
 		} );
 	}
 
@@ -180,7 +180,7 @@ export const transformCartDataForDisplayItems = ( rawCartData ) => {
 
 	// if `totalAmount` is less than the total of `displayItems`, Stripe throws an error
 	// it can sometimes happen that the total is _slightly_ less, due to rounding errors on individual items/taxes/shipping
-	// (or with the `woocommerce_tax_round_at_subtotal` setting).
+	// (or with the `poocommerce_tax_round_at_subtotal` setting).
 	// if that happens, let's just not return any of the line items. This way, just the total amount will be displayed to the customer.
 	if ( totalAmount < totalAmountOfDisplayItems ) {
 		return [];

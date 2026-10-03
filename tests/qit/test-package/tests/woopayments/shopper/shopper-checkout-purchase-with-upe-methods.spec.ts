@@ -28,7 +28,7 @@ const checkoutWithBancontact = async (
 	await page.getByText( 'Bancontact' ).click();
 
 	const bancontactRadio = page.locator(
-		'#payment_method_woocommerce_payments_bancontact'
+		'#payment_method_poocommerce_payments_bancontact'
 	);
 	await bancontactRadio.scrollIntoViewIfNeeded();
 	await bancontactRadio.check( { force: true } );

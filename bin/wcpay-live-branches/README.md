@@ -5,7 +5,7 @@
 ### Installation
 
 * Install Tampermonkey or equivalent user script extension.
-* Click https://github.com/Automattic/woocommerce-payments/raw/develop/bin/wcpay-live-branches/wcpay-live-branches.user.js
+* Click https://github.com/Automattic/poocommerce-payments/raw/develop/bin/wcpay-live-branches/wcpay-live-branches.user.js
 * Once installed, it should be able to auto-update.
 * Expect to see the new `WCPay Live Branches` heading in the PR description [like this](https://user-images.githubusercontent.com/10045087/227102466-6c9e5918-07ae-42cd-9dd9-20d1e355091d.png).
 
@@ -16,4 +16,4 @@
 
 ### Additional Info
 
-The "Live Branch" concept was first introduced by [Jetpack](https://github.com/Automattic/jetpack/tree/trunk/tools/jetpack-live-branches), then adopted by [WooCommerce core](https://github.com/woocommerce/woocommerce/tree/trunk/plugins/woocommerce-beta-tester/userscripts), and now we are. 
+The "Live Branch" concept was first introduced by [Jetpack](https://github.com/Automattic/jetpack/tree/trunk/tools/jetpack-live-branches), then adopted by [PooCommerce core](https://github.com/poocommerce/poocommerce/tree/trunk/plugins/poocommerce-beta-tester/userscripts), and now we are. 

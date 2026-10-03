@@ -17,15 +17,15 @@ type TransactionStatusMapping = Record<
 const transactionStatusMapping: TransactionStatusMapping = {
 	allow: {
 		type: 'success',
-		message: __( 'Succeeded', 'woocommerce-payments' ),
+		message: __( 'Succeeded', 'poocommerce-payments' ),
 	},
 	review: {
 		type: 'alert',
-		message: __( 'Needs review', 'woocommerce-payments' ),
+		message: __( 'Needs review', 'poocommerce-payments' ),
 	},
 	block: {
 		type: 'danger',
-		message: __( 'Payment blocked', 'woocommerce-payments' ),
+		message: __( 'Payment blocked', 'poocommerce-payments' ),
 	},
 };
 

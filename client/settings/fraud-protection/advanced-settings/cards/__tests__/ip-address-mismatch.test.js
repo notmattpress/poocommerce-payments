@@ -26,9 +26,9 @@ describe( 'International billing address card', () => {
 		admin: {
 			preloadSettings: {
 				general: {
-					woocommerce_allowed_countries: 'all',
-					woocommerce_all_except_countries: [],
-					woocommerce_specific_allowed_countries: [],
+					poocommerce_allowed_countries: 'all',
+					poocommerce_all_except_countries: [],
+					poocommerce_specific_allowed_countries: [],
 				},
 			},
 		},

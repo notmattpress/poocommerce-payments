@@ -9,9 +9,9 @@ Both of those are classes, which implement the PSR-11 container interface, and a
 
 ## `WooContainer`
 
-`WCPay\Internal\DependencyManagement\DelegateContainer\WooContainer` is a simple class, which delegates its `has` and `get` methods to the corresponding methods of the [Woo core container](https://github.com/woocommerce/woocommerce/tree/trunk/plugins/woocommerce/src#the-container), available through `wc_get_container()`.
+`WCPay\Internal\DependencyManagement\DelegateContainer\WooContainer` is a simple class, which delegates its `has` and `get` methods to the corresponding methods of the [Woo core container](https://github.com/poocommerce/poocommerce/tree/trunk/plugins/poocommerce/src#the-container), available through `wc_get_container()`.
 
-🔗 Please read the [core docs](https://github.com/woocommerce/woocommerce/tree/trunk/plugins/woocommerce/src#the-container) for more information.
+🔗 Please read the [core docs](https://github.com/poocommerce/poocommerce/tree/trunk/plugins/poocommerce/src#the-container) for more information.
 
 ## `LegacyContainer`
 

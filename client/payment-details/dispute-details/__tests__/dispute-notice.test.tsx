@@ -275,7 +275,7 @@ describe( 'DisputeNotice - Klarna Inquiries', () => {
 		expect( link ).toBeInTheDocument();
 		expect( link ).toHaveAttribute(
 			'href',
-			'https://woocommerce.com/document/woopayments/payment-methods/buy-now-pay-later/#klarna-inquiries-returns'
+			'https://poocommerce.com/document/woopayments/payment-methods/buy-now-pay-later/#klarna-inquiries-returns'
 		);
 	} );
 

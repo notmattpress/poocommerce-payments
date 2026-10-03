@@ -2,7 +2,7 @@
 /**
  * Class WC_REST_Payments_Dispute_Readiness_Controller
  *
- * @package WooCommerce\Payments\Admin
+ * @package PooCommerce\Payments\Admin
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -96,7 +96,7 @@ class WC_REST_Payments_Dispute_Readiness_Controller extends WC_Payments_REST_Con
 		if ( ! WC_Payments_Features::is_dispute_readiness_overview_enabled() ) {
 			return new WP_Error(
 				'wcpay_dispute_readiness_disabled',
-				__( 'Dispute readiness is disabled.', 'woocommerce-payments' ),
+				__( 'Dispute readiness is disabled.', 'poocommerce-payments' ),
 				[ 'status' => 403 ]
 			);
 		}
@@ -113,7 +113,7 @@ class WC_REST_Payments_Dispute_Readiness_Controller extends WC_Payments_REST_Con
 		if ( ! WC_Payments_Features::is_dispute_readiness_overview_enabled() ) {
 			return new WP_Error(
 				'wcpay_dispute_readiness_disabled',
-				__( 'Dispute readiness is disabled.', 'woocommerce-payments' ),
+				__( 'Dispute readiness is disabled.', 'poocommerce-payments' ),
 				[ 'status' => 403 ]
 			);
 		}

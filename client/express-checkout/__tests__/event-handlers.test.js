@@ -856,7 +856,7 @@ describe( 'Express checkout event handlers', () => {
 							company: 'Some Company',
 							phone: '1234567890',
 						},
-						payment_method: 'woocommerce_payments',
+						payment_method: 'poocommerce_payments',
 						payment_result: {
 							payment_status: 'failure',
 							payment_details: [
@@ -932,7 +932,7 @@ describe( 'Express checkout event handlers', () => {
 					company: 'Some Company',
 					phone: '1234567890',
 				},
-				payment_method: 'woocommerce_payments',
+				payment_method: 'poocommerce_payments',
 				payment_result: {
 					payment_status: 'success',
 					payment_details: [

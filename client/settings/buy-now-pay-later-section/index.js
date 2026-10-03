@@ -19,16 +19,16 @@ import CardBody from 'wcpay/settings/card-body';
 
 const BuyNowPayLaterMethodsDescription = () => (
 	<>
-		<h2>{ __( 'Buy now, pay later', 'woocommerce-payments' ) }</h2>
+		<h2>{ __( 'Buy now, pay later', 'poocommerce-payments' ) }</h2>
 		<p>
 			{ __(
 				'Boost sales by offering customers additional buying power and flexible payment options.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			) }
 		</p>
 
-		<ExternalLink href="https://woocommerce.com/document/woopayments/payment-methods/buy-now-pay-later/">
-			{ __( 'Learn more', 'woocommerce-payments' ) }
+		<ExternalLink href="https://poocommerce.com/document/woopayments/payment-methods/buy-now-pay-later/">
+			{ __( 'Learn more', 'poocommerce-payments' ) }
 		</ExternalLink>
 	</>
 );

@@ -1,6 +1,6 @@
 <?php
 /**
- * Class WooCommerceNameYourPrice
+ * Class PooCommerceNameYourPrice
  *
  * @package WCPay\MultiCurrency\Compatibility
  */
@@ -10,9 +10,9 @@ namespace WCPay\MultiCurrency\Compatibility;
 use WCPay\MultiCurrency\MultiCurrency;
 
 /**
- * Class that controls Multi Currency Compatibility with WooCommerce Name Your Price Plugin.
+ * Class that controls Multi Currency Compatibility with PooCommerce Name Your Price Plugin.
  */
-class WooCommerceNameYourPrice extends BaseCompatibility {
+class PooCommerceNameYourPrice extends BaseCompatibility {
 
 	const NYP_CURRENCY = '_wcpay_multi_currency_nyp_currency';
 
@@ -30,8 +30,8 @@ class WooCommerceNameYourPrice extends BaseCompatibility {
 			add_filter( 'wc_nyp_raw_suggested_price', [ $this, 'get_nyp_prices' ] );
 
 			// Maybe translate cart prices.
-			add_action( 'woocommerce_add_cart_item_data', [ $this, 'add_initial_currency' ], 20, 3 );
-			add_filter( 'woocommerce_get_cart_item_from_session', [ $this, 'convert_cart_currency' ], 20, 2 );
+			add_action( 'poocommerce_add_cart_item_data', [ $this, 'add_initial_currency' ], 20, 3 );
+			add_filter( 'poocommerce_get_cart_item_from_session', [ $this, 'convert_cart_currency' ], 20, 2 );
 			add_filter( MultiCurrency::FILTER_PREFIX . 'should_convert_product_price', [ $this, 'should_convert_product_price' ], 50, 2 );
 
 			// Convert cart editing price.

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<ruleset name="WooCommerce Payments PHP Compatibility">
-	<description>WooCommerce Compatibility PHP_CodeSniffer ruleset.</description>
+<ruleset name="PooCommerce Payments PHP Compatibility">
+	<description>PooCommerce Compatibility PHP_CodeSniffer ruleset.</description>
 
 	<arg value="ps"/>
 	<arg name="parallel" value="20"/>
