@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Subscriptions_Empty_State.
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

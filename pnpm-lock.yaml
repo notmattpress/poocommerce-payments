@@ -5,9 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  '@woocommerce/components>@woocommerce/csv-export': 1.11.0
-  '@woocommerce/components>@woocommerce/currency': 6.0.0
-  '@woocommerce/dependency-extraction-webpack-plugin>@wordpress/dependency-extraction-webpack-plugin': 6.45.0
+  '@poocommerce/components>@poocommerce/csv-export': 1.11.0
+  '@poocommerce/components>@poocommerce/currency': 6.0.0
+  '@poocommerce/dependency-extraction-webpack-plugin>@wordpress/dependency-extraction-webpack-plugin': 6.45.0
   '@wordpress/dataviews>@wordpress/data': 10.46.0
   '@wordpress/dataviews>@wordpress/element': 6.46.0
   '@wordpress/dataviews>@wordpress/compose': 7.46.0
@@ -20,7 +20,7 @@ overrides:
   '@wordpress/dataviews>@wordpress/icons': 13.1.0
   '@wordpress/dataviews>@wordpress/rich-text': 7.46.0
   '@wordpress/scripts>@wordpress/eslint-plugin': 15.1.0
-  '@woocommerce/eslint-plugin>@wordpress/eslint-plugin': 15.1.0
+  '@poocommerce/eslint-plugin>@wordpress/eslint-plugin': 15.1.0
   nwsapi: 2.2.12
   serialize-javascript: ^7.0.5
   i18n-calypso: 7.4.0
@@ -54,13 +54,13 @@ importers:
       '@stripe/stripe-js':
         specifier: 9.4.0
         version: 9.4.0
-      '@woocommerce/explat':
+      '@poocommerce/explat':
         specifier: 3.0.0
         version: 3.0.0
-      '@woocommerce/number':
+      '@poocommerce/number':
         specifier: 2.6.0
         version: 2.6.0
-      '@woocommerce/onboarding':
+      '@poocommerce/onboarding':
         specifier: 4.0.0
         version: 4.0.0(@babel/core@7.29.7)(@babel/runtime@7.29.7)(@date-fns/tz@1.5.0)(@emotion/is-prop-valid@1.4.0)(@types/react-dom@18.3.7(@types/react@18.3.28))(@types/react@18.3.28)(date-fns@4.4.0)(esbuild@0.25.12)(lodash@4.18.1)(postcss@8.3.5)(react-dom@18.3.1(react@18.3.1))(react-with-direction@1.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(redux@5.0.1)(storybook@8.6.18(wp-prettier@2.8.5))(stylelint@13.11.0)(webpack@5.106.2)
       '@wordpress/dataviews':
@@ -151,28 +151,28 @@ importers:
       '@typescript-eslint/parser':
         specifier: 5.62.0
         version: 5.62.0(eslint@8.57.1)(typescript@5.9.3)
-      '@woocommerce/components':
+      '@poocommerce/components':
         specifier: 14.1.0
         version: 14.1.0(@babel/runtime@7.29.7)(@date-fns/tz@1.5.0)(@emotion/is-prop-valid@1.4.0)(@types/react-dom@18.3.7(@types/react@18.3.28))(@types/react@18.3.28)(date-fns@4.4.0)(esbuild@0.25.12)(lodash@4.18.1)(postcss@8.3.5)(react-dom@18.3.1(react@18.3.1))(react-with-direction@1.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)(redux@5.0.1)(storybook@8.6.18(wp-prettier@2.8.5))(stylelint@13.11.0)
-      '@woocommerce/csv-export':
+      '@poocommerce/csv-export':
         specifier: 1.11.0
         version: 1.11.0
-      '@woocommerce/currency':
+      '@poocommerce/currency':
         specifier: 6.0.0
         version: 6.0.0
-      '@woocommerce/data':
+      '@poocommerce/data':
         specifier: 7.0.0
         version: 7.0.0(@emotion/is-prop-valid@1.4.0)(@types/react@18.3.28)(@wordpress/core-data@7.25.0(@date-fns/tz@1.5.0)(@emotion/is-prop-valid@1.4.0)(@types/react-dom@18.3.7(@types/react@18.3.28))(@types/react@18.3.28)(esbuild@0.25.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(stylelint@13.11.0))(lodash@4.18.1)(moment@2.29.4)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@woocommerce/dependency-extraction-webpack-plugin':
+      '@poocommerce/dependency-extraction-webpack-plugin':
         specifier: 5.0.0
         version: 5.0.0(webpack@5.106.2)
-      '@woocommerce/eslint-plugin':
+      '@poocommerce/eslint-plugin':
         specifier: 3.0.0
         version: 3.0.0(@babel/core@7.29.7)(eslint-import-resolver-typescript@2.4.0)(eslint@8.57.1)(jest@29.7.0(@types/node@20.9.0)(babel-plugin-macros@3.1.0))(typescript@5.9.3)
-      '@woocommerce/experimental':
+      '@poocommerce/experimental':
         specifier: 4.0.0
         version: 4.0.0(@babel/core@7.29.7)(@babel/runtime@7.29.7)(@date-fns/tz@1.5.0)(@emotion/is-prop-valid@1.4.0)(@types/react-dom@18.3.7(@types/react@18.3.28))(@types/react@18.3.28)(date-fns@4.4.0)(esbuild@0.25.12)(lodash@4.18.1)(postcss@8.3.5)(react-dom@18.3.1(react@18.3.1))(react-with-direction@1.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)(redux@5.0.1)(storybook@8.6.18(wp-prettier@2.8.5))(stylelint@13.11.0)(webpack@5.106.2)
-      '@woocommerce/navigation':
+      '@poocommerce/navigation':
         specifier: 9.0.0
         version: 9.0.0(@emotion/is-prop-valid@1.4.0)(@types/react@18.3.28)(lodash@4.18.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@wordpress/a11y':
@@ -3271,7 +3271,7 @@ packages:
       webpack-dev-server:
         optional: true
 
-  '@woocommerce/components@14.0.0':
+  '@poocommerce/components@14.0.0':
     resolution: {integrity: sha512-1QTDYia0t7FqpOvdGTNhyz5526e9jgf5V1StOTWZG4/YR1Q/BOpdbQCiLhpgo3tbfCmqHTC3pvc4XMkUdy4VRA==}
     engines: {node: ^24.15.0}
     peerDependencies:
@@ -3281,7 +3281,7 @@ packages:
       react: 18.3.x
       react-dom: 18.3.x
 
-  '@woocommerce/components@14.1.0':
+  '@poocommerce/components@14.1.0':
     resolution: {integrity: sha512-q+XTzd1XhHR9dXin2IZttHpQlPYwIdob3Jt/bE6/4SeDdskYGwoju6juHvsbbHRb7IiqeJeL2oJ6PVzr/Oqd7g==}
     engines: {node: ^24.15.0}
     peerDependencies:
@@ -3291,15 +3291,15 @@ packages:
       react: 18.3.x
       react-dom: 18.3.x
 
-  '@woocommerce/csv-export@1.11.0':
+  '@poocommerce/csv-export@1.11.0':
     resolution: {integrity: sha512-Ty+CxPpvs8IG12r1wPdkoFOwnTJnZOJp16rWA5m4LwcN2lEBzmM5KPqbCZRh3YX2ngpTYNNTjNaSc+e3p5X3tQ==}
     engines: {node: ^24.15.0}
 
-  '@woocommerce/currency@6.0.0':
+  '@poocommerce/currency@6.0.0':
     resolution: {integrity: sha512-CibWw+aflpD5QuE+lNEpYgxNHRqy+jD0UKrXpVAXsd/Db4m9xLlVcrTXH0OenX+zysjvRuAN22lnUfC5NVokFA==}
     engines: {node: ^24.15.0}
 
-  '@woocommerce/data@7.0.0':
+  '@poocommerce/data@7.0.0':
     resolution: {integrity: sha512-OswtBWAqN2HbZMmn6ACkYW51wkwjfhKrRAmhNqFaPXW+l45vowpvANYgP8Tdaul300WV29JryRucGDiY1r6bdw==}
     engines: {node: ^24.15.0}
     peerDependencies:
@@ -3308,47 +3308,47 @@ packages:
       react: 18.3.x
       react-dom: 18.3.x
 
-  '@woocommerce/date@5.0.0':
+  '@poocommerce/date@5.0.0':
     resolution: {integrity: sha512-PI1Q5vq1nyXat+1hUqrNh1wi5iUoczLswNjRVIP40VJJSiB2R1vHmIk1CUW1j5fiCAtM0PZiqmcfWn2PqcVeVw==}
     engines: {node: ^24.15.0}
     peerDependencies:
       lodash: ^4.17.0
 
-  '@woocommerce/dependency-extraction-webpack-plugin@5.0.0':
+  '@poocommerce/dependency-extraction-webpack-plugin@5.0.0':
     resolution: {integrity: sha512-TxcRu86o3hmTISuuZr0yJtmDpvvNRdPga+exQaDwuu4lcutJJcj5Dm2GHkHGTj38JsBtvHy5Fp1EKRVH2FIEKw==}
     engines: {node: ^24.15.0}
 
-  '@woocommerce/eslint-plugin@3.0.0':
+  '@poocommerce/eslint-plugin@3.0.0':
     resolution: {integrity: sha512-0wozLJq84HUraS5G3tnM8rHI8gVuHfY+cgYaF22fVPNQSLrXZmXEJ3InHE6iaQrREmFhjRpM6OTR1DWMVDiE0g==}
     engines: {node: ^24.15.0}
 
-  '@woocommerce/experimental@4.0.0':
+  '@poocommerce/experimental@4.0.0':
     resolution: {integrity: sha512-3Uolkt14uIOU7ygLk8cciDIPoiQamnDqyPXitzBZ23xp5SFhlJFf9VeaamxPpyROUX2w4d7noZm7vOsyyl6uyw==}
     engines: {node: ^24.15.0}
     peerDependencies:
       react: 18.3.x
       react-dom: 18.3.x
 
-  '@woocommerce/explat@3.0.0':
+  '@poocommerce/explat@3.0.0':
     resolution: {integrity: sha512-04m4pe6o0OgK4m6N/rP1O8yOp9DRB2djigFxsbsY2Ee7csFO+pwyTtsy3k1sLkpGvfoRgYxGd+qWE0SVHaJzcg==}
     engines: {node: ^24.15.0}
 
-  '@woocommerce/navigation@9.0.0':
+  '@poocommerce/navigation@9.0.0':
     resolution: {integrity: sha512-nYQdGoGqeUEHPodPkisX2ztrhjtO6I5cMN98zs3hfa8AehXBp+VT2HqIlY9trIE5RCR9UQtP5VG+BmhDgSh3Gw==}
     engines: {node: ^24.15.0}
     peerDependencies:
       lodash: ^4.17.0
       react: 18.3.x
 
-  '@woocommerce/number@2.6.0':
+  '@poocommerce/number@2.6.0':
     resolution: {integrity: sha512-e72mlNzhVMLAjf64euyfhUDWl3b6yjsAhvrf9k+F3Ujj7EcTwbYAdgQOR7nzdJIVXJHTaI7RQwnSoF2GDeg6zw==}
     engines: {node: ^24.15.0}
 
-  '@woocommerce/onboarding@4.0.0':
+  '@poocommerce/onboarding@4.0.0':
     resolution: {integrity: sha512-Fp6u9/Gc8RuWNlXYC6kIJzp+r9gUwRnnG17UHIM4boS98btwvj8CQm7wazcEBRH4iugnpAylWBLsSeXQrcHEkw==}
     engines: {node: ^24.15.0}
 
-  '@woocommerce/sanitize@1.0.0':
+  '@poocommerce/sanitize@1.0.0':
     resolution: {integrity: sha512-NSTCpOzRp+kqsHTR0+Dbv6eYzm9rslUSNzOVqb3FuKeH2NU5amWDkGPx9L99+m5tOzHPUrZDWwPgGmHvOdIUNQ==}
     peerDependencies:
       '@types/react': 18.3.x
@@ -3356,7 +3356,7 @@ packages:
       react: 18.3.x
       react-dom: 18.3.x
 
-  '@woocommerce/tracks@1.5.1':
+  '@poocommerce/tracks@1.5.1':
     resolution: {integrity: sha512-ls43ZEKsFnnAUVe82BRf3FF+XoSWojDclpoJlVgxVSKmIsZ2oQSrLYmpsuEAV7c8nt+00jQ5RM1ckmRJ7V7lDA==}
     engines: {node: ^24.15.0}
 
@@ -15005,7 +15005,7 @@ snapshots:
     optionalDependencies:
       webpack-dev-server: 4.15.2(webpack-cli@5.1.4)(webpack@5.106.2)
 
-  '@woocommerce/components@14.0.0(@babel/core@7.29.7)(@babel/runtime@7.29.7)(@date-fns/tz@1.5.0)(@emotion/is-prop-valid@1.4.0)(@types/react-dom@18.3.7(@types/react@18.3.28))(@types/react@18.3.28)(date-fns@4.4.0)(esbuild@0.25.12)(lodash@4.18.1)(postcss@8.3.5)(react-dom@18.3.1(react@18.3.1))(react-with-direction@1.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)(redux@5.0.1)(storybook@8.6.18(wp-prettier@2.8.5))(stylelint@13.11.0)(webpack@5.106.2)':
+  '@poocommerce/components@14.0.0(@babel/core@7.29.7)(@babel/runtime@7.29.7)(@date-fns/tz@1.5.0)(@emotion/is-prop-valid@1.4.0)(@types/react-dom@18.3.7(@types/react@18.3.28))(@types/react@18.3.28)(date-fns@4.4.0)(esbuild@0.25.12)(lodash@4.18.1)(postcss@8.3.5)(react-dom@18.3.1(react@18.3.1))(react-with-direction@1.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)(redux@5.0.1)(storybook@8.6.18(wp-prettier@2.8.5))(stylelint@13.11.0)(webpack@5.106.2)':
     dependencies:
       '@automattic/calypso-color-schemes': 2.1.1
       '@automattic/interpolate-components': 1.2.1(@types/react@18.3.28)(react@18.3.1)
@@ -15016,12 +15016,12 @@ snapshots:
       '@types/wordpress__block-editor': 14.21.8(@emotion/is-prop-valid@1.4.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@types/wordpress__block-library': 2.6.3
       '@types/wordpress__blocks': 12.5.18(@emotion/is-prop-valid@1.4.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@woocommerce/csv-export': 1.11.0
-      '@woocommerce/currency': 6.0.0
-      '@woocommerce/data': 7.0.0(@emotion/is-prop-valid@1.4.0)(@types/react@18.3.28)(@wordpress/core-data@7.19.6(@babel/core@7.29.7)(@date-fns/tz@1.5.0)(@emotion/is-prop-valid@1.4.0)(@types/react-dom@18.3.7(@types/react@18.3.28))(@types/react@18.3.28)(esbuild@0.25.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(stylelint@13.11.0)(webpack@5.106.2))(lodash@4.18.1)(moment@2.29.4)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@woocommerce/date': 5.0.0(lodash@4.18.1)
-      '@woocommerce/navigation': 9.0.0(@emotion/is-prop-valid@1.4.0)(@types/react@18.3.28)(lodash@4.18.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@woocommerce/sanitize': 1.0.0(@types/react-dom@18.3.7(@types/react@18.3.28))(@types/react@18.3.28)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@poocommerce/csv-export': 1.11.0
+      '@poocommerce/currency': 6.0.0
+      '@poocommerce/data': 7.0.0(@emotion/is-prop-valid@1.4.0)(@types/react@18.3.28)(@wordpress/core-data@7.19.6(@babel/core@7.29.7)(@date-fns/tz@1.5.0)(@emotion/is-prop-valid@1.4.0)(@types/react-dom@18.3.7(@types/react@18.3.28))(@types/react@18.3.28)(esbuild@0.25.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(stylelint@13.11.0)(webpack@5.106.2))(lodash@4.18.1)(moment@2.29.4)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@poocommerce/date': 5.0.0(lodash@4.18.1)
+      '@poocommerce/navigation': 9.0.0(@emotion/is-prop-valid@1.4.0)(@types/react@18.3.28)(lodash@4.18.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@poocommerce/sanitize': 1.0.0(@types/react-dom@18.3.7(@types/react@18.3.28))(@types/react@18.3.28)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@wordpress/a11y': 4.19.1
       '@wordpress/api-fetch': 7.19.2
       '@wordpress/base-styles': 5.19.1
@@ -15087,7 +15087,7 @@ snapshots:
       - webpack
       - webpack-virtual-modules
 
-  '@woocommerce/components@14.1.0(@babel/runtime@7.29.7)(@date-fns/tz@1.5.0)(@emotion/is-prop-valid@1.4.0)(@types/react-dom@18.3.7(@types/react@18.3.28))(@types/react@18.3.28)(date-fns@4.4.0)(esbuild@0.25.12)(lodash@4.18.1)(postcss@8.3.5)(react-dom@18.3.1(react@18.3.1))(react-with-direction@1.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)(redux@5.0.1)(storybook@8.6.18(wp-prettier@2.8.5))(stylelint@13.11.0)':
+  '@poocommerce/components@14.1.0(@babel/runtime@7.29.7)(@date-fns/tz@1.5.0)(@emotion/is-prop-valid@1.4.0)(@types/react-dom@18.3.7(@types/react@18.3.28))(@types/react@18.3.28)(date-fns@4.4.0)(esbuild@0.25.12)(lodash@4.18.1)(postcss@8.3.5)(react-dom@18.3.1(react@18.3.1))(react-with-direction@1.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)(redux@5.0.1)(storybook@8.6.18(wp-prettier@2.8.5))(stylelint@13.11.0)':
     dependencies:
       '@automattic/calypso-color-schemes': 2.1.1
       '@automattic/interpolate-components': 1.2.1(@types/react@18.3.28)(react@18.3.1)
@@ -15098,12 +15098,12 @@ snapshots:
       '@types/wordpress__block-editor': 15.0.6(@emotion/is-prop-valid@1.4.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@types/wordpress__block-library': 2.6.3
       '@types/wordpress__blocks': 12.5.18(@emotion/is-prop-valid@1.4.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@woocommerce/csv-export': 1.11.0
-      '@woocommerce/currency': 6.0.0
-      '@woocommerce/data': 7.0.0(@emotion/is-prop-valid@1.4.0)(@types/react@18.3.28)(@wordpress/core-data@7.33.9(@date-fns/tz@1.5.0)(@emotion/is-prop-valid@1.4.0)(@types/react-dom@18.3.7(@types/react@18.3.28))(@types/react@18.3.28)(esbuild@0.25.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(stylelint@13.11.0))(lodash@4.18.1)(moment@2.29.4)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@woocommerce/date': 5.0.0(lodash@4.18.1)
-      '@woocommerce/navigation': 9.0.0(@emotion/is-prop-valid@1.4.0)(@types/react@18.3.28)(lodash@4.18.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@woocommerce/sanitize': 1.0.0(@types/react-dom@18.3.7(@types/react@18.3.28))(@types/react@18.3.28)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@poocommerce/csv-export': 1.11.0
+      '@poocommerce/currency': 6.0.0
+      '@poocommerce/data': 7.0.0(@emotion/is-prop-valid@1.4.0)(@types/react@18.3.28)(@wordpress/core-data@7.33.9(@date-fns/tz@1.5.0)(@emotion/is-prop-valid@1.4.0)(@types/react-dom@18.3.7(@types/react@18.3.28))(@types/react@18.3.28)(esbuild@0.25.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(stylelint@13.11.0))(lodash@4.18.1)(moment@2.29.4)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@poocommerce/date': 5.0.0(lodash@4.18.1)
+      '@poocommerce/navigation': 9.0.0(@emotion/is-prop-valid@1.4.0)(@types/react@18.3.28)(lodash@4.18.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@poocommerce/sanitize': 1.0.0(@types/react-dom@18.3.7(@types/react@18.3.28))(@types/react@18.3.28)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@wordpress/a11y': 4.33.1
       '@wordpress/api-fetch': 7.33.1
       '@wordpress/base-styles': 6.9.1
@@ -15166,25 +15166,25 @@ snapshots:
       - supports-color
       - vite
 
-  '@woocommerce/csv-export@1.11.0':
+  '@poocommerce/csv-export@1.11.0':
     dependencies:
       '@types/node': 24.13.3
       browser-filesaver: 1.1.1
 
-  '@woocommerce/currency@6.0.0':
+  '@poocommerce/currency@6.0.0':
     dependencies:
-      '@woocommerce/number': 2.6.0
+      '@poocommerce/number': 2.6.0
       '@wordpress/deprecated': 4.19.1
       '@wordpress/element': 6.19.1
       '@wordpress/hooks': 4.19.1
       '@wordpress/html-entities': 4.19.1
       '@wordpress/i18n': 5.19.1
 
-  '@woocommerce/data@7.0.0(@emotion/is-prop-valid@1.4.0)(@types/react@18.3.28)(@wordpress/core-data@7.19.6(@babel/core@7.29.7)(@date-fns/tz@1.5.0)(@emotion/is-prop-valid@1.4.0)(@types/react-dom@18.3.7(@types/react@18.3.28))(@types/react@18.3.28)(esbuild@0.25.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(stylelint@13.11.0)(webpack@5.106.2))(lodash@4.18.1)(moment@2.29.4)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@poocommerce/data@7.0.0(@emotion/is-prop-valid@1.4.0)(@types/react@18.3.28)(@wordpress/core-data@7.19.6(@babel/core@7.29.7)(@date-fns/tz@1.5.0)(@emotion/is-prop-valid@1.4.0)(@types/react-dom@18.3.7(@types/react@18.3.28))(@types/react@18.3.28)(esbuild@0.25.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(stylelint@13.11.0)(webpack@5.106.2))(lodash@4.18.1)(moment@2.29.4)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
-      '@woocommerce/date': 5.0.0(lodash@4.18.1)
-      '@woocommerce/navigation': 9.0.0(@emotion/is-prop-valid@1.4.0)(@types/react@18.3.28)(lodash@4.18.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@woocommerce/tracks': 1.5.1
+      '@poocommerce/date': 5.0.0(lodash@4.18.1)
+      '@poocommerce/navigation': 9.0.0(@emotion/is-prop-valid@1.4.0)(@types/react@18.3.28)(lodash@4.18.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@poocommerce/tracks': 1.5.1
       '@wordpress/api-fetch': 7.19.2
       '@wordpress/compose': 7.19.2(@types/react@18.3.28)(react@18.3.1)
       '@wordpress/core-data': 7.19.6(@babel/core@7.29.7)(@date-fns/tz@1.5.0)(@emotion/is-prop-valid@1.4.0)(@types/react-dom@18.3.7(@types/react@18.3.28))(@types/react@18.3.28)(esbuild@0.25.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(stylelint@13.11.0)(webpack@5.106.2)
@@ -15207,11 +15207,11 @@ snapshots:
       - lodash
       - supports-color
 
-  '@woocommerce/data@7.0.0(@emotion/is-prop-valid@1.4.0)(@types/react@18.3.28)(@wordpress/core-data@7.25.0(@date-fns/tz@1.5.0)(@emotion/is-prop-valid@1.4.0)(@types/react-dom@18.3.7(@types/react@18.3.28))(@types/react@18.3.28)(esbuild@0.25.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(stylelint@13.11.0))(lodash@4.18.1)(moment@2.29.4)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@poocommerce/data@7.0.0(@emotion/is-prop-valid@1.4.0)(@types/react@18.3.28)(@wordpress/core-data@7.25.0(@date-fns/tz@1.5.0)(@emotion/is-prop-valid@1.4.0)(@types/react-dom@18.3.7(@types/react@18.3.28))(@types/react@18.3.28)(esbuild@0.25.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(stylelint@13.11.0))(lodash@4.18.1)(moment@2.29.4)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
-      '@woocommerce/date': 5.0.0(lodash@4.18.1)
-      '@woocommerce/navigation': 9.0.0(@emotion/is-prop-valid@1.4.0)(@types/react@18.3.28)(lodash@4.18.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@woocommerce/tracks': 1.5.1
+      '@poocommerce/date': 5.0.0(lodash@4.18.1)
+      '@poocommerce/navigation': 9.0.0(@emotion/is-prop-valid@1.4.0)(@types/react@18.3.28)(lodash@4.18.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@poocommerce/tracks': 1.5.1
       '@wordpress/api-fetch': 7.19.2
       '@wordpress/compose': 7.19.2(@types/react@18.3.28)(react@18.3.1)
       '@wordpress/core-data': 7.25.0(@date-fns/tz@1.5.0)(@emotion/is-prop-valid@1.4.0)(@types/react-dom@18.3.7(@types/react@18.3.28))(@types/react@18.3.28)(esbuild@0.25.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(stylelint@13.11.0)
@@ -15234,11 +15234,11 @@ snapshots:
       - lodash
       - supports-color
 
-  '@woocommerce/data@7.0.0(@emotion/is-prop-valid@1.4.0)(@types/react@18.3.28)(@wordpress/core-data@7.33.9(@date-fns/tz@1.5.0)(@emotion/is-prop-valid@1.4.0)(@types/react-dom@18.3.7(@types/react@18.3.28))(@types/react@18.3.28)(esbuild@0.25.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(stylelint@13.11.0))(lodash@4.18.1)(moment@2.29.4)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@poocommerce/data@7.0.0(@emotion/is-prop-valid@1.4.0)(@types/react@18.3.28)(@wordpress/core-data@7.33.9(@date-fns/tz@1.5.0)(@emotion/is-prop-valid@1.4.0)(@types/react-dom@18.3.7(@types/react@18.3.28))(@types/react@18.3.28)(esbuild@0.25.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(stylelint@13.11.0))(lodash@4.18.1)(moment@2.29.4)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
-      '@woocommerce/date': 5.0.0(lodash@4.18.1)
-      '@woocommerce/navigation': 9.0.0(@emotion/is-prop-valid@1.4.0)(@types/react@18.3.28)(lodash@4.18.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@woocommerce/tracks': 1.5.1
+      '@poocommerce/date': 5.0.0(lodash@4.18.1)
+      '@poocommerce/navigation': 9.0.0(@emotion/is-prop-valid@1.4.0)(@types/react@18.3.28)(lodash@4.18.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@poocommerce/tracks': 1.5.1
       '@wordpress/api-fetch': 7.19.2
       '@wordpress/compose': 7.19.2(@types/react@18.3.28)(react@18.3.1)
       '@wordpress/core-data': 7.33.9(@date-fns/tz@1.5.0)(@emotion/is-prop-valid@1.4.0)(@types/react-dom@18.3.7(@types/react@18.3.28))(@types/react@18.3.28)(esbuild@0.25.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(stylelint@13.11.0)
@@ -15261,7 +15261,7 @@ snapshots:
       - lodash
       - supports-color
 
-  '@woocommerce/date@5.0.0(lodash@4.18.1)':
+  '@poocommerce/date@5.0.0(lodash@4.18.1)':
     dependencies:
       '@types/d3-time-format': 2.3.4
       '@wordpress/date': 5.19.1
@@ -15271,13 +15271,13 @@ snapshots:
       moment-timezone: 0.5.45
       qs: 6.15.3
 
-  '@woocommerce/dependency-extraction-webpack-plugin@5.0.0(webpack@5.106.2)':
+  '@poocommerce/dependency-extraction-webpack-plugin@5.0.0(webpack@5.106.2)':
     dependencies:
       '@wordpress/dependency-extraction-webpack-plugin': 6.45.0(webpack@5.106.2)
     transitivePeerDependencies:
       - webpack
 
-  '@woocommerce/eslint-plugin@3.0.0(@babel/core@7.29.7)(eslint-import-resolver-typescript@2.4.0)(eslint@8.57.1)(jest@29.7.0(@types/node@20.9.0)(babel-plugin-macros@3.1.0))(typescript@5.9.3)':
+  '@poocommerce/eslint-plugin@3.0.0(@babel/core@7.29.7)(eslint-import-resolver-typescript@2.4.0)(eslint@8.57.1)(jest@29.7.0(@types/node@20.9.0)(babel-plugin-macros@3.1.0))(typescript@5.9.3)':
     dependencies:
       '@typescript-eslint/eslint-plugin': 5.62.0(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@5.9.3))(eslint@8.57.1)(typescript@5.9.3)
       '@typescript-eslint/parser': 5.62.0(eslint@8.57.1)(typescript@5.9.3)
@@ -15294,10 +15294,10 @@ snapshots:
       - supports-color
       - typescript
 
-  '@woocommerce/experimental@4.0.0(@babel/core@7.29.7)(@babel/runtime@7.29.7)(@date-fns/tz@1.5.0)(@emotion/is-prop-valid@1.4.0)(@types/react-dom@18.3.7(@types/react@18.3.28))(@types/react@18.3.28)(date-fns@4.4.0)(esbuild@0.25.12)(lodash@4.18.1)(postcss@8.3.5)(react-dom@18.3.1(react@18.3.1))(react-with-direction@1.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)(redux@5.0.1)(storybook@8.6.18(wp-prettier@2.8.5))(stylelint@13.11.0)(webpack@5.106.2)':
+  '@poocommerce/experimental@4.0.0(@babel/core@7.29.7)(@babel/runtime@7.29.7)(@date-fns/tz@1.5.0)(@emotion/is-prop-valid@1.4.0)(@types/react-dom@18.3.7(@types/react@18.3.28))(@types/react@18.3.28)(date-fns@4.4.0)(esbuild@0.25.12)(lodash@4.18.1)(postcss@8.3.5)(react-dom@18.3.1(react@18.3.1))(react-with-direction@1.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)(redux@5.0.1)(storybook@8.6.18(wp-prettier@2.8.5))(stylelint@13.11.0)(webpack@5.106.2)':
     dependencies:
-      '@woocommerce/components': 14.0.0(@babel/core@7.29.7)(@babel/runtime@7.29.7)(@date-fns/tz@1.5.0)(@emotion/is-prop-valid@1.4.0)(@types/react-dom@18.3.7(@types/react@18.3.28))(@types/react@18.3.28)(date-fns@4.4.0)(esbuild@0.25.12)(lodash@4.18.1)(postcss@8.3.5)(react-dom@18.3.1(react@18.3.1))(react-with-direction@1.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)(redux@5.0.1)(storybook@8.6.18(wp-prettier@2.8.5))(stylelint@13.11.0)(webpack@5.106.2)
-      '@woocommerce/sanitize': 1.0.0(@types/react-dom@18.3.7(@types/react@18.3.28))(@types/react@18.3.28)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@poocommerce/components': 14.0.0(@babel/core@7.29.7)(@babel/runtime@7.29.7)(@date-fns/tz@1.5.0)(@emotion/is-prop-valid@1.4.0)(@types/react-dom@18.3.7(@types/react@18.3.28))(@types/react@18.3.28)(date-fns@4.4.0)(esbuild@0.25.12)(lodash@4.18.1)(postcss@8.3.5)(react-dom@18.3.1(react@18.3.1))(react-with-direction@1.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)(redux@5.0.1)(storybook@8.6.18(wp-prettier@2.8.5))(stylelint@13.11.0)(webpack@5.106.2)
+      '@poocommerce/sanitize': 1.0.0(@types/react-dom@18.3.7(@types/react@18.3.28))(@types/react@18.3.28)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@wordpress/components': 29.5.4(@emotion/is-prop-valid@1.4.0)(@types/react@18.3.28)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@wordpress/element': 6.19.1
       '@wordpress/i18n': 5.19.1
@@ -15331,7 +15331,7 @@ snapshots:
       - webpack
       - webpack-virtual-modules
 
-  '@woocommerce/explat@3.0.0':
+  '@poocommerce/explat@3.0.0':
     dependencies:
       '@automattic/explat-client': 0.0.5
       '@automattic/explat-client-react-helpers': 0.0.6
@@ -15340,7 +15340,7 @@ snapshots:
       cookie: 0.4.2
       qs: 6.15.3
 
-  '@woocommerce/navigation@9.0.0(@emotion/is-prop-valid@1.4.0)(@types/react@18.3.28)(lodash@4.18.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@poocommerce/navigation@9.0.0(@emotion/is-prop-valid@1.4.0)(@types/react@18.3.28)(lodash@4.18.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@wordpress/api-fetch': 7.19.2
       '@wordpress/components': 29.5.4(@emotion/is-prop-valid@1.4.0)(@types/react@18.3.28)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -15361,16 +15361,16 @@ snapshots:
       - react-dom
       - supports-color
 
-  '@woocommerce/number@2.6.0':
+  '@poocommerce/number@2.6.0':
     dependencies:
       locutus: 3.0.36
 
-  '@woocommerce/onboarding@4.0.0(@babel/core@7.29.7)(@babel/runtime@7.29.7)(@date-fns/tz@1.5.0)(@emotion/is-prop-valid@1.4.0)(@types/react-dom@18.3.7(@types/react@18.3.28))(@types/react@18.3.28)(date-fns@4.4.0)(esbuild@0.25.12)(lodash@4.18.1)(postcss@8.3.5)(react-dom@18.3.1(react@18.3.1))(react-with-direction@1.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(redux@5.0.1)(storybook@8.6.18(wp-prettier@2.8.5))(stylelint@13.11.0)(webpack@5.106.2)':
+  '@poocommerce/onboarding@4.0.0(@babel/core@7.29.7)(@babel/runtime@7.29.7)(@date-fns/tz@1.5.0)(@emotion/is-prop-valid@1.4.0)(@types/react-dom@18.3.7(@types/react@18.3.28))(@types/react@18.3.28)(date-fns@4.4.0)(esbuild@0.25.12)(lodash@4.18.1)(postcss@8.3.5)(react-dom@18.3.1(react@18.3.1))(react-with-direction@1.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(redux@5.0.1)(storybook@8.6.18(wp-prettier@2.8.5))(stylelint@13.11.0)(webpack@5.106.2)':
     dependencies:
-      '@woocommerce/components': 14.0.0(@babel/core@7.29.7)(@babel/runtime@7.29.7)(@date-fns/tz@1.5.0)(@emotion/is-prop-valid@1.4.0)(@types/react-dom@18.3.7(@types/react@18.3.28))(@types/react@18.3.28)(date-fns@4.4.0)(esbuild@0.25.12)(lodash@4.18.1)(postcss@8.3.5)(react-dom@18.3.1(react@18.3.1))(react-with-direction@1.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)(redux@5.0.1)(storybook@8.6.18(wp-prettier@2.8.5))(stylelint@13.11.0)(webpack@5.106.2)
-      '@woocommerce/experimental': 4.0.0(@babel/core@7.29.7)(@babel/runtime@7.29.7)(@date-fns/tz@1.5.0)(@emotion/is-prop-valid@1.4.0)(@types/react-dom@18.3.7(@types/react@18.3.28))(@types/react@18.3.28)(date-fns@4.4.0)(esbuild@0.25.12)(lodash@4.18.1)(postcss@8.3.5)(react-dom@18.3.1(react@18.3.1))(react-with-direction@1.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)(redux@5.0.1)(storybook@8.6.18(wp-prettier@2.8.5))(stylelint@13.11.0)(webpack@5.106.2)
-      '@woocommerce/explat': 3.0.0
-      '@woocommerce/tracks': 1.5.1
+      '@poocommerce/components': 14.0.0(@babel/core@7.29.7)(@babel/runtime@7.29.7)(@date-fns/tz@1.5.0)(@emotion/is-prop-valid@1.4.0)(@types/react-dom@18.3.7(@types/react@18.3.28))(@types/react@18.3.28)(date-fns@4.4.0)(esbuild@0.25.12)(lodash@4.18.1)(postcss@8.3.5)(react-dom@18.3.1(react@18.3.1))(react-with-direction@1.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)(redux@5.0.1)(storybook@8.6.18(wp-prettier@2.8.5))(stylelint@13.11.0)(webpack@5.106.2)
+      '@poocommerce/experimental': 4.0.0(@babel/core@7.29.7)(@babel/runtime@7.29.7)(@date-fns/tz@1.5.0)(@emotion/is-prop-valid@1.4.0)(@types/react-dom@18.3.7(@types/react@18.3.28))(@types/react@18.3.28)(date-fns@4.4.0)(esbuild@0.25.12)(lodash@4.18.1)(postcss@8.3.5)(react-dom@18.3.1(react@18.3.1))(react-with-direction@1.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)(redux@5.0.1)(storybook@8.6.18(wp-prettier@2.8.5))(stylelint@13.11.0)(webpack@5.106.2)
+      '@poocommerce/explat': 3.0.0
+      '@poocommerce/tracks': 1.5.1
       '@wordpress/components': 29.5.4(@emotion/is-prop-valid@1.4.0)(@types/react@18.3.28)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@wordpress/compose': 7.19.2(@types/react@18.3.28)(react@18.3.1)
       '@wordpress/element': 6.19.1
@@ -15401,7 +15401,7 @@ snapshots:
       - webpack
       - webpack-virtual-modules
 
-  '@woocommerce/sanitize@1.0.0(@types/react-dom@18.3.7(@types/react@18.3.28))(@types/react@18.3.28)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@poocommerce/sanitize@1.0.0(@types/react-dom@18.3.7(@types/react@18.3.28))(@types/react@18.3.28)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@types/react': 18.3.28
       '@types/react-dom': 18.3.7(@types/react@18.3.28)
@@ -15409,7 +15409,7 @@ snapshots:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  '@woocommerce/tracks@1.5.1':
+  '@poocommerce/tracks@1.5.1':
     dependencies:
       debug: 4.4.3
     transitivePeerDependencies:

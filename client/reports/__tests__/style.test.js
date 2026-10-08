@@ -10,15 +10,15 @@ describe( 'Reports styles', () => {
 			'utf8'
 		);
 
-	// WooCommerce core paints `.woocommerce-layout__header` #f0f0f1; the Reports
+	// PooCommerce core paints `.poocommerce-layout__header` #f0f0f1; the Reports
 	// stylesheet overrides it to #fff. This only matches the SCSS source — it's a
 	// tripwire against the override being silently dropped in a refactor, not a
 	// check of the rendered cascade.
-	it( 'ships a `.woocommerce-layout__header` background override in the Reports stylesheet', () => {
+	it( 'ships a `.poocommerce-layout__header` background override in the Reports stylesheet', () => {
 		const styles = readReportsStyles();
 
 		expect( styles ).toMatch(
-			/\.woocommerce-layout__header\s*{\s*background:\s*#fff;/
+			/\.poocommerce-layout__header\s*{\s*background:\s*#fff;/
 		);
 	} );
 

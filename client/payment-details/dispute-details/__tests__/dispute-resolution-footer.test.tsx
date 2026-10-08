@@ -445,7 +445,7 @@ describe( 'DisputeResolutionFooter - Lost Status', () => {
 			} )
 		).toHaveAttribute(
 			'href',
-			'https://woocommerce.com/document/woopayments/fraud-and-disputes/managing-disputes/#amounts'
+			'https://poocommerce.com/document/woopayments/fraud-and-disputes/managing-disputes/#amounts'
 		);
 	} );
 

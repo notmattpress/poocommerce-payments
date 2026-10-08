@@ -2,7 +2,7 @@
 /**
  * Class OrderServiceTest
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Tests\Internal\Service;
@@ -211,7 +211,7 @@ class OrderServiceTest extends WCPAY_UnitTestCase {
 	/**
 	 * The Stripe Billing integration classes are only loaded when the feature is in use
 	 * (see WC_Payments::should_load_stripe_billing_integration()). On a store running
-	 * WooCommerce Subscriptions without Stripe Billing the service is absent, so it must
+	 * PooCommerce Subscriptions without Stripe Billing the service is absent, so it must
 	 * not be called — and a subscription it never touched is not Stripe-billed.
 	 */
 	public function test_get_payment_metadata_marks_subscription_as_regular_when_stripe_billing_not_loaded() {

@@ -2,7 +2,7 @@
 /**
  * Class Get_Account_Capital_Link_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use PHPUnit\Framework\MockObject\MockObject;

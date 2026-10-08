@@ -25,14 +25,14 @@ const PreviewModal = ( {
 	return (
 		isPreviewModalOpen && (
 			<Modal
-				title={ __( 'Preview', 'woocommerce-payments' ) }
+				title={ __( 'Preview', 'poocommerce-payments' ) }
 				isDismissible={ true }
 				className="multi-currency-store-settings-preview-modal"
 				shouldCloseOnClickOutside={ false }
 				onRequestClose={ handlePreviewModalCloseClick }
 			>
 				<iframe
-					title={ __( 'Preview', 'woocommerce-payments' ) }
+					title={ __( 'Preview', 'poocommerce-payments' ) }
 					className={ 'multi-currency-store-settings-preview-iframe' }
 					src={
 						'/' +

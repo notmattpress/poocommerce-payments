@@ -2,14 +2,14 @@
 /**
  * Class WooContainerTest
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Tests\Internal\DependencyManagement\DelegateContainer;
 
 use WCPAY_UnitTestCase;
 use WCPay\Internal\DependencyManagement\DelegateContainer\WooContainer;
-use Automattic\WooCommerce\Utilities\PluginUtil;
+use Automattic\PooCommerce\Utilities\PluginUtil;
 
 /**
  * Tests for the Woo delegate container.

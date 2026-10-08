@@ -2,7 +2,7 @@
 /**
  * Post-KYC activation notice.
  *
- * @package WooCommerce\Payments\Admin
+ * @package PooCommerce\Payments\Admin
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -57,7 +57,7 @@ class WC_Payments_Post_Kyc_Activation_Notice extends WC_Payments_Abstract_Admin_
 	 */
 	public function init_hooks(): void {
 		parent::init_hooks();
-		add_action( 'woocommerce_payments_account_refreshed', [ $this, 'invalidate_cache' ] );
+		add_action( 'poocommerce_payments_account_refreshed', [ $this, 'invalidate_cache' ] );
 	}
 
 	/**

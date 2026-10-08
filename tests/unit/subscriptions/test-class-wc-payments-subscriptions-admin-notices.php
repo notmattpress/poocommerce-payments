@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Subscriptions_Admin_Notices_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 /**

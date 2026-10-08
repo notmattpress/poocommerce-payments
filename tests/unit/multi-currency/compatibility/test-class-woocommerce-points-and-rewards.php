@@ -1,19 +1,19 @@
 <?php
 /**
- * Class WCPay_Multi_Currency_WooCommercePointsAndRewards_Tests
+ * Class WCPay_Multi_Currency_PooCommercePointsAndRewards_Tests
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
-use WCPay\MultiCurrency\Compatibility\WooCommercePointsAndRewards;
+use WCPay\MultiCurrency\Compatibility\PooCommercePointsAndRewards;
 use WCPay\MultiCurrency\MultiCurrency;
 use WCPay\MultiCurrency\Utils;
 use WCPay\MultiCurrency\Currency;
 
 /**
- * WCPay\MultiCurrency\Compatibility\WooCommercePointsAndRewards unit tests.
+ * WCPay\MultiCurrency\Compatibility\PooCommercePointsAndRewards unit tests.
  */
-class WCPay_Multi_Currency_WooCommercePointsAndRewards_Tests extends WCPAY_UnitTestCase {
+class WCPay_Multi_Currency_PooCommercePointsAndRewards_Tests extends WCPAY_UnitTestCase {
 
 	/**
 	 * Mock WCPay\MultiCurrency\MultiCurrency.
@@ -30,9 +30,9 @@ class WCPay_Multi_Currency_WooCommercePointsAndRewards_Tests extends WCPAY_UnitT
 	private $mock_utils;
 
 	/**
-	 * WCPay\MultiCurrency\Compatibility\WooCommercePointsAndRewards instance.
+	 * WCPay\MultiCurrency\Compatibility\PooCommercePointsAndRewards instance.
 	 *
-	 * @var WCPay\MultiCurrency\Compatibility\WooCommercePointsAndRewards
+	 * @var WCPay\MultiCurrency\Compatibility\PooCommercePointsAndRewards
 	 */
 	private $wc_points_rewards;
 
@@ -53,13 +53,13 @@ class WCPay_Multi_Currency_WooCommercePointsAndRewards_Tests extends WCPAY_UnitT
 		$this->mock_utils           = $this->createMock( Utils::class );
 		$this->localization_service = new WC_Payments_Localization_Service();
 
-		$this->wc_points_rewards = new WooCommercePointsAndRewards( $this->mock_multi_currency, $this->mock_utils );
+		$this->wc_points_rewards = new PooCommercePointsAndRewards( $this->mock_multi_currency, $this->mock_utils );
 	}
 
 	/**
 	 * @dataProvider filters_provider
 	 */
-	public function test_registers_woocommerce_filters_properly( $filter, $function_name ) {
+	public function test_registers_poocommerce_filters_properly( $filter, $function_name ) {
 		$priority = has_filter( $filter, [ $this->wc_points_rewards, $function_name ] );
 		$this->assertGreaterThan(
 			10,

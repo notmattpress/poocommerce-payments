@@ -14,7 +14,7 @@ import { MerchantEvent } from 'wcpay/tracks/event';
 import { getVariantContent } from './variants';
 
 const marketplaceReviewBaseUrl =
-	'https://woocommerce.com/products/woopayments/';
+	'https://poocommerce.com/products/woopayments/';
 
 /**
  * Build the Marketplace review URL with UTM attribution for the assigned variant.
@@ -148,7 +148,7 @@ const ReviewPrompt: React.FC = () => {
 			description={ content.description }
 			primaryButtonLabel={
 				<>
-					{ __( 'Leave review', 'woocommerce-payments' ) }
+					{ __( 'Leave review', 'poocommerce-payments' ) }
 					<span
 						className="components-external-link__icon"
 						children={ '\u2197' }
@@ -156,7 +156,7 @@ const ReviewPrompt: React.FC = () => {
 				</>
 			}
 			onPrimaryClick={ handlePrimaryClick }
-			secondaryButtonLabel={ __( 'Maybe later', 'woocommerce-payments' ) }
+			secondaryButtonLabel={ __( 'Maybe later', 'poocommerce-payments' ) }
 			onSecondaryClick={ handleSecondaryClick }
 			onDismiss={ handleDismiss }
 			onView={ handleView }

@@ -113,12 +113,12 @@ function CustomSelectControl< ItemType extends Item >( {
 		}
 
 		if ( ! itemString ) {
-			return __( 'No selection', 'woocommerce-payments' );
+			return __( 'No selection', 'poocommerce-payments' );
 		}
 
 		// translators: %s: The selected option.
 		return sprintf(
-			__( 'Currently selected: %s', 'woocommerce-payments' ),
+			__( 'Currently selected: %s', 'poocommerce-payments' ),
 			itemString
 		);
 	}

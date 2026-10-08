@@ -4,7 +4,7 @@
  * External dependencies
  */
 import { useCallback, useEffect, useRef } from 'react';
-import { useUserPreferences } from '@woocommerce/data';
+import { useUserPreferences } from '@poocommerce/data';
 import type { View, ViewTable } from '@wordpress/dataviews/wp';
 
 /**

@@ -2,7 +2,7 @@
 /**
  * Class Server_Response_Exception
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Core\Exceptions\Server\Response;

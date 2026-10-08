@@ -73,7 +73,7 @@ describe( 'RecommendedDocuments', () => {
 			} );
 			expect( helperLink ).toHaveAttribute(
 				'href',
-				'https://woocommerce.com/document/woopayments/fraud-and-disputes/managing-disputes/#challenge-or-accept'
+				'https://poocommerce.com/document/woopayments/fraud-and-disputes/managing-disputes/#challenge-or-accept'
 			);
 
 			expect(

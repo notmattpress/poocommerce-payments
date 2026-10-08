@@ -1,6 +1,6 @@
 # `Prepare_Terminal_Payment` request class
 
-[This document is a part of __WooCommerce Payments Server Requests__](../README.md)
+[This document is a part of __PooCommerce Payments Server Requests__](../README.md)
 
 ## Description
 

@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Customer_Service_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use PHPUnit\Framework\MockObject\MockObject;
@@ -471,7 +471,7 @@ class WC_Payments_Customer_Service_Test extends WCPAY_UnitTestCase {
 
 	public function test_update_payment_method_with_billing_details_from_checkout_fields() {
 		add_filter(
-			'woocommerce_billing_fields',
+			'poocommerce_billing_fields',
 			function ( $fields ) {
 				unset( $fields['billing_company'] );
 				unset( $fields['billing_country'] );
@@ -503,7 +503,7 @@ class WC_Payments_Customer_Service_Test extends WCPAY_UnitTestCase {
 
 		$this->customer_service->update_payment_method_with_billing_details_from_order( 'pm_mock', $order );
 
-		remove_all_filters( 'woocommerce_billing_fields' );
+		remove_all_filters( 'poocommerce_billing_fields' );
 	}
 
 	public function test_get_payment_methods_for_customer_not_throw_resource_missing_code_exception() {
@@ -719,7 +719,7 @@ class WC_Payments_Customer_Service_Test extends WCPAY_UnitTestCase {
 		$order->set_customer_id( 0 );
 		$order->save();
 
-		// Any logged-in user can pay for a guest order per WooCommerce's pay_for_order capability.
+		// Any logged-in user can pay for a guest order per PooCommerce's pay_for_order capability.
 		$user_id = $this->factory->user->create( [ 'role' => 'customer' ] );
 		wp_set_current_user( $user_id );
 

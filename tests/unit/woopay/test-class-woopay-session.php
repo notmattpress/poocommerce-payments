@@ -2,7 +2,7 @@
 /**
  * Class WooPay_Session_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use PHPUnit\Framework\MockObject\MockObject;
@@ -64,7 +64,7 @@ class WooPay_Session_Test extends WCPAY_UnitTestCase {
 		if ( function_exists( 'wp_cache_flush' ) ) {
 			wp_cache_flush();
 		}
-		wp_cache_delete( 'wc_product_meta_lookup', 'woocommerce' );
+		wp_cache_delete( 'wc_product_meta_lookup', 'poocommerce' );
 
 		// Mock the main class's cache service.
 		$this->_cache     = WC_Payments::get_database_cache();
@@ -374,7 +374,7 @@ class WooPay_Session_Test extends WCPAY_UnitTestCase {
 	}
 
 	private function setup_adapted_extensions() {
-		update_option( WooPay_Scheduler::ENABLED_ADAPTED_EXTENSIONS_OPTION_NAME, [ 'woocommerce-points-and-rewards' ] );
+		update_option( WooPay_Scheduler::ENABLED_ADAPTED_EXTENSIONS_OPTION_NAME, [ 'poocommerce-points-and-rewards' ] );
 	}
 
 	private function set_is_woopay_eligible( $is_woopay_eligible ) {

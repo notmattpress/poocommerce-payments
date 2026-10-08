@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Redirect_Service
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 use WCPay\Core\Server\Request\Get_Account_Capital_Link;
@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 class WC_Payments_Redirect_Service {
 
 	/**
-	 * Client for making requests to the WooCommerce Payments API
+	 * Client for making requests to the PooCommerce Payments API
 	 *
 	 * @var WC_Payments_API_Client
 	 */
@@ -29,7 +29,7 @@ class WC_Payments_Redirect_Service {
 	/**
 	 * Constructor for WC_Payments_Session_Service.
 	 *
-	 * @param WC_Payments_API_Client $payments_api_client - WooCommerce Payments API client.
+	 * @param WC_Payments_API_Client $payments_api_client - PooCommerce Payments API client.
 	 */
 	public function __construct(
 		WC_Payments_API_Client $payments_api_client

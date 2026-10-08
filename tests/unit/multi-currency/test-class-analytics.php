@@ -2,11 +2,11 @@
 /**
  * Class WCPay_Multi_Currency_Analytics_Tests
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
-use Automattic\WooCommerce\Blocks\Package;
-use Automattic\WooCommerce\Blocks\Assets\AssetDataRegistry;
+use Automattic\PooCommerce\Blocks\Package;
+use Automattic\PooCommerce\Blocks\Assets\AssetDataRegistry;
 use PHPUnit\Framework\MockObject\MockObject;
 use WCPay\MultiCurrency\Analytics;
 use WCPay\MultiCurrency\Currency;
@@ -71,9 +71,9 @@ class WCPay_Multi_Currency_Analytics_Tests extends WCPAY_UnitTestCase {
 
 		$this->add_mock_order_with_meta();
 		$this->set_is_admin( true );
-		add_filter( 'woocommerce_is_rest_api_request', '__return_true' );
-		// Add manage_woocommerce capability to user.
-		$cb = $this->create_can_manage_woocommerce_cap_override( true );
+		add_filter( 'poocommerce_is_rest_api_request', '__return_true' );
+		// Add manage_poocommerce capability to user.
+		$cb = $this->create_can_manage_poocommerce_cap_override( true );
 		add_filter( 'user_has_cap', $cb );
 
 		$mock_api_client   = $this->createMock( MultiCurrencyApiClientInterface::class );
@@ -110,24 +110,24 @@ class WCPay_Multi_Currency_Analytics_Tests extends WCPAY_UnitTestCase {
 	public function tear_down() {
 		$this->delete_mock_orders();
 
-		remove_filter( 'woocommerce_is_rest_api_request', '__return_true' );
+		remove_filter( 'poocommerce_is_rest_api_request', '__return_true' );
 
 		parent::tear_down();
 	}
 
 	/**
-	 * @dataProvider woocommerce_filter_provider
+	 * @dataProvider poocommerce_filter_provider
 	 */
-	public function test_registers_woocommerce_filters_properly( $filter, $function_name, $expected_priority ) {
+	public function test_registers_poocommerce_filters_properly( $filter, $function_name, $expected_priority ) {
 		$priority = has_filter( $filter, [ $this->analytics, $function_name ] );
 		$this->assertEquals( $expected_priority, $priority );
 	}
 
-	public function woocommerce_filter_provider() {
+	public function poocommerce_filter_provider() {
 		return [
 			'admin scripts enqueued with default priority' => [ 'admin_enqueue_scripts', 'enqueue_admin_scripts', 10 ],
-			'select clause filters added with late priority' => [ 'woocommerce_analytics_clauses_select', 'filter_select_clauses', 20 ],
-			'join clause filters added with late priority' => [ 'woocommerce_analytics_clauses_join', 'filter_join_clauses', 20 ],
+			'select clause filters added with late priority' => [ 'poocommerce_analytics_clauses_select', 'filter_select_clauses', 20 ],
+			'join clause filters added with late priority' => [ 'poocommerce_analytics_clauses_join', 'filter_join_clauses', 20 ],
 		];
 	}
 
@@ -585,13 +585,13 @@ class WCPay_Multi_Currency_Analytics_Tests extends WCPAY_UnitTestCase {
 	}
 
 	/**
-	 * @param bool $can_manage_woocommerce
+	 * @param bool $can_manage_poocommerce
 	 *
 	 * @return Closure
 	 */
-	private function create_can_manage_woocommerce_cap_override( bool $can_manage_woocommerce ) {
-		return function ( $allcaps ) use ( $can_manage_woocommerce ) {
-			$allcaps['manage_woocommerce'] = $can_manage_woocommerce;
+	private function create_can_manage_poocommerce_cap_override( bool $can_manage_poocommerce ) {
+		return function ( $allcaps ) use ( $can_manage_poocommerce ) {
+			$allcaps['manage_poocommerce'] = $can_manage_poocommerce;
 
 			return $allcaps;
 		};

@@ -29,7 +29,7 @@ jest.mock( '@wordpress/api-fetch', () => ( {
  */
 const getModalContainer = () => {
 	const [ modalContainer ] = document.body.getElementsByClassName(
-		'woocommerce-payments__tos-modal'
+		'poocommerce-payments__tos-modal'
 	);
 
 	return modalContainer;
