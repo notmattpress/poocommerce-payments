@@ -1,25 +1,25 @@
-# WooCommerce Payments Core API
+# PooCommerce Payments Core API
 
-This directory contains core WooCommerce Payments functionality, officially available for both internal use, and use by consumers and extensions.
+This directory contains core PooCommerce Payments functionality, officially available for both internal use, and use by consumers and extensions.
 
-> 🔗 If you are contributing to WooCommerce Payments, please refer to [the core contributing guidelines](CONTRIBUTING.md).
+> 🔗 If you are contributing to PooCommerce Payments, please refer to [the core contributing guidelines](CONTRIBUTING.md).
 
 ## Definition
 
-The funtionality within this directory is meant to be expanded and maintained in a stable and reliable way, which will provide a solid base for building on top of and within WooCommerce Payments.
+The funtionality within this directory is meant to be expanded and maintained in a stable and reliable way, which will provide a solid base for building on top of and within PooCommerce Payments.
 
 Here is difference between the core and the rest of the plugin:
 
 ```mermaid
 flowchart TD
     subgraph Plugin
-    CORE[WooCommerce Payments Core]
+    CORE[PooCommerce Payments Core]
     WCPAY[Gateway]
     CONSUMER[Consumers]
     end
 
     EXTENSIONS[Extensions]
-    SERVER[(WooCommerce Payments Server)]
+    SERVER[(PooCommerce Payments Server)]
     HOOKS[WordPress Actions and Filters]
 
     WCPAY <--> CORE
@@ -30,10 +30,10 @@ flowchart TD
     HOOKS <---> EXTENSIONS
 ```
 
-1. __WooCommerce Payments Core__ is a set of classes (and APIs), which (should) contain core WooCommerce Payments functionality like the connection to the server, main services (like [the customer service](service/customer-service.md)), and etc.
+1. __PooCommerce Payments Core__ is a set of classes (and APIs), which (should) contain core PooCommerce Payments functionality like the connection to the server, main services (like [the customer service](service/customer-service.md)), and etc.
 2. The rest of the __gateway__, meaning separate pieces of functionality like the REST API, admin views, etc.
-3. __Consumers__ are pieces of code, which are tightly connected to WooCommerce Payments, but are not crutial to its core functionality. Examples include Multi-Currency, WooPay, and other extensions, some of which are built into WooCommerce Payments.
-4. __Extensions__ are those use-cases, which are linked to WooCommerce Payments, but not build on top of/within the plugin. Those should use *WordPress actions and filters* to integrate with the gateway, and connect with the plugin through the classes, contained within the plugin core.
+3. __Consumers__ are pieces of code, which are tightly connected to PooCommerce Payments, but are not crutial to its core functionality. Examples include Multi-Currency, WooPay, and other extensions, some of which are built into PooCommerce Payments.
+4. __Extensions__ are those use-cases, which are linked to PooCommerce Payments, but not build on top of/within the plugin. Those should use *WordPress actions and filters* to integrate with the gateway, and connect with the plugin through the classes, contained within the plugin core.
 
 ## Support and backwards compatibility
 
@@ -41,11 +41,11 @@ The core is developed, and will be maintained with backwards compatibility in mi
 
 ⚠️ This means that everything outside of this directory should be considered internal for the plugin, and may be changed without consideration for notice.
 
-To ensure stability and resilience, please avoid using non-core classes and methods within your extensions. The plugin is under active development, and if you need something, which is not present in this directory, please [open an issue](https://github.com/Automattic/woocommerce-payments/issues/new/). We will always consider the best way to expose the needed functionality.
+To ensure stability and resilience, please avoid using non-core classes and methods within your extensions. The plugin is under active development, and if you need something, which is not present in this directory, please [open an issue](https://github.com/Automattic/poocommerce-payments/issues/new/). We will always consider the best way to expose the needed functionality.
 
 ## Available functionality
 
-WooCommerce Payments Core is under active development, and currently includes the APIs, listed below.
+PooCommerce Payments Core is under active development, and currently includes the APIs, listed below.
 
 ### Gateway Mode
 
@@ -97,7 +97,7 @@ WC_Payments::mode()->is_dev();
 
 ### Services
 
-WooCommerce Payments contains a comprehensive set of internal services, but as explained at the beginning of this document, they are subject to change without notice.
+PooCommerce Payments contains a comprehensive set of internal services, but as explained at the beginning of this document, they are subject to change without notice.
 
 Instead, please use the following services available in core:
 
@@ -105,6 +105,6 @@ Instead, please use the following services available in core:
 
 ### Server requests & responses
 
-Communication with the WooCommerce Payments Server is currently done through a mix of the `WC_Payments_API_Client`, and request classes, and being migrated to fully use the latter.
+Communication with the PooCommerce Payments Server is currently done through a mix of the `WC_Payments_API_Client`, and request classes, and being migrated to fully use the latter.
 
 🔗 [Read the full docs for server communication here](server/README.md).

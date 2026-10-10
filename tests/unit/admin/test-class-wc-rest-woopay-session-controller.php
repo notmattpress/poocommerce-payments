@@ -2,7 +2,7 @@
 /**
  * Class WC_REST_WooPay_Session_Controller_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\Platform_Checkout\WooPay_Store_Api_Token;

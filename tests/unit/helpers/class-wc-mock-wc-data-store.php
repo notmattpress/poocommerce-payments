@@ -2,7 +2,7 @@
 /**
  * Helper classes to provide mock functionality to abstract methods of WC_Data
  *
- * @package WooCommerce\Tests
+ * @package PooCommerce\Tests
  */
 
 /**

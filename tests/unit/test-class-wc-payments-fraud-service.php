@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Fraud_Service_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use PHPUnit\Framework\MockObject\MockObject;
@@ -91,8 +91,8 @@ class WC_Payments_Fraud_Service_Test extends WCPAY_UnitTestCase {
 		$this->fraud_service->add_sift_js_tracker_in_admin();
 	}
 
-	public function test_admin_tracker_renders_on_a_woocommerce_admin_screen() {
-		set_current_screen( 'woocommerce_page_wc-admin' );
+	public function test_admin_tracker_renders_on_a_poocommerce_admin_screen() {
+		set_current_screen( 'poocommerce_page_wc-admin' );
 		$original_get = $_GET;
 		$_GET['page'] = 'wc-admin';
 

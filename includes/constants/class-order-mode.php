@@ -2,7 +2,7 @@
 /**
  * Class Order_Mode
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Constants;

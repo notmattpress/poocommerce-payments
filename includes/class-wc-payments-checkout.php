@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Checkout
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay;
@@ -106,8 +106,8 @@ class WC_Payments_Checkout {
 		// own the full setup (CSS, wcpayCustomerData, action hooks). It only acts when the form was
 		// not rendered (the guest verification interstitial). Priority stays below wp_print_footer_scripts (20).
 		add_action( 'wp_footer', [ $this, 'maybe_load_pay_for_order_scripts' ] );
-		add_action( 'woocommerce_after_checkout_form', [ $this, 'maybe_load_checkout_scripts' ] );
-		add_filter( 'woocommerce_update_order_review_fragments', [ $this, 'add_payment_methods_config_to_update_order_review_fragments' ] );
+		add_action( 'poocommerce_after_checkout_form', [ $this, 'maybe_load_checkout_scripts' ] );
+		add_filter( 'poocommerce_update_order_review_fragments', [ $this, 'add_payment_methods_config_to_update_order_review_fragments' ] );
 	}
 
 	/**
@@ -134,7 +134,7 @@ class WC_Payments_Checkout {
 		$script_dependencies = [ 'stripe', 'wc-checkout', 'wp-i18n' ];
 
 		if ( $this->gateway->supports( 'tokenization' ) ) {
-			$script_dependencies[] = 'woocommerce-tokenization-form';
+			$script_dependencies[] = 'poocommerce-tokenization-form';
 		}
 
 		Fraud_Prevention_Service::maybe_append_fraud_prevention_token();
@@ -153,7 +153,7 @@ class WC_Payments_Checkout {
 			! WC()->cart->is_empty() &&
 			! WC()->cart->needs_payment() &&
 			is_checkout() &&
-			! has_block( 'woocommerce/checkout' ) &&
+			! has_block( 'poocommerce/checkout' ) &&
 			! wp_script_is( 'wcpay-upe-checkout', 'enqueued' )
 		) {
 			$this->load_checkout_scripts();
@@ -175,9 +175,9 @@ class WC_Payments_Checkout {
 	 * Ensures the checkout scripts load on the Pay for Order endpoint even when the
 	 * pay-for-order form is not rendered.
 	 *
-	 * For guest orders past WooCommerce's email-verification grace period, core renders
+	 * For guest orders past PooCommerce's email-verification grace period, core renders
 	 * the "Verify email" form instead of the pay-for-order form. In that case neither
-	 * `payment_fields()` nor the `woocommerce_after_checkout_form` fallback runs, so
+	 * `payment_fields()` nor the `poocommerce_after_checkout_form` fallback runs, so
 	 * `wcpay-upe-checkout` is not enqueued. When a 3DS payment then returns to the
 	 * order-pay URL with a `#wcpay-confirm-...` fragment, there is no script to process
 	 * the authentication continuation and the shopper is stuck on the verification form.
@@ -247,7 +247,7 @@ class WC_Payments_Checkout {
 			'wcAjaxUrl'                         => WC_AJAX::get_endpoint( '%%endpoint%%' ),
 			'createSetupIntentNonce'            => wp_create_nonce( 'wcpay_create_setup_intent_nonce' ),
 			'initWooPayNonce'                   => wp_create_nonce( 'wcpay_init_woopay_nonce' ),
-			'genericErrorMessage'               => __( 'There was a problem processing the payment. Please check your email inbox and refresh the page to try again.', 'woocommerce-payments' ),
+			'genericErrorMessage'               => __( 'There was a problem processing the payment. Please check your email inbox and refresh the page to try again.', 'poocommerce-payments' ),
 			'fraudServices'                     => $this->fraud_service->get_fraud_services_config(),
 			'features'                          => $this->gateway->supports,
 			'forceNetworkSavedCards'            => WC_Payments::is_network_saved_cards_enabled() || $gateway->should_use_stripe_platform_on_checkout_page(),
@@ -260,7 +260,7 @@ class WC_Payments_Checkout {
 			'isWooPayEmailInputEnabled'         => $this->woopay_util->is_woopay_email_input_enabled(),
 			'isWooPayDirectCheckoutEnabled'     => WC_Payments_Features::is_woopay_direct_checkout_enabled(),
 			'isWooPayGlobalThemeSupportEnabled' => $this->gateway->is_woopay_global_theme_support_enabled(),
-			'isShortcodeCheckout'               => is_checkout() && ! has_block( 'woocommerce/checkout' ),
+			'isShortcodeCheckout'               => is_checkout() && ! has_block( 'poocommerce/checkout' ),
 			'woopayHost'                        => WooPay_Utilities::get_woopay_url(),
 			'platformTrackerNonce'              => wp_create_nonce( 'platform_tracks_nonce' ),
 			/**
@@ -281,7 +281,7 @@ class WC_Payments_Checkout {
 
 		// Provide the admin nonce when previewing in the Customizer so the
 		// frontend can POST the live appearance to the admin endpoint.
-		if ( is_customize_preview() && current_user_can( 'manage_woocommerce' ) ) {
+		if ( is_customize_preview() && current_user_can( 'manage_poocommerce' ) ) {
 			$js_config['adminAppearanceNonce'] = wp_create_nonce( 'wcpay_admin_woopay_appearance_nonce' );
 		}
 
@@ -292,10 +292,10 @@ class WC_Payments_Checkout {
 		$payment_fields['paymentMethodsConfig']     = $this->get_enabled_payment_method_config();
 		$payment_fields['testMode']                 = WC_Payments::mode()->is_test();
 		$payment_fields['cartContainsSubscription'] = $this->gateway->is_subscription_item_in_cart();
-		$payment_fields['currency']                 = get_woocommerce_currency();
+		$payment_fields['currency']                 = get_poocommerce_currency();
 		$payment_fields['stylesCacheVersion']       = WC_Payments_Styles_Cache::get_styles_cache_version();
 		$cart_total                                 = ( WC()->cart ? WC()->cart->get_total( '' ) : 0 );
-		$payment_fields['cartTotal']                = WC_Payments_Utils::prepare_amount( $cart_total, get_woocommerce_currency() );
+		$payment_fields['cartTotal']                = WC_Payments_Utils::prepare_amount( $cart_total, get_poocommerce_currency() );
 
 		$enabled_billing_fields = [];
 		foreach ( WC()->checkout()->get_checkout_fields( 'billing' ) as $billing_field => $billing_field_options ) {
@@ -409,7 +409,7 @@ class WC_Payments_Checkout {
 	 * @return array The updated fragments.
 	 */
 	public function add_payment_methods_config_to_update_order_review_fragments( $fragments ) {
-		if ( ! isset( $fragments['.woocommerce-checkout-payment'] ) ) {
+		if ( ! isset( $fragments['.poocommerce-checkout-payment'] ) ) {
 			return $fragments;
 		}
 
@@ -417,7 +417,7 @@ class WC_Payments_Checkout {
 		// It's a little heavier in computation, but it gives a more accurate result.
 		$js_config = $this->get_payment_fields_js_config();
 
-		$fragments['.woocommerce-checkout-payment'] .= sprintf(
+		$fragments['.poocommerce-checkout-payment'] .= sprintf(
 			'<script>window.wcpay_upe_config && Object.assign( window.wcpay_upe_config, %s );</script>',
 			wp_json_encode(
 				[
@@ -538,9 +538,9 @@ class WC_Payments_Checkout {
 							/* translators: link to Stripe testing page */
 								$this->gateway->get_payment_method()->get_testing_instructions( $this->account->get_account_country() ),
 								[
-									'a'      => '<a href="https://woocommerce.com/document/woopayments/testing-and-troubleshooting/testing/#test-cards" target="_blank">',
+									'a'      => '<a href="https://poocommerce.com/document/woopayments/testing-and-troubleshooting/testing/#test-cards" target="_blank">',
 									'strong' => '<strong>',
-									'number' => '<button type="button" class="js-woopayments-copy-test-number" aria-label="' . esc_attr( __( 'Click to copy the test number to clipboard', 'woocommerce-payments' ) ) . '" title="' . esc_attr( __( 'Copy to clipboard', 'woocommerce-payments' ) ) . '"><i></i><span>',
+									'number' => '<button type="button" class="js-woopayments-copy-test-number" aria-label="' . esc_attr( __( 'Click to copy the test number to clipboard', 'poocommerce-payments' ) ) . '" title="' . esc_attr( __( 'Copy to clipboard', 'poocommerce-payments' ) ) . '"><i></i><span>',
 								]
 							);
 					?>
@@ -594,7 +594,7 @@ class WC_Payments_Checkout {
 			?>
 			<div>
 				<?php
-				echo esc_html__( 'An error was encountered when preparing the payment form. Please try again later.', 'woocommerce-payments' );
+				echo esc_html__( 'An error was encountered when preparing the payment form. Please try again later.', 'poocommerce-payments' );
 				?>
 			</div>
 			<?php
@@ -647,9 +647,9 @@ class WC_Payments_Checkout {
 			/* translators: link to Stripe testing page */
 			$payment_method->get_testing_instructions( $account_country ),
 			[
-				'a'      => '<a href="https://woocommerce.com/document/woopayments/testing-and-troubleshooting/testing/#test-cards" target="_blank">',
+				'a'      => '<a href="https://poocommerce.com/document/woopayments/testing-and-troubleshooting/testing/#test-cards" target="_blank">',
 				'strong' => '<strong>',
-				'number' => '<button type="button" class="js-woopayments-copy-test-number" aria-label="' . esc_attr( __( 'Click to copy the test number to clipboard', 'woocommerce-payments' ) ) . '" title="' . esc_attr( __( 'Copy to clipboard', 'woocommerce-payments' ) ) . '"><i></i><span>',
+				'number' => '<button type="button" class="js-woopayments-copy-test-number" aria-label="' . esc_attr( __( 'Click to copy the test number to clipboard', 'poocommerce-payments' ) ) . '" title="' . esc_attr( __( 'Copy to clipboard', 'poocommerce-payments' ) ) . '"><i></i><span>',
 			]
 		);
 

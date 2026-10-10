@@ -95,7 +95,7 @@ describe( 'Tokenized Express Checkout Element - Product page logic', () => {
 		// just mocking some server-side-provided DOM elements.
 		render(
 			<div>
-				<div className="woocommerce-notices-wrapper" />
+				<div className="poocommerce-notices-wrapper" />
 				<button className="single_add_to_cart_button" value="333">
 					Fake button
 				</button>
@@ -801,7 +801,7 @@ describe( 'Tokenized Express Checkout Element - Product page logic', () => {
 		} );
 		await waitFor( () => expect( global.Stripe ).toHaveBeenCalled() );
 
-		// Two variation changes in a row: `woocommerce_variation_has_changed` is
+		// Two variation changes in a row: `poocommerce_variation_has_changed` is
 		// not debounced, so both refetches are in flight at the same time.
 		doAction( 'wcpay.express-checkout.update-button-data' );
 		await waitFor( () => expect( apiFetch ).toHaveBeenCalledTimes( 1 ) );

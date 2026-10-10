@@ -2,8 +2,8 @@
  * External dependencies
  */
 import React from 'react';
-import { ReportFilters } from '@woocommerce/components';
-import { getQuery } from '@woocommerce/navigation';
+import { ReportFilters } from '@poocommerce/components';
+import { getQuery } from '@poocommerce/navigation';
 
 /**
  * Internal dependencies
@@ -42,7 +42,7 @@ export const DisputesFilters = ( {
 	};
 
 	return (
-		<div className="woocommerce-filters-disputes">
+		<div className="poocommerce-filters-disputes">
 			<ReportFilters
 				filters={ populateDisputesCurrencies( filters ) }
 				advancedFilters={ advancedFilters }

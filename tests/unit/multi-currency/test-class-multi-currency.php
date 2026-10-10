@@ -2,7 +2,7 @@
 /**
  * Class WCPay_Multi_Currency_Tests
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\Constants\Currency_Code;
@@ -114,7 +114,7 @@ class WCPay_Multi_Currency_Tests extends WCPAY_UnitTestCase {
 		parent::set_up();
 
 		// Isolate the cache-mode auto-detection state per test. Other suites (e.g. the WC_Payments
-		// upgrade test) fire woocommerce_woocommerce_payments_updated, which runs the cache
+		// upgrade test) fire poocommerce_poocommerce_payments_updated, which runs the cache
 		// auto-detect migration and can leave wcpay_multi_currency_cache_autodetect_done set.
 		delete_option( 'wcpay_multi_currency_rendering_mode' );
 		delete_option( 'wcpay_multi_currency_cache_autodetect_done' );
@@ -145,7 +145,7 @@ class WCPay_Multi_Currency_Tests extends WCPAY_UnitTestCase {
 
 	/** A getter before session creation must not prevent later price hooks. */
 	public function test_early_getter_before_session_preserves_price_hooks() {
-		remove_filter( 'woocommerce_product_get_price', [ $this->multi_currency->get_frontend_prices(), 'get_product_price_string' ], 99 );
+		remove_filter( 'poocommerce_product_get_price', [ $this->multi_currency->get_frontend_prices(), 'get_product_price_string' ], 99 );
 		$this->mock_currency_settings(
 			'CAD',
 			[
@@ -162,21 +162,21 @@ class WCPay_Multi_Currency_Tests extends WCPAY_UnitTestCase {
 			WC()->session = null;
 			$this->multi_currency->get_default_currency();
 			// A direct read before the session exists caches the store currency as unselected.
-			$this->assertSame( 'USD', $this->multi_currency->get_frontend_currencies()->get_woocommerce_currency() );
+			$this->assertSame( 'USD', $this->multi_currency->get_frontend_currencies()->get_poocommerce_currency() );
 			$this->assertStringContainsString( 'wcpay-async-price', wc_price( 10 ) );
-			$this->assertFalse( has_filter( 'woocommerce_product_get_price', [ $this->multi_currency->get_frontend_prices(), 'get_product_price_string' ] ) );
+			$this->assertFalse( has_filter( 'poocommerce_product_get_price', [ $this->multi_currency->get_frontend_prices(), 'get_product_price_string' ] ) );
 			$active = $this->createMock( WC_Session_Handler::class );
 			$active->method( 'has_session' )->willReturn( true );
 			$active->method( 'get' )->willReturn( 'CAD' );
 			WC()->session = $active;
 			$this->multi_currency->init();
 			$this->assertStringNotContainsString( 'wcpay-async-price', wc_price( 10 ) );
-			$this->assertSame( 99, has_filter( 'woocommerce_product_get_price', [ $this->multi_currency->get_frontend_prices(), 'get_product_price_string' ] ) );
+			$this->assertSame( 99, has_filter( 'poocommerce_product_get_price', [ $this->multi_currency->get_frontend_prices(), 'get_product_price_string' ] ) );
 			$product = new WC_Product_Simple();
 			$product->set_price( 10 );
 			foreach ( [ 1, 2 ] as $repeat ) {
 				$this->multi_currency->init();
-				$this->assertSame( 'CAD', get_woocommerce_currency(), 'Initialization ' . $repeat );
+				$this->assertSame( 'CAD', get_poocommerce_currency(), 'Initialization ' . $repeat );
 				$this->assertEquals( 12.07, (float) $product->get_price() );
 				$this->assertStringContainsString( '12.07', wc_price( $product->get_price() ) );
 				$this->assertStringNotContainsString( 'wcpay-async-price', wc_price( $product->get_price() ) );
@@ -190,9 +190,9 @@ class WCPay_Multi_Currency_Tests extends WCPAY_UnitTestCase {
 	/** Outside cache-optimized mode, a repeated init() must leave the registered hooks alone. */
 	public function test_repeated_init_outside_cache_mode_leaves_hooks_alone() {
 		$prices = $this->multi_currency->get_frontend_prices();
-		remove_filter( 'woocommerce_product_get_price', [ $prices, 'get_product_price_string' ], 99 );
+		remove_filter( 'poocommerce_product_get_price', [ $prices, 'get_product_price_string' ], 99 );
 		$this->multi_currency->init();
-		$this->assertFalse( has_filter( 'woocommerce_product_get_price', [ $prices, 'get_product_price_string' ] ) );
+		$this->assertFalse( has_filter( 'poocommerce_product_get_price', [ $prices, 'get_product_price_string' ] ) );
 	}
 
 	/** An early getter followed by scheduled init must not register a second converter. */
@@ -202,7 +202,7 @@ class WCPay_Multi_Currency_Tests extends WCPAY_UnitTestCase {
 		$count  = static function () {
 			global $wp_filter;
 			$total = 0;
-			foreach ( $wp_filter['woocommerce_analytics_update_order_stats_data']->callbacks ?? [] as $callbacks ) {
+			foreach ( $wp_filter['poocommerce_analytics_update_order_stats_data']->callbacks ?? [] as $callbacks ) {
 				foreach ( $callbacks as $callback ) {
 					$function = $callback['function'];
 					if ( is_array( $function ) && $function[0] instanceof \WCPay\MultiCurrency\Analytics && 'update_order_stats_data' === $function[1] ) {
@@ -222,10 +222,10 @@ class WCPay_Multi_Currency_Tests extends WCPAY_UnitTestCase {
 	/** Repeated initialization must preserve the historical amount on import and rebuild. */
 	public function test_reinitialized_analytics_import_and_rebuild_convert_once() {
 		global $wpdb;
-		$currency = get_option( 'woocommerce_currency' );
+		$currency = get_option( 'poocommerce_currency' );
 		$order    = new WC_Order();
 		try {
-			update_option( 'woocommerce_currency', 'EUR' );
+			update_option( 'poocommerce_currency', 'EUR' );
 			$this->init_multi_currency( null, true, null, null, null, false );
 			$this->multi_currency->get_default_currency();
 			$this->multi_currency->init();
@@ -239,7 +239,7 @@ class WCPay_Multi_Currency_Tests extends WCPAY_UnitTestCase {
 
 			foreach ( [ 'initial import', 'historical rebuild' ] as $phase ) {
 				$wpdb->delete( $wpdb->prefix . 'wc_order_stats', [ 'order_id' => $order->get_id() ], [ '%d' ] );
-				\Automattic\WooCommerce\Admin\API\Reports\Orders\Stats\DataStore::sync_order( $order->get_id() );
+				\Automattic\PooCommerce\Admin\API\Reports\Orders\Stats\DataStore::sync_order( $order->get_id() );
 				$row = $wpdb->get_row( $wpdb->prepare( "SELECT total_sales, net_total FROM {$wpdb->prefix}wc_order_stats WHERE order_id = %d", $order->get_id() ), ARRAY_A );
 				$this->assertNotNull( $row, $phase );
 				$this->assertEquals( 41.90, (float) $row['total_sales'], $phase );
@@ -252,7 +252,7 @@ class WCPay_Multi_Currency_Tests extends WCPAY_UnitTestCase {
 			if ( $order->get_id() ) {
 				$order->delete( true );
 			}
-			update_option( 'woocommerce_currency', $currency );
+			update_option( 'poocommerce_currency', $currency );
 		}
 	}
 
@@ -262,8 +262,8 @@ class WCPay_Multi_Currency_Tests extends WCPAY_UnitTestCase {
 		remove_all_filters( 'wcpay_multi_currency_apply_charm_only_to_products' );
 		remove_all_filters( 'wcpay_multi_currency_available_currencies' );
 		remove_all_filters( 'wcpay_multi_currency_override_selected_currency' );
-		remove_all_filters( 'woocommerce_currency' );
-		remove_all_filters( 'woocommerce_geolocate_ip' );
+		remove_all_filters( 'poocommerce_currency' );
+		remove_all_filters( 'poocommerce_geolocate_ip' );
 		remove_all_filters( 'stylesheet' );
 
 		delete_user_meta( self::LOGGED_IN_USER_ID, MultiCurrency::CURRENCY_META_KEY );
@@ -288,7 +288,7 @@ class WCPay_Multi_Currency_Tests extends WCPAY_UnitTestCase {
 
 		$this->init_multi_currency();
 
-		$expected_currencies  = array_keys( get_woocommerce_currencies() );
+		$expected_currencies  = array_keys( get_poocommerce_currencies() );
 		$available_currencies = array_keys( $this->multi_currency->get_available_currencies() );
 
 		$this->assertEquals( sort( $expected_currencies ), sort( $available_currencies ) );
@@ -313,7 +313,7 @@ class WCPay_Multi_Currency_Tests extends WCPAY_UnitTestCase {
 
 		$this->init_multi_currency();
 
-		$expected_currencies  = array_keys( get_woocommerce_currencies() );
+		$expected_currencies  = array_keys( get_poocommerce_currencies() );
 		$available_currencies = array_keys( $this->multi_currency->get_available_currencies() );
 
 		$this->assertEquals( sort( $expected_currencies ), sort( $available_currencies ) );
@@ -344,8 +344,8 @@ class WCPay_Multi_Currency_Tests extends WCPAY_UnitTestCase {
 	}
 
 	public function test_get_available_currencies_adds_store_currency() {
-		// Use a real WooCommerce currency that is not in the mock Stripe account currencies.
-		update_option( 'woocommerce_currency', 'JPY' );
+		// Use a real PooCommerce currency that is not in the mock Stripe account currencies.
+		update_option( 'poocommerce_currency', 'JPY' );
 
 		$this->init_multi_currency();
 
@@ -355,10 +355,10 @@ class WCPay_Multi_Currency_Tests extends WCPAY_UnitTestCase {
 		$this->assertSame( 1.0, $default_currency->get_rate() );
 	}
 
-	public function test_get_available_currencies_uses_store_currency_when_woocommerce_currency_is_filtered() {
-		update_option( 'woocommerce_currency', 'USD' );
-		remove_all_filters( 'woocommerce_currency' );
-		add_filter( 'woocommerce_currency', fn() => 'EUR', 999 );
+	public function test_get_available_currencies_uses_store_currency_when_poocommerce_currency_is_filtered() {
+		update_option( 'poocommerce_currency', 'USD' );
+		remove_all_filters( 'poocommerce_currency' );
+		add_filter( 'poocommerce_currency', fn() => 'EUR', 999 );
 
 		$mock_account = $this->createMock( MultiCurrencyAccountInterface::class );
 		$mock_account
@@ -378,10 +378,10 @@ class WCPay_Multi_Currency_Tests extends WCPAY_UnitTestCase {
 		$this->assertSame( 1.0, $available_currencies['USD']->get_rate() );
 	}
 
-	public function test_get_default_currency_uses_store_currency_when_woocommerce_currency_is_filtered() {
-		update_option( 'woocommerce_currency', 'USD' );
-		remove_all_filters( 'woocommerce_currency' );
-		add_filter( 'woocommerce_currency', fn() => 'EUR', 999 );
+	public function test_get_default_currency_uses_store_currency_when_poocommerce_currency_is_filtered() {
+		update_option( 'poocommerce_currency', 'USD' );
+		remove_all_filters( 'poocommerce_currency' );
+		add_filter( 'poocommerce_currency', fn() => 'EUR', 999 );
 
 		$this->init_multi_currency();
 
@@ -513,7 +513,7 @@ class WCPay_Multi_Currency_Tests extends WCPAY_UnitTestCase {
 	}
 
 	public function test_get_selected_currency_returns_default_currency_for_empty_session_and_user() {
-		$this->assertSame( get_woocommerce_currency(), $this->multi_currency->get_selected_currency()->get_code() );
+		$this->assertSame( get_poocommerce_currency(), $this->multi_currency->get_selected_currency()->get_code() );
 	}
 
 	public function test_get_explicit_selected_currency_returns_null_for_empty_session_and_user() {
@@ -568,7 +568,7 @@ class WCPay_Multi_Currency_Tests extends WCPAY_UnitTestCase {
 			restore_error_handler();
 		}
 
-		$this->assertSame( get_woocommerce_currency(), $selected_code );
+		$this->assertSame( get_poocommerce_currency(), $selected_code );
 		$this->assertSame(
 			[],
 			$null_offset_deprecations,
@@ -579,14 +579,14 @@ class WCPay_Multi_Currency_Tests extends WCPAY_UnitTestCase {
 	public function test_get_selected_currency_returns_default_currency_for_invalid_session_currency() {
 		WC()->session->set( WCPay\MultiCurrency\MultiCurrency::CURRENCY_SESSION_KEY, 'UNSUPPORTED_CURRENCY' );
 
-		$this->assertSame( get_woocommerce_currency(), $this->multi_currency->get_selected_currency()->get_code() );
+		$this->assertSame( get_poocommerce_currency(), $this->multi_currency->get_selected_currency()->get_code() );
 	}
 
 	public function test_get_selected_currency_returns_default_currency_for_invalid_user_currency() {
 		wp_set_current_user( self::LOGGED_IN_USER_ID );
 		update_user_meta( self::LOGGED_IN_USER_ID, WCPay\MultiCurrency\MultiCurrency::CURRENCY_META_KEY, 'UNSUPPORTED_CURRENCY' );
 
-		$this->assertSame( get_woocommerce_currency(), $this->multi_currency->get_selected_currency()->get_code() );
+		$this->assertSame( get_poocommerce_currency(), $this->multi_currency->get_selected_currency()->get_code() );
 	}
 
 	public function test_get_selected_currency_returns_currency_from_session() {
@@ -604,7 +604,7 @@ class WCPay_Multi_Currency_Tests extends WCPAY_UnitTestCase {
 
 	public function test_get_selected_currency_returns_default_currency_with_no_stripe_account() {
 		$this->init_multi_currency( null, false );
-		$this->assertSame( get_woocommerce_currency(), $this->multi_currency->get_selected_currency()->get_code() );
+		$this->assertSame( get_poocommerce_currency(), $this->multi_currency->get_selected_currency()->get_code() );
 	}
 
 	public function test_update_selected_currency_does_not_set_invalid_session_currency() {
@@ -672,7 +672,7 @@ class WCPay_Multi_Currency_Tests extends WCPAY_UnitTestCase {
 		update_option( 'wcpay_multi_currency_enable_auto_currency', 'yes' );
 
 		add_filter(
-			'woocommerce_geolocate_ip',
+			'poocommerce_geolocate_ip',
 			function () {
 				return 'CL';
 			}
@@ -686,7 +686,7 @@ class WCPay_Multi_Currency_Tests extends WCPAY_UnitTestCase {
 	public function test_update_selected_currency_by_geolocation_does_not_set_session_cookie() {
 		update_option( 'wcpay_multi_currency_enable_auto_currency', 'yes' );
 		add_filter(
-			'woocommerce_geolocate_ip',
+			'poocommerce_geolocate_ip',
 			function () {
 				return 'CA';
 			}
@@ -703,7 +703,7 @@ class WCPay_Multi_Currency_Tests extends WCPAY_UnitTestCase {
 		update_option( 'wcpay_multi_currency_enable_auto_currency', 'yes' );
 
 		add_filter(
-			'woocommerce_geolocate_ip',
+			'poocommerce_geolocate_ip',
 			function () {
 				return 'CA';
 			}
@@ -718,7 +718,7 @@ class WCPay_Multi_Currency_Tests extends WCPAY_UnitTestCase {
 		update_option( 'wcpay_multi_currency_enable_auto_currency', 'yes' );
 
 		add_filter(
-			'woocommerce_geolocate_ip',
+			'poocommerce_geolocate_ip',
 			function () {
 				return 'CA';
 			}
@@ -739,7 +739,7 @@ class WCPay_Multi_Currency_Tests extends WCPAY_UnitTestCase {
 
 		// Arrange: Add a filter to return a non US country.
 		add_filter(
-			'woocommerce_geolocate_ip',
+			'poocommerce_geolocate_ip',
 			function () {
 				return 'CA';
 			}
@@ -769,7 +769,7 @@ class WCPay_Multi_Currency_Tests extends WCPAY_UnitTestCase {
 		$this->init_multi_currency();
 
 		add_filter(
-			'woocommerce_geolocate_ip',
+			'poocommerce_geolocate_ip',
 			function () {
 				return 'CA';
 			}
@@ -789,12 +789,12 @@ class WCPay_Multi_Currency_Tests extends WCPAY_UnitTestCase {
 		$this->init_multi_currency();
 
 		// Simulate an active session (e.g. after add-to-cart) by setting the session cookie.
-		$cookie_name             = apply_filters( 'woocommerce_cookie', 'wp_woocommerce_session_' . COOKIEHASH ); // phpcs:ignore WooCommerce.Commenting.CommentHooks.HookCommentWrongStyle
+		$cookie_name             = apply_filters( 'poocommerce_cookie', 'wp_poocommerce_session_' . COOKIEHASH ); // phpcs:ignore PooCommerce.Commenting.CommentHooks.HookCommentWrongStyle
 		$_COOKIE[ $cookie_name ] = 'test-session-id';
 
 		try {
 			add_filter(
-				'woocommerce_geolocate_ip',
+				'poocommerce_geolocate_ip',
 				function () {
 					return 'CA';
 				}
@@ -825,7 +825,7 @@ class WCPay_Multi_Currency_Tests extends WCPAY_UnitTestCase {
 			$_SERVER['REQUEST_URI'] = '/wp-json/wc/store/v1/batch';
 
 			add_filter(
-				'woocommerce_geolocate_ip',
+				'poocommerce_geolocate_ip',
 				function () {
 					return 'CA';
 				}
@@ -845,7 +845,7 @@ class WCPay_Multi_Currency_Tests extends WCPAY_UnitTestCase {
 	public function test_display_geolocation_currency_update_notice() {
 		WC()->session->set( WCPay\MultiCurrency\MultiCurrency::CURRENCY_SESSION_KEY, 'CAD' );
 		add_filter(
-			'woocommerce_geolocate_ip',
+			'poocommerce_geolocate_ip',
 			function () {
 				return 'CA';
 			}
@@ -853,13 +853,13 @@ class WCPay_Multi_Currency_Tests extends WCPAY_UnitTestCase {
 
 		$this->multi_currency->display_geolocation_currency_update_notice();
 
-		$this->expectOutputRegex( '/woocommerce-store-notice.+visiting from Canada.+\?currency=USD.+Use United States \(US\) dollar instead/' );
+		$this->expectOutputRegex( '/poocommerce-store-notice.+visiting from Canada.+\?currency=USD.+Use United States \(US\) dollar instead/' );
 	}
 
 	public function test_display_geolocation_currency_update_notice_does_not_display_if_using_default_currency() {
 		WC()->session->set( WCPay\MultiCurrency\MultiCurrency::CURRENCY_SESSION_KEY, 'US' );
 		add_filter(
-			'woocommerce_geolocate_ip',
+			'poocommerce_geolocate_ip',
 			function () {
 				return 'US';
 			}
@@ -873,7 +873,7 @@ class WCPay_Multi_Currency_Tests extends WCPAY_UnitTestCase {
 	public function test_display_geolocation_currency_update_notice_does_not_display_if_using_other_currency_than_geolocated() {
 		WC()->session->set( WCPay\MultiCurrency\MultiCurrency::CURRENCY_SESSION_KEY, 'CAD' );
 		add_filter(
-			'woocommerce_geolocate_ip',
+			'poocommerce_geolocate_ip',
 			function () {
 				return 'US';
 			}
@@ -885,13 +885,13 @@ class WCPay_Multi_Currency_Tests extends WCPAY_UnitTestCase {
 	}
 
 	public function test_get_price_returns_price_in_default_currency() {
-		WC()->session->set( WCPay\MultiCurrency\MultiCurrency::CURRENCY_SESSION_KEY, get_woocommerce_currency() );
+		WC()->session->set( WCPay\MultiCurrency\MultiCurrency::CURRENCY_SESSION_KEY, get_poocommerce_currency() );
 
 		$this->assertSame( 5.0, $this->multi_currency->get_price( '5.0', 'product' ) );
 	}
 
 	public function test_get_price_returns_price_if_unsupported_type() {
-		WC()->session->set( WCPay\MultiCurrency\MultiCurrency::CURRENCY_SESSION_KEY, get_woocommerce_currency() );
+		WC()->session->set( WCPay\MultiCurrency\MultiCurrency::CURRENCY_SESSION_KEY, get_poocommerce_currency() );
 
 		$this->assertSame( 5.0, $this->multi_currency->get_price( '5.0', 'unsupported_type' ) );
 	}
@@ -1094,8 +1094,8 @@ class WCPay_Multi_Currency_Tests extends WCPAY_UnitTestCase {
 
 		$this->init_multi_currency( null, true, null, $mock_cache );
 
-		$currency_from = strtolower( get_woocommerce_currency() );
-		$currencies_to = get_woocommerce_currencies();
+		$currency_from = strtolower( get_poocommerce_currency() );
+		$currencies_to = get_poocommerce_currencies();
 		unset( $currencies_to[ $currency_from ] );
 
 		$this->mock_api_client
@@ -1115,7 +1115,7 @@ class WCPay_Multi_Currency_Tests extends WCPAY_UnitTestCase {
 		);
 	}
 
-	public function test_get_cached_currencies_uses_store_currency_when_woocommerce_currency_is_filtered() {
+	public function test_get_cached_currencies_uses_store_currency_when_poocommerce_currency_is_filtered() {
 		$get_or_add_call_count = 1;
 		$mock_cache            = $this->createMock( MultiCurrencyCacheInterface::class );
 		$mock_cache
@@ -1135,10 +1135,10 @@ class WCPay_Multi_Currency_Tests extends WCPAY_UnitTestCase {
 				}
 			);
 
-		update_option( 'woocommerce_currency', 'USD' );
+		update_option( 'poocommerce_currency', 'USD' );
 		update_option( 'wcpay_multi_currency_store_currency', 'USD' );
-		remove_all_filters( 'woocommerce_currency' );
-		add_filter( 'woocommerce_currency', fn() => 'EUR', 999 );
+		remove_all_filters( 'poocommerce_currency' );
+		add_filter( 'poocommerce_currency', fn() => 'EUR', 999 );
 
 		$this->init_multi_currency( null, true, null, $mock_cache );
 
@@ -1812,10 +1812,10 @@ class WCPay_Multi_Currency_Tests extends WCPAY_UnitTestCase {
 
 	public function test_get_public_config_uses_wc_store_settings_for_default_currency() {
 		// Snapshot original WC options to restore after the test.
-		$original_decimal_sep  = get_option( 'woocommerce_price_decimal_sep' );
-		$original_thousand_sep = get_option( 'woocommerce_price_thousand_sep' );
-		$original_num_decimals = get_option( 'woocommerce_price_num_decimals' );
-		$original_currency_pos = get_option( 'woocommerce_currency_pos' );
+		$original_decimal_sep  = get_option( 'poocommerce_price_decimal_sep' );
+		$original_thousand_sep = get_option( 'poocommerce_price_thousand_sep' );
+		$original_num_decimals = get_option( 'poocommerce_price_num_decimals' );
+		$original_currency_pos = get_option( 'poocommerce_currency_pos' );
 
 		// Custom WC settings that differ from the US locale defaults (. and ,).
 		$custom_decimal_sep  = ',';
@@ -1823,10 +1823,10 @@ class WCPay_Multi_Currency_Tests extends WCPAY_UnitTestCase {
 		$custom_decimals     = '2';
 		$custom_currency_pos = 'right_space';
 
-		update_option( 'woocommerce_price_decimal_sep', $custom_decimal_sep );
-		update_option( 'woocommerce_price_thousand_sep', $custom_thousand_sep );
-		update_option( 'woocommerce_price_num_decimals', $custom_decimals );
-		update_option( 'woocommerce_currency_pos', $custom_currency_pos );
+		update_option( 'poocommerce_price_decimal_sep', $custom_decimal_sep );
+		update_option( 'poocommerce_price_thousand_sep', $custom_thousand_sep );
+		update_option( 'poocommerce_price_num_decimals', $custom_decimals );
+		update_option( 'poocommerce_currency_pos', $custom_currency_pos );
 
 		$config   = $this->multi_currency->get_public_config();
 		$usd_data = $config['currencies']['USD'];
@@ -1844,10 +1844,10 @@ class WCPay_Multi_Currency_Tests extends WCPAY_UnitTestCase {
 		$this->assertEquals( $gbp_format['thousand_sep'], $gbp_data['thousand_sep'] );
 
 		// Restore original WC options.
-		update_option( 'woocommerce_price_decimal_sep', $original_decimal_sep );
-		update_option( 'woocommerce_price_thousand_sep', $original_thousand_sep );
-		update_option( 'woocommerce_price_num_decimals', $original_num_decimals );
-		update_option( 'woocommerce_currency_pos', $original_currency_pos );
+		update_option( 'poocommerce_price_decimal_sep', $original_decimal_sep );
+		update_option( 'poocommerce_price_thousand_sep', $original_thousand_sep );
+		update_option( 'poocommerce_price_num_decimals', $original_num_decimals );
+		update_option( 'poocommerce_currency_pos', $original_currency_pos );
 	}
 
 	public function test_maybe_auto_enable_sets_cache_mode_when_unset_and_caching_detected() {
@@ -2054,11 +2054,11 @@ class WCPay_Multi_Currency_Tests extends WCPAY_UnitTestCase {
 
 	public function test_init_invalidates_cache_when_store_currency_changes() {
 		// Simulate previously known currency was USD, but store currency is now EUR.
-		update_option( 'woocommerce_currency', 'EUR' );
+		update_option( 'poocommerce_currency', 'EUR' );
 		update_option( 'wcpay_multi_currency_store_currency', 'USD' );
 
 		// Clear filters from prior init (FrontendCurrencies adds one at priority 900).
-		remove_all_filters( 'woocommerce_currency' );
+		remove_all_filters( 'poocommerce_currency' );
 
 		$mock_cache = $this->createMock( MultiCurrencyCacheInterface::class );
 		$mock_cache->method( 'get_or_add' )->willReturn( $this->mock_cached_currencies );
@@ -2072,13 +2072,13 @@ class WCPay_Multi_Currency_Tests extends WCPAY_UnitTestCase {
 		$this->assertSame( 'EUR', get_option( 'wcpay_multi_currency_store_currency' ) );
 	}
 
-	public function test_init_does_not_invalidate_cache_when_woocommerce_currency_is_filtered() {
-		update_option( 'woocommerce_currency', 'USD' );
+	public function test_init_does_not_invalidate_cache_when_poocommerce_currency_is_filtered() {
+		update_option( 'poocommerce_currency', 'USD' );
 		update_option( 'wcpay_multi_currency_store_currency', 'USD' );
 
 		// Simulate another plugin returning a visitor-specific currency.
-		remove_all_filters( 'woocommerce_currency' );
-		add_filter( 'woocommerce_currency', fn() => 'EUR', 999 );
+		remove_all_filters( 'poocommerce_currency' );
+		add_filter( 'poocommerce_currency', fn() => 'EUR', 999 );
 
 		$mock_cache = $this->createMock( MultiCurrencyCacheInterface::class );
 		$mock_cache->method( 'get_or_add' )->willReturn( $this->mock_cached_currencies );
@@ -2091,12 +2091,12 @@ class WCPay_Multi_Currency_Tests extends WCPAY_UnitTestCase {
 	}
 
 	public function test_init_does_not_invalidate_cache_when_store_currency_unchanged() {
-		// Store currency matches the current WooCommerce currency (both USD).
-		update_option( 'woocommerce_currency', 'USD' );
+		// Store currency matches the current PooCommerce currency (both USD).
+		update_option( 'poocommerce_currency', 'USD' );
 		update_option( 'wcpay_multi_currency_store_currency', 'USD' );
 
 		// Clear filters from prior init to ensure configured and filtered currency values match.
-		remove_all_filters( 'woocommerce_currency' );
+		remove_all_filters( 'poocommerce_currency' );
 
 		$mock_cache = $this->createMock( MultiCurrencyCacheInterface::class );
 		$mock_cache->method( 'get_or_add' )->willReturn( $this->mock_cached_currencies );
@@ -2108,11 +2108,11 @@ class WCPay_Multi_Currency_Tests extends WCPAY_UnitTestCase {
 
 	public function test_init_does_not_invalidate_cache_on_first_install() {
 		// No store_currency option exists yet (first-time install).
-		update_option( 'woocommerce_currency', 'USD' );
+		update_option( 'poocommerce_currency', 'USD' );
 		delete_option( 'wcpay_multi_currency_store_currency' );
 
 		// Clear filters from prior init to ensure configured and filtered currency values match.
-		remove_all_filters( 'woocommerce_currency' );
+		remove_all_filters( 'poocommerce_currency' );
 
 		$mock_cache = $this->createMock( MultiCurrencyCacheInterface::class );
 		$mock_cache->method( 'get_or_add' )->willReturn( $this->mock_cached_currencies );
@@ -2126,11 +2126,11 @@ class WCPay_Multi_Currency_Tests extends WCPAY_UnitTestCase {
 	}
 
 	public function test_init_returns_early_when_store_currency_not_in_available_wc_currencies() {
-		// Remove lingering woocommerce_currency filters from previous init (e.g. FrontendCurrencies at priority 900).
-		remove_all_filters( 'woocommerce_currency' );
+		// Remove lingering poocommerce_currency filters from previous init (e.g. FrontendCurrencies at priority 900).
+		remove_all_filters( 'poocommerce_currency' );
 
 		// Simulate a removed custom currency by setting the store currency to a non-existent code.
-		update_option( 'woocommerce_currency', 'CUSTOM' );
+		update_option( 'poocommerce_currency', 'CUSTOM' );
 
 		$this->init_multi_currency();
 
@@ -2138,68 +2138,68 @@ class WCPay_Multi_Currency_Tests extends WCPAY_UnitTestCase {
 		// because init() returned early before initializing them.
 		$this->assertEmpty( $this->multi_currency->get_enabled_currencies() );
 
-		update_option( 'woocommerce_currency', 'USD' );
+		update_option( 'poocommerce_currency', 'USD' );
 	}
 
-	public function test_filtered_woocommerce_currency_survives_when_only_store_currency_is_enabled() {
-		remove_all_filters( 'woocommerce_currency' );
+	public function test_filtered_poocommerce_currency_survives_when_only_store_currency_is_enabled() {
+		remove_all_filters( 'poocommerce_currency' );
 		// A third-party currency switcher picks the visitor currency at a low priority.
-		add_filter( 'woocommerce_currency', fn() => 'GBP', 5 );
+		add_filter( 'poocommerce_currency', fn() => 'GBP', 5 );
 
 		// Not connected: Multi-Currency has only the store currency available, so it has nothing to switch.
 		$this->init_multi_currency( null, false );
 
 		$this->assertSame( [ 'USD' ], array_keys( $this->multi_currency->get_enabled_currencies() ) );
-		$this->assertSame( 'GBP', get_woocommerce_currency() );
+		$this->assertSame( 'GBP', get_poocommerce_currency() );
 	}
 
 	public function test_explicit_store_currency_selection_overrides_filtered_currency() {
-		remove_all_filters( 'woocommerce_currency' );
-		add_filter( 'woocommerce_currency', fn() => Currency_Code::POUND_STERLING, 5 );
+		remove_all_filters( 'poocommerce_currency' );
+		add_filter( 'poocommerce_currency', fn() => Currency_Code::POUND_STERLING, 5 );
 		$this->init_multi_currency();
 		WC()->session->set( MultiCurrency::CURRENCY_SESSION_KEY, Currency_Code::UNITED_STATES_DOLLAR );
 
-		$this->assertSame( 'USD', get_woocommerce_currency() );
+		$this->assertSame( 'USD', get_poocommerce_currency() );
 	}
 
 	public function test_stored_store_currency_does_not_override_filtered_currency_when_only_store_currency_is_enabled() {
-		remove_all_filters( 'woocommerce_currency' );
-		add_filter( 'woocommerce_currency', fn() => Currency_Code::POUND_STERLING, 5 );
+		remove_all_filters( 'poocommerce_currency' );
+		add_filter( 'poocommerce_currency', fn() => Currency_Code::POUND_STERLING, 5 );
 		// Not connected: a stored code on a one-currency store is stale state, not a shopper's choice.
 		$this->init_multi_currency( null, false );
 		WC()->session->set( MultiCurrency::CURRENCY_SESSION_KEY, Currency_Code::UNITED_STATES_DOLLAR );
 
-		$this->assertSame( 'GBP', get_woocommerce_currency() );
+		$this->assertSame( 'GBP', get_poocommerce_currency() );
 	}
 
 	public function test_compatibility_store_currency_override_overrides_filtered_currency() {
-		remove_all_filters( 'woocommerce_currency' );
-		add_filter( 'woocommerce_currency', fn() => Currency_Code::POUND_STERLING, 5 );
+		remove_all_filters( 'poocommerce_currency' );
+		add_filter( 'poocommerce_currency', fn() => Currency_Code::POUND_STERLING, 5 );
 		add_filter( 'wcpay_multi_currency_override_selected_currency', fn() => Currency_Code::UNITED_STATES_DOLLAR );
 		$this->init_multi_currency();
 
-		$this->assertSame( 'USD', get_woocommerce_currency() );
+		$this->assertSame( 'USD', get_poocommerce_currency() );
 	}
 
-	public function test_filtered_woocommerce_currency_survives_empty_logged_in_user_selection() {
-		remove_all_filters( 'woocommerce_currency' );
-		add_filter( 'woocommerce_currency', fn() => Currency_Code::POUND_STERLING, 5 );
+	public function test_filtered_poocommerce_currency_survives_empty_logged_in_user_selection() {
+		remove_all_filters( 'poocommerce_currency' );
+		add_filter( 'poocommerce_currency', fn() => Currency_Code::POUND_STERLING, 5 );
 		wp_set_current_user( self::LOGGED_IN_USER_ID );
 		delete_user_meta( self::LOGGED_IN_USER_ID, MultiCurrency::CURRENCY_META_KEY );
 		$this->init_multi_currency();
 
-		$this->assertSame( 'GBP', get_woocommerce_currency() );
+		$this->assertSame( 'GBP', get_poocommerce_currency() );
 	}
 
 	public function test_init_does_not_initialize_when_feature_is_disabled() {
-		remove_all_filters( 'woocommerce_currency' );
+		remove_all_filters( 'poocommerce_currency' );
 		update_option( '_wcpay_feature_customer_multi_currency', '0' );
 
 		$this->init_multi_currency();
 
 		$this->assertSame( [], $this->multi_currency->get_available_currencies() );
 		$this->assertSame( [], $this->multi_currency->get_enabled_currencies() );
-		$this->assertFalse( has_filter( 'woocommerce_currency' ) );
+		$this->assertFalse( has_filter( 'poocommerce_currency' ) );
 	}
 
 	public function test_uninitialized_module_still_reports_store_currency_as_default_and_selected() {
@@ -2212,14 +2212,14 @@ class WCPay_Multi_Currency_Tests extends WCPAY_UnitTestCase {
 	}
 
 	public function test_uninitialized_module_still_exposes_frontend_objects_without_their_hooks() {
-		remove_all_filters( 'woocommerce_currency' );
+		remove_all_filters( 'poocommerce_currency' );
 		update_option( '_wcpay_feature_customer_multi_currency', '0' );
 
 		$this->init_multi_currency();
 
 		$this->assertInstanceOf( FrontendCurrencies::class, $this->multi_currency->get_frontend_currencies() );
 		$this->assertInstanceOf( FrontendPrices::class, $this->multi_currency->get_frontend_prices() );
-		$this->assertFalse( has_filter( 'woocommerce_currency' ) );
+		$this->assertFalse( has_filter( 'poocommerce_currency' ) );
 	}
 
 	public function test_get_default_currency_on_disabled_module_does_not_rebuild_frontend_objects() {
@@ -2238,7 +2238,7 @@ class WCPay_Multi_Currency_Tests extends WCPAY_UnitTestCase {
 	}
 
 	public function test_frontend_getters_initialize_a_disabled_module_on_first_use() {
-		remove_all_filters( 'woocommerce_currency' );
+		remove_all_filters( 'poocommerce_currency' );
 		update_option( '_wcpay_feature_customer_multi_currency', '0' );
 
 		// Nothing has run init() yet: the getters must not return null into their non-nullable return types.
@@ -2246,7 +2246,7 @@ class WCPay_Multi_Currency_Tests extends WCPAY_UnitTestCase {
 
 		$this->assertInstanceOf( FrontendCurrencies::class, $this->multi_currency->get_frontend_currencies() );
 		$this->assertInstanceOf( FrontendPrices::class, $this->multi_currency->get_frontend_prices() );
-		$this->assertFalse( has_filter( 'woocommerce_currency' ) );
+		$this->assertFalse( has_filter( 'poocommerce_currency' ) );
 	}
 
 	public function test_init_initializes_during_setup_when_feature_is_disabled() {

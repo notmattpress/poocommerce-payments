@@ -2,7 +2,7 @@
 /**
  * WC_Payments_Action_Scheduler_Service class
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 use WCPay\Compatibility_Service;
@@ -15,10 +15,10 @@ defined( 'ABSPATH' ) || exit;
  */
 class WC_Payments_Action_Scheduler_Service {
 
-	const GROUP_ID = 'woocommerce_payments';
+	const GROUP_ID = 'poocommerce_payments';
 
 	/**
-	 * Client for making requests to the WooCommerce Payments API
+	 * Client for making requests to the PooCommerce Payments API
 	 *
 	 * @var WC_Payments_API_Client
 	 */
@@ -54,7 +54,7 @@ class WC_Payments_Action_Scheduler_Service {
 	 *
 	 * Prevents repeat schedule_job() calls for the same key from re-running
 	 * schedule_action_and_prevent_duplicates(), which is the source of the
-	 * schedule-then-cancel churn during checkout (woocommerce_update_order
+	 * schedule-then-cancel churn during checkout (poocommerce_update_order
 	 * fires many times per request).
 	 *
 	 * @var array<string, int>
@@ -64,7 +64,7 @@ class WC_Payments_Action_Scheduler_Service {
 	/**
 	 * Constructor for WC_Payments_Action_Scheduler_Service.
 	 *
-	 * @param WC_Payments_API_Client    $payments_api_client - WooCommerce Payments API client.
+	 * @param WC_Payments_API_Client    $payments_api_client - PooCommerce Payments API client.
 	 * @param WC_Payments_Order_Service $order_service - Order Service.
 	 * @param Compatibility_Service     $compatibility_service - Compatibility service instance.
 	 */
@@ -236,7 +236,7 @@ class WC_Payments_Action_Scheduler_Service {
 	 * Schedule an action scheduler job.
 	 *
 	 * Within the current request, calls after the first for the same $hook+$args+$group are no-ops:
-	 * this collapses the schedule-then-cancel churn from repeated woocommerce_update_order fires
+	 * this collapses the schedule-then-cancel churn from repeated poocommerce_update_order fires
 	 * during checkout down to a single AS write. Across requests, an existing pending action with
 	 * the same key is kept when it runs no later than $timestamp, and replaced when it runs later,
 	 * so the earliest requested time wins. Hook callbacks must read live state when they run.
@@ -246,14 +246,14 @@ class WC_Payments_Action_Scheduler_Service {
 	 * @param array  $args      Optional. An array containing the arguments to be passed to the hook.
 	 *                          Defaults to an empty array.
 	 * @param string $group     Optional. The AS group the action will be created under.
-	 *                          Defaults to 'woocommerce_payments'.
+	 *                          Defaults to 'poocommerce_payments'.
 	 *
 	 * @return void
 	 */
 	public function schedule_job( int $timestamp, string $hook, array $args = [], string $group = self::GROUP_ID ) {
 		$key = md5( (string) wp_json_encode( [ $hook, $args, $group ] ) );
 
-		// The `action_scheduler_init` hook was introduced in ActionScheduler 3.5.5 (WooCommerce 7.9.0).
+		// The `action_scheduler_init` hook was introduced in ActionScheduler 3.5.5 (PooCommerce 7.9.0).
 		if ( version_compare( WC()->version, '7.9.0', '>=' ) ) {
 			// If the ActionScheduler is already initialized, schedule the job.
 			if ( did_action( 'action_scheduler_init' ) ) {
@@ -265,7 +265,7 @@ class WC_Payments_Action_Scheduler_Service {
 			} else {
 				// The ActionScheduler is not initialized yet; we need to schedule the job when it fires the init hook.
 				// Register at most one callback per unique hook+args+group, so repeat calls during the same request
-				// (e.g. `woocommerce_update_order` firing multiple times on order creation) don't pile up closures
+				// (e.g. `poocommerce_update_order` firing multiple times on order creation) don't pile up closures
 				// that each schedule their own action. Subsequent calls just update the stored timestamp; the single
 				// callback reads the latest value when ActionScheduler initializes.
 				if ( ! isset( $this->deferred_jobs[ $key ] ) ) {
@@ -312,7 +312,7 @@ class WC_Payments_Action_Scheduler_Service {
 	 * @param array  $args      Optional. An array containing the arguments to be passed to the action.
 	 *                          Defaults to an empty array.
 	 * @param string $group     Optional. The ActionScheduler group the action will be created under.
-	 *                          Defaults to 'woocommerce_payments'.
+	 *                          Defaults to 'poocommerce_payments'.
 	 *
 	 * @return void
 	 */
@@ -340,7 +340,7 @@ class WC_Payments_Action_Scheduler_Service {
 
 		// Unschedule any previously scheduled actions with the same name, args, and group combination.
 		// It is more efficient/performant to check if the action is already scheduled before unscheduling it.
-		// @see https://github.com/Automattic/woocommerce-payments/issues/6662.
+		// @see https://github.com/Automattic/poocommerce-payments/issues/6662.
 		if ( as_has_scheduled_action( $action, $args, $group ) ) {
 			as_unschedule_action( $action, $args, $group );
 		}

@@ -17,14 +17,14 @@ const TestModeNotice = (): JSX.Element => {
 			{ interpolateComponents( {
 				mixedString: __(
 					'WooPayments was in test mode when this order was placed. {{learnMoreLink/}}',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				components: {
 					learnMoreLink: (
-						<ExternalLink href="https://woocommerce.com/document/woopayments/testing-and-troubleshooting/testing/">
+						<ExternalLink href="https://poocommerce.com/document/woopayments/testing-and-troubleshooting/testing/">
 							{ __(
 								'Learn more about test mode',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 						</ExternalLink>
 					),

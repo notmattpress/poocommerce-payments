@@ -51,7 +51,7 @@ const MigrationCompletedNotice: React.FC< Props > = ( {
 					'%d customer subscriptions were successfully migrated from Stripe off-site billing to on-site billing' +
 						' powered by %s and %s.',
 					completedMigrationCount,
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				completedMigrationCount,
 				'Woo Subscriptions',

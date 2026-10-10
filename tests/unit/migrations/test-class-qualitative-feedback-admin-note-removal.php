@@ -2,13 +2,13 @@
 /**
  * Class Qualitative_Feedback_Admin_Note_Removal_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 namespace WCPay\Migrations;
 
-use Automattic\WooCommerce\Admin\Notes\Note;
-use Automattic\WooCommerce\Admin\Notes\Notes;
+use Automattic\PooCommerce\Admin\Notes\Note;
+use Automattic\PooCommerce\Admin\Notes\Notes;
 use WC_Data_Store;
 use WC_Payments_Notes_Qualitative_Feedback;
 use WCPAY_UnitTestCase;
@@ -34,13 +34,13 @@ class Qualitative_Feedback_Admin_Note_Removal_Test extends WCPAY_UnitTestCase {
 
 	public function tear_down() {
 		Notes::delete_notes_with_name( WC_Payments_Notes_Qualitative_Feedback::NOTE_NAME );
-		delete_option( 'woocommerce_woocommerce_payments_version' );
+		delete_option( 'poocommerce_poocommerce_payments_version' );
 
 		parent::tear_down();
 	}
 
 	public function test_it_removes_the_note_when_upgrading_from_an_older_version() {
-		update_option( 'woocommerce_woocommerce_payments_version', '11.1.0' );
+		update_option( 'poocommerce_poocommerce_payments_version', '11.1.0' );
 		$this->create_deprecated_note();
 
 		$this->migration->maybe_migrate();
@@ -49,7 +49,7 @@ class Qualitative_Feedback_Admin_Note_Removal_Test extends WCPAY_UnitTestCase {
 	}
 
 	public function test_it_removes_the_note_through_the_plugin_update_hook() {
-		update_option( 'woocommerce_woocommerce_payments_version', '10.9.0' );
+		update_option( 'poocommerce_poocommerce_payments_version', '10.9.0' );
 		$this->create_deprecated_note();
 
 		\WC_Payments::install_actions();
@@ -58,7 +58,7 @@ class Qualitative_Feedback_Admin_Note_Removal_Test extends WCPAY_UnitTestCase {
 	}
 
 	public function test_it_removes_the_note_when_the_stored_version_is_missing() {
-		delete_option( 'woocommerce_woocommerce_payments_version' );
+		delete_option( 'poocommerce_poocommerce_payments_version' );
 		$this->create_deprecated_note();
 
 		$this->migration->maybe_migrate();
@@ -70,7 +70,7 @@ class Qualitative_Feedback_Admin_Note_Removal_Test extends WCPAY_UnitTestCase {
 	 * @dataProvider versions_without_applying_migration_provider
 	 */
 	public function test_it_keeps_the_note_when_the_migration_was_already_applied( string $stored_wcpay_version ) {
-		update_option( 'woocommerce_woocommerce_payments_version', $stored_wcpay_version );
+		update_option( 'poocommerce_poocommerce_payments_version', $stored_wcpay_version );
 		$this->create_deprecated_note();
 
 		$this->migration->maybe_migrate();

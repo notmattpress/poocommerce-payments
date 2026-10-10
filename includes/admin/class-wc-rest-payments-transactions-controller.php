@@ -2,7 +2,7 @@
 /**
  * Class WC_REST_Payments_Transactions_Controller
  *
- * @package WooCommerce\Payments\Admin
+ * @package PooCommerce\Payments\Admin
  */
 
 use WCPay\Core\Server\Request\List_Transactions;
@@ -129,7 +129,7 @@ class WC_REST_Payments_Transactions_Controller extends WC_Payments_REST_Controll
 				'required'    => true,
 				'type'        => 'string',
 				'enum'        => Rule::FRAUD_OUTCOME_STATUSES,
-				'description' => __( 'Fraud outcome status to list transactions for.', 'woocommerce-payments' ),
+				'description' => __( 'Fraud outcome status to list transactions for.', 'poocommerce-payments' ),
 			],
 		];
 	}

@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Email_Post_Kyc_Activation_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 /**
@@ -78,7 +78,7 @@ class WC_Payments_Email_Post_Kyc_Activation_Test extends WCPAY_UnitTestCase {
 	}
 
 	public function test_trigger_returns_false_when_email_is_disabled(): void {
-		add_filter( 'woocommerce_email_enabled_wcpay_post_kyc_activation', '__return_false' );
+		add_filter( 'poocommerce_email_enabled_wcpay_post_kyc_activation', '__return_false' );
 
 		// pre_wp_mail set to true to prove the disabled gate short-circuits
 		// before send() runs — otherwise this would return true.
@@ -87,7 +87,7 @@ class WC_Payments_Email_Post_Kyc_Activation_Test extends WCPAY_UnitTestCase {
 		$result = $this->email->trigger( 7 );
 
 		remove_filter( 'pre_wp_mail', '__return_true' );
-		remove_filter( 'woocommerce_email_enabled_wcpay_post_kyc_activation', '__return_false' );
+		remove_filter( 'poocommerce_email_enabled_wcpay_post_kyc_activation', '__return_false' );
 
 		$this->assertFalse( $result );
 	}

@@ -1,6 +1,6 @@
 # WooPayments PHP Unit Tests
 
-PHPUnit tests for the backend PHP code in `includes/` and `src/`. This guide follows the [WooCommerce guide to unit tests](https://github.com/woocommerce/woocommerce/tree/trunk/plugins/woocommerce/tests).
+PHPUnit tests for the backend PHP code in `includes/` and `src/`. This guide follows the [PooCommerce guide to unit tests](https://github.com/poocommerce/poocommerce/tree/trunk/plugins/poocommerce/tests).
 
 For JavaScript unit tests, see [tests/js/README.md](../js/README.md). For an overview of all test suites, see [tests/README.md](../README.md).
 
@@ -16,7 +16,7 @@ For JavaScript unit tests, see [tests/js/README.md](../js/README.md). For an ove
 
 ```
 docker compose exec -u www-data wordpress bash -c \
-  "cd /var/www/html/wp-content/plugins/woocommerce-payments && \
+  "cd /var/www/html/wp-content/plugins/poocommerce-payments && \
   vendor/bin/phpunit --configuration phpunit.xml.dist --filter 'TestClassName::test_method_name'"
 ```
 

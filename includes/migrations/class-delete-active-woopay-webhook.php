@@ -2,7 +2,7 @@
 /**
  * Class Delete_Active_WooPay_Webhook
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Migrations;
@@ -21,7 +21,7 @@ class Delete_Active_WooPay_Webhook {
 	 * Checks whether we should trigger the event.
 	 */
 	public static function maybe_delete() {
-		if ( version_compare( get_option( 'woocommerce_woocommerce_payments_version' ), '4.9.0', '>=' ) ) {
+		if ( version_compare( get_option( 'poocommerce_poocommerce_payments_version' ), '4.9.0', '>=' ) ) {
 			return;
 		}
 

@@ -14,7 +14,7 @@ import { getDisputeResolutionTask } from '../tasks/dispute-task';
 import { getAdminUrl } from 'wcpay/utils';
 
 const mockHistoryPush = jest.fn();
-jest.mock( '@woocommerce/navigation', () => ( {
+jest.mock( '@poocommerce/navigation', () => ( {
 	getHistory: () => ( {
 		push: mockHistoryPush,
 	} ),

@@ -2,7 +2,7 @@
 /**
  * Class WCPay_Multi_Currency_Storefront_Integration_Tests
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\MultiCurrency\MultiCurrency;
@@ -83,7 +83,7 @@ class WCPay_Multi_Currency_Storefront_Integration_Tests extends WCPAY_UnitTestCa
 
 	public function switcher_filter_provider() {
 		return [
-			[ 'woocommerce_breadcrumb_defaults', 'modify_breadcrumb_defaults' ],
+			[ 'poocommerce_breadcrumb_defaults', 'modify_breadcrumb_defaults' ],
 			[ 'wp_enqueue_scripts', 'add_inline_css' ],
 		];
 	}

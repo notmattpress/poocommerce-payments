@@ -2,7 +2,7 @@
 /**
  * Class Refund_Status
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Constants;

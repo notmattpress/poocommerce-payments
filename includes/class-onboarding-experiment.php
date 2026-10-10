@@ -6,7 +6,7 @@
  * experiment logic lives in one place and can be removed cleanly when the test
  * concludes.
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay;
@@ -102,8 +102,8 @@ class Onboarding_Experiment {
 		if ( null === $this->abtest ) {
 			$this->abtest = new Onboarding_Experiment_Abtest(
 				$this->get_anon_id(),
-				'woocommerce',
-				'yes' === get_option( 'woocommerce_allow_tracking' )
+				'poocommerce',
+				'yes' === get_option( 'poocommerce_allow_tracking' )
 			);
 		}
 

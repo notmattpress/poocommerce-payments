@@ -79,7 +79,7 @@ export function* refundCharge(
 			'createSuccessNotice',
 			sprintf(
 				// translators: %s payment intent id
-				__( 'Refunded payment #%s.', 'woocommerce-payments' ),
+				__( 'Refunded payment #%s.', 'poocommerce-payments' ),
 				paymentIntentId
 			)
 		);
@@ -91,7 +91,7 @@ export function* refundCharge(
 				// translators: %s payment intent id
 				__(
 					'There has been an error refunding the payment #%s. Please try again later.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				paymentIntentId
 			)

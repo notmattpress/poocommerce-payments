@@ -131,7 +131,7 @@ Consequences:
 ## Onboarding
 
 - **Account creation** — Transact creates the Stripe account with `card_payments` and `transfers` requested (plus US tax reporting), merging in whatever capabilities the plugin sent. The plugin does not request these itself.
-- **NOX preselection**: WooCommerce core sends a complete `{ payment_method: true|false }` map. `WC_Payments_Onboarding_Service::get_account_data()` requests only the `true` entries; `false` entries are **omitted, not unrequested**. For a new account the two are equivalent, since every capability starts `unrequested`.
+- **NOX preselection**: PooCommerce core sends a complete `{ payment_method: true|false }` map. `WC_Payments_Onboarding_Service::get_account_data()` requests only the `true` entries; `false` entries are **omitted, not unrequested**. For a new account the two are equivalent, since every capability starts `unrequested`.
 - `update_enabled_payment_methods_ids()` **merges** into the existing list rather than replacing it, and enables each method's split gateway. Link and WooPay are mutually exclusive: when both would end up enabled, Link wins and WooPay stays off (see #9404).
 - **Test-drive accounts** — Transact creates a *custom* Stripe account (not Express) and requests the capability of every method available for onboarding in that country and client version, ignoring the merchant's selection — so a test-drive account is not representative of what a live one will have. Converting to live deletes that account and creates a fresh one, so nothing carries over implicitly.
 - **Account reset / `account.deleted`** returns the list to `['card']`.

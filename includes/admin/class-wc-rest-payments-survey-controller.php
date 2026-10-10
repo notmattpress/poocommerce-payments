@@ -2,7 +2,7 @@
 /**
  * Class WC_REST_Payments_Survey_Controller
  *
- * @package WooCommerce\Payments\Admin
+ * @package PooCommerce\Payments\Admin
  */
 
 defined( 'ABSPATH' ) || exit;

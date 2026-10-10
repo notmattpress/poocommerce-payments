@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import { __ } from '@wordpress/i18n';
-import { getHistory } from '@woocommerce/navigation';
+import { getHistory } from '@poocommerce/navigation';
 import { Button, CardBody, CardFooter } from '@wordpress/components';
 
 /**
@@ -37,14 +37,14 @@ const DepositsLoadingState: React.FC = () => (
 				aria-hidden
 				placeholder={ __(
 					'Available funds are automatically dispatched every day.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				) }
 			/>
 		</CardBody>
 
 		<CardBody className="wcpay-deposits-overview__heading">
 			<span className="wcpay-deposits-overview__heading__title">
-				{ __( 'Payout history', 'woocommerce-payments' ) }
+				{ __( 'Payout history', 'poocommerce-payments' ) }
 			</span>
 		</CardBody>
 
@@ -58,7 +58,7 @@ const DepositsLoadingState: React.FC = () => (
 				aria-hidden
 				placeholder={ __(
 					'View full payout history',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				) }
 			/>
 			<Loadable
@@ -66,7 +66,7 @@ const DepositsLoadingState: React.FC = () => (
 				aria-hidden
 				placeholder={ __(
 					'Change payout schedule',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				) }
 			/>
 		</CardFooter>
@@ -143,7 +143,7 @@ const DepositsOverview: React.FC = () => {
 
 	return (
 		<OverviewCard
-			title={ __( 'Payouts', 'woocommerce-payments' ) }
+			title={ __( 'Payouts', 'poocommerce-payments' ) }
 			className="wcpay-deposits-overview"
 			isLoading={ isLoading }
 			LoadingState={ DepositsLoadingState }
@@ -197,7 +197,7 @@ const DepositsOverview: React.FC = () => {
 				<>
 					<CardBody className="wcpay-deposits-overview__heading">
 						<span className="wcpay-deposits-overview__heading__title">
-							{ __( 'Payout history', 'woocommerce-payments' ) }
+							{ __( 'Payout history', 'poocommerce-payments' ) }
 						</span>
 					</CardBody>
 					<RecentDepositsList deposits={ deposits } />
@@ -214,7 +214,7 @@ const DepositsOverview: React.FC = () => {
 						>
 							{ __(
 								'View full payout history',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 						</Button>
 					) }
@@ -226,7 +226,7 @@ const DepositsOverview: React.FC = () => {
 								getAdminUrl( {
 									page: 'wc-settings',
 									tab: 'checkout',
-									section: 'woocommerce_payments',
+									section: 'poocommerce_payments',
 								} ) + '#payout-schedule'
 							}
 							onClick={ () =>
@@ -238,7 +238,7 @@ const DepositsOverview: React.FC = () => {
 						>
 							{ __(
 								'Change payout schedule',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 						</Button>
 					) }

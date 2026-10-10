@@ -31,11 +31,11 @@ const EarlyFraudWarningPill: React.FC< Props > = ( { earlyFraudWarning } ) => {
 		<HoverTooltip
 			content={ __(
 				"The cardholder's bank reported this payment as potentially fraudulent. Refunding it now can prevent a dispute.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			) }
 		>
 			<Pill className="early-fraud-warning-pill" type="alert">
-				{ __( 'Fraud warning', 'woocommerce-payments' ) }
+				{ __( 'Fraud warning', 'poocommerce-payments' ) }
 			</Pill>
 		</HoverTooltip>
 	);
