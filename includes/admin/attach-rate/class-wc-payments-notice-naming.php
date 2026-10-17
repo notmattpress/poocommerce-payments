@@ -2,7 +2,7 @@
 /**
  * Slug-derived naming for WooPayments admin notices.
  *
- * @package WooCommerce\Payments\Admin
+ * @package PooCommerce\Payments\Admin
  */
 
 defined( 'ABSPATH' ) || exit;

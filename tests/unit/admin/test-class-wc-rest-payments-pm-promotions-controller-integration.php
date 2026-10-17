@@ -4,7 +4,7 @@
  *
  * Integration tests for the PM Promotions REST controller endpoints.
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use PHPUnit\Framework\MockObject\MockObject;
@@ -196,7 +196,7 @@ class WC_REST_Payments_PM_Promotions_Controller_Integration_Test extends WCPAY_U
 						return 'enabled' === $key ? ( $enabled ? 'yes' : 'no' ) : '';
 					}
 				);
-			$gateway_mock->method( 'get_option_key' )->willReturn( 'woocommerce_woocommerce_payments_' . $payment_method_id . '_settings' );
+			$gateway_mock->method( 'get_option_key' )->willReturn( 'poocommerce_poocommerce_payments_' . $payment_method_id . '_settings' );
 			$gateway_mock->method( 'get_payment_method_capability_key_map' )->willReturn( [] );
 			$gateway_mock->method( 'get_upe_enabled_payment_method_ids' )->willReturn( [] );
 			$gateway_mock->method( 'update_option' )->willReturn( true );

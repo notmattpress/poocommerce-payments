@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_One_And_Done_Notice_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\Constants\Order_Mode;
@@ -258,11 +258,11 @@ class WC_Payments_One_And_Done_Notice_Test extends WCPAY_UnitTestCase {
 			$captured[] = $args;
 			return $args;
 		};
-		add_filter( 'woocommerce_order_query_args', $capture );
+		add_filter( 'poocommerce_order_query_args', $capture );
 
 		$notice->should_show();
 
-		remove_filter( 'woocommerce_order_query_args', $capture );
+		remove_filter( 'poocommerce_order_query_args', $capture );
 
 		// Only assert on the eligibility queries, which always constrain
 		// payment_method. WC core's internal refund fetch (triggered by loading the
@@ -418,13 +418,13 @@ class WC_Payments_One_And_Done_Notice_Test extends WCPAY_UnitTestCase {
 
 		$notice->init_global_hooks();
 
-		$this->assertNotFalse( has_action( 'woocommerce_payment_complete', [ $notice, 'invalidate_cache_on_order' ] ) );
-		$this->assertNotFalse( has_action( 'woocommerce_order_status_completed', [ $notice, 'invalidate_cache_on_order' ] ) );
-		$this->assertNotFalse( has_action( 'woocommerce_order_status_processing', [ $notice, 'invalidate_cache_on_order' ] ) );
+		$this->assertNotFalse( has_action( 'poocommerce_payment_complete', [ $notice, 'invalidate_cache_on_order' ] ) );
+		$this->assertNotFalse( has_action( 'poocommerce_order_status_completed', [ $notice, 'invalidate_cache_on_order' ] ) );
+		$this->assertNotFalse( has_action( 'poocommerce_order_status_processing', [ $notice, 'invalidate_cache_on_order' ] ) );
 
-		remove_action( 'woocommerce_payment_complete', [ $notice, 'invalidate_cache_on_order' ] );
-		remove_action( 'woocommerce_order_status_completed', [ $notice, 'invalidate_cache_on_order' ] );
-		remove_action( 'woocommerce_order_status_processing', [ $notice, 'invalidate_cache_on_order' ] );
+		remove_action( 'poocommerce_payment_complete', [ $notice, 'invalidate_cache_on_order' ] );
+		remove_action( 'poocommerce_order_status_completed', [ $notice, 'invalidate_cache_on_order' ] );
+		remove_action( 'poocommerce_order_status_processing', [ $notice, 'invalidate_cache_on_order' ] );
 	}
 
 	public function test_init_hooks_does_not_register_order_completion_listeners(): void {
@@ -434,9 +434,9 @@ class WC_Payments_One_And_Done_Notice_Test extends WCPAY_UnitTestCase {
 
 		$notice->init_hooks();
 
-		$this->assertFalse( has_action( 'woocommerce_payment_complete', [ $notice, 'invalidate_cache_on_order' ] ) );
-		$this->assertFalse( has_action( 'woocommerce_order_status_completed', [ $notice, 'invalidate_cache_on_order' ] ) );
-		$this->assertFalse( has_action( 'woocommerce_order_status_processing', [ $notice, 'invalidate_cache_on_order' ] ) );
+		$this->assertFalse( has_action( 'poocommerce_payment_complete', [ $notice, 'invalidate_cache_on_order' ] ) );
+		$this->assertFalse( has_action( 'poocommerce_order_status_completed', [ $notice, 'invalidate_cache_on_order' ] ) );
+		$this->assertFalse( has_action( 'poocommerce_order_status_processing', [ $notice, 'invalidate_cache_on_order' ] ) );
 
 		remove_action( 'admin_init', [ $notice, 'hide_notice' ] );
 		remove_action( 'admin_init', [ $notice, 'snooze_notice' ] );
@@ -452,9 +452,9 @@ class WC_Payments_One_And_Done_Notice_Test extends WCPAY_UnitTestCase {
 
 		$notice->init_hooks();
 
-		$this->assertNotFalse( has_action( 'woocommerce_sections_general', [ $notice, 'maybe_show' ] ) );
+		$this->assertNotFalse( has_action( 'poocommerce_sections_general', [ $notice, 'maybe_show' ] ) );
 
-		remove_action( 'woocommerce_sections_general', [ $notice, 'maybe_show' ] );
+		remove_action( 'poocommerce_sections_general', [ $notice, 'maybe_show' ] );
 		remove_action( 'admin_init', [ $notice, 'hide_notice' ] );
 		remove_action( 'admin_init', [ $notice, 'snooze_notice' ] );
 		remove_action( 'admin_init', [ $notice, 'handle_cta' ] );
@@ -515,7 +515,7 @@ class WC_Payments_One_And_Done_Notice_Test extends WCPAY_UnitTestCase {
 	private function create_wcpay_live_orders( int $count, int $first_order_age_days ): void {
 		for ( $i = 0; $i < $count; $i++ ) {
 			$order = wc_create_order();
-			$order->set_payment_method( 'woocommerce_payments' );
+			$order->set_payment_method( 'poocommerce_payments' );
 			$order->set_status( 'completed' );
 			$order->update_meta_data( WC_Payments_Order_Service::WCPAY_MODE_META_KEY, Order_Mode::PRODUCTION );
 			// Stagger ages so the first (oldest) order is exactly $first_order_age_days old.
@@ -533,7 +533,7 @@ class WC_Payments_One_And_Done_Notice_Test extends WCPAY_UnitTestCase {
 	 */
 	private function create_wcpay_order( string $mode ): int {
 		$order = wc_create_order();
-		$order->set_payment_method( 'woocommerce_payments' );
+		$order->set_payment_method( 'poocommerce_payments' );
 		$order->set_status( 'completed' );
 		$order->update_meta_data( WC_Payments_Order_Service::WCPAY_MODE_META_KEY, $mode );
 		$order->save();

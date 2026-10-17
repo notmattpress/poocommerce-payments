@@ -5,19 +5,19 @@
  */
 import React, { useEffect, useState } from 'react';
 import { __ } from '@wordpress/i18n';
-import { Search, TableCard } from '@woocommerce/components';
+import { Search, TableCard } from '@poocommerce/components';
 import {
 	onQueryChange,
 	getQuery,
 	updateQueryString,
-} from '@woocommerce/navigation';
+} from '@poocommerce/navigation';
 import { uniq } from 'lodash';
 import apiFetch from '@wordpress/api-fetch';
 import {
 	downloadCSVFile,
 	generateCSVDataFromTable,
 	generateCSVFileName,
-} from '@woocommerce/csv-export';
+} from '@poocommerce/csv-export';
 import { useDispatch } from '@wordpress/data';
 
 /**
@@ -67,7 +67,7 @@ export const RiskReviewList = (): JSX.Element => {
 
 	let summary;
 
-	const title = __( 'Flagged transactions', 'woocommerce-payments' );
+	const title = __( 'Flagged transactions', 'poocommerce-payments' );
 
 	const isTransactionsSummaryLoaded =
 		transactionsSummary.count !== undefined &&
@@ -78,7 +78,7 @@ export const RiskReviewList = (): JSX.Element => {
 	if ( isTransactionsSummaryLoaded ) {
 		summary = [
 			{
-				label: __( 'transactions(s)', 'woocommerce-payments' ),
+				label: __( 'transactions(s)', 'poocommerce-payments' ),
 				value: String( totalRows ),
 			},
 		];
@@ -86,7 +86,7 @@ export const RiskReviewList = (): JSX.Element => {
 		if ( totalRows > 0 && transactionsSummary.currencies?.length === 1 ) {
 			// Only show the total if there is one currency available
 			summary.push( {
-				label: __( 'pending', 'woocommerce-payments' ),
+				label: __( 'pending', 'poocommerce-payments' ),
 				value: `${ formatExplicitCurrency(
 					transactionsSummary.total as number,
 					transactionsSummary.currencies[ 0 ]
@@ -112,7 +112,7 @@ export const RiskReviewList = (): JSX.Element => {
 
 	const searchPlaceholder = __(
 		'Search by order number or customer name',
-		'woocommerce-payments'
+		'poocommerce-payments'
 	);
 
 	const downloadable = !! rows.length;
@@ -153,7 +153,7 @@ export const RiskReviewList = (): JSX.Element => {
 				'error',
 				__(
 					'There was a problem generating your export.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				)
 			);
 		}
@@ -170,7 +170,7 @@ export const RiskReviewList = (): JSX.Element => {
 	return (
 		<Page>
 			<TableCard
-				className="risk-review-transactions-list woocommerce-report-table has-search"
+				className="risk-review-transactions-list poocommerce-report-table has-search"
 				title={ title }
 				isLoading={ isLoading }
 				rowsPerPage={ parseInt( query.per_page ?? '', 10 ) || 25 }

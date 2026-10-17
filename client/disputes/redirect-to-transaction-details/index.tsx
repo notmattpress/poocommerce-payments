@@ -5,7 +5,7 @@ import React, { useEffect } from 'react';
 import { __ } from '@wordpress/i18n';
 import { Spinner, Flex, FlexItem } from '@wordpress/components';
 import { useDispatch } from '@wordpress/data';
-import { getHistory } from '@woocommerce/navigation';
+import { getHistory } from '@poocommerce/navigation';
 
 /**
  * Internal dependencies.
@@ -76,7 +76,7 @@ const RedirectToTransactionDetails: React.FC< { query: { id: string } } > = ( {
 			createInfoNotice(
 				__(
 					"We couldn't open that dispute directly. Find it in your disputes list below.",
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				{ type: 'snackbar' }
 			);
@@ -99,11 +99,11 @@ const RedirectToTransactionDetails: React.FC< { query: { id: string } } > = ( {
 						<b>
 							{ __(
 								'One moment please',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 						</b>
 					</div>
-					<div>{ __( 'Redirecting…', 'woocommerce-payments' ) }</div>
+					<div>{ __( 'Redirecting…', 'poocommerce-payments' ) }</div>
 				</FlexItem>
 			</Flex>
 		</Page>

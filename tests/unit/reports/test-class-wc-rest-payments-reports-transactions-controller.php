@@ -2,7 +2,7 @@
 /**
  * Class WC_REST_Payments_Reports_Transactions_Controller_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use PHPUnit\Framework\MockObject\MockObject;
@@ -111,7 +111,7 @@ class WC_REST_Payments_Reports_Transactions_Controller_Test extends WCPAY_UnitTe
 	public function test_get_transactions_filter_all() {
 		$request = new WP_REST_Request( 'POST' );
 		$request->set_param( 'order_id', 345 );
-		$request->set_param( 'customer_email', 'test@woocommerce.com' );
+		$request->set_param( 'customer_email', 'test@poocommerce.com' );
 		$request->set_param( 'payment_method_type', 'visa' );
 
 		$mock_request = $this->mock_wcpay_request( List_Transactions::class );
@@ -122,7 +122,7 @@ class WC_REST_Payments_Reports_Transactions_Controller_Test extends WCPAY_UnitTe
 				[
 					[
 						'order_id_is'       => 345,
-						'customer_email_is' => 'test@woocommerce.com',
+						'customer_email_is' => 'test@poocommerce.com',
 						'source_is'         => 'visa',
 					],
 				]
@@ -200,7 +200,7 @@ class WC_REST_Payments_Reports_Transactions_Controller_Test extends WCPAY_UnitTe
 					'source'            => 'visa',
 					'source_identifier' => '3184',
 					'customer_name'     => 'Test Customer1',
-					'customer_email'    => 'test1@woocommerce.com',
+					'customer_email'    => 'test1@poocommerce.com',
 					'customer_country'  => Country_Code::UNITED_STATES,
 					'amount'            => 2583,
 					'net'               => 2426,
@@ -233,7 +233,7 @@ class WC_REST_Payments_Reports_Transactions_Controller_Test extends WCPAY_UnitTe
 					'source'            => 'giropay',
 					'source_identifier' => '3184',
 					'customer_name'     => 'Test Customer2',
-					'customer_email'    => 'test2@woocommerce.com',
+					'customer_email'    => 'test2@poocommerce.com',
 					'customer_country'  => Country_Code::UNITED_STATES,
 					'amount'            => 2583,
 					'net'               => 2452,
@@ -282,7 +282,7 @@ class WC_REST_Payments_Reports_Transactions_Controller_Test extends WCPAY_UnitTe
 				'fees'                 => 157,
 				'customer'             => [
 					'name'    => 'Test Customer1',
-					'email'   => 'test1@woocommerce.com',
+					'email'   => 'test1@poocommerce.com',
 					'country' => Country_Code::UNITED_STATES,
 				],
 				'net_amount'           => 2426,
@@ -308,7 +308,7 @@ class WC_REST_Payments_Reports_Transactions_Controller_Test extends WCPAY_UnitTe
 				'fees'                 => 131,
 				'customer'             => [
 					'name'    => 'Test Customer2',
-					'email'   => 'test2@woocommerce.com',
+					'email'   => 'test2@poocommerce.com',
 					'country' => Country_Code::UNITED_STATES,
 				],
 				'net_amount'           => 2452,

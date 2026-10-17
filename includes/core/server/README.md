@@ -1,8 +1,8 @@
-# WooCommerce Payments Server Requests
+# PooCommerce Payments Server Requests
 
-This document outlines the concepts and implementation of WooCommerce Payments server request classes.
+This document outlines the concepts and implementation of PooCommerce Payments server request classes.
 
-The purpose of request classes is to provide an easy and structured way to send API requests towards WooCommerce Payments Server, where type safety, validation and builder pattern is used to built requests towards the server.
+The purpose of request classes is to provide an easy and structured way to send API requests towards PooCommerce Payments Server, where type safety, validation and builder pattern is used to built requests towards the server.
 
 To make it easier for other parties to use it and extend it, every request class has its own filter that can be hooked on, and you could change the behavior or even set your own parameters while maintain all functionality from the original request class.
 
@@ -148,7 +148,7 @@ Note that you need to increase the callback parameter count by 1 in order to rec
 
 ## Available requests
 
-Currently the WooCommerce Payments API client contains around 100 requests. The plan is to cover all of them in time, in the meantime here is a list of the existing requests:
+Currently the PooCommerce Payments API client contains around 100 requests. The plan is to cover all of them in time, in the meantime here is a list of the existing requests:
 
 - Intentions
 	- [Cancel_Intention](request/class-cancel-intention.md)

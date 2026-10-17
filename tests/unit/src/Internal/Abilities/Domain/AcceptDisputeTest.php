@@ -2,7 +2,7 @@
 /**
  * Tests for WCPay\Internal\Abilities\Domain\AcceptDispute.
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 namespace WCPay\Tests\Internal\Abilities\Domain;
@@ -17,7 +17,7 @@ use WCPay\Internal\Abilities\Domain\AcceptDispute;
 class AcceptDisputeTest extends WCPAY_UnitTestCase {
 
 	public function test_name(): void {
-		$this->assertSame( 'woocommerce-payments/accept-dispute', AcceptDispute::get_name() );
+		$this->assertSame( 'poocommerce-payments/accept-dispute', AcceptDispute::get_name() );
 	}
 
 	public function test_registration_args_has_destructive_irreversible_annotations(): void {

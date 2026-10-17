@@ -166,7 +166,7 @@ export const getExpectedFieldStatus = (
 	if ( ! emitted.has( coverLetterFieldKey ) ) {
 		result.push( {
 			key: coverLetterFieldKey,
-			label: __( 'Cover letter', 'woocommerce-payments' ),
+			label: __( 'Cover letter', 'poocommerce-payments' ),
 			state: isFieldProvided( evidence, coverLetterFieldKey )
 				? 'provided'
 				: 'expected_missing',

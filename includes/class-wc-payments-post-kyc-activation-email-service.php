@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Post_Kyc_Activation_Email_Service
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -110,7 +110,7 @@ class WC_Payments_Post_Kyc_Activation_Email_Service {
 				continue;
 			}
 
-			as_schedule_single_action( max( $send_at, $now + 60 ), self::SEND_HOOK, [ $stage ], 'woocommerce-payments' );
+			as_schedule_single_action( max( $send_at, $now + 60 ), self::SEND_HOOK, [ $stage ], 'poocommerce-payments' );
 		}
 
 		update_option( self::SCHEDULED_OPTION, '1', false );
@@ -221,7 +221,7 @@ class WC_Payments_Post_Kyc_Activation_Email_Service {
 			return;
 		}
 
-		if ( ! current_user_can( 'manage_woocommerce' ) ) {
+		if ( ! current_user_can( 'manage_poocommerce' ) ) {
 			return;
 		}
 

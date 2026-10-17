@@ -1,8 +1,8 @@
 <?php
 /**
- * WooCommerce Payments VAT Redirect Service.
+ * PooCommerce Payments VAT Redirect Service.
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay;
@@ -48,7 +48,7 @@ class WC_Payments_VAT_Redirect_Service {
 			return;
 		}
 
-		wp_safe_redirect( admin_url( 'admin.php?page=wc-settings&tab=checkout&section=woocommerce_payments&woopayments-vat-details-modal=true' ) );
+		wp_safe_redirect( admin_url( 'admin.php?page=wc-settings&tab=checkout&section=poocommerce_payments&woopayments-vat-details-modal=true' ) );
 		exit;
 	}
 }

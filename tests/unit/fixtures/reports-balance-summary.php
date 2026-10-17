@@ -2,7 +2,7 @@
 /**
  * Balance report summary fixture.
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 /**

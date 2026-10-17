@@ -4,7 +4,7 @@ Review expectations specific to the WooPayments codebase. Loaded by the review a
 
 These rules supplement generic review practices with WCPay conventions, known pitfalls, and lessons from past incidents.
 
-**WooCommerce core context:** Many WCPay issues only surface when you understand what WooCommerce does with our hooks. Always check WC core when reviewing code that changes order statuses, hooks into `admin_init`/`init`, or triggers emails. WC code is available at `docker/wordpress/wp-content/plugins/woocommerce/` (always present) or `../woocommerce/plugins/woocommerce/` (if the full repo is checked out).
+**PooCommerce core context:** Many WCPay issues only surface when you understand what PooCommerce does with our hooks. Always check WC core when reviewing code that changes order statuses, hooks into `admin_init`/`init`, or triggers emails. WC code is available at `docker/wordpress/wp-content/plugins/poocommerce/` (always present) or `../poocommerce/plugins/poocommerce/` (if the full repo is checked out).
 
 ---
 
@@ -72,7 +72,7 @@ Order meta queries and `wp_wc_orders_meta` / `wp_postmeta` JOINs are inherently 
 - Always run in an async environment / background job, never inline on page load
 - Use appropriate indexes
 
-### WooCommerce Admin Notes `can_be_added()` Trap
+### PooCommerce Admin Notes `can_be_added()` Trap
 
 The `NoteTraits::possibly_add_note()` pattern only short-circuits via `note_exists()` when the note has been previously saved. When `can_be_added()` returns `false`, the note is never saved, so the check runs on **every `admin_init` indefinitely**. Any expensive logic in `can_be_added()` becomes a permanent per-request performance tax.
 
@@ -91,7 +91,7 @@ The `NoteTraits::possibly_add_note()` pattern only short-circuits via `note_exis
 
 ### Batch Operation Side Effects
 
-When changing order statuses in bulk/batch operations, WooCommerce hooks fire for each status change. These can trigger external API calls (e.g., Stripe cancellation via `cancel_authorizations_on_order_status_change`) and email notifications (e.g., `WC_Email_Cancelled_Order`).
+When changing order statuses in bulk/batch operations, PooCommerce hooks fire for each status change. These can trigger external API calls (e.g., Stripe cancellation via `cancel_authorizations_on_order_status_change`) and email notifications (e.g., `WC_Email_Cancelled_Order`).
 
 - [ ] Unnecessary hooks removed (`remove_action()`) before batch processing and restored after
 - [ ] Email hooks specifically considered during bulk status changes
@@ -130,6 +130,6 @@ These rules were codified from production incidents. They carry extra weight dur
 
 ### INC-001b: Batch status change side effects
 
-**Pattern:** Remediation tool changed order statuses in bulk, triggering `cancel_authorizations_on_order_status_change` (unnecessary Stripe API calls) and WooCommerce cancellation emails for every order.
+**Pattern:** Remediation tool changed order statuses in bulk, triggering `cancel_authorizations_on_order_status_change` (unnecessary Stripe API calls) and PooCommerce cancellation emails for every order.
 
 **Rule:** Always `remove_action()` for hooks that trigger external API calls and emails before batch/migration processing. Restore hooks after.

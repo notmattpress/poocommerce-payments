@@ -2,7 +2,7 @@
 /**
  * Class file for WCPay\Core\Server\Request\Update_Account.
  *
- * @package WooCommerce Payments
+ * @package PooCommerce Payments
  */
 
 namespace WCPay\Core\Server\Request;
@@ -58,7 +58,7 @@ class Update_Account extends Request {
 	public static function from_account_settings( array $account_settings ) {
 		if ( 0 === count( $account_settings ) ) {
 			throw new Invalid_Request_Parameter_Exception(
-				esc_html__( 'No account settings provided', 'woocommerce-payments' ),
+				esc_html__( 'No account settings provided', 'poocommerce-payments' ),
 				'wcpay_core_invalid_request_parameter_account_settings_empty'
 			);
 		}

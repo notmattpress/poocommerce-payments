@@ -22,7 +22,7 @@ import {
 } from '../../../utils/shopper';
 
 test.describe(
-	'WooCommerce Blocks > Successful purchase',
+	'PooCommerce Blocks > Successful purchase',
 	{ tag: [ '@shopper', '@critical', '@blocks' ] },
 	() => {
 		let shopperContext: BrowserContext;

@@ -4,7 +4,7 @@
  * External dependencies
  */
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { getQuery, updateQueryString } from '@woocommerce/navigation';
+import { getQuery, updateQueryString } from '@poocommerce/navigation';
 import type { View, ViewTable, Filter } from '@wordpress/dataviews/wp';
 
 /**

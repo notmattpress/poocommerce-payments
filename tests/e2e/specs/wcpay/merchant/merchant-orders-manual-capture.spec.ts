@@ -58,10 +58,10 @@ test.describe( 'Order > Manual Capture', () => {
 
 			// Set select to 'capture_charge' and submit.
 			await merchantPage
-				.locator( '#woocommerce-order-actions select' )
+				.locator( '#poocommerce-order-actions select' )
 				.selectOption( 'capture_charge' );
 			await merchantPage
-				.locator( '#woocommerce-order-actions li#actions button' ) // Using locator due to there are several buttons "named" Update.
+				.locator( '#poocommerce-order-actions li#actions button' ) // Using locator due to there are several buttons "named" Update.
 				.click();
 
 			// After the page reloads, confirm the order is processing and we have a 'captured' order note.

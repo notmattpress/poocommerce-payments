@@ -18,19 +18,19 @@ const RecommendedDocuments: React.FC< RecommendedDocumentsProps > = ( {
 	return (
 		<section className="wcpay-dispute-evidence-recommended-documents">
 			<h3 className="wcpay-dispute-evidence-recommended-documents__heading">
-				{ __( 'Recommended documents', 'woocommerce-payments' ) }
+				{ __( 'Recommended documents', 'poocommerce-payments' ) }
 			</h3>
 			<div className="wcpay-dispute-evidence-recommended-documents__subheading">
 				{ __(
 					'While optional, we strongly recommend providing as many of these documents as possible. The following file types are supported: PDF, JPEG, and PNG.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				) }
 			</div>
 			<div className="wcpay-dispute-evidence-recommended-documents__helper-link">
-				<ExternalLink href="https://woocommerce.com/document/woopayments/fraud-and-disputes/managing-disputes/#challenge-or-accept">
+				<ExternalLink href="https://poocommerce.com/document/woopayments/fraud-and-disputes/managing-disputes/#challenge-or-accept">
 					{ __(
 						'Learn more about documents',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 				</ExternalLink>
 			</div>

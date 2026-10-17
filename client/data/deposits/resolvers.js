@@ -46,7 +46,7 @@ export function* getDeposit( id ) {
 		yield controls.dispatch(
 			'core/notices',
 			'createErrorNotice',
-			__( 'Error retrieving payout.', 'woocommerce-payments' )
+			__( 'Error retrieving payout.', 'poocommerce-payments' )
 		);
 	}
 }
@@ -66,7 +66,7 @@ export function* getAllDepositsOverviews() {
 			'createErrorNotice',
 			__(
 				"Error retrieving all payouts' overviews.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			)
 		);
 		yield updateErrorForAllDepositsOverviews( e );
@@ -131,7 +131,7 @@ export function* getDeposits( query ) {
 		yield controls.dispatch(
 			'core/notices',
 			'createErrorNotice',
-			__( 'Error retrieving payouts.', 'woocommerce-payments' )
+			__( 'Error retrieving payouts.', 'poocommerce-payments' )
 		);
 		yield updateErrorForDepositQuery( query, null, e );
 	}

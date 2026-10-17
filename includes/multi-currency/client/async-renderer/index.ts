@@ -140,7 +140,7 @@ class WCPayAsyncPriceRenderer {
 			this.convertAllPrices();
 			this.syncCurrencySwitchers();
 			this.observeDynamicContent();
-			this.listenToWooCommerceEvents();
+			this.listenToPooCommerceEvents();
 		} catch ( error ) {
 			clearTimeout( timeoutId! );
 			this.showErrorState();
@@ -329,9 +329,9 @@ class WCPayAsyncPriceRenderer {
 	 *
 	 * This intentionally does not use the admin-side `formatCurrency` utility
 	 * from `includes/multi-currency/client/utils/currency/`, which depends on
-	 * `wcpaySettings` (admin-only global) and heavy packages (@woocommerce/currency,
+	 * `wcpaySettings` (admin-only global) and heavy packages (@poocommerce/currency,
 	 * lodash). Both are unavailable on the storefront. The formatting logic here
-	 * should produce equivalent output to `@woocommerce/currency`'s Currency class.
+	 * should produce equivalent output to `@poocommerce/currency`'s Currency class.
 	 */
 	formatPrice( price: Decimal, currency: CurrencyConfig ): string {
 		const fixed = price.toFixed( currency.decimals );
@@ -357,11 +357,11 @@ class WCPayAsyncPriceRenderer {
 	 * Build a <bdi> element with the formatted price content.
 	 *
 	 * The caller is responsible for the outer
-	 * <span class="woocommerce-Price-amount amount"> wrapper — the SSR markup
+	 * <span class="poocommerce-Price-amount amount"> wrapper — the SSR markup
 	 * already provides it, so JS only needs to replace the <bdi> contents.
 	 *
 	 * Produces:
-	 *   <bdi><span class="woocommerce-Price-currencySymbol">€</span>22,00</bdi>
+	 *   <bdi><span class="poocommerce-Price-currencySymbol">€</span>22,00</bdi>
 	 *
 	 * The symbol and number are assembled from separate pieces (mirroring how
 	 * PHP's wc_price() uses sprintf with the price_format pattern), so no
@@ -373,7 +373,7 @@ class WCPayAsyncPriceRenderer {
 	): HTMLElement {
 		const bdi = document.createElement( 'bdi' );
 		const symbolSpan = document.createElement( 'span' );
-		symbolSpan.className = 'woocommerce-Price-currencySymbol';
+		symbolSpan.className = 'poocommerce-Price-currencySymbol';
 		symbolSpan.textContent = currency.symbol;
 
 		switch ( currency.symbol_pos ) {
@@ -540,11 +540,11 @@ class WCPayAsyncPriceRenderer {
 	}
 
 	/**
-	 * Rewrite WooCommerce Blocks price-range screen-reader labels in the selected currency.
+	 * Rewrite PooCommerce Blocks price-range screen-reader labels in the selected currency.
 	 *
 	 * Blocks build the "Price between X and Y" label with the global
 	 * `wcSettings.currency` rather than the per-product Store API currency (see
-	 * WooCommerce's `product-price` base component). Cache-optimized mode
+	 * PooCommerce's `product-price` base component). Cache-optimized mode
 	 * deliberately leaves that global as the store currency so the served HTML
 	 * stays identical for every visitor, which leaves the label — and only the
 	 * label — in the store currency.
@@ -594,7 +594,7 @@ class WCPayAsyncPriceRenderer {
 				// Uses WC's text domain so the label matches the block's own
 				// translation in every locale.
 				// eslint-disable-next-line @wordpress/i18n-text-domain
-				__( 'Price between %1$s and %2$s', 'woocommerce' ),
+				__( 'Price between %1$s and %2$s', 'poocommerce' ),
 				from,
 				to
 			);
@@ -684,15 +684,15 @@ class WCPayAsyncPriceRenderer {
 	}
 
 	/**
-	 * Listen to WooCommerce AJAX events that may update price markup.
+	 * Listen to PooCommerce AJAX events that may update price markup.
 	 *
-	 * These jQuery-triggered events fire when WooCommerce replaces HTML
+	 * These jQuery-triggered events fire when PooCommerce replaces HTML
 	 * fragments after AJAX operations (e.g., updating cart, refreshing
 	 * checkout). The MutationObserver handles generic DOM changes, but
 	 * these events provide a reliable trigger for WC-specific updates
 	 * where replaced HTML may contain new skeleton price elements.
 	 */
-	listenToWooCommerceEvents(): void {
+	listenToPooCommerceEvents(): void {
 		if ( typeof jQuery === 'undefined' ) {
 			return;
 		}

@@ -1,12 +1,12 @@
 <?php
 /**
- * Set up Stripe Billing deprecation note for WooCommerce inbox.
+ * Set up Stripe Billing deprecation note for PooCommerce inbox.
  *
- * @package WooCommerce\Payments\Admin
+ * @package PooCommerce\Payments\Admin
  */
 
-use Automattic\WooCommerce\Admin\Notes\Note;
-use Automattic\WooCommerce\Admin\Notes\NoteTraits;
+use Automattic\PooCommerce\Admin\Notes\Note;
+use Automattic\PooCommerce\Admin\Notes\NoteTraits;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -24,9 +24,9 @@ class WC_Payments_Notes_Stripe_Billing_Deprecation {
 	const NOTE_NAME = 'wc-payments-notes-stripe-billing-deprecation';
 
 	/**
-	 * URL to the WooCommerce Subscriptions plugin page.
+	 * URL to the PooCommerce Subscriptions plugin page.
 	 */
-	const NOTE_SUBSCRIPTIONS_URL = 'https://woocommerce.com/products/woocommerce-subscriptions/';
+	const NOTE_SUBSCRIPTIONS_URL = 'https://poocommerce.com/products/poocommerce-subscriptions/';
 
 	/**
 	 * Checks if a note can and should be added.
@@ -34,7 +34,7 @@ class WC_Payments_Notes_Stripe_Billing_Deprecation {
 	 * @return bool
 	 */
 	public static function can_be_added() {
-		// Only show if Stripe Billing is enabled and WooCommerce Subscriptions is not installed.
+		// Only show if Stripe Billing is enabled and PooCommerce Subscriptions is not installed.
 		if ( ! self::is_bundled_subscriptions_enabled() ) {
 			return false;
 		}
@@ -53,13 +53,13 @@ class WC_Payments_Notes_Stripe_Billing_Deprecation {
 	public static function get_note() {
 		$note = new Note();
 
-		$note->set_title( __( 'Built-in subscriptions functionality has been removed. Here\'s what to do', 'woocommerce-payments' ) );
-		$note->set_content( __( 'To continue offering subscriptions and gain access to your data, please install WooCommerce Subscriptions. WooPayments no longer supports this feature.', 'woocommerce-payments' ) );
+		$note->set_title( __( 'Built-in subscriptions functionality has been removed. Here\'s what to do', 'poocommerce-payments' ) );
+		$note->set_content( __( 'To continue offering subscriptions and gain access to your data, please install PooCommerce Subscriptions. WooPayments no longer supports this feature.', 'poocommerce-payments' ) );
 
 		$note->set_type( Note::E_WC_ADMIN_NOTE_INFORMATIONAL );
 		$note->set_name( self::NOTE_NAME );
-		$note->set_source( 'woocommerce-payments' );
-		$note->add_action( 'get-woocommerce-subscriptions', __( 'Install WooCommerce Subscriptions', 'woocommerce-payments' ), self::NOTE_SUBSCRIPTIONS_URL );
+		$note->set_source( 'poocommerce-payments' );
+		$note->add_action( 'get-poocommerce-subscriptions', __( 'Install PooCommerce Subscriptions', 'poocommerce-payments' ), self::NOTE_SUBSCRIPTIONS_URL );
 
 		return $note;
 	}

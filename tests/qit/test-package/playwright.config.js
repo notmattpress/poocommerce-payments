@@ -4,7 +4,7 @@
 import { defineConfig, devices } from '@playwright/test';
 
 /**
- * Playwright configuration for WooCommerce Payments QIT E2E tests
+ * Playwright configuration for PooCommerce Payments QIT E2E tests
  *
  * @see https://playwright.dev/docs/test-configuration
  */

@@ -1,4 +1,4 @@
-# WooCommerce Payments Core Customer Service
+# PooCommerce Payments Core Customer Service
 
 The customer service is available through the `WC_Payments_Customer_Service_API` class, available through `WC_Payments::get_customer_service_api()`:
 
@@ -143,11 +143,11 @@ __Return value__
 ---
 #### `update_user_customer_id()`
 
-Updates the given user with the given WooCommerce Payments customer ID.
+Updates the given user with the given PooCommerce Payments customer ID.
 
 __Parameters__
 - `$user_id` (`int`) The WordPress user ID.
-- `$customer_id` (`string`) The WooCommerce Payments customer ID.
+- `$customer_id` (`string`) The PooCommerce Payments customer ID.
 
 __Return value__
 `void` This method does not return any value.

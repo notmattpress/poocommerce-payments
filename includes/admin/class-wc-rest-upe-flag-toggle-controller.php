@@ -2,7 +2,7 @@
 /**
  * Class WC_REST_UPE_Flag_Toggle_Controller
  *
- * @package WooCommerce\Payments\Admin
+ * @package PooCommerce\Payments\Admin
  */
 
 /**

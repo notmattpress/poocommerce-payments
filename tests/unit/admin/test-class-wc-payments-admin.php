@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Admin_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use PHPUnit\Framework\MockObject\MockObject;
@@ -95,7 +95,7 @@ class WC_Payments_Admin_Test extends WCPAY_UnitTestCase {
 		$this->current_screen_backup = $GLOBALS['current_screen'] ?? null;
 		$GLOBALS['current_screen']   = $this->get_screen_mock(); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 		if ( ! did_action( 'current_screen' ) ) {
-			do_action( 'current_screen', $GLOBALS['current_screen'] ); // phpcs:ignore WooCommerce.Commenting.CommentHooks.MissingHookComment
+			do_action( 'current_screen', $GLOBALS['current_screen'] ); // phpcs:ignore PooCommerce.Commenting.CommentHooks.MissingHookComment
 		}
 
 		$this->mock_api_client = $this->getMockBuilder( WC_Payments_API_Client::class )
@@ -620,7 +620,7 @@ class WC_Payments_Admin_Test extends WCPAY_UnitTestCase {
 				false,
 			],
 			'payment method section'          => [
-				'page=wc-settings&tab=checkout&section=woocommerce_payments',
+				'page=wc-settings&tab=checkout&section=poocommerce_payments',
 				'9.9.2',
 				false,
 			],
@@ -629,7 +629,7 @@ class WC_Payments_Admin_Test extends WCPAY_UnitTestCase {
 				'9.9.2',
 				true,
 			],
-			'unsupported WooCommerce version' => [
+			'unsupported PooCommerce version' => [
 				'page=wc-settings&tab=checkout',
 				'9.9.1',
 				false,
@@ -642,7 +642,7 @@ class WC_Payments_Admin_Test extends WCPAY_UnitTestCase {
 	 * @dataProvider provider_enqueue_wc_payment_settings_spotlight
 	 *
 	 * @param string $request_query  Request parameters as a query string.
-	 * @param string $wc_version    WooCommerce version.
+	 * @param string $wc_version    PooCommerce version.
 	 * @param bool   $should_enqueue Whether the spotlight assets should be enqueued.
 	 */
 	public function test_enqueue_wc_payment_settings_spotlight( string $request_query, string $wc_version, bool $should_enqueue ) {
@@ -652,7 +652,7 @@ class WC_Payments_Admin_Test extends WCPAY_UnitTestCase {
 		$wp_styles  = null; // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 		parse_str( $request_query, $_REQUEST );
 
-		$GLOBALS['current_screen']->id = 'woocommerce_page_wc-settings';
+		$GLOBALS['current_screen']->id = 'poocommerce_page_wc-settings';
 		Constants::set_constant( 'WC_VERSION', $wc_version );
 		$this->mock_pm_promotions_service->method( 'get_visible_promotions' )->willReturn( [ [ 'type' => 'spotlight' ] ] );
 

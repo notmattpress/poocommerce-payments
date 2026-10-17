@@ -56,7 +56,7 @@ describe( 'ManualCaptureControl', () => {
 		} );
 		expect( learnMoreLinks[ 0 ] ).toHaveAttribute(
 			'href',
-			'https://woocommerce.com/document/woopayments/settings-guide/authorize-and-capture/'
+			'https://poocommerce.com/document/woopayments/settings-guide/authorize-and-capture/'
 		);
 	} );
 
@@ -124,7 +124,7 @@ describe( 'ManualCaptureControl', () => {
 		expect( learnMoreLink ).toBeInTheDocument();
 		expect( learnMoreLink.closest( 'a' ) ).toHaveAttribute(
 			'href',
-			'https://woocommerce.com/document/woopayments/settings-guide/authorize-and-capture/'
+			'https://poocommerce.com/document/woopayments/settings-guide/authorize-and-capture/'
 		);
 	} );
 

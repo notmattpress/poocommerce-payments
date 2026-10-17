@@ -5,7 +5,7 @@
  */
 import React from 'react';
 import { __ } from '@wordpress/i18n';
-import { Link } from '@woocommerce/components';
+import { Link } from '@poocommerce/components';
 import type { Field } from '@wordpress/dataviews/wp';
 
 /**
@@ -52,8 +52,8 @@ export const getFeesFields = ( {
 	[
 		{
 			id: 'date',
-			label: __( 'Date', 'woocommerce-payments' ),
-			header: __( 'Date & time', 'woocommerce-payments' ),
+			label: __( 'Date', 'poocommerce-payments' ),
+			header: __( 'Date & time', 'poocommerce-payments' ),
 			type: 'date',
 			enableSorting: true,
 			enableGlobalSearch: false,
@@ -72,7 +72,7 @@ export const getFeesFields = ( {
 		},
 		{
 			id: 'payment_method',
-			label: __( 'Method', 'woocommerce-payments' ),
+			label: __( 'Method', 'poocommerce-payments' ),
 			elements: methodElements,
 			filterBy: { operators: [ 'is' ] },
 			getValue: ( { item }: { item: ReportsFee } ) =>
@@ -83,7 +83,7 @@ export const getFeesFields = ( {
 		},
 		{
 			id: 'type',
-			label: __( 'Type', 'woocommerce-payments' ),
+			label: __( 'Type', 'poocommerce-payments' ),
 			elements: typeElements,
 			filterBy: { operators: [ 'is' ] },
 			getValue: ( { item }: { item: ReportsFee } ) => item.type,
@@ -96,7 +96,7 @@ export const getFeesFields = ( {
 		},
 		{
 			id: 'order_id',
-			label: __( 'Order ID', 'woocommerce-payments' ),
+			label: __( 'Order ID', 'poocommerce-payments' ),
 			getValue: ( { item }: { item: ReportsFee } ) => item.order_id ?? '',
 			render: ( { item }: { item: ReportsFee } ) =>
 				item.order_id ? (
@@ -112,7 +112,7 @@ export const getFeesFields = ( {
 		// wrapper, which hid anchors from the tab order with `tabIndex="-1"`.
 		{
 			id: 'transaction_id',
-			label: __( 'Transaction ID', 'woocommerce-payments' ),
+			label: __( 'Transaction ID', 'poocommerce-payments' ),
 			enableHiding: false,
 			getValue: ( { item }: { item: ReportsFee } ) => item.transaction_id,
 			render: ( { item }: { item: ReportsFee } ) => (
@@ -123,7 +123,7 @@ export const getFeesFields = ( {
 		},
 		{
 			id: 'transaction_currency',
-			label: __( 'Currency', 'woocommerce-payments' ),
+			label: __( 'Currency', 'poocommerce-payments' ),
 			getValue: ( { item }: { item: ReportsFee } ) =>
 				( item.transaction_currency ?? '' ).toUpperCase(),
 			render: ( { item }: { item: ReportsFee } ) => (
@@ -135,7 +135,7 @@ export const getFeesFields = ( {
 		},
 		{
 			id: 'amount',
-			label: __( 'Gross amount', 'woocommerce-payments' ),
+			label: __( 'Gross amount', 'poocommerce-payments' ),
 			type: 'integer',
 			enableSorting: true,
 			filterBy: false,
@@ -151,7 +151,7 @@ export const getFeesFields = ( {
 		},
 		{
 			id: 'fees',
-			label: __( 'Fees total', 'woocommerce-payments' ),
+			label: __( 'Fees total', 'poocommerce-payments' ),
 			type: 'integer',
 			enableSorting: true,
 			filterBy: false,
@@ -167,7 +167,7 @@ export const getFeesFields = ( {
 		},
 		{
 			id: 'deposit_date',
-			label: __( 'Settlement date', 'woocommerce-payments' ),
+			label: __( 'Settlement date', 'poocommerce-payments' ),
 			type: 'datetime',
 			filterBy: false,
 			getValue: ( { item }: { item: ReportsFee } ) =>
@@ -182,7 +182,7 @@ export const getFeesFields = ( {
 		},
 		{
 			id: 'deposit_id',
-			label: __( 'Payout ID', 'woocommerce-payments' ),
+			label: __( 'Payout ID', 'poocommerce-payments' ),
 			getValue: ( { item }: { item: ReportsFee } ) =>
 				item.deposit_id ?? '',
 			render: ( { item }: { item: ReportsFee } ) =>

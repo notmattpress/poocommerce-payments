@@ -19,8 +19,8 @@
  * fix.
  */
 const PACKAGES_NEEDING_OWN_WP_DATA = [
-	'@woocommerce/components',
-	'@woocommerce/data',
+	'@poocommerce/components',
+	'@poocommerce/data',
 ];
 
 // Root pin. A peer range whose lowest major exceeds this can't be satisfied by
@@ -46,7 +46,7 @@ function readPackage( pkg ) {
 	// next mismatch surfaces here instead of as an opaque Jest failure.
 	const lowestMajor = Number( ( peerWpData.match( /(\d+)/ ) || [] )[ 1 ] );
 	if (
-		/^@woocommerce\//.test( pkg.name ) &&
+		/^@poocommerce\//.test( pkg.name ) &&
 		lowestMajor > ROOT_WP_DATA_MAJOR
 	) {
 		console.warn(

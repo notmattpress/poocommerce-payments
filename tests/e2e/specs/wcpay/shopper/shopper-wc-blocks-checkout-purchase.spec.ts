@@ -19,7 +19,7 @@ import {
 import { config } from '../../../config/default';
 
 describeif( shouldRunWCBlocksTests )(
-	'WooCommerce Blocks > Successful purchase',
+	'PooCommerce Blocks > Successful purchase',
 	{ tag: [ '@critical', '@blocks' ] },
 	() => {
 		let shopperPage: Page;

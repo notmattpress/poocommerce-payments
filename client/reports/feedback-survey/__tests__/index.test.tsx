@@ -6,7 +6,7 @@ import { act, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import apiFetch from '@wordpress/api-fetch';
 import { useDispatch } from '@wordpress/data';
-import { useUserPreferences } from '@woocommerce/data';
+import { useUserPreferences } from '@poocommerce/data';
 import { recordEvent } from 'tracks';
 
 /**
@@ -18,7 +18,7 @@ jest.mock( '@wordpress/api-fetch' );
 jest.mock( '@wordpress/data', () => ( {
 	useDispatch: jest.fn(),
 } ) );
-jest.mock( '@woocommerce/data', () => ( {
+jest.mock( '@poocommerce/data', () => ( {
 	useUserPreferences: jest.fn(),
 } ) );
 

@@ -67,7 +67,7 @@ includes/admin/class-wc-payments-admin.php:457
     if ( $this->account->get_capital()['has_previous_loans'] ) {
         $this->admin_child_pages['wc-payments-capital'] = [
             'id'    => 'wc-payments-capital',
-            'title' => __( 'Capital Loans', 'woocommerce-payments' ),
+            'title' => __( 'Capital Loans', 'poocommerce-payments' ),
             'path'  => '/payments/loans',
             ...
         ];
@@ -118,7 +118,7 @@ Once `has_previous_loans` is true, revisit any WooPayments admin page to repopul
 | React data hooks | `client/data/capital/hooks.ts` (`useLoans`, `useActiveLoanSummary`) |
 | React data resolvers | `client/data/capital/resolvers.ts` (`getLoans`, `getActiveLoanSummary` generators) |
 | Active loan React component | `client/capital/` (gated on `has_active_loan` in `account['capital']`) |
-| Loan approved inbox note | `includes/notes/class-wc-payments-notes-loan-approved.php` (triggered by `woocommerce_payments_account_refreshed`) |
+| Loan approved inbox note | `includes/notes/class-wc-payments-notes-loan-approved.php` (triggered by `poocommerce_payments_account_refreshed`) |
 
 ## Testing Flow
 

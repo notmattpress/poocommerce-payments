@@ -2,7 +2,7 @@
 /**
  * Tests for WCPay\Internal\Abilities\Domain\RefundCharge.
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 namespace WCPay\Tests\Internal\Abilities\Domain;
@@ -17,14 +17,14 @@ use WCPay\Internal\Abilities\Domain\RefundCharge;
 class RefundChargeTest extends WCPAY_UnitTestCase {
 
 	public function test_name(): void {
-		$this->assertSame( 'woocommerce-payments/refund-charge', RefundCharge::get_name() );
+		$this->assertSame( 'poocommerce-payments/refund-charge', RefundCharge::get_name() );
 	}
 
 	public function test_registration_args_has_write_annotations(): void {
 		$args = RefundCharge::get_registration_args();
 
 		$this->assertSame( AbilitiesRegistrar::CATEGORY_SLUG, $args['category'] );
-		$this->assertSame( [ AbilitiesRegistrar::class, 'current_user_can_manage_woocommerce' ], $args['permission_callback'] );
+		$this->assertSame( [ AbilitiesRegistrar::class, 'current_user_can_manage_poocommerce' ], $args['permission_callback'] );
 		$this->assertFalse( $args['meta']['annotations']['readonly'] );
 		$this->assertTrue( $args['meta']['annotations']['destructive'] );
 		$this->assertTrue( $args['meta']['annotations']['idempotent'] );

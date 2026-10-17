@@ -1,18 +1,18 @@
 <?php
 /**
- * Class WCPay_Multi_Currency_WooCommercePreOrders_Tests
+ * Class WCPay_Multi_Currency_PooCommercePreOrders_Tests
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
-use WCPay\MultiCurrency\Compatibility\WooCommercePreOrders;
+use WCPay\MultiCurrency\Compatibility\PooCommercePreOrders;
 use WCPay\MultiCurrency\MultiCurrency;
 use WCPay\MultiCurrency\Utils;
 
 /**
- * WCPay\MultiCurrency\Compatibility\WooCommercePreOrders unit tests.
+ * WCPay\MultiCurrency\Compatibility\PooCommercePreOrders unit tests.
  */
-class WCPay_Multi_Currency_WooCommercePreOrders_Tests extends WCPAY_UnitTestCase {
+class WCPay_Multi_Currency_PooCommercePreOrders_Tests extends WCPAY_UnitTestCase {
 
 	/**
 	 * Mock WCPay\MultiCurrency\MultiCurrency.
@@ -29,11 +29,11 @@ class WCPay_Multi_Currency_WooCommercePreOrders_Tests extends WCPAY_UnitTestCase
 	private $mock_utils;
 
 	/**
-	 * WCPay\MultiCurrency\Compatibility\WooCommercePreOrders instance.
+	 * WCPay\MultiCurrency\Compatibility\PooCommercePreOrders instance.
 	 *
-	 * @var WCPay\MultiCurrency\Compatibility\WooCommercePreOrders
+	 * @var WCPay\MultiCurrency\Compatibility\PooCommercePreOrders
 	 */
-	private $woocommerce_pre_orders;
+	private $poocommerce_pre_orders;
 
 	/**
 	 * Pre-test setup
@@ -43,7 +43,7 @@ class WCPay_Multi_Currency_WooCommercePreOrders_Tests extends WCPAY_UnitTestCase
 
 		$this->mock_multi_currency    = $this->createMock( MultiCurrency::class );
 		$this->mock_utils             = $this->createMock( Utils::class );
-		$this->woocommerce_pre_orders = new WooCommercePreOrders( $this->mock_multi_currency, $this->mock_utils );
+		$this->poocommerce_pre_orders = new PooCommercePreOrders( $this->mock_multi_currency, $this->mock_utils );
 	}
 
 	public function test_wc_pre_orders_fee() {
@@ -54,6 +54,6 @@ class WCPay_Multi_Currency_WooCommercePreOrders_Tests extends WCPAY_UnitTestCase
 			->method( 'get_price' )
 			->with( $args['amount'] )
 			->willReturn( 42.0 );
-		$this->assertSame( $expected, $this->woocommerce_pre_orders->wc_pre_orders_fee( $args ) );
+		$this->assertSame( $expected, $this->poocommerce_pre_orders->wc_pre_orders_fee( $args ) );
 	}
 }

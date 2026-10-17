@@ -33,10 +33,10 @@ const formatPaymentMethodDetails = ( charge: Charge ): PaymentMethodDetails => {
  * Placeholders to display while loading.
  */
 const paymentMethodPlaceholders = {
-	id: __( 'id placeholder', 'woocommerce-payments' ),
-	name: __( 'name placeholder', 'woocommerce-payments' ),
-	email: __( 'email placeholder', 'woocommerce-payments' ),
-	formattedAddress: __( 'address placeholder', 'woocommerce-payments' ),
+	id: __( 'id placeholder', 'poocommerce-payments' ),
+	name: __( 'name placeholder', 'poocommerce-payments' ),
+	email: __( 'email placeholder', 'poocommerce-payments' ),
+	formattedAddress: __( 'address placeholder', 'poocommerce-payments' ),
 };
 
 interface Props {
@@ -58,7 +58,7 @@ const BasePaymentMethodDetails: React.FC< Props > = ( {
 			<div className="payment-method-details__column">
 				<Detail
 					isLoading={ isLoading }
-					label={ __( 'ID', 'woocommerce-payments' ) }
+					label={ __( 'ID', 'poocommerce-payments' ) }
 				>
 					{ !! id ? id : '–' }
 				</Detail>
@@ -67,21 +67,21 @@ const BasePaymentMethodDetails: React.FC< Props > = ( {
 			<div className="payment-method-details__column">
 				<Detail
 					isLoading={ isLoading }
-					label={ __( 'Owner', 'woocommerce-payments' ) }
+					label={ __( 'Owner', 'poocommerce-payments' ) }
 				>
 					{ name || '–' }
 				</Detail>
 
 				<Detail
 					isLoading={ isLoading }
-					label={ __( 'Owner email', 'woocommerce-payments' ) }
+					label={ __( 'Owner email', 'poocommerce-payments' ) }
 				>
 					{ email || '–' }
 				</Detail>
 
 				<Detail
 					isLoading={ isLoading }
-					label={ __( 'Address', 'woocommerce-payments' ) }
+					label={ __( 'Address', 'poocommerce-payments' ) }
 				>
 					<span
 						// eslint-disable-next-line react/no-danger

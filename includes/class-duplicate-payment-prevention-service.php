@@ -2,12 +2,12 @@
 /**
  * Class WC_Payments_Duplicate_Payment_Prevention_Service
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay;
 
-use Automattic\WooCommerce\Utilities\OrderUtil;
+use Automattic\PooCommerce\Utilities\OrderUtil;
 use Exception;
 use WC_Order;
 use WC_Payment_Gateway_WCPay;
@@ -131,7 +131,7 @@ class Duplicate_Payment_Prevention_Service {
 			throw new Process_Payment_Exception(
 				sprintf(
 					/* translators: 1: charged amount, 2: current order total */
-					__( 'This order was already paid for %1$s, but the order total has since changed to %2$s, so we prevented an overpayment. Please create a new order for any additional items.', 'woocommerce-payments' ),
+					__( 'This order was already paid for %1$s, but the order total has since changed to %2$s, so we prevented an overpayment. Please create a new order for any additional items.', 'poocommerce-payments' ),
 					wc_price( \WC_Payments_Utils::interpret_stripe_amount( $charged_amount, $order->get_currency() ), [ 'currency' => $order->get_currency() ] ),
 					wc_price( \WC_Payments_Utils::interpret_stripe_amount( $order_total_in_cents, $order->get_currency() ), [ 'currency' => $order->get_currency() ] )
 				),
@@ -144,7 +144,7 @@ class Duplicate_Payment_Prevention_Service {
 
 		$return_url = $this->gateway->get_return_url( $order );
 		$return_url = add_query_arg( self::FLAG_PREVIOUS_SUCCESSFUL_INTENT, 'yes', $return_url );
-		return [ // nosemgrep: audit.php.wp.security.xss.query-arg -- https://woocommerce.github.io/code-reference/classes/WC-Payment-Gateway.html#method_get_return_url is passed in.
+		return [ // nosemgrep: audit.php.wp.security.xss.query-arg -- https://poocommerce.github.io/code-reference/classes/WC-Payment-Gateway.html#method_get_return_url is passed in.
 			'result'   => 'success',
 			'redirect' => $return_url,
 		];
@@ -190,7 +190,7 @@ class Duplicate_Payment_Prevention_Service {
 		$session_order->add_order_note(
 			sprintf(
 				/* translators: order ID integer number */
-				__( 'WooCommerce Payments: detected and deleted order ID %d, which has duplicate cart content with this order.', 'woocommerce-payments' ),
+				__( 'PooCommerce Payments: detected and deleted order ID %d, which has duplicate cart content with this order.', 'poocommerce-payments' ),
 				$current_order->get_id()
 			)
 		);
@@ -201,7 +201,7 @@ class Duplicate_Payment_Prevention_Service {
 		$return_url = $this->gateway->get_return_url( $session_order );
 		$return_url = add_query_arg( self::FLAG_PREVIOUS_ORDER_PAID, 'yes', $return_url );
 
-		return [ // nosemgrep: audit.php.wp.security.xss.query-arg -- https://woocommerce.github.io/code-reference/classes/WC-Payment-Gateway.html#method_get_return_url is passed in.
+		return [ // nosemgrep: audit.php.wp.security.xss.query-arg -- https://poocommerce.github.io/code-reference/classes/WC-Payment-Gateway.html#method_get_return_url is passed in.
 			'result'   => 'success',
 			'redirect' => $return_url,
 		];
@@ -242,8 +242,8 @@ class Duplicate_Payment_Prevention_Service {
 		 * `WC_Order::needs_payment()` cannot answer this: it reads the in-memory status, which is
 		 * the stale value this guard exists to look past.
 		 */
-		// phpcs:ignore WooCommerce.Commenting.CommentHooks.MissingHookComment -- WooCommerce core hook, not defined by WooPayments.
-		$payable_statuses = apply_filters( 'woocommerce_valid_order_statuses_for_payment', [ Order_Status::PENDING, Order_Status::FAILED ], $order );
+		// phpcs:ignore PooCommerce.Commenting.CommentHooks.MissingHookComment -- PooCommerce core hook, not defined by WooPayments.
+		$payable_statuses = apply_filters( 'poocommerce_valid_order_statuses_for_payment', [ Order_Status::PENDING, Order_Status::FAILED ], $order );
 
 		if ( in_array( $status, $payable_statuses, true ) ) {
 			return;
@@ -269,7 +269,7 @@ class Duplicate_Payment_Prevention_Service {
 		}
 
 		$order->add_order_note(
-			__( 'WooPayments: detected and prevented a second payment for this order, which had already been paid.', 'woocommerce-payments' )
+			__( 'WooPayments: detected and prevented a second payment for this order, which had already been paid.', 'poocommerce-payments' )
 		);
 
 		$this->remove_session_processing_order( $order->get_id() );
@@ -277,7 +277,7 @@ class Duplicate_Payment_Prevention_Service {
 		$return_url = $this->gateway->get_return_url( $order );
 		$return_url = add_query_arg( self::FLAG_PREVIOUS_SUCCESSFUL_INTENT, 'yes', $return_url );
 
-		return [ // nosemgrep: audit.php.wp.security.xss.query-arg -- https://woocommerce.github.io/code-reference/classes/WC-Payment-Gateway.html#method_get_return_url is passed in.
+		return [ // nosemgrep: audit.php.wp.security.xss.query-arg -- https://poocommerce.github.io/code-reference/classes/WC-Payment-Gateway.html#method_get_return_url is passed in.
 			'result'   => 'success',
 			'redirect' => $return_url,
 		];
@@ -345,7 +345,7 @@ class Duplicate_Payment_Prevention_Service {
 		global $wpdb;
 
 		if ( \WC_Payments_Utils::is_hpos_tables_usage_enabled() ) {
-			// OrderUtil::get_table_for_orders() only exists from WooCommerce 7.9, and the plugin supports 7.6.
+			// OrderUtil::get_table_for_orders() only exists from PooCommerce 7.9, and the plugin supports 7.6.
 			$orders_table = method_exists( OrderUtil::class, 'get_table_for_orders' )
 				? OrderUtil::get_table_for_orders()
 				: $wpdb->prefix . 'wc_orders';
@@ -362,7 +362,7 @@ class Duplicate_Payment_Prevention_Service {
 		}
 
 		// Stripped inline rather than through OrderUtil::remove_status_prefix(), which only exists from
-		// WooCommerce 9.2. This runs on every checkout, so an undefined method here is a checkout outage.
+		// PooCommerce 9.2. This runs on every checkout, so an undefined method here is a checkout outage.
 		$status = (string) $status;
 
 		return 0 === strpos( $status, 'wc-' ) ? substr( $status, 3 ) : $status;
