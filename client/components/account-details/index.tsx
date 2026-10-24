@@ -43,10 +43,10 @@ const AccountDetailsCard: React.FC< {
 };
 
 const AccountDetailsError: React.FC = () => {
-	const cardTitle = __( 'Account details', 'woocommerce-payments' );
+	const cardTitle = __( 'Account details', 'poocommerce-payments' );
 	return (
 		<AccountDetailsCard title={ cardTitle }>
-			{ __( 'Error loading account details.', 'woocommerce-payments' ) }
+			{ __( 'Error loading account details.', 'poocommerce-payments' ) }
 		</AccountDetailsCard>
 	);
 };

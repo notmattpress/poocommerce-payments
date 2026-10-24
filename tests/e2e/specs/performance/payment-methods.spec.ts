@@ -42,7 +42,7 @@ test.describe( 'Checkout page performance', () => {
 		test( 'measures averaged page load metrics', async () => {
 			const results = await measureCheckoutMetrics(
 				shopperPage,
-				'#payment .payment_method_woocommerce_payments .wcpay-upe-element iframe'
+				'#payment .payment_method_poocommerce_payments .wcpay-upe-element iframe'
 			);
 			logPerformanceResult(
 				'Stripe: Average',
@@ -71,7 +71,7 @@ test.describe( 'Checkout page performance', () => {
 		test( 'measures averaged page load metrics', async () => {
 			const results = await measureCheckoutMetrics(
 				shopperPage,
-				'#payment .payment_method_woocommerce_payments .wcpay-upe-element iframe'
+				'#payment .payment_method_poocommerce_payments .wcpay-upe-element iframe'
 			);
 			logPerformanceResult(
 				'WooPay: Average',

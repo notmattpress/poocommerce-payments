@@ -167,7 +167,7 @@ export const BalanceDataView = ( {
 			[
 				{
 					id: 'date',
-					label: __( 'Date', 'woocommerce-payments' ),
+					label: __( 'Date', 'poocommerce-payments' ),
 					type: 'date',
 					enableHiding: false,
 					enableSorting: false,
@@ -182,7 +182,7 @@ export const BalanceDataView = ( {
 				},
 				{
 					id: 'label',
-					label: __( 'Balance row', 'woocommerce-payments' ),
+					label: __( 'Balance row', 'poocommerce-payments' ),
 					// With sorting, hiding and moving all disabled, DataViews
 					// renders the column header as plain text instead of a
 					// menu button — required for the visually-hidden <thead>
@@ -212,7 +212,7 @@ export const BalanceDataView = ( {
 												'%d item',
 												'%d items',
 												item.count,
-												'woocommerce-payments'
+												'poocommerce-payments'
 											),
 											item.count
 										) }
@@ -224,7 +224,7 @@ export const BalanceDataView = ( {
 				},
 				{
 					id: 'amount',
-					label: __( 'Amount', 'woocommerce-payments' ),
+					label: __( 'Amount', 'poocommerce-payments' ),
 					enableHiding: false,
 					enableSorting: false,
 					getValue: ( { item }: { item: BalanceItem } ) =>
@@ -357,7 +357,7 @@ export const BalanceDataView = ( {
 							className="wcpay-reports-balance-dv__caption"
 							id={ captionId }
 						>
-							{ __( 'Balance summary', 'woocommerce-payments' ) }
+							{ __( 'Balance summary', 'poocommerce-payments' ) }
 						</div>
 						<DataViews.Layout />
 					</div>

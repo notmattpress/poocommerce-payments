@@ -37,7 +37,7 @@ const ConfirmPaymentMethodActivationModal = ( {
 		<ConfirmationModal
 			title={ sprintf(
 				// translators: %s is the name of a payment method.
-				__( 'One more step to enable %s', 'woocommerce-payments' ),
+				__( 'One more step to enable %s', 'poocommerce-payments' ),
 				paymentMethodInformation.label
 			) }
 			shouldCloseOnClickOutside={ false }
@@ -46,10 +46,10 @@ const ConfirmPaymentMethodActivationModal = ( {
 			actions={
 				<>
 					<Button isSecondary onClick={ onClose }>
-						{ __( 'Cancel', 'woocommerce-payments' ) }
+						{ __( 'Cancel', 'poocommerce-payments' ) }
 					</Button>
 					<Button isPrimary onClick={ onConfirmClose }>
-						{ __( 'Continue', 'woocommerce-payments' ) }
+						{ __( 'Continue', 'poocommerce-payments' ) }
 					</Button>
 				</>
 			}
@@ -65,7 +65,7 @@ const ConfirmPaymentMethodActivationModal = ( {
 							__(
 								// translators: %s is the name of a payment method.
 								'You need to provide more information to enable %s on your checkout:',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							paymentMethodInformation.label
 						) }
@@ -85,7 +85,7 @@ const ConfirmPaymentMethodActivationModal = ( {
 						__(
 							// translators: %s is the name of a payment method.
 							'You need to provide more information to enable %s on your checkout.',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						),
 						paymentMethodInformation.label
 					) }
@@ -96,7 +96,7 @@ const ConfirmPaymentMethodActivationModal = ( {
 					mixedString: __(
 						'If you choose to continue, our payment partner Stripe will send an e-mail ' +
 							'to {{merchantEmail /}} to collect the required information',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					components: {
 						merchantEmail: (

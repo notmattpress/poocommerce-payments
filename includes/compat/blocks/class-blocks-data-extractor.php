@@ -2,15 +2,15 @@
 /**
  * Class Blocks_Data_Extractor
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay;
 
-use Automattic\WooCommerce\StoreApi\StoreApi;
-use Automattic\WooCommerce\StoreApi\Schemas\ExtendSchema;
-use Automattic\WooCommerce\Blocks\StoreApi\Schemas\CheckoutSchema;
-use Automattic\WooCommerce\Blocks\Integrations\IntegrationRegistry;
+use Automattic\PooCommerce\StoreApi\StoreApi;
+use Automattic\PooCommerce\StoreApi\Schemas\ExtendSchema;
+use Automattic\PooCommerce\Blocks\StoreApi\Schemas\CheckoutSchema;
+use Automattic\PooCommerce\Blocks\Integrations\IntegrationRegistry;
 
 defined( 'ABSPATH' ) || exit; // block direct access.
 
@@ -87,11 +87,11 @@ class Blocks_Data_Extractor {
 	 * @return array
 	 */
 	private function get_mailpoet_data() {
-		$mailpoet_wc_subscription = \MailPoet\DI\ContainerWrapper::getInstance()->get( \MailPoet\WooCommerce\Subscription::class );
+		$mailpoet_wc_subscription = \MailPoet\DI\ContainerWrapper::getInstance()->get( \MailPoet\PooCommerce\Subscription::class );
 		$settings_instance        = \MailPoet\Settings\SettingsController::getInstance();
 		$settings                 = [
-			'defaultText'   => $settings_instance->get( 'woocommerce.optin_on_checkout.message', '' ),
-			'optinEnabled'  => $settings_instance->get( 'woocommerce.optin_on_checkout.enabled', false ),
+			'defaultText'   => $settings_instance->get( 'poocommerce.optin_on_checkout.message', '' ),
+			'optinEnabled'  => $settings_instance->get( 'poocommerce.optin_on_checkout.enabled', false ),
 			'defaultStatus' => false,
 		];
 
@@ -113,7 +113,7 @@ class Blocks_Data_Extractor {
 
 		$blocks_data = $this->integration_registry->get_all_registered_script_data();
 
-		if ( class_exists( 'MailPoet\DI\ContainerWrapper' ) && class_exists( 'MailPoet\WooCommerce\Subscription' ) ) {
+		if ( class_exists( 'MailPoet\DI\ContainerWrapper' ) && class_exists( 'MailPoet\PooCommerce\Subscription' ) ) {
 			$blocks_data += [ 'mailpoet_data' => $this->get_mailpoet_data() ];
 		}
 
@@ -131,9 +131,9 @@ class Blocks_Data_Extractor {
 		$namespaces = [];
 
 		if (
-			class_exists( 'Automattic\WooCommerce\StoreApi\StoreApi' ) &&
-			class_exists( 'Automattic\WooCommerce\StoreApi\Schemas\ExtendSchema' ) &&
-			class_exists( 'Automattic\WooCommerce\Blocks\StoreApi\Schemas\CheckoutSchema' )
+			class_exists( 'Automattic\PooCommerce\StoreApi\StoreApi' ) &&
+			class_exists( 'Automattic\PooCommerce\StoreApi\Schemas\ExtendSchema' ) &&
+			class_exists( 'Automattic\PooCommerce\Blocks\StoreApi\Schemas\CheckoutSchema' )
 		) {
 			try {
 				$checkout_schema = StoreApi::container()->get( ExtendSchema::class )->get_endpoint_schema( CheckoutSchema::IDENTIFIER );

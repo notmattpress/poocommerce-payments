@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_REST_Controller
  *
- * @package WooCommerce\Payments\Admin
+ * @package PooCommerce\Payments\Admin
  */
 
 use WCPay\Core\Exceptions\Server\Request\Invalid_Request_Parameter_Exception;
@@ -23,7 +23,7 @@ class WC_Payments_REST_Controller extends WP_REST_Controller {
 	protected $namespace = 'wc/v3';
 
 	/**
-	 * Client for making requests to the WooCommerce Payments API
+	 * Client for making requests to the PooCommerce Payments API
 	 *
 	 * @var WC_Payments_API_Client
 	 */
@@ -32,7 +32,7 @@ class WC_Payments_REST_Controller extends WP_REST_Controller {
 	/**
 	 * WC_Payments_REST_Controller constructor.
 	 *
-	 * @param WC_Payments_API_Client $api_client - WooCommerce Payments API client.
+	 * @param WC_Payments_API_Client $api_client - PooCommerce Payments API client.
 	 */
 	public function __construct( WC_Payments_API_Client $api_client ) {
 		$this->api_client = $api_client;
@@ -69,6 +69,6 @@ class WC_Payments_REST_Controller extends WP_REST_Controller {
 	 * Override this method if custom permissions required.
 	 */
 	public function check_permission() {
-		return current_user_can( 'manage_woocommerce' );
+		return current_user_can( 'manage_poocommerce' );
 	}
 }

@@ -14,7 +14,7 @@ jest.mock( 'wcpay/data/timeline', () => ( {
 	useTimeline: jest.fn(),
 } ) );
 
-jest.mock( '@woocommerce/components', () => {
+jest.mock( '@poocommerce/components', () => {
 	const { createElement } = jest.requireActual( '@wordpress/element' );
 
 	return {

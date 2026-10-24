@@ -22,9 +22,9 @@ jest.mock( '../hooks', () => ( {
 	usePaymentCompleteHandler: () => null,
 	usePaymentFailHandler: () => null,
 } ) );
-jest.mock( '@woocommerce/blocks-registry', () => ( {
+jest.mock( '@poocommerce/blocks-registry', () => ( {
 	getPaymentMethods: () => ( {
-		woocommerce_payments: { supports: { showSaveOption: false } },
+		poocommerce_payments: { supports: { showSaveOption: false } },
 	} ),
 } ) );
 jest.mock( '@stripe/react-stripe-js', () => ( {
@@ -55,7 +55,7 @@ describe( 'PaymentProcessor', () => {
 
 		render(
 			<PaymentProcessor
-				activePaymentMethod="woocommerce_payments"
+				activePaymentMethod="poocommerce_payments"
 				api={ mockApi }
 				paymentMethodId="card"
 				emitResponse={ {} }
@@ -63,7 +63,7 @@ describe( 'PaymentProcessor', () => {
 				fingerprint=""
 				shouldSavePayment={ false }
 				testingInstructions="Testing instructions"
-				upeMethods={ { card: 'woocommerce_payments' } }
+				upeMethods={ { card: 'poocommerce_payments' } }
 			/>
 		);
 
@@ -77,7 +77,7 @@ describe( 'PaymentProcessor', () => {
 
 		render(
 			<PaymentProcessor
-				activePaymentMethod="woocommerce_payments"
+				activePaymentMethod="poocommerce_payments"
 				api={ mockApi }
 				paymentMethodId="card"
 				emitResponse={ {} }
@@ -85,7 +85,7 @@ describe( 'PaymentProcessor', () => {
 				fingerprint=""
 				shouldSavePayment={ false }
 				testingInstructions="Testing instructions"
-				upeMethods={ { card: 'woocommerce_payments' } }
+				upeMethods={ { card: 'poocommerce_payments' } }
 			/>
 		);
 
@@ -105,7 +105,7 @@ describe( 'PaymentProcessor', () => {
 		let onPaymentSetupCallback;
 		render(
 			<PaymentProcessor
-				activePaymentMethod="woocommerce_payments"
+				activePaymentMethod="poocommerce_payments"
 				api={ mockApi }
 				paymentMethodId="card"
 				emitResponse={ {} }
@@ -115,7 +115,7 @@ describe( 'PaymentProcessor', () => {
 				} }
 				fingerprint=""
 				shouldSavePayment={ false }
-				upeMethods={ { card: { gatewayId: 'woocommerce_payments' } } }
+				upeMethods={ { card: { gatewayId: 'poocommerce_payments' } } }
 				onLoadError={ jest.fn() }
 			/>
 		);
@@ -134,7 +134,7 @@ describe( 'PaymentProcessor', () => {
 		act( () => {
 			render(
 				<PaymentProcessor
-					activePaymentMethod="woocommerce_payments"
+					activePaymentMethod="poocommerce_payments"
 					api={ mockApi }
 					paymentMethodId="card"
 					emitResponse={ {} }
@@ -146,7 +146,7 @@ describe( 'PaymentProcessor', () => {
 					fingerprint=""
 					shouldSavePayment={ false }
 					upeMethods={ {
-						card: { gatewayId: 'woocommerce_payments' },
+						card: { gatewayId: 'poocommerce_payments' },
 					} }
 				/>
 			);
@@ -173,7 +173,7 @@ describe( 'PaymentProcessor', () => {
 		act( () => {
 			render(
 				<PaymentProcessor
-					activePaymentMethod="woocommerce_payments"
+					activePaymentMethod="poocommerce_payments"
 					api={ mockApi }
 					paymentMethodId="card"
 					emitResponse={ {} }
@@ -184,7 +184,7 @@ describe( 'PaymentProcessor', () => {
 					fingerprint=""
 					shouldSavePayment={ false }
 					upeMethods={ {
-						card: { gatewayId: 'woocommerce_payments' },
+						card: { gatewayId: 'poocommerce_payments' },
 					} }
 				/>
 			);
@@ -195,7 +195,7 @@ describe( 'PaymentProcessor', () => {
 			type: 'success',
 			meta: {
 				paymentMethodData: {
-					payment_method: 'woocommerce_payments',
+					payment_method: 'poocommerce_payments',
 					'wcpay-payment-method': PAYMENT_METHOD_ERROR,
 					'wcpay-payment-method-error-code': 'code',
 					'wcpay-payment-method-error-decline-code': 'decline_code',
@@ -233,7 +233,7 @@ describe( 'PaymentProcessor', () => {
 		act( () => {
 			render(
 				<PaymentProcessor
-					activePaymentMethod="woocommerce_payments"
+					activePaymentMethod="poocommerce_payments"
 					api={ mockApi }
 					paymentMethodId="card"
 					emitResponse={ {} }
@@ -244,7 +244,7 @@ describe( 'PaymentProcessor', () => {
 					fingerprint=""
 					shouldSavePayment={ false }
 					upeMethods={ {
-						card: { gatewayId: 'woocommerce_payments' },
+						card: { gatewayId: 'poocommerce_payments' },
 					} }
 				/>
 			);
@@ -276,7 +276,7 @@ describe( 'PaymentProcessor', () => {
 		act( () => {
 			render(
 				<PaymentProcessor
-					activePaymentMethod="woocommerce_payments"
+					activePaymentMethod="poocommerce_payments"
 					api={ mockApi }
 					paymentMethodId="card"
 					emitResponse={ {} }
@@ -287,7 +287,7 @@ describe( 'PaymentProcessor', () => {
 					fingerprint=""
 					shouldSavePayment={ false }
 					upeMethods={ {
-						card: { gatewayId: 'woocommerce_payments' },
+						card: { gatewayId: 'poocommerce_payments' },
 					} }
 				/>
 			);
@@ -298,7 +298,7 @@ describe( 'PaymentProcessor', () => {
 			type: 'success',
 			meta: {
 				paymentMethodData: {
-					payment_method: 'woocommerce_payments',
+					payment_method: 'poocommerce_payments',
 					'wcpay-payment-method': 'paymentMethodId',
 					'wcpay-fraud-prevention-token': '',
 					'wcpay-fingerprint': '',

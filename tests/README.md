@@ -7,7 +7,7 @@ WooPayments has several test suites, each documented alongside the tests it cove
 | **PHP unit** | `tests/unit/` | PHPUnit tests for backend PHP code (`includes/`, `src/`) | [tests/unit/README.md](unit/README.md) |
 | **JavaScript unit** | `tests/js/` | Jest + React Testing Library tests for the `client/` frontend | [tests/js/README.md](js/README.md) |
 | **End-to-end (E2E)** | `tests/e2e/` | Playwright tests exercising full flows in a real WordPress environment | [tests/e2e/README.md](e2e/README.md) |
-| **QIT** | `tests/qit/` | WooCommerce Quality Insights Toolkit suites (E2E, security, malware, PHPStan) for marketplace certification | [tests/qit/README.md](qit/README.md) |
+| **QIT** | `tests/qit/` | PooCommerce Quality Insights Toolkit suites (E2E, security, malware, PHPStan) for marketplace certification | [tests/qit/README.md](qit/README.md) |
 
 ## Quick start
 

@@ -14,7 +14,7 @@ import {
 describe( 'Utilities', () => {
 	test( 'payment method settings link matches expected', () => {
 		expect( getPaymentMethodSettingsUrl( 'foo' ) ).toEqual(
-			'admin.php?page=wc-settings&tab=checkout&section=woocommerce_payments&method=foo'
+			'admin.php?page=wc-settings&tab=checkout&section=poocommerce_payments&method=foo'
 		);
 	} );
 

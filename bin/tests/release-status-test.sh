@@ -27,7 +27,7 @@ make_fixture() {
 		git config user.name t
 		mkdir -p changelog bin
 		touch changelog/.gitkeep
-		cat > woocommerce-payments.php <<'PHP'
+		cat > poocommerce-payments.php <<'PHP'
 <?php
 /**
  * Plugin Name: WooPayments
@@ -134,7 +134,7 @@ DIR=$(make_fixture)
 	cd "$DIR"
 	# Roll every version file back to 10.6.0 — consistent among themselves, but
 	# mismatched with the branch name.
-	sed -i.bak 's/Version: 10.7.0/Version: 10.6.0/' woocommerce-payments.php && rm -f woocommerce-payments.php.bak
+	sed -i.bak 's/Version: 10.7.0/Version: 10.6.0/' poocommerce-payments.php && rm -f poocommerce-payments.php.bak
 	echo '{"name":"f","version":"10.6.0"}' > package.json
 	echo '{"name":"f","version":"10.6.0","lockfileVersion":3,"packages":{"":{"name":"f","version":"10.6.0"}}}' > package-lock.json
 	echo 'Stable tag: 10.6.0' > readme.txt

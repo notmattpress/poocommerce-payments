@@ -3,7 +3,7 @@
  */
 import { __, sprintf } from '@wordpress/i18n';
 import moment from 'moment';
-import { getHistory } from '@woocommerce/navigation';
+import { getHistory } from '@poocommerce/navigation';
 
 /**
  * Internal dependencies
@@ -102,8 +102,8 @@ export const getDisputeResolutionTask = (
 		isDismissable: false,
 		showActionButton: true,
 		actionLabel: canOpenSingleDispute
-			? __( 'Respond now', 'woocommerce-payments' )
-			: __( 'See disputes', 'woocommerce-payments' ),
+			? __( 'Respond now', 'poocommerce-payments' )
+			: __( 'See disputes', 'poocommerce-payments' ),
 		action: handleClick,
 		onClick: () => {
 			// Only handle clicks on the action button.
@@ -121,43 +121,43 @@ export const getDisputeResolutionTask = (
 			? sprintf(
 					__(
 						'Respond to a dispute for %s – Last day',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					amountFormatted
 			  )
 			: sprintf(
-					__( 'Respond to a dispute for %s', 'woocommerce-payments' ),
+					__( 'Respond to a dispute for %s', 'poocommerce-payments' ),
 					amountFormatted
 			  );
 	} else if ( activeDisputeCount === 1 ) {
 		disputeTask.title = isDueToday
 			? __(
 					'Respond to an active dispute – Last day',
-					'woocommerce-payments'
+					'poocommerce-payments'
 			  )
-			: __( 'Respond to an active dispute', 'woocommerce-payments' );
+			: __( 'Respond to an active dispute', 'poocommerce-payments' );
 	} else if ( amountEntries.length === 1 ) {
 		const [ currency, amount ] = amountEntries[ 0 ];
 		disputeTask.title = sprintf(
 			__(
 				'Respond to %d active disputes for a total of %s',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			activeDisputeCount,
 			formatCurrency( amount, currency )
 		);
 	} else {
 		disputeTask.title = sprintf(
-			__( 'Respond to %d active disputes', 'woocommerce-payments' ),
+			__( 'Respond to %d active disputes', 'poocommerce-payments' ),
 			activeDisputeCount
 		);
 	}
 
 	if ( isPastDue ) {
-		disputeTask.content = __( 'Response overdue', 'woocommerce-payments' );
+		disputeTask.content = __( 'Response overdue', 'poocommerce-payments' );
 	} else if ( isDueToday ) {
 		disputeTask.content = sprintf(
-			__( 'Respond today by %s', 'woocommerce-payments' ),
+			__( 'Respond today by %s', 'poocommerce-payments' ),
 			// Show the deadline time in the local timezone: e.g. "11:59 PM".
 			formatDateTimeFromString( earliestDueBy, {
 				customFormat: 'g:i A',
@@ -165,7 +165,7 @@ export const getDisputeResolutionTask = (
 		);
 	} else {
 		disputeTask.content = sprintf(
-			__( 'By %s – %s left to respond', 'woocommerce-payments' ),
+			__( 'By %s – %s left to respond', 'poocommerce-payments' ),
 			// Show the deadline date in the local timezone: e.g. "Jan 1, 2021".
 			formatDateTimeFromString( earliestDueBy ),
 			moment.utc( earliestDueBy ).fromNow( true ) // E.g. "2 days".

@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Printed_Receipt_Sample_Order
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 use WCPay\Constants\Currency_Code;

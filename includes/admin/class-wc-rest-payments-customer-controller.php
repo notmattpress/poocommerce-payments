@@ -2,7 +2,7 @@
 /**
  * Class WC_REST_Payments_Customer_Controller
  *
- * @package WooCommerce\Payments\Admin
+ * @package PooCommerce\Payments\Admin
  */
 
 use WCPay\Core\Server\Request;
@@ -32,7 +32,7 @@ class WC_REST_Payments_Customer_Controller extends WC_Payments_REST_Controller {
 	/**
 	 * Constructor.
 	 *
-	 * @param WC_Payments_API_Client       $api_client    WooCommerce Payments API client.
+	 * @param WC_Payments_API_Client       $api_client    PooCommerce Payments API client.
 	 * @param WC_Payments_Customer_Service $customer_service Token service.
 	 */
 	public function __construct(
@@ -152,122 +152,122 @@ class WC_REST_Payments_Customer_Controller extends WC_Payments_REST_Controller {
 			'type'       => 'object',
 			'properties' => [
 				'id'              => [
-					'description' => __( 'ID for the payment method.', 'woocommerce-payments' ),
+					'description' => __( 'ID for the payment method.', 'poocommerce-payments' ),
 					'type'        => 'string',
 					'context'     => [ 'view' ],
 				],
 				'type'            => [
-					'description' => __( 'Type of the payment method.', 'woocommerce-payments' ),
+					'description' => __( 'Type of the payment method.', 'poocommerce-payments' ),
 					'type'        => 'string',
 					'enum'        => [ 'card', 'sepa_debit', 'link' ],
 					'context'     => [ 'view' ],
 				],
 				'billing_details' => [
-					'description' => __( 'Billing details for the payment method.', 'woocommerce-payments' ),
+					'description' => __( 'Billing details for the payment method.', 'poocommerce-payments' ),
 					'type'        => 'object',
 					'context'     => [ 'view' ],
 					'properties'  => [
 						'address' => [
-							'description' => __( 'Address associated with the billing details.', 'woocommerce-payments' ),
+							'description' => __( 'Address associated with the billing details.', 'poocommerce-payments' ),
 							'type'        => 'object',
 							'context'     => [ 'view' ],
 							'properties'  => [
 								'city'        => [
-									'description' => __( 'City of the billing address.', 'woocommerce-payments' ),
+									'description' => __( 'City of the billing address.', 'poocommerce-payments' ),
 									'type'        => 'string',
 									'context'     => [ 'view' ],
 								],
 								'country'     => [
-									'description' => __( 'Country of the billing address.', 'woocommerce-payments' ),
+									'description' => __( 'Country of the billing address.', 'poocommerce-payments' ),
 									'type'        => 'string',
 									'context'     => [ 'view' ],
 								],
 								'line1'       => [
-									'description' => __( 'Line 1 of the billing address.', 'woocommerce-payments' ),
+									'description' => __( 'Line 1 of the billing address.', 'poocommerce-payments' ),
 									'type'        => 'string',
 									'context'     => [ 'view' ],
 								],
 								'line2'       => [
-									'description' => __( 'Line 2 of the billing address.', 'woocommerce-payments' ),
+									'description' => __( 'Line 2 of the billing address.', 'poocommerce-payments' ),
 									'type'        => 'string',
 									'context'     => [ 'view' ],
 								],
 								'postal_code' => [
-									'description' => __( 'Postal code of the billing address.', 'woocommerce-payments' ),
+									'description' => __( 'Postal code of the billing address.', 'poocommerce-payments' ),
 									'type'        => 'string',
 									'context'     => [ 'view' ],
 								],
 								'state'       => [
-									'description' => __( 'State of the billing address.', 'woocommerce-payments' ),
+									'description' => __( 'State of the billing address.', 'poocommerce-payments' ),
 									'type'        => 'string',
 									'context'     => [ 'view' ],
 								],
 							],
 						],
 						'email'   => [
-							'description' => __( 'Email associated with the billing details.', 'woocommerce-payments' ),
+							'description' => __( 'Email associated with the billing details.', 'poocommerce-payments' ),
 							'type'        => 'string',
 							'format'      => 'email',
 							'context'     => [ 'view' ],
 						],
 						'name'    => [
-							'description' => __( 'Name associated with the billing details.', 'woocommerce-payments' ),
+							'description' => __( 'Name associated with the billing details.', 'poocommerce-payments' ),
 							'type'        => 'string',
 							'context'     => [ 'view' ],
 						],
 						'phone'   => [
-							'description' => __( 'Phone number associated with the billing details.', 'woocommerce-payments' ),
+							'description' => __( 'Phone number associated with the billing details.', 'poocommerce-payments' ),
 							'type'        => 'string',
 							'context'     => [ 'view' ],
 						],
 					],
 				],
 				'card'            => [
-					'description' => __( 'Card details for the payment method.', 'woocommerce-payments' ),
+					'description' => __( 'Card details for the payment method.', 'poocommerce-payments' ),
 					'type'        => 'object',
 					'context'     => [ 'view' ],
 					'properties'  => [
 						'brand'     => [
-							'description' => __( 'Brand of the card.', 'woocommerce-payments' ),
+							'description' => __( 'Brand of the card.', 'poocommerce-payments' ),
 							'type'        => 'string',
 							'context'     => [ 'view' ],
 						],
 						'last4'     => [
-							'description' => __( 'Last 4 digits of the card.', 'woocommerce-payments' ),
+							'description' => __( 'Last 4 digits of the card.', 'poocommerce-payments' ),
 							'type'        => 'string',
 							'context'     => [ 'view' ],
 						],
 						'exp_month' => [
-							'description' => __( 'Expiration month of the card.', 'woocommerce-payments' ),
+							'description' => __( 'Expiration month of the card.', 'poocommerce-payments' ),
 							'type'        => 'integer',
 							'context'     => [ 'view' ],
 						],
 						'exp_year'  => [
-							'description' => __( 'Expiration year of the card.', 'woocommerce-payments' ),
+							'description' => __( 'Expiration year of the card.', 'poocommerce-payments' ),
 							'type'        => 'string',
 							'context'     => [ 'view' ],
 						],
 					],
 				],
 				'sepa_debit'      => [
-					'description' => __( 'SEPA Debit details for the payment method.', 'woocommerce-payments' ),
+					'description' => __( 'SEPA Debit details for the payment method.', 'poocommerce-payments' ),
 					'type'        => 'object',
 					'context'     => [ 'view' ],
 					'properties'  => [
 						'last4' => [
-							'description' => __( 'Last 4 digits of the SEPA Debit.', 'woocommerce-payments' ),
+							'description' => __( 'Last 4 digits of the SEPA Debit.', 'poocommerce-payments' ),
 							'type'        => 'string',
 							'context'     => [ 'view' ],
 						],
 					],
 				],
 				'link'            => [
-					'description' => __( 'Link details for the payment method.', 'woocommerce-payments' ),
+					'description' => __( 'Link details for the payment method.', 'poocommerce-payments' ),
 					'type'        => 'object',
 					'context'     => [ 'view' ],
 					'properties'  => [
 						'email' => [
-							'description' => __( 'Email associated with the link.', 'woocommerce-payments' ),
+							'description' => __( 'Email associated with the link.', 'poocommerce-payments' ),
 							'type'        => 'string',
 							'format'      => 'email',
 							'context'     => [ 'view' ],

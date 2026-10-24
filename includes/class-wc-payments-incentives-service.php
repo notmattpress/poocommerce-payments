@@ -2,14 +2,14 @@
 /**
  * Class WC_Payments_Incentives_Service
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-use Automattic\WooCommerce\Admin\WCAdminHelper;
+use Automattic\PooCommerce\Admin\WCAdminHelper;
 use WCPay\Constants\Order_Mode;
 use WCPay\Database_Cache;
 
@@ -17,14 +17,14 @@ use WCPay\Database_Cache;
  * Class handling WooPayments incentives related business logic.
  */
 class WC_Payments_Incentives_Service {
-	const PREFIX = 'woocommerce_admin_pes_incentive_';
+	const PREFIX = 'poocommerce_admin_pes_incentive_';
 
 	/**
 	 * The option name used to store whether the store had WooPayments in use.
 	 *
 	 * We use the same option key as the WC core suggestion incentives.
 	 *
-	 * @see \Automattic\WooCommerce\Internal\Admin\Suggestions\Incentives\WooPayments
+	 * @see \Automattic\PooCommerce\Internal\Admin\Suggestions\Incentives\WooPayments
 	 */
 	const STORE_HAD_WOOPAYMENTS_OPTION_NAME = self::PREFIX . 'woopayments_store_had_woopayments';
 
@@ -33,14 +33,14 @@ class WC_Payments_Incentives_Service {
 	 *
 	 * We use the same option key as the WC core suggestion incentives.
 	 *
-	 * @see \Automattic\WooCommerce\Internal\Admin\Suggestions\Incentives\WooPayments
+	 * @see \Automattic\PooCommerce\Internal\Admin\Suggestions\Incentives\WooPayments
 	 */
 	const STORE_HAD_WOOPAYMENTS_VERSION_OPTION_NAME = self::STORE_HAD_WOOPAYMENTS_OPTION_NAME . '_version';
 
 	/**
 	 * The version of the logic used to determine if the store had WooPayments in use.
 	 *
-	 * The determined value is stored long-term (see `has_wcpay()`), and WooCommerce core
+	 * The determined value is stored long-term (see `has_wcpay()`), and PooCommerce core
 	 * stores its own determination under the very same option name. Persisting the version
 	 * alongside the value lets us tell a value determined by the current logic from one
 	 * determined by an earlier (or by WC core's, potentially older) logic, so a stale
@@ -105,7 +105,7 @@ class WC_Payments_Incentives_Service {
 
 		// We use the same transient keys as the WC core suggestion incentives.
 		// This way we can reuse the same cache for the incentives across the store admin.
-		// @see \Automattic\WooCommerce\Internal\Admin\Suggestions\Incentives\WooPayments.
+		// @see \Automattic\PooCommerce\Internal\Admin\Suggestions\Incentives\WooPayments.
 		$this->cache_transient_name              = self::PREFIX . 'woopayments_cache';
 		$this->store_has_orders_transient_name   = self::PREFIX . 'woopayments_store_has_orders';
 		$this->store_had_woopayments_option_name = self::STORE_HAD_WOOPAYMENTS_OPTION_NAME;
@@ -120,9 +120,9 @@ class WC_Payments_Incentives_Service {
 	 */
 	public function init_hooks() {
 		add_action( 'admin_menu', [ $this, 'add_payments_menu_badge' ] );
-		add_filter( 'woocommerce_admin_allowed_promo_notes', [ $this, 'allowed_promo_notes' ] );
-		add_filter( 'woocommerce_admin_woopayments_onboarding_task_badge', [ $this, 'onboarding_task_badge' ] );
-		add_filter( 'woocommerce_admin_woopayments_onboarding_task_additional_data', [ $this, 'onboarding_task_additional_data' ], 20 );
+		add_filter( 'poocommerce_admin_allowed_promo_notes', [ $this, 'allowed_promo_notes' ] );
+		add_filter( 'poocommerce_admin_woopayments_onboarding_task_badge', [ $this, 'onboarding_task_badge' ] );
+		add_filter( 'poocommerce_admin_woopayments_onboarding_task_additional_data', [ $this, 'onboarding_task_additional_data' ], 20 );
 	}
 
 	/**
@@ -296,7 +296,7 @@ class WC_Payments_Incentives_Service {
 			'country'      => $country_code,
 			// Store locale, e.g. `en_US`.
 			'locale'       => get_locale(),
-			// WooCommerce store active for duration in seconds.
+			// PooCommerce store active for duration in seconds.
 			'active_for'   => WCAdminHelper::get_wcadmin_active_for_in_seconds(),
 			'has_orders'   => $this->has_orders(),
 			// Whether the store has at least one payment gateway enabled.
@@ -431,7 +431,7 @@ class WC_Payments_Incentives_Service {
 			// A stored positive is only trusted when the current logic determined it. Earlier
 			// revisions counted test-mode usage (a test-drive account or a test-mode order) as
 			// the real thing and froze the result, so those positives get re-determined once.
-			// WooCommerce core writes this same option and may still be running an older
+			// PooCommerce core writes this same option and may still be running an older
 			// revision of the shared logic, so this is what keeps the two safe to ship in any
 			// order rather than whichever one runs first winning permanently.
 			if ( ! $stored_value
@@ -465,7 +465,7 @@ class WC_Payments_Incentives_Service {
 		if ( false === $had_wcpay && ! empty(
 			wc_get_orders(
 				[
-					'payment_method' => 'woocommerce_payments',
+					'payment_method' => 'poocommerce_payments',
 					'return'         => 'ids',
 					'limit'          => 1,
 					'orderby'        => 'none',

@@ -17,7 +17,7 @@ import {
 // `…-variation-selector-attribute` element, with the attribute name in
 // `data-wp-context` and the chosen value on the checked pill / the <select>.
 const attributeGroup = ( name, optionsHtml ) =>
-	`<div class="wp-block-woocommerce-add-to-cart-with-options-variation-selector-attribute" data-wp-context='${ JSON.stringify(
+	`<div class="wp-block-poocommerce-add-to-cart-with-options-variation-selector-attribute" data-wp-context='${ JSON.stringify(
 		{ name }
 	) }'>${ optionsHtml }</div>`;
 

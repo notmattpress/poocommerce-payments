@@ -11,7 +11,7 @@ import FingerprintJS from '@fingerprintjs/fingerprintjs';
 
 export const FINGERPRINT_GENERIC_ERROR = __(
 	'An error was encountered when preparing the payment form. Please try again later.',
-	'woocommerce-payments'
+	'poocommerce-payments'
 );
 
 export const getFingerprint = async () => {

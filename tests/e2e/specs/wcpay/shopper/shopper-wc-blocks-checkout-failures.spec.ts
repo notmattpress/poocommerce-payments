@@ -58,7 +58,7 @@ const errorsInsideStripeFrame = [
 ];
 
 describeif( shouldRunWCBlocksTests )(
-	'WooCommerce Blocks > Checkout failures',
+	'PooCommerce Blocks > Checkout failures',
 	{ tag: [ '@critical', '@blocks' ] },
 	() => {
 		let shopperPage: Page;

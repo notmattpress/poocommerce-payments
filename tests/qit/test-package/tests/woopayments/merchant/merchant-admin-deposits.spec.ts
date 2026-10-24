@@ -11,7 +11,7 @@ test.describe( 'Merchant deposits', { tag: '@merchant' }, () => {
 
 		// Wait for the deposits table to load.
 		await adminPage
-			.locator( '.woocommerce-table__table.is-loading' )
+			.locator( '.poocommerce-table__table.is-loading' )
 			.waitFor( { state: 'hidden' } );
 
 		await expect(
@@ -28,7 +28,7 @@ test.describe( 'Merchant deposits', { tag: '@merchant' }, () => {
 
 		// Wait for the deposits table to load.
 		await adminPage
-			.locator( '.woocommerce-table__table.is-loading' )
+			.locator( '.poocommerce-table__table.is-loading' )
 			.waitFor( { state: 'hidden' } );
 
 		// Open the advanced filters.
@@ -54,7 +54,7 @@ test.describe( 'Merchant deposits', { tag: '@merchant' }, () => {
 		} );
 		// TODO: This visual regression test is not flaky, but we should revisit the approach.
 		// await expect(
-		// 	adminPage.locator( '.woocommerce-filters' ).last()
+		// 	adminPage.locator( '.poocommerce-filters' ).last()
 		// ).toHaveScreenshot();
 	} );
 } );

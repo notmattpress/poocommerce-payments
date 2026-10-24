@@ -6,7 +6,7 @@ This directory contains scripts used by GitHub Actions workflows for dynamic ver
 
 ### `generate-wc-matrix.sh`
 
-Generates the WooCommerce version matrix for E2E tests with dynamic version resolution and optimized PHP version strategy.
+Generates the PooCommerce version matrix for E2E tests with dynamic version resolution and optimized PHP version strategy.
 
 **Usage:**
 
@@ -65,7 +65,7 @@ The workflow uses an optimized PHP version strategy to reduce job count while ma
 
 ### Script Execution
 
-1. Fetches the latest WooCommerce version from `https://api.wordpress.org/plugins/info/1.0/woocommerce.json`
+1. Fetches the latest PooCommerce version from `https://api.wordpress.org/plugins/info/1.0/poocommerce.json`
 2. Dynamically calculates the L-1 version by finding the latest stable version in the previous major branch
 3. Fetches beta and RC versions from the current major branch only
 4. Outputs JSON object to stdout for matrix generation
@@ -105,7 +105,7 @@ BETA_VERSION=$(echo "$SCRIPT_RESULT" | jq -r '.metadata.beta_version')
 
 ## Future Considerations
 
-- Automatically adapts to new WooCommerce releases
+- Automatically adapts to new PooCommerce releases
 - Will include beta versions when they become available
 - Supports L-2 policy implementation if needed
 - Maintains business continuity with WC 7.7.0 support

@@ -204,7 +204,7 @@ describe( 'ExpressCheckoutCartApi', () => {
 		// `response.headers.get( 'Nonce' )` returns `null` in that case, and
 		// we must not let that overwrite the working store_api_nonce default
 		// on the next request — otherwise it serializes to the literal string
-		// "null" and the Store API rejects with `woocommerce_rest_missing_nonce`.
+		// "null" and the Store API rejects with `poocommerce_rest_missing_nonce`.
 		global.wcpayExpressCheckoutParams.button_context = 'cart';
 		apiFetch.mockResolvedValue( {
 			headers: new Headers(),
@@ -249,7 +249,7 @@ describe( 'ExpressCheckoutCartApi', () => {
 		rememberElementCurrency( 'eur' );
 
 		const api = new ExpressCheckoutCartApi();
-		await api.placeOrder( { payment_method: 'woocommerce_payments' } );
+		await api.placeOrder( { payment_method: 'poocommerce_payments' } );
 
 		const callArgs = apiFetch.mock.calls[ 0 ][ 0 ];
 
@@ -266,7 +266,7 @@ describe( 'ExpressCheckoutCartApi', () => {
 		} );
 
 		const api = new ExpressCheckoutCartApi();
-		await api.placeOrder( { payment_method: 'woocommerce_payments' } );
+		await api.placeOrder( { payment_method: 'poocommerce_payments' } );
 
 		const callArgs = apiFetch.mock.calls[ 0 ][ 0 ];
 

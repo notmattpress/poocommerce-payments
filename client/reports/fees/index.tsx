@@ -150,7 +150,7 @@ export const FeesReport = ( {
 
 	useEffect( () => {
 		if ( isLoading && ! previousLoadingAnnouncementRef.current ) {
-			speak( __( 'Loading fees', 'woocommerce-payments' ), 'polite' );
+			speak( __( 'Loading fees', 'poocommerce-payments' ), 'polite' );
 		}
 		previousLoadingAnnouncementRef.current = isLoading;
 	}, [ isLoading ] );
@@ -175,7 +175,7 @@ export const FeesReport = ( {
 
 			const message = sprintf(
 				/* translators: %d: number of fees loaded into the report table. */
-				__( '%d fees loaded.', 'woocommerce-payments' ),
+				__( '%d fees loaded.', 'poocommerce-payments' ),
 				totalItems
 			);
 			if ( speakTimerRef.current ) {
@@ -216,20 +216,20 @@ export const FeesReport = ( {
 			<ReportState
 				title={ __(
 					'Fees report unavailable',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				) }
 				description={
 					<>
 						<span>
 							{ __(
 								"We couldn't load your fees data.",
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 						</span>{ ' ' }
 						<span>
 							{ __(
 								'Try again in a few minutes.',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 						</span>
 					</>
@@ -244,7 +244,7 @@ export const FeesReport = ( {
 							onReload();
 						} }
 					>
-						{ __( 'Reload report', 'woocommerce-payments' ) }
+						{ __( 'Reload report', 'poocommerce-payments' ) }
 					</Button>
 				}
 				icon={ calendar }
@@ -264,11 +264,11 @@ export const FeesReport = ( {
 			   empty states do not shift focus — keep this in sync if you add focus
 			   management later. */
 			<ReportState
-				title={ __( 'No fees yet', 'woocommerce-payments' ) }
+				title={ __( 'No fees yet', 'poocommerce-payments' ) }
 				className="wcpay-reports-state--empty wcpay-reports-state--fees-empty"
 				description={ __(
 					'Fees will appear here once you start receiving payments.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				) }
 				icon={ calendar }
 				descriptionId={ initialEmptyDescriptionId }
@@ -322,7 +322,7 @@ export const FeesReport = ( {
 						<DataViews.Search
 							label={ __(
 								'Search fees',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 						/>
 						<DataViews.FiltersToggle />
@@ -342,12 +342,12 @@ export const FeesReport = ( {
 					<ReportState
 						title={ __(
 							'No fees to display',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 						className="wcpay-reports-state--empty wcpay-reports-state--fees-empty"
 						description={ __(
 							'Fees will appear here.',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 						icon={ calendar }
 						descriptionId={ filteredEmptyDescriptionId }

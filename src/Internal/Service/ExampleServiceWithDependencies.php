@@ -2,12 +2,12 @@
 /**
  * Class ExampleServiceWithDependencies
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Internal\Service;
 
-use Automattic\WooCommerce\Utilities\PluginUtil;
+use Automattic\PooCommerce\Utilities\PluginUtil;
 use Exception;
 use WCPay\Core\Mode;
 
@@ -43,7 +43,7 @@ class ExampleServiceWithDependencies {
 	 *
 	 * @param ExampleService $example_service A class from `src`.
 	 * @param Mode           $mode            Legacy class from `includes`.
-	 * @param PluginUtil     $plugin_util     WooCommerce Core class.
+	 * @param PluginUtil     $plugin_util     PooCommerce Core class.
 	 */
 	public function __construct(
 		ExampleService $example_service,

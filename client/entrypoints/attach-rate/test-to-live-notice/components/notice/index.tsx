@@ -27,13 +27,13 @@ const TestToLiveNotice: React.FC = () => {
 				{
 					label: __(
 						'Turn on live payments',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					variant: 'primary',
 					url: ctaUrl,
 				},
 				{
-					label: __( 'Maybe later', 'woocommerce-payments' ),
+					label: __( 'Maybe later', 'poocommerce-payments' ),
 					variant: 'link',
 					url: snoozeUrl,
 				},
@@ -42,7 +42,7 @@ const TestToLiveNotice: React.FC = () => {
 			{ createInterpolateElement(
 				__(
 					"<strong>You're ready to take real payments.</strong> Switch from test mode to start charging customers.",
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				{ strong: <strong /> }
 			) }

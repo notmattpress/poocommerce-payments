@@ -1,8 +1,8 @@
 /**
  * External dependencies
  */
-import { ReportFilters } from '@woocommerce/components';
-import { getQuery } from '@woocommerce/navigation';
+import { ReportFilters } from '@poocommerce/components';
+import { getQuery } from '@poocommerce/navigation';
 
 /**
  * Internal dependencies
@@ -33,7 +33,7 @@ export const DepositsFilters = ( props ) => {
 	};
 
 	return (
-		<div className="woocommerce-filters-deposits">
+		<div className="poocommerce-filters-deposits">
 			<ReportFilters
 				filters={ populateDepositCurrencies( filters ) }
 				advancedFilters={ advancedFilters }

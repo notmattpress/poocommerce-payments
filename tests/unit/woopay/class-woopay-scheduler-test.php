@@ -2,7 +2,7 @@
 /**
  * Class WooPay_Scheduler_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\Constants\Country_Code;
