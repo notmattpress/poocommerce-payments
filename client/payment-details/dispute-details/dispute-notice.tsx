@@ -35,7 +35,7 @@ const DisputeNotice: React.FC< DisputeNoticeProps > = ( {
 		reasons[ dispute.reason ]?.claim ??
 		__(
 			'The cardholder claims this is an unauthorized charge.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		);
 
 	// Format the deadline date
@@ -59,43 +59,43 @@ const DisputeNotice: React.FC< DisputeNoticeProps > = ( {
 			noticeText = sprintf(
 				__(
 					"<strong>The customer has filed an inquiry through Klarna, reporting a return.</strong> This is a standard part of Klarna's returns process. Once you receive the item, issue the refund as usual. If it remains unresolved by %s, the inquiry may escalate to a dispute, which you can challenge with evidence. <link>Learn more about Klarna inquiries and disputes</link>",
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				dueByDate
 			);
 			noticeElements.link = (
 				// @ts-expect-error: children is provided when interpolating the component
-				<ExternalLink href="https://woocommerce.com/document/woopayments/payment-methods/buy-now-pay-later/#klarna-inquiries-returns" />
+				<ExternalLink href="https://poocommerce.com/document/woopayments/payment-methods/buy-now-pay-later/#klarna-inquiries-returns" />
 			);
 		} else {
 			const klarnaReasonClauses: Record< string, string > = {
 				fraudulent: __(
 					'claiming this transaction was unauthorized',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				product_not_received: __(
 					'claiming they did not receive the product',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				product_unacceptable: __(
 					'claiming the product was unacceptable',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				duplicate: __(
 					'claiming this transaction was duplicated',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 			};
 
 			const reasonClause =
 				klarnaReasonClauses[ dispute.reason ] ??
-				__( 'regarding this transaction', 'woocommerce-payments' );
+				__( 'regarding this transaction', 'poocommerce-payments' );
 
 			/* translators: %1$s is the reason clause, eg "claiming this transaction was unauthorized". %2$s is the deadline date. */
 			noticeText = sprintf(
 				__(
 					'<strong>The customer has filed an inquiry through Klarna, %1$s.</strong> You can resolve this by working it out with the customer directly or issuing a refund. If unresolved by %2$s, the inquiry may escalate to a dispute, which you can challenge with evidence.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				reasonClause,
 				dueByDate
@@ -109,7 +109,7 @@ const DisputeNotice: React.FC< DisputeNoticeProps > = ( {
 			? sprintf(
 					__(
 						"<strong>%1$s</strong> If you believe this is incorrect, you have until <strong>%2$s to submit evidence to your customer's bank, %3$s.</strong> Alternatively, you can issue a refund.",
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					shopperDisputeReason,
 					dueByDate,
@@ -118,7 +118,7 @@ const DisputeNotice: React.FC< DisputeNoticeProps > = ( {
 			: sprintf(
 					__(
 						"<strong>%1$s</strong> If you believe this is incorrect, you have until <strong>%2$s to submit evidence to your customer's bank.</strong> Alternatively, you can issue a refund.",
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					shopperDisputeReason,
 					dueByDate
@@ -131,7 +131,7 @@ const DisputeNotice: React.FC< DisputeNoticeProps > = ( {
 			? sprintf(
 					__(
 						'Your customer’s bank, %1$s, claims this payment violates Visa’s rules. <strong>You can challenge the dispute by %2$s, or accept it.</strong> If you accept the dispute, you will forfeit the funds and pay the dispute fee. Challenging adds an additional $500 USD dispute fee that is only returned to you if you win.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					bankName,
 					dueByDate
@@ -139,7 +139,7 @@ const DisputeNotice: React.FC< DisputeNoticeProps > = ( {
 			: sprintf(
 					__(
 						'Your customer’s bank claims this payment violates Visa’s rules. <strong>You can challenge the dispute by %1$s, or accept it.</strong> If you accept the dispute, you will forfeit the funds and pay the dispute fee. Challenging adds an additional $500 USD dispute fee that is only returned to you if you win.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					dueByDate
 			  );
@@ -151,7 +151,7 @@ const DisputeNotice: React.FC< DisputeNoticeProps > = ( {
 			? sprintf(
 					__(
 						"<strong>%1$s</strong> If you believe this is incorrect, you have until <strong>%2$s to challenge the dispute with your customer's bank, %3$s.</strong> If you accept the dispute, you will forfeit the funds and pay the dispute fee.",
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					shopperDisputeReason,
 					dueByDate,
@@ -160,7 +160,7 @@ const DisputeNotice: React.FC< DisputeNoticeProps > = ( {
 			: sprintf(
 					__(
 						"<strong>%1$s</strong> If you believe this is incorrect, you have until <strong>%2$s to challenge the dispute with your customer's bank.</strong> If you accept the dispute, you will forfeit the funds and pay the dispute fee.",
-						'woocommerce-payments'
+						'poocommerce-payments'
 					),
 					shopperDisputeReason,
 					dueByDate

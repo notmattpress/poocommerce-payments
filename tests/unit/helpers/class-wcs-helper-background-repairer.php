@@ -2,7 +2,7 @@
 /**
  * Subscription WCS_Background_Repairer helper.
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 /**

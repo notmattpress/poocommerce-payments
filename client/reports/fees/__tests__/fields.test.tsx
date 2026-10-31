@@ -39,7 +39,7 @@ jest.mock( 'multi-currency/interface/functions', () => ( {
 		`$${ ( amount / 100 ).toFixed( 2 ) } ${ currency.toUpperCase() }`,
 } ) );
 
-jest.mock( '@woocommerce/components', () => ( {
+jest.mock( '@poocommerce/components', () => ( {
 	Link: ( {
 		children,
 		href,

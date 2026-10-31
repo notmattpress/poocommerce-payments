@@ -6,7 +6,7 @@
 import { __ } from '@wordpress/i18n';
 
 export const decimalCurrencyRoundingOptions = {
-	'0': __( 'None', 'woocommerce-payments' ),
+	'0': __( 'None', 'poocommerce-payments' ),
 	'0.25': '0.25',
 	'0.50': '0.50',
 	'1.00': '1.00 (recommended)',
@@ -24,12 +24,12 @@ export const zeroDecimalCurrencyRoundingOptions = {
 };
 
 export const decimalCurrencyCharmOptions = {
-	'0.00': __( 'None', 'woocommerce-payments' ),
+	'0.00': __( 'None', 'poocommerce-payments' ),
 	'-0.01': '-0.01',
 	'-0.05': '-0.05',
 };
 export const zeroDecimalCurrencyCharmOptions = {
-	'0.00': __( 'None', 'woocommerce-payments' ),
+	'0.00': __( 'None', 'poocommerce-payments' ),
 	'-1': '-1',
 	'-5': '-5',
 	'-10': '-10',

@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Post_Kyc_Activation_Email_Service_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\Constants\Order_Mode;
@@ -68,7 +68,7 @@ class WC_Payments_Post_Kyc_Activation_Email_Service_Test extends WCPAY_UnitTestC
 		// Action Scheduler entries persist across tests; clear any leftovers
 		// so this test sees an empty queue regardless of prior test order.
 		foreach ( WC_Payments_Post_Kyc_Activation_Email_Service::STAGE_DAYS as $stage ) {
-			as_unschedule_all_actions( WC_Payments_Post_Kyc_Activation_Email_Service::SEND_HOOK, [ $stage ], 'woocommerce-payments' );
+			as_unschedule_all_actions( WC_Payments_Post_Kyc_Activation_Email_Service::SEND_HOOK, [ $stage ], 'poocommerce-payments' );
 		}
 	}
 
@@ -82,7 +82,7 @@ class WC_Payments_Post_Kyc_Activation_Email_Service_Test extends WCPAY_UnitTestC
 		// Action Scheduler entries persist across tests; unschedule any leftovers
 		// so subsequent tests start with a clean queue.
 		foreach ( WC_Payments_Post_Kyc_Activation_Email_Service::STAGE_DAYS as $stage ) {
-			as_unschedule_all_actions( WC_Payments_Post_Kyc_Activation_Email_Service::SEND_HOOK, [ $stage ], 'woocommerce-payments' );
+			as_unschedule_all_actions( WC_Payments_Post_Kyc_Activation_Email_Service::SEND_HOOK, [ $stage ], 'poocommerce-payments' );
 		}
 
 		if ( null !== $this->test_order_id ) {
@@ -169,7 +169,7 @@ class WC_Payments_Post_Kyc_Activation_Email_Service_Test extends WCPAY_UnitTestC
 		$this->set_up_eligible_state();
 
 		$order = wc_create_order();
-		$order->set_payment_method( 'woocommerce_payments' );
+		$order->set_payment_method( 'poocommerce_payments' );
 		$order->set_status( 'completed' );
 		$order->update_meta_data( WC_Payments_Order_Service::WCPAY_MODE_META_KEY, Order_Mode::PRODUCTION );
 		$order->save();
@@ -185,7 +185,7 @@ class WC_Payments_Post_Kyc_Activation_Email_Service_Test extends WCPAY_UnitTestC
 		$this->set_up_eligible_state();
 
 		$order = wc_create_order();
-		$order->set_payment_method( 'woocommerce_payments' );
+		$order->set_payment_method( 'poocommerce_payments' );
 		$order->set_status( 'completed' );
 		$order->update_meta_data( WC_Payments_Order_Service::WCPAY_MODE_META_KEY, Order_Mode::TEST );
 		$order->save();
@@ -209,7 +209,7 @@ class WC_Payments_Post_Kyc_Activation_Email_Service_Test extends WCPAY_UnitTestC
 
 		foreach ( WC_Payments_Post_Kyc_Activation_Email_Service::STAGE_DAYS as $stage ) {
 			$this->assertNotFalse(
-				as_next_scheduled_action( WC_Payments_Post_Kyc_Activation_Email_Service::SEND_HOOK, [ $stage ], 'woocommerce-payments' ),
+				as_next_scheduled_action( WC_Payments_Post_Kyc_Activation_Email_Service::SEND_HOOK, [ $stage ], 'poocommerce-payments' ),
 				"Expected stage $stage to be scheduled."
 			);
 		}
@@ -226,7 +226,7 @@ class WC_Payments_Post_Kyc_Activation_Email_Service_Test extends WCPAY_UnitTestC
 
 		foreach ( WC_Payments_Post_Kyc_Activation_Email_Service::STAGE_DAYS as $stage ) {
 			$this->assertFalse(
-				as_next_scheduled_action( WC_Payments_Post_Kyc_Activation_Email_Service::SEND_HOOK, [ $stage ], 'woocommerce-payments' )
+				as_next_scheduled_action( WC_Payments_Post_Kyc_Activation_Email_Service::SEND_HOOK, [ $stage ], 'poocommerce-payments' )
 			);
 		}
 	}
@@ -241,7 +241,7 @@ class WC_Payments_Post_Kyc_Activation_Email_Service_Test extends WCPAY_UnitTestC
 
 		foreach ( WC_Payments_Post_Kyc_Activation_Email_Service::STAGE_DAYS as $stage ) {
 			$this->assertFalse(
-				as_next_scheduled_action( WC_Payments_Post_Kyc_Activation_Email_Service::SEND_HOOK, [ $stage ], 'woocommerce-payments' ),
+				as_next_scheduled_action( WC_Payments_Post_Kyc_Activation_Email_Service::SEND_HOOK, [ $stage ], 'poocommerce-payments' ),
 				"Stage $stage should have been skipped as stale."
 			);
 		}
@@ -259,7 +259,7 @@ class WC_Payments_Post_Kyc_Activation_Email_Service_Test extends WCPAY_UnitTestC
 
 		foreach ( WC_Payments_Post_Kyc_Activation_Email_Service::STAGE_DAYS as $stage ) {
 			$this->assertFalse(
-				as_next_scheduled_action( WC_Payments_Post_Kyc_Activation_Email_Service::SEND_HOOK, [ $stage ], 'woocommerce-payments' )
+				as_next_scheduled_action( WC_Payments_Post_Kyc_Activation_Email_Service::SEND_HOOK, [ $stage ], 'poocommerce-payments' )
 			);
 		}
 
@@ -315,7 +315,7 @@ class WC_Payments_Post_Kyc_Activation_Email_Service_Test extends WCPAY_UnitTestC
 	public function test_send_email_for_stage_triggers_email_and_marks_sent_on_success(): void {
 		$this->set_up_eligible_state();
 
-		// Plugin init registers the email class via the woocommerce_email_classes
+		// Plugin init registers the email class via the poocommerce_email_classes
 		// filter; this assertion locks in that the registration is in place.
 		$emails = WC()->mailer()->get_emails();
 		$this->assertInstanceOf(
@@ -339,11 +339,11 @@ class WC_Payments_Post_Kyc_Activation_Email_Service_Test extends WCPAY_UnitTestC
 		// Merchant opted out via WC > Settings > Emails. The handler bails
 		// before calling trigger() and EMAIL_SENT_OPTION is left untouched —
 		// it tracks only stages where an email was actually delivered.
-		add_filter( 'woocommerce_email_enabled_wcpay_post_kyc_activation', '__return_false' );
+		add_filter( 'poocommerce_email_enabled_wcpay_post_kyc_activation', '__return_false' );
 
 		$this->make_service()->send_email_for_stage( 7 );
 
-		remove_filter( 'woocommerce_email_enabled_wcpay_post_kyc_activation', '__return_false' );
+		remove_filter( 'poocommerce_email_enabled_wcpay_post_kyc_activation', '__return_false' );
 
 		$this->assertFalse( get_option( WC_Payments_Post_Kyc_Activation_Email_Service::EMAIL_SENT_OPTION ) );
 	}

@@ -2,7 +2,7 @@
 /**
  * Class ExperimentTest
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Tests\Internal\Experiment;
@@ -201,7 +201,7 @@ class ExperimentTest extends WCPAY_UnitTestCase {
 			->willReturnMap(
 				[
 					[ 'class_exists', '\WC_Site_Tracking', true ],
-					[ 'get_option', 'woocommerce_allow_tracking', 'yes' ],
+					[ 'get_option', 'poocommerce_allow_tracking', 'yes' ],
 				]
 			);
 		$this->mock_legacy_proxy
@@ -223,7 +223,7 @@ class ExperimentTest extends WCPAY_UnitTestCase {
 			->willReturnMap(
 				[
 					[ 'class_exists', '\WC_Site_Tracking', false ],
-					[ 'get_option', 'woocommerce_allow_tracking', 'yes' ],
+					[ 'get_option', 'poocommerce_allow_tracking', 'yes' ],
 				]
 			);
 

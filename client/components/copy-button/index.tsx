@@ -40,7 +40,7 @@ export const CopyButton: React.FC< CopyButtonProps > = ( {
 				'state--copied': copied,
 			} ) }
 			aria-label={ label }
-			title={ __( 'Copy to clipboard', 'woocommerce-payments' ) }
+			title={ __( 'Copy to clipboard', 'poocommerce-payments' ) }
 			onClick={ copyToClipboard }
 			onAnimationEnd={ () => setCopied( false ) }
 		>

@@ -40,7 +40,7 @@ const FormBusyState: React.FC< FormBusyStateProps > = ( {
 			role="status"
 			aria-live="polite"
 		>
-			{ isBusy ? __( 'Saving…', 'woocommerce-payments' ) : '' }
+			{ isBusy ? __( 'Saving…', 'poocommerce-payments' ) : '' }
 		</div>
 		{ children }
 	</div>

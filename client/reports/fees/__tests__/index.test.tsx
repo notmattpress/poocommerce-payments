@@ -22,14 +22,14 @@ jest.mock( 'wcpay/data/reports', () => ( {
 	useReportsFeesSummary: ( q: unknown ) => mockUseReportsFeesSummary( q ),
 } ) );
 
-jest.mock( '@woocommerce/navigation', () => ( {
+jest.mock( '@poocommerce/navigation', () => ( {
 	getPersistedQuery: () => ( {} ),
 	getQuery: () => mockGetQuery(),
 	updateQueryString: ( args: Record< string, unknown >, path?: string ) =>
 		mockUpdateQueryString( args, path ),
 } ) );
 
-jest.mock( '@woocommerce/data', () => ( {
+jest.mock( '@poocommerce/data', () => ( {
 	useUserPreferences: () => ( {
 		updateUserPreferences: mockUpdateUserPreferences,
 	} ),
@@ -72,7 +72,7 @@ jest.mock( 'wcpay/utils/date-time', () => ( {
 	formatDateTimeFromString: ( value: string ) => `formatted ${ value }`,
 } ) );
 
-jest.mock( '@woocommerce/components', () => ( {
+jest.mock( '@poocommerce/components', () => ( {
 	Link: ( {
 		children,
 		href,

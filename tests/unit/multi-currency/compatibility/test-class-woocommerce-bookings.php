@@ -1,20 +1,20 @@
 <?php
 /**
- * Class WCPay_Multi_Currency_WooCommerceBookings_Tests
+ * Class WCPay_Multi_Currency_PooCommerceBookings_Tests
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
-use WCPay\MultiCurrency\Compatibility\WooCommerceBookings;
+use WCPay\MultiCurrency\Compatibility\PooCommerceBookings;
 use WCPay\MultiCurrency\Currency;
 use WCPay\MultiCurrency\FrontendCurrencies;
 use WCPay\MultiCurrency\MultiCurrency;
 use WCPay\MultiCurrency\Utils;
 
 /**
- * WCPay\MultiCurrency\Compatibility\WooCommerceBookings unit tests.
+ * WCPay\MultiCurrency\Compatibility\PooCommerceBookings unit tests.
  */
-class WCPay_Multi_Currency_WooCommerceBookings_Tests extends WCPAY_UnitTestCase {
+class WCPay_Multi_Currency_PooCommerceBookings_Tests extends WCPAY_UnitTestCase {
 
 	/**
 	 * Mock WCPay\MultiCurrency\MultiCurrency.
@@ -38,11 +38,11 @@ class WCPay_Multi_Currency_WooCommerceBookings_Tests extends WCPAY_UnitTestCase 
 	private $mock_frontend_currencies;
 
 	/**
-	 * WCPay\MultiCurrency\Compatibility\WooCommerceBookings instance.
+	 * WCPay\MultiCurrency\Compatibility\PooCommerceBookings instance.
 	 *
-	 * @var WCPay\MultiCurrency\Compatibility\WooCommerceBookings
+	 * @var WCPay\MultiCurrency\Compatibility\PooCommerceBookings
 	 */
-	private $woocommerce_bookings;
+	private $poocommerce_bookings;
 
 	/**
 	 * WC_Payments_Localization_Service.
@@ -67,7 +67,7 @@ class WCPay_Multi_Currency_WooCommerceBookings_Tests extends WCPAY_UnitTestCase 
 		$this->mock_multi_currency      = $this->createMock( MultiCurrency::class );
 		$this->mock_utils               = $this->createMock( Utils::class );
 		$this->mock_frontend_currencies = $this->createMock( FrontendCurrencies::class );
-		$this->woocommerce_bookings     = new WooCommerceBookings( $this->mock_multi_currency, $this->mock_utils, $this->mock_frontend_currencies );
+		$this->poocommerce_bookings     = new PooCommerceBookings( $this->mock_multi_currency, $this->mock_utils, $this->mock_frontend_currencies );
 		$this->localization_service     = new WC_Payments_Localization_Service();
 
 		$this->mock_product = $this->createMock( \WC_Product::class );
@@ -81,18 +81,18 @@ class WCPay_Multi_Currency_WooCommerceBookings_Tests extends WCPAY_UnitTestCase 
 
 	public function test_get_price_returns_empty_string() {
 		$expected = '';
-		$this->assertSame( $expected, $this->woocommerce_bookings->get_price( $expected ) );
+		$this->assertSame( $expected, $this->poocommerce_bookings->get_price( $expected ) );
 	}
 
 	public function test_get_price_returns_converted_price() {
 		$expected = 42.0;
 		$this->mock_multi_currency->method( 'get_price' )->willReturn( $expected );
-		$this->assertSame( $expected, $this->woocommerce_bookings->get_price( 12 ) );
+		$this->assertSame( $expected, $this->poocommerce_bookings->get_price( 12 ) );
 	}
 
 	public function test_get_resource_prices_returns_non_array_directly() {
 		$expected = 'Not an array.';
-		$this->assertSame( $expected, $this->woocommerce_bookings->get_resource_prices( $expected ) );
+		$this->assertSame( $expected, $this->poocommerce_bookings->get_resource_prices( $expected ) );
 	}
 
 	public function test_get_resource_prices_returns_converted_prices() {
@@ -104,13 +104,13 @@ class WCPay_Multi_Currency_WooCommerceBookings_Tests extends WCPAY_UnitTestCase 
 			->with( 12 )
 			->willReturn( 42.0 );
 
-		$this->assertSame( $expected, $this->woocommerce_bookings->get_resource_prices( $prices ) );
+		$this->assertSame( $expected, $this->poocommerce_bookings->get_resource_prices( $prices ) );
 	}
 
 	// If false is passed, it should automatically return false.
 	public function test_should_convert_product_price_returns_false_if_false_passed() {
 		$this->mock_utils->expects( $this->exactly( 0 ) )->method( 'is_call_in_backtrace' );
-		$this->assertFalse( $this->woocommerce_bookings->should_convert_product_price( false, $this->mock_product ) );
+		$this->assertFalse( $this->poocommerce_bookings->should_convert_product_price( false, $this->mock_product ) );
 	}
 
 	// If the get_price_html call is found, it should return false.
@@ -121,7 +121,7 @@ class WCPay_Multi_Currency_WooCommerceBookings_Tests extends WCPAY_UnitTestCase 
 			->method( 'is_call_in_backtrace' )
 			->with( $expected_calls )
 			->willReturn( true );
-		$this->assertFalse( $this->woocommerce_bookings->should_convert_product_price( true, $this->mock_product ) );
+		$this->assertFalse( $this->poocommerce_bookings->should_convert_product_price( true, $this->mock_product ) );
 	}
 
 	// If no calls are found, it should return true.
@@ -132,7 +132,7 @@ class WCPay_Multi_Currency_WooCommerceBookings_Tests extends WCPAY_UnitTestCase 
 			->method( 'is_call_in_backtrace' )
 			->with( $expected_calls )
 			->willReturn( false );
-		$this->assertTrue( $this->woocommerce_bookings->should_convert_product_price( true, $this->mock_product ) );
+		$this->assertTrue( $this->poocommerce_bookings->should_convert_product_price( true, $this->mock_product ) );
 	}
 
 	public function test_filter_wc_price_args_returns_expected_results() {
@@ -155,8 +155,8 @@ class WCPay_Multi_Currency_WooCommerceBookings_Tests extends WCPAY_UnitTestCase 
 		$this->mock_frontend_currencies->method( 'get_price_decimal_separator' )->willReturn( $expected['decimal_separator'] );
 		$this->mock_frontend_currencies->method( 'get_price_thousand_separator' )->willReturn( $expected['thousand_separator'] );
 		$this->mock_frontend_currencies->method( 'get_price_decimals' )->willReturn( $expected['decimals'] );
-		$this->mock_frontend_currencies->method( 'get_woocommerce_price_format' )->willReturn( $expected['price_format'] );
+		$this->mock_frontend_currencies->method( 'get_poocommerce_price_format' )->willReturn( $expected['price_format'] );
 
-		$this->assertSame( $expected, $this->woocommerce_bookings->filter_wc_price_args( $defaults ) );
+		$this->assertSame( $expected, $this->poocommerce_bookings->filter_wc_price_args( $defaults ) );
 	}
 }

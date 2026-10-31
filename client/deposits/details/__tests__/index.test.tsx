@@ -6,7 +6,7 @@
 import { render } from '@testing-library/react';
 import React from 'react';
 
-// Suppress React 18 deprecation warnings from external @woocommerce/components
+// Suppress React 18 deprecation warnings from external @poocommerce/components
 // eslint-disable-next-line no-console
 const originalError = console.error;
 beforeAll( () => {

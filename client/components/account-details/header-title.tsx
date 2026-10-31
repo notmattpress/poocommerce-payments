@@ -27,7 +27,7 @@ const HeaderTitle: React.FC< HeaderTitleProps > = ( {
 	return (
 		<>
 			<FlexItem className="account-details">
-				{ __( 'Account details', 'woocommerce-payments' ) }
+				{ __( 'Account details', 'poocommerce-payments' ) }
 			</FlexItem>
 			<FlexBlock className="account-status">
 				<Chip
@@ -51,7 +51,7 @@ const HeaderTitle: React.FC< HeaderTitleProps > = ( {
 						target="_blank"
 						__next40pxDefaultSize
 					>
-						{ __( 'Edit details', 'woocommerce-payments' ) }
+						{ __( 'Edit details', 'poocommerce-payments' ) }
 					</Button>
 				</FlexItem>
 			) }

@@ -2,7 +2,7 @@
 /**
  * Class WC_REST_Payments_Documents_Controller
  *
- * @package WooCommerce\Payments\Admin
+ * @package PooCommerce\Payments\Admin
  */
 
 use WCPay\Core\Server\Request\List_Documents;
@@ -91,14 +91,14 @@ class WC_REST_Payments_Documents_Controller extends WC_Payments_REST_Controller 
 		} catch ( API_Exception $e ) {
 			$message = sprintf(
 				/* translators: %1: The document ID. %2: The error message.*/
-				esc_html__( 'There was an error accessing document %1$s. %2$s', 'woocommerce-payments' ),
+				esc_html__( 'There was an error accessing document %1$s. %2$s', 'poocommerce-payments' ),
 				$document_id,
 				$e->getMessage()
 			);
 			wp_die( esc_html( $message ), '', (int) $e->get_http_code() );
 		}
 
-		// WooCommerce core only includes Tracks in admin, not the REST API, so we need to use this wc_admin method
+		// PooCommerce core only includes Tracks in admin, not the REST API, so we need to use this wc_admin method
 		// that includes WC_Tracks in case it's not loaded.
 		if ( function_exists( 'wc_admin_record_tracks_event' ) ) {
 			wc_admin_record_tracks_event(

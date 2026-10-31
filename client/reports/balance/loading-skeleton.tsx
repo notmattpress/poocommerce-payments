@@ -75,7 +75,7 @@ export const BalanceLoadingSkeleton = ( {
 				className="wcpay-reports-balance__skeleton-status"
 			>
 				<h2 ref={ headingRef } tabIndex={ headingTabIndex }>
-					{ __( 'Loading balance report', 'woocommerce-payments' ) }
+					{ __( 'Loading balance report', 'poocommerce-payments' ) }
 				</h2>
 			</div>
 		</div>

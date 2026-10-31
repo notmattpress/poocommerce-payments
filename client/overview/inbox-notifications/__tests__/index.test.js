@@ -24,13 +24,13 @@ jest.mock( '@wordpress/data', () => ( {
 	useSelect: jest.fn(),
 } ) );
 
-jest.mock( '@woocommerce/components', () => {
+jest.mock( '@poocommerce/components', () => {
 	return {
 		EmptyContent: () => <div>empty-content</div>,
 		Section: ( { children } ) => <>{ children }</>,
 	};
 } );
-jest.mock( '@woocommerce/experimental', () => {
+jest.mock( '@poocommerce/experimental', () => {
 	return {
 		__esModule: true,
 		InboxNoteCard: ( { note } ) => <div>{ note.title }</div>,
@@ -130,7 +130,7 @@ describe( 'InboxPanel', () => {
 		const { container } = render( <InboxPanel /> );
 
 		expect(
-			container.querySelector( '.woocommerce-empty-activity-card' )
+			container.querySelector( '.poocommerce-empty-activity-card' )
 		).toBeInTheDocument();
 	} );
 } );

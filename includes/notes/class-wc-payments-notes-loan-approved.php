@@ -3,12 +3,12 @@
  * Display a notice to merchants that have WCPay installed to inform them
  * that a loan offer has been approved from Stripe.
  *
- * @package WooCommerce\Payments\Admin
+ * @package PooCommerce\Payments\Admin
  */
 
-use Automattic\WooCommerce\Admin\Notes\Note;
-use Automattic\WooCommerce\Admin\Notes\Notes;
-use Automattic\WooCommerce\Admin\Notes\NoteTraits;
+use Automattic\PooCommerce\Admin\Notes\Note;
+use Automattic\PooCommerce\Admin\Notes\Notes;
+use Automattic\PooCommerce\Admin\Notes\NoteTraits;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -43,13 +43,13 @@ class WC_Payments_Notes_Loan_Approved {
 		$dummy_order = wc_create_order();
 		$dummy_order->set_currency( self::$loan_info['details']['currency'] );
 
-		$note->set_title( __( 'Your capital loan has been approved!', 'woocommerce-payments' ) );
+		$note->set_title( __( 'Your capital loan has been approved!', 'poocommerce-payments' ) );
 		$note->set_content(
 			sprintf(
 				/* Translators: %1: total amount lent to the merchant formatted in the account currency, %2: WooPayments */
 				__(
 					'Congratulations! Your capital loan has been approved and %1$s was deposited into the bank account linked to %2$s. You\'ll automatically repay the loan, plus a flat fee, through a fixed percentage of each %2$s transaction.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				WC_Payments_Explicit_Price_Formatter::get_explicit_price(
 					wc_price(
@@ -70,10 +70,10 @@ class WC_Payments_Notes_Loan_Approved {
 		);
 		$note->set_type( Note::E_WC_ADMIN_NOTE_INFORMATIONAL );
 		$note->set_name( self::NOTE_NAME );
-		$note->set_source( 'woocommerce-payments' );
+		$note->set_source( 'poocommerce-payments' );
 		$note->add_action(
 			self::NOTE_NAME,
-			__( 'View loan details', 'woocommerce-payments' ),
+			__( 'View loan details', 'poocommerce-payments' ),
 			admin_url( 'admin.php?page=wc-admin&path=/payments/loans' ),
 			Note::E_WC_ADMIN_NOTE_UNACTIONED,
 			true

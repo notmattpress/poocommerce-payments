@@ -2,7 +2,7 @@
 /**
  * Class Qualitative_Feedback_Admin_Note_Removal
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Migrations;
@@ -27,7 +27,7 @@ class Qualitative_Feedback_Admin_Note_Removal {
 	 * Only execute the migration if it was not applied yet.
 	 */
 	public function maybe_migrate() {
-		$previous_version = get_option( 'woocommerce_woocommerce_payments_version' );
+		$previous_version = get_option( 'poocommerce_poocommerce_payments_version' );
 		if ( version_compare( self::VERSION_SINCE, $previous_version, '>' ) ) {
 			$this->migrate();
 		}

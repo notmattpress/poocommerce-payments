@@ -1,8 +1,8 @@
 <?php
 /**
- * WooCommerce Payments Multi-Currency Settings
+ * PooCommerce Payments Multi-Currency Settings
  *
- * @package WooCommerce\Admin
+ * @package PooCommerce\Admin
  */
 
 namespace WCPay\MultiCurrency;
@@ -20,7 +20,7 @@ class SettingsOnboardCta extends \WC_Settings_Page {
 	 *
 	 * @var string
 	 */
-	const LEARN_MORE_URL = 'https://woocommerce.com/document/woopayments/currencies/multi-currency-setup/';
+	const LEARN_MORE_URL = 'https://poocommerce.com/document/woopayments/currencies/multi-currency-setup/';
 
 	/**
 	 * MultiCurrency instance.
@@ -46,7 +46,7 @@ class SettingsOnboardCta extends \WC_Settings_Page {
 		$this->multi_currency   = $multi_currency;
 		$this->payments_account = $payments_account;
 		$this->id               = $this->multi_currency->id;
-		$this->label            = _x( 'Multi-currency', 'Settings tab label', 'woocommerce-payments' );
+		$this->label            = _x( 'Multi-currency', 'Settings tab label', 'poocommerce-payments' );
 
 		parent::__construct();
 	}
@@ -57,7 +57,7 @@ class SettingsOnboardCta extends \WC_Settings_Page {
 	 * @return void
 	 */
 	public function init_hooks() {
-		add_action( 'woocommerce_admin_field_wcpay_currencies_settings_onboarding_cta', [ $this, 'currencies_settings_onboarding_cta' ] );
+		add_action( 'poocommerce_admin_field_wcpay_currencies_settings_onboarding_cta', [ $this, 'currencies_settings_onboarding_cta' ] );
 	}
 
 	/**
@@ -71,13 +71,13 @@ class SettingsOnboardCta extends \WC_Settings_Page {
 					<?php
 						printf(
 							/* translators: %s: WooPayments */
-							esc_html__( 'To add new currencies to your store, please finish setting up %s.', 'woocommerce-payments' ),
+							esc_html__( 'To add new currencies to your store, please finish setting up %s.', 'poocommerce-payments' ),
 							'WooPayments'
 						);
 					?>
 				</p>
 				<a href="<?php echo esc_url( $href ); ?>" id="wcpay_enabled_currencies_onboarding_cta" type="button" class="button-primary">
-					<?php esc_html_e( 'Get started', 'woocommerce-payments' ); ?>
+					<?php esc_html_e( 'Get started', 'poocommerce-payments' ); ?>
 				</a>
 			</div>
 		<?php
@@ -96,10 +96,10 @@ class SettingsOnboardCta extends \WC_Settings_Page {
 
 		return [
 			[
-				'title' => __( 'Enabled currencies', 'woocommerce-payments' ),
+				'title' => __( 'Enabled currencies', 'poocommerce-payments' ),
 				'desc'  => sprintf(
 					/* translators: %s: url to documentation. */
-					__( 'Accept payments in multiple currencies. Prices are converted based on exchange rates and rounding rules. <a href="%s">Learn more</a>', 'woocommerce-payments' ),
+					__( 'Accept payments in multiple currencies. Prices are converted based on exchange rates and rounding rules. <a href="%s">Learn more</a>', 'poocommerce-payments' ),
 					self::LEARN_MORE_URL
 				),
 				'type'  => 'title',

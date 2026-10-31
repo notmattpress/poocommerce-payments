@@ -2,7 +2,7 @@
 /**
  * Class Payment_Information_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\Payment_Information;

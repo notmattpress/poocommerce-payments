@@ -2,7 +2,7 @@
 /**
  * Class WC_Payment_Gateway_WCPay_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\Constants\Intent_Status;
@@ -84,7 +84,7 @@ class Duplicate_Payment_Prevention_Service_Test extends WCPAY_UnitTestCase {
 		// Assert: the behaviors of check_against_session_processing_order.
 		$notes = wc_get_order_notes( [ 'order_id' => $session_order->get_id() ] );
 		$this->assertStringContainsString(
-			'WooCommerce Payments: detected and deleted order ID ' . $current_order_id,
+			'PooCommerce Payments: detected and deleted order ID ' . $current_order_id,
 			$notes[0]->content
 		);
 		$this->assertSame( Order_Status::TRASH, wc_get_order( $current_order_id )->get_status() );
@@ -358,7 +358,7 @@ class Duplicate_Payment_Prevention_Service_Test extends WCPAY_UnitTestCase {
 		$this->assertStringContainsString( 'wcpay_previous_successful_intent', $result['redirect'] );
 
 		// Assert: the merchant is told why, under the current brand name. Searched across every
-		// note rather than a fixed index, since WooCommerce has changed how many notes it adds,
+		// note rather than a fixed index, since PooCommerce has changed how many notes it adds,
 		// and in what order, between versions.
 		$notes = wc_get_order_notes( [ 'order_id' => $order->get_id() ] );
 		$this->assertStringContainsString(
@@ -406,7 +406,7 @@ class Duplicate_Payment_Prevention_Service_Test extends WCPAY_UnitTestCase {
 	 * still unpaid. The concurrent request then marks it paid in a separate PHP process, which
 	 * leaves this process's caches untouched. Only a read that reaches the database sees it.
 	 *
-	 * The write here goes straight to the orders table for that reason: saving through WooCommerce
+	 * The write here goes straight to the orders table for that reason: saving through PooCommerce
 	 * would invalidate the order cache and hide the very staleness this covers.
 	 */
 	public function test_check_order_already_paid_detects_payment_written_by_a_concurrent_request() {
@@ -431,9 +431,9 @@ class Duplicate_Payment_Prevention_Service_Test extends WCPAY_UnitTestCase {
 		// Arrange a concurrent request marking the order paid, without touching our caches.
 		if ( WC_Payments_Utils::is_hpos_tables_usage_enabled() ) {
 			// Mirrors the fallback in the code under test: get_table_for_orders() only exists
-			// from WooCommerce 7.9, and the plugin supports 7.6.
-			$orders_table = method_exists( \Automattic\WooCommerce\Utilities\OrderUtil::class, 'get_table_for_orders' )
-				? \Automattic\WooCommerce\Utilities\OrderUtil::get_table_for_orders()
+			// from PooCommerce 7.9, and the plugin supports 7.6.
+			$orders_table = method_exists( \Automattic\PooCommerce\Utilities\OrderUtil::class, 'get_table_for_orders' )
+				? \Automattic\PooCommerce\Utilities\OrderUtil::get_table_for_orders()
 				: $wpdb->prefix . 'wc_orders';
 
 			$wpdb->update(
@@ -476,7 +476,7 @@ class Duplicate_Payment_Prevention_Service_Test extends WCPAY_UnitTestCase {
 			$statuses[] = Order_Status::PROCESSING;
 			return $statuses;
 		};
-		add_filter( 'woocommerce_valid_order_statuses_for_payment', $declare_payable );
+		add_filter( 'poocommerce_valid_order_statuses_for_payment', $declare_payable );
 
 		// Arrange an order in that status.
 		$order = WC_Helper_Order::create_order();
@@ -486,7 +486,7 @@ class Duplicate_Payment_Prevention_Service_Test extends WCPAY_UnitTestCase {
 		// Act: the balance payment must be allowed through.
 		$result = $this->service->check_order_already_paid( $order );
 
-		remove_filter( 'woocommerce_valid_order_statuses_for_payment', $declare_payable );
+		remove_filter( 'poocommerce_valid_order_statuses_for_payment', $declare_payable );
 
 		// Assert: processing continues so the balance can be collected.
 		$this->assertNull( $result );

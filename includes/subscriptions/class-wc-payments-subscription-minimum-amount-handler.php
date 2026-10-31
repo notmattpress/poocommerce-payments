@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Subscription_Minimum_Amount_Handler
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 /**
@@ -47,7 +47,7 @@ class WC_Payments_Subscription_Minimum_Amount_Handler {
 	 */
 	public function init_hooks() {
 		if ( WC_Payments_Features::should_use_stripe_billing() ) {
-			add_filter( 'woocommerce_subscriptions_minimum_processable_recurring_amount', [ $this, 'get_minimum_recurring_amount' ], 10, 2 );
+			add_filter( 'poocommerce_subscriptions_minimum_processable_recurring_amount', [ $this, 'get_minimum_recurring_amount' ], 10, 2 );
 		}
 	}
 

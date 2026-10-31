@@ -24,7 +24,7 @@ const expressCheckoutButtonUi = {
 			return;
 		}
 
-		// Same overlay WooCommerce paints over the order review during a refresh.
+		// Same overlay PooCommerce paints over the order review during a refresh.
 		get$Container()
 			.attr( 'aria-busy', 'true' )
 			.block( {

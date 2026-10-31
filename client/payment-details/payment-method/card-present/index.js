@@ -12,14 +12,14 @@ import PaymentDetailsPaymentMethodDetail from '../detail';
 
 const getCardNetworkDisplayName = ( network ) => {
 	const networkDisplayNames = {
-		cartes_bancaires: __( 'Cartes Bancaires', 'woocommerce-payments' ),
-		cb: __( 'Cartes Bancaires', 'woocommerce-payments' ),
-		eftpos: __( 'eftpos', 'woocommerce-payments' ),
-		eftpos_au: __( 'eftpos', 'woocommerce-payments' ),
+		cartes_bancaires: __( 'Cartes Bancaires', 'poocommerce-payments' ),
+		cb: __( 'Cartes Bancaires', 'poocommerce-payments' ),
+		eftpos: __( 'eftpos', 'poocommerce-payments' ),
+		eftpos_au: __( 'eftpos', 'poocommerce-payments' ),
 	};
 
 	if ( ! network ) {
-		return __( 'Unknown', 'woocommerce-payments' );
+		return __( 'Unknown', 'poocommerce-payments' );
 	}
 
 	return (
@@ -54,14 +54,14 @@ const formatPaymentMethodDetails = ( charge ) => {
 
 	// Generate the full funding type.
 	const fundingTypes = {
-		credit: __( 'credit', 'woocommerce-payments' ),
-		debit: __( 'debit', 'woocommerce-payments' ),
-		prepaid: __( 'prepaid', 'woocommerce-payments' ),
-		unknown: __( 'unknown', 'woocommerce-payments' ),
+		credit: __( 'credit', 'poocommerce-payments' ),
+		debit: __( 'debit', 'poocommerce-payments' ),
+		prepaid: __( 'prepaid', 'poocommerce-payments' ),
+		unknown: __( 'unknown', 'poocommerce-payments' ),
 	};
 	const cardType = sprintf(
 		// Translators: %1$s card network, %2$s card funding (prepaid, credit, etc.).
-		__( '%1$s %2$s card', 'woocommerce-payments' ),
+		__( '%1$s %2$s card', 'poocommerce-payments' ),
 		getCardNetworkDisplayName( network ),
 		fundingTypes[ funding ]
 	);
@@ -87,14 +87,14 @@ const formatPaymentMethodDetails = ( charge ) => {
  */
 const paymentMethodPlaceholders = {
 	last4: '0000',
-	fingerprint: __( 'fingerprint placeholder', 'woocommerce-payments' ),
-	date: __( 'date placeholder', 'woocommerce-payments' ),
-	cardType: __( 'card type placeholder', 'woocommerce-payments' ),
-	id: __( 'id placeholder', 'woocommerce-payments' ),
-	name: __( 'name placeholder', 'woocommerce-payments' ),
-	email: __( 'email placeholder', 'woocommerce-payments' ),
-	formattedAddress: __( 'address placeholder', 'woocommerce-payments' ),
-	country: __( 'country placeholder', 'woocommerce-payments' ),
+	fingerprint: __( 'fingerprint placeholder', 'poocommerce-payments' ),
+	date: __( 'date placeholder', 'poocommerce-payments' ),
+	cardType: __( 'card type placeholder', 'poocommerce-payments' ),
+	id: __( 'id placeholder', 'poocommerce-payments' ),
+	name: __( 'name placeholder', 'poocommerce-payments' ),
+	email: __( 'email placeholder', 'poocommerce-payments' ),
+	formattedAddress: __( 'address placeholder', 'poocommerce-payments' ),
+	country: __( 'country placeholder', 'poocommerce-payments' ),
 };
 
 const CardPresentDetails = ( { charge = {}, isLoading } ) => {
@@ -122,28 +122,28 @@ const CardPresentDetails = ( { charge = {}, isLoading } ) => {
 			<div className="payment-method-details__column">
 				<Detail
 					isLoading={ isLoading }
-					label={ __( 'Number', 'woocommerce-payments' ) }
+					label={ __( 'Number', 'poocommerce-payments' ) }
 				>
 					&bull;&bull;&bull;&bull;&nbsp;{ last4 }
 				</Detail>
 
 				<Detail
 					isLoading={ isLoading }
-					label={ __( 'Expires', 'woocommerce-payments' ) }
+					label={ __( 'Expires', 'poocommerce-payments' ) }
 				>
 					{ date }
 				</Detail>
 
 				<Detail
 					isLoading={ isLoading }
-					label={ __( 'Type', 'woocommerce-payments' ) }
+					label={ __( 'Type', 'poocommerce-payments' ) }
 				>
 					{ cardType }
 				</Detail>
 
 				<Detail
 					isLoading={ isLoading }
-					label={ __( 'ID', 'woocommerce-payments' ) }
+					label={ __( 'ID', 'poocommerce-payments' ) }
 				>
 					{ id }
 				</Detail>
@@ -152,21 +152,21 @@ const CardPresentDetails = ( { charge = {}, isLoading } ) => {
 			<div className="payment-method-details__column">
 				<Detail
 					isLoading={ isLoading }
-					label={ __( 'Owner', 'woocommerce-payments' ) }
+					label={ __( 'Owner', 'poocommerce-payments' ) }
 				>
 					{ name }
 				</Detail>
 
 				<Detail
 					isLoading={ isLoading }
-					label={ __( 'Owner email', 'woocommerce-payments' ) }
+					label={ __( 'Owner email', 'poocommerce-payments' ) }
 				>
 					{ email }
 				</Detail>
 
 				<Detail
 					isLoading={ isLoading }
-					label={ __( 'Address', 'woocommerce-payments' ) }
+					label={ __( 'Address', 'poocommerce-payments' ) }
 				>
 					<span
 						dangerouslySetInnerHTML={ {
@@ -177,7 +177,7 @@ const CardPresentDetails = ( { charge = {}, isLoading } ) => {
 
 				<Detail
 					isLoading={ isLoading }
-					label={ __( 'Origin', 'woocommerce-payments' ) }
+					label={ __( 'Origin', 'poocommerce-payments' ) }
 				>
 					{ country }
 				</Detail>

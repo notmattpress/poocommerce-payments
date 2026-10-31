@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Localization_Service_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\Constants\Country_Code;

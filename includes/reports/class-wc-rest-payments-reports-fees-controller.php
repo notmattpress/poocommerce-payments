@@ -2,7 +2,7 @@
 /**
  * Class WC_REST_Payments_Reports_Fees_Controller
  *
- * @package WooCommerce\Payments\Reports
+ * @package PooCommerce\Payments\Reports
  */
 
 use WCPay\Core\Server\Request\Get_Transactions_Summary;
@@ -240,7 +240,7 @@ class WC_REST_Payments_Reports_Fees_Controller extends WC_REST_Payments_Reports_
 		unset( $params['customer_email'] );
 
 		$params['search'] = [
-			'description'       => __( 'Search transactions by known identifiers.', 'woocommerce-payments' ),
+			'description'       => __( 'Search transactions by known identifiers.', 'poocommerce-payments' ),
 			'type'              => 'array',
 			'required'          => false,
 			'items'             => [
@@ -252,7 +252,7 @@ class WC_REST_Payments_Reports_Fees_Controller extends WC_REST_Payments_Reports_
 			'validate_callback' => 'rest_validate_request_arg',
 		];
 		$params['type']   = [
-			'description'       => __( 'Filter transactions where type matches any listed value.', 'woocommerce-payments' ),
+			'description'       => __( 'Filter transactions where type matches any listed value.', 'poocommerce-payments' ),
 			'type'              => 'array',
 			'required'          => false,
 			'items'             => [

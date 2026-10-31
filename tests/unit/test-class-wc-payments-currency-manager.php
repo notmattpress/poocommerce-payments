@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Currency_Manager_Tests
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 /**

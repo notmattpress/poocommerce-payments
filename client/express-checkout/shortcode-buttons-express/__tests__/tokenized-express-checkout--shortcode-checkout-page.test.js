@@ -79,7 +79,7 @@ describe( 'Tokenized Express Checkout Element - Shortcode checkout page logic', 
 		// just mocking some server-side-provided DOM elements.
 		render(
 			<div>
-				<div className="woocommerce-notices-wrapper" />
+				<div className="poocommerce-notices-wrapper" />
 				<div id="wcpay-express-checkout-wrapper">
 					<div
 						id="wcpay-express-checkout-element"
@@ -534,7 +534,7 @@ describe( 'Tokenized Express Checkout Element - Shortcode checkout page logic', 
 		$( document.body ).trigger( 'updated_checkout' );
 		await waitFor( () => expect( apiFetch ).toHaveBeenCalledTimes( 2 ) );
 
-		// Same white overlay WooCommerce paints over the order review.
+		// Same white overlay PooCommerce paints over the order review.
 		expect( $.fn.block ).toHaveBeenCalledWith( {
 			message: null,
 			overlayCSS: { background: '#fff', opacity: 0.6 },
@@ -594,7 +594,7 @@ describe( 'Tokenized Express Checkout Element - Shortcode checkout page logic', 
 		await waitFor( () => expect( $.fn.unblock ).toHaveBeenCalled() );
 	} );
 
-	it( 'should leave the button available while WooCommerce refreshes its order review', async () => {
+	it( 'should leave the button available while PooCommerce refreshes its order review', async () => {
 		await jest.isolateModulesAsync( async () => {
 			await import( '..' );
 		} );
