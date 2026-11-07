@@ -14,7 +14,7 @@ const refundCancelSelector =
 const refundConfirmSelector =
 	'.refund-confirmation-modal .wcpay-confirmation-modal__footer .is-primary';
 const orderPriceSelector =
-	'#woocommerce-order-items .total .woocommerce-Price-amount';
+	'#poocommerce-order-items .total .poocommerce-Price-amount';
 
 const saveOrder = async ( page ) => {
 	await page.locator( '.save_order' ).click();

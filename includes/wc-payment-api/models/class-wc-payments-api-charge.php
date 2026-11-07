@@ -2,13 +2,13 @@
 /**
  * WC_Payments_API_Charge class
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 defined( 'ABSPATH' ) || exit;
 
 /**
- * A charge object used by the WooCommerce Payments API.
+ * A charge object used by the PooCommerce Payments API.
  */
 class WC_Payments_API_Charge implements \JsonSerializable {
 	/**

@@ -2,7 +2,7 @@
 /**
  * Abstract base class for WooPayments admin notice nudges.
  *
- * @package WooCommerce\Payments\Admin
+ * @package PooCommerce\Payments\Admin
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -41,7 +41,7 @@ abstract class WC_Payments_Abstract_Admin_Notice {
 
 	/**
 	 * Per-request memo of should_show(). Same instance is reused across
-	 * admin_enqueue_scripts and the woocommerce_sections_{$tab} callback.
+	 * admin_enqueue_scripts and the poocommerce_sections_{$tab} callback.
 	 *
 	 * @var bool|null
 	 */
@@ -91,7 +91,7 @@ abstract class WC_Payments_Abstract_Admin_Notice {
 		// pages — bypasses the WC Admin notice interception.
 		if ( isset( $_GET['page'] ) && 'wc-settings' === sanitize_key( wp_unslash( $_GET['page'] ) ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			$tab = isset( $_GET['tab'] ) ? sanitize_key( wp_unslash( $_GET['tab'] ) ) : 'general'; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-			add_action( "woocommerce_sections_{$tab}", [ $this, 'maybe_show' ] );
+			add_action( "poocommerce_sections_{$tab}", [ $this, 'maybe_show' ] );
 		}
 	}
 
@@ -131,7 +131,7 @@ abstract class WC_Payments_Abstract_Admin_Notice {
 		$handle    = $this->naming()->script_handle();
 		$dist_name = $this->naming()->dist_name();
 		WC_Payments::register_script_with_dependencies( $handle, 'dist/' . $dist_name );
-		wp_set_script_translations( $handle, 'woocommerce-payments' );
+		wp_set_script_translations( $handle, 'poocommerce-payments' );
 		WC_Payments_Utils::register_style(
 			$handle,
 			plugins_url( 'dist/' . $dist_name . '.css', WCPAY_PLUGIN_FILE ),
@@ -143,7 +143,7 @@ abstract class WC_Payments_Abstract_Admin_Notice {
 
 	/**
 	 * Enqueues the bundle when the notice is eligible and the current screen is
-	 * a WooCommerce / WC-Admin screen. Localizes the action URLs the React
+	 * a PooCommerce / WC-Admin screen. Localizes the action URLs the React
 	 * component needs.
 	 *
 	 * @return void
@@ -159,7 +159,7 @@ abstract class WC_Payments_Abstract_Admin_Notice {
 		}
 
 		// Record the impression here in addition to maybe_show() — maybe_show()
-		// only fires on WC settings pages (via woocommerce_sections_{$tab}),
+		// only fires on WC settings pages (via poocommerce_sections_{$tab}),
 		// while enqueue_script() fires on every eligible WC-admin screen where
 		// the React mount can actually render. record_impression_if_first() is
 		// idempotent so the duplication is safe.
@@ -376,7 +376,7 @@ abstract class WC_Payments_Abstract_Admin_Notice {
 
 	/**
 	 * Validates an admin-init action request: $_GET marker present, current
-	 * user can manage_woocommerce, and nonce verifies.
+	 * user can manage_poocommerce, and nonce verifies.
 	 *
 	 * @param string $query_arg    The $_GET marker query arg.
 	 * @param string $nonce_arg    The $_GET nonce arg name.
@@ -388,7 +388,7 @@ abstract class WC_Payments_Abstract_Admin_Notice {
 		if ( ! isset( $_GET[ $query_arg ] ) || ! isset( $_GET[ $nonce_arg ] ) ) {
 			return false;
 		}
-		if ( ! current_user_can( 'manage_woocommerce' ) ) {
+		if ( ! current_user_can( 'manage_poocommerce' ) ) {
 			return false;
 		}
 		if ( ! wp_verify_nonce( wc_clean( wp_unslash( $_GET[ $nonce_arg ] ) ), $nonce_action ) ) {
@@ -457,7 +457,7 @@ abstract class WC_Payments_Abstract_Admin_Notice {
 	 * @return bool
 	 */
 	protected function compute_should_show(): bool {
-		if ( ! current_user_can( 'manage_woocommerce' ) ) {
+		if ( ! current_user_can( 'manage_poocommerce' ) ) {
 			return false;
 		}
 		if ( ! $this->is_applicable() ) {

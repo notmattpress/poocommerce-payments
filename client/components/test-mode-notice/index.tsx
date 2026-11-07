@@ -32,12 +32,12 @@ interface Props {
 // Plural forms, supplied per locale rather than derived by appending "s" to a
 // translated singular — that only works in English.
 const pluralNounToUse = {
-	documents: __( 'documents', 'woocommerce-payments' ),
-	deposits: __( 'payouts', 'woocommerce-payments' ),
-	disputes: __( 'disputes', 'woocommerce-payments' ),
-	loans: __( 'loans', 'woocommerce-payments' ),
-	payments: __( 'transactions', 'woocommerce-payments' ),
-	transactions: __( 'transactions', 'woocommerce-payments' ),
+	documents: __( 'documents', 'poocommerce-payments' ),
+	deposits: __( 'payouts', 'poocommerce-payments' ),
+	disputes: __( 'disputes', 'poocommerce-payments' ),
+	loans: __( 'loans', 'poocommerce-payments' ),
+	payments: __( 'transactions', 'poocommerce-payments' ),
+	transactions: __( 'transactions', 'poocommerce-payments' ),
 };
 
 const getNoticeContent = (
@@ -56,7 +56,7 @@ const getNoticeContent = (
 								/* translators: %1$s: WooPayments */
 								__(
 									'{{strong}}%1$s is in sandbox mode.{{/strong}} You need to set up a live %1$s account before you can accept real transactions.',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								),
 								'WooPayments'
 							),
@@ -77,7 +77,7 @@ const getNoticeContent = (
 									'{{strong}}%1$s is in test mode{{/strong}} because your store is running in a development or staging environment. ' +
 										'To use live mode, switch to a production {{wpEnvLink}}WordPress environment{{/wpEnvLink}} or remove the WCPAY_DEV_MODE constant. ' +
 										'{{learnMoreLink}}Learn more{{/learnMoreLink}}',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								),
 								'WooPayments'
 							),
@@ -95,7 +95,7 @@ const getNoticeContent = (
 									// @ts-expect-error: children is provided when interpolating the component
 									<ExternalLink
 										href={
-											'https://woocommerce.com/document/woopayments/testing-and-troubleshooting/test-accounts/'
+											'https://poocommerce.com/document/woopayments/testing-and-troubleshooting/test-accounts/'
 										}
 										onClick={ () =>
 											recordEvent(
@@ -116,7 +116,7 @@ const getNoticeContent = (
 							/* translators: %1$s: WooPayments */
 							__(
 								'{{strong}}%1$s is in test mode.{{/strong}} All transactions will be simulated. {{learnMoreLink}}Learn more{{/learnMoreLink}}',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							'WooPayments'
 						),
@@ -127,7 +127,7 @@ const getNoticeContent = (
 								// @ts-expect-error: children is provided when interpolating the component
 								<ExternalLink
 									href={
-										'https://woocommerce.com/document/woopayments/testing-and-troubleshooting/test-accounts/'
+										'https://poocommerce.com/document/woopayments/testing-and-troubleshooting/test-accounts/'
 									}
 									onClick={ () =>
 										recordEvent(
@@ -155,7 +155,7 @@ const getNoticeContent = (
 								__(
 									'Viewing test %1$s. Test mode is active because your store is in a development or staging environment. ' +
 										'{{learnMoreLink}}Learn more{{/learnMoreLink}}',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								),
 								currentPage === 'deposits'
 									? 'payouts'
@@ -166,7 +166,7 @@ const getNoticeContent = (
 									// @ts-expect-error: children is provided when interpolating the component
 									<ExternalLink
 										href={
-											'https://woocommerce.com/document/woopayments/testing-and-troubleshooting/test-accounts/'
+											'https://poocommerce.com/document/woopayments/testing-and-troubleshooting/test-accounts/'
 										}
 									/>
 								),
@@ -183,7 +183,7 @@ const getNoticeContent = (
 								/* translators: %1$s: WooPayments, %2$s: plural record type, e.g. "transactions" */
 								__(
 									'%1$s is in test mode, so only test %2$s are shown. To view live %2$s, disable test mode in {{settingsLink}}%1$s settings{{/settingsLink}}.',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								),
 								'WooPayments',
 								pluralNounToUse[ currentPage ]
@@ -206,7 +206,7 @@ const getNoticeContent = (
 							/* translators: %1$s: WooPayments */
 							__(
 								'Viewing test %1$s. To view live %1s, disable test mode in {{settingsLink}}%2s settings{{/settingsLink}}.',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							currentPage === 'deposits'
 								? 'payouts'

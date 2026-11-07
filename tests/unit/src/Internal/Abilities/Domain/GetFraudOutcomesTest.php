@@ -2,7 +2,7 @@
 /**
  * Tests for WCPay\Internal\Abilities\Domain\GetFraudOutcomes.
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 namespace WCPay\Tests\Internal\Abilities\Domain;
@@ -17,7 +17,7 @@ use WCPay\Internal\Abilities\Domain\GetFraudOutcomes;
 class GetFraudOutcomesTest extends WCPAY_UnitTestCase {
 
 	public function test_name(): void {
-		$this->assertSame( 'woocommerce-payments/get-fraud-outcomes', GetFraudOutcomes::get_name() );
+		$this->assertSame( 'poocommerce-payments/get-fraud-outcomes', GetFraudOutcomes::get_name() );
 	}
 
 	public function test_registration_args_paginated_and_requires_status(): void {

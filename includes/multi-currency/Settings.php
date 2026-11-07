@@ -1,8 +1,8 @@
 <?php
 /**
- * WooCommerce Payments Multi-currency Settings
+ * PooCommerce Payments Multi-currency Settings
  *
- * @package WooCommerce\Admin
+ * @package PooCommerce\Admin
  */
 
 namespace WCPay\MultiCurrency;
@@ -43,7 +43,7 @@ class Settings extends \WC_Settings_Page {
 	public function __construct( MultiCurrency $multi_currency ) {
 		$this->multi_currency = $multi_currency;
 		$this->id             = $this->multi_currency->id;
-		$this->label          = _x( 'Multi-currency', 'Settings tab label', 'woocommerce-payments' );
+		$this->label          = _x( 'Multi-currency', 'Settings tab label', 'poocommerce-payments' );
 
 		parent::__construct();
 	}
@@ -54,9 +54,9 @@ class Settings extends \WC_Settings_Page {
 	 * @return void
 	 */
 	public function init_hooks() {
-		// TODO: Only register emoji script in settings page. Until WC Admin decide if they will enable it too: https://github.com/woocommerce/woocommerce-admin/issues/6388.
+		// TODO: Only register emoji script in settings page. Until WC Admin decide if they will enable it too: https://github.com/poocommerce/poocommerce-admin/issues/6388.
 		add_action( 'admin_print_scripts', [ $this, 'maybe_add_print_emoji_detection_script' ] );
-		add_action( 'woocommerce_admin_field_wcpay_multi_currency_settings_page', [ $this, 'wcpay_multi_currency_settings_page' ] );
+		add_action( 'poocommerce_admin_field_wcpay_multi_currency_settings_page', [ $this, 'wcpay_multi_currency_settings_page' ] );
 	}
 
 	/**

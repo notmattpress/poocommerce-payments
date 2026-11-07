@@ -566,12 +566,12 @@ describe( 'Ruleset adapter utilities test', () => {
 				admin: {
 					preloadSettings: {
 						general: {
-							woocommerce_allowed_countries: allowType,
-							woocommerce_specific_allowed_countries: [
+							poocommerce_allowed_countries: allowType,
+							poocommerce_specific_allowed_countries: [
 								'US',
 								'CA',
 							],
-							woocommerce_all_except_countries: [ 'TR', 'BR' ],
+							poocommerce_all_except_countries: [ 'TR', 'BR' ],
 						},
 					},
 				},
@@ -748,10 +748,10 @@ describe( 'isSellingToAvsSupportedLocations', () => {
 			admin: {
 				preloadSettings: {
 					general: {
-						woocommerce_allowed_countries: type,
-						woocommerce_all_except_countries:
+						poocommerce_allowed_countries: type,
+						poocommerce_all_except_countries:
 							type === 'all_except' ? countries : [],
-						woocommerce_specific_allowed_countries:
+						poocommerce_specific_allowed_countries:
 							type === 'specific' ? countries : [],
 					},
 				},

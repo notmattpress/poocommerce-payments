@@ -32,23 +32,23 @@ const BUTTON_WIDTH_THRESHOLD = 140;
 const CARD_DISPLAY_WIDTH_THRESHOLD = 220;
 
 const BRAND_DISPLAY_NAMES = {
-	visa: __( 'Visa', 'woocommerce-payments' ),
-	mastercard: __( 'Mastercard', 'woocommerce-payments' ),
-	amex: __( 'American Express', 'woocommerce-payments' ),
-	discover: __( 'Discover', 'woocommerce-payments' ),
-	jcb: __( 'JCB', 'woocommerce-payments' ),
-	unionpay: __( 'UnionPay', 'woocommerce-payments' ),
-	diners: __( 'Diners Club', 'woocommerce-payments' ),
+	visa: __( 'Visa', 'poocommerce-payments' ),
+	mastercard: __( 'Mastercard', 'poocommerce-payments' ),
+	amex: __( 'American Express', 'poocommerce-payments' ),
+	discover: __( 'Discover', 'poocommerce-payments' ),
+	jcb: __( 'JCB', 'poocommerce-payments' ),
+	unionpay: __( 'UnionPay', 'poocommerce-payments' ),
+	diners: __( 'Diners Club', 'poocommerce-payments' ),
 	// TODO: CB icon not yet shipped in woopay-card-brands; this entry is a
 	// placeholder so the display name is ready when the icon lands.
-	cartes_bancaires: __( 'Cartes Bancaires', 'woocommerce-payments' ),
+	cartes_bancaires: __( 'Cartes Bancaires', 'poocommerce-payments' ),
 };
 
 const ButtonTypeTextMap = {
-	default: __( 'WooPay', 'woocommerce-payments' ),
-	buy: __( 'Buy with WooPay', 'woocommerce-payments' ),
-	donate: __( 'Donate with WooPay', 'woocommerce-payments' ),
-	book: __( 'Book with WooPay', 'woocommerce-payments' ),
+	default: __( 'WooPay', 'poocommerce-payments' ),
+	buy: __( 'Buy with WooPay', 'poocommerce-payments' ),
+	donate: __( 'Donate with WooPay', 'poocommerce-payments' ),
+	book: __( 'Book with WooPay', 'poocommerce-payments' ),
 };
 
 export const WoopayExpressCheckoutButton = ( {
@@ -143,14 +143,14 @@ export const WoopayExpressCheckoutButton = ( {
 						?.i18n_unavailable_text ||
 						__(
 							'Sorry, this product is unavailable. Please choose a different combination.',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						)
 				);
 			} else {
 				window.alert(
 					__(
 						'Please select your product options before proceeding.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					)
 				);
 			}
@@ -287,7 +287,7 @@ export const WoopayExpressCheckoutButton = ( {
 						.catch( () => {
 							const errorMessage = __(
 								'Something went wrong. Please try again.',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							);
 							showErrorMessage( context, errorMessage );
 							isLoadingRef.current = false;
@@ -329,7 +329,7 @@ export const WoopayExpressCheckoutButton = ( {
 					?.catch( () => {
 						const errorMessage = __(
 							'Something went wrong. Please try again.',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						);
 						showErrorMessage( context, errorMessage );
 						isLoadingRef.current = false;
@@ -436,7 +436,7 @@ export const WoopayExpressCheckoutButton = ( {
 	const ariaLabel = cardBrandIcon
 		? sprintf(
 				/* translators: %1$s: card brand display name (e.g. "American Express"), %2$s: last 4 digits of card */
-				__( 'WooPay with %1$s ending in %2$s', 'woocommerce-payments' ),
+				__( 'WooPay with %1$s ending in %2$s', 'poocommerce-payments' ),
 				brandDisplayName,
 				preferredCard.last4
 		  )

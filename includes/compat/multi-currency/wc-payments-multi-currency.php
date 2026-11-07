@@ -2,7 +2,7 @@
 /**
  * Main functions to start MultiCurrency class.
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 defined( 'ABSPATH' ) || exit;

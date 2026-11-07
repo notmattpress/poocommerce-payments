@@ -2,7 +2,7 @@
 /**
  * Class LoggerContext
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Internal;
@@ -75,7 +75,7 @@ class LoggerContext {
 				return;
 		}
 
-		add_filter( 'woocommerce_format_log_entry', [ $this, 'filter_log_entry' ], 10, 2 );
+		add_filter( 'poocommerce_format_log_entry', [ $this, 'filter_log_entry' ], 10, 2 );
 		$this->hooks_set = true;
 	}
 

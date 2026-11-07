@@ -2,7 +2,7 @@
 /**
  * Tests for WCPay\Internal\Abilities\Domain\GetBalance.
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 namespace WCPay\Tests\Internal\Abilities\Domain;
@@ -17,7 +17,7 @@ use WCPay\Internal\Abilities\Domain\GetBalance;
 class GetBalanceTest extends WCPAY_UnitTestCase {
 
 	public function test_name(): void {
-		$this->assertSame( 'woocommerce-payments/get-balance', GetBalance::get_name() );
+		$this->assertSame( 'poocommerce-payments/get-balance', GetBalance::get_name() );
 	}
 
 	public function test_registration_args_read_annotations_and_required_fields(): void {

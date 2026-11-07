@@ -625,25 +625,25 @@ cli wp rewrite flush --hard
 
 success "WordPress installed"
 
-# ─── WooCommerce ──────────────────────────────────────────────────────────────
+# ─── PooCommerce ──────────────────────────────────────────────────────────────
 
-section "WooCommerce"
+section "PooCommerce"
 
 info "Installing WordPress Importer..."
 retry cli wp plugin install wordpress-importer --activate
 
 if [[ -n "$E2E_WC_VERSION" && $E2E_WC_VERSION != 'latest' ]]; then
-	info "Installing WooCommerce ${E2E_WC_VERSION}..."
-	retry cli wp plugin install woocommerce --version="$E2E_WC_VERSION" --activate
+	info "Installing PooCommerce ${E2E_WC_VERSION}..."
+	retry cli wp plugin install poocommerce --version="$E2E_WC_VERSION" --activate
 else
-	info "Installing latest WooCommerce..."
-	retry cli wp plugin install woocommerce --activate
+	info "Installing latest PooCommerce..."
+	retry cli wp plugin install poocommerce --activate
 fi
 
 info "Installing REST API auth plugin..."
 # Prefer the zip cached by CI (see env-setup action); fall back to GitHub.
 if [[ -f "${E2E_ROOT}/.cache/basic-auth.zip" ]]; then
-	retry cli wp plugin install /var/www/html/wp-content/plugins/woocommerce-payments/tests/e2e/.cache/basic-auth.zip --activate --force
+	retry cli wp plugin install /var/www/html/wp-content/plugins/poocommerce-payments/tests/e2e/.cache/basic-auth.zip --activate --force
 else
 	retry cli wp plugin install https://github.com/WP-API/Basic-Auth/archive/master.zip --activate --force
 fi
@@ -652,35 +652,35 @@ info "Installing themes..."
 retry cli wp theme install storefront --activate
 retry cli wp theme install twentytwentyfour
 
-info "Configuring WooCommerce settings..."
-cli wp option set woocommerce_store_address "60 29th Street"
-cli wp option set woocommerce_store_address_2 "#343"
-cli wp option set woocommerce_store_city "San Francisco"
-cli wp option set woocommerce_default_country "US:CA"
-cli wp option set woocommerce_store_postcode "94110"
-cli wp option set woocommerce_currency "USD"
-cli wp option set woocommerce_product_type "both"
-cli wp option set woocommerce_allow_tracking "no"
-cli wp option set woocommerce_enable_signup_and_login_from_checkout "yes"
-cli wp option set woocommerce_onboarding_profile --format=json '{"skipped":true}'
-cli wp option set woocommerce_coming_soon "no"
-cli wp option set woocommerce_checkout_company_field "optional"
+info "Configuring PooCommerce settings..."
+cli wp option set poocommerce_store_address "60 29th Street"
+cli wp option set poocommerce_store_address_2 "#343"
+cli wp option set poocommerce_store_city "San Francisco"
+cli wp option set poocommerce_default_country "US:CA"
+cli wp option set poocommerce_store_postcode "94110"
+cli wp option set poocommerce_currency "USD"
+cli wp option set poocommerce_product_type "both"
+cli wp option set poocommerce_allow_tracking "no"
+cli wp option set poocommerce_enable_signup_and_login_from_checkout "yes"
+cli wp option set poocommerce_onboarding_profile --format=json '{"skipped":true}'
+cli wp option set poocommerce_coming_soon "no"
+cli wp option set poocommerce_checkout_company_field "optional"
 
 info "Importing shop pages..."
 cli wp wc --user=admin tool run install_pages
 
-INSTALLED_WC_VERSION=$(cli_debug wp plugin get woocommerce --field=version)
+INSTALLED_WC_VERSION=$(cli_debug wp plugin get poocommerce --field=version)
 
 # Workaround for WC > 8.3: use shortcode-based cart & checkout pages.
 IS_WORKAROUND_REQUIRED=$(cli_debug wp eval "echo version_compare(\"$INSTALLED_WC_VERSION\", \"8.3\", \">=\");")
 
 if [[ "$IS_WORKAROUND_REQUIRED" = "1" ]]; then
 	info "Setting up shortcode checkout pages (WC > 8.3)..."
-	CART_PAGE_ID=$(cli_debug wp option get woocommerce_cart_page_id)
-	CHECKOUT_PAGE_ID=$(cli_debug wp option get woocommerce_checkout_page_id)
+	CART_PAGE_ID=$(cli_debug wp option get poocommerce_cart_page_id)
+	CHECKOUT_PAGE_ID=$(cli_debug wp option get poocommerce_checkout_page_id)
 
-	CART_SHORTCODE="<!-- wp:shortcode -->[woocommerce_cart]<!-- /wp:shortcode -->"
-	CHECKOUT_SHORTCODE="<!-- wp:shortcode -->[woocommerce_checkout]<!-- /wp:shortcode -->"
+	CART_SHORTCODE="<!-- wp:shortcode -->[poocommerce_cart]<!-- /wp:shortcode -->"
+	CHECKOUT_SHORTCODE="<!-- wp:shortcode -->[poocommerce_checkout]<!-- /wp:shortcode -->"
 
 	cli wp post create --from-post="$CHECKOUT_PAGE_ID" --post_type="page" --post_title="Checkout WCB" --post_status="publish" --post_name="checkout-wcb"
 	CHECKOUT_WCB_PAGE_ID=$(cli_debug wp post url-to-id checkout-wcb)
@@ -692,9 +692,9 @@ if [[ "$IS_WORKAROUND_REQUIRED" = "1" ]]; then
 fi
 
 info "Importing sample data..."
-cli wp import wp-content/plugins/woocommerce/sample-data/sample_products.xml --authors=skip
+cli wp import wp-content/plugins/poocommerce/sample-data/sample_products.xml --authors=skip
 
-success "WooCommerce configured (v${INSTALLED_WC_VERSION})"
+success "PooCommerce configured (v${INSTALLED_WC_VERSION})"
 
 # ─── User accounts ───────────────────────────────────────────────────────────
 
@@ -717,15 +717,15 @@ section "WooPayments"
 
 if [[ "$WCPAY_USE_BUILD_ARTIFACT" = true ]]; then
 	info "Installing from build artifact..."
-	mv "$WCPAY_ARTIFACT_DIRECTORY"/woocommerce-payments "$WCPAY_ARTIFACT_DIRECTORY"/woocommerce-payments-build
-    cd "$WCPAY_ARTIFACT_DIRECTORY" && zip -r "$cwd"/woocommerce-payments-build.zip . && cd "$cwd"
-	cli wp plugin install wp-content/plugins/woocommerce-payments/woocommerce-payments-build.zip --activate
+	mv "$WCPAY_ARTIFACT_DIRECTORY"/poocommerce-payments "$WCPAY_ARTIFACT_DIRECTORY"/poocommerce-payments-build
+    cd "$WCPAY_ARTIFACT_DIRECTORY" && zip -r "$cwd"/poocommerce-payments-build.zip . && cd "$cwd"
+	cli wp plugin install wp-content/plugins/poocommerce-payments/poocommerce-payments-build.zip --activate
 else
 	info "Activating WooPayments plugin..."
-	cli wp plugin activate woocommerce-payments
+	cli wp plugin activate poocommerce-payments
 fi
 
-cli wp option set woocommerce_woocommerce_payments_settings --format=json '{"enabled":"yes"}'
+cli wp option set poocommerce_poocommerce_payments_settings --format=json '{"enabled":"yes"}'
 
 info "Activating dev tools..."
 cli wp plugin activate "$DEV_TOOLS_DIR"
@@ -752,7 +752,7 @@ fi
 # ─── Optional plugins ────────────────────────────────────────────────────────
 
 if [[ ! ${SKIP_WC_SUBSCRIPTIONS_TESTS} ]]; then
-	section "WooCommerce Subscriptions"
+	section "PooCommerce Subscriptions"
 
 	info "Installing latest release..."
 	cd "$E2E_ROOT"/deps
@@ -766,19 +766,19 @@ if [[ ! ${SKIP_WC_SUBSCRIPTIONS_TESTS} ]]; then
 		--fail \
 		-H "Authorization: token $E2E_GH_TOKEN" \
 		-H "Accept: application/octet-stream" \
-		--output woocommerce-subscriptions.zip \
+		--output poocommerce-subscriptions.zip \
 		https://api.github.com/repos/"$WC_SUBSCRIPTIONS_REPO"/releases/assets/"$LATEST_RELEASE_ASSET_ID"
 
-	unzip -qq woocommerce-subscriptions.zip -d woocommerce-subscriptions-source
+	unzip -qq poocommerce-subscriptions.zip -d poocommerce-subscriptions-source
 
-	sudo mv woocommerce-subscriptions-source/woocommerce-subscriptions/* woocommerce-subscriptions
-	cli wp plugin activate woocommerce-subscriptions
-	rm -rf woocommerce-subscriptions-source
+	sudo mv poocommerce-subscriptions-source/poocommerce-subscriptions/* poocommerce-subscriptions
+	cli wp plugin activate poocommerce-subscriptions
+	rm -rf poocommerce-subscriptions-source
 
 	info "Importing subscription products..."
-	cli wp import wp-content/plugins/woocommerce-payments/tests/e2e/env/wc-subscription-products.xml --authors=skip
+	cli wp import wp-content/plugins/poocommerce-payments/tests/e2e/env/wc-subscription-products.xml --authors=skip
 
-	success "WooCommerce Subscriptions installed"
+	success "PooCommerce Subscriptions installed"
 fi
 
 if [[ ! ${SKIP_WC_ACTION_SCHEDULER_TESTS} ]]; then
@@ -792,7 +792,7 @@ fi
 section "Final configuration"
 
 info "Configuring test settings..."
-cli wp option set woocommerce_orders_report_date_tour_shown yes
+cli wp option set poocommerce_orders_report_date_tour_shown yes
 mkdir -p $WCP_ROOT/screenshots
 handle_permissions $WCP_ROOT/screenshots
 cli wp option set wcpay_session_rate_limiter_disabled_wcpay_card_declined_registry yes
@@ -818,9 +818,9 @@ success "Configuration complete"
 section "Setup complete"
 
 echo -e "  ${DIM}WordPress${NC}      $(cli_debug wp core version)"
-echo -e "  ${DIM}WooCommerce${NC}    $(cli_debug wp plugin get woocommerce --field=version)"
+echo -e "  ${DIM}PooCommerce${NC}    $(cli_debug wp plugin get poocommerce --field=version)"
 if [[ ! ${SKIP_WC_SUBSCRIPTIONS_TESTS} ]]; then
-	echo -e "  ${DIM}Subscriptions${NC}  $(cli_debug wp plugin get woocommerce-subscriptions --field=version)"
+	echo -e "  ${DIM}Subscriptions${NC}  $(cli_debug wp plugin get poocommerce-subscriptions --field=version)"
 fi
 echo ""
 echo -e "  ${GREEN}${BOLD}Site ready${NC}  http://${WP_URL}/wp-admin/"

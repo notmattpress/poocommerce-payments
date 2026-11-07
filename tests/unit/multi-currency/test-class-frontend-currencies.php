@@ -2,7 +2,7 @@
 /**
  * Class WCPay_Multi_Currency_Frontend_Currencies_Tests
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\Constants\Currency_Code;
@@ -84,9 +84,9 @@ class WCPay_Multi_Currency_Frontend_Currencies_Tests extends WCPAY_UnitTestCase 
 	}
 
 	/**
-	 * @dataProvider woocommerce_filter_provider
+	 * @dataProvider poocommerce_filter_provider
 	 */
-	public function test_registers_woocommerce_filter( $filter, $function_name ) {
+	public function test_registers_poocommerce_filter( $filter, $function_name ) {
 		$this->assertGreaterThan(
 			500,
 			has_filter( $filter, [ $this->frontend_currencies, $function_name ] ),
@@ -94,86 +94,86 @@ class WCPay_Multi_Currency_Frontend_Currencies_Tests extends WCPAY_UnitTestCase 
 		);
 	}
 
-	public function woocommerce_filter_provider() {
+	public function poocommerce_filter_provider() {
 		return [
-			[ 'woocommerce_currency', 'get_woocommerce_currency' ],
+			[ 'poocommerce_currency', 'get_poocommerce_currency' ],
 			[ 'wc_get_price_decimals', 'get_price_decimals' ],
 			[ 'wc_get_price_decimal_separator', 'get_price_decimal_separator' ],
 			[ 'wc_get_price_thousand_separator', 'get_price_thousand_separator' ],
-			[ 'woocommerce_price_format', 'get_woocommerce_price_format' ],
-			[ 'woocommerce_cart_hash', 'add_currency_to_cart_hash' ],
-			[ 'woocommerce_shipping_method_add_rate_args', 'fix_price_decimals_for_shipping_rates' ],
+			[ 'poocommerce_price_format', 'get_poocommerce_price_format' ],
+			[ 'poocommerce_cart_hash', 'add_currency_to_cart_hash' ],
+			[ 'poocommerce_shipping_method_add_rate_args', 'fix_price_decimals_for_shipping_rates' ],
 		];
 	}
 
-	public function test_get_woocommerce_currency_returns_selected_currency() {
+	public function test_get_poocommerce_currency_returns_selected_currency() {
 		$this->mock_multi_currency->method( 'get_explicit_selected_currency' )->willReturn( new Currency( $this->localization_service, Currency_Code::EURO ) );
 		$this->mock_compatibility->method( 'should_return_store_currency' )->willReturn( false );
 
-		$this->assertSame( 'EUR', $this->frontend_currencies->get_woocommerce_currency() );
+		$this->assertSame( 'EUR', $this->frontend_currencies->get_poocommerce_currency() );
 	}
 
-	public function test_get_woocommerce_currency_returns_store_currency() {
+	public function test_get_poocommerce_currency_returns_store_currency() {
 		$this->mock_compatibility->method( 'should_return_store_currency' )->willReturn( true );
 
-		$this->assertSame( 'USD', $this->frontend_currencies->get_woocommerce_currency( 'GBP' ) );
+		$this->assertSame( 'USD', $this->frontend_currencies->get_poocommerce_currency( 'GBP' ) );
 	}
 
-	public function test_get_woocommerce_currency_passes_through_filtered_currency_when_not_switching() {
+	public function test_get_poocommerce_currency_passes_through_filtered_currency_when_not_switching() {
 		$this->mock_multi_currency->method( 'get_explicit_selected_currency' )->willReturn( null );
 		$this->mock_compatibility->method( 'should_return_store_currency' )->willReturn( false );
 
-		$this->assertSame( 'GBP', $this->frontend_currencies->get_woocommerce_currency( 'GBP' ) );
+		$this->assertSame( 'GBP', $this->frontend_currencies->get_poocommerce_currency( 'GBP' ) );
 	}
 
-	public function test_get_woocommerce_currency_returns_store_currency_when_not_switching_and_nothing_was_filtered() {
+	public function test_get_poocommerce_currency_returns_store_currency_when_not_switching_and_nothing_was_filtered() {
 		$this->mock_multi_currency->method( 'get_explicit_selected_currency' )->willReturn( null );
 		$this->mock_compatibility->method( 'should_return_store_currency' )->willReturn( false );
 
-		$this->assertSame( 'USD', $this->frontend_currencies->get_woocommerce_currency() );
+		$this->assertSame( 'USD', $this->frontend_currencies->get_poocommerce_currency() );
 	}
 
-	public function test_get_woocommerce_currency_overrides_filtered_currency_when_switching() {
+	public function test_get_poocommerce_currency_overrides_filtered_currency_when_switching() {
 		$this->mock_multi_currency->method( 'get_explicit_selected_currency' )->willReturn( new Currency( $this->localization_service, Currency_Code::EURO ) );
 		$this->mock_compatibility->method( 'should_return_store_currency' )->willReturn( false );
 
-		$this->assertSame( 'EUR', $this->frontend_currencies->get_woocommerce_currency( 'GBP' ) );
+		$this->assertSame( 'EUR', $this->frontend_currencies->get_poocommerce_currency( 'GBP' ) );
 	}
 
-	public function test_woocommerce_currency_filter_keeps_value_from_earlier_filters_when_not_switching() {
+	public function test_poocommerce_currency_filter_keeps_value_from_earlier_filters_when_not_switching() {
 		$this->mock_multi_currency->method( 'get_explicit_selected_currency' )->willReturn( null );
 		$this->mock_compatibility->method( 'should_return_store_currency' )->willReturn( false );
 
 		// A third-party currency switcher hooked below Multi-Currency's priority.
-		add_filter( 'woocommerce_currency', fn() => 'GBP', 5 );
+		add_filter( 'poocommerce_currency', fn() => 'GBP', 5 );
 
-		// Run the filter chain as WooCommerce does, starting from the store currency.
-		$this->assertSame( 'GBP', apply_filters( 'woocommerce_currency', 'USD' ) ); // phpcs:ignore WooCommerce.Commenting.CommentHooks.HookCommentWrongStyle
+		// Run the filter chain as PooCommerce does, starting from the store currency.
+		$this->assertSame( 'GBP', apply_filters( 'poocommerce_currency', 'USD' ) ); // phpcs:ignore PooCommerce.Commenting.CommentHooks.HookCommentWrongStyle
 	}
 
-	public function test_get_woocommerce_currency_passes_through_a_second_filtered_currency_when_idle() {
+	public function test_get_poocommerce_currency_passes_through_a_second_filtered_currency_when_idle() {
 		$this->mock_multi_currency
 			->expects( $this->once() )
 			->method( 'get_explicit_selected_currency' )
 			->willReturn( null );
 		$this->mock_compatibility->method( 'should_return_store_currency' )->willReturn( false );
 
-		$this->assertSame( 'GBP', $this->frontend_currencies->get_woocommerce_currency( 'GBP' ) );
-		$this->assertSame( 'CAD', $this->frontend_currencies->get_woocommerce_currency( 'CAD' ) );
+		$this->assertSame( 'GBP', $this->frontend_currencies->get_poocommerce_currency( 'GBP' ) );
+		$this->assertSame( 'CAD', $this->frontend_currencies->get_poocommerce_currency( 'CAD' ) );
 	}
 
-	public function test_get_woocommerce_currency_reuses_an_explicit_selection_on_a_second_call() {
+	public function test_get_poocommerce_currency_reuses_an_explicit_selection_on_a_second_call() {
 		$this->mock_multi_currency
 			->expects( $this->once() )
 			->method( 'get_explicit_selected_currency' )
 			->willReturn( new Currency( $this->localization_service, Currency_Code::EURO ) );
 		$this->mock_compatibility->method( 'should_return_store_currency' )->willReturn( false );
 
-		$this->assertSame( 'EUR', $this->frontend_currencies->get_woocommerce_currency( 'GBP' ) );
-		$this->assertSame( 'EUR', $this->frontend_currencies->get_woocommerce_currency( 'CAD' ) );
+		$this->assertSame( 'EUR', $this->frontend_currencies->get_poocommerce_currency( 'GBP' ) );
+		$this->assertSame( 'EUR', $this->frontend_currencies->get_poocommerce_currency( 'CAD' ) );
 	}
 
-	public function test_get_woocommerce_currency_re_resolves_after_selected_currency_changed() {
+	public function test_get_poocommerce_currency_re_resolves_after_selected_currency_changed() {
 		$this->mock_multi_currency
 			->expects( $this->exactly( 2 ) )
 			->method( 'get_explicit_selected_currency' )
@@ -183,18 +183,18 @@ class WCPay_Multi_Currency_Frontend_Currencies_Tests extends WCPAY_UnitTestCase 
 			);
 		$this->mock_compatibility->method( 'should_return_store_currency' )->willReturn( false );
 
-		$this->assertSame( 'EUR', $this->frontend_currencies->get_woocommerce_currency( 'USD' ) );
+		$this->assertSame( 'EUR', $this->frontend_currencies->get_poocommerce_currency( 'USD' ) );
 
 		$this->frontend_currencies->selected_currency_changed();
 
-		$this->assertSame( 'GBP', $this->frontend_currencies->get_woocommerce_currency( 'USD' ) );
+		$this->assertSame( 'GBP', $this->frontend_currencies->get_poocommerce_currency( 'USD' ) );
 	}
 
 	public function test_get_price_decimals_returns_num_decimals() {
 		$this->mock_multi_currency->method( 'get_selected_currency' )->willReturn( new Currency( $this->localization_service, 'BHD' ) );
 
 		// We expect 3 decimal points here because BHD uses 3 decimal points, see
-		// i18n/locale-info.php (or plugins/woocommerce/i18n/locale-info.php in WC Core).
+		// i18n/locale-info.php (or plugins/poocommerce/i18n/locale-info.php in WC Core).
 		$this->assertEquals( 3, $this->frontend_currencies->get_price_decimals( 2 ) );
 	}
 
@@ -213,7 +213,7 @@ class WCPay_Multi_Currency_Frontend_Currencies_Tests extends WCPAY_UnitTestCase 
 		$this->frontend_currencies->init_order_currency( $this->mock_order );
 
 		// We expect 3 decimal points here because BHD uses 3 decimal points, see
-		// i18n/locale-info.php (or plugins/woocommerce/i18n/locale-info.php in WC Core).
+		// i18n/locale-info.php (or plugins/poocommerce/i18n/locale-info.php in WC Core).
 		$this->assertEquals( 3, $this->frontend_currencies->get_price_decimals( 2 ) );
 	}
 
@@ -227,7 +227,7 @@ class WCPay_Multi_Currency_Frontend_Currencies_Tests extends WCPAY_UnitTestCase 
 		$this->mock_multi_currency->method( 'get_selected_currency' )->willReturn( new Currency( $this->localization_service, 'EUR' ) );
 
 		// We expect a comma as the decimal separator here because that's the default EUR formatting, see
-		// i18n/currency-info.php (or plugins/woocommerce/i18n/currency-info.php in WC Core).
+		// i18n/currency-info.php (or plugins/poocommerce/i18n/currency-info.php in WC Core).
 		$this->assertEquals( ',', $this->frontend_currencies->get_price_decimal_separator( '.' ) );
 	}
 
@@ -246,7 +246,7 @@ class WCPay_Multi_Currency_Frontend_Currencies_Tests extends WCPAY_UnitTestCase 
 		$this->frontend_currencies->init_order_currency( $this->mock_order );
 
 		// We expect a comma as the decimal separator here because that's the default EUR formatting, see
-		// i18n/currency-info.php (or plugins/woocommerce/i18n/currency-info.php in WC Core).
+		// i18n/currency-info.php (or plugins/poocommerce/i18n/currency-info.php in WC Core).
 		$this->assertEquals( ',', $this->frontend_currencies->get_price_decimal_separator( '.' ) );
 	}
 
@@ -260,7 +260,7 @@ class WCPay_Multi_Currency_Frontend_Currencies_Tests extends WCPAY_UnitTestCase 
 		$this->mock_multi_currency->method( 'get_selected_currency' )->willReturn( new Currency( $this->localization_service, 'EUR' ) );
 
 		// We expect a period as the thousand separator here because that's the default EUR formatting, see
-		// i18n/currency-info.php (or plugins/woocommerce/i18n/currency-info.php in WC Core).
+		// i18n/currency-info.php (or plugins/poocommerce/i18n/currency-info.php in WC Core).
 		$this->assertEquals( '.', $this->frontend_currencies->get_price_thousand_separator( ',' ) );
 	}
 
@@ -279,7 +279,7 @@ class WCPay_Multi_Currency_Frontend_Currencies_Tests extends WCPAY_UnitTestCase 
 		$this->frontend_currencies->init_order_currency( $this->mock_order );
 
 		// We expect a period as the thousand separator here because that's the default EUR formatting, see
-		// i18n/currency-info.php (or plugins/woocommerce/i18n/currency-info.php in WC Core).
+		// i18n/currency-info.php (or plugins/poocommerce/i18n/currency-info.php in WC Core).
 		$this->assertEquals( '.', $this->frontend_currencies->get_price_thousand_separator( ',' ) );
 	}
 
@@ -289,15 +289,15 @@ class WCPay_Multi_Currency_Frontend_Currencies_Tests extends WCPAY_UnitTestCase 
 		$this->assertEquals( '.', $this->frontend_currencies->get_price_thousand_separator( '.' ) );
 	}
 
-	public function test_get_woocommerce_price_format_returns_format_for_currency_pos() {
+	public function test_get_poocommerce_price_format_returns_format_for_currency_pos() {
 		$this->mock_multi_currency->method( 'get_selected_currency' )->willReturn( new Currency( $this->localization_service, 'EUR' ) );
 
 		// We expect right_space formatting here because that's the default EUR formatting, see
-		// i18n/currency-info.php (or plugins/woocommerce/i18n/currency-info.php in WC Core).
-		$this->assertEquals( '%2$s&nbsp;%1$s', $this->frontend_currencies->get_woocommerce_price_format( '%2$s%1$s' ) );
+		// i18n/currency-info.php (or plugins/poocommerce/i18n/currency-info.php in WC Core).
+		$this->assertEquals( '%2$s&nbsp;%1$s', $this->frontend_currencies->get_poocommerce_price_format( '%2$s%1$s' ) );
 	}
 
-	public function test_get_woocommerce_price_format_returns_format_for_order_currency_pos() {
+	public function test_get_poocommerce_price_format_returns_format_for_order_currency_pos() {
 		$this->mock_utils
 			->expects( $this->once() )
 			->method( 'is_call_in_backtrace' )
@@ -313,36 +313,36 @@ class WCPay_Multi_Currency_Frontend_Currencies_Tests extends WCPAY_UnitTestCase 
 		$this->frontend_currencies->init_order_currency( $this->mock_order );
 
 		// We expect right_space formatting here because that's the default EUR formatting, see
-		// i18n/currency-info.php (or plugins/woocommerce/i18n/currency-info.php in WC Core).
-		$this->assertEquals( '%2$s&nbsp;%1$s', $this->frontend_currencies->get_woocommerce_price_format( '%2$s%1$s' ) );
+		// i18n/currency-info.php (or plugins/poocommerce/i18n/currency-info.php in WC Core).
+		$this->assertEquals( '%2$s&nbsp;%1$s', $this->frontend_currencies->get_poocommerce_price_format( '%2$s%1$s' ) );
 	}
 
-	public function test_get_woocommerce_price_format_returns_original_format_for_currency_pos_when_the_currency_is_same() {
+	public function test_get_poocommerce_price_format_returns_original_format_for_currency_pos_when_the_currency_is_same() {
 		$this->mock_multi_currency->method( 'get_selected_currency' )->willReturn( new Currency( $this->localization_service, 'USD' ) );
 
-		$this->assertEquals( '%2$s%1$s', $this->frontend_currencies->get_woocommerce_price_format( '%2$s%1$s' ) );
+		$this->assertEquals( '%2$s%1$s', $this->frontend_currencies->get_poocommerce_price_format( '%2$s%1$s' ) );
 	}
 
-	public function test_get_woocommerce_currency_pos_returns_currency_pos_for_selected_currency() {
+	public function test_get_poocommerce_currency_pos_returns_currency_pos_for_selected_currency() {
 		$this->mock_multi_currency->method( 'get_selected_currency' )->willReturn( new Currency( $this->localization_service, 'EUR' ) );
 
-		// The Cart and Checkout Blocks read the `woocommerce_currency_pos` option (via the Store API
-		// CurrencyFormatter) rather than the `woocommerce_price_format` filter the shortcode uses, so
+		// The Cart and Checkout Blocks read the `poocommerce_currency_pos` option (via the Store API
+		// CurrencyFormatter) rather than the `poocommerce_price_format` filter the shortcode uses, so
 		// WCPay must also override the option to keep both paths aligned. EUR's default position is
 		// right_space (see i18n/currency-info.php), not the store's setting.
-		$this->assertEquals( 'right_space', $this->frontend_currencies->get_woocommerce_currency_pos( 'left' ) );
+		$this->assertEquals( 'right_space', $this->frontend_currencies->get_poocommerce_currency_pos( 'left' ) );
 	}
 
-	public function test_get_woocommerce_currency_pos_returns_original_pos_when_the_currency_is_same() {
+	public function test_get_poocommerce_currency_pos_returns_original_pos_when_the_currency_is_same() {
 		$this->mock_multi_currency->method( 'get_selected_currency' )->willReturn( new Currency( $this->localization_service, 'USD' ) );
 
-		$this->assertEquals( 'left', $this->frontend_currencies->get_woocommerce_currency_pos( 'left' ) );
+		$this->assertEquals( 'left', $this->frontend_currencies->get_poocommerce_currency_pos( 'left' ) );
 	}
 
 	/**
 	 * @dataProvider currency_format_provider
 	 */
-	public function test_get_woocommerce_price_format_outputs_right_format( $currency_pos, $expected_format ) {
+	public function test_get_poocommerce_price_format_outputs_right_format( $currency_pos, $expected_format ) {
 		/** @var WC_Payments_Localization_Service $mock_localization_service */
 		$mock_localization_service = $this->createMock( WC_Payments_Localization_Service::class );
 		$mock_localization_service
@@ -362,7 +362,7 @@ class WCPay_Multi_Currency_Frontend_Currencies_Tests extends WCPAY_UnitTestCase 
 
 		$this->mock_multi_currency->method( 'get_selected_currency' )->willReturn( new Currency( $mock_localization_service, 'EUR' ) );
 
-		$this->assertEquals( $expected_format, $frontend_currencies->get_woocommerce_price_format( $currency_pos ) );
+		$this->assertEquals( $expected_format, $frontend_currencies->get_poocommerce_price_format( $currency_pos ) );
 	}
 
 	public function currency_format_provider() {

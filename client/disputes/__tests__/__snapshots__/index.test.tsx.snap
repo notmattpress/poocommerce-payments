@@ -150,11 +150,11 @@ exports[`Disputes list renders correctly 1`] = `
 
 <div>
   <div
-    class=" woocommerce-payments-page"
+    class=" poocommerce-payments-page"
     id=""
   >
     <div
-      class="woocommerce-filters-disputes"
+      class="poocommerce-filters-disputes"
     >
       <h2
         class="screen-reader-text"
@@ -162,16 +162,16 @@ exports[`Disputes list renders correctly 1`] = `
         Filters
       </h2>
       <div
-        class="woocommerce-filters"
+        class="poocommerce-filters"
       >
         <div
-          class="woocommerce-filters__basic-filters"
+          class="poocommerce-filters__basic-filters"
         >
           <div
-            class="woocommerce-filters-filter"
+            class="poocommerce-filters-filter"
           >
             <span
-              class="woocommerce-filters-label"
+              class="poocommerce-filters-label"
             >
               Show
               :
@@ -182,11 +182,11 @@ exports[`Disputes list renders correctly 1`] = `
             >
               <button
                 aria-expanded="false"
-                class="components-button woocommerce-dropdown-button"
+                class="components-button poocommerce-dropdown-button"
                 type="button"
               >
                 <div
-                  class="woocommerce-dropdown-button__labels"
+                  class="poocommerce-dropdown-button__labels"
                 >
                   <span>
                     All disputes
@@ -199,7 +199,7 @@ exports[`Disputes list renders correctly 1`] = `
       </div>
     </div>
     <div
-      class="components-surface components-card woocommerce-table wcpay-disputes-list has-actions has-menu emotion-0 emotion-1"
+      class="components-surface components-card poocommerce-table wcpay-disputes-list has-actions has-menu emotion-0 emotion-1"
       data-wp-c16t="true"
       data-wp-component="Card"
     >
@@ -219,10 +219,10 @@ exports[`Disputes list renders correctly 1`] = `
             Disputes
           </h2>
           <div
-            class="woocommerce-table__actions"
+            class="poocommerce-table__actions"
           >
             <button
-              class="components-button woocommerce-table__download-button is-next-40px-default-size"
+              class="components-button poocommerce-table__download-button is-next-40px-default-size"
               type="button"
             >
               <svg
@@ -243,14 +243,14 @@ exports[`Disputes list renders correctly 1`] = `
                 />
               </svg>
               <span
-                class="woocommerce-table__download-button__label"
+                class="poocommerce-table__download-button__label"
               >
                 Export
               </span>
             </button>
           </div>
           <div
-            class="woocommerce-ellipsis-menu"
+            class="poocommerce-ellipsis-menu"
           >
             <div
               class="components-dropdown"
@@ -258,7 +258,7 @@ exports[`Disputes list renders correctly 1`] = `
             >
               <button
                 aria-expanded="false"
-                class="components-button woocommerce-ellipsis-menu__toggle"
+                class="components-button poocommerce-ellipsis-menu__toggle"
                 title="Choose which values to display"
                 type="button"
               >
@@ -286,12 +286,12 @@ exports[`Disputes list renders correctly 1`] = `
         >
           <div
             aria-labelledby="caption-0"
-            class="woocommerce-table__table"
+            class="poocommerce-table__table"
             role="group"
           >
             <table>
               <caption
-                class="woocommerce-table__caption screen-reader-text"
+                class="poocommerce-table__caption screen-reader-text"
                 id="caption-0"
               >
                 Disputes
@@ -299,7 +299,7 @@ exports[`Disputes list renders correctly 1`] = `
               <tbody>
                 <tr>
                   <th
-                    class="woocommerce-table__header info-button is-left-aligned"
+                    class="poocommerce-table__header info-button is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -309,7 +309,7 @@ exports[`Disputes list renders correctly 1`] = `
                   </th>
                   <th
                     aria-sort="none"
-                    class="woocommerce-table__header is-left-aligned is-sortable"
+                    class="poocommerce-table__header is-left-aligned is-sortable"
                     role="columnheader"
                     scope="col"
                   >
@@ -349,7 +349,7 @@ exports[`Disputes list renders correctly 1`] = `
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-left-aligned"
+                    class="poocommerce-table__header is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -365,7 +365,7 @@ exports[`Disputes list renders correctly 1`] = `
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-left-aligned"
+                    class="poocommerce-table__header is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -381,7 +381,7 @@ exports[`Disputes list renders correctly 1`] = `
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-center-aligned is-left-aligned"
+                    class="poocommerce-table__header is-center-aligned is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -397,7 +397,7 @@ exports[`Disputes list renders correctly 1`] = `
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-left-aligned"
+                    class="poocommerce-table__header is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -413,7 +413,7 @@ exports[`Disputes list renders correctly 1`] = `
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-left-aligned"
+                    class="poocommerce-table__header is-left-aligned"
                     role="columnheader"
                     scope="col"
                   >
@@ -430,7 +430,7 @@ exports[`Disputes list renders correctly 1`] = `
                   </th>
                   <th
                     aria-sort="none"
-                    class="woocommerce-table__header is-left-aligned is-sortable"
+                    class="poocommerce-table__header is-left-aligned is-sortable"
                     role="columnheader"
                     scope="col"
                   >
@@ -470,7 +470,7 @@ exports[`Disputes list renders correctly 1`] = `
                     </span>
                   </th>
                   <th
-                    class="woocommerce-table__header is-numeric"
+                    class="poocommerce-table__header is-numeric"
                     role="columnheader"
                     scope="col"
                   >
@@ -488,7 +488,7 @@ exports[`Disputes list renders correctly 1`] = `
                 </tr>
                 <tr>
                   <th
-                    class="woocommerce-table__item info-button is-left-aligned"
+                    class="poocommerce-table__item info-button is-left-aligned"
                     scope="row"
                   >
                     <a
@@ -511,10 +511,10 @@ exports[`Disputes list renders correctly 1`] = `
                     </a>
                   </th>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=ch_mock"
                       tabindex="-1"
@@ -523,10 +523,10 @@ exports[`Disputes list renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=ch_mock"
                       tabindex="-1"
@@ -539,10 +539,10 @@ exports[`Disputes list renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=ch_mock"
                       tabindex="-1"
@@ -551,10 +551,10 @@ exports[`Disputes list renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-center-aligned is-left-aligned"
+                    class="poocommerce-table__item is-center-aligned is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=ch_mock"
                       tabindex="-1"
@@ -565,7 +565,7 @@ exports[`Disputes list renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
                       data-link-type="external"
@@ -575,7 +575,7 @@ exports[`Disputes list renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
                       data-link-type="wc-admin"
@@ -585,10 +585,10 @@ exports[`Disputes list renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=ch_mock"
                       tabindex="-1"
@@ -601,7 +601,7 @@ exports[`Disputes list renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
                       class="components-button is-secondary"
@@ -613,7 +613,7 @@ exports[`Disputes list renders correctly 1`] = `
                 </tr>
                 <tr>
                   <th
-                    class="woocommerce-table__item info-button is-left-aligned"
+                    class="poocommerce-table__item info-button is-left-aligned"
                     scope="row"
                   >
                     <a
@@ -636,10 +636,10 @@ exports[`Disputes list renders correctly 1`] = `
                     </a>
                   </th>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=ch_mock"
                       tabindex="-1"
@@ -648,10 +648,10 @@ exports[`Disputes list renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=ch_mock"
                       tabindex="-1"
@@ -664,10 +664,10 @@ exports[`Disputes list renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=ch_mock"
                       tabindex="-1"
@@ -676,10 +676,10 @@ exports[`Disputes list renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-center-aligned is-left-aligned"
+                    class="poocommerce-table__item is-center-aligned is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=ch_mock"
                       tabindex="-1"
@@ -690,34 +690,34 @@ exports[`Disputes list renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <span>
                       –
                     </span>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=ch_mock"
                       tabindex="-1"
                     />
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=ch_mock"
                       tabindex="-1"
                     />
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
                       class="components-button is-tertiary"
@@ -729,7 +729,7 @@ exports[`Disputes list renders correctly 1`] = `
                 </tr>
                 <tr>
                   <th
-                    class="woocommerce-table__item info-button is-left-aligned"
+                    class="poocommerce-table__item info-button is-left-aligned"
                     scope="row"
                   >
                     <a
@@ -752,10 +752,10 @@ exports[`Disputes list renders correctly 1`] = `
                     </a>
                   </th>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=ch_mock"
                       tabindex="-1"
@@ -764,10 +764,10 @@ exports[`Disputes list renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=ch_mock"
                       tabindex="-1"
@@ -780,10 +780,10 @@ exports[`Disputes list renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=ch_mock"
                       tabindex="-1"
@@ -792,10 +792,10 @@ exports[`Disputes list renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-center-aligned is-left-aligned"
+                    class="poocommerce-table__item is-center-aligned is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=ch_mock"
                       tabindex="-1"
@@ -806,7 +806,7 @@ exports[`Disputes list renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
                       data-link-type="external"
@@ -816,10 +816,10 @@ exports[`Disputes list renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=ch_mock"
                       tabindex="-1"
@@ -828,10 +828,10 @@ exports[`Disputes list renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-left-aligned"
+                    class="poocommerce-table__item is-left-aligned"
                   >
                     <a
-                      class="woocommerce-table__clickable-cell"
+                      class="poocommerce-table__clickable-cell"
                       data-link-type="wc-admin"
                       href="admin.php?page=wc-admin&path=%2Fpayments%2Ftransactions%2Fdetails&id=ch_mock"
                       tabindex="-1"
@@ -844,7 +844,7 @@ exports[`Disputes list renders correctly 1`] = `
                     </a>
                   </td>
                   <td
-                    class="woocommerce-table__item is-numeric"
+                    class="poocommerce-table__item is-numeric"
                   >
                     <a
                       class="components-button is-secondary"
@@ -864,19 +864,19 @@ exports[`Disputes list renders correctly 1`] = `
           data-wp-component="CardFooter"
         >
           <ul
-            class="woocommerce-table__summary"
+            class="poocommerce-table__summary"
             role="complementary"
           >
             <li
-              class="woocommerce-table__summary-item"
+              class="poocommerce-table__summary-item"
             >
               <span
-                class="woocommerce-table__summary-value"
+                class="poocommerce-table__summary-value"
               >
                 25
               </span>
               <span
-                class="woocommerce-table__summary-label"
+                class="poocommerce-table__summary-label"
               >
                 disputes
               </span>

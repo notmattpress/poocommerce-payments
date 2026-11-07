@@ -1,4 +1,4 @@
-.woocommerce-table__clickable-cell {
+.poocommerce-table__clickable-cell {
 	display: block;
 	margin: -16px -24px;
 	padding: 16px 24px;
@@ -6,11 +6,11 @@
 	text-decoration: none;
 
 	&,
-	.woocommerce-layout &,
-	.woocommerce-layout &:link,
-	.woocommerce-layout &:hover,
-	.woocommerce-layout &:focus,
-	.woocommerce-layout &:visited {
+	.poocommerce-layout &,
+	.poocommerce-layout &:link,
+	.poocommerce-layout &:hover,
+	.poocommerce-layout &:focus,
+	.poocommerce-layout &:visited {
 		color: $studio-gray-60;
 		box-shadow: none;
 	}

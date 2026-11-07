@@ -2,7 +2,7 @@
 /**
  * Class RefundServiceTest
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 namespace WCPay\Tests\Internal\Service;

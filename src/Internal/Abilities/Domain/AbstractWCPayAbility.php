@@ -2,7 +2,7 @@
 /**
  * Abstract base class for WooPayments ability definitions.
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Internal\Abilities\Domain;
@@ -33,22 +33,22 @@ abstract class AbstractWCPayAbility {
 					'type'        => 'array',
 					'description' => sprintf(
 						/* translators: %s: Collection key, such as transactions or disputes. */
-						__( 'Returned %s for the current page.', 'woocommerce-payments' ),
+						__( 'Returned %s for the current page.', 'poocommerce-payments' ),
 						$collection_key
 					),
 					'items'       => $item_schema,
 				],
 				'total_pages'   => [
 					'type'        => 'integer',
-					'description' => __( 'Total number of result pages available for the current query.', 'woocommerce-payments' ),
+					'description' => __( 'Total number of result pages available for the current query.', 'poocommerce-payments' ),
 				],
 				'page'          => [
 					'type'        => 'integer',
-					'description' => __( 'Current result page.', 'woocommerce-payments' ),
+					'description' => __( 'Current result page.', 'poocommerce-payments' ),
 				],
 				'per_page'      => [
 					'type'        => 'integer',
-					'description' => __( 'Maximum number of items requested per page.', 'woocommerce-payments' ),
+					'description' => __( 'Maximum number of items requested per page.', 'poocommerce-payments' ),
 				],
 			],
 			'additionalProperties' => false,
@@ -69,14 +69,14 @@ abstract class AbstractWCPayAbility {
 				'type'        => 'integer',
 				'minimum'     => 1,
 				'default'     => 1,
-				'description' => __( 'Page number to return (1-indexed).', 'woocommerce-payments' ),
+				'description' => __( 'Page number to return (1-indexed).', 'poocommerce-payments' ),
 			],
 			'per_page' => [
 				'type'        => 'integer',
 				'minimum'     => 1,
 				'maximum'     => $max_per_page,
 				'default'     => $default_per_page,
-				'description' => __( 'Maximum number of items per page.', 'woocommerce-payments' ),
+				'description' => __( 'Maximum number of items per page.', 'poocommerce-payments' ),
 			],
 		];
 	}

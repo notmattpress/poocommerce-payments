@@ -2,7 +2,7 @@
 /**
  * Class WCPay_Multi_Currency_User_Settings_Tests
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\MultiCurrency\Currency;
@@ -58,7 +58,7 @@ class WCPay_Multi_Currency_User_Settings_Tests extends WCPAY_UnitTestCase {
 		$this->user_settings->add_presentment_currency_switch();
 		$this->expectOutputRegex(
 			'/' .
-			'<p class="woocommerce-form-row woocommerce-form-row--first form-row form-row-first">' .
+			'<p class="poocommerce-form-row poocommerce-form-row--first form-row form-row-first">' .
 			'.+<label for="wcpay_selected_currency">Default currency<\/label>' .
 			'.+<select.+name="wcpay_selected_currency"' .
 			'.+<span><em>Select your preferred currency for shopping and payments.<\/em><\/span>' .

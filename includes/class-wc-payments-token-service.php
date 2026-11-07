@@ -2,7 +2,7 @@
 /**
  * WC_Payments_Token_Service class
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -27,7 +27,7 @@ class WC_Payments_Token_Service {
 	const CACHED_PAYMENT_METHODS_META_KEY = '_wcpay_payment_methods';
 
 	/**
-	 * Client for making requests to the WooCommerce Payments API
+	 * Client for making requests to the PooCommerce Payments API
 	 *
 	 * @var WC_Payments_API_Client
 	 */
@@ -55,15 +55,15 @@ class WC_Payments_Token_Service {
 	 * Initializes hooks.
 	 */
 	public function init_hooks() {
-		add_action( 'woocommerce_payment_token_deleted', [ $this, 'woocommerce_payment_token_deleted' ], 10, 2 );
-		add_action( 'woocommerce_payment_token_set_default', [ $this, 'woocommerce_payment_token_set_default' ], 10, 2 );
-		add_filter( 'woocommerce_get_customer_payment_tokens', [ $this, 'woocommerce_get_customer_payment_tokens' ], 10, 3 );
-		add_filter( 'woocommerce_payment_methods_list_item', [ $this, 'get_account_saved_payment_methods_list_item_sepa' ], 10, 2 );
-		add_filter( 'woocommerce_payment_methods_list_item', [ $this, 'get_account_saved_payment_methods_list_item_link' ], 10, 2 );
-		add_filter( 'woocommerce_payment_methods_list_item', [ $this, 'get_account_saved_payment_methods_list_item_wallet' ], 10, 2 );
-		add_filter( 'woocommerce_payment_methods_list_item', [ $this, 'get_account_saved_payment_methods_list_item_amazon_pay' ], 10, 2 );
-		add_filter( 'woocommerce_get_credit_card_type_label', [ $this, 'normalize_sepa_label' ] );
-		add_filter( 'woocommerce_get_credit_card_type_label', [ $this, 'normalize_stripe_link_label' ] );
+		add_action( 'poocommerce_payment_token_deleted', [ $this, 'poocommerce_payment_token_deleted' ], 10, 2 );
+		add_action( 'poocommerce_payment_token_set_default', [ $this, 'poocommerce_payment_token_set_default' ], 10, 2 );
+		add_filter( 'poocommerce_get_customer_payment_tokens', [ $this, 'poocommerce_get_customer_payment_tokens' ], 10, 3 );
+		add_filter( 'poocommerce_payment_methods_list_item', [ $this, 'get_account_saved_payment_methods_list_item_sepa' ], 10, 2 );
+		add_filter( 'poocommerce_payment_methods_list_item', [ $this, 'get_account_saved_payment_methods_list_item_link' ], 10, 2 );
+		add_filter( 'poocommerce_payment_methods_list_item', [ $this, 'get_account_saved_payment_methods_list_item_wallet' ], 10, 2 );
+		add_filter( 'poocommerce_payment_methods_list_item', [ $this, 'get_account_saved_payment_methods_list_item_amazon_pay' ], 10, 2 );
+		add_filter( 'poocommerce_get_credit_card_type_label', [ $this, 'normalize_sepa_label' ] );
+		add_filter( 'poocommerce_get_credit_card_type_label', [ $this, 'normalize_stripe_link_label' ] );
 	}
 
 	/**
@@ -189,14 +189,14 @@ class WC_Payments_Token_Service {
 	}
 
 	/**
-	 * Gets saved tokens from API if they don't already exist in WooCommerce.
+	 * Gets saved tokens from API if they don't already exist in PooCommerce.
 	 *
 	 * @param array  $tokens     Array of tokens.
 	 * @param string $user_id    WC user ID.
 	 * @param string $gateway_id WC gateway ID.
 	 * @return array
 	 */
-	public function woocommerce_get_customer_payment_tokens( $tokens, $user_id, $gateway_id ) {
+	public function poocommerce_get_customer_payment_tokens( $tokens, $user_id, $gateway_id ) {
 
 		if ( ( ! empty( $gateway_id ) && ! in_array( $gateway_id, self::REUSABLE_GATEWAYS_BY_PAYMENT_METHOD, true ) ) || ! is_user_logged_in() ) {
 			return $tokens;
@@ -229,8 +229,8 @@ class WC_Payments_Token_Service {
 			return $tokens;
 		}
 
-		// Prevent unnecessary recursion, WC_Payment_Token::save() ends up calling 'woocommerce_get_customer_payment_tokens' in some cases.
-		remove_action( 'woocommerce_get_customer_payment_tokens', [ $this, 'woocommerce_get_customer_payment_tokens' ], 10, 3 );
+		// Prevent unnecessary recursion, WC_Payment_Token::save() ends up calling 'poocommerce_get_customer_payment_tokens' in some cases.
+		remove_action( 'poocommerce_get_customer_payment_tokens', [ $this, 'poocommerce_get_customer_payment_tokens' ], 10, 3 );
 
 		foreach ( $payment_methods as $payment_method ) {
 			if ( ! isset( $payment_method['type'] ) ) {
@@ -243,15 +243,15 @@ class WC_Payments_Token_Service {
 				unset( $stored_tokens[ $payment_method['id'] ] );
 			}
 		}
-		add_action( 'woocommerce_get_customer_payment_tokens', [ $this, 'woocommerce_get_customer_payment_tokens' ], 10, 3 );
+		add_action( 'poocommerce_get_customer_payment_tokens', [ $this, 'poocommerce_get_customer_payment_tokens' ], 10, 3 );
 
 		// Remove the payment methods that no longer exist in Stripe's side.
-		remove_action( 'woocommerce_payment_token_deleted', [ $this, 'woocommerce_payment_token_deleted' ], 10, 2 );
+		remove_action( 'poocommerce_payment_token_deleted', [ $this, 'poocommerce_payment_token_deleted' ], 10, 2 );
 		foreach ( $stored_tokens as $token ) {
 			unset( $tokens[ $token->get_id() ] );
 			$token->delete();
 		}
-		add_action( 'woocommerce_payment_token_deleted', [ $this, 'woocommerce_payment_token_deleted' ], 10, 2 );
+		add_action( 'poocommerce_payment_token_deleted', [ $this, 'poocommerce_payment_token_deleted' ], 10, 2 );
 
 		return $tokens;
 	}
@@ -394,7 +394,7 @@ class WC_Payments_Token_Service {
 	 *
 	 * @throws Exception
 	 */
-	public function woocommerce_payment_token_deleted( $token_id, $token ) {
+	public function poocommerce_payment_token_deleted( $token_id, $token ) {
 
 		// If it's not reusable payment method, we don't need to perform any additional checks.
 		if ( ! in_array( $token->get_gateway_id(), self::REUSABLE_GATEWAYS_BY_PAYMENT_METHOD, true ) ) {
@@ -427,7 +427,7 @@ class WC_Payments_Token_Service {
 	 * @param string           $token_id Token ID.
 	 * @param WC_Payment_Token $token    Token object.
 	 */
-	public function woocommerce_payment_token_set_default( $token_id, $token ) {
+	public function poocommerce_payment_token_set_default( $token_id, $token ) {
 
 		if ( ! in_array( $token->get_gateway_id(), self::REUSABLE_GATEWAYS_BY_PAYMENT_METHOD, true ) ) {
 			return;
@@ -441,7 +441,7 @@ class WC_Payments_Token_Service {
 		try {
 			$this->customer_service->set_default_payment_method_for_customer( $customer_id, $token->get_token() );
 		} catch ( Exception $e ) {
-			// WooCommerce writes the local default before firing this action, so a failed mirror
+			// PooCommerce writes the local default before firing this action, so a failed mirror
 			// must not take the request down. log_to_wc() because the WCPay logger is off by default.
 			WC_Payments_Utils::log_to_wc(
 				sprintf(
@@ -463,14 +463,14 @@ class WC_Payments_Token_Service {
 	/**
 	 * Controls the output for SEPA on the my account page.
 	 *
-	 * @param  array                                        $item          Individual list item from woocommerce_saved_payment_methods_list.
+	 * @param  array                                        $item          Individual list item from poocommerce_saved_payment_methods_list.
 	 * @param  WC_Payment_Token|WC_Payment_Token_WCPay_SEPA $payment_token The payment token associated with this method entry.
 	 * @return array                                        Filtered item
 	 */
 	public function get_account_saved_payment_methods_list_item_sepa( $item, $payment_token ) {
 		if ( WC_Payment_Token_WCPay_SEPA::TYPE === strtolower( $payment_token->get_type() ) ) {
 			$item['method']['last4'] = $payment_token->get_last4();
-			$item['method']['brand'] = esc_html__( 'SEPA IBAN', 'woocommerce-payments' );
+			$item['method']['brand'] = esc_html__( 'SEPA IBAN', 'poocommerce-payments' );
 		}
 
 		return $item;
@@ -479,14 +479,14 @@ class WC_Payments_Token_Service {
 	/**
 	 * Controls the output for Stripe Link on the My account page.
 	 *
-	 * @param  array                                        $item          Individual list item from woocommerce_saved_payment_methods_list.
+	 * @param  array                                        $item          Individual list item from poocommerce_saved_payment_methods_list.
 	 * @param  WC_Payment_Token|WC_Payment_Token_WCPay_Link $payment_token The payment token associated with this method entry.
 	 * @return array                                        Filtered item
 	 */
 	public function get_account_saved_payment_methods_list_item_link( $item, $payment_token ) {
 		if ( WC_Payment_Token_WCPay_Link::TYPE === strtolower( $payment_token->get_type() ) ) {
 			$item['method']['last4'] = $payment_token->get_redacted_email();
-			$item['method']['brand'] = esc_html__( 'Stripe Link email', 'woocommerce-payments' );
+			$item['method']['brand'] = esc_html__( 'Stripe Link email', 'poocommerce-payments' );
 		}
 		return $item;
 	}
@@ -494,7 +494,7 @@ class WC_Payments_Token_Service {
 	/**
 	 * Controls the output for Wallet tokens on the My account page.
 	 *
-	 * @param  array                                        $item          Individual list item from woocommerce_saved_payment_methods_list.
+	 * @param  array                                        $item          Individual list item from poocommerce_saved_payment_methods_list.
 	 * @param  WC_Payment_Token|WC_Payment_Token_WCPay_Link $payment_token The payment token associated with this method entry.
 	 * @return array                                        Filtered item
 	 */
@@ -518,7 +518,7 @@ class WC_Payments_Token_Service {
 		$original_brand          = $item['method']['brand'] ?? '';
 		$item['method']['brand'] = sprintf(
 			/* translators: 1: wallet name, 2: card brand */
-			_x( '%1$s %2$s', 'Payment token with wallet', 'woocommerce-payments' ),
+			_x( '%1$s %2$s', 'Payment token with wallet', 'poocommerce-payments' ),
 			$payment_method->get_title(),
 			$original_brand
 		);
@@ -529,14 +529,14 @@ class WC_Payments_Token_Service {
 	/**
 	 * Controls the output for Amazon Pay tokens on the My Account page.
 	 *
-	 * @param  array                                              $item          Individual list item from woocommerce_saved_payment_methods_list.
+	 * @param  array                                              $item          Individual list item from poocommerce_saved_payment_methods_list.
 	 * @param  WC_Payment_Token|WC_Payment_Token_WCPay_Amazon_Pay $payment_token The payment token associated with this method entry.
 	 * @return array                                            Filtered item.
 	 */
 	public function get_account_saved_payment_methods_list_item_amazon_pay( $item, $payment_token ) {
 		if ( WC_Payment_Token_WCPay_Amazon_Pay::TYPE === strtolower( $payment_token->get_type() ) ) {
 			$item['method']['last4'] = $payment_token->get_email();
-			$item['method']['brand'] = esc_html__( 'Amazon Pay', 'woocommerce-payments' );
+			$item['method']['brand'] = esc_html__( 'Amazon Pay', 'poocommerce-payments' );
 		}
 		return $item;
 	}
@@ -549,7 +549,7 @@ class WC_Payments_Token_Service {
 	 */
 	public function normalize_sepa_label( $label ) {
 		if ( 'sepa iban' === strtolower( $label ) ) {
-			return __( 'SEPA IBAN', 'woocommerce-payments' );
+			return __( 'SEPA IBAN', 'poocommerce-payments' );
 		}
 
 		return $label;
@@ -572,7 +572,7 @@ class WC_Payments_Token_Service {
 	/**
 	 * Tells the customer that the new default did not reach the server.
 	 *
-	 * WooCommerce's My Account handler adds "This payment method was successfully set as your
+	 * PooCommerce's My Account handler adds "This payment method was successfully set as your
 	 * default." right after this action returns, with no way to signal a failure back to it. Left
 	 * alone, a swallowed error reads to the customer as a change that stuck. Suppress that one
 	 * message and put an error in its place instead.
@@ -587,20 +587,20 @@ class WC_Payments_Token_Service {
 			return;
 		}
 
-		if ( ! function_exists( 'wc_add_notice' ) || ! did_action( 'woocommerce_init' ) || ! isset( WC()->session ) ) {
+		if ( ! function_exists( 'wc_add_notice' ) || ! did_action( 'poocommerce_init' ) || ! isset( WC()->session ) ) {
 			return;
 		}
 
 		// Returning an empty message from this filter drops the notice. The callback removes
 		// itself so it only ever eats the one success notice that follows this action.
 		$suppress_success_notice = function () use ( &$suppress_success_notice ) {
-			remove_filter( 'woocommerce_add_message', $suppress_success_notice, 100 );
+			remove_filter( 'poocommerce_add_message', $suppress_success_notice, 100 );
 			return '';
 		};
-		add_filter( 'woocommerce_add_message', $suppress_success_notice, 100 );
+		add_filter( 'poocommerce_add_message', $suppress_success_notice, 100 );
 
 		wc_add_notice(
-			__( 'We could not set that payment method as your default. It may no longer be available, please reload the page and try again.', 'woocommerce-payments' ),
+			__( 'We could not set that payment method as your default. It may no longer be available, please reload the page and try again.', 'poocommerce-payments' ),
 			'error'
 		);
 	}

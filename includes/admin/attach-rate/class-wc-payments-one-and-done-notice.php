@@ -2,7 +2,7 @@
 /**
  * One-and-done recovery notice.
  *
- * @package WooCommerce\Payments\Admin
+ * @package PooCommerce\Payments\Admin
  */
 
 use WCPay\Constants\Order_Mode;
@@ -43,9 +43,9 @@ class WC_Payments_One_And_Done_Notice extends WC_Payments_Abstract_Admin_Notice 
 	 * @return void
 	 */
 	public function init_global_hooks(): void {
-		add_action( 'woocommerce_payment_complete', [ $this, 'invalidate_cache_on_order' ] );
-		add_action( 'woocommerce_order_status_completed', [ $this, 'invalidate_cache_on_order' ] );
-		add_action( 'woocommerce_order_status_processing', [ $this, 'invalidate_cache_on_order' ] );
+		add_action( 'poocommerce_payment_complete', [ $this, 'invalidate_cache_on_order' ] );
+		add_action( 'poocommerce_order_status_completed', [ $this, 'invalidate_cache_on_order' ] );
+		add_action( 'poocommerce_order_status_processing', [ $this, 'invalidate_cache_on_order' ] );
 	}
 
 	/**
@@ -100,7 +100,7 @@ class WC_Payments_One_And_Done_Notice extends WC_Payments_Abstract_Admin_Notice 
 			return;
 		}
 
-		if ( 'woocommerce_payments' === $order->get_payment_method()
+		if ( 'poocommerce_payments' === $order->get_payment_method()
 			&& Order_Mode::TEST === $order->get_meta( WC_Payments_Order_Service::WCPAY_MODE_META_KEY ) ) {
 			return;
 		}
@@ -169,7 +169,7 @@ class WC_Payments_One_And_Done_Notice extends WC_Payments_Abstract_Admin_Notice 
 		// (WOOPMNT-6240). The exactly-1 case reads the single row's date below.
 		$wcpay_live_orders = wc_get_orders(
 			[
-				'payment_method' => 'woocommerce_payments',
+				'payment_method' => 'poocommerce_payments',
 				'limit'          => 2,
 				'orderby'        => 'none',
 				'status'         => [ 'wc-completed', 'wc-processing' ],
@@ -194,7 +194,7 @@ class WC_Payments_One_And_Done_Notice extends WC_Payments_Abstract_Admin_Notice 
 		// Q2 — any order through a different gateway disqualifies the merchant.
 		$other_gateway_ids = array_diff(
 			array_keys( WC()->payment_gateways()->payment_gateways() ),
-			[ 'woocommerce_payments' ]
+			[ 'poocommerce_payments' ]
 		);
 
 		if ( ! empty( $other_gateway_ids ) ) {

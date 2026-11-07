@@ -3,7 +3,7 @@
 /**
  * External dependencies
  */
-import { generateCSVDataFromTable } from '@woocommerce/csv-export';
+import { generateCSVDataFromTable } from '@poocommerce/csv-export';
 
 /**
  * Internal dependencies

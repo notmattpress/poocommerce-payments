@@ -25,11 +25,11 @@ function getReportsPageConfig( {
 		container,
 		path: reportsPath,
 		wpOpenMenu: menuID,
-		breadcrumbs: [ rootLink, __( 'Reports', 'woocommerce-payments' ) ],
+		breadcrumbs: [ rootLink, __( 'Reports', 'poocommerce-payments' ) ],
 		navArgs: {
 			id: reportsNavId,
 		},
-		capability: 'manage_woocommerce',
+		capability: 'manage_poocommerce',
 	};
 }
 

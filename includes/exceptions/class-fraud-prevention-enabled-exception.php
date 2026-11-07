@@ -2,7 +2,7 @@
 /**
  * Class Fraud_Prevention_Enabled_Exception
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Exceptions;

@@ -357,7 +357,7 @@ curl -X GET https://example.com/wp-json/wc/v3/payments/deposits/po_123abc \
 
 ## Submit an instant payout
 
-Submit an instant payout for a list of transactions. Only for eligible accounts. See [Instant Payouts with WooPayments](https://woocommerce.com/document/woopayments/payouts/instant-payouts/) for more information.
+Submit an instant payout for a list of transactions. Only for eligible accounts. See [Instant Payouts with WooPayments](https://poocommerce.com/document/woopayments/payouts/instant-payouts/) for more information.
 
 ### HTTP request
 
@@ -417,7 +417,7 @@ Request a CSV export of payouts matching the query. A link to the exported CSV w
 curl -X POST 'https://example.com/wp-json/wc/v3/payments/deposits/download?status_is=paid' \
   -u consumer_key:consumer_secret
   --data '{
-      "user_email": "name@example.woocommerce.com"
+      "user_email": "name@example.poocommerce.com"
     }'
 ```
 

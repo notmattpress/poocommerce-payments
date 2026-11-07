@@ -8,7 +8,7 @@ Generally, only the latest version of the extension has continued support.  In s
 
 ## Reporting a Vulnerability
 
-[WooPayments](https://woocommerce.com/payments/) is an open-source plugin for WooCommerce. Our HackerOne program covers the plugin software.
+[WooPayments](https://poocommerce.com/payments/) is an open-source plugin for PooCommerce. Our HackerOne program covers the plugin software.
 
 **For responsible disclosure of security issues and to be eligible for our bug bounty program, please submit your report via the [HackerOne](https://hackerone.com/automattic) portal.**
 
@@ -32,7 +32,7 @@ We also expect you to comply with all applicable laws. You're responsible to pay
 
 This section documents security advisories that surface in `npm audit` or GitHub Dependabot but are **not exploitable in WooPayments' usage**. Each entry should explain why the vulnerable code path is unreachable, so reviewers can dismiss the corresponding Dependabot alert with confidence and revisit it if the situation changes.
 
-### `locutus` (`@woocommerce/number` → `locutus@2.x`)
+### `locutus` (`@poocommerce/number` → `locutus@2.x`)
 
 | Advisory | Severity | Affected | Vulnerable function |
 |---|---|---|---|
@@ -41,10 +41,10 @@ This section documents security advisories that surface in `npm audit` or GitHub
 | [GHSA-vc8f-x9pp-wf5p](https://github.com/advisories/GHSA-vc8f-x9pp-wf5p) | moderate | `<=3.0.24` | prototype pollution (incomplete fix for CVE-2026-25521) |
 | [GHSA-4mph-v827-f877](https://github.com/advisories/GHSA-4mph-v827-f877) | moderate | `<=3.0.24` | `unserialize()` prototype pollution |
 
-**Why it's not exploitable here.** `locutus` reaches our bundle only via `@woocommerce/number@2.5.0`, which imports a single function — `locutus/php/strings/number_format` — and re-exports it as `numberFormat`. None of the vulnerable functions (`create_function`, `call_user_func_array`, `unserialize`, prototype-pollution paths) are imported, instantiated, or transitively called from `@woocommerce/number`'s public API. Our codebase calls `numberFormat` from one site (`client/utils/index.js`'s `applyThousandSeparator`) on integer transaction counts; the input never flows into the vulnerable surface.
+**Why it's not exploitable here.** `locutus` reaches our bundle only via `@poocommerce/number@2.5.0`, which imports a single function — `locutus/php/strings/number_format` — and re-exports it as `numberFormat`. None of the vulnerable functions (`create_function`, `call_user_func_array`, `unserialize`, prototype-pollution paths) are imported, instantiated, or transitively called from `@poocommerce/number`'s public API. Our codebase calls `numberFormat` from one site (`client/utils/index.js`'s `applyThousandSeparator`) on integer transaction counts; the input never flows into the vulnerable surface.
 
-**Why we don't override.** `locutus@>=3.0.25` is not vulnerable, but it changes its module shape from CommonJS default-export to a named ESM export, which breaks `@woocommerce/number`'s `import numberFormatter from 'locutus/...'` line. No published `@woocommerce/number` or `@woocommerce/currency` version exists that uses the patched locutus, so the chain currently has no clean upstream fix.
+**Why we don't override.** `locutus@>=3.0.25` is not vulnerable, but it changes its module shape from CommonJS default-export to a named ESM export, which breaks `@poocommerce/number`'s `import numberFormatter from 'locutus/...'` line. No published `@poocommerce/number` or `@poocommerce/currency` version exists that uses the patched locutus, so the chain currently has no clean upstream fix.
 
-**Re-evaluate when:** a new `@woocommerce/number` or `@woocommerce/currency` is published that bumps the `locutus` dependency to `>=3.0.25`, or when `@woocommerce/number` switches to a non-locutus implementation. Until then, plugin maintainers should manually re-check this exception during regular dependency and security review.
+**Re-evaluate when:** a new `@poocommerce/number` or `@poocommerce/currency` is published that bumps the `locutus` dependency to `>=3.0.25`, or when `@poocommerce/number` switches to a non-locutus implementation. Until then, plugin maintainers should manually re-check this exception during regular dependency and security review.
 
-The transitive `@woocommerce/components`, `@woocommerce/currency`, and `@woocommerce/number` advisories that GitHub flags are downstream of this same locutus chain — they resolve automatically once locutus is fixed upstream.
+The transitive `@poocommerce/components`, `@poocommerce/currency`, and `@poocommerce/number` advisories that GitHub flags are downstream of this same locutus chain — they resolve automatically once locutus is fixed upstream.

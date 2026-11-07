@@ -25,12 +25,12 @@ const formatPaymentMethodDetails = ( charge ) => {
 	} = charge.payment_method_details.klarna;
 
 	const paymentMethodCategoryTranslations = {
-		pay_later: __( 'pay_later', 'woocommerce-payments' ),
-		pay_now: __( 'pay_now', 'woocommerce-payments' ),
-		pay_with_financing: __( 'pay_with_financing', 'woocommerce-payments' ),
+		pay_later: __( 'pay_later', 'poocommerce-payments' ),
+		pay_now: __( 'pay_now', 'poocommerce-payments' ),
+		pay_with_financing: __( 'pay_with_financing', 'poocommerce-payments' ),
 		pay_in_installments: __(
 			'pay_in_installments',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 	};
 
@@ -78,21 +78,21 @@ const KlarnaDetails = ( { charge = {}, isLoading } ) => {
 			<div className="payment-method-details__column">
 				<Detail
 					isLoading={ isLoading }
-					label={ __( 'ID', 'woocommerce-payments' ) }
+					label={ __( 'ID', 'poocommerce-payments' ) }
 				>
 					{ id }
 				</Detail>
 
 				<Detail
 					isLoading={ isLoading }
-					label={ __( 'Category', 'woocommerce-payments' ) }
+					label={ __( 'Category', 'poocommerce-payments' ) }
 				>
 					{ paymentMethodCategory }
 				</Detail>
 
 				<Detail
 					isLoading={ isLoading }
-					label={ __( 'Preferred Locale', 'woocommerce-payments' ) }
+					label={ __( 'Preferred Locale', 'poocommerce-payments' ) }
 				>
 					{ preferredLocale }
 				</Detail>
@@ -101,21 +101,21 @@ const KlarnaDetails = ( { charge = {}, isLoading } ) => {
 			<div className="payment-method-details__column">
 				<Detail
 					isLoading={ isLoading }
-					label={ __( 'Owner', 'woocommerce-payments' ) }
+					label={ __( 'Owner', 'poocommerce-payments' ) }
 				>
 					{ name }
 				</Detail>
 
 				<Detail
 					isLoading={ isLoading }
-					label={ __( 'Owner email', 'woocommerce-payments' ) }
+					label={ __( 'Owner email', 'poocommerce-payments' ) }
 				>
 					{ email }
 				</Detail>
 
 				<Detail
 					isLoading={ isLoading }
-					label={ __( 'Address', 'woocommerce-payments' ) }
+					label={ __( 'Address', 'poocommerce-payments' ) }
 				>
 					<span
 						dangerouslySetInnerHTML={ {

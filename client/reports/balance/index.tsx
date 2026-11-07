@@ -50,7 +50,7 @@ interface BalanceReportProps {
 }
 
 const woopaymentsBusinessDetails = [
-	__( 'WooPayments', 'woocommerce-payments' ),
+	__( 'WooPayments', 'poocommerce-payments' ),
 	// Postal address lines below are deliberately not wrapped in __():
 	// localizing a legal entity address would produce non-deliverable text on
 	// the printed reconciliation report.
@@ -73,10 +73,10 @@ const getPrintRowClassName = ( row: BalanceRow ): string | undefined => {
 
 const BalanceEmptyState = (): JSX.Element => (
 	<ReportState
-		title={ __( 'No balance activity', 'woocommerce-payments' ) }
+		title={ __( 'No balance activity', 'poocommerce-payments' ) }
 		description={ __(
 			"Your Balance summary will appear here once there's enough data to display.",
-			'woocommerce-payments'
+			'poocommerce-payments'
 		) }
 		icon={ calendar }
 		className="wcpay-reports-state--empty"
@@ -108,7 +108,7 @@ const BalancePrintReport = ( {
 				<img
 					className="wcpay-reports-balance-print__logo"
 					src={ WooPaymentsLogo }
-					alt={ __( 'WooPayments', 'woocommerce-payments' ) }
+					alt={ __( 'WooPayments', 'poocommerce-payments' ) }
 				/>
 				<div
 					className="wcpay-reports-balance-print__business"
@@ -128,7 +128,7 @@ const BalancePrintReport = ( {
 				<thead>
 					<tr>
 						<th scope="colgroup" colSpan={ 2 }>
-							{ __( 'Balance summary', 'woocommerce-payments' ) }
+							{ __( 'Balance summary', 'poocommerce-payments' ) }
 						</th>
 					</tr>
 				</thead>
@@ -158,7 +158,7 @@ const BalancePrintReport = ( {
 			<p className="wcpay-reports-balance-print__disclaimer">
 				{ __(
 					'This report is provided for informational reconciliation purposes only. It is not an IRS form, tax statement, bank statement, legal document, or formal financial statement.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				) }
 			</p>
 		</section>
@@ -344,7 +344,7 @@ export const BalanceReport = ( {
 
 			const message = __(
 				'Balance report loaded.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			);
 			if ( speakTimerRef.current ) {
 				clearTimeout( speakTimerRef.current );
@@ -420,19 +420,19 @@ export const BalanceReport = ( {
 	} else if ( hasError ) {
 		stateContent = (
 			<ReportState
-				title={ __( 'Balance unavailable', 'woocommerce-payments' ) }
+				title={ __( 'Balance unavailable', 'poocommerce-payments' ) }
 				description={
 					<>
 						<span>
 							{ __(
 								"We couldn't load your balance data.",
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 						</span>{ ' ' }
 						<span>
 							{ __(
 								'Try again in a few minutes.',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 						</span>
 					</>
@@ -451,7 +451,7 @@ export const BalanceReport = ( {
 							onReload( period );
 						} }
 					>
-						{ __( 'Reload report', 'woocommerce-payments' ) }
+						{ __( 'Reload report', 'poocommerce-payments' ) }
 					</Button>
 				}
 				icon={ calendar }

@@ -598,7 +598,7 @@ exports[`International IP address card renders correctly when enabled and checke
 </div>
 `;
 
-exports[`International IP address card renders correctly when woocommerce_allowed_countries is all 1`] = `
+exports[`International IP address card renders correctly when poocommerce_allowed_countries is all 1`] = `
 .emotion-0 {
   background-color: #fff;
   color: #1e1e1e;
@@ -782,7 +782,7 @@ exports[`International IP address card renders correctly when woocommerce_allowe
 </div>
 `;
 
-exports[`International IP address card renders correctly when woocommerce_allowed_countries is all_except 1`] = `
+exports[`International IP address card renders correctly when poocommerce_allowed_countries is all_except 1`] = `
 .emotion-0 {
   background-color: #fff;
   color: #1e1e1e;
@@ -1080,7 +1080,7 @@ exports[`International IP address card renders correctly when woocommerce_allowe
 </div>
 `;
 
-exports[`International IP address card renders correctly when woocommerce_allowed_countries is specific 1`] = `
+exports[`International IP address card renders correctly when poocommerce_allowed_countries is specific 1`] = `
 .emotion-0 {
   background-color: #fff;
   color: #1e1e1e;

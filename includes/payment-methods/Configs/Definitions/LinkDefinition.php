@@ -63,10 +63,10 @@ class LinkDefinition implements PaymentMethodDefinitionInterface {
 	 */
 	public static function get_title( ?string $account_country = null ): string {
 		if ( Country_Code::UNITED_KINGDOM === $account_country ) {
-			return __( 'Onelink', 'woocommerce-payments' );
+			return __( 'Onelink', 'poocommerce-payments' );
 		}
 
-		return __( 'Link', 'woocommerce-payments' );
+		return __( 'Link', 'poocommerce-payments' );
 	}
 
 	/**
@@ -101,10 +101,10 @@ class LinkDefinition implements PaymentMethodDefinitionInterface {
 	 */
 	public static function get_description( ?string $account_country = null ): string {
 		if ( Country_Code::UNITED_KINGDOM === $account_country ) {
-			return __( 'Onelink autofills your customers\' payment and shipping details to deliver an easy and seamless checkout experience.', 'woocommerce-payments' );
+			return __( 'Onelink autofills your customers\' payment and shipping details to deliver an easy and seamless checkout experience.', 'poocommerce-payments' );
 		}
 
-		return __( 'Link autofills your customers\' payment and shipping details to deliver an easy and seamless checkout experience.', 'woocommerce-payments' );
+		return __( 'Link autofills your customers\' payment and shipping details to deliver an easy and seamless checkout experience.', 'poocommerce-payments' );
 	}
 
 	/**

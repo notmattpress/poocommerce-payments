@@ -5,8 +5,8 @@
  */
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
-import { updateQueryString } from '@woocommerce/navigation';
-import { useUserPreferences } from '@woocommerce/data';
+import { updateQueryString } from '@poocommerce/navigation';
+import { useUserPreferences } from '@poocommerce/data';
 
 /**
  * Internal dependencies
@@ -60,8 +60,8 @@ jest.mock( 'wcpay/data/transactions', () => ( {
 	useFraudOutcomeTransactionsSummary: jest.fn(),
 } ) );
 
-jest.mock( '@woocommerce/data', () => {
-	const actualModule = jest.requireActual( '@woocommerce/data' );
+jest.mock( '@poocommerce/data', () => {
+	const actualModule = jest.requireActual( '@poocommerce/data' );
 
 	return {
 		...actualModule,

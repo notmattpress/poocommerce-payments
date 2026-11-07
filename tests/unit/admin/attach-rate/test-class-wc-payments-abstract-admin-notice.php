@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Abstract_Admin_Notice_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 /**
@@ -233,9 +233,9 @@ class WC_Payments_Abstract_Admin_Notice_Test extends WCPAY_UnitTestCase {
 
 		$this->notice->init_hooks();
 
-		$this->assertNotFalse( has_action( 'woocommerce_sections_checkout', [ $this->notice, 'maybe_show' ] ) );
+		$this->assertNotFalse( has_action( 'poocommerce_sections_checkout', [ $this->notice, 'maybe_show' ] ) );
 
-		remove_action( 'woocommerce_sections_checkout', [ $this->notice, 'maybe_show' ] );
+		remove_action( 'poocommerce_sections_checkout', [ $this->notice, 'maybe_show' ] );
 		$this->cleanup_admin_init_hooks( $this->notice );
 		unset( $_GET['page'], $_GET['tab'] );
 	}

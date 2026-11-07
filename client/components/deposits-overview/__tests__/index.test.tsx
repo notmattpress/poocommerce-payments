@@ -424,7 +424,7 @@ describe( 'Deposits Overview information', () => {
 		);
 		expect( getByRole( 'link', { name: /Learn more/ } ) ).toHaveAttribute(
 			'href',
-			'https://woocommerce.com/document/woopayments/payouts/payout-schedule/#new-accounts'
+			'https://poocommerce.com/document/woopayments/payouts/payout-schedule/#new-accounts'
 		);
 	} );
 } );

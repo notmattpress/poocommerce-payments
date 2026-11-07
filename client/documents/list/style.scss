@@ -8,11 +8,11 @@ $space-header-item: 12px;
 	}
 
 	// slight adjustment to align header items with sorting button to account for icon width
-	.woocommerce-table__header.is-numeric .components-button {
+	.poocommerce-table__header.is-numeric .components-button {
 		margin-right: $space-header-item;
 	}
 
-	.woocommerce-table__header.is-center-aligned {
+	.poocommerce-table__header.is-center-aligned {
 		text-align: center;
 	}
 }
@@ -23,12 +23,12 @@ button.components-button.documents-list__download-button {
 }
 
 /**
- * Sourced from https://github.com/woocommerce/woocommerce-admin/blob/ec36a00b77b5c0e313985a5a64c88aaec9eb154e/client/analytics/components/report-table/style.scss.
+ * Sourced from https://github.com/poocommerce/poocommerce-admin/blob/ec36a00b77b5c0e313985a5a64c88aaec9eb154e/client/analytics/components/report-table/style.scss.
  * Depending on the wc-admin version, these styles are not loaded if not using the analytics report components, so they need to be included here.
  * If we switch to the Report components, we can remove them from here, as they would be loaded by wc-admin.
 */
-.woocommerce-report-table {
-	.woocommerce-card__header {
+.poocommerce-report-table {
+	.poocommerce-card__header {
 		position: relative;
 	}
 }

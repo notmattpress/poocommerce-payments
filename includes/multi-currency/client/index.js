@@ -7,7 +7,7 @@ import {
 	getQuery,
 	updateQueryString,
 	getHistory,
-} from '@woocommerce/navigation';
+} from '@poocommerce/navigation';
 
 /**
  * Internal dependencies

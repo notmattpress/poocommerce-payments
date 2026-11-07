@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Checkout_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\WC_Payments_Checkout;
@@ -21,7 +21,7 @@ use WCPay\PaymentMethods\Configs\Definitions\P24Definition;
 /**
  * Class WC_Payments_Checkout_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 class WC_Payments_Checkout_Test extends WP_UnitTestCase {
 
@@ -124,7 +124,7 @@ class WC_Payments_Checkout_Test extends WP_UnitTestCase {
 			)
 			->disableOriginalConstructor()
 			->getMock();
-		$this->mock_wcpay_gateway->id = 'woocommerce_payments';
+		$this->mock_wcpay_gateway->id = 'poocommerce_payments';
 		$this->mock_wcpay_gateway
 			->method( 'get_account_domestic_currency' )
 			->willReturn( Currency_Code::UNITED_STATES_DOLLAR );
@@ -167,7 +167,7 @@ class WC_Payments_Checkout_Test extends WP_UnitTestCase {
 		parent::tear_down();
 		WC_Payments::set_gateway( $this->default_gateway );
 		unset( $_GET['key'] );
-		remove_filter( 'woocommerce_is_checkout', '__return_true' );
+		remove_filter( 'poocommerce_is_checkout', '__return_true' );
 		wp_dequeue_script( 'wcpay-upe-checkout' );
 		// Deregister too, so localized wcpay_upe_config data does not leak into later tests.
 		wp_deregister_script( 'wcpay-upe-checkout' );
@@ -205,7 +205,7 @@ class WC_Payments_Checkout_Test extends WP_UnitTestCase {
 	 */
 	private function setup_pay_for_order_endpoint( \WC_Order $order ) {
 		$this->setup_order_pay_query_data( $order );
-		add_filter( 'woocommerce_is_checkout', '__return_true' );
+		add_filter( 'poocommerce_is_checkout', '__return_true' );
 	}
 
 	/**
@@ -281,7 +281,7 @@ class WC_Payments_Checkout_Test extends WP_UnitTestCase {
 		$wp_query->query_vars = [ 'order-pay' => '999999' ];
 		set_query_var( 'order-pay', 999999 );
 		$_GET['key'] = 'wc_order_whatever';
-		add_filter( 'woocommerce_is_checkout', '__return_true' );
+		add_filter( 'poocommerce_is_checkout', '__return_true' );
 
 		$this->assertFalse( $this->invoke_is_valid_pay_for_order_endpoint() );
 	}
@@ -515,8 +515,8 @@ class WC_Payments_Checkout_Test extends WP_UnitTestCase {
 			remove_action( 'wp_enqueue_scripts', [ $this->system_under_test, 'register_scripts' ] );
 			remove_action( 'wp_enqueue_scripts', [ $this->system_under_test, 'register_scripts_for_zero_order_total' ], 11 );
 			remove_action( 'wp_footer', [ $this->system_under_test, 'maybe_load_pay_for_order_scripts' ] );
-			remove_action( 'woocommerce_after_checkout_form', [ $this->system_under_test, 'maybe_load_checkout_scripts' ] );
-			remove_filter( 'woocommerce_update_order_review_fragments', [ $this->system_under_test, 'add_payment_methods_config_to_update_order_review_fragments' ] );
+			remove_action( 'poocommerce_after_checkout_form', [ $this->system_under_test, 'maybe_load_checkout_scripts' ] );
+			remove_filter( 'poocommerce_update_order_review_fragments', [ $this->system_under_test, 'add_payment_methods_config_to_update_order_review_fragments' ] );
 		}
 	}
 
@@ -772,8 +772,8 @@ class WC_Payments_Checkout_Test extends WP_UnitTestCase {
 					'darkIcon'               => $dark_icon_url,
 					'showSaveOption'         => true,
 					'countries'              => [],
-					'gatewayId'              => 'woocommerce_payments',
-					'testingInstructions'    => 'Use test card <button type="button" class="js-woopayments-copy-test-number" aria-label="Click to copy the test number to clipboard" title="Copy to clipboard"><i></i><span>4242 4242 4242 4242</button> or refer to our <a href="https://woocommerce.com/document/woopayments/testing-and-troubleshooting/testing/#test-cards" target="_blank">testing guide</a>.',
+					'gatewayId'              => 'poocommerce_payments',
+					'testingInstructions'    => 'Use test card <button type="button" class="js-woopayments-copy-test-number" aria-label="Click to copy the test number to clipboard" title="Copy to clipboard"><i></i><span>4242 4242 4242 4242</button> or refer to our <a href="https://poocommerce.com/document/woopayments/testing-and-troubleshooting/testing/#test-cards" target="_blank">testing guide</a>.',
 					'forceNetworkSavedCards' => false,
 				],
 				'link' => [
@@ -785,7 +785,7 @@ class WC_Payments_Checkout_Test extends WP_UnitTestCase {
 					'darkIcon'               => $dark_icon_url,
 					'showSaveOption'         => true,
 					'countries'              => [],
-					'gatewayId'              => 'woocommerce_payments_link',
+					'gatewayId'              => 'poocommerce_payments_link',
 					'testingInstructions'    => '',
 					'forceNetworkSavedCards' => false,
 				],
@@ -962,7 +962,7 @@ class WC_Payments_Checkout_Test extends WP_UnitTestCase {
 		$config = $this->system_under_test->get_payment_fields_js_config();
 
 		$expected_instructions = sprintf(
-			'Use test card <button type="button" class="js-woopayments-copy-test-number" aria-label="Click to copy the test number to clipboard" title="Copy to clipboard"><i></i><span>%s</button> or refer to our <a href="https://woocommerce.com/document/woopayments/testing-and-troubleshooting/testing/#test-cards" target="_blank">testing guide</a>.',
+			'Use test card <button type="button" class="js-woopayments-copy-test-number" aria-label="Click to copy the test number to clipboard" title="Copy to clipboard"><i></i><span>%s</button> or refer to our <a href="https://poocommerce.com/document/woopayments/testing-and-troubleshooting/testing/#test-cards" target="_blank">testing guide</a>.',
 			$expected_card
 		);
 
@@ -1029,28 +1029,28 @@ class WC_Payments_Checkout_Test extends WP_UnitTestCase {
 			->method( 'wc_payments_get_payment_method_by_id' )
 			->willReturn( $card_pm );
 
-		$original_payment_html = '<div class="woocommerce-checkout-payment">Stuff</div>';
+		$original_payment_html = '<div class="poocommerce-checkout-payment">Stuff</div>';
 
 		$fragments = [
-			'.woocommerce-checkout-payment' => $original_payment_html,
+			'.poocommerce-checkout-payment' => $original_payment_html,
 		];
 
 		$result = $this->system_under_test->add_payment_methods_config_to_update_order_review_fragments( $fragments );
 
 		// The original content should still be there.
-		$this->assertStringContainsString( $original_payment_html, $result['.woocommerce-checkout-payment'] );
+		$this->assertStringContainsString( $original_payment_html, $result['.poocommerce-checkout-payment'] );
 		// A script tag should be appended.
-		$this->assertStringContainsString( '<script>', $result['.woocommerce-checkout-payment'] );
-		$this->assertStringContainsString( 'window.wcpay_upe_config', $result['.woocommerce-checkout-payment'] );
-		$this->assertStringContainsString( 'Object.assign', $result['.woocommerce-checkout-payment'] );
+		$this->assertStringContainsString( '<script>', $result['.poocommerce-checkout-payment'] );
+		$this->assertStringContainsString( 'window.wcpay_upe_config', $result['.poocommerce-checkout-payment'] );
+		$this->assertStringContainsString( 'Object.assign', $result['.poocommerce-checkout-payment'] );
 		// Check that the script contains the expected dynamic config keys.
-		$this->assertStringContainsString( 'paymentMethodsConfig', $result['.woocommerce-checkout-payment'] );
-		$this->assertStringContainsString( 'currency', $result['.woocommerce-checkout-payment'] );
-		$this->assertStringContainsString( 'cartTotal', $result['.woocommerce-checkout-payment'] );
+		$this->assertStringContainsString( 'paymentMethodsConfig', $result['.poocommerce-checkout-payment'] );
+		$this->assertStringContainsString( 'currency', $result['.poocommerce-checkout-payment'] );
+		$this->assertStringContainsString( 'cartTotal', $result['.poocommerce-checkout-payment'] );
 	}
 
 	public function test_payment_fields_js_config_includes_is_express_checkout_in_payment_methods_enabled_when_feature_and_option_enabled() {
-		// Requires WooCommerce 10.6.0+ for the feature flag (or dev mode).
+		// Requires PooCommerce 10.6.0+ for the feature flag (or dev mode).
 		WC_Payments::mode()->dev();
 
 		update_option( WC_Payments_Features::WCPAY_DYNAMIC_CHECKOUT_PLACE_ORDER_BUTTON_FLAG_NAME, '1' );
@@ -1125,12 +1125,12 @@ class WC_Payments_Checkout_Test extends WP_UnitTestCase {
 
 		// Add gateways for card, google_pay, and apple_pay.
 		$mock_card_gateway     = $this->createMock( WC_Payment_Gateway_WCPay::class );
-		$mock_card_gateway->id = 'woocommerce_payments';
+		$mock_card_gateway->id = 'poocommerce_payments';
 		$mock_card_gateway->method( 'should_use_stripe_platform_on_checkout_page' )->willReturn( false );
 		$mock_apple_pay_gateway     = $this->createMock( WC_Payment_Gateway_WCPay::class );
-		$mock_apple_pay_gateway->id = 'woocommerce_payments_apple_pay';
+		$mock_apple_pay_gateway->id = 'poocommerce_payments_apple_pay';
 		$mock_apple_pay_gateway->method( 'should_use_stripe_platform_on_checkout_page' )->willReturn( false );
-		$mock_google_pay_gateway->id = 'woocommerce_payments_google_pay';
+		$mock_google_pay_gateway->id = 'poocommerce_payments_google_pay';
 		$mock_google_pay_gateway->method( 'should_use_stripe_platform_on_checkout_page' )->willReturn( false );
 
 		$property->setValue(
@@ -1271,16 +1271,16 @@ class WC_Payments_Checkout_Test extends WP_UnitTestCase {
 		$original_map = $property->getValue( null );
 
 		$mock_google_pay_gateway     = $this->createMock( WC_Payment_Gateway_WCPay::class );
-		$mock_google_pay_gateway->id = 'woocommerce_payments_google_pay';
+		$mock_google_pay_gateway->id = 'poocommerce_payments_google_pay';
 		$mock_google_pay_gateway->method( 'is_enabled' )->willReturn( true );
 		$mock_google_pay_gateway->method( 'should_use_stripe_platform_on_checkout_page' )->willReturn( false );
 
 		$mock_apple_pay_gateway     = $this->createMock( WC_Payment_Gateway_WCPay::class );
-		$mock_apple_pay_gateway->id = 'woocommerce_payments_apple_pay';
+		$mock_apple_pay_gateway->id = 'poocommerce_payments_apple_pay';
 		$mock_apple_pay_gateway->method( 'should_use_stripe_platform_on_checkout_page' )->willReturn( false );
 
 		$mock_card_gateway     = $this->createMock( WC_Payment_Gateway_WCPay::class );
-		$mock_card_gateway->id = 'woocommerce_payments';
+		$mock_card_gateway->id = 'poocommerce_payments';
 		$mock_card_gateway->method( 'should_use_stripe_platform_on_checkout_page' )->willReturn( false );
 
 		$property->setValue(
@@ -1320,13 +1320,13 @@ class WC_Payments_Checkout_Test extends WP_UnitTestCase {
 			);
 
 		$fragments = [
-			'.woocommerce-checkout-payment' => '<div class="woocommerce-checkout-payment">Payment</div>',
+			'.poocommerce-checkout-payment' => '<div class="poocommerce-checkout-payment">Payment</div>',
 		];
 
 		$result = $this->system_under_test->add_payment_methods_config_to_update_order_review_fragments( $fragments );
 
-		$this->assertStringContainsString( 'apple_pay', $result['.woocommerce-checkout-payment'] );
-		$this->assertStringContainsString( 'google_pay', $result['.woocommerce-checkout-payment'] );
+		$this->assertStringContainsString( 'apple_pay', $result['.poocommerce-checkout-payment'] );
+		$this->assertStringContainsString( 'google_pay', $result['.poocommerce-checkout-payment'] );
 
 		$property->setValue( null, $original_map );
 		$property->setAccessible( false );

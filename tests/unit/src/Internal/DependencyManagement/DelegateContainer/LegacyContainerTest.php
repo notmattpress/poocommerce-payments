@@ -2,7 +2,7 @@
 /**
  * Class LegacyContainerTest
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Tests\Internal\DependencyManagement\DelegateContainer;

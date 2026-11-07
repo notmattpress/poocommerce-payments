@@ -2,18 +2,18 @@
 /**
  * Get Account ability definition.
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Internal\Abilities\Domain;
 
-use Automattic\WooCommerce\Abilities\AbilityDefinition;
+use Automattic\PooCommerce\Abilities\AbilityDefinition;
 use WCPay\Internal\Abilities\AbilitiesRegistrar;
 
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Registers the `woocommerce-payments/get-account` ability.
+ * Registers the `poocommerce-payments/get-account` ability.
  *
  * Zero-arg read that returns WooPayments account state. Returns
  * `WP_Error( 'wcpay_not_initialized' )` when WooPayments has not finished
@@ -29,7 +29,7 @@ class GetAccount implements AbilityDefinition {
 	 * @return string
 	 */
 	public static function get_name(): string {
-		return 'woocommerce-payments/get-account';
+		return 'poocommerce-payments/get-account';
 	}
 
 	/**
@@ -39,8 +39,8 @@ class GetAccount implements AbilityDefinition {
 	 */
 	public static function get_registration_args(): array {
 		return [
-			'label'               => __( 'Get WooPayments account state', 'woocommerce-payments' ),
-			'description'         => __( 'Return the merchant\'s WooPayments account state: onboarding status, country, store and customer currencies, KYC requirements, deadlines, and test/live mode flags.', 'woocommerce-payments' ),
+			'label'               => __( 'Get WooPayments account state', 'poocommerce-payments' ),
+			'description'         => __( 'Return the merchant\'s WooPayments account state: onboarding status, country, store and customer currencies, KYC requirements, deadlines, and test/live mode flags.', 'poocommerce-payments' ),
 			'category'            => AbilitiesRegistrar::CATEGORY_SLUG,
 			'input_schema'        => [
 				'type'                 => 'object',
@@ -49,7 +49,7 @@ class GetAccount implements AbilityDefinition {
 				'additionalProperties' => false,
 			],
 			'execute_callback'    => [ self::class, 'execute' ],
-			'permission_callback' => [ AbilitiesRegistrar::class, 'current_user_can_manage_woocommerce' ],
+			'permission_callback' => [ AbilitiesRegistrar::class, 'current_user_can_manage_poocommerce' ],
 			// output_schema omitted: payload shape comes straight from the
 			// backing controller.
 			'meta'                => [
@@ -89,7 +89,7 @@ class GetAccount implements AbilityDefinition {
 			);
 			return new \WP_Error(
 				'wcpay_not_initialized',
-				__( 'WooPayments is not initialized.', 'woocommerce-payments' )
+				__( 'WooPayments is not initialized.', 'poocommerce-payments' )
 			);
 		}
 

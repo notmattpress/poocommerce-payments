@@ -19,7 +19,7 @@ import {
 
 jQuery( ( $ ) => {
 	// Classic shortcode: listen for jQuery variation-change event.
-	$( document.body ).on( 'woocommerce_variation_has_changed', async () => {
+	$( document.body ).on( 'poocommerce_variation_has_changed', async () => {
 		doAction( 'wcpay.express-checkout.update-button-data' );
 	} );
 

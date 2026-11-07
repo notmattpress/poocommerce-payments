@@ -13,7 +13,7 @@ import * as shopper from '../../../utils/shopper';
 import * as navigation from '../../../utils/shopper-navigation';
 
 const changePaymentMethodButtonSelector =
-	'button[name="woocommerce_change_payment"], #place_order';
+	'button[name="poocommerce_change_payment"], #place_order';
 
 // Target the subscription action by the query arg the change-payment endpoint reads.
 // Subscriptions renders these actions as anchors styled as buttons, so matching on an

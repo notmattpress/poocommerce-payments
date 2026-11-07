@@ -35,7 +35,7 @@ const PromotionalBadge: React.FC< PromotionalBadgeProps > = ( {
 	message,
 	tooltip,
 	type = 'success',
-	tooltipLabel = __( 'More information', 'woocommerce-payments' ),
+	tooltipLabel = __( 'More information', 'poocommerce-payments' ),
 	tcUrl,
 	tcLabel,
 } ) => {

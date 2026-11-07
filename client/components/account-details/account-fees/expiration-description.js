@@ -22,7 +22,7 @@ const ExpirationDescription = ( {
 			/* translators: %1: total payment volume until this promotion expires %2: End date of the promotion */
 			__(
 				'Discounted base fee expires after the first %1$s of total payment volume or on %2$s.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			formatCurrency( volumeAllowance, currencyCode ),
 			formatDateTimeFromString( endTime )
@@ -32,7 +32,7 @@ const ExpirationDescription = ( {
 			/* translators: %1: total payment volume until this promotion expires */
 			__(
 				'Discounted base fee expires after the first %1$s of total payment volume.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			formatCurrency( volumeAllowance, currencyCode )
 		);
@@ -41,7 +41,7 @@ const ExpirationDescription = ( {
 			/* translators: %1: End date of the promotion */
 			__(
 				'Discounted base fee expires on %1$s.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			formatDateTimeFromString( endTime )
 		);

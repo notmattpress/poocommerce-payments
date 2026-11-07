@@ -2,7 +2,7 @@
 /**
  * Class Migrate_Express_Checkout_Locations_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 namespace unit\migrations;
@@ -15,7 +15,7 @@ use WCPAY_UnitTestCase;
  */
 class Migrate_Express_Checkout_Locations_Test extends WCPAY_UnitTestCase {
 
-	const CARD_SETTINGS_OPTION_KEY = 'woocommerce_woocommerce_payments_settings';
+	const CARD_SETTINGS_OPTION_KEY = 'poocommerce_poocommerce_payments_settings';
 
 	/**
 	 * @var Migrate_Express_Checkout_Locations
@@ -27,11 +27,11 @@ class Migrate_Express_Checkout_Locations_Test extends WCPAY_UnitTestCase {
 
 		$this->migration = new Migrate_Express_Checkout_Locations();
 
-		update_option( 'woocommerce_woocommerce_payments_version', '10.3.0' );
+		update_option( 'poocommerce_poocommerce_payments_version', '10.3.0' );
 	}
 
 	public function tear_down() {
-		delete_option( 'woocommerce_woocommerce_payments_version' );
+		delete_option( 'poocommerce_poocommerce_payments_version' );
 		delete_option( self::CARD_SETTINGS_OPTION_KEY );
 
 		parent::tear_down();
@@ -41,7 +41,7 @@ class Migrate_Express_Checkout_Locations_Test extends WCPAY_UnitTestCase {
 	 * @dataProvider versions_that_should_skip_migration_provider
 	 */
 	public function test_it_does_nothing_if_version_is_10_4_0_or_higher( string $stored_version ) {
-		update_option( 'woocommerce_woocommerce_payments_version', $stored_version );
+		update_option( 'poocommerce_poocommerce_payments_version', $stored_version );
 		update_option(
 			self::CARD_SETTINGS_OPTION_KEY,
 			[

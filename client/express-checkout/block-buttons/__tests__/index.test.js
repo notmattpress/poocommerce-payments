@@ -18,7 +18,7 @@ jest.mock( 'wcpay/utils/checkout', () => ( {
 
 jest.mock( 'wcpay/checkout/constants', () => ( {
 	PAYMENT_METHOD_NAME_EXPRESS_CHECKOUT_ELEMENT:
-		'woocommerce_payments_express_checkout',
+		'poocommerce_payments_express_checkout',
 } ) );
 
 const mockCart = {
