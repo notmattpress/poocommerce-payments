@@ -2,7 +2,7 @@
 /**
  * Class Level3ServiceTest
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Tests\Internal\Service;
@@ -175,7 +175,7 @@ class Level3ServiceTest extends WCPAY_UnitTestCase {
 	/**
 	 * @param array      $mock_items        Order items.
 	 * @param string     $shipping_postcode Shipping postcode.
-	 * @param float|null $total             Order total. Defaults to what WooCommerce would charge for the items and shipping.
+	 * @param float|null $total             Order total. Defaults to what PooCommerce would charge for the items and shipping.
 	 */
 	protected function mock_order( array $mock_items, string $shipping_postcode, ?float $total = null ) {
 		if ( null === $total ) {
@@ -257,7 +257,7 @@ class Level3ServiceTest extends WCPAY_UnitTestCase {
 
 		$this->legacy_proxy->expects( $this->once() )
 			->method( 'call_function' )
-			->with( 'get_option', 'woocommerce_store_postcode' )
+			->with( 'get_option', 'poocommerce_store_postcode' )
 			->willReturn( '94110' );
 
 		$this->mock_account->method( 'get_account_country' )->willReturn( Country_Code::UNITED_STATES );
@@ -288,7 +288,7 @@ class Level3ServiceTest extends WCPAY_UnitTestCase {
 
 		$this->legacy_proxy->expects( $this->once() )
 			->method( 'call_function' )
-			->with( 'get_option', 'woocommerce_store_postcode' )
+			->with( 'get_option', 'poocommerce_store_postcode' )
 			->willReturn( '94110' );
 
 		$this->mock_account->method( 'get_account_country' )->willReturn( Country_Code::UNITED_STATES );
@@ -327,7 +327,7 @@ class Level3ServiceTest extends WCPAY_UnitTestCase {
 
 		$this->legacy_proxy->expects( $this->once() )
 			->method( 'call_function' )
-			->with( 'get_option', 'woocommerce_store_postcode' )
+			->with( 'get_option', 'poocommerce_store_postcode' )
 			->willReturn( '94110' );
 
 		$this->mock_account->method( 'get_account_country' )->willReturn( Country_Code::UNITED_STATES );
@@ -374,7 +374,7 @@ class Level3ServiceTest extends WCPAY_UnitTestCase {
 
 		$this->legacy_proxy->expects( $this->once() )
 			->method( 'call_function' )
-			->with( 'get_option', 'woocommerce_store_postcode' )
+			->with( 'get_option', 'poocommerce_store_postcode' )
 			->willReturn( '94110' );
 
 		$this->mock_account->method( 'get_account_country' )->willReturn( Country_Code::UNITED_STATES );
@@ -414,7 +414,7 @@ class Level3ServiceTest extends WCPAY_UnitTestCase {
 		// Use a non-US postcode.
 		$this->legacy_proxy->expects( $this->once() )
 			->method( 'call_function' )
-			->with( 'get_option', 'woocommerce_store_postcode' )
+			->with( 'get_option', 'poocommerce_store_postcode' )
 			->willReturn( '9000' );
 
 		$this->mock_account->method( 'get_account_country' )->willReturn( Country_Code::UNITED_STATES );
@@ -455,7 +455,7 @@ class Level3ServiceTest extends WCPAY_UnitTestCase {
 
 		$this->legacy_proxy->expects( $this->once() )
 			->method( 'call_function' )
-			->with( 'get_option', 'woocommerce_store_postcode' )
+			->with( 'get_option', 'poocommerce_store_postcode' )
 			->willReturn( '94110' );
 
 		$this->mock_account->method( 'get_account_country' )->willReturn( Country_Code::UNITED_STATES );
@@ -505,7 +505,7 @@ class Level3ServiceTest extends WCPAY_UnitTestCase {
 
 		$this->legacy_proxy->expects( $this->once() )
 			->method( 'call_function' )
-			->with( 'get_option', 'woocommerce_store_postcode' )
+			->with( 'get_option', 'poocommerce_store_postcode' )
 			->willReturn( '94110' );
 
 		$this->mock_account->method( 'get_account_country' )->willReturn( Country_Code::UNITED_STATES );
@@ -596,7 +596,7 @@ class Level3ServiceTest extends WCPAY_UnitTestCase {
 	public function test_lines_rounded_separately_are_balanced_against_the_order_total() {
 		$this->mock_account->method( 'get_account_country' )->willReturn( Country_Code::UNITED_STATES );
 
-		// "Round tax at subtotal level": WooCommerce rounds 129.655 once, to 129.66.
+		// "Round tax at subtotal level": PooCommerce rounds 129.655 once, to 129.66.
 		$mock_items = [];
 		foreach ( [ 16.491, 31.991, 25.191, 26.391, 29.591 ] as $index => $price ) {
 			$mock_items[] = $this->create_mock_item( 'Product ' . $index, 1, $price, 0, 30 + $index );

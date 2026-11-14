@@ -2,11 +2,11 @@
 /**
  * WC Blocks REST API registration preventer.
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
-use Automattic\WooCommerce\Blocks\Package;
-use Automattic\WooCommerce\Blocks\RestApi;
+use Automattic\PooCommerce\Blocks\Package;
+use Automattic\PooCommerce\Blocks\RestApi;
 
 /**
  * Class WC_Blocks_REST_API_Registration_Preventer.
@@ -24,16 +24,16 @@ class WC_Blocks_REST_API_Registration_Preventer {
 	}
 
 	/**
-	 * Deregister WooCommerce Blocks REST routes to prevent _doing_it_wrong() notices
+	 * Deregister PooCommerce Blocks REST routes to prevent _doing_it_wrong() notices
 	 * after calls to rest_do_request().
 	 */
 	public static function deregister_wc_blocks_rest_api() {
 		try {
-			/* For WooCommerce Blocks >= 2.6.0: */
+			/* For PooCommerce Blocks >= 2.6.0: */
 			$wc_blocks_rest_api = Package::container()->get( RestApi::class );
 			remove_action( 'rest_api_init', [ $wc_blocks_rest_api, 'register_rest_routes' ] );
 		} catch ( Exception $e ) {
-			/* For WooCommerce Blocks < 2.6.0: */
+			/* For PooCommerce Blocks < 2.6.0: */
 			remove_action( 'rest_api_init', [ RestApi::class, 'register_rest_routes' ] );
 		}
 	}

@@ -1,8 +1,8 @@
 <?php
 /**
- * WooCommerce Payments Multi-Currency Frontend Currencies
+ * PooCommerce Payments Multi-Currency Frontend Currencies
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\MultiCurrency;
@@ -74,7 +74,7 @@ class FrontendCurrencies {
 	 *
 	 * @var string
 	 */
-	private $woocommerce_currency;
+	private $poocommerce_currency;
 
 	/**
 	 * Whether WooPayments has an explicit shopper or compatibility currency selection.
@@ -166,28 +166,28 @@ class FrontendCurrencies {
 	public function init_hooks() {
 		if ( ! is_admin() && ! defined( 'DOING_CRON' ) && ! Utils::is_admin_api_request() ) {
 			// Currency hooks.
-			add_filter( 'woocommerce_currency', [ $this, 'get_woocommerce_currency' ], 900 );
+			add_filter( 'poocommerce_currency', [ $this, 'get_poocommerce_currency' ], 900 );
 			add_filter( 'wc_get_price_decimals', [ $this, 'get_price_decimals' ], 900 );
 			add_filter( 'wc_get_price_decimal_separator', [ $this, 'get_price_decimal_separator' ], 900 );
 			add_filter( 'wc_get_price_thousand_separator', [ $this, 'get_price_thousand_separator' ], 900 );
-			add_filter( 'woocommerce_price_format', [ $this, 'get_woocommerce_price_format' ], 900 );
-			add_filter( 'option_woocommerce_currency_pos', [ $this, 'get_woocommerce_currency_pos' ], 900 );
-			add_action( 'before_woocommerce_pay', [ $this, 'init_order_currency_from_query_vars' ] );
-			add_filter( 'woocommerce_order_get_total', [ $this, 'maybe_init_order_currency_from_order_total_prop' ], 900, 2 );
-			add_filter( 'woocommerce_get_formatted_order_total', [ $this, 'maybe_clear_order_currency_after_formatted_order_total' ], 900, 4 );
+			add_filter( 'poocommerce_price_format', [ $this, 'get_poocommerce_price_format' ], 900 );
+			add_filter( 'option_poocommerce_currency_pos', [ $this, 'get_poocommerce_currency_pos' ], 900 );
+			add_action( 'before_poocommerce_pay', [ $this, 'init_order_currency_from_query_vars' ] );
+			add_filter( 'poocommerce_order_get_total', [ $this, 'maybe_init_order_currency_from_order_total_prop' ], 900, 2 );
+			add_filter( 'poocommerce_get_formatted_order_total', [ $this, 'maybe_clear_order_currency_after_formatted_order_total' ], 900, 4 );
 
 			// A cart that changes under the same user and session can change the currency selection (e.g. subscription renewals).
-			add_action( 'woocommerce_cart_loaded_from_session', [ $this, 'selected_currency_changed' ], 0 );
-			add_action( 'woocommerce_cart_updated', [ $this, 'selected_currency_changed' ], 0 );
-			add_filter( 'woocommerce_order_class', [ $this, 'flag_order_loading' ], 900 );
-			add_action( 'woocommerce_order_before_calculate_totals', [ $this, 'init_calculated_order_currency' ], 10, 2 );
-			add_action( 'woocommerce_order_after_calculate_totals', [ $this, 'clear_calculated_order_currency' ], 900 );
+			add_action( 'poocommerce_cart_loaded_from_session', [ $this, 'selected_currency_changed' ], 0 );
+			add_action( 'poocommerce_cart_updated', [ $this, 'selected_currency_changed' ], 0 );
+			add_filter( 'poocommerce_order_class', [ $this, 'flag_order_loading' ], 900 );
+			add_action( 'poocommerce_order_before_calculate_totals', [ $this, 'init_calculated_order_currency' ], 10, 2 );
+			add_action( 'poocommerce_order_after_calculate_totals', [ $this, 'clear_calculated_order_currency' ], 900 );
 		}
 
-		add_filter( 'woocommerce_thankyou_order_id', [ $this, 'init_order_currency' ] );
-		add_action( 'woocommerce_account_view-order_endpoint', [ $this, 'init_order_currency' ], 9 );
-		add_filter( 'woocommerce_cart_hash', [ $this, 'add_currency_to_cart_hash' ], 900 );
-		add_filter( 'woocommerce_shipping_method_add_rate_args', [ $this, 'fix_price_decimals_for_shipping_rates' ], 900, 2 );
+		add_filter( 'poocommerce_thankyou_order_id', [ $this, 'init_order_currency' ] );
+		add_action( 'poocommerce_account_view-order_endpoint', [ $this, 'init_order_currency' ], 9 );
+		add_filter( 'poocommerce_cart_hash', [ $this, 'add_currency_to_cart_hash' ], 900 );
+		add_filter( 'poocommerce_shipping_method_add_rate_args', [ $this, 'fix_price_decimals_for_shipping_rates' ], 900, 2 );
 	}
 
 	/**
@@ -198,7 +198,7 @@ class FrontendCurrencies {
 	public function selected_currency_changed() {
 		$this->selected_currency_code          = null;
 		$this->price_decimal_separators        = [];
-		$this->woocommerce_currency            = null;
+		$this->poocommerce_currency            = null;
 		$this->has_explicit_currency_selection = null;
 		$this->store_currency                  = null;
 	}
@@ -249,9 +249,9 @@ class FrontendCurrencies {
 	}
 
 	/**
-	 * Returns the currency code to be used by WooCommerce.
+	 * Returns the currency code to be used by PooCommerce.
 	 *
-	 * Runs on the `woocommerce_currency` filter at priority 900, after WooCommerce and any other
+	 * Runs on the `poocommerce_currency` filter at priority 900, after PooCommerce and any other
 	 * plugin filtering the currency. Multi-Currency only asserts its own currency when the shopper
 	 * or a compatibility rule has an explicit selection. When it is idle, it leaves the value
 	 * produced by the earlier filters untouched, so a third-party currency switcher that hooks at a
@@ -262,7 +262,7 @@ class FrontendCurrencies {
 	 *
 	 * @return string The code of the currency to be used.
 	 */
-	public function get_woocommerce_currency(): string {
+	public function get_poocommerce_currency(): string {
 		$currency = func_num_args() > 0 ? func_get_arg( 0 ) : '';
 
 		if ( $this->compatibility->should_return_store_currency() ) {
@@ -271,10 +271,10 @@ class FrontendCurrencies {
 
 		$this->maybe_discard_cache_of_replaced_user_or_session();
 
-		if ( empty( $this->woocommerce_currency ) ) {
+		if ( empty( $this->poocommerce_currency ) ) {
 			$explicit_currency                     = $this->multi_currency->get_explicit_selected_currency();
 			$this->has_explicit_currency_selection = null !== $explicit_currency;
-			$this->woocommerce_currency            = ( $explicit_currency ?? $this->get_store_currency() )->get_code();
+			$this->poocommerce_currency            = ( $explicit_currency ?? $this->get_store_currency() )->get_code();
 		}
 
 		if (
@@ -285,11 +285,11 @@ class FrontendCurrencies {
 			return $currency;
 		}
 
-		return $this->woocommerce_currency;
+		return $this->poocommerce_currency;
 	}
 
 	/**
-	 * Returns the number of decimals to be used by WooCommerce.
+	 * Returns the number of decimals to be used by PooCommerce.
 	 *
 	 * @param int $decimals The original decimal count.
 	 *
@@ -320,7 +320,7 @@ class FrontendCurrencies {
 	}
 
 	/**
-	 * Returns the decimal separator to be used by WooCommerce.
+	 * Returns the decimal separator to be used by PooCommerce.
 	 *
 	 * @param string $separator The original separator.
 	 *
@@ -342,7 +342,7 @@ class FrontendCurrencies {
 	}
 
 	/**
-	 * Returns the thousand separator to be used by WooCommerce.
+	 * Returns the thousand separator to be used by PooCommerce.
 	 *
 	 * @param string $separator The original separator.
 	 *
@@ -357,13 +357,13 @@ class FrontendCurrencies {
 	}
 
 	/**
-	 * Returns the currency format to be used by WooCommerce.
+	 * Returns the currency format to be used by PooCommerce.
 	 *
 	 * @param string $format The original currency format.
 	 *
 	 * @return string The currency format.
 	 */
-	public function get_woocommerce_price_format( $format ): string {
+	public function get_poocommerce_price_format( $format ): string {
 		$currency_code = $this->get_currency_code();
 		if ( $currency_code !== $this->get_store_currency()->get_code() ) {
 			$currency_pos = $this->localization_service->get_currency_format( $currency_code )['currency_pos'];
@@ -387,8 +387,8 @@ class FrontendCurrencies {
 	/**
 	 * Returns the currency symbol position for the currently selected currency.
 	 *
-	 * The Cart and Checkout Blocks read the `woocommerce_currency_pos` option (via the Store API
-	 * CurrencyFormatter) rather than the `woocommerce_price_format` filter the shortcode uses. Without
+	 * The Cart and Checkout Blocks read the `poocommerce_currency_pos` option (via the Store API
+	 * CurrencyFormatter) rather than the `poocommerce_price_format` filter the shortcode uses. Without
 	 * overriding the option, the Blocks fall back to the store's position setting and format non-store
 	 * currencies (e.g. EUR) differently from the shortcode. Overriding it keeps both paths aligned to
 	 * the currency's CLDR-defined position.
@@ -397,7 +397,7 @@ class FrontendCurrencies {
 	 *
 	 * @return string The currency position for the selected currency.
 	 */
-	public function get_woocommerce_currency_pos( $position ): string {
+	public function get_poocommerce_currency_pos( $position ): string {
 		$currency_code = $this->get_currency_code();
 		if ( $currency_code !== $this->get_store_currency()->get_code() ) {
 			return $this->localization_service->get_currency_format( $currency_code )['currency_pos'];
@@ -433,7 +433,7 @@ class FrontendCurrencies {
 		// removed for the read and the flag stops a nested call. The decimals filter stays: the read sets
 		// the order's totals and WC_Order_Factory caches the order, so reading it at the store's decimals
 		// would hand a rounded copy to every later wc_get_order() call in the request.
-		remove_filter( 'woocommerce_price_format', [ $this, 'get_woocommerce_price_format' ], 900 );
+		remove_filter( 'poocommerce_price_format', [ $this, 'get_poocommerce_price_format' ], 900 );
 		remove_filter( 'wc_get_price_thousand_separator', [ $this, 'get_price_thousand_separator' ], 900 );
 		remove_filter( 'wc_get_price_decimal_separator', [ $this, 'get_price_decimal_separator' ], 900 );
 		$this->initializing_order_currency = true;
@@ -443,7 +443,7 @@ class FrontendCurrencies {
 			$this->initializing_order_currency = false;
 			add_filter( 'wc_get_price_decimal_separator', [ $this, 'get_price_decimal_separator' ], 900 );
 			add_filter( 'wc_get_price_thousand_separator', [ $this, 'get_price_thousand_separator' ], 900 );
-			add_filter( 'woocommerce_price_format', [ $this, 'get_woocommerce_price_format' ], 900 );
+			add_filter( 'poocommerce_price_format', [ $this, 'get_poocommerce_price_format' ], 900 );
 		}
 
 		if ( $order ) {
@@ -550,7 +550,7 @@ class FrontendCurrencies {
 	/**
 	 * Flags that an order may be loading from the data store.
 	 *
-	 * Runs on `woocommerce_order_class`, which `WC_Order_Factory` fires right before it reads an order.
+	 * Runs on `poocommerce_order_class`, which `WC_Order_Factory` fires right before it reads an order.
 	 * The flag is confirmed and cleared in is_loading_order().
 	 *
 	 * @param string $classname The order class name.
@@ -565,7 +565,7 @@ class FrontendCurrencies {
 	/**
 	 * Records the currency of the order whose totals are being recalculated.
 	 *
-	 * Runs on `woocommerce_order_before_calculate_totals` so amounts recalculated for an existing order
+	 * Runs on `poocommerce_order_before_calculate_totals` so amounts recalculated for an existing order
 	 * follow the order's own currency rather than the shopper's selected currency.
 	 *
 	 * A calculate_totals() that throws before its after hook never pops its entry, so stale entries are
@@ -685,7 +685,7 @@ class FrontendCurrencies {
 		// Block-based confirmation pages render the order total without the shortcode classes above;
 		// loads are handled separately (is_loading_order()). Other prices here keep the selected currency.
 		if ( null !== $this->get_order_id_from_query_vars() ) {
-			$calls[] = 'Automattic\WooCommerce\Blocks\BlockTypes\OrderConfirmation\AbstractOrderConfirmationBlock->render';
+			$calls[] = 'Automattic\PooCommerce\Blocks\BlockTypes\OrderConfirmation\AbstractOrderConfirmationBlock->render';
 		}
 
 		return $this->utils->is_call_in_backtrace( $calls );

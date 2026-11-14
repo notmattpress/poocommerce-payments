@@ -13,7 +13,7 @@ import $ from 'jquery';
 import '../wc-product-page';
 
 const ATTR_CLASS =
-	'wp-block-woocommerce-add-to-cart-with-options-variation-selector-attribute';
+	'wp-block-poocommerce-add-to-cart-with-options-variation-selector-attribute';
 
 // A rendered IAPI variation attribute group with a single pill option.
 const iapiAttribute = ( name, value, checked = true ) =>
@@ -387,11 +387,11 @@ describe( 'ECE product page compatibility', () => {
 		// The listener defers to a microtask, so let it run.
 		const settle = () => Promise.resolve();
 
-		it( 'refreshes once WooCommerce shows the picked variation, not on the change itself', async () => {
-			// WooCommerce 9.8+ order: the add to cart button only changes state
+		it( 'refreshes once PooCommerce shows the picked variation, not on the change itself', async () => {
+			// PooCommerce 9.8+ order: the add to cart button only changes state
 			// on `show_variation`, 300ms after the change events.
 			$( document.body ).trigger( 'found_variation' );
-			$( document.body ).trigger( 'woocommerce_variation_has_changed' );
+			$( document.body ).trigger( 'poocommerce_variation_has_changed' );
 			await settle();
 
 			expect( buttonUi.blockButton ).toHaveBeenCalled();
@@ -403,12 +403,12 @@ describe( 'ECE product page compatibility', () => {
 			expect( refreshMock ).toHaveBeenCalledTimes( 1 );
 		} );
 
-		it( 'refreshes after the whole change when WooCommerce shows the variation synchronously', async () => {
-			// Before WooCommerce 9.8, `show_variation` is triggered inside the
+		it( 'refreshes after the whole change when PooCommerce shows the variation synchronously', async () => {
+			// Before PooCommerce 9.8, `show_variation` is triggered inside the
 			// `found_variation` handler, so it reaches the body first.
 			$( document.body ).trigger( 'show_variation' );
 			$( document.body ).trigger( 'found_variation' );
-			$( document.body ).trigger( 'woocommerce_variation_has_changed' );
+			$( document.body ).trigger( 'poocommerce_variation_has_changed' );
 			await settle();
 
 			expect( refreshMock ).toHaveBeenCalledTimes( 1 );
@@ -420,12 +420,12 @@ describe( 'ECE product page compatibility', () => {
 		} );
 
 		it( 'refreshes when clearing the selection hides the variation', async () => {
-			$( document.body ).trigger( 'woocommerce_variation_has_changed' );
+			$( document.body ).trigger( 'poocommerce_variation_has_changed' );
 			$( document.body ).trigger( 'show_variation' );
 			await settle();
 			refreshMock.mockClear();
 
-			// A cleared selection resolves synchronously, so WooCommerce hides
+			// A cleared selection resolves synchronously, so PooCommerce hides
 			// the variation before it reports the change.
 			$( document.body ).trigger( 'hide_variation' );
 			await settle();
@@ -434,9 +434,9 @@ describe( 'ECE product page compatibility', () => {
 		} );
 
 		it( 'blocks as soon as the selection changes, before an AJAX lookup returns', async () => {
-			// With many variations, WooCommerce looks the variation up over AJAX
+			// With many variations, PooCommerce looks the variation up over AJAX
 			// and only fires `found_variation` once the response comes back.
-			$( document.body ).trigger( 'woocommerce_variation_has_changed' );
+			$( document.body ).trigger( 'poocommerce_variation_has_changed' );
 			await settle();
 
 			expect( buttonUi.blockButton ).toHaveBeenCalled();
@@ -449,7 +449,7 @@ describe( 'ECE product page compatibility', () => {
 			expect( refreshMock ).toHaveBeenCalledTimes( 1 );
 		} );
 
-		it( 'ignores the selection WooCommerce replays on page load', async () => {
+		it( 'ignores the selection PooCommerce replays on page load', async () => {
 			// Pre-9.8 order for a default variation, with no shopper change.
 			$( document.body ).trigger( 'hide_variation' );
 			$( document.body ).trigger( 'show_variation' );

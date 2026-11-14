@@ -1,13 +1,13 @@
 <?php
 /**
- * Class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests
+ * Class WCPay_Multi_Currency_PooCommerceSubscriptions_Tests
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\Constants\Currency_Code;
 use WCPay\MultiCurrency\Compatibility;
-use WCPay\MultiCurrency\Compatibility\WooCommerceSubscriptions;
+use WCPay\MultiCurrency\Compatibility\PooCommerceSubscriptions;
 use WCPay\MultiCurrency\Currency;
 use WCPay\MultiCurrency\FrontendCurrencies;
 use WCPay\MultiCurrency\Interfaces\MultiCurrencyAccountInterface;
@@ -19,9 +19,9 @@ use WCPay\MultiCurrency\MultiCurrency;
 use WCPay\MultiCurrency\Utils;
 
 /**
- * WCPay\MultiCurrency\Compatibility\WooCommerceSubscriptions unit tests.
+ * WCPay\MultiCurrency\Compatibility\PooCommerceSubscriptions unit tests.
  */
-class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTestCase {
+class WCPay_Multi_Currency_PooCommerceSubscriptions_Tests extends WCPAY_UnitTestCase {
 
 	/**
 	 * Frame lists that `should_convert_product_price()` looks for in the backtrace, keyed by the data provider's names.
@@ -53,11 +53,11 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 	private $mock_utils;
 
 	/**
-	 * WCPay\MultiCurrency\Compatibility\WooCommerceSubscriptions instance.
+	 * WCPay\MultiCurrency\Compatibility\PooCommerceSubscriptions instance.
 	 *
-	 * @var WCPay\MultiCurrency\Compatibility\WooCommerceSubscriptions
+	 * @var WCPay\MultiCurrency\Compatibility\PooCommerceSubscriptions
 	 */
-	private $woocommerce_subscriptions;
+	private $poocommerce_subscriptions;
 
 	/**
 	 * Mock meta data.
@@ -97,7 +97,7 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 			->getMock();
 
 		$this->mock_utils                = $this->createMock( Utils::class );
-		$this->woocommerce_subscriptions = new WooCommerceSubscriptions( $this->mock_multi_currency, $this->mock_utils );
+		$this->poocommerce_subscriptions = new PooCommerceSubscriptions( $this->mock_multi_currency, $this->mock_utils );
 
 		$this->mock_meta_data = $this->createMock( \WC_Meta_Data::class );
 
@@ -120,10 +120,10 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 	}
 
 	/**
-	 * @dataProvider woocommerce_filter_provider
+	 * @dataProvider poocommerce_filter_provider
 	 */
-	public function test_registers_woocommerce_filters_properly( $filter, $function_name ) {
-		$priority = has_filter( $filter, [ $this->woocommerce_subscriptions, $function_name ] );
+	public function test_registers_poocommerce_filters_properly( $filter, $function_name ) {
+		$priority = has_filter( $filter, [ $this->poocommerce_subscriptions, $function_name ] );
 		$this->assertGreaterThan(
 			10,
 			$priority,
@@ -136,12 +136,12 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 		);
 	}
 
-	public function woocommerce_filter_provider() {
+	public function poocommerce_filter_provider() {
 		return [
-			[ 'woocommerce_subscriptions_product_price', 'get_subscription_product_price' ],
-			[ 'woocommerce_product_get__subscription_sign_up_fee', 'get_subscription_product_signup_fee' ],
-			[ 'woocommerce_product_variation_get__subscription_sign_up_fee', 'get_subscription_product_signup_fee' ],
-			[ 'option_woocommerce_subscriptions_multiple_purchase', 'maybe_disable_mixed_cart' ],
+			[ 'poocommerce_subscriptions_product_price', 'get_subscription_product_price' ],
+			[ 'poocommerce_product_get__subscription_sign_up_fee', 'get_subscription_product_signup_fee' ],
+			[ 'poocommerce_product_variation_get__subscription_sign_up_fee', 'get_subscription_product_signup_fee' ],
+			[ 'option_poocommerce_subscriptions_multiple_purchase', 'maybe_disable_mixed_cart' ],
 			[ 'wcpay_multi_currency_override_selected_currency', 'override_selected_currency' ],
 			[ 'wcpay_multi_currency_should_convert_product_price', 'should_convert_product_price' ],
 			[ 'wcpay_multi_currency_should_convert_coupon_amount', 'should_convert_coupon_amount' ],
@@ -153,7 +153,7 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 	// Will not convert the sub price due null is passed as the price.
 	public function test_get_subscription_product_price_does_not_convert_price_when_no_price_passed() {
 		// Act: Attempt to convert the subscription price.
-		$result = $this->woocommerce_subscriptions->get_subscription_product_price( null, $this->mock_product );
+		$result = $this->poocommerce_subscriptions->get_subscription_product_price( null, $this->mock_product );
 
 		// Assert: Confirm the result value is null.
 		$this->assertNull( $result );
@@ -170,13 +170,13 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 			->willReturn( true );
 
 		// Act/Assert: Confirm the result value is not converted.
-		$this->assertSame( 10.0, $this->woocommerce_subscriptions->get_subscription_product_price( 10.0, $this->mock_product ) );
+		$this->assertSame( 10.0, $this->poocommerce_subscriptions->get_subscription_product_price( 10.0, $this->mock_product ) );
 	}
 
 	// Will not convert the sub signup fee due null is passed as the fee.
 	public function test_get_subscription_product_signup_fee_does_not_convert_price_when_no_fee_passed() {
 		// Act/Assert: Confirm the result value is null.
-		$this->assertNull( $this->woocommerce_subscriptions->get_subscription_product_signup_fee( null, $this->mock_product ) );
+		$this->assertNull( $this->poocommerce_subscriptions->get_subscription_product_signup_fee( null, $this->mock_product ) );
 	}
 
 	// If there is no switch in the cart, then the signup fee should be converted.
@@ -189,7 +189,7 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 			->willReturn( 25.0 );
 
 		// Act/Assert: Confirm the result value is converted.
-		$this->assertSame( 25.0, $this->woocommerce_subscriptions->get_subscription_product_signup_fee( 10.0, $this->mock_product ) );
+		$this->assertSame( 25.0, $this->poocommerce_subscriptions->get_subscription_product_signup_fee( 10.0, $this->mock_product ) );
 	}
 
 	// Does not convert price due to first backtrace check returns true.
@@ -210,7 +210,7 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 			->method( 'get_price' );
 
 		// Act/Assert: Confirm the result value is not converted.
-		$this->assertSame( 10.0, $this->woocommerce_subscriptions->get_subscription_product_signup_fee( 10.0, $this->mock_product ) );
+		$this->assertSame( 10.0, $this->poocommerce_subscriptions->get_subscription_product_signup_fee( 10.0, $this->mock_product ) );
 	}
 
 	// Does not convert price due to second check with backtrace and cart item key check returns true.
@@ -219,7 +219,7 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 		[ $_unused_mock_subscription, $_unused_cart_items ] = $this->get_mock_subscription_and_session_cart_items( 'switch' );
 
 		// Arrange: Set our switch_cart_item property.
-		$this->woocommerce_subscriptions->switch_cart_item = 'abc123';
+		$this->poocommerce_subscriptions->switch_cart_item = 'abc123';
 
 		// Arrange: Set the expectations and returns for the is_call_in_backtrace calls.
 		$this->mock_utils
@@ -239,7 +239,7 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 			->method( 'get_price' );
 
 		// Act/Assert: Confirm the result value is not converted.
-		$this->assertSame( 10.0, $this->woocommerce_subscriptions->get_subscription_product_signup_fee( 10.0, $this->mock_product ) );
+		$this->assertSame( 10.0, $this->poocommerce_subscriptions->get_subscription_product_signup_fee( 10.0, $this->mock_product ) );
 	}
 
 	// Does not convert due to third check for changes in the meta data returns true.
@@ -248,7 +248,7 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 		[ $_unused_mock_subscription, $_unused_cart_items ] = $this->get_mock_subscription_and_session_cart_items( 'switch' );
 
 		// Arrange: Set our switch_cart_item property.
-		$this->woocommerce_subscriptions->switch_cart_item = 'abc123';
+		$this->poocommerce_subscriptions->switch_cart_item = 'abc123';
 
 		// Arrange: Set the expectation for the call to is_call_in_backtrace and always return false.
 		$this->mock_utils
@@ -276,7 +276,7 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 			->method( 'get_price' );
 
 		// Act/Assert: Confirm the result value is not converted.
-		$this->assertSame( 10.0, $this->woocommerce_subscriptions->get_subscription_product_signup_fee( 10.0, $this->mock_product ) );
+		$this->assertSame( 10.0, $this->poocommerce_subscriptions->get_subscription_product_signup_fee( 10.0, $this->mock_product ) );
 	}
 
 	// Converts price due to the switch item does not match the item being checked.
@@ -285,7 +285,7 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 		[ $_unused_mock_subscription, $_unused_cart_items ] = $this->get_mock_subscription_and_session_cart_items( 'switch' );
 
 		// Arrange: Set our switch_cart_item property so that it does not match what's in the cart.
-		$this->woocommerce_subscriptions->switch_cart_item = 'def456';
+		$this->poocommerce_subscriptions->switch_cart_item = 'def456';
 
 		// Arrange: Set the expectation for the call to is_call_in_backtrace and always return false.
 		$this->mock_utils
@@ -312,7 +312,7 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 			->willReturn( 25.0 );
 
 		// Act/Assert: Confirm the result value is converted.
-		$this->assertSame( 25.0, $this->woocommerce_subscriptions->get_subscription_product_signup_fee( 10.0, $this->mock_product ) );
+		$this->assertSame( 25.0, $this->poocommerce_subscriptions->get_subscription_product_signup_fee( 10.0, $this->mock_product ) );
 	}
 
 	// Converts due to backtraces are not found and the check for changes in meta data returns false.
@@ -321,7 +321,7 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 		[ $_unused_mock_subscription, $_unused_cart_items ] = $this->get_mock_subscription_and_session_cart_items( 'switch' );
 
 		// Arrange: Set our switch_cart_item property.
-		$this->woocommerce_subscriptions->switch_cart_item = 'abc123';
+		$this->poocommerce_subscriptions->switch_cart_item = 'abc123';
 
 		// Arrange: Set the expectation for the call to is_call_in_backtrace and always return false.
 		$this->mock_utils
@@ -353,7 +353,7 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 			->willReturn( 25.0 );
 
 		// Act/Assert: Confirm the result value is converted.
-		$this->assertSame( 25.0, $this->woocommerce_subscriptions->get_subscription_product_signup_fee( 10.0, $this->mock_product ) );
+		$this->assertSame( 25.0, $this->poocommerce_subscriptions->get_subscription_product_signup_fee( 10.0, $this->mock_product ) );
 	}
 
 	public function test_maybe_disable_mixed_cart_return_no() {
@@ -361,7 +361,7 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 		[ $_unused_mock_subscription, $_unused_cart_items ] = $this->get_mock_subscription_and_session_cart_items( 'switch' );
 
 		// Act/Assert: 'no' should be returned due to the item in the cart is a switch.
-		$this->assertSame( 'no', $this->woocommerce_subscriptions->maybe_disable_mixed_cart( 'yes' ) );
+		$this->assertSame( 'no', $this->poocommerce_subscriptions->maybe_disable_mixed_cart( 'yes' ) );
 	}
 
 	public function test_maybe_disable_mixed_cart_return_yes() {
@@ -369,7 +369,7 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 		[ $_unused_mock_subscription, $_unused_cart_items ] = $this->get_mock_subscription_and_session_cart_items( 'renewal' );
 
 		// Act/Assert: 'yes' should be returned due to the item in the cart is a renewal and not a switch.
-		$this->assertSame( 'yes', $this->woocommerce_subscriptions->maybe_disable_mixed_cart( 'yes' ) );
+		$this->assertSame( 'yes', $this->poocommerce_subscriptions->maybe_disable_mixed_cart( 'yes' ) );
 	}
 
 	// Returns currency code due to code was passed.
@@ -382,13 +382,13 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 		WC()->session->set( 'cart', $cart_items );
 
 		// Assert: CAD should be returned since it was passed, even though there is an item in the cart.
-		$this->assertSame( 'CAD', $this->woocommerce_subscriptions->override_selected_currency( 'CAD' ) );
+		$this->assertSame( 'CAD', $this->poocommerce_subscriptions->override_selected_currency( 'CAD' ) );
 	}
 
 	// Returns false due we are not adding products to the cart.
 	public function test_override_selected_currency_return_false_if_no_cart_items() {
 		// Assert: False should be received since there's nothing in the cart.
-		$this->assertFalse( $this->woocommerce_subscriptions->override_selected_currency( false ) );
+		$this->assertFalse( $this->poocommerce_subscriptions->override_selected_currency( false ) );
 	}
 
 	/**
@@ -409,14 +409,14 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 		WC()->session->set( 'cart', $cart_items );
 
 		// Act/Assert: Confirm that the currency is what we set.
-		$this->assertSame( 'JPY', $this->woocommerce_subscriptions->override_selected_currency( false ) );
+		$this->assertSame( 'JPY', $this->poocommerce_subscriptions->override_selected_currency( false ) );
 
 		// Arrange: Change the sub's currency and update the cart contents in the WC object.
 		$mock_subscription->set_currency( 'EUR' );
 		WC()->cart->set_cart_contents( $cart_items );
 
 		// Act/Assert: Confirm the currency is what we set.
-		$this->assertSame( 'EUR', $this->woocommerce_subscriptions->override_selected_currency( false ) );
+		$this->assertSame( 'EUR', $this->poocommerce_subscriptions->override_selected_currency( false ) );
 	}
 
 	/**
@@ -424,20 +424,20 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 	 */
 	public function test_nested_read_while_loading_a_cart_subscription_does_not_keep_its_decimals( $sub_type ) {
 		[ $mock_subscription ]                               = $this->get_mock_subscription_and_session_cart_items( $sub_type );
-		[ $woocommerce_subscriptions, $frontend_currencies ] = $this->get_subscriptions_compatibility_reading_decimals_on_load( $mock_subscription );
+		[ $poocommerce_subscriptions, $frontend_currencies ] = $this->get_subscriptions_compatibility_reading_decimals_on_load( $mock_subscription );
 
-		$this->assertSame( 'JPY', $woocommerce_subscriptions->override_selected_currency( false ) );
+		$this->assertSame( 'JPY', $poocommerce_subscriptions->override_selected_currency( false ) );
 		$this->assertSame( 0, $frontend_currencies->get_price_decimals( 2 ) );
 	}
 
 	public function test_nested_read_while_loading_a_switch_subscription_does_not_keep_its_decimals() {
 		$mock_subscription                                   = $this->create_mock_subscription();
-		[ $woocommerce_subscriptions, $frontend_currencies ] = $this->get_subscriptions_compatibility_reading_decimals_on_load( $mock_subscription );
+		[ $poocommerce_subscriptions, $frontend_currencies ] = $this->get_subscriptions_compatibility_reading_decimals_on_load( $mock_subscription );
 
 		$_GET['switch-subscription'] = $mock_subscription->get_id();
 		$_GET['_wcsnonce']           = wp_create_nonce( 'wcs_switch_request' );
 
-		$this->assertSame( 'JPY', $woocommerce_subscriptions->override_selected_currency( false ) );
+		$this->assertSame( 'JPY', $poocommerce_subscriptions->override_selected_currency( false ) );
 		$this->assertSame( 0, $frontend_currencies->get_price_decimals( 2 ) );
 	}
 
@@ -447,7 +447,7 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 		[ $mock_subscription ] = $this->get_mock_subscription_and_session_cart_items( 'renewal' );
 		$mock_subscription->set_currency( 'JPY' );
 
-		[ $woocommerce_subscriptions, $frontend_currencies ] = $this->get_subscriptions_compatibility_with_frontend_currencies();
+		[ $poocommerce_subscriptions, $frontend_currencies ] = $this->get_subscriptions_compatibility_with_frontend_currencies();
 
 		$loads = 0;
 		WC_Subscriptions::set_wcs_get_subscription(
@@ -462,12 +462,12 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 
 		// Act: Read the currency once while the load throws, then again.
 		try {
-			$woocommerce_subscriptions->override_selected_currency( false );
+			$poocommerce_subscriptions->override_selected_currency( false );
 			$this->fail( 'The first load should throw.' );
 		} catch ( \TypeError $e ) {
 			unset( $e );
 		}
-		$currency = $woocommerce_subscriptions->override_selected_currency( false );
+		$currency = $poocommerce_subscriptions->override_selected_currency( false );
 
 		// Assert: The second read uses the subscription's currency and decimals.
 		$this->assertSame( 'JPY', $currency );
@@ -483,7 +483,7 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 		wp_cache_flush();
 
 		// Arrange: Read the decimals while the order loads, which caches those of the store currency.
-		[ $woocommerce_subscriptions, $frontend_currencies ] = $this->get_subscriptions_compatibility_with_frontend_currencies();
+		[ $poocommerce_subscriptions, $frontend_currencies ] = $this->get_subscriptions_compatibility_with_frontend_currencies();
 
 		$loads        = 0;
 		$read_on_load = function ( $classname ) use ( $frontend_currencies, &$loads ) {
@@ -491,13 +491,13 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 			$frontend_currencies->get_price_decimals( 2 );
 			return $classname;
 		};
-		add_filter( 'woocommerce_order_class', $read_on_load );
+		add_filter( 'poocommerce_order_class', $read_on_load );
 
 		// Act: Read the currency twice, and the decimals after the first read.
-		$currency        = $woocommerce_subscriptions->override_selected_currency( false );
+		$currency        = $poocommerce_subscriptions->override_selected_currency( false );
 		$decimals        = $frontend_currencies->get_price_decimals( 2 );
-		$second_currency = $woocommerce_subscriptions->override_selected_currency( false );
-		remove_filter( 'woocommerce_order_class', $read_on_load );
+		$second_currency = $poocommerce_subscriptions->override_selected_currency( false );
+		remove_filter( 'poocommerce_order_class', $read_on_load );
 
 		// Assert: The order's currency and decimals are used, and the order was loaded once.
 		$this->assertSame( 'JPY', $currency );
@@ -519,21 +519,21 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 		$read_during_load = function ( $classname ) use ( &$nested_read, &$nested_currency ) {
 			if ( ! $nested_read ) {
 				$nested_read     = true;
-				$nested_currency = $this->woocommerce_subscriptions->override_selected_currency( false );
+				$nested_currency = $this->poocommerce_subscriptions->override_selected_currency( false );
 			}
 			return $classname;
 		};
-		add_filter( 'woocommerce_order_class', $read_during_load );
+		add_filter( 'poocommerce_order_class', $read_during_load );
 
 		// Act: Read the currency, which loads the order.
-		$currency = $this->woocommerce_subscriptions->override_selected_currency( false );
-		remove_filter( 'woocommerce_order_class', $read_during_load );
+		$currency = $this->poocommerce_subscriptions->override_selected_currency( false );
+		remove_filter( 'poocommerce_order_class', $read_during_load );
 
 		// Assert: The nested read was skipped, the outer one got the order's currency, and the next read isn't skipped.
 		$this->assertTrue( $nested_read );
 		$this->assertFalse( $nested_currency );
 		$this->assertSame( 'JPY', $currency );
-		$this->assertSame( 'JPY', $this->woocommerce_subscriptions->override_selected_currency( false ) );
+		$this->assertSame( 'JPY', $this->poocommerce_subscriptions->override_selected_currency( false ) );
 	}
 
 	public function test_override_selected_currency_return_false_when_initial_payment_order_missing() {
@@ -541,7 +541,7 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 		WC()->session->set( 'cart', $this->get_initial_payment_cart_items( 999999 ) );
 
 		// Act/Assert: Nothing to override with, so the selected currency is kept.
-		$this->assertFalse( $this->woocommerce_subscriptions->override_selected_currency( false ) );
+		$this->assertFalse( $this->poocommerce_subscriptions->override_selected_currency( false ) );
 	}
 
 	// Test correct currency when shopper clicks upgrade/downgrade button in My Account – "switch".
@@ -555,7 +555,7 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 		$_GET['_wcsnonce']           = wp_create_nonce( 'wcs_switch_request' );
 
 		// Act/Assert: Confirm that the currency returned is that of the subscription.
-		$this->assertSame( 'JPY', $this->woocommerce_subscriptions->override_selected_currency( false ) );
+		$this->assertSame( 'JPY', $this->poocommerce_subscriptions->override_selected_currency( false ) );
 	}
 
 	// Return false if the current user doesn't match the user of the switching subscription.
@@ -570,7 +570,7 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 		$_GET['_wcsnonce']           = wp_create_nonce( 'wcs_switch_request' );
 
 		// Act/Assert: Confirm that false is returned.
-		$this->assertFalse( $this->woocommerce_subscriptions->override_selected_currency( false ) );
+		$this->assertFalse( $this->poocommerce_subscriptions->override_selected_currency( false ) );
 	}
 
 	/**
@@ -579,11 +579,11 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 	 * override_selected_currency - Confirms that if the current_my_account_subscription property contains a valid subscription that the
 	 * currency from that subscription will be returned.
 	 *
-	 * maybe_set_current_my_account_subscription - Tested when the woocommerce_subscription_price_string_details filter is applied. The filter
+	 * maybe_set_current_my_account_subscription - Tested when the poocommerce_subscription_price_string_details filter is applied. The filter
 	 * itself should not modify the array passed, however, if the backtrace matches, the subscription passed should be set as the value of
 	 * the current_my_account_subscription property.
 	 *
-	 * maybe_clear_current_my_account_subscription - Tested when the woocommerce_get_formatted_subscription_total filter is applied. The filter
+	 * maybe_clear_current_my_account_subscription - Tested when the poocommerce_get_formatted_subscription_total filter is applied. The filter
 	 * itself should not modify the string passed, however, if the current_my_account_subscription property is set, it should return it's value to null.
 	 */
 	public function test_override_selected_currency_return_currency_code_when_current_my_account_subscription_set() {
@@ -592,7 +592,7 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 		$mock_subscription->set_currency( 'EUR' );
 
 		// Assert: Confirm that override_selected_currency currently returns false.
-		$this->assertFalse( $this->woocommerce_subscriptions->override_selected_currency( false ) );
+		$this->assertFalse( $this->poocommerce_subscriptions->override_selected_currency( false ) );
 
 		// Arrange: Set expectation and return for is_call_in_backtrace.
 		$this->mock_utils
@@ -606,17 +606,17 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 			)
 			->willReturn( true );
 
-		// Arrange/Assert: Apply the woocommerce_subscription_price_string_details filter and confirm the filter does not change the passed array.
-		$this->assertSame( [ 1, 2, 3 ], apply_filters( 'woocommerce_subscription_price_string_details', [ 1, 2, 3 ], $mock_subscription ) ); // phpcs:ignore WooCommerce.Commenting.CommentHooks.HookCommentWrongStyle
+		// Arrange/Assert: Apply the poocommerce_subscription_price_string_details filter and confirm the filter does not change the passed array.
+		$this->assertSame( [ 1, 2, 3 ], apply_filters( 'poocommerce_subscription_price_string_details', [ 1, 2, 3 ], $mock_subscription ) ); // phpcs:ignore PooCommerce.Commenting.CommentHooks.HookCommentWrongStyle
 
 		// Act/Assert: Confirm the currency is what we set.
-		$this->assertSame( 'EUR', $this->woocommerce_subscriptions->override_selected_currency( false ) );
+		$this->assertSame( 'EUR', $this->poocommerce_subscriptions->override_selected_currency( false ) );
 
-		// Arrange/Assert: Apply the woocommerce_get_formatted_subscription_total filter and confirm the filter does not change the passed string.
-		$this->assertSame( 'expected_string', apply_filters( 'woocommerce_get_formatted_subscription_total', 'expected_string', $mock_subscription ) ); // phpcs:ignore WooCommerce.Commenting.CommentHooks.HookCommentWrongStyle
+		// Arrange/Assert: Apply the poocommerce_get_formatted_subscription_total filter and confirm the filter does not change the passed string.
+		$this->assertSame( 'expected_string', apply_filters( 'poocommerce_get_formatted_subscription_total', 'expected_string', $mock_subscription ) ); // phpcs:ignore PooCommerce.Commenting.CommentHooks.HookCommentWrongStyle
 
 		// Assert: Confirm override_selected_currency returns false again.
-		$this->assertFalse( $this->woocommerce_subscriptions->override_selected_currency( false ) );
+		$this->assertFalse( $this->poocommerce_subscriptions->override_selected_currency( false ) );
 	}
 
 	// The default passed into should_convert_product_price is true, this passes false to confirm false is returned.
@@ -634,7 +634,7 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 			->method( 'is_call_in_backtrace' );
 
 		// Act/Assert: Confirm that false is returned if passed.
-		$this->assertFalse( $this->woocommerce_subscriptions->should_convert_product_price( false, $this->mock_product ) );
+		$this->assertFalse( $this->poocommerce_subscriptions->should_convert_product_price( false, $this->mock_product ) );
 	}
 
 	/**
@@ -666,7 +666,7 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 				}
 			);
 
-		$this->assertSame( $expected, $this->woocommerce_subscriptions->should_convert_product_price( true, $this->mock_product ) );
+		$this->assertSame( $expected, $this->poocommerce_subscriptions->should_convert_product_price( true, $this->mock_product ) );
 	}
 
 	public function provider_should_convert_product_price(): array {
@@ -722,8 +722,8 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 			);
 
 		// Act/Assert: Only the subscription cart item's own product is left unconverted; the other product is converted.
-		$this->assertFalse( $this->woocommerce_subscriptions->should_convert_product_price( true, $this->mock_product ) );
-		$this->assertTrue( $this->woocommerce_subscriptions->should_convert_product_price( true, $other_product ) );
+		$this->assertFalse( $this->poocommerce_subscriptions->should_convert_product_price( true, $this->mock_product ) );
+		$this->assertTrue( $this->poocommerce_subscriptions->should_convert_product_price( true, $other_product ) );
 	}
 
 	public function provider_should_convert_product_price_of_other_products_in_cart(): array {
@@ -736,7 +736,7 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 	}
 
 	/**
-	 * When a product is passed, the session cart is not consulted: WooCommerce loads session items into
+	 * When a product is passed, the session cart is not consulted: PooCommerce loads session items into
 	 * WC()->cart->cart_contents before any pricing call, and session items hold no product object to match.
 	 * A product priced while the renewal lives only in the session is therefore converted.
 	 */
@@ -753,7 +753,7 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 			);
 
 		// Act/Assert: With a product given, the session-only renewal no longer blocks conversion.
-		$this->assertTrue( $this->woocommerce_subscriptions->should_convert_product_price( true, $this->mock_product ) );
+		$this->assertTrue( $this->poocommerce_subscriptions->should_convert_product_price( true, $this->mock_product ) );
 	}
 
 	/**
@@ -775,7 +775,7 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 			);
 
 		// Act/Assert: Without a product, the cart-wide behaviour is preserved.
-		$this->assertFalse( $this->woocommerce_subscriptions->should_convert_product_price( true, null ) );
+		$this->assertFalse( $this->poocommerce_subscriptions->should_convert_product_price( true, null ) );
 	}
 
 	/**
@@ -813,7 +813,7 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 			->willReturn( 3000.0 );
 
 		// Act/Assert: The other subscription product's price is converted.
-		$this->assertSame( 3000.0, $this->woocommerce_subscriptions->get_subscription_product_price( 20, $other_product ) );
+		$this->assertSame( 3000.0, $this->poocommerce_subscriptions->get_subscription_product_price( 20, $other_product ) );
 	}
 
 	/**
@@ -838,7 +838,7 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 			->method( 'get_price' );
 
 		// Act/Assert: The resubscribe item's own price is returned unchanged.
-		$this->assertSame( 1500, $this->woocommerce_subscriptions->get_subscription_product_price( 1500, $this->mock_product ) );
+		$this->assertSame( 1500, $this->poocommerce_subscriptions->get_subscription_product_price( 1500, $this->mock_product ) );
 	}
 
 	/**
@@ -850,12 +850,12 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 	 */
 	public function test_should_convert_product_price_with_real_backtrace_matches_only_the_cart_item_object( $cart_subscription_type ) {
 		// Arrange: The real backtrace helper, and a subscription cart item holding a real product next to a regular one.
-		[ $woocommerce_subscriptions, $subscription_product, $other_product ] = $this->set_up_real_products_in_cart( $cart_subscription_type );
+		[ $poocommerce_subscriptions, $subscription_product, $other_product ] = $this->set_up_real_products_in_cart( $cart_subscription_type );
 		$copy_of_subscription_product = wc_get_product( $subscription_product->get_id() );
 
 		// Act.
 		$decisions = $this->get_decisions_while_pricing(
-			$woocommerce_subscriptions,
+			$poocommerce_subscriptions,
 			[ $subscription_product, $other_product, $copy_of_subscription_product ]
 		);
 
@@ -865,8 +865,8 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 
 	/**
 	 * Pins the limit of matching by object: a clone of the subscription cart item's product is a different object, so
-	 * it is converted even though it carries the price WCS set in the subscription currency. No WooCommerce or WCS path
-	 * prices such a clone; a plugin that hands cart templates a clone through woocommerce_cart_item_product would see
+	 * it is converted even though it carries the price WCS set in the subscription currency. No PooCommerce or WCS path
+	 * prices such a clone; a plugin that hands cart templates a clone through poocommerce_cart_item_product would see
 	 * that item's displayed price converted again, while the cart totals, which read the cart item's own object, stay
 	 * right.
 	 *
@@ -874,10 +874,10 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 	 */
 	public function test_should_convert_product_price_with_real_backtrace_converts_a_clone_of_the_cart_item_product( $cart_subscription_type ) {
 		// Arrange.
-		[ $woocommerce_subscriptions, $subscription_product ] = $this->set_up_real_products_in_cart( $cart_subscription_type );
+		[ $poocommerce_subscriptions, $subscription_product ] = $this->set_up_real_products_in_cart( $cart_subscription_type );
 
 		// Act.
-		$decisions = $this->get_decisions_while_pricing( $woocommerce_subscriptions, [ clone $subscription_product ] );
+		$decisions = $this->get_decisions_while_pricing( $poocommerce_subscriptions, [ clone $subscription_product ] );
 
 		// Assert.
 		$this->assertSame( [ true ], $decisions );
@@ -902,7 +902,7 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 			->method( 'is_call_in_backtrace' );
 
 		// Act/Assert: Confirm the result value is false.
-		$this->assertFalse( $this->woocommerce_subscriptions->should_convert_coupon_amount( false, $this->mock_coupon ) );
+		$this->assertFalse( $this->poocommerce_subscriptions->should_convert_coupon_amount( false, $this->mock_coupon ) );
 	}
 
 	// Confirm that if there's a subscription percentage coupon type, we don't want to convert its amount.
@@ -919,7 +919,7 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 			->method( 'is_call_in_backtrace' );
 
 		// Act/Assert: Confirm the result value is false.
-		$this->assertFalse( $this->woocommerce_subscriptions->should_convert_coupon_amount( true, $this->mock_coupon ) );
+		$this->assertFalse( $this->poocommerce_subscriptions->should_convert_coupon_amount( true, $this->mock_coupon ) );
 	}
 
 	/**
@@ -939,7 +939,7 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 			->method( 'is_call_in_backtrace' );
 
 		// Act/Assert: Confirm the result value is false.
-		$this->assertFalse( $this->woocommerce_subscriptions->should_convert_coupon_amount( true, $this->mock_coupon ) );
+		$this->assertFalse( $this->poocommerce_subscriptions->should_convert_coupon_amount( true, $this->mock_coupon ) );
 	}
 
 	public function pseudo_coupon_type_provider() {
@@ -971,7 +971,7 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 		$should_convert = $this->call_during_action(
 			$cart_setup_action,
 			function () {
-				return $this->woocommerce_subscriptions->should_convert_coupon_amount( true, $this->mock_coupon );
+				return $this->poocommerce_subscriptions->should_convert_coupon_amount( true, $this->mock_coupon );
 			}
 		);
 
@@ -1001,7 +1001,7 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 		$should_convert = $this->call_during_action(
 			$cart_setup_action,
 			function () {
-				return $this->woocommerce_subscriptions->should_convert_coupon_amount( true, $this->mock_coupon );
+				return $this->poocommerce_subscriptions->should_convert_coupon_amount( true, $this->mock_coupon );
 			}
 		);
 
@@ -1029,7 +1029,7 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 			->method( 'is_call_in_backtrace' );
 
 		// Act/Assert: Confirm the result value is true.
-		$this->assertTrue( $this->woocommerce_subscriptions->should_convert_coupon_amount( true, $this->mock_coupon ) );
+		$this->assertTrue( $this->poocommerce_subscriptions->should_convert_coupon_amount( true, $this->mock_coupon ) );
 	}
 
 	/**
@@ -1043,7 +1043,7 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 		$this->arrange_session_copy_of_mock_coupon( $coupon_type );
 
 		// Act/Assert: The copy's amount is not converted again.
-		$this->assertFalse( $this->woocommerce_subscriptions->should_convert_coupon_amount( true, $this->mock_coupon ) );
+		$this->assertFalse( $this->poocommerce_subscriptions->should_convert_coupon_amount( true, $this->mock_coupon ) );
 	}
 
 	/**
@@ -1057,29 +1057,29 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 		$read_during_setup = null;
 		$store_copy        = function () use ( &$read_during_setup ) {
 			$this->arrange_session_copy_of_mock_coupon( 'renewal_fee' );
-			$read_during_setup = $this->woocommerce_subscriptions->should_convert_coupon_amount( true, $this->mock_coupon );
+			$read_during_setup = $this->poocommerce_subscriptions->should_convert_coupon_amount( true, $this->mock_coupon );
 		};
 		add_action( $cart_setup_action, $store_copy );
 
 		// Act: Set up the cart, which reads the coupon while storing it.
-		do_action( $cart_setup_action ); // phpcs:ignore WooCommerce.Commenting.CommentHooks
+		do_action( $cart_setup_action ); // phpcs:ignore PooCommerce.Commenting.CommentHooks
 		remove_action( $cart_setup_action, $store_copy );
 
 		// Assert: The copy's amount is converted when it's read, during and after the setup.
 		$this->assertTrue( $read_during_setup );
-		$this->assertTrue( $this->woocommerce_subscriptions->should_convert_coupon_amount( true, $this->mock_coupon ) );
+		$this->assertTrue( $this->poocommerce_subscriptions->should_convert_coupon_amount( true, $this->mock_coupon ) );
 	}
 
 	// A copy rewritten after the setup by code that doesn't mark it, e.g. an earlier version after a rollback, is already converted.
 	public function test_should_convert_coupon_amount_return_false_when_session_copy_rewritten_after_cart_setup() {
 		// Arrange: Store an unconverted copy during the setup.
-		$cart_setup_action = 'woocommerce_setup_cart_for_subscription_renewal';
+		$cart_setup_action = 'poocommerce_setup_cart_for_subscription_renewal';
 		$this->get_mock_subscription_and_session_cart_items( 'renewal' );
 		$store_copy = function () {
 			$this->arrange_session_copy_of_mock_coupon( 'renewal_fee' );
 		};
 		add_action( $cart_setup_action, $store_copy );
-		do_action( $cart_setup_action ); // phpcs:ignore WooCommerce.Commenting.CommentHooks.MissingHookComment
+		do_action( $cart_setup_action ); // phpcs:ignore PooCommerce.Commenting.CommentHooks.MissingHookComment
 		remove_action( $cart_setup_action, $store_copy );
 
 		// Arrange: Rewrite the copy with a converted amount, without marking it.
@@ -1088,7 +1088,7 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 		WC()->session->set( 'wcs_renewal_coupons', $session_coupons );
 
 		// Act/Assert: The rewritten copy's amount is not converted again.
-		$this->assertFalse( $this->woocommerce_subscriptions->should_convert_coupon_amount( true, $this->mock_coupon ) );
+		$this->assertFalse( $this->poocommerce_subscriptions->should_convert_coupon_amount( true, $this->mock_coupon ) );
 	}
 
 	public function test_marking_session_coupons_without_session_does_not_fail() {
@@ -1098,8 +1098,8 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 
 		try {
 			// Act: Run both marker callbacks.
-			$this->woocommerce_subscriptions->start_storing_unconverted_session_coupons();
-			$this->woocommerce_subscriptions->finish_storing_unconverted_session_coupons();
+			$this->poocommerce_subscriptions->start_storing_unconverted_session_coupons();
+			$this->poocommerce_subscriptions->finish_storing_unconverted_session_coupons();
 		} finally {
 			WC()->session = $session;
 		}
@@ -1114,7 +1114,7 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 		$this->arrange_session_copy_of_mock_coupon( 'fixed_cart' );
 
 		// Act/Assert: The copy's minimum and maximum amounts are not converted again.
-		$this->assertFalse( $this->woocommerce_subscriptions->should_convert_coupon_min_max_amount( true, $this->mock_coupon ) );
+		$this->assertFalse( $this->poocommerce_subscriptions->should_convert_coupon_min_max_amount( true, $this->mock_coupon ) );
 	}
 
 	public function fixed_amount_coupon_type_provider() {
@@ -1129,8 +1129,8 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 
 	public function cart_setup_action_provider() {
 		return [
-			'renewal'         => [ 'woocommerce_setup_cart_for_subscription_renewal' ],
-			'initial payment' => [ 'woocommerce_setup_cart_for_subscription_initial_payment' ],
+			'renewal'         => [ 'poocommerce_setup_cart_for_subscription_renewal' ],
+			'initial payment' => [ 'poocommerce_setup_cart_for_subscription_initial_payment' ],
 		];
 	}
 
@@ -1152,7 +1152,7 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 			->method( 'is_call_in_backtrace' );
 
 		// Act/Assert: Confirm the result value is false.
-		$this->assertFalse( $this->woocommerce_subscriptions->should_convert_coupon_min_max_amount( false ) );
+		$this->assertFalse( $this->poocommerce_subscriptions->should_convert_coupon_min_max_amount( false ) );
 	}
 
 	/**
@@ -1172,7 +1172,7 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 		$should_convert = $this->call_during_action(
 			$cart_setup_action,
 			function () {
-				return $this->woocommerce_subscriptions->should_convert_coupon_min_max_amount( true );
+				return $this->poocommerce_subscriptions->should_convert_coupon_min_max_amount( true );
 			}
 		);
 
@@ -1197,7 +1197,7 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 		$should_convert = $this->call_during_action(
 			$cart_setup_action,
 			function () {
-				return $this->woocommerce_subscriptions->should_convert_coupon_min_max_amount( true );
+				return $this->poocommerce_subscriptions->should_convert_coupon_min_max_amount( true );
 			}
 		);
 
@@ -1216,19 +1216,19 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 			->method( 'is_call_in_backtrace' );
 
 		// Act/Assert: Confirm the result value is true.
-		$this->assertTrue( $this->woocommerce_subscriptions->should_convert_coupon_min_max_amount( true ) );
+		$this->assertTrue( $this->poocommerce_subscriptions->should_convert_coupon_min_max_amount( true ) );
 	}
 
 	// If true is passed to the method, true should be returned immediately.
 	public function test_should_disable_currency_switching_return_true_if_true_passed() {
 		// Act/Assert: Confirm the result value is true.
-		$this->assertTrue( $this->woocommerce_subscriptions->should_disable_currency_switching( true ) );
+		$this->assertTrue( $this->poocommerce_subscriptions->should_disable_currency_switching( true ) );
 	}
 
 	// If false is passed to the method and none of the checks are true, false is returned.
 	public function test_should_disable_currency_switching_return_false() {
 		// Act/Assert: Confirm the result value is false.
-		$this->assertFalse( $this->woocommerce_subscriptions->should_disable_currency_switching( false ) );
+		$this->assertFalse( $this->poocommerce_subscriptions->should_disable_currency_switching( false ) );
 	}
 
 	/**
@@ -1241,7 +1241,7 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 		[ $_unused_mock_subscription, $_unused_cart_items ] = $this->get_mock_subscription_and_session_cart_items( $sub_type );
 
 		// Act/Assert: Confirm the result value is true.
-		$this->assertTrue( $this->woocommerce_subscriptions->should_disable_currency_switching( false ) );
+		$this->assertTrue( $this->poocommerce_subscriptions->should_disable_currency_switching( false ) );
 	}
 
 	public function test_should_disable_currency_switching_return_true_when_initial_payment_in_cart() {
@@ -1250,7 +1250,7 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 		WC()->session->set( 'cart', $this->get_initial_payment_cart_items( $order->get_id() ) );
 
 		// Act/Assert: Confirm the result value is true.
-		$this->assertTrue( $this->woocommerce_subscriptions->should_disable_currency_switching( false ) );
+		$this->assertTrue( $this->poocommerce_subscriptions->should_disable_currency_switching( false ) );
 	}
 
 	// Should return true if switch found in GET, for when a customer is doing a subscription switch.
@@ -1263,7 +1263,7 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 		$_GET['_wcsnonce']           = wp_create_nonce( 'wcs_switch_request' );
 
 		// Act/Assert: Confirm that true is returned.
-		$this->assertTrue( $this->woocommerce_subscriptions->should_disable_currency_switching( false ) );
+		$this->assertTrue( $this->poocommerce_subscriptions->should_disable_currency_switching( false ) );
 	}
 
 	// Should return false since users will not match.
@@ -1277,7 +1277,7 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 		$_GET['_wcsnonce']           = wp_create_nonce( 'wcs_switch_request' );
 
 		// Act/Assert: Confirm that false is returned.
-		$this->assertFalse( $this->woocommerce_subscriptions->should_disable_currency_switching( false ) );
+		$this->assertFalse( $this->poocommerce_subscriptions->should_disable_currency_switching( false ) );
 	}
 
 	public function test_maybe_get_explicit_format_for_subscription_total() {
@@ -1286,7 +1286,7 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 		$mock_subscription->set_currency( 'EUR' );
 
 		// Arrange: Set the price string to be passed, and also what is expected.
-		$price    = '<span class="woocommerce-Price-amount amount"><bdi>14,00&nbsp;<span class="woocommerce-Price-currencySymbol">&euro;</span></bdi></span>';
+		$price    = '<span class="poocommerce-Price-amount amount"><bdi>14,00&nbsp;<span class="poocommerce-Price-currencySymbol">&euro;</span></bdi></span>';
 		$expected = $price . ' EUR';
 
 		// Arrange: Set expectation and return for is_call_in_backtrace.
@@ -1307,11 +1307,11 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 			->method( 'has_additional_currencies_enabled' )
 			->willReturn( true );
 
-		// Arrange/Assert: Apply the woocommerce_subscription_price_string_details filter and confirm the filter does not change the passed array.
-		$this->assertSame( [ 1, 2, 3 ], apply_filters( 'woocommerce_subscription_price_string_details', [ 1, 2, 3 ], $mock_subscription ) ); // phpcs:ignore WooCommerce.Commenting.CommentHooks.HookCommentWrongStyle
+		// Arrange/Assert: Apply the poocommerce_subscription_price_string_details filter and confirm the filter does not change the passed array.
+		$this->assertSame( [ 1, 2, 3 ], apply_filters( 'poocommerce_subscription_price_string_details', [ 1, 2, 3 ], $mock_subscription ) ); // phpcs:ignore PooCommerce.Commenting.CommentHooks.HookCommentWrongStyle
 
 		// Assert: Confirm the price returned is what is expected.
-		$this->assertSame( $expected, $this->woocommerce_subscriptions->maybe_get_explicit_format_for_subscription_total( $price, '14.00', [], 14.00, 14.00 ) );
+		$this->assertSame( $expected, $this->poocommerce_subscriptions->maybe_get_explicit_format_for_subscription_total( $price, '14.00', [], 14.00, 14.00 ) );
 	}
 
 	public function provider_sub_types_renewal_resubscribe_switch() {
@@ -1329,7 +1329,7 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 	private function get_subscriptions_compatibility_reading_decimals_on_load( $mock_subscription ) {
 		$mock_subscription->set_currency( 'JPY' );
 
-		[ $woocommerce_subscriptions, $frontend_currencies ] = $this->get_subscriptions_compatibility_with_frontend_currencies();
+		[ $poocommerce_subscriptions, $frontend_currencies ] = $this->get_subscriptions_compatibility_with_frontend_currencies();
 
 		WC_Subscriptions::set_wcs_get_subscription(
 			function ( $_unused_id ) use ( $frontend_currencies, $mock_subscription ) {
@@ -1338,7 +1338,7 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 			}
 		);
 
-		return [ $woocommerce_subscriptions, $frontend_currencies ];
+		return [ $poocommerce_subscriptions, $frontend_currencies ];
 	}
 
 	/**
@@ -1360,15 +1360,15 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 		$mock_multi_currency->method( 'get_frontend_currencies' )->willReturn( $frontend_currencies );
 		$mock_multi_currency->method( 'get_default_currency' )->willReturn( new Currency( $mock_localization, 'USD' ) );
 
-		$woocommerce_subscriptions = new WooCommerceSubscriptions( $mock_multi_currency, $this->mock_utils );
+		$poocommerce_subscriptions = new PooCommerceSubscriptions( $mock_multi_currency, $this->mock_utils );
 		$mock_multi_currency->method( 'get_selected_currency' )->willReturnCallback(
-			function () use ( &$woocommerce_subscriptions, $mock_localization ) {
-				$override_code = $woocommerce_subscriptions->override_selected_currency( false );
+			function () use ( &$poocommerce_subscriptions, $mock_localization ) {
+				$override_code = $poocommerce_subscriptions->override_selected_currency( false );
 				return new Currency( $mock_localization, $override_code ? $override_code : 'USD' );
 			}
 		);
 
-		return [ $woocommerce_subscriptions, $frontend_currencies ];
+		return [ $poocommerce_subscriptions, $frontend_currencies ];
 	}
 
 	/**
@@ -1404,7 +1404,7 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 	 * @return array The class under test, the subscription item's product and the other product.
 	 */
 	private function set_up_real_products_in_cart( string $sub_type ): array {
-		$woocommerce_subscriptions = new WooCommerceSubscriptions( $this->mock_multi_currency, new Utils() );
+		$poocommerce_subscriptions = new PooCommerceSubscriptions( $this->mock_multi_currency, new Utils() );
 		$subscription_product      = WC_Helper_Product::create_simple_product();
 		$other_product             = WC_Helper_Product::create_simple_product();
 		$mock_subscription         = $this->create_mock_subscription();
@@ -1425,30 +1425,30 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 			]
 		);
 
-		return [ $woocommerce_subscriptions, $subscription_product, $other_product ];
+		return [ $poocommerce_subscriptions, $subscription_product, $other_product ];
 	}
 
 	/**
 	 * Prices each product through wc_get_price_excluding_tax(), one of the frames the class looks for, and records the
 	 * class's decision for each product object at the moment its price is read.
 	 *
-	 * @param WooCommerceSubscriptions $woocommerce_subscriptions The class under test.
+	 * @param PooCommerceSubscriptions $poocommerce_subscriptions The class under test.
 	 * @param \WC_Product[]            $products                  The products to price.
 	 *
 	 * @return bool[] One decision per product, in order.
 	 */
-	private function get_decisions_while_pricing( WooCommerceSubscriptions $woocommerce_subscriptions, array $products ): array {
+	private function get_decisions_while_pricing( PooCommerceSubscriptions $poocommerce_subscriptions, array $products ): array {
 		$decisions = [];
-		$record    = function ( $price, $product ) use ( $woocommerce_subscriptions, &$decisions ) {
-			$decisions[ spl_object_id( $product ) ] = $woocommerce_subscriptions->should_convert_product_price( true, $product );
+		$record    = function ( $price, $product ) use ( $poocommerce_subscriptions, &$decisions ) {
+			$decisions[ spl_object_id( $product ) ] = $poocommerce_subscriptions->should_convert_product_price( true, $product );
 			return $price;
 		};
 
-		add_filter( 'woocommerce_product_get_price', $record, 10, 2 );
+		add_filter( 'poocommerce_product_get_price', $record, 10, 2 );
 		foreach ( $products as $product ) {
 			wc_get_price_excluding_tax( $product );
 		}
-		remove_filter( 'woocommerce_product_get_price', $record, 10 );
+		remove_filter( 'poocommerce_product_get_price', $record, 10 );
 
 		return array_map(
 			function ( $product ) use ( $decisions ) {
@@ -1491,7 +1491,7 @@ class WCPay_Multi_Currency_WooCommerceSubscriptions_Tests extends WCPAY_UnitTest
 		};
 
 		add_action( $action, $listener );
-		do_action( $action ); // phpcs:ignore WooCommerce.Commenting.CommentHooks.MissingHookComment
+		do_action( $action ); // phpcs:ignore PooCommerce.Commenting.CommentHooks.MissingHookComment
 		remove_action( $action, $listener );
 
 		return $result;

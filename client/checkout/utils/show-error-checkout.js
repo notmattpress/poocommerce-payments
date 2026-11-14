@@ -8,17 +8,17 @@ const showErrorCheckout = (
 	customId = null
 ) => {
 	let messageWrapper = '';
-	if ( errorMessage.includes( 'woocommerce-error' ) ) {
+	if ( errorMessage.includes( 'poocommerce-error' ) ) {
 		messageWrapper = errorMessage;
 	} else {
 		messageWrapper =
-			'<ul class="woocommerce-error" role="alert"' +
+			'<ul class="poocommerce-error" role="alert"' +
 			( customId ? ' id="' + customId + '"' : '' ) +
 			'>' +
 			errorMessage +
 			'</ul>';
 	}
-	let $container = jQuery( '.woocommerce-notices-wrapper, form.checkout' );
+	let $container = jQuery( '.poocommerce-notices-wrapper, form.checkout' );
 
 	if ( isFirst ) {
 		$container = $container.first();
@@ -30,12 +30,12 @@ const showErrorCheckout = (
 		return;
 	}
 
-	// Adapted from WooCommerce core @ ea9aa8c, assets/js/frontend/checkout.js#L514-L529
+	// Adapted from PooCommerce core @ ea9aa8c, assets/js/frontend/checkout.js#L514-L529
 	jQuery(
-		'.woocommerce-NoticeGroup-checkout, .woocommerce-error, .woocommerce-message'
+		'.poocommerce-NoticeGroup-checkout, .poocommerce-error, .poocommerce-message'
 	).remove();
 	$container.prepend(
-		'<div class="woocommerce-NoticeGroup woocommerce-NoticeGroup-checkout">' +
+		'<div class="poocommerce-NoticeGroup poocommerce-NoticeGroup-checkout">' +
 			messageWrapper +
 			'</div>'
 	);
@@ -46,7 +46,7 @@ const showErrorCheckout = (
 			.blur();
 	}
 
-	let scrollElement = jQuery( '.woocommerce-NoticeGroup-checkout' );
+	let scrollElement = jQuery( '.poocommerce-NoticeGroup-checkout' );
 	if ( ! scrollElement.length ) {
 		scrollElement = $container;
 	}

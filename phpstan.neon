@@ -1,16 +1,16 @@
-# PHPStan configuration for WooCommerce Payments
+# PHPStan configuration for PooCommerce Payments
 
 includes:
     - vendor/phpstan/phpstan/conf/bleedingEdge.neon
     - phpstan-baseline.neon
     # Plugins we integrate with. We don't declare a minimum version for any of them, so check against their latest release.
-    - vendor/woocommerce/php-stubs/stubs/automatewoo/latest.neon
-    - vendor/woocommerce/php-stubs/stubs/mailpoet/latest.neon
-    - vendor/woocommerce/php-stubs/stubs/woocommerce-bookings/latest.neon
-    - vendor/woocommerce/php-stubs/stubs/woocommerce-deposits/latest.neon
-    - vendor/woocommerce/php-stubs/stubs/woocommerce-points-and-rewards/latest.neon
-    - vendor/woocommerce/php-stubs/stubs/woocommerce-pre-orders/latest.neon
-    - vendor/woocommerce/php-stubs/stubs/woocommerce-product-addons/latest.neon
+    - vendor/poocommerce/php-stubs/stubs/automatewoo/latest.neon
+    - vendor/poocommerce/php-stubs/stubs/mailpoet/latest.neon
+    - vendor/poocommerce/php-stubs/stubs/poocommerce-bookings/latest.neon
+    - vendor/poocommerce/php-stubs/stubs/poocommerce-deposits/latest.neon
+    - vendor/poocommerce/php-stubs/stubs/poocommerce-points-and-rewards/latest.neon
+    - vendor/poocommerce/php-stubs/stubs/poocommerce-pre-orders/latest.neon
+    - vendor/poocommerce/php-stubs/stubs/poocommerce-product-addons/latest.neon
 
 parameters:
     level: 5
@@ -27,7 +27,7 @@ parameters:
 
     # Files and directories to analyze
     paths:
-        - woocommerce-payments.php
+        - poocommerce-payments.php
         - includes
         - src
 
@@ -39,10 +39,10 @@ parameters:
             - includes/compat/subscriptions
 
     scanFiles:
-        - vendor/php-stubs/woocommerce-stubs/woocommerce-stubs.php
-        - vendor/php-stubs/woocommerce-stubs/woocommerce-packages-stubs.php
+        - vendor/php-stubs/poocommerce-stubs/poocommerce-stubs.php
+        - vendor/php-stubs/poocommerce-stubs/poocommerce-packages-stubs.php
         - dev/phpstan-wcpay-constants.php
         - dev/phpstan-abilities-stubs.php
 
     scanDirectories:
-        - vendor/woocommerce/subscriptions-core
+        - vendor/poocommerce/subscriptions-core

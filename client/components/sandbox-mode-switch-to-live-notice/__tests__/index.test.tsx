@@ -96,7 +96,7 @@ describe( 'SandboxModeSwitchToLiveNotice in development mode', () => {
 			} );
 			expect( learnMoreLink ).toHaveAttribute(
 				'href',
-				'https://woocommerce.com/document/woopayments/testing-and-troubleshooting/test-accounts/#developer-notes'
+				'https://poocommerce.com/document/woopayments/testing-and-troubleshooting/test-accounts/#developer-notes'
 			);
 
 			await user.click( learnMoreLink );

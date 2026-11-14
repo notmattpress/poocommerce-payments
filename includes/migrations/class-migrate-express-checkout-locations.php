@@ -2,7 +2,7 @@
 /**
  * Class Migrate_Express_Checkout_Locations
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Migrations;
@@ -46,12 +46,12 @@ class Migrate_Express_Checkout_Locations {
 	 * and the old settings exist.
 	 */
 	public function maybe_migrate() {
-		$previous_version = get_option( 'woocommerce_woocommerce_payments_version' );
+		$previous_version = get_option( 'poocommerce_poocommerce_payments_version' );
 		if ( version_compare( self::VERSION_SINCE, $previous_version, '<=' ) ) {
 			return;
 		}
 
-		$card_settings = get_option( 'woocommerce_woocommerce_payments_settings', [] );
+		$card_settings = get_option( 'poocommerce_poocommerce_payments_settings', [] );
 
 		// Check if migration is needed - if old settings exist and new ones don't.
 		$has_old_settings = isset( $card_settings['payment_request_button_locations'] )
@@ -94,6 +94,6 @@ class Migrate_Express_Checkout_Locations {
 		unset( $card_settings['payment_request_button_locations'] );
 		unset( $card_settings['platform_checkout_button_locations'] );
 
-		update_option( 'woocommerce_woocommerce_payments_settings', $card_settings );
+		update_option( 'poocommerce_poocommerce_payments_settings', $card_settings );
 	}
 }

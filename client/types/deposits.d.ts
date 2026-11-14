@@ -1,5 +1,5 @@
 // eslint-disable-next-line wpcalypso/import-docblock
-import { TableCardColumn } from '@woocommerce/components';
+import { TableCardColumn } from '@poocommerce/components';
 
 export interface DepositsTableHeader extends TableCardColumn {
 	key:

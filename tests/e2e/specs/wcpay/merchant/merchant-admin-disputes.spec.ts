@@ -19,7 +19,7 @@ test.describe( 'Merchant disputes', () => {
 
 		// Wait for the disputes table to load.
 		await expect(
-			page.locator( '.woocommerce-table__table.is-loading' )
+			page.locator( '.poocommerce-table__table.is-loading' )
 		).toHaveCount( 0 );
 
 		// .nth( 1 ) defines the second instance of the Disputes heading, which is in the table.

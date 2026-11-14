@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Admin_Notices_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 /**
@@ -50,7 +50,7 @@ class WC_Payments_Admin_Notices_Test extends WCPAY_UnitTestCase {
 
 		// One-and-done registers three order-completion invalidators.
 		$one_and_done = $this->find_notice( $notices, WC_Payments_One_And_Done_Notice::class );
-		foreach ( [ 'woocommerce_payment_complete', 'woocommerce_order_status_completed', 'woocommerce_order_status_processing' ] as $tag ) {
+		foreach ( [ 'poocommerce_payment_complete', 'poocommerce_order_status_completed', 'poocommerce_order_status_processing' ] as $tag ) {
 			$this->assert_action_registered( $tag, [ $one_and_done, 'invalidate_cache_on_order' ] );
 		}
 	}
@@ -109,9 +109,9 @@ class WC_Payments_Admin_Notices_Test extends WCPAY_UnitTestCase {
 
 		// Subclass-specific registrations.
 		if ( $notice instanceof WC_Payments_One_And_Done_Notice ) {
-			remove_action( 'woocommerce_payment_complete', [ $notice, 'invalidate_cache_on_order' ] );
-			remove_action( 'woocommerce_order_status_completed', [ $notice, 'invalidate_cache_on_order' ] );
-			remove_action( 'woocommerce_order_status_processing', [ $notice, 'invalidate_cache_on_order' ] );
+			remove_action( 'poocommerce_payment_complete', [ $notice, 'invalidate_cache_on_order' ] );
+			remove_action( 'poocommerce_order_status_completed', [ $notice, 'invalidate_cache_on_order' ] );
+			remove_action( 'poocommerce_order_status_processing', [ $notice, 'invalidate_cache_on_order' ] );
 		}
 	}
 

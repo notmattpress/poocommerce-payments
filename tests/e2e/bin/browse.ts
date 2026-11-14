@@ -189,7 +189,7 @@ const checkoutType = async ( page: Page ) => {
 	if ( await page.locator( '.wc-block-checkout' ).count() ) {
 		return 'blocks';
 	}
-	if ( await page.locator( 'form.woocommerce-checkout' ).count() ) {
+	if ( await page.locator( 'form.poocommerce-checkout' ).count() ) {
 		return 'classic';
 	}
 	throw new Error( 'This page has no checkout. Run `checkout` first.' );
@@ -203,7 +203,7 @@ const assertTestMode = async ( page: Page, type: string ) => {
 			classic
 				? ( window as any ).wcpay_upe_config?.testMode
 				: ( window as any ).wc?.wcSettings?.getSetting(
-						'woocommerce_payments_data'
+						'poocommerce_payments_data'
 				  )?.testMode,
 		type === 'classic'
 	);
@@ -233,7 +233,7 @@ const challengeButton = ( page: Page, name: 'Complete' | 'Fail' ) =>
 // `challenge` is set, a 3DS challenge.
 const paymentOutcome = async ( page: Page, challenge: boolean ) => {
 	const error = page.locator(
-		'.wc-block-components-notice-banner.is-error, .woocommerce-error'
+		'.wc-block-components-notice-banner.is-error, .poocommerce-error'
 	);
 	const timeout = 60000;
 	await Promise.any( [
@@ -377,7 +377,7 @@ const commands: Record< string, Helper > = {
 				slug: classicCheckoutPath.slice( 1 ),
 				status: 'publish',
 				content:
-					'<!-- wp:shortcode -->[woocommerce_checkout]<!-- /wp:shortcode -->',
+					'<!-- wp:shortcode -->[poocommerce_checkout]<!-- /wp:shortcode -->',
 			} );
 			created.push( `page "${ classicCheckoutPath }"` );
 		}
@@ -386,7 +386,7 @@ const commands: Record< string, Helper > = {
 			: 'Nothing to create.';
 	},
 	settings: merchantNavigation.goToWooPaymentsSettings,
-	'wc-settings': merchantNavigation.goToWooCommerceSettings,
+	'wc-settings': merchantNavigation.goToPooCommerceSettings,
 	order: ( page, id ) => merchantNavigation.goToOrder( page, String( id ) ),
 	'payment-details': merchantNavigation.goToPaymentDetails,
 	transactions: merchantNavigation.goToTransactions,
@@ -434,7 +434,7 @@ const commands: Record< string, Helper > = {
 		const billing = config.addresses.customer.billing;
 		if ( classic ) {
 			await page.goto( classicCheckoutPath );
-			if ( ! ( await page.locator( 'form.woocommerce-checkout' ).count() ) ) {
+			if ( ! ( await page.locator( 'form.poocommerce-checkout' ).count() ) ) {
 				throw new Error( 'No classic checkout page. Run `seed` first.' );
 			}
 			await shopper.fillBillingAddress( page, billing );
@@ -488,7 +488,7 @@ const commands: Record< string, Helper > = {
 		// wait for it to go before looking for a new one.
 		const stale = await page
 			.locator(
-				'.wc-block-components-notice-banner.is-error, .woocommerce-error'
+				'.wc-block-components-notice-banner.is-error, .poocommerce-error'
 			)
 			.elementHandles();
 		await ( type === 'classic'

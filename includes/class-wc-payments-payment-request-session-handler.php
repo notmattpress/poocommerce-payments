@@ -2,12 +2,12 @@
 /**
  * Class WC_Payments_Payment_Request_Session_Handler
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 defined( 'ABSPATH' ) || exit;
 
-use Automattic\WooCommerce\StoreApi\Utilities\JsonWebToken;
+use Automattic\PooCommerce\StoreApi\Utilities\JsonWebToken;
 
 /**
  * WC_Payments_Payment_Request_Session_Handler class
@@ -62,13 +62,13 @@ final class WC_Payments_Payment_Request_Session_Handler extends WC_Session_Handl
 			);
 
 			// throwing an exception here to prevent further processing of the request.
-			throw new Exception( __( 'Invalid token: cookie and session customer mismatch', 'woocommerce-payments' ) );
+			throw new Exception( __( 'Invalid token: cookie and session customer mismatch', 'poocommerce-payments' ) );
 		}
 
 		// saving the session and sending new cookies only when we're not dealing with an ephemeral cart.
 		if ( ! $this->is_ephemeral_cart() ) {
 			add_action( 'shutdown', [ $this, 'save_data' ], 20 );
-			add_action( 'woocommerce_set_cart_cookies', [ $this, 'set_customer_session_cookie' ] );
+			add_action( 'poocommerce_set_cart_cookies', [ $this, 'set_customer_session_cookie' ] );
 		}
 	}
 
@@ -101,7 +101,7 @@ final class WC_Payments_Payment_Request_Session_Handler extends WC_Session_Handl
 	/**
 	 * Setup cookie and customer ID.
 	 * We need to ensure that we _also_ call `init_session_from_token` when `init_session_cookie` is called.
-	 * Otherwise, this clears everything: https://github.com/woocommerce/woocommerce/blob/de4a8ffdd474ca1879d4aa16487d6c52472a861b/plugins/woocommerce/src/StoreApi/Routes/V1/Checkout.php#L556-L558
+	 * Otherwise, this clears everything: https://github.com/poocommerce/poocommerce/blob/de4a8ffdd474ca1879d4aa16487d6c52472a861b/plugins/poocommerce/src/StoreApi/Routes/V1/Checkout.php#L556-L558
 	 */
 	public function init_session_cookie() {
 		// The Store API calls this again when it creates an account right before placing the order.
@@ -207,7 +207,7 @@ final class WC_Payments_Payment_Request_Session_Handler extends WC_Session_Handl
 		if ( $this->_dirty ) {
 			global $wpdb;
 
-			// phpcs:ignore PluginCheck.Security.DirectDB.UnescapedDBParameter -- $this->_table is set by WC_Session_Handler to $wpdb->prefix . 'woocommerce_sessions', never user input.
+			// phpcs:ignore PluginCheck.Security.DirectDB.UnescapedDBParameter -- $this->_table is set by WC_Session_Handler to $wpdb->prefix . 'poocommerce_sessions', never user input.
 			$wpdb->query(
 				$wpdb->prepare(
 					// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared

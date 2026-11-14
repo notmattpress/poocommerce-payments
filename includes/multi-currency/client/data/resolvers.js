@@ -29,7 +29,7 @@ export function* getCurrencies() {
 		yield updateCurrencies( result );
 	} catch ( e ) {
 		yield dispatch( 'core/notices' ).createErrorNotice(
-			__( 'Error retrieving currencies.', 'woocommerce-payments' )
+			__( 'Error retrieving currencies.', 'poocommerce-payments' )
 		);
 	}
 }
@@ -49,7 +49,7 @@ export function* getCurrencySettings( currencyCode ) {
 		yield dispatch( 'core/notices' ).createErrorNotice(
 			__(
 				'Error retrieving single currency settings.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			)
 		);
 	}
@@ -63,7 +63,7 @@ export function* getStoreSettings() {
 		yield updateStoreSettings( result );
 	} catch ( e ) {
 		yield dispatch( 'core/notices' ).createErrorNotice(
-			__( 'Error retrieving store settings.', 'woocommerce-payments' )
+			__( 'Error retrieving store settings.', 'poocommerce-payments' )
 		);
 	}
 }

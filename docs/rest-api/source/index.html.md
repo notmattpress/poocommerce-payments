@@ -1,12 +1,12 @@
 ---
-title: WooCommerce Payments REST API Documentation - WP REST API v3
+title: PooCommerce Payments REST API Documentation - WP REST API v3
 
 language_tabs:
     - shell: cURL
 
 toc_footers:
-    - <a href="https://developer.woocommerce.com/docs/apis/rest-api/">WooCommerce REST API Docs</a>
-    - <a href="https://github.com/Automattic/woocommerce-payments">WooCommerce Payments</a>
+    - <a href="https://developer.poocommerce.com/docs/apis/rest-api/">PooCommerce REST API Docs</a>
+    - <a href="https://github.com/Automattic/poocommerce-payments">PooCommerce Payments</a>
     - <a href="https://github.com/tripit/slate">Documentation Powered by Slate</a>
 
 includes:

@@ -6,7 +6,7 @@ This directory contains scripts used by GitHub Actions workflows for documentati
 
 ### `check-doc-links.js`
 
-Checks WooCommerce documentation URLs for HTTP errors and missing HTML `id` anchors. Runs when same-repository `release/**` PRs targeting `trunk` are opened, updated or reopened. Results appear in the job log and summary; failures produce a non-zero exit code.
+Checks PooCommerce documentation URLs for HTTP errors and missing HTML `id` anchors. Runs when same-repository `release/**` PRs targeting `trunk` are opened, updated or reopened. Results appear in the job log and summary; failures produce a non-zero exit code.
 
 `github-actions[bot]` posts the report on the triggering release PR, updating the same comment on subsequent runs. Manual runs report only in the job log and summary.
 
@@ -15,7 +15,7 @@ Scans Git-tracked `readme.txt` and PHP/JS/JSX/TS/TSX files at the root and in `a
 Run manually with the GitHub CLI:
 
 ```bash
-gh workflow run check-doc-links.yml --repo Automattic/woocommerce-payments \
+gh workflow run check-doc-links.yml --repo Automattic/poocommerce-payments \
   --ref WORKFLOW_BRANCH -f ref=SOURCE_REF
 ```
 
@@ -28,11 +28,11 @@ node .github/scripts/check-doc-links.js --report /tmp/documentation-links.md
 node --test .github/scripts/tests/test-*doc-links.js
 ```
 
-The checker uses Node.js and `parse5`. A separate `test-doc-links.yml` workflow runs offline tests on PRs changing the checker, its tests, workflows or dependencies. It follows redirects within WooCommerce documentation hosts and checks exact, decoded IDs. It does not evaluate runtime expressions, execute page JavaScript, check `<a name>`, or detect links to the wrong topic. Access blocks and timeouts mean verification failed, not necessarily that the link is broken.
+The checker uses Node.js and `parse5`. A separate `test-doc-links.yml` workflow runs offline tests on PRs changing the checker, its tests, workflows or dependencies. It follows redirects within PooCommerce documentation hosts and checks exact, decoded IDs. It does not evaluate runtime expressions, execute page JavaScript, check `<a name>`, or detect links to the wrong topic. Access blocks and timeouts mean verification failed, not necessarily that the link is broken.
 
 ### `generate-wc-matrix.sh`
 
-Generates the WooCommerce version matrix for E2E tests with dynamic version resolution and optimized PHP version strategy.
+Generates the PooCommerce version matrix for E2E tests with dynamic version resolution and optimized PHP version strategy.
 
 **Usage:**
 
@@ -94,7 +94,7 @@ The PR workflow (`e2e-pull-request.yml`) runs only L-1 and latest. The QIT E2E w
 
 ### Script Execution
 
-1. Fetches the latest WooCommerce version from `https://api.wordpress.org/plugins/info/1.0/woocommerce.json`
+1. Fetches the latest PooCommerce version from `https://api.wordpress.org/plugins/info/1.0/poocommerce.json`
 2. Dynamically calculates the L-1 version by finding the latest stable version in the previous major branch
 3. Fetches the newest beta and RC versions, skipping any whose stable release has shipped
 4. Outputs JSON object to stdout for matrix generation
@@ -134,7 +134,7 @@ BETA_VERSION=$(echo "$SCRIPT_RESULT" | jq -r '.metadata.beta_version')
 
 ## Future Considerations
 
-- Automatically adapts to new WooCommerce releases
+- Automatically adapts to new PooCommerce releases
 - Will include beta versions when they become available
 - Supports L-2 policy implementation if needed
 - Maintains business continuity with WC 7.7.0 support

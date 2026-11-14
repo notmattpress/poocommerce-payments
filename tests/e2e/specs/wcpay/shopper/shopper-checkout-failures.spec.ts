@@ -33,7 +33,7 @@ test.describe(
 
 		test.beforeEach( async () => {
 			// Navigate to checkout and select payment method. Billing fields
-			// are remembered by WooCommerce for the logged-in customer after
+			// are remembered by PooCommerce for the logged-in customer after
 			// the first setupCheckout call fills them.
 			await shopper.setupCheckout( shopperPage );
 			await shopper.selectPaymentMethod( shopperPage );
@@ -67,7 +67,7 @@ test.describe(
 				await merchantPage.waitForLoadState( 'load' );
 				await expect(
 					merchantPage
-						.locator( '#woocommerce-order-notes .note_content' )
+						.locator( '#poocommerce-order-notes .note_content' )
 						.first()
 				).toContainText( /declined/i );
 			} finally {
@@ -94,7 +94,7 @@ test.describe(
 			await shopperPage.keyboard.press( 'Tab' );
 
 			const frameHandle = await shopperPage.waitForSelector(
-				'#payment .payment_method_woocommerce_payments .wcpay-upe-element iframe'
+				'#payment .payment_method_poocommerce_payments .wcpay-upe-element iframe'
 			);
 
 			const stripeFrame = await frameHandle.contentFrame();
@@ -157,7 +157,7 @@ test.describe(
 			);
 
 			const frameHandle = await shopperPage.waitForSelector(
-				'#payment .payment_method_woocommerce_payments .wcpay-upe-element iframe'
+				'#payment .payment_method_poocommerce_payments .wcpay-upe-element iframe'
 			);
 
 			const stripeFrame = await frameHandle.contentFrame();

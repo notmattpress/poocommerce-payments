@@ -2,18 +2,18 @@
 /**
  * Get Authorizations ability definition.
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Internal\Abilities\Domain;
 
-use Automattic\WooCommerce\Abilities\AbilityDefinition;
+use Automattic\PooCommerce\Abilities\AbilityDefinition;
 use WCPay\Internal\Abilities\AbilitiesRegistrar;
 
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Registers the `woocommerce-payments/get-authorizations` ability.
+ * Registers the `poocommerce-payments/get-authorizations` ability.
  *
  * Paginated list of uncaptured card authorizations. Returns the WC 10.9
  * paginated envelope: `{ authorizations: [...], total_pages, page, per_page }`.
@@ -33,7 +33,7 @@ class GetAuthorizations extends AbstractWCPayAbility implements AbilityDefinitio
 	 * @return string
 	 */
 	public static function get_name(): string {
-		return 'woocommerce-payments/get-authorizations';
+		return 'poocommerce-payments/get-authorizations';
 	}
 
 	/**
@@ -51,8 +51,8 @@ class GetAuthorizations extends AbstractWCPayAbility implements AbilityDefinitio
 		];
 
 		return [
-			'label'               => __( 'List authorizations', 'woocommerce-payments' ),
-			'description'         => __( 'List uncaptured card authorizations. Answers \'which authorizations expire soon / still need capture?\'.', 'woocommerce-payments' ),
+			'label'               => __( 'List authorizations', 'poocommerce-payments' ),
+			'description'         => __( 'List uncaptured card authorizations. Answers \'which authorizations expire soon / still need capture?\'.', 'poocommerce-payments' ),
 			'category'            => AbilitiesRegistrar::CATEGORY_SLUG,
 			'input_schema'        => [
 				'type'                 => 'object',
@@ -68,7 +68,7 @@ class GetAuthorizations extends AbstractWCPayAbility implements AbilityDefinitio
 				[ 'type' => 'object' ]
 			),
 			'execute_callback'    => [ self::class, 'execute' ],
-			'permission_callback' => [ AbilitiesRegistrar::class, 'current_user_can_manage_woocommerce' ],
+			'permission_callback' => [ AbilitiesRegistrar::class, 'current_user_can_manage_poocommerce' ],
 			'meta'                => [
 				'annotations'  => [
 					'readonly'    => true,

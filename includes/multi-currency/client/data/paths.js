@@ -29,7 +29,7 @@ export const getCurrencySettingsPath = ( currencyCode ) => {
 		! /^[A-Za-z]{3}$/.test( currencyCode )
 	) {
 		throw new InvalidPathSegmentError(
-			__( 'Invalid currency code.', 'woocommerce-payments' )
+			__( 'Invalid currency code.', 'poocommerce-payments' )
 		);
 	}
 

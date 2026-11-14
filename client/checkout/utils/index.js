@@ -1,17 +1,17 @@
 export const getAppearanceType = () => {
-	if ( document.querySelector( '.wp-block-woocommerce-checkout' ) ) {
+	if ( document.querySelector( '.wp-block-poocommerce-checkout' ) ) {
 		return 'blocks_checkout';
 	}
 
-	if ( document.querySelector( '.woocommerce-billing-fields' ) ) {
+	if ( document.querySelector( '.poocommerce-billing-fields' ) ) {
 		return 'woopay_shortcode_checkout';
 	}
 
-	if ( document.querySelector( '.wp-block-woocommerce-cart' ) ) {
+	if ( document.querySelector( '.wp-block-poocommerce-cart' ) ) {
 		return 'bnpl_cart_block';
 	}
 
-	if ( document.querySelector( '.woocommerce-cart-form' ) ) {
+	if ( document.querySelector( '.poocommerce-cart-form' ) ) {
 		return 'bnpl_classic_cart';
 	}
 

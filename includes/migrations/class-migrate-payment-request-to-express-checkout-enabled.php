@@ -2,7 +2,7 @@
 /**
  * Class Migrate_Payment_Request_To_Express_Checkout_Enabled
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Migrations;
@@ -21,8 +21,8 @@ defined( 'ABSPATH' ) || exit;
  * This migration transfers the old `payment_request` value to the new gateway settings
  * and removes it from the card gateway.
  *
- * @see https://github.com/Automattic/woocommerce-payments/pull/11144
- * @see https://github.com/Automattic/woocommerce-payments/pull/11182
+ * @see https://github.com/Automattic/poocommerce-payments/pull/11144
+ * @see https://github.com/Automattic/poocommerce-payments/pull/11182
  * @since 10.4.0
  */
 class Migrate_Payment_Request_To_Express_Checkout_Enabled {
@@ -39,12 +39,12 @@ class Migrate_Payment_Request_To_Express_Checkout_Enabled {
 	 * and the payment_request setting exists.
 	 */
 	public function maybe_migrate() {
-		$previous_version = get_option( 'woocommerce_woocommerce_payments_version' );
+		$previous_version = get_option( 'poocommerce_poocommerce_payments_version' );
 		if ( version_compare( self::VERSION_SINCE, $previous_version, '<=' ) ) {
 			return;
 		}
 
-		$card_settings = get_option( 'woocommerce_woocommerce_payments_settings', [] );
+		$card_settings = get_option( 'poocommerce_poocommerce_payments_settings', [] );
 		if ( ! isset( $card_settings['payment_request'] ) ) {
 			return;
 		}
@@ -60,10 +60,10 @@ class Migrate_Payment_Request_To_Express_Checkout_Enabled {
 	private function migrate( $card_settings ) {
 		$payment_request_enabled = ( $card_settings['payment_request'] ?? 'no' ) === 'yes' ? 'yes' : 'no';
 
-		update_option( 'woocommerce_woocommerce_payments_apple_pay_settings', [ 'enabled' => $payment_request_enabled ], true );
-		update_option( 'woocommerce_woocommerce_payments_google_pay_settings', [ 'enabled' => $payment_request_enabled ], true );
+		update_option( 'poocommerce_poocommerce_payments_apple_pay_settings', [ 'enabled' => $payment_request_enabled ], true );
+		update_option( 'poocommerce_poocommerce_payments_google_pay_settings', [ 'enabled' => $payment_request_enabled ], true );
 
 		unset( $card_settings['payment_request'] );
-		update_option( 'woocommerce_woocommerce_payments_settings', $card_settings );
+		update_option( 'poocommerce_poocommerce_payments_settings', $card_settings );
 	}
 }

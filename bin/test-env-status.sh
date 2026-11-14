@@ -32,9 +32,9 @@ fi
 if ! grep -q "'$DB_NAME'" "$WP_TESTS_DIR/wp-tests-config.php"; then
 	needs_install "wp-tests-config.php uses a different database than $DB_NAME."
 fi
-WC_VERSION=$(plugin_version woocommerce)
+WC_VERSION=$(plugin_version poocommerce)
 if [ -z "$WC_VERSION" ]; then
-	needs_install "WooCommerce is missing."
+	needs_install "PooCommerce is missing."
 fi
 
 DB_HOSTNAME=${WORDPRESS_DB_HOST%%:*}
@@ -56,7 +56,7 @@ SUITE_TAG=$(svn info --show-item url "$WP_TESTS_DIR/includes" 2>/dev/null | sed 
 GUTENBERG_VERSION=$(plugin_version gutenberg)
 INSTALLED_ON=$(date -r "$WP_TESTS_DIR/includes" +%Y-%m-%d)
 
-echo "WordPress ${WP_VERSION} (test suite: ${SUITE_TAG:-unknown}), WooCommerce ${WC_VERSION}, Gutenberg ${GUTENBERG_VERSION:-not installed}. Installed on ${INSTALLED_ON}."
+echo "WordPress ${WP_VERSION} (test suite: ${SUITE_TAG:-unknown}), PooCommerce ${WC_VERSION}, Gutenberg ${GUTENBERG_VERSION:-not installed}. Installed on ${INSTALLED_ON}."
 
 # x.y.0 releases are tagged as x.y in the test suite repository.
 if [[ $SUITE_TAG == tags/* ]] && [ "${SUITE_TAG#tags/}" != "${WP_VERSION%.0}" ]; then

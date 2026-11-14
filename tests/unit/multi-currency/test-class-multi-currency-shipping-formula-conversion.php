@@ -3,7 +3,7 @@
  * Multi-Currency must convert a flat-rate shipping formula once, not twice: the [cost]/[fee]
  * placeholders stand for cart totals that are already in the selected currency.
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\MultiCurrency\MultiCurrency;
@@ -15,7 +15,7 @@ use WCPay\MultiCurrency\Interfaces\MultiCurrencySettingsInterface;
 use WCPay\Constants\Currency_Code;
 
 /**
- * Drives a real MultiCurrency instance against a real WooCommerce cart and flat-rate shipping.
+ * Drives a real MultiCurrency instance against a real PooCommerce cart and flat-rate shipping.
  */
 class WCPay_Multi_Currency_Shipping_Formula_Conversion_Test extends WCPAY_UnitTestCase {
 
@@ -41,9 +41,9 @@ class WCPay_Multi_Currency_Shipping_Formula_Conversion_Test extends WCPAY_UnitTe
 			'billing_country'   => WC()->customer->get_billing_country(),
 		];
 
-		update_option( 'woocommerce_currency', Currency_Code::UNITED_STATES_DOLLAR );
+		update_option( 'poocommerce_currency', Currency_Code::UNITED_STATES_DOLLAR );
 		update_option( '_wcpay_feature_customer_multi_currency', '1' );
-		update_option( 'woocommerce_calc_taxes', 'no' );
+		update_option( 'poocommerce_calc_taxes', 'no' );
 	}
 
 	public function tear_down() {
@@ -105,11 +105,11 @@ class WCPay_Multi_Currency_Shipping_Formula_Conversion_Test extends WCPAY_UnitTe
 
 	/**
 	 * WC_Shipping_Flat_Rate::fee() reads `percent`, `min_fee` and `max_fee` with the store's decimal
-	 * separator from WooCommerce 11.3 (woocommerce/woocommerce#69294). Before that it reads only a dot.
+	 * separator from PooCommerce 11.3 (poocommerce/poocommerce#69294). Before that it reads only a dot.
 	 */
 	private function skip_before_wc_reads_fee_separator() {
 		if ( version_compare( WC_VERSION, '11.3.0-dev', '<' ) ) {
-			$this->markTestSkipped( 'WooCommerce reads fee attributes with the store decimal separator from 11.3.' );
+			$this->markTestSkipped( 'PooCommerce reads fee attributes with the store decimal separator from 11.3.' );
 		}
 	}
 
@@ -129,7 +129,7 @@ class WCPay_Multi_Currency_Shipping_Formula_Conversion_Test extends WCPAY_UnitTe
 		$product->set_virtual( false );
 		$product->save();
 
-		// The zone-based flat rate fires woocommerce_evaluate_shipping_cost_args; the legacy global method does not.
+		// The zone-based flat rate fires poocommerce_evaluate_shipping_cost_args; the legacy global method does not.
 		$zone        = WC_Shipping_Zones::get_zone( 0 );
 		$instance_id = $zone->add_shipping_method( 'flat_rate' );
 		$zone->save();
@@ -233,8 +233,8 @@ class WCPay_Multi_Currency_Shipping_Formula_Conversion_Test extends WCPAY_UnitTe
 	 */
 	public function test_fee_percent_is_read_with_store_decimal_separator() {
 		$this->skip_before_wc_reads_fee_separator();
-		update_option( 'woocommerce_price_decimal_sep', ',' );
-		update_option( 'woocommerce_price_thousand_sep', '.' );
+		update_option( 'poocommerce_price_decimal_sep', ',' );
+		update_option( 'poocommerce_price_thousand_sep', '.' );
 		$this->use_currency( Currency_Code::POUND_STERLING, 0.8 );
 		$this->assertSame( 20.0, $this->shipping_total_for( '[fee percent="2,5"]' ) );
 	}
@@ -246,8 +246,8 @@ class WCPay_Multi_Currency_Shipping_Formula_Conversion_Test extends WCPAY_UnitTe
 	 */
 	public function test_max_fee_is_read_with_store_decimal_separator() {
 		$this->skip_before_wc_reads_fee_separator();
-		update_option( 'woocommerce_price_decimal_sep', ',' );
-		update_option( 'woocommerce_price_thousand_sep', '.' );
+		update_option( 'poocommerce_price_decimal_sep', ',' );
+		update_option( 'poocommerce_price_thousand_sep', '.' );
 		$this->use_currency( Currency_Code::POUND_STERLING, 0.8 );
 		$this->assertSame( 18.0, $this->shipping_total_for( '[fee percent="10" max_fee="22,9"]', 225 ) );
 	}
@@ -278,7 +278,7 @@ class WCPay_Multi_Currency_Shipping_Formula_Conversion_Test extends WCPAY_UnitTe
 	/**
 	 * A plugin that short-circuits [fee] must not switch the rest of the cart calculation
 	 * to the store currency's decimals. Its $10 is 1,500 JPY and the total 151,500 JPY. With two decimals
-	 * switched on after the item totals are taken, WooCommerce divides those items by 100 and quotes 3,000.
+	 * switched on after the item totals are taken, PooCommerce divides those items by 100 and quotes 3,000.
 	 */
 	public function test_short_circuited_fee_keeps_cart_total_in_selected_currency() {
 		$this->use_currency( Currency_Code::JAPANESE_YEN, 150 );
@@ -307,7 +307,7 @@ class WCPay_Multi_Currency_Shipping_Formula_Conversion_Test extends WCPAY_UnitTe
 	 */
 	public function test_fee_rendered_without_the_cost_filter_keeps_selected_currency_decimals() {
 		if ( version_compare( WC_VERSION, '10.6.0-dev', '<' ) ) {
-			$this->markTestSkipped( 'WooCommerce rounds the fee to wc_get_price_decimals() from 10.6 (woocommerce/woocommerce#62722).' );
+			$this->markTestSkipped( 'PooCommerce rounds the fee to wc_get_price_decimals() from 10.6 (poocommerce/poocommerce#62722).' );
 		}
 
 		$this->use_currency( Currency_Code::JAPANESE_YEN, 150 );
@@ -343,8 +343,8 @@ class WCPay_Multi_Currency_Shipping_Formula_Conversion_Test extends WCPAY_UnitTe
 	 * the store's comma.
 	 */
 	public function test_fee_that_throws_does_not_leave_store_currency_decimals_for_the_next_cart_calculation() {
-		update_option( 'woocommerce_price_decimal_sep', ',' );
-		update_option( 'woocommerce_price_thousand_sep', '.' );
+		update_option( 'poocommerce_price_decimal_sep', ',' );
+		update_option( 'poocommerce_price_thousand_sep', '.' );
 		$this->use_currency( Currency_Code::JAPANESE_YEN, 150 );
 		$this->assertSame( 15000.0, $this->shipping_total_for( '[fee percent="10"]' ) );
 		$method = new class() extends WC_Shipping_Flat_Rate {
@@ -372,7 +372,7 @@ class WCPay_Multi_Currency_Shipping_Formula_Conversion_Test extends WCPAY_UnitTe
 		remove_shortcode( 'fee' );
 		$separator_seen_by_pricing_plugins = null;
 		add_action(
-			'woocommerce_before_calculate_totals',
+			'poocommerce_before_calculate_totals',
 			function () use ( &$separator_seen_by_pricing_plugins ) {
 				$separator_seen_by_pricing_plugins = wc_get_price_decimal_separator();
 			}

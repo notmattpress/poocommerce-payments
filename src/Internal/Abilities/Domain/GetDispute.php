@@ -2,18 +2,18 @@
 /**
  * Get Dispute ability definition.
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Internal\Abilities\Domain;
 
-use Automattic\WooCommerce\Abilities\AbilityDefinition;
+use Automattic\PooCommerce\Abilities\AbilityDefinition;
 use WCPay\Internal\Abilities\AbilitiesRegistrar;
 
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Registers the `woocommerce-payments/get-dispute` ability.
+ * Registers the `poocommerce-payments/get-dispute` ability.
  *
  * Look up a single dispute by ID. Answers 'what evidence is needed for
  * dispute du_X and by when?'. Returns `WP_Error( 'wcpay_missing_dispute_id' )`
@@ -29,7 +29,7 @@ class GetDispute implements AbilityDefinition {
 	 * @return string
 	 */
 	public static function get_name(): string {
-		return 'woocommerce-payments/get-dispute';
+		return 'poocommerce-payments/get-dispute';
 	}
 
 	/**
@@ -39,8 +39,8 @@ class GetDispute implements AbilityDefinition {
 	 */
 	public static function get_registration_args(): array {
 		return [
-			'label'               => __( 'Get dispute by ID', 'woocommerce-payments' ),
-			'description'         => __( 'Look up a single dispute by ID. Answers \'what evidence is needed for dispute du_X and by when?\'.', 'woocommerce-payments' ),
+			'label'               => __( 'Get dispute by ID', 'poocommerce-payments' ),
+			'description'         => __( 'Look up a single dispute by ID. Answers \'what evidence is needed for dispute du_X and by when?\'.', 'poocommerce-payments' ),
 			'category'            => AbilitiesRegistrar::CATEGORY_SLUG,
 			'input_schema'        => [
 				'type'                 => 'object',
@@ -55,7 +55,7 @@ class GetDispute implements AbilityDefinition {
 				'additionalProperties' => false,
 			],
 			'execute_callback'    => [ self::class, 'execute' ],
-			'permission_callback' => [ AbilitiesRegistrar::class, 'current_user_can_manage_woocommerce' ],
+			'permission_callback' => [ AbilitiesRegistrar::class, 'current_user_can_manage_poocommerce' ],
 			'meta'                => [
 				'annotations'  => [
 					'readonly'    => true,
@@ -82,7 +82,7 @@ class GetDispute implements AbilityDefinition {
 		if ( ! is_array( $input ) || empty( $input['dispute_id'] ) || ! is_string( $input['dispute_id'] ) ) {
 			return new \WP_Error(
 				'wcpay_missing_dispute_id',
-				__( 'A non-empty `dispute_id` is required.', 'woocommerce-payments' )
+				__( 'A non-empty `dispute_id` is required.', 'poocommerce-payments' )
 			);
 		}
 		$dispute_id = $input['dispute_id'];

@@ -2,7 +2,7 @@
 /**
  * These tests make assertions against class WC_Payments_Express_Checkout_Ajax_Handler.
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\Constants\Country_Code;
@@ -288,7 +288,7 @@ class WC_Payments_Express_Checkout_Ajax_Handler_Test extends WCPAY_UnitTestCase 
 		);
 
 		$this->ajax_handler->tokenized_cart_store_api_address_normalization( null, null, $request );
-		remove_filter( 'woocommerce_validate_postcode', [ $this->ajax_handler, 'maybe_skip_postcode_validation' ], 10 );
+		remove_filter( 'poocommerce_validate_postcode', [ $this->ajax_handler, 'maybe_skip_postcode_validation' ], 10 );
 
 		$shipping_address = $request->get_param( 'shipping_address' );
 
@@ -398,7 +398,7 @@ class WC_Payments_Express_Checkout_Ajax_Handler_Test extends WCPAY_UnitTestCase 
 	}
 
 	/**
-	 * When the `九龍` Hong Kong region is delivered in the postcode field, it should be adjusted for WooCommerce to be able to handle it.
+	 * When the `九龍` Hong Kong region is delivered in the postcode field, it should be adjusted for PooCommerce to be able to handle it.
 	 */
 	public function test_tokenized_cart_hk_postcode_with_九龍_region() {
 		$request = new WP_REST_Request();
@@ -422,7 +422,7 @@ class WC_Payments_Express_Checkout_Ajax_Handler_Test extends WCPAY_UnitTestCase 
 
 	/**
 	 * Apple Pay may deliver the bare island name "Hong Kong" as the region instead of the
-	 * WooCommerce region name "Hong Kong Island". It must still normalize to the WC `HONG KONG`
+	 * PooCommerce region name "Hong Kong Island". It must still normalize to the WC `HONG KONG`
 	 * state key, on the shipping address.
 	 */
 	public function test_tokenized_cart_hk_shipping_state_hong_kong_alias() {

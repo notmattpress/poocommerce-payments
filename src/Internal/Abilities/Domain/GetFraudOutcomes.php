@@ -2,24 +2,24 @@
 /**
  * Get Fraud Outcomes ability definition.
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Internal\Abilities\Domain;
 
-use Automattic\WooCommerce\Abilities\AbilityDefinition;
+use Automattic\PooCommerce\Abilities\AbilityDefinition;
 use WCPay\Fraud_Prevention\Models\Rule;
 use WCPay\Internal\Abilities\AbilitiesRegistrar;
 
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Registers the `woocommerce-payments/get-fraud-outcomes` ability.
+ * Registers the `poocommerce-payments/get-fraud-outcomes` ability.
  *
  * Lists transactions flagged by fraud protection for a given outcome status
  * (e.g. block, review). Paginated.
  *
- * @internal Only loaded when WooCommerce 10.9+ is active.
+ * @internal Only loaded when PooCommerce 10.9+ is active.
  *
  * @see \WC_REST_Payments_Transactions_Controller::get_fraud_outcome_transactions()
  */
@@ -34,7 +34,7 @@ class GetFraudOutcomes extends AbstractWCPayAbility implements AbilityDefinition
 	 * @return string
 	 */
 	public static function get_name(): string {
-		return 'woocommerce-payments/get-fraud-outcomes';
+		return 'poocommerce-payments/get-fraud-outcomes';
 	}
 
 	/**
@@ -47,7 +47,7 @@ class GetFraudOutcomes extends AbstractWCPayAbility implements AbilityDefinition
 			'status'      => [
 				'type'        => 'string',
 				'enum'        => Rule::FRAUD_OUTCOME_STATUSES,
-				'description' => __( 'Fraud outcome status to filter by (e.g. block, review).', 'woocommerce-payments' ),
+				'description' => __( 'Fraud outcome status to filter by (e.g. block, review).', 'poocommerce-payments' ),
 			],
 			'search'      => [
 				'type'  => 'array',
@@ -62,8 +62,8 @@ class GetFraudOutcomes extends AbstractWCPayAbility implements AbilityDefinition
 		];
 
 		return [
-			'label'               => __( 'List flagged (fraud outcome) transactions', 'woocommerce-payments' ),
-			'description'         => __( 'List transactions flagged by fraud protection for a given outcome status (e.g. block, review).', 'woocommerce-payments' ),
+			'label'               => __( 'List flagged (fraud outcome) transactions', 'poocommerce-payments' ),
+			'description'         => __( 'List transactions flagged by fraud protection for a given outcome status (e.g. block, review).', 'poocommerce-payments' ),
 			'category'            => AbilitiesRegistrar::CATEGORY_SLUG,
 			'input_schema'        => [
 				'type'                 => 'object',
@@ -79,7 +79,7 @@ class GetFraudOutcomes extends AbstractWCPayAbility implements AbilityDefinition
 				[ 'type' => 'object' ]
 			),
 			'execute_callback'    => [ self::class, 'execute' ],
-			'permission_callback' => [ AbilitiesRegistrar::class, 'current_user_can_manage_woocommerce' ],
+			'permission_callback' => [ AbilitiesRegistrar::class, 'current_user_can_manage_poocommerce' ],
 			'meta'                => [
 				'annotations'  => [
 					'readonly'    => true,
@@ -108,7 +108,7 @@ class GetFraudOutcomes extends AbstractWCPayAbility implements AbilityDefinition
 		if ( ! isset( $input['status'] ) || ! is_string( $input['status'] ) || '' === $input['status'] ) {
 			return new \WP_Error(
 				'wcpay_missing_status',
-				__( 'A status is required to list fraud outcomes.', 'woocommerce-payments' )
+				__( 'A status is required to list fraud outcomes.', 'poocommerce-payments' )
 			);
 		}
 

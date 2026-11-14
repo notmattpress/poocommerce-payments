@@ -2,7 +2,7 @@
 /**
  * Class Tracker
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay;

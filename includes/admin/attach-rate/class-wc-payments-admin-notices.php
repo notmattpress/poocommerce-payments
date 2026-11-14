@@ -6,7 +6,7 @@
  * WC_Payments_Abstract_Admin_Notice in includes/admin/attach-rate/. This class
  * instantiates them all and dispatches the lifecycle hooks to each.
  *
- * @package WooCommerce\Payments\Admin
+ * @package PooCommerce\Payments\Admin
  */
 
 defined( 'ABSPATH' ) || exit;

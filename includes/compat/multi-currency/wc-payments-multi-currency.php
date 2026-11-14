@@ -2,7 +2,7 @@
 /**
  * Main functions to start MultiCurrency class.
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -21,7 +21,7 @@ function wcpay_multi_currency_onboarding_check() {
 		}
 	}
 
-	return $is_setup_page && current_user_can( 'manage_woocommerce' );
+	return $is_setup_page && current_user_can( 'manage_poocommerce' );
 }
 
 /**

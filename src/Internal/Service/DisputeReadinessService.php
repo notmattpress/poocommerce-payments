@@ -2,7 +2,7 @@
 /**
  * Class DisputeReadinessService
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 declare( strict_types=1 );
@@ -172,15 +172,15 @@ class DisputeReadinessService {
 	 * @return array
 	 */
 	private function get_refund_policy_signal(): array {
-		$page_id = (int) get_option( 'woocommerce_refund_returns_page_id', 0 );
+		$page_id = (int) get_option( 'poocommerce_refund_returns_page_id', 0 );
 		$status  = $this->is_complete_page( $page_id ) ? self::STATUS_COMPLETE : self::STATUS_INCOMPLETE;
 
 		return [
 			'id'          => self::SIGNAL_REFUND_POLICY,
 			'status'      => $status,
-			'label'       => __( 'Refund policy page published', 'woocommerce-payments' ),
-			'description' => __( 'Publish a refund policy so customers can resolve issues with you before filing a dispute.', 'woocommerce-payments' ),
-			'actionLabel' => __( 'Fix it', 'woocommerce-payments' ),
+			'label'       => __( 'Refund policy page published', 'poocommerce-payments' ),
+			'description' => __( 'Publish a refund policy so customers can resolve issues with you before filing a dispute.', 'poocommerce-payments' ),
+			'actionLabel' => __( 'Fix it', 'poocommerce-payments' ),
 			'actionUrl'   => $this->get_page_action_url( $page_id ),
 		];
 	}
@@ -191,16 +191,16 @@ class DisputeReadinessService {
 	 * @return array
 	 */
 	private function get_terms_and_conditions_signal(): array {
-		$page_id = function_exists( 'wc_terms_and_conditions_page_id' ) ? (int) wc_terms_and_conditions_page_id() : (int) get_option( 'woocommerce_terms_page_id', 0 );
+		$page_id = function_exists( 'wc_terms_and_conditions_page_id' ) ? (int) wc_terms_and_conditions_page_id() : (int) get_option( 'poocommerce_terms_page_id', 0 );
 		$status  = $this->is_complete_page( $page_id ) ? self::STATUS_COMPLETE : self::STATUS_INCOMPLETE;
 
 		return [
 			'id'          => self::SIGNAL_TERMS_AND_CONDITIONS,
 			'status'      => $status,
-			'label'       => __( 'Terms & conditions linked at checkout', 'woocommerce-payments' ),
-			'description' => __( 'Add a T&C link at checkout so customers acknowledge your policies before completing a purchase.', 'woocommerce-payments' ),
-			'actionLabel' => __( 'Fix it', 'woocommerce-payments' ),
-			'actionUrl'   => $this->get_woocommerce_advanced_settings_url(),
+			'label'       => __( 'Terms & conditions linked at checkout', 'poocommerce-payments' ),
+			'description' => __( 'Add a T&C link at checkout so customers acknowledge your policies before completing a purchase.', 'poocommerce-payments' ),
+			'actionLabel' => __( 'Fix it', 'poocommerce-payments' ),
+			'actionUrl'   => $this->get_poocommerce_advanced_settings_url(),
 		];
 	}
 
@@ -217,24 +217,24 @@ class DisputeReadinessService {
 		$needs_review  = ! $is_empty && ! $this->looks_like_recognizable_descriptor( $descriptor, $account_data );
 		$is_confirmed  = $needs_review && $this->is_statement_descriptor_confirmed( $descriptor );
 		$status        = ! $is_empty && ( ! $needs_review || $is_confirmed ) ? self::STATUS_COMPLETE : self::STATUS_INCOMPLETE;
-		$action_label  = __( 'Fix it', 'woocommerce-payments' );
-		$settings_url  = admin_url( 'admin.php?page=wc-settings&tab=checkout&section=woocommerce_payments' );
+		$action_label  = __( 'Fix it', 'poocommerce-payments' );
+		$settings_url  = admin_url( 'admin.php?page=wc-settings&tab=checkout&section=poocommerce_payments' );
 		$review_prompt = null;
 
 		if ( self::STATUS_INCOMPLETE === $status && $needs_review ) {
 			$review_prompt = [
-				'text'              => __( "Your statement descriptor will show up on your customers' bank statements. Does it clearly identify your store?", 'woocommerce-payments' ),
+				'text'              => __( "Your statement descriptor will show up on your customers' bank statements. Does it clearly identify your store?", 'poocommerce-payments' ),
 				'currentDescriptor' => $trimmed,
-				'confirmLabel'      => __( 'Looks good', 'woocommerce-payments' ),
-				'updateLabel'       => __( 'Update', 'woocommerce-payments' ),
+				'confirmLabel'      => __( 'Looks good', 'poocommerce-payments' ),
+				'updateLabel'       => __( 'Update', 'poocommerce-payments' ),
 			];
 		}
 
 		$signal = [
 			'id'          => self::SIGNAL_STATEMENT_DESCRIPTOR,
 			'status'      => $status,
-			'label'       => __( 'Recognizable statement descriptor', 'woocommerce-payments' ),
-			'description' => __( 'Make sure your business name appears clearly on customer bank statements to prevent confusion.', 'woocommerce-payments' ),
+			'label'       => __( 'Recognizable statement descriptor', 'poocommerce-payments' ),
+			'description' => __( 'Make sure your business name appears clearly on customer bank statements to prevent confusion.', 'poocommerce-payments' ),
 			'actionLabel' => $action_label,
 			'actionUrl'   => $settings_url,
 			'reason'      => $this->get_statement_descriptor_reason( $descriptor, $needs_review, $is_confirmed ),
@@ -262,10 +262,10 @@ class DisputeReadinessService {
 		return [
 			'id'          => self::SIGNAL_SUPPORT_CONTACT,
 			'status'      => $status,
-			'label'       => __( 'Customer support contact linked in order emails', 'woocommerce-payments' ),
-			'description' => __( 'Give customers a direct way to reach you from their order emails to handle issues quickly.', 'woocommerce-payments' ),
-			'actionLabel' => __( 'Fix it', 'woocommerce-payments' ),
-			'actionUrl'   => admin_url( 'admin.php?page=wc-settings&tab=checkout&section=woocommerce_payments' ),
+			'label'       => __( 'Customer support contact linked in order emails', 'poocommerce-payments' ),
+			'description' => __( 'Give customers a direct way to reach you from their order emails to handle issues quickly.', 'poocommerce-payments' ),
+			'actionLabel' => __( 'Fix it', 'poocommerce-payments' ),
+			'actionUrl'   => admin_url( 'admin.php?page=wc-settings&tab=checkout&section=poocommerce_payments' ),
 		];
 	}
 
@@ -316,7 +316,7 @@ class DisputeReadinessService {
 	}
 
 	/**
-	 * Returns the edit URL for an assigned page or the WooCommerce page setup settings URL.
+	 * Returns the edit URL for an assigned page or the PooCommerce page setup settings URL.
 	 *
 	 * @param int $page_id Page ID.
 	 * @return string
@@ -328,15 +328,15 @@ class DisputeReadinessService {
 			return $edit_post_link ? $edit_post_link : admin_url( 'post.php?post=' . $page_id . '&action=edit' );
 		}
 
-		return $this->get_woocommerce_advanced_settings_url();
+		return $this->get_poocommerce_advanced_settings_url();
 	}
 
 	/**
-	 * Returns the WooCommerce advanced settings URL.
+	 * Returns the PooCommerce advanced settings URL.
 	 *
 	 * @return string
 	 */
-	private function get_woocommerce_advanced_settings_url(): string {
+	private function get_poocommerce_advanced_settings_url(): string {
 		return admin_url( 'admin.php?page=wc-settings&tab=advanced' );
 	}
 
@@ -517,8 +517,8 @@ class DisputeReadinessService {
 	 */
 	private function is_generic_descriptor_value( string $normalized_descriptor ): bool {
 		$generic_values = [
-			'woocommerce',
-			'woocommercepayments',
+			'poocommerce',
+			'poocommercepayments',
 			'woopayments',
 			'woopaymentsstore',
 			'mystore',

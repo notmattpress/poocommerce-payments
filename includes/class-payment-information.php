@@ -2,7 +2,7 @@
 /**
  * Class Payment_Information
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay;
@@ -26,7 +26,7 @@ class Payment_Information {
 	 *
 	 * @type string
 	 */
-	const PAYMENT_METHOD_ERROR = 'woocommerce_payments_payment_method_error';
+	const PAYMENT_METHOD_ERROR = 'poocommerce_payments_payment_method_error';
 
 	/**
 	 * The ID of the payment method used for this payment.
@@ -157,7 +157,7 @@ class Payment_Information {
 		if ( empty( $payment_method ) && empty( $token ) && ! \WC_Payments::is_network_saved_cards_enabled() ) {
 			// If network-wide cards are enabled, a payment method or token may not be specified and the platform default one will be used.
 			throw new Invalid_Payment_Method_Exception(
-				esc_html__( 'Invalid or missing payment details. Please ensure the provided payment method is correctly entered.', 'woocommerce-payments' ),
+				esc_html__( 'Invalid or missing payment details. Please ensure the provided payment method is correctly entered.', 'poocommerce-payments' ),
 				'payment_method_not_provided'
 			);
 		}
@@ -290,7 +290,7 @@ class Payment_Information {
 		if ( self::PAYMENT_METHOD_ERROR === $payment_method ) {
 			$error_message = wc_clean( $request['wcpay-payment-method-error-message'] ?? '' );
 			if ( empty( $error_message ) || ! is_string( $error_message ) ) {
-				$error_message = __( "We're not able to process this payment. Please try again later.", 'woocommerce-payments' );
+				$error_message = __( "We're not able to process this payment. Please try again later.", 'poocommerce-payments' );
 			}
 			$error_code = wc_clean( $request['wcpay-payment-method-error-code'] ?? '' );
 			if ( empty( $error_code ) || ! is_string( $error_code ) ) {

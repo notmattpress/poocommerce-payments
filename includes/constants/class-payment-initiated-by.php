@@ -2,7 +2,7 @@
 /**
  * Class Payment_Information
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Constants;

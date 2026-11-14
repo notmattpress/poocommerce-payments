@@ -2,7 +2,7 @@
 /**
  * Class Order_ID_Mismatch_Exception
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Exceptions;

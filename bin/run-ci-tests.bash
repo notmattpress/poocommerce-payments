@@ -20,7 +20,7 @@ echo 'Starting MySQL service...'
 sudo systemctl start mysql.service
 
 echo 'Setting up test environment...'
-bash bin/install-wp-tests.sh woocommerce_test root root localhost $WP_VERSION $WC_VERSION false $GUTENBERG_VERSION
+bash bin/install-wp-tests.sh poocommerce_test root root localhost $WP_VERSION $WC_VERSION false $GUTENBERG_VERSION
 
 echo 'Running the tests...'
 bash bin/phpunit.sh -c phpunit.xml.dist

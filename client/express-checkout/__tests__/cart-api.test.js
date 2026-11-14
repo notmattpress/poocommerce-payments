@@ -207,7 +207,7 @@ describe( 'ExpressCheckoutCartApi', () => {
 		// `response.headers.get( 'Nonce' )` returns `null` in that case, and
 		// we must not let that overwrite the working store_api_nonce default
 		// on the next request — otherwise it serializes to the literal string
-		// "null" and the Store API rejects with `woocommerce_rest_missing_nonce`.
+		// "null" and the Store API rejects with `poocommerce_rest_missing_nonce`.
 		global.wcpayExpressCheckoutParams.button_context = 'cart';
 		apiFetch.mockResolvedValue( {
 			headers: new Headers(),
@@ -252,7 +252,7 @@ describe( 'ExpressCheckoutCartApi', () => {
 		rememberElementCurrency( 'eur' );
 
 		const api = new ExpressCheckoutCartApi();
-		await api.placeOrder( { payment_method: 'woocommerce_payments' } );
+		await api.placeOrder( { payment_method: 'poocommerce_payments' } );
 
 		const callArgs = apiFetch.mock.calls[ 0 ][ 0 ];
 
@@ -269,7 +269,7 @@ describe( 'ExpressCheckoutCartApi', () => {
 		} );
 
 		const api = new ExpressCheckoutCartApi();
-		await api.placeOrder( { payment_method: 'woocommerce_payments' } );
+		await api.placeOrder( { payment_method: 'poocommerce_payments' } );
 
 		const callArgs = apiFetch.mock.calls[ 0 ][ 0 ];
 
@@ -408,7 +408,7 @@ describe( 'ExpressCheckoutCartApi', () => {
 
 	describe( 'when the page nonces expired', () => {
 		const invalidNonceError = (
-			code = 'woocommerce_rest_invalid_nonce'
+			code = 'poocommerce_rest_invalid_nonce'
 		) => {
 			const headers = new Headers();
 			headers.append( 'Nonce', 'fresh_store_api_nonce' );
@@ -500,7 +500,7 @@ describe( 'ExpressCheckoutCartApi', () => {
 
 		it( 'should not retry other errors', async () => {
 			global.wcpayExpressCheckoutParams.button_context = 'product';
-			const error = invalidNonceError( 'woocommerce_rest_cart_error' );
+			const error = invalidNonceError( 'poocommerce_rest_cart_error' );
 			apiFetch.mockRejectedValueOnce( error );
 
 			await expect(

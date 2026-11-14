@@ -22,7 +22,7 @@ We use the [QIT toolkit](https://qit.woo.com/docs/) for automated testing includ
 E2E tests require Jetpack tokens from an onboarded WooPayments account. Use the Jetpack Debug Helper plugin to retrieve them:
 
 1. Create a fresh Jurassic Ninja site with:
-   - WooCommerce
+   - PooCommerce
    - Jetpack Debug Helper
 2. Log in as admin
 3. Navigate to **Admin > Payments**
@@ -41,7 +41,7 @@ E2E tests require Jetpack tokens from an onboarded WooPayments account. Use the 
 
 #### Note on qit-cli version
 
-Local runs use the `woocommerce/qit-cli` version locked in `composer.lock`. Both `.github/workflows/qit.yml` and `.github/workflows/qit-e2e-run.yml` read that version when installing QIT in CI, keeping dependency updates in sync automatically.
+Local runs use the `poocommerce/qit-cli` version locked in `composer.lock`. Both `.github/workflows/qit.yml` and `.github/workflows/qit-e2e-run.yml` read that version when installing QIT in CI, keeping dependency updates in sync automatically.
 
 ### Running Tests
 
@@ -64,7 +64,7 @@ Before running E2E tests, build the plugin package:
 pnpm run build:release
 ```
 
-This creates `woocommerce-payments.zip` which is used by QIT. Then run the tests with the required environment variables.
+This creates `poocommerce-payments.zip` which is used by QIT. Then run the tests with the required environment variables.
 
 ##### Available Commands
 
@@ -88,7 +88,7 @@ E2E_JP_SITE_ID='<value>' E2E_JP_BLOG_TOKEN='<value>' E2E_JP_USER_TOKEN='<value>'
 # Run only merchant tests
 E2E_JP_SITE_ID='<value>' E2E_JP_BLOG_TOKEN='<value>' E2E_JP_USER_TOKEN='<value>' pnpm run test:qit-e2e:merchant
 
-# Run subscription tests (automatically installs WooCommerce Subscriptions)
+# Run subscription tests (automatically installs PooCommerce Subscriptions)
 E2E_JP_SITE_ID='<value>' E2E_JP_BLOG_TOKEN='<value>' E2E_JP_USER_TOKEN='<value>' pnpm run test:qit-e2e:subscriptions
 
 # Run specific test file (passthrough to Playwright)
@@ -125,7 +125,7 @@ If checkout tests fail with "Card testing attempt detected" errors, the test acc
 When running `composer install`, you may encounter:
 
 ```text
-Could not fetch https://api.github.com/repos/woocommerce/qit-cli/zipball/...
+Could not fetch https://api.github.com/repos/poocommerce/qit-cli/zipball/...
 please review your configured GitHub OAuth token
 ```
 
@@ -142,4 +142,4 @@ please review your configured GitHub OAuth token
    ```
 
 > [!NOTE]
-> Classic PAT tokens may not work for accessing woocommerce repos. Fine-grained tokens with public repo read access are sufficient.
+> Classic PAT tokens may not work for accessing poocommerce repos. Fine-grained tokens with public repo read access are sufficient.

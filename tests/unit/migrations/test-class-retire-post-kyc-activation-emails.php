@@ -2,7 +2,7 @@
 /**
  * Tests for retiring queued activation reminders.
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 namespace unit\migrations;
@@ -26,46 +26,46 @@ class Retire_Post_Kyc_Activation_Emails_Test extends WCPAY_UnitTestCase {
 	public function test_cancels_only_retired_stages_in_the_payments_group(): void {
 		foreach ( [ 7, 14, 30 ] as $stage ) {
 			foreach ( [ time() - DAY_IN_SECONDS, time() + DAY_IN_SECONDS ] as $timestamp ) {
-				as_schedule_single_action( $timestamp, 'wcpay_post_kyc_activation_email_send', [ $stage ], 'woocommerce-payments' );
+				as_schedule_single_action( $timestamp, 'wcpay_post_kyc_activation_email_send', [ $stage ], 'poocommerce-payments' );
 			}
 		}
-		as_schedule_single_action( time() + 3600, 'wcpay_cleanup_test_unrelated', [], 'woocommerce-payments' );
+		as_schedule_single_action( time() + 3600, 'wcpay_cleanup_test_unrelated', [], 'poocommerce-payments' );
 		as_schedule_single_action( time() + 3600, 'wcpay_post_kyc_activation_email_send', [ 7 ], 'another-plugin' );
 		update_option( 'wcpay_post_kyc_activation_email_sent_stages', [ 7 ] );
 		update_option( 'wcpay_post_kyc_activation_emails_scheduled', '1' );
-		update_option( 'woocommerce_woocommerce_payments_wcpay_post_kyc_activation_settings', [ 'enabled' => 'no' ] );
+		update_option( 'poocommerce_poocommerce_payments_wcpay_post_kyc_activation_settings', [ 'enabled' => 'no' ] );
 
 		$migration = new Retire_Post_Kyc_Activation_Emails();
 		$migration->migrate();
 		$migration->migrate();
 
 		foreach ( [ 7, 14, 30 ] as $stage ) {
-			$this->assertFalse( as_has_scheduled_action( 'wcpay_post_kyc_activation_email_send', [ $stage ], 'woocommerce-payments' ) );
+			$this->assertFalse( as_has_scheduled_action( 'wcpay_post_kyc_activation_email_send', [ $stage ], 'poocommerce-payments' ) );
 		}
-		$this->assertTrue( as_has_scheduled_action( 'wcpay_cleanup_test_unrelated', [], 'woocommerce-payments' ) );
+		$this->assertTrue( as_has_scheduled_action( 'wcpay_cleanup_test_unrelated', [], 'poocommerce-payments' ) );
 		$this->assertTrue( as_has_scheduled_action( 'wcpay_post_kyc_activation_email_send', [ 7 ], 'another-plugin' ) );
 		$this->assertSame( [ 7 ], get_option( 'wcpay_post_kyc_activation_email_sent_stages' ) );
 		$this->assertSame( '1', get_option( 'wcpay_post_kyc_activation_emails_scheduled' ) );
-		$this->assertSame( [ 'enabled' => 'no' ], get_option( 'woocommerce_woocommerce_payments_wcpay_post_kyc_activation_settings' ) );
+		$this->assertSame( [ 'enabled' => 'no' ], get_option( 'poocommerce_poocommerce_payments_wcpay_post_kyc_activation_settings' ) );
 	}
 
 	public function test_upgrade_cancels_pending_reminders(): void {
-		update_option( 'woocommerce_woocommerce_payments_version', '11.2.0' );
-		as_schedule_single_action( time() + 3600, 'wcpay_post_kyc_activation_email_send', [ 14 ], 'woocommerce-payments' );
+		update_option( 'poocommerce_poocommerce_payments_version', '11.2.0' );
+		as_schedule_single_action( time() + 3600, 'wcpay_post_kyc_activation_email_send', [ 14 ], 'poocommerce-payments' );
 
 		( new Retire_Post_Kyc_Activation_Emails() )->maybe_migrate();
 
-		$this->assertFalse( as_has_scheduled_action( 'wcpay_post_kyc_activation_email_send', [ 14 ], 'woocommerce-payments' ) );
+		$this->assertFalse( as_has_scheduled_action( 'wcpay_post_kyc_activation_email_send', [ 14 ], 'poocommerce-payments' ) );
 	}
 
 	public function test_plugin_upgrade_hook_cancels_pending_reminders_before_updating_version(): void {
-		update_option( 'woocommerce_woocommerce_payments_version', '11.0.0' );
-		as_schedule_single_action( time() + 3600, 'wcpay_post_kyc_activation_email_send', [ 14 ], 'woocommerce-payments' );
+		update_option( 'poocommerce_poocommerce_payments_version', '11.0.0' );
+		as_schedule_single_action( time() + 3600, 'wcpay_post_kyc_activation_email_send', [ 14 ], 'poocommerce-payments' );
 
 		\WC_Payments::install_actions();
 
-		$this->assertFalse( as_has_scheduled_action( 'wcpay_post_kyc_activation_email_send', [ 14 ], 'woocommerce-payments' ) );
-		$this->assertSame( WCPAY_VERSION_NUMBER, get_option( 'woocommerce_woocommerce_payments_version' ) );
+		$this->assertFalse( as_has_scheduled_action( 'wcpay_post_kyc_activation_email_send', [ 14 ], 'poocommerce-payments' ) );
+		$this->assertSame( WCPAY_VERSION_NUMBER, get_option( 'poocommerce_poocommerce_payments_version' ) );
 	}
 
 	public function test_upgrade_clears_the_retired_notice_caches(): void {
@@ -79,10 +79,10 @@ class Retire_Post_Kyc_Activation_Emails_Test extends WCPAY_UnitTestCase {
 	}
 
 	public function test_fresh_install_cleanup_is_harmless(): void {
-		delete_option( 'woocommerce_woocommerce_payments_version' );
+		delete_option( 'poocommerce_poocommerce_payments_version' );
 
 		( new Retire_Post_Kyc_Activation_Emails() )->maybe_migrate();
 
-		$this->assertFalse( as_has_scheduled_action( 'wcpay_post_kyc_activation_email_send', [ 7 ], 'woocommerce-payments' ) );
+		$this->assertFalse( as_has_scheduled_action( 'wcpay_post_kyc_activation_email_send', [ 7 ], 'poocommerce-payments' ) );
 	}
 }

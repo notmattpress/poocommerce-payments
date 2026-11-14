@@ -10,10 +10,10 @@ import { config, CustomerAddress, Product } from '../config/default';
 import { isUIUnblocked } from './helpers';
 
 const placeOrderButtonSelector =
-	'#place_order, button[name="woocommerce_change_payment"]';
+	'#place_order, button[name="poocommerce_change_payment"]';
 
 /**
- * Waits for WooCommerce to finish refreshing the checkout order review.
+ * Waits for PooCommerce to finish refreshing the checkout order review.
  *
  * WC triggers an update_order_review AJAX call after billing field changes
  * (debounced by 1s). We wait for that response rather than using a fixed timeout.
@@ -152,7 +152,7 @@ const placeOrderTerminalStateTimeout = 15000;
 
 export const placeOrder = async ( page: Page, maxAttempts = 3 ) => {
 	const button = page.locator( placeOrderButtonSelector ).first();
-	const errorNotice = page.locator( '.woocommerce-error' ).first();
+	const errorNotice = page.locator( '.poocommerce-error' ).first();
 	const checkoutUrl = page.url();
 
 	for ( let attempt = 1; attempt <= maxAttempts; attempt++ ) {
@@ -257,11 +257,11 @@ export const placeOrderWCB = async (
 const ensureSavedCardNotSelected = async ( page: Page ) => {
 	if (
 		await page
-			.locator( '#wc-woocommerce_payments-payment-token-new' )
+			.locator( '#wc-poocommerce_payments-payment-token-new' )
 			.isVisible()
 	) {
 		const newCardOption = await page.locator(
-			'#wc-woocommerce_payments-payment-token-new'
+			'#wc-poocommerce_payments-payment-token-new'
 		);
 		if ( newCardOption ) {
 			await newCardOption.click();
@@ -276,11 +276,11 @@ export const fillCardDetails = async (
 	await ensureSavedCardNotSelected( page );
 	if (
 		await page.$(
-			'#payment .payment_method_woocommerce_payments .wcpay-upe-element'
+			'#payment .payment_method_poocommerce_payments .wcpay-upe-element'
 		)
 	) {
 		const frameHandle = await page.waitForSelector(
-			'#payment .payment_method_woocommerce_payments .wcpay-upe-element iframe'
+			'#payment .payment_method_poocommerce_payments .wcpay-upe-element iframe'
 		);
 
 		const stripeFrame = await frameHandle.contentFrame();
@@ -323,7 +323,7 @@ export const fillCardDetailsWCB = async (
 	card: typeof config.cards.basic
 ) => {
 	const newPaymentMethodRadioButton = page.locator(
-		'#radio-control-wc-payment-method-options-woocommerce_payments'
+		'#radio-control-wc-payment-method-options-poocommerce_payments'
 	);
 	if ( await newPaymentMethodRadioButton.isVisible() ) {
 		await newPaymentMethodRadioButton.click();
@@ -394,7 +394,7 @@ export const getPriceFromProduct = async ( page: Page, slug: string ) => {
 	await navigation.goToProductPageBySlug( page, slug );
 
 	const priceText = await page
-		.locator( 'ins .woocommerce-Price-amount.amount' )
+		.locator( 'ins .poocommerce-Price-amount.amount' )
 		.first()
 		.textContent();
 
@@ -631,13 +631,13 @@ export const emptyCart = async ( page: Page ) => {
 	}
 
 	// Remove coupons if they exist.
-	let coupons = await page.locator( '.woocommerce-remove-coupon' ).all();
+	let coupons = await page.locator( '.poocommerce-remove-coupon' ).all();
 
 	while ( coupons.length ) {
 		await coupons[ 0 ].click();
 		await isUIUnblocked( page );
 
-		coupons = await page.locator( '.woocommerce-remove-coupon' ).all();
+		coupons = await page.locator( '.poocommerce-remove-coupon' ).all();
 	}
 
 	await expect(
@@ -800,7 +800,7 @@ export const setDefaultPaymentMethod = async (
 };
 
 export const removeCoupon = async ( page: Page ) => {
-	const couponRemovalLink = page.locator( '.woocommerce-remove-coupon' );
+	const couponRemovalLink = page.locator( '.poocommerce-remove-coupon' );
 
 	if ( await couponRemovalLink.isVisible() ) {
 		await couponRemovalLink.click();
@@ -826,7 +826,7 @@ export const confirmCardAuthenticationWCB = async (
 	);
 	await expect( placeOrderButton ).toBeDisabled();
 	/**
-	 * Starting around version 9.9.0 WooCommerce Blocks class names changed to
+	 * Starting around version 9.9.0 PooCommerce Blocks class names changed to
 	 * be more specific. To cover both case, this check allows for additional
 	 * sections in the "loading" class name.
 	 */

@@ -151,7 +151,7 @@ parameters:
 			path: includes/class-database-cache.php
 
 		-
-			rawMessage: 'Call to function method_exists() with ''Automattic\\WooCommerce\\Utilities\\OrderUtil'' and ''get_table_for_orders'' will always evaluate to true.'
+			rawMessage: 'Call to function method_exists() with ''Automattic\\PooCommerce\\Utilities\\OrderUtil'' and ''get_table_for_orders'' will always evaluate to true.'
 			identifier: function.alreadyNarrowedType
 			count: 1
 			path: includes/class-duplicate-payment-prevention-service.php
@@ -175,7 +175,7 @@ parameters:
 			path: includes/class-duplicate-payment-prevention-service.php
 
 		-
-			rawMessage: Access to an undefined property WooCommerce::$payment_gateways.
+			rawMessage: Access to an undefined property PooCommerce::$payment_gateways.
 			identifier: property.notFound
 			count: 1
 			path: includes/class-duplicates-detection-service.php
@@ -241,13 +241,13 @@ parameters:
 			path: includes/class-payment-information.php
 
 		-
-			rawMessage: 'Property WooCommerce::$session (WC_Session) in isset() is not nullable.'
+			rawMessage: 'Property PooCommerce::$session (WC_Session) in isset() is not nullable.'
 			identifier: isset.property
 			count: 2
 			path: includes/class-session-rate-limiter.php
 
 		-
-			rawMessage: Access to protected property Automattic\WooCommerce\StoreApi\Payments\PaymentResult::$payment_details.
+			rawMessage: Access to protected property Automattic\PooCommerce\StoreApi\Payments\PaymentResult::$payment_details.
 			identifier: property.protected
 			count: 1
 			path: includes/class-wc-payment-gateway-wcpay.php
@@ -433,13 +433,13 @@ parameters:
 			path: includes/class-wc-payments-account.php
 
 		-
-			rawMessage: 'Call to function is_callable() with array{Automattic\WooCommerce\Utilities\PluginUtil, ''get_all_active…''} will always evaluate to true.'
+			rawMessage: 'Call to function is_callable() with array{Automattic\PooCommerce\Utilities\PluginUtil, ''get_all_active…''} will always evaluate to true.'
 			identifier: function.alreadyNarrowedType
 			count: 1
 			path: includes/class-wc-payments-account.php
 
 		-
-			rawMessage: 'Call to function is_callable() with array{Automattic\WooCommerce\Utilities\PluginUtil, ''is_woocommerce…''} will always evaluate to true.'
+			rawMessage: 'Call to function is_callable() with array{Automattic\PooCommerce\Utilities\PluginUtil, ''is_poocommerce…''} will always evaluate to true.'
 			identifier: function.alreadyNarrowedType
 			count: 1
 			path: includes/class-wc-payments-account.php
@@ -541,7 +541,7 @@ parameters:
 			path: includes/class-wc-payments-checkout.php
 
 		-
-			rawMessage: 'Property WooCommerce::$cart (WC_Cart) in isset() is not nullable.'
+			rawMessage: 'Property PooCommerce::$cart (WC_Cart) in isset() is not nullable.'
 			identifier: isset.property
 			count: 1
 			path: includes/class-wc-payments-checkout.php
@@ -565,7 +565,7 @@ parameters:
 			path: includes/class-wc-payments-checkout.php
 
 		-
-			rawMessage: 'Property WooCommerce::$session (WC_Session) in isset() is not nullable.'
+			rawMessage: 'Property PooCommerce::$session (WC_Session) in isset() is not nullable.'
 			identifier: isset.property
 			count: 1
 			path: includes/class-wc-payments-customer-service.php
@@ -895,7 +895,7 @@ parameters:
 			path: includes/class-wc-payments-token-service.php
 
 		-
-			rawMessage: 'Property WooCommerce::$session (WC_Session) in isset() is not nullable.'
+			rawMessage: 'Property PooCommerce::$session (WC_Session) in isset() is not nullable.'
 			identifier: isset.property
 			count: 1
 			path: includes/class-wc-payments-token-service.php
@@ -925,7 +925,7 @@ parameters:
 			path: includes/class-wc-payments-webhook-processing-service.php
 
 		-
-			rawMessage: Access to an undefined property WooCommerce::$payment_gateways.
+			rawMessage: Access to an undefined property PooCommerce::$payment_gateways.
 			identifier: property.notFound
 			count: 1
 			path: includes/class-wc-payments-woopay-button-handler.php
@@ -973,19 +973,19 @@ parameters:
 			path: includes/class-wc-payments.php
 
 		-
-			rawMessage: Access to an undefined property WooCommerce::$checkout.
+			rawMessage: Access to an undefined property PooCommerce::$checkout.
 			identifier: property.notFound
 			count: 1
 			path: includes/class-wc-payments.php
 
 		-
-			rawMessage: Access to an undefined property WooCommerce::$payment_gateways.
+			rawMessage: Access to an undefined property PooCommerce::$payment_gateways.
 			identifier: property.notFound
 			count: 1
 			path: includes/class-wc-payments.php
 
 		-
-			rawMessage: Access to constant on internal class Automattic\WooCommerce\Blocks\Domain\Services\DraftOrders.
+			rawMessage: Access to constant on internal class Automattic\PooCommerce\Blocks\Domain\Services\DraftOrders.
 			identifier: classConstant.internalClass
 			count: 1
 			path: includes/class-wc-payments.php
@@ -1081,13 +1081,13 @@ parameters:
 			path: includes/class-woopay-tracker.php
 
 		-
-			rawMessage: 'Call to internal static method Automattic\WooCommerce\StoreApi\StoreApi::container() from outside its root namespace Automattic.'
+			rawMessage: 'Call to internal static method Automattic\PooCommerce\StoreApi\StoreApi::container() from outside its root namespace Automattic.'
 			identifier: staticMethod.internal
 			count: 1
 			path: includes/compat/blocks/class-blocks-data-extractor.php
 
 		-
-			rawMessage: 'Call to an undefined method MailPoet\WooCommerce\Subscription::isCurrentUserSubscribed().'
+			rawMessage: 'Call to an undefined method MailPoet\PooCommerce\Subscription::isCurrentUserSubscribed().'
 			identifier: method.notFound
 			count: 1
 			path: includes/compat/blocks/class-blocks-data-extractor.php
@@ -1225,7 +1225,7 @@ parameters:
 			path: includes/emails/class-wc-payments-email-ipp-receipt.php
 
 		-
-			rawMessage: Access to an undefined property WooCommerce::$shipping.
+			rawMessage: Access to an undefined property PooCommerce::$shipping.
 			identifier: property.notFound
 			count: 1
 			path: includes/express-checkout/class-wc-payments-express-checkout-ajax-handler.php
@@ -1249,7 +1249,7 @@ parameters:
 			path: includes/express-checkout/class-wc-payments-express-checkout-button-display-handler.php
 
 		-
-			rawMessage: Access to an undefined property WooCommerce::$payment_gateways.
+			rawMessage: Access to an undefined property PooCommerce::$payment_gateways.
 			identifier: property.notFound
 			count: 1
 			path: includes/express-checkout/class-wc-payments-express-checkout-button-handler.php
@@ -1273,7 +1273,7 @@ parameters:
 			path: includes/express-checkout/class-wc-payments-express-checkout-button-handler.php
 
 		-
-			rawMessage: 'Property WooCommerce::$session (WC_Session) in isset() is not nullable.'
+			rawMessage: 'Property PooCommerce::$session (WC_Session) in isset() is not nullable.'
 			identifier: isset.property
 			count: 1
 			path: includes/express-checkout/class-wc-payments-express-checkout-button-handler.php
@@ -1450,76 +1450,76 @@ parameters:
 			rawMessage: 'Call to function is_countable() with array<WC_Order_Item> will always evaluate to true.'
 			identifier: function.alreadyNarrowedType
 			count: 1
-			path: includes/multi-currency/Compatibility/WooCommerceDeposits.php
+			path: includes/multi-currency/Compatibility/PooCommerceDeposits.php
 
 		-
 			rawMessage: Offset 0 on non-empty-list<string> on left side of ?? always exists and is not nullable.
 			identifier: nullCoalesce.offset
 			count: 1
-			path: includes/multi-currency/Compatibility/WooCommercePointsAndRewards.php
+			path: includes/multi-currency/Compatibility/PooCommercePointsAndRewards.php
 
 		-
-			rawMessage: 'Property WCPay\MultiCurrency\Compatibility\WooCommercePointsAndRewards::$selected_currency (WCPay\MultiCurrency\Currency) in empty() is not falsy.'
+			rawMessage: 'Property WCPay\MultiCurrency\Compatibility\PooCommercePointsAndRewards::$selected_currency (WCPay\MultiCurrency\Currency) in empty() is not falsy.'
 			identifier: empty.property
 			count: 1
-			path: includes/multi-currency/Compatibility/WooCommercePointsAndRewards.php
+			path: includes/multi-currency/Compatibility/PooCommercePointsAndRewards.php
 
 		-
 			rawMessage: 'Binary operation "*" between string and (float|int) results in an error.'
 			identifier: binaryOp.invalid
 			count: 1
-			path: includes/multi-currency/Compatibility/WooCommerceProductAddOns.php
+			path: includes/multi-currency/Compatibility/PooCommerceProductAddOns.php
 
 		-
 			rawMessage: 'Parameter #1 $price of method WC_Product::set_price() expects string, float given.'
 			identifier: argument.type
 			count: 1
-			path: includes/multi-currency/Compatibility/WooCommerceProductAddOns.php
+			path: includes/multi-currency/Compatibility/PooCommerceProductAddOns.php
 
 		-
 			rawMessage: 'Parameter #2 $value of method WC_Data::update_meta_data() expects array|string, int given.'
 			identifier: argument.type
 			count: 1
-			path: includes/multi-currency/Compatibility/WooCommerceProductAddOns.php
+			path: includes/multi-currency/Compatibility/PooCommerceProductAddOns.php
 
 		-
 			rawMessage: Right side of && is always true.
 			identifier: booleanAnd.rightAlwaysTrue
 			count: 4
-			path: includes/multi-currency/Compatibility/WooCommerceProductAddOns.php
+			path: includes/multi-currency/Compatibility/PooCommerceProductAddOns.php
 
 		-
 			rawMessage: Variable $price might not be defined.
 			identifier: variable.undefined
 			count: 3
-			path: includes/multi-currency/Compatibility/WooCommerceProductAddOns.php
+			path: includes/multi-currency/Compatibility/PooCommerceProductAddOns.php
 
 		-
 			rawMessage: 'Call to function is_array() with array will always evaluate to true.'
 			identifier: function.alreadyNarrowedType
 			count: 1
-			path: includes/multi-currency/Compatibility/WooCommerceSubscriptions.php
+			path: includes/multi-currency/Compatibility/PooCommerceSubscriptions.php
 
 		-
 			rawMessage: Expression on left side of ?? is not nullable.
 			identifier: nullCoalesce.expr
 			count: 1
-			path: includes/multi-currency/Compatibility/WooCommerceSubscriptions.php
+			path: includes/multi-currency/Compatibility/PooCommerceSubscriptions.php
 
 		-
-			rawMessage: 'Property WooCommerce::$cart (WC_Cart) in isset() is not nullable.'
+			rawMessage: 'Property PooCommerce::$cart (WC_Cart) in isset() is not nullable.'
 			identifier: isset.property
 			count: 1
-			path: includes/multi-currency/Compatibility/WooCommerceSubscriptions.php
+			path: includes/multi-currency/Compatibility/PooCommerceSubscriptions.php
 
 		-
-			rawMessage: 'Property WooCommerce::$session (WC_Session) in isset() is not nullable.'
+			rawMessage: 'Property PooCommerce::$session (WC_Session) in isset() is not nullable.'
 			identifier: isset.property
 			count: 4
-			path: includes/multi-currency/Compatibility/WooCommerceSubscriptions.php
+			path: includes/multi-currency/Compatibility/PooCommerceSubscriptions.php
 
 		-
-			rawMessage: 'Parameter #2 $args of function register_block_type expects array{api_version?: string, title?: string, category?: string|null, parent?: array<string>|null, ancestor?: array<string>|null, allowed_blocks?: array<string>|null, icon?: string|null, description?: string, ...}, array{api_version: ''3'', editor_script: ''woocommerce…'', render_callback: array{$this(WCPay\MultiCurrency\CurrencySwitcherBlock), ''render_block_widget''}, attributes: array{symbol: array{type: ''boolean'', default: true}, flag: array{type: ''boolean'', default: false}, fontSize: array{type: ''integer'', default: 14}, fontLineHeight: array{type: ''number'', default: 1.5}, fontColor: array{type: ''string'', default: ''#000000''}, border: array{type: ''boolean'', default: true}, borderRadius: array{type: ''integer'', default: 3}, borderColor: array{type: ''string'', default: ''#000000''}, ...}} given.'
+			rawMessage: 'Parameter #2 $args of function register_block_type expects array{api_version?: string, title?: string, category?: string|null, parent?: array<string>|null, ancestor?: array<string>|null, allowed_blocks?: array<string>|null, icon?: string|null, description?: string, ...}, array{api_version: ''3'', editor_script: ''poocommerce…'', render_callback: array{$this(WCPay\MultiCurrency\CurrencySwitcherBlock), ''render_block_widget''}, attributes: array{symbol: array{type: ''boolean'', default: true}, flag: array{type: ''boolean'', default: false}, fontSize: array{type: ''integer'', default: 14}, fontLineHeight: array{type: ''number'', default: 1.5}, fontColor: array{type: ''string'', default: ''#000000''}, border: array{type: ''boolean'', default: true}, borderRadius: array{type: ''integer'', default: 3}, borderColor: array{type: ''string'', default: ''#000000''}, ...}} given.'
 			identifier: argument.type
 			count: 1
 			path: includes/multi-currency/CurrencySwitcherBlock.php
@@ -1549,7 +1549,7 @@ parameters:
 			path: includes/multi-currency/FrontendCurrencies.php
 
 		-
-			rawMessage: 'Property WCPay\MultiCurrency\FrontendCurrencies::$woocommerce_currency (string) does not accept null.'
+			rawMessage: 'Property WCPay\MultiCurrency\FrontendCurrencies::$poocommerce_currency (string) does not accept null.'
 			identifier: assign.propertyType
 			count: 1
 			path: includes/multi-currency/FrontendCurrencies.php
@@ -1633,7 +1633,7 @@ parameters:
 			path: includes/multi-currency/MultiCurrency.php
 
 		-
-			rawMessage: 'Property WooCommerce::$session (WC_Session) in isset() is not nullable.'
+			rawMessage: 'Property PooCommerce::$session (WC_Session) in isset() is not nullable.'
 			identifier: isset.property
 			count: 5
 			path: includes/multi-currency/MultiCurrency.php
@@ -1663,7 +1663,7 @@ parameters:
 			path: includes/multi-currency/Utils.php
 
 		-
-			rawMessage: 'Call to function method_exists() with WooCommerce and ''is_store_api_request'' will always evaluate to true.'
+			rawMessage: 'Call to function method_exists() with PooCommerce and ''is_store_api_request'' will always evaluate to true.'
 			identifier: function.alreadyNarrowedType
 			count: 1
 			path: includes/multi-currency/Utils.php
@@ -1681,7 +1681,7 @@ parameters:
 			path: includes/notes/class-wc-payments-remote-note-service.php
 
 		-
-			rawMessage: 'Method WC_Payments_Remote_Note_Service::create_note() never returns Automattic\WooCommerce\Admin\Notes\WC_Admin_Note so it can be removed from the return type.'
+			rawMessage: 'Method WC_Payments_Remote_Note_Service::create_note() never returns Automattic\PooCommerce\Admin\Notes\WC_Admin_Note so it can be removed from the return type.'
 			identifier: return.unusedType
 			count: 1
 			path: includes/notes/class-wc-payments-remote-note-service.php
@@ -1699,7 +1699,7 @@ parameters:
 			path: includes/payment-methods/class-upe-payment-method.php
 
 		-
-			rawMessage: 'Property WooCommerce::$cart (WC_Cart) in isset() is not nullable.'
+			rawMessage: 'Property PooCommerce::$cart (WC_Cart) in isset() is not nullable.'
 			identifier: isset.property
 			count: 2
 			path: includes/payment-methods/class-upe-payment-method.php
@@ -1795,7 +1795,7 @@ parameters:
 			path: includes/wc-payment-api/class-wc-payments-http.php
 
 		-
-			rawMessage: Access to an undefined property WooCommerce::$payment_gateways.
+			rawMessage: Access to an undefined property PooCommerce::$payment_gateways.
 			identifier: property.notFound
 			count: 1
 			path: includes/woopay-user/class-woopay-save-user.php
@@ -1861,7 +1861,7 @@ parameters:
 			path: includes/woopay/class-woopay-session.php
 
 		-
-			rawMessage: 'Call to internal static method Automattic\WooCommerce\StoreApi\StoreApi::container() from outside its root namespace Automattic.'
+			rawMessage: 'Call to internal static method Automattic\PooCommerce\StoreApi\StoreApi::container() from outside its root namespace Automattic.'
 			identifier: staticMethod.internal
 			count: 1
 			path: includes/woopay/class-woopay-session.php
@@ -1909,13 +1909,13 @@ parameters:
 			path: includes/woopay/class-woopay-session.php
 
 		-
-			rawMessage: 'Property WooCommerce::$customer (WC_Customer) in empty() is not falsy.'
+			rawMessage: 'Property PooCommerce::$customer (WC_Customer) in empty() is not falsy.'
 			identifier: empty.property
 			count: 1
 			path: includes/woopay/class-woopay-session.php
 
 		-
-			rawMessage: 'Property WooCommerce::$session (WC_Session) in isset() is not nullable.'
+			rawMessage: 'Property PooCommerce::$session (WC_Session) in isset() is not nullable.'
 			identifier: isset.property
 			count: 1
 			path: includes/woopay/class-woopay-session.php
@@ -1945,7 +1945,7 @@ parameters:
 			path: includes/woopay/class-woopay-utilities.php
 
 		-
-			rawMessage: 'Property WooCommerce::$session (WC_Session) in isset() is not nullable.'
+			rawMessage: 'Property PooCommerce::$session (WC_Session) in isset() is not nullable.'
 			identifier: isset.property
 			count: 1
 			path: includes/woopay/class-woopay-utilities.php
@@ -2068,4 +2068,4 @@ parameters:
 			rawMessage: 'Call to function method_exists() with ''Automattic\\Jetpack\\Sync\\Actions'' and ''do_only_first…'' will always evaluate to true.'
 			identifier: function.alreadyNarrowedType
 			count: 1
-			path: woocommerce-payments.php
+			path: poocommerce-payments.php

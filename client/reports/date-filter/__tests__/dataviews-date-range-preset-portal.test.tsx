@@ -135,8 +135,8 @@ describe( 'DataViewsDateRangePresetPortal', () => {
 
 		await waitFor( () =>
 			expect( insertedPresetLabels ).toEqual( [
-				'woocommerce-payments:Previous month',
-				'woocommerce-payments:Previous year',
+				'poocommerce-payments:Previous month',
+				'poocommerce-payments:Previous year',
 			] )
 		);
 	} );

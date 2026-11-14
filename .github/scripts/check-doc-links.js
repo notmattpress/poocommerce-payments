@@ -34,16 +34,16 @@ const EXCLUDED_DIRECTORIES = new Set( [
 	'dist',
 ] );
 const DOC_HOSTS = new Set( [
-	'woocommerce.com',
-	'www.woocommerce.com',
-	'docs.woocommerce.com',
-	'developer.woocommerce.com',
+	'poocommerce.com',
+	'www.poocommerce.com',
+	'docs.poocommerce.com',
+	'developer.poocommerce.com',
 ] );
 const URL_PATTERN = new RegExp(
 	String.raw`https?://(?:` +
-		String.raw`(?:www\.)?woocommerce\.com/(?:document(?:ation)?|docs)(?=[/?#]|$)` +
-		String.raw`|docs\.woocommerce\.com/` +
-		String.raw`|developer\.woocommerce\.com/docs(?=[/?#]|$)` +
+		String.raw`(?:www\.)?poocommerce\.com/(?:document(?:ation)?|docs)(?=[/?#]|$)` +
+		String.raw`|docs\.poocommerce\.com/` +
+		String.raw`|developer\.poocommerce\.com/docs(?=[/?#]|$)` +
 		')[^\\s"\'`<>\\\\]*',
 	'gi'
 );
@@ -71,7 +71,7 @@ function validateDestination( url, hosts ) {
 		parsed.password
 	) {
 		throw new VerificationError(
-			`Destination is not a WooCommerce documentation host: ${ url }`
+			`Destination is not a PooCommerce documentation host: ${ url }`
 		);
 	}
 }

@@ -2,10 +2,10 @@
 /**
  * Class WC_Payments_Payment_Request_Session_Handler_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
-use Automattic\WooCommerce\StoreApi\Utilities\JsonWebToken;
+use Automattic\PooCommerce\StoreApi\Utilities\JsonWebToken;
 
 require_once WCPAY_ABSPATH . '/includes/class-wc-payments-payment-request-session-handler.php';
 
@@ -39,7 +39,7 @@ class WC_Payments_Payment_Request_Session_Handler_Test extends WCPAY_UnitTestCas
 		parent::set_up();
 
 		$this->previous_user_id = get_current_user_id();
-		add_filter( 'woocommerce_set_cookie_enabled', [ $this, '__cookie_handler' ], 10, 3 );
+		add_filter( 'poocommerce_set_cookie_enabled', [ $this, '__cookie_handler' ], 10, 3 );
 		wp_logout();
 		// emptying the cookies that would otherwise have been set by `wp_logout`.
 		$this->cookies_jar = [];
@@ -52,8 +52,8 @@ class WC_Payments_Payment_Request_Session_Handler_Test extends WCPAY_UnitTestCas
 		wp_set_current_user( $this->previous_user_id );
 		unset( $_SERVER['HTTP_X_WOOPAYMENTS_TOKENIZED_CART_SESSION'] );
 		unset( $_SERVER['HTTP_X_WOOPAYMENTS_TOKENIZED_CART_IS_EPHEMERAL_CART'] );
-		unset( $_COOKIE[ 'wp_woocommerce_session_' . COOKIEHASH ] );
-		remove_filter( 'woocommerce_set_cookie_enabled', [ $this, '__cookie_handler' ] );
+		unset( $_COOKIE[ 'wp_poocommerce_session_' . COOKIEHASH ] );
+		remove_filter( 'poocommerce_set_cookie_enabled', [ $this, '__cookie_handler' ] );
 		$this->cookies_jar = [];
 
 		parent::tear_down();
@@ -69,18 +69,18 @@ class WC_Payments_Payment_Request_Session_Handler_Test extends WCPAY_UnitTestCas
 	 * This function is meant to mock the value expected by `WC_Session_Handler->get_session_cookie()`.
 	 *
 	 * @param string $customer_id A fake customer id;
-	 * @param int    $session_expiring When WooCommerce should extend the session.
+	 * @param int    $session_expiring When PooCommerce should extend the session.
 	 *
 	 * @return void
 	 */
 	private function __create_fake_session_cookie( $customer_id, $session_expiring = null ) {
 		$session_expiration = time() + HOUR_IN_SECONDS;
 
-		// WooCommerce hashes with a single `|` in every version, even when the cookie separator is `||`.
+		// PooCommerce hashes with a single `|` in every version, even when the cookie separator is `||`.
 		$to_hash     = $customer_id . '|' . $session_expiration;
 		$cookie_hash = hash_hmac( 'md5', $to_hash, wp_hash( $to_hash ) );
 
-		$_COOKIE[ 'wp_woocommerce_session_' . COOKIEHASH ] = implode(
+		$_COOKIE[ 'wp_poocommerce_session_' . COOKIEHASH ] = implode(
 			$this->cookies_separator,
 			[
 				$customer_id,
@@ -104,7 +104,7 @@ class WC_Payments_Payment_Request_Session_Handler_Test extends WCPAY_UnitTestCas
 
 		$session_handler->set_customer_session_cookie( true );
 
-		$this->assertArrayNotHasKey( 'wp_woocommerce_session_' . COOKIEHASH, $this->cookies_jar );
+		$this->assertArrayNotHasKey( 'wp_poocommerce_session_' . COOKIEHASH, $this->cookies_jar );
 		$this->assertFalse( $session_handler->has_session() );
 	}
 
@@ -127,14 +127,14 @@ class WC_Payments_Payment_Request_Session_Handler_Test extends WCPAY_UnitTestCas
 
 		$session_id = $session_handler->session_id;
 		$this->assertStringStartsWith( 't_', $session_id );
-		$this->assertArrayNotHasKey( 'wp_woocommerce_session_' . COOKIEHASH, $this->cookies_jar );
+		$this->assertArrayNotHasKey( 'wp_poocommerce_session_' . COOKIEHASH, $this->cookies_jar );
 
 		$session_handler->save_data();
-		do_action( 'woocommerce_set_cart_cookies', true ); // phpcs:ignore WooCommerce.Commenting.CommentHooks.MissingHookComment
+		do_action( 'poocommerce_set_cart_cookies', true ); // phpcs:ignore PooCommerce.Commenting.CommentHooks.MissingHookComment
 
 		$session_data = $wpdb->get_row(
 			$wpdb->prepare(
-				"SELECT session_value FROM {$wpdb->prefix}woocommerce_sessions WHERE session_key = %s",
+				"SELECT session_value FROM {$wpdb->prefix}poocommerce_sessions WHERE session_key = %s",
 				$session_id
 			)
 		);
@@ -143,9 +143,9 @@ class WC_Payments_Payment_Request_Session_Handler_Test extends WCPAY_UnitTestCas
 		$unserialized_data = maybe_unserialize( $session_data->session_value );
 		$this->assertEquals( 'test_value', $unserialized_data['test_key'] );
 		$this->assertEquals( 'cart_data', $unserialized_data['cart_key'] );
-		$this->assertArrayHasKey( 'wp_woocommerce_session_' . COOKIEHASH, $this->cookies_jar );
+		$this->assertArrayHasKey( 'wp_poocommerce_session_' . COOKIEHASH, $this->cookies_jar );
 
-		list( $cookie_customer_id ) = explode( $this->cookies_separator, $this->cookies_jar[ 'wp_woocommerce_session_' . COOKIEHASH ] );
+		list( $cookie_customer_id ) = explode( $this->cookies_separator, $this->cookies_jar[ 'wp_poocommerce_session_' . COOKIEHASH ] );
 		$this->assertNotEquals( $session_id, $cookie_customer_id );
 		$this->assertEquals( $session_handler->get_customer_id(), $cookie_customer_id );
 	}
@@ -171,14 +171,14 @@ class WC_Payments_Payment_Request_Session_Handler_Test extends WCPAY_UnitTestCas
 
 		$session_id = $session_handler->session_id;
 		$this->assertStringStartsWith( 't_', $session_id );
-		$this->assertArrayNotHasKey( 'wp_woocommerce_session_' . COOKIEHASH, $this->cookies_jar );
+		$this->assertArrayNotHasKey( 'wp_poocommerce_session_' . COOKIEHASH, $this->cookies_jar );
 
 		$session_handler->save_data();
-		do_action( 'woocommerce_set_cart_cookies', true ); // phpcs:ignore WooCommerce.Commenting.CommentHooks.MissingHookComment
+		do_action( 'poocommerce_set_cart_cookies', true ); // phpcs:ignore PooCommerce.Commenting.CommentHooks.MissingHookComment
 
 		$session_data = $wpdb->get_row(
 			$wpdb->prepare(
-				"SELECT session_value FROM {$wpdb->prefix}woocommerce_sessions WHERE session_key = %s",
+				"SELECT session_value FROM {$wpdb->prefix}poocommerce_sessions WHERE session_key = %s",
 				$session_id
 			)
 		);
@@ -187,9 +187,9 @@ class WC_Payments_Payment_Request_Session_Handler_Test extends WCPAY_UnitTestCas
 		$unserialized_data = maybe_unserialize( $session_data->session_value );
 		$this->assertEquals( 'test_value', $unserialized_data['test_key'] );
 		$this->assertEquals( 'cart_data', $unserialized_data['cart_key'] );
-		$this->assertArrayHasKey( 'wp_woocommerce_session_' . COOKIEHASH, $this->cookies_jar );
+		$this->assertArrayHasKey( 'wp_poocommerce_session_' . COOKIEHASH, $this->cookies_jar );
 
-		list( $cookie_customer_id ) = explode( $this->cookies_separator, $this->cookies_jar[ 'wp_woocommerce_session_' . COOKIEHASH ] );
+		list( $cookie_customer_id ) = explode( $this->cookies_separator, $this->cookies_jar[ 'wp_poocommerce_session_' . COOKIEHASH ] );
 		$this->assertNotEquals( $session_id, $cookie_customer_id );
 		$this->assertEquals( $session_handler->get_customer_id(), $cookie_customer_id );
 	}
@@ -206,7 +206,7 @@ class WC_Payments_Payment_Request_Session_Handler_Test extends WCPAY_UnitTestCas
 		$mock_header_session_id  = 't_' . substr( md5( 'test_session_' . time() ), 0, 30 );
 		$mock_header_session_exp = time() + HOUR_IN_SECONDS;
 		$wpdb->insert(
-			$wpdb->prefix . 'woocommerce_sessions',
+			$wpdb->prefix . 'poocommerce_sessions',
 			[
 				'session_key'    => $mock_header_session_id,
 				// using "maybe_serialize" instead of just "serialize" because otherwise phpcs isn't happy.
@@ -230,7 +230,7 @@ class WC_Payments_Payment_Request_Session_Handler_Test extends WCPAY_UnitTestCas
 
 		// creating some mocked values for the session identified by the cookie.
 		$wpdb->insert(
-			$wpdb->prefix . 'woocommerce_sessions',
+			$wpdb->prefix . 'poocommerce_sessions',
 			[
 				'session_key'    => get_current_user_id(),
 				// using "maybe_serialize" instead of just "serialize" because otherwise phpcs isn't happy.
@@ -277,7 +277,7 @@ class WC_Payments_Payment_Request_Session_Handler_Test extends WCPAY_UnitTestCas
 		$mock_header_session_id  = 't_' . substr( md5( 'test_session_' . time() ), 0, 30 );
 		$mock_header_session_exp = time() + HOUR_IN_SECONDS;
 		$wpdb->insert(
-			$wpdb->prefix . 'woocommerce_sessions',
+			$wpdb->prefix . 'poocommerce_sessions',
 			[
 				'session_key'    => $mock_header_session_id,
 				'session_value'  => maybe_serialize(
@@ -316,14 +316,14 @@ class WC_Payments_Payment_Request_Session_Handler_Test extends WCPAY_UnitTestCas
 
 	/**
 	 * A shopper who just logged in still has a guest cookie, and their regular cart lives in that guest session.
-	 * Before the token session loads, it must move to their user ID, the same way WooCommerce does on login.
+	 * Before the token session loads, it must move to their user ID, the same way PooCommerce does on login.
 	 */
 	public function test_guest_session_moved_to_user_before_token_session_loads() {
 		global $wpdb;
 
 		$guest_customer_id = 't_' . substr( md5( 'guest_' . time() ), 0, 30 );
 		$wpdb->insert(
-			$wpdb->prefix . 'woocommerce_sessions',
+			$wpdb->prefix . 'poocommerce_sessions',
 			[
 				'session_key'    => $guest_customer_id,
 				'session_value'  => maybe_serialize( [ 'cart' => 'regular_cart' ] ),
@@ -339,7 +339,7 @@ class WC_Payments_Payment_Request_Session_Handler_Test extends WCPAY_UnitTestCas
 
 		$sessions = $wpdb->get_results(
 			$wpdb->prepare(
-				"SELECT session_key, session_value FROM {$wpdb->prefix}woocommerce_sessions WHERE session_key IN ( %s, %s, '' )",
+				"SELECT session_key, session_value FROM {$wpdb->prefix}poocommerce_sessions WHERE session_key IN ( %s, %s, '' )",
 				$guest_customer_id,
 				(string) $user_id
 			),
@@ -352,7 +352,7 @@ class WC_Payments_Payment_Request_Session_Handler_Test extends WCPAY_UnitTestCas
 	}
 
 	/**
-	 * Before the token session loads, WooCommerce extends a cookie session that is close to expiring.
+	 * Before the token session loads, PooCommerce extends a cookie session that is close to expiring.
 	 * The new expiry must land on the cookie's row.
 	 */
 	public function test_expiring_cookie_session_extended_before_token_session_loads() {
@@ -360,7 +360,7 @@ class WC_Payments_Payment_Request_Session_Handler_Test extends WCPAY_UnitTestCas
 
 		$guest_customer_id = 't_' . substr( md5( 'guest_' . time() ), 0, 30 );
 		$wpdb->insert(
-			$wpdb->prefix . 'woocommerce_sessions',
+			$wpdb->prefix . 'poocommerce_sessions',
 			[
 				'session_key'    => $guest_customer_id,
 				'session_value'  => maybe_serialize( [ 'cart' => 'regular_cart' ] ),
@@ -374,7 +374,7 @@ class WC_Payments_Payment_Request_Session_Handler_Test extends WCPAY_UnitTestCas
 
 		$session_expiry = $wpdb->get_var(
 			$wpdb->prepare(
-				"SELECT session_expiry FROM {$wpdb->prefix}woocommerce_sessions WHERE session_key = %s",
+				"SELECT session_expiry FROM {$wpdb->prefix}poocommerce_sessions WHERE session_key = %s",
 				$guest_customer_id
 			)
 		);

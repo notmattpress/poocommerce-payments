@@ -87,7 +87,7 @@ const useInitializeStripe = (
 					throw new Error(
 						__(
 							'Unable to start onboarding. If this problem persists, please contact support.',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						)
 					);
 				}
@@ -109,7 +109,7 @@ const useInitializeStripe = (
 						? err.message
 						: __(
 								'Unable to start onboarding. If this problem persists, please contact support.',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							)
 				);
 			} finally {

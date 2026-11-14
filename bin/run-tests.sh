@@ -21,21 +21,21 @@ done
 if $WATCH_FLAG; then
 	echo "Running the tests on watch mode..."
 
-	# Change directory to WooCommerce Payments' root in order to have access to .phpunit-watcher.yml
+	# Change directory to PooCommerce Payments' root in order to have access to .phpunit-watcher.yml
 	docker compose exec -u www-data wordpress bash -c \
-		"cd /var/www/html/wp-content/plugins/woocommerce-payments && \
+		"cd /var/www/html/wp-content/plugins/poocommerce-payments && \
 		./vendor/bin/phpunit-watcher watch --configuration ./phpunit.xml.dist $*"
 else
 	echo "Running the tests..."
 
 	STATUS=0
 	docker compose exec -u www-data wordpress \
-		/var/www/html/wp-content/plugins/woocommerce-payments/vendor/bin/phpunit \
-		--configuration /var/www/html/wp-content/plugins/woocommerce-payments/phpunit.xml.dist \
+		/var/www/html/wp-content/plugins/poocommerce-payments/vendor/bin/phpunit \
+		--configuration /var/www/html/wp-content/plugins/poocommerce-payments/phpunit.xml.dist \
 		$* || STATUS=$?
 
 	if [ $STATUS -ne 0 ]; then
-		echo "If the failures look environment-related (database errors, missing WordPress or WooCommerce classes), rebuild the test environment with: pnpm run test:php -- --reinstall"
+		echo "If the failures look environment-related (database errors, missing WordPress or PooCommerce classes), rebuild the test environment with: pnpm run test:php -- --reinstall"
 	fi
 	exit $STATUS
 fi

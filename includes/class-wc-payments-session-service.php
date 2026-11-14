@@ -2,7 +2,7 @@
 /**
  * WC_Payments_Session_Service class
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -20,7 +20,7 @@ class WC_Payments_Session_Service {
 	const SESSION_STORE_ID_OPTION = 'wcpay_session_store_id';
 
 	/**
-	 * Client for making requests to the WooCommerce Payments API
+	 * Client for making requests to the PooCommerce Payments API
 	 *
 	 * @var WC_Payments_API_Client
 	 */
@@ -29,7 +29,7 @@ class WC_Payments_Session_Service {
 	/**
 	 * Constructor for WC_Payments_Session_Service.
 	 *
-	 * @param WC_Payments_API_Client $payments_api_client - WooCommerce Payments API client.
+	 * @param WC_Payments_API_Client $payments_api_client - PooCommerce Payments API client.
 	 */
 	public function __construct(
 		WC_Payments_API_Client $payments_api_client
@@ -41,8 +41,8 @@ class WC_Payments_Session_Service {
 	 * Registers session hooks.
 	 */
 	public function init_hooks(): void {
-		// WooCommerce 8.8+ exposes both session IDs here; older versions retain the original stamps.
-		add_action( 'woocommerce_guest_session_to_user_id', [ $this, 'migrate_session_ownership' ], 10, 2 );
+		// PooCommerce 8.8+ exposes both session IDs here; older versions retain the original stamps.
+		add_action( 'poocommerce_guest_session_to_user_id', [ $this, 'migrate_session_ownership' ], 10, 2 );
 	}
 
 	/**

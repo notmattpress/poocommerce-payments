@@ -6,7 +6,7 @@
 // @grant        GM_xmlhttpRequest
 // @connect      betadownload.jetpack.me
 // @require      https://code.jquery.com/jquery-3.3.1.min.js
-// @match        https://github.com/Automattic/woocommerce-payments/pull/*
+// @match        https://github.com/Automattic/poocommerce-payments/pull/*
 // ==/UserScript==
 
 // Need to declare "jQuery" for linting within TamperMonkey, but in the monorepo it's already declared.
@@ -116,8 +116,8 @@
 									name: `branches.${ k }`,
 									value: currentBranch,
 									label: encodeHtmlEntities( data.name ),
-									checked: k === 'woocommerce-payments',
-									disabled: k === 'woocommerce-payments',
+									checked: k === 'poocommerce-payments',
+									disabled: k === 'poocommerce-payments',
 								} );
 							}
 						} );
@@ -171,22 +171,22 @@
 						${ getOptionsList(
 							[
 								{
-									label: 'WooCommerce',
-									name: 'woocommerce',
+									label: 'PooCommerce',
+									name: 'poocommerce',
 									checked: true,
 								},
 								{
-									label: 'WooCommerce Payments Dev Tools',
-									name: 'woocommerce-payments-dev-tools',
+									label: 'PooCommerce Payments Dev Tools',
+									name: 'poocommerce-payments-dev-tools',
 									checked: true,
 								},
 								{
-									label: 'WooCommerce Smooth Generator',
+									label: 'PooCommerce Smooth Generator',
 									name: 'wc-smooth-generator',
 								},
 								{
-									label: 'WooCommerce Beta Tester',
-									name: 'woocommerce-beta-tester',
+									label: 'PooCommerce Beta Tester',
+									name: 'poocommerce-beta-tester',
 								},
 							],
 							100
@@ -380,7 +380,7 @@
 		 */
 		function appendHtml( el, contents ) {
 			const $el = $( el );
-			const wooColor = '#873eff'; // https://woocommerce.com/brand-and-logo-guidelines/
+			const wooColor = '#873eff'; // https://poocommerce.com/brand-and-logo-guidelines/
 			const styles = $( '<style>' ).text( `
 				#wcpay-live-branches {
 					border: 3px dotted ${ wooColor };
@@ -436,11 +436,11 @@
 						.text( 'Select the Jetpack CRM plugin in order to populate with CRM data' );
 				} else if (
 					query.includes( 'jpcrm-populate-woo-data' ) &&
-					! query.includes( 'woocommerce' )
+					! query.includes( 'poocommerce' )
 				) {
 					$link
 						.attr( 'href', null )
-						.text( 'Select the WooCommerce plugin in order to populate with CRM Woo data' );
+						.text( 'Select the PooCommerce plugin in order to populate with CRM Woo data' );
 				} else {
 					$link.attr( 'href', url ).text( url );
 				}

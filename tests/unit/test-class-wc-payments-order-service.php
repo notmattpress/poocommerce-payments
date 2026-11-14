@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Order_Service_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\Constants\Fraud_Meta_Box_Type;
@@ -55,7 +55,7 @@ class WC_Payments_Order_Service_Test extends WCPAY_UnitTestCase {
 	const PAYMENT_DETAILS_MODE = 'test';
 
 	/**
-	 * Gateway ID of WooCommerce Stripe, which stores `_stripe_customer_id` on its own orders.
+	 * Gateway ID of PooCommerce Stripe, which stores `_stripe_customer_id` on its own orders.
 	 */
 	const OTHER_STRIPE_GATEWAY_ID = 'stripe';
 
@@ -833,7 +833,7 @@ class WC_Payments_Order_Service_Test extends WCPAY_UnitTestCase {
 
 	/**
 	 * An error during the order save on shutdown is caught, where it would otherwise be fatal, and the attempt
-	 * is still cancelled. WooCommerce's order save catches exceptions itself, so the test throws an error.
+	 * is still cancelled. PooCommerce's order save catches exceptions itself, so the test throws an error.
 	 */
 	public function test_order_paid_with_other_gateway_still_cancels_when_clearing_the_transaction_id_fails() {
 		$order = $this->create_order_with_payment_details( 'cod' );
@@ -847,11 +847,11 @@ class WC_Payments_Order_Service_Test extends WCPAY_UnitTestCase {
 		$fail_the_save = function () {
 			throw new Error( 'save failed' );
 		};
-		add_action( 'woocommerce_before_order_object_save', $fail_the_save );
+		add_action( 'poocommerce_before_order_object_save', $fail_the_save );
 		try {
 			$this->order_service->finish_removing_earlier_attempts();
 		} finally {
-			remove_action( 'woocommerce_before_order_object_save', $fail_the_save );
+			remove_action( 'poocommerce_before_order_object_save', $fail_the_save );
 		}
 
 		$this->assertSame( 'pi_test_payment_details', wc_get_order( $order->get_id() )->get_transaction_id() );
@@ -939,11 +939,11 @@ class WC_Payments_Order_Service_Test extends WCPAY_UnitTestCase {
 		$fail_the_note = function () {
 			throw new Error( 'note callback failed' );
 		};
-		add_action( 'woocommerce_order_note_added', $fail_the_note );
+		add_action( 'poocommerce_order_note_added', $fail_the_note );
 		try {
 			$this->order_service->finish_removing_earlier_attempts();
 		} finally {
-			remove_action( 'woocommerce_order_note_added', $fail_the_note );
+			remove_action( 'poocommerce_order_note_added', $fail_the_note );
 		}
 	}
 
@@ -1000,8 +1000,8 @@ class WC_Payments_Order_Service_Test extends WCPAY_UnitTestCase {
 	 */
 	public function provider_woopayments_gateway_ids(): array {
 		return [
-			'card gateway'         => [ 'woocommerce_payments' ],
-			'split payment method' => [ 'woocommerce_payments_klarna' ],
+			'card gateway'         => [ 'poocommerce_payments' ],
+			'split payment method' => [ 'poocommerce_payments_klarna' ],
 		];
 	}
 
@@ -1024,7 +1024,7 @@ class WC_Payments_Order_Service_Test extends WCPAY_UnitTestCase {
 	}
 
 	/**
-	 * Another gateway's own customer stays on its order: WooCommerce Stripe stores `_stripe_customer_id` too,
+	 * Another gateway's own customer stays on its order: PooCommerce Stripe stores `_stripe_customer_id` too,
 	 * and reuses it when the order is paid again.
 	 *
 	 * @dataProvider provider_checkout_order_processed_actions
@@ -1090,7 +1090,7 @@ class WC_Payments_Order_Service_Test extends WCPAY_UnitTestCase {
 	}
 
 	/**
-	 * The details go before WooCommerce Subscriptions copies the order into new subscriptions and switches,
+	 * The details go before PooCommerce Subscriptions copies the order into new subscriptions and switches,
 	 * which it does on these actions at priorities 100 and 50.
 	 *
 	 * @dataProvider provider_checkout_order_processed_actions
@@ -1113,23 +1113,23 @@ class WC_Payments_Order_Service_Test extends WCPAY_UnitTestCase {
 	 */
 	public function provider_checkout_order_processed_actions(): array {
 		return [
-			'classic checkout'   => [ 'woocommerce_checkout_order_processed' ],
-			'Store API checkout' => [ 'woocommerce_store_api_checkout_order_processed' ],
+			'classic checkout'   => [ 'poocommerce_checkout_order_processed' ],
+			'Store API checkout' => [ 'poocommerce_store_api_checkout_order_processed' ],
 		];
 	}
 
 	/**
-	 * Fires a checkout order processed action the way WooCommerce does.
+	 * Fires a checkout order processed action the way PooCommerce does.
 	 *
 	 * @param string   $action The checkout action. Classic checkout passes the order ID first.
 	 * @param WC_Order $order  The order.
 	 */
 	private function fire_checkout_order_processed( string $action, WC_Order $order ): void {
-		if ( 'woocommerce_checkout_order_processed' === $action ) {
-			/** This action is documented in WooCommerce's WC_Checkout::process_checkout(). */
+		if ( 'poocommerce_checkout_order_processed' === $action ) {
+			/** This action is documented in PooCommerce's WC_Checkout::process_checkout(). */
 			do_action( $action, $order->get_id(), [], $order );
 		} else {
-			/** This action is documented in WooCommerce's Store API Checkout route. */
+			/** This action is documented in PooCommerce's Store API Checkout route. */
 			do_action( $action, $order );
 		}
 	}
@@ -1187,11 +1187,11 @@ class WC_Payments_Order_Service_Test extends WCPAY_UnitTestCase {
 
 		foreach ( WC_Payments_Order_Service::TEST_MODE_INDICATOR_EMAIL_IDS as $email_id ) {
 			$this->assertNotFalse(
-				has_filter( "woocommerce_email_subject_{$email_id}", [ $this->order_service, 'maybe_add_test_mode_to_email_subject' ] ),
+				has_filter( "poocommerce_email_subject_{$email_id}", [ $this->order_service, 'maybe_add_test_mode_to_email_subject' ] ),
 				"Missing subject filter for {$email_id}"
 			);
 			$this->assertNotFalse(
-				has_filter( "woocommerce_email_heading_{$email_id}", [ $this->order_service, 'maybe_add_test_mode_to_email_heading' ] ),
+				has_filter( "poocommerce_email_heading_{$email_id}", [ $this->order_service, 'maybe_add_test_mode_to_email_heading' ] ),
 				"Missing heading filter for {$email_id}"
 			);
 		}
@@ -1219,16 +1219,16 @@ class WC_Payments_Order_Service_Test extends WCPAY_UnitTestCase {
 
 		$this->assertStringContainsString(
 			'[Test]',
-			apply_filters( 'woocommerce_email_subject_new_order', '[Apparel Clothing]: New order #1811', $this->order ) // phpcs:ignore WooCommerce.Commenting.CommentHooks.MissingHookComment
+			apply_filters( 'poocommerce_email_subject_new_order', '[Apparel Clothing]: New order #1811', $this->order ) // phpcs:ignore PooCommerce.Commenting.CommentHooks.MissingHookComment
 		);
 		$this->assertStringContainsString(
 			'[Test]',
-			apply_filters( 'woocommerce_email_heading_new_order', 'New order: #1811', $this->order ) // phpcs:ignore WooCommerce.Commenting.CommentHooks.MissingHookComment
+			apply_filters( 'poocommerce_email_heading_new_order', 'New order: #1811', $this->order ) // phpcs:ignore PooCommerce.Commenting.CommentHooks.MissingHookComment
 		);
 		// Paid-invoice variant: the dominant path for invoice resends on WooPayments orders.
 		$this->assertStringContainsString(
 			'[Test]',
-			apply_filters( 'woocommerce_email_subject_customer_invoice_paid', 'Invoice for order #1811', $this->order ) // phpcs:ignore WooCommerce.Commenting.CommentHooks.MissingHookComment
+			apply_filters( 'poocommerce_email_subject_customer_invoice_paid', 'Invoice for order #1811', $this->order ) // phpcs:ignore PooCommerce.Commenting.CommentHooks.MissingHookComment
 		);
 	}
 
@@ -1315,7 +1315,7 @@ class WC_Payments_Order_Service_Test extends WCPAY_UnitTestCase {
 	 * Tests that the "charged" note is not added when a "captured" note already exists.
 	 * This prevents duplicate notes due to race conditions between manual capture and webhooks.
 	 *
-	 * @see https://github.com/Automattic/woocommerce-payments/issues/XXXXX
+	 * @see https://github.com/Automattic/poocommerce-payments/issues/XXXXX
 	 */
 	public function test_mark_payment_completed_skips_when_capture_note_exists() {
 		// Arrange: Create a succeeded intent (simulating what webhook receives).
@@ -1887,7 +1887,7 @@ class WC_Payments_Order_Service_Test extends WCPAY_UnitTestCase {
 		global $wpdb;
 
 		$wpdb->update( $wpdb->posts, [ 'post_status' => $status ], [ 'ID' => $order_id ] );
-		if ( \Automattic\WooCommerce\Utilities\OrderUtil::custom_orders_table_usage_is_enabled() ) {
+		if ( \Automattic\PooCommerce\Utilities\OrderUtil::custom_orders_table_usage_is_enabled() ) {
 			$wpdb->update( $this->get_orders_table(), [ 'status' => $status ], [ 'id' => $order_id ] );
 		}
 	}
@@ -1902,7 +1902,7 @@ class WC_Payments_Order_Service_Test extends WCPAY_UnitTestCase {
 	private function get_stored_order_status( int $order_id ): string {
 		global $wpdb;
 
-		if ( \Automattic\WooCommerce\Utilities\OrderUtil::custom_orders_table_usage_is_enabled() ) {
+		if ( \Automattic\PooCommerce\Utilities\OrderUtil::custom_orders_table_usage_is_enabled() ) {
 			$table  = $this->get_orders_table();
 			$status = $wpdb->get_var( $wpdb->prepare( "SELECT status FROM {$table} WHERE id = %d", $order_id ) ); // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 		} else {
@@ -1920,9 +1920,9 @@ class WC_Payments_Order_Service_Test extends WCPAY_UnitTestCase {
 	private function get_orders_table(): string {
 		global $wpdb;
 
-		// get_table_for_orders() only exists from WooCommerce 7.9, and the plugin supports 7.6.
-		return method_exists( \Automattic\WooCommerce\Utilities\OrderUtil::class, 'get_table_for_orders' )
-			? \Automattic\WooCommerce\Utilities\OrderUtil::get_table_for_orders()
+		// get_table_for_orders() only exists from PooCommerce 7.9, and the plugin supports 7.6.
+		return method_exists( \Automattic\PooCommerce\Utilities\OrderUtil::class, 'get_table_for_orders' )
+			? \Automattic\PooCommerce\Utilities\OrderUtil::get_table_for_orders()
 			: $wpdb->prefix . 'wc_orders';
 	}
 
@@ -2144,7 +2144,7 @@ class WC_Payments_Order_Service_Test extends WCPAY_UnitTestCase {
 		// Arrange: Create the intent, get the proper order status variations. Set the fraud outcome status.
 		$intent            = WC_Helper_Intention::create_intention( $intent_args ); // Stripe uses single 'l'.
 		$order_status      = Order_Status::CANCELLED; // WCPay uses double 'l'.
-		$wc_order_statuses = wc_get_order_statuses(); // WooCommerce uses single 'l' for US English.
+		$wc_order_statuses = wc_get_order_statuses(); // PooCommerce uses single 'l' for US English.
 		if ( $order_fraud_outcome ) {
 			$this->order_service->set_fraud_outcome_status_for_order( $this->order, Rule::FRAUD_OUTCOME_REVIEW );
 		}
@@ -2556,7 +2556,7 @@ class WC_Payments_Order_Service_Test extends WCPAY_UnitTestCase {
 	 * lost and refunded in full first.
 	 */
 	public function test_mark_payment_dispute_closed_with_status_won_leaves_fully_refunded_order_unchanged() {
-		// Arrange: Put the order on hold as a dispute would, then refund it in full, which WooCommerce core moves to refunded.
+		// Arrange: Put the order on hold as a dispute would, then refund it in full, which PooCommerce core moves to refunded.
 		$charge_id = 'ch_123';
 		$status    = 'won';
 		$this->order->update_status( Order_Status::ON_HOLD );
@@ -2809,7 +2809,7 @@ class WC_Payments_Order_Service_Test extends WCPAY_UnitTestCase {
 	/**
 	 * Tests the combined failure: the first dispute is lost and refunds the order in full, then
 	 * the sibling is won. The order must stay refunded rather than being promoted to completed,
-	 * which would have WooCommerce Analytics count the payment as revenue a second time.
+	 * which would have PooCommerce Analytics count the payment as revenue a second time.
 	 */
 	public function test_mark_payment_dispute_closed_leaves_order_refunded_after_sibling_dispute_lost() {
 		// Arrange: Two disputes on the same charge, the first of which was lost and refunded in full.
@@ -3085,7 +3085,7 @@ class WC_Payments_Order_Service_Test extends WCPAY_UnitTestCase {
 		$order_number_filter = function ( $order_number, $filtered_order ) use ( $order ) {
 			return $filtered_order->get_id() === $order->get_id() ? 'INV-42' : $order_number;
 		};
-		add_filter( 'woocommerce_order_number', $order_number_filter, 10, 2 );
+		add_filter( 'poocommerce_order_number', $order_number_filter, 10, 2 );
 
 		// Act.
 		$result = $this->with_payments_mode(
@@ -3095,7 +3095,7 @@ class WC_Payments_Order_Service_Test extends WCPAY_UnitTestCase {
 			}
 		);
 
-		remove_filter( 'woocommerce_order_number', $order_number_filter );
+		remove_filter( 'poocommerce_order_number', $order_number_filter );
 
 		// Assert: The customized number is what the Overview task will show.
 		$this->assertSame( 'INV-42', $result[0]['order_number'] );
@@ -3416,14 +3416,14 @@ class WC_Payments_Order_Service_Test extends WCPAY_UnitTestCase {
 		$this->order->set_status( Order_Status::PENDING );
 		$this->order->save();
 
-		$action_count_before = did_action( 'woocommerce_order_status_pending_to_failed' );
+		$action_count_before = did_action( 'poocommerce_order_status_pending_to_failed' );
 
 		// Act: Mark the terminal payment as failed.
 		$this->order_service->mark_terminal_payment_failed( $this->order, $intent->get_id(), $intent->get_status(), 'ch_test123', 'Card declined' );
 
 		// Assert: WC core fires the status transition hook (pending → failed), which
 		// triggers notifications via WC_Emails when the email system is initialized.
-		$this->assertGreaterThan( $action_count_before, did_action( 'woocommerce_order_status_pending_to_failed' ), 'Status transition hook should fire on first failure.' );
+		$this->assertGreaterThan( $action_count_before, did_action( 'poocommerce_order_status_pending_to_failed' ), 'Status transition hook should fire on first failure.' );
 	}
 
 	public function test_mark_terminal_payment_failed_fires_notification_manually_on_repeated_failure() {
@@ -3432,13 +3432,13 @@ class WC_Payments_Order_Service_Test extends WCPAY_UnitTestCase {
 		$this->order->set_status( Order_Status::FAILED );
 		$this->order->save();
 
-		$action_count_before = did_action( 'woocommerce_order_status_failed_notification' );
+		$action_count_before = did_action( 'poocommerce_order_status_failed_notification' );
 
 		// Act: Mark the terminal payment as failed again.
 		$this->order_service->mark_terminal_payment_failed( $this->order, $intent->get_id(), $intent->get_status(), 'ch_test456', 'Card declined' );
 
 		// Assert: WC core won't fire hooks (status didn't change), so our code manually triggers the notification.
-		$this->assertGreaterThan( $action_count_before, did_action( 'woocommerce_order_status_failed_notification' ), 'Notification should fire manually when order was already failed.' );
+		$this->assertGreaterThan( $action_count_before, did_action( 'poocommerce_order_status_failed_notification' ), 'Notification should fire manually when order was already failed.' );
 	}
 
 	/**
@@ -3922,7 +3922,7 @@ class WC_Payments_Order_Service_Test extends WCPAY_UnitTestCase {
 		$this->assertStringContainsString( $refund_id, $order_note, 'Order note does not contain expected refund id' );
 		$this->assertStringContainsString( $refund_reason, $order_note, 'Order note does not contain expected refund reason' );
 		$this->assertStringContainsString( 'is pending', $order_note, 'Order note should indicate pending status' );
-		$this->assertStringContainsString( 'https://woocommerce.com/document/woopayments/managing-money/#pending-refunds', $order_note, 'Order note should contain link to pending refunds documentation' );
+		$this->assertStringContainsString( 'https://poocommerce.com/document/woopayments/managing-money/#pending-refunds', $order_note, 'Order note should contain link to pending refunds documentation' );
 
 		$this->assertSame( Refund_Status::PENDING, $order->get_meta( WC_Payments_Order_Service::WCPAY_REFUND_STATUS_META_KEY, true ) );
 		$this->assertSame( $refund_id, $wc_refund->get_meta( WC_Payments_Order_Service::WCPAY_REFUND_ID_META_KEY, true ) );
@@ -4600,7 +4600,7 @@ class WC_Payments_Order_Service_Test extends WCPAY_UnitTestCase {
 		delete_option( WC_Payments_Order_Service::HAS_LIVE_SALE_OPTION );
 
 		$order = WC_Helper_Order::create_order();
-		$order->set_payment_method( 'woocommerce_payments' );
+		$order->set_payment_method( 'poocommerce_payments' );
 		$order->set_status( 'completed' );
 		$order->update_meta_data( WC_Payments_Order_Service::WCPAY_MODE_META_KEY, Order_Mode::PRODUCTION );
 		$order->save();
@@ -4616,7 +4616,7 @@ class WC_Payments_Order_Service_Test extends WCPAY_UnitTestCase {
 		delete_option( WC_Payments_Order_Service::HAS_LIVE_SALE_OPTION );
 
 		$order = WC_Helper_Order::create_order();
-		$order->set_payment_method( 'woocommerce_payments' );
+		$order->set_payment_method( 'poocommerce_payments' );
 		$order->set_status( 'completed' );
 		$order->update_meta_data( WC_Payments_Order_Service::WCPAY_MODE_META_KEY, Order_Mode::TEST );
 		$order->save();
@@ -4860,7 +4860,7 @@ class WC_Payments_Order_Service_Test extends WCPAY_UnitTestCase {
 	 * Amazon Pay captures carry no Level 3 data, as in the Capture charge action.
 	 */
 	public function test_capture_authorization_on_order_status_change_skips_level3_data_for_amazon_pay() {
-		$this->order->set_payment_method( 'woocommerce_payments_amazon_pay' );
+		$this->order->set_payment_method( 'poocommerce_payments_amazon_pay' );
 		$this->complete_order_with_open_authorization( self::REDUCED_ORDER_TOTAL );
 		$this->replace_level3_service_with( self::ORDER_LEVEL3_DATA );
 		$this->mock_get_intention_with_open_authorization();

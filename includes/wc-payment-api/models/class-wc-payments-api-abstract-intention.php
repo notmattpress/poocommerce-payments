@@ -2,13 +2,13 @@
 /**
  * WC_Payments_API_Abstract_Intention class
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 use WCPay\Constants\Intent_Status;
 
 /**
- * An abstract object representing payment and setup intents used by the WooCommerce Payments API.
+ * An abstract object representing payment and setup intents used by the PooCommerce Payments API.
  *
  * Only add shared getters and properties in this class. Otherwise, add them inherited classes.
  */

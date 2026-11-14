@@ -3,7 +3,7 @@
  * Class WC_Payments_WooPay_Direct_Checkout
  * Adds support for WooPay direct checkout feature.
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 use WCPay\WooPay\WooPay_Utilities;
@@ -39,7 +39,7 @@ class WC_Payments_WooPay_Direct_Checkout {
 	 */
 	public function init() {
 		add_action( 'wp_footer', [ $this, 'scripts' ] );
-		add_filter( 'woocommerce_create_order', [ $this, 'maybe_use_store_api_draft_order_id' ] );
+		add_filter( 'poocommerce_create_order', [ $this, 'maybe_use_store_api_draft_order_id' ] );
 	}
 
 	/**
@@ -70,12 +70,12 @@ class WC_Payments_WooPay_Direct_Checkout {
 		$draft_order    = $draft_order_id ? wc_get_order( $draft_order_id ) : false;
 
 		// Only resume the session's draft order when it is genuinely the customer's current,
-		// resumable order, mirroring WooCommerce core's own validity check
-		// (WooCommerce\StoreApi\Utilities\DraftOrderTrait::is_valid_draft_order()): it must be a
+		// resumable order, mirroring PooCommerce core's own validity check
+		// (PooCommerce\StoreApi\Utilities\DraftOrderTrait::is_valid_draft_order()): it must be a
 		// checkout-draft, or an unpaid order that still matches the current cart. Anything else is
 		// discarded so checkout falls through to normal order creation rather than resuming the
 		// wrong order — or fataling. This covers a pointer left dangling by the daily
-		// `woocommerce_cleanup_draft_orders` cleanup (where wc_get_order() returns false), a
+		// `poocommerce_cleanup_draft_orders` cleanup (where wc_get_order() returns false), a
 		// trashed order, and a stale order that no longer matches the cart.
 		$cart      = WC()->cart;
 		$cart_hash = $cart instanceof WC_Cart ? $cart->get_cart_hash() : '';
@@ -158,14 +158,14 @@ class WC_Payments_WooPay_Direct_Checkout {
 	 * Scripts should be enqueued if:
 	 * - The current page is the cart page.
 	 * - The current page has a cart block.
-	 * - The current page has the blocks mini cart widget, i.e 'woocommerce_blocks_cart_enqueue_data' has been fired.
+	 * - The current page has the blocks mini cart widget, i.e 'poocommerce_blocks_cart_enqueue_data' has been fired.
 	 * - The current page has the cart fragments script enqueued. which is enqueued by the shortcode mini cart widget.
 	 *
 	 * @return bool True if the scripts should be enqueued, false otherwise.
 	 */
 	private function should_enqueue_scripts(): bool {
 		return $this->is_cart_page()
-			|| did_action( 'woocommerce_blocks_cart_enqueue_data' ) > 0
+			|| did_action( 'poocommerce_blocks_cart_enqueue_data' ) > 0
 			|| ( wp_script_is( 'wc-cart-fragments', 'enqueued' ) && ! $this->is_checkout_page() );
 	}
 
@@ -175,7 +175,7 @@ class WC_Payments_WooPay_Direct_Checkout {
 	 * @return bool True if the current page is the cart page, false otherwise.
 	 */
 	private function is_cart_page(): bool {
-		return is_cart() || has_block( 'woocommerce/cart' );
+		return is_cart() || has_block( 'poocommerce/cart' );
 	}
 
 	/**
@@ -184,7 +184,7 @@ class WC_Payments_WooPay_Direct_Checkout {
 	 * @return bool True if the current page is the checkout page, false otherwise.
 	 */
 	private function is_checkout_page(): bool {
-		return is_checkout() || has_block( 'woocommerce/checkout' );
+		return is_checkout() || has_block( 'poocommerce/checkout' );
 	}
 
 	/**

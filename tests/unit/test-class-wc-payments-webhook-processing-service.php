@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Webhook_Processing_Service_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use PHPUnit\Framework\MockObject\MockObject;
@@ -665,14 +665,14 @@ class WC_Payments_Webhook_Processing_Service_Test extends WCPAY_UnitTestCase {
 	 */
 	public function test_action_hook_exception_returns_response() {
 		add_action(
-			'woocommerce_payments_before_webhook_delivery',
+			'poocommerce_payments_before_webhook_delivery',
 			function () {
 				throw new Exception( 'Crash before' );
 			}
 		);
 
 		add_action(
-			'woocommerce_payments_after_webhook_delivery',
+			'poocommerce_payments_after_webhook_delivery',
 			function () {
 				throw new Exception( 'Crash after' );
 			}
@@ -736,7 +736,7 @@ class WC_Payments_Webhook_Processing_Service_Test extends WCPAY_UnitTestCase {
 	 * this webhook is what completes the order.
 	 *
 	 * The new attempt makes WooPayments the order's gateway again. Left on `cod`, Cash on delivery's
-	 * `woocommerce_payment_complete_order_status` filter would complete the order wherever that gateway is loaded.
+	 * `poocommerce_payment_complete_order_status` filter would complete the order wherever that gateway is loaded.
 	 */
 	public function test_payment_intent_succeeded_records_a_new_attempt_the_clocks_put_before_the_takeover() {
 		$order = $this->create_order_taken_over_by_another_gateway( Order_Status::PENDING );

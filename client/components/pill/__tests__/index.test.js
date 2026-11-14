@@ -9,7 +9,7 @@ import { render } from '@testing-library/react';
  */
 import Pill from '..';
 
-jest.mock( '@woocommerce/components', () => {
+jest.mock( '@poocommerce/components', () => {
 	return {
 		Pill: ( { className, children } ) => (
 			<span className={ className }>{ children }</span>

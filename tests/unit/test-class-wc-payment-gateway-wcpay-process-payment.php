@@ -2,7 +2,7 @@
 /**
  * Class WC_Payment_Gateway_WCPay_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use PHPUnit\Framework\MockObject\MockObject;
@@ -876,24 +876,24 @@ class WC_Payment_Gateway_WCPay_Process_Payment_Test extends WCPAY_UnitTestCase {
 	}
 
 	/**
-	 * Tests that woocommerce_order_status_pending action is not called when the $_POST 'is-woopay-preflight-check' is present.
+	 * Tests that poocommerce_order_status_pending action is not called when the $_POST 'is-woopay-preflight-check' is present.
 	 */
-	public function test_woopay_preflight_request_does_not_call_woocommerce_order_status_pending() {
-		// Arrange: Add woocommerce_order_status_pending action to check if it's called.
+	public function test_woopay_preflight_request_does_not_call_poocommerce_order_status_pending() {
+		// Arrange: Add poocommerce_order_status_pending action to check if it's called.
 		$results = [
-			'has_called_woocommerce_order_status_pending' => false,
+			'has_called_poocommerce_order_status_pending' => false,
 		];
 		add_action(
-			'woocommerce_order_status_pending',
+			'poocommerce_order_status_pending',
 			function () use ( &$results ) {
-				$results['has_called_woocommerce_order_status_pending'] = true;
+				$results['has_called_poocommerce_order_status_pending'] = true;
 			}
 		);
 
 		// Arrange: Add filter to change default order status to 'wc-checkout-draft'.
 		// Needed to avoid a default order status of 'pending'.
 		add_filter(
-			'woocommerce_default_order_status',
+			'poocommerce_default_order_status',
 			function () {
 				return 'wc-checkout-draft';
 			}
@@ -913,7 +913,7 @@ class WC_Payment_Gateway_WCPay_Process_Payment_Test extends WCPAY_UnitTestCase {
 				],
 			]
 		);
-		apply_filters( 'rest_request_before_callbacks', [], [], $request ); // phpcs:ignore WooCommerce.Commenting.CommentHooks.MissingHookComment
+		apply_filters( 'rest_request_before_callbacks', [], [], $request ); // phpcs:ignore PooCommerce.Commenting.CommentHooks.MissingHookComment
 
 		// Arrange: Create an order to test with.
 		$order_data = [
@@ -925,12 +925,12 @@ class WC_Payment_Gateway_WCPay_Process_Payment_Test extends WCPAY_UnitTestCase {
 		// Act: process payment.
 		$this->mock_wcpay_gateway->process_payment( $order->get_id() );
 
-		// Assert: woocommerce_order_status_pending was not called.
-		$this->assertFalse( $results['has_called_woocommerce_order_status_pending'] );
+		// Assert: poocommerce_order_status_pending was not called.
+		$this->assertFalse( $results['has_called_poocommerce_order_status_pending'] );
 
-		remove_all_actions( 'woocommerce_order_status_pending' );
-		remove_all_filters( 'woocommerce_default_order_status' );
-		remove_filter( 'woocommerce_coupon_hold_minutes', '__return_zero', PHP_INT_MAX );
+		remove_all_actions( 'poocommerce_order_status_pending' );
+		remove_all_filters( 'poocommerce_default_order_status' );
+		remove_filter( 'poocommerce_coupon_hold_minutes', '__return_zero', PHP_INT_MAX );
 	}
 
 	/**
@@ -939,10 +939,10 @@ class WC_Payment_Gateway_WCPay_Process_Payment_Test extends WCPAY_UnitTestCase {
 	public function test_preflight_flag_is_rejected_when_the_request_is_not_proven_to_be_from_woopay() {
 		// Arrange: Listeners the preflight check would remove.
 		$hooks = [
-			'woocommerce_store_api_checkout_update_order_meta',
-			'woocommerce_store_api_checkout_order_processed',
-			'woocommerce_order_status_pending',
-			'woocommerce_checkout_registration_required',
+			'poocommerce_store_api_checkout_update_order_meta',
+			'poocommerce_store_api_checkout_order_processed',
+			'poocommerce_order_status_pending',
+			'poocommerce_checkout_registration_required',
 		];
 		foreach ( $hooks as $hook ) {
 			add_filter( $hook, '__return_true' );
@@ -974,7 +974,7 @@ class WC_Payment_Gateway_WCPay_Process_Payment_Test extends WCPAY_UnitTestCase {
 			foreach ( $hooks as $hook ) {
 				$this->assertNotFalse( has_filter( $hook, '__return_true' ), $hook );
 			}
-			$this->assertFalse( has_filter( 'woocommerce_coupon_hold_minutes', '__return_zero' ) );
+			$this->assertFalse( has_filter( 'poocommerce_coupon_hold_minutes', '__return_zero' ) );
 		} finally {
 			unset( $_SERVER['HTTP_USER_AGENT'], $_SERVER['HTTP_CART_TOKEN'] );
 			foreach ( $hooks as $hook ) {
@@ -1063,7 +1063,7 @@ class WC_Payment_Gateway_WCPay_Process_Payment_Test extends WCPAY_UnitTestCase {
 		$this->assertEquals( 'Order status changed from Pending payment to Failed.', $notes[1]->content );
 		$this->assertStringContainsString( "A payment of &#36;50.00 failed to complete with the following message: $error_message", strip_tags( $notes[0]->content, '' ) );
 
-		// Assert: A WooCommerce notice was added.
+		// Assert: A PooCommerce notice was added.
 		$error_notices = WC()->session->get( 'wc_notices' );
 		$this->assertNotEmpty( $error_notices );
 		$this->assertEquals( $error_notice, $error_notices['error'][0]['notice'] );
@@ -1719,7 +1719,7 @@ class WC_Payment_Gateway_WCPay_Process_Payment_Test extends WCPAY_UnitTestCase {
 			->with( $intent->get_payment_method_id(), $order->get_user() )
 			->will( $this->returnValue( new WC_Payment_Token_CC() ) );
 
-		$_POST['wc-woocommerce_payments-new-payment-method'] = 'true';
+		$_POST['wc-poocommerce_payments-new-payment-method'] = 'true';
 
 		$this->mock_wcpay_gateway->process_payment( $order->get_id() );
 	}
@@ -1836,7 +1836,7 @@ class WC_Payment_Gateway_WCPay_Process_Payment_Test extends WCPAY_UnitTestCase {
 		// Act: process a successful payment.
 		$this->mock_wcpay_gateway->process_payment_for_order( $mock_cart, $payment_information );
 
-		do_action( 'shutdown' ); // phpcs:ignore WooCommerce.Commenting.CommentHooks.MissingHookComment
+		do_action( 'shutdown' ); // phpcs:ignore PooCommerce.Commenting.CommentHooks.MissingHookComment
 	}
 
 	public function test_process_payment_check_session_order_redirect_to_previous_order() {
@@ -2030,11 +2030,11 @@ class WC_Payment_Gateway_WCPay_Process_Payment_Test extends WCPAY_UnitTestCase {
 			->method( 'format_response' )
 			->willReturn( $intent );
 
-		$saves_before = did_action( 'woocommerce_payments_save_user_in_woopay' );
+		$saves_before = did_action( 'poocommerce_payments_save_user_in_woopay' );
 
 		$this->mock_wcpay_gateway->process_payment( $order->get_id() );
 
-		$this->assertSame( 1, did_action( 'woocommerce_payments_save_user_in_woopay' ) - $saves_before );
+		$this->assertSame( 1, did_action( 'poocommerce_payments_save_user_in_woopay' ) - $saves_before );
 	}
 
 	public function test_process_payment_using_platform_payment_method_adds_platform_payment_method_flag_to_request() {

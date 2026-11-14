@@ -2,7 +2,7 @@
 /**
  * Tests for invalidating shipping rates cached before the update.
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 namespace unit\migrations;
@@ -11,7 +11,7 @@ use WCPay\Migrations\Invalidate_Cached_Shipping_Rates;
 use WCPAY_UnitTestCase;
 
 /**
- * Checks the shipping cache version that WooCommerce adds to every package hash.
+ * Checks the shipping cache version that PooCommerce adds to every package hash.
  */
 class Invalidate_Cached_Shipping_Rates_Test extends WCPAY_UnitTestCase {
 
@@ -31,7 +31,7 @@ class Invalidate_Cached_Shipping_Rates_Test extends WCPAY_UnitTestCase {
 	 * @dataProvider provider_versions_before_11_3_0
 	 */
 	public function test_update_from_before_11_3_0_invalidates_cached_rates( string $previous_version ): void {
-		update_option( 'woocommerce_woocommerce_payments_version', $previous_version );
+		update_option( 'poocommerce_poocommerce_payments_version', $previous_version );
 
 		( new Invalidate_Cached_Shipping_Rates() )->maybe_migrate();
 
@@ -46,7 +46,7 @@ class Invalidate_Cached_Shipping_Rates_Test extends WCPAY_UnitTestCase {
 	}
 
 	public function test_update_from_11_3_0_keeps_cached_rates(): void {
-		update_option( 'woocommerce_woocommerce_payments_version', '11.3.0' );
+		update_option( 'poocommerce_poocommerce_payments_version', '11.3.0' );
 
 		( new Invalidate_Cached_Shipping_Rates() )->maybe_migrate();
 
@@ -54,7 +54,7 @@ class Invalidate_Cached_Shipping_Rates_Test extends WCPAY_UnitTestCase {
 	}
 
 	public function test_plugin_upgrade_hook_invalidates_cached_rates(): void {
-		update_option( 'woocommerce_woocommerce_payments_version', '11.0.0' );
+		update_option( 'poocommerce_poocommerce_payments_version', '11.0.0' );
 
 		\WC_Payments::install_actions();
 

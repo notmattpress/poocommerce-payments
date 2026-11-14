@@ -91,7 +91,7 @@ test.describe( 'Order > Partial refund', () => {
 		).toBeVisible();
 
 		const orderIdField = shopperPage.locator(
-			'.woocommerce-order-overview__order.order > strong'
+			'.poocommerce-order-overview__order.order > strong'
 		);
 		const orderId = await orderIdField.innerText();
 
@@ -211,7 +211,7 @@ test.describe( 'Order > Partial refund', () => {
 			expect( refundNote ).toContain( title );
 			expect( refundNote ).toContain( refundTotalString );
 
-			// Check that the refunded amount line item is correct. Newer WooCommerce
+			// Check that the refunded amount line item is correct. Newer PooCommerce
 			// versions put the minus sign inside the `bdi`, older ones put it outside.
 			await expect(
 				merchantPage

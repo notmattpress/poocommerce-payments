@@ -2,7 +2,7 @@
 /**
  * Class WC_REST_Payments_Timeline_Controller
  *
- * @package WooCommerce\Payments\Admin
+ * @package PooCommerce\Payments\Admin
  */
 
 defined( 'ABSPATH' ) || exit;

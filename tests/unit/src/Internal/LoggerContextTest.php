@@ -2,7 +2,7 @@
 /**
  * Class LoggerContextTest
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Tests;
@@ -63,8 +63,8 @@ class LoggerContextTest extends WCPAY_UnitTestCase {
 		$message    = "Test log entry...\non two lines";
 		$level      = WC_Log_Levels::INFO;
 
-		$filtered_entry = apply_filters( // phpcs:ignore WooCommerce.Commenting.CommentHooks.MissingHookComment
-			'woocommerce_format_log_entry',
+		$filtered_entry = apply_filters( // phpcs:ignore PooCommerce.Commenting.CommentHooks.MissingHookComment
+			'poocommerce_format_log_entry',
 			$message,
 			[
 				'timestamp' => $timestamp,
@@ -133,8 +133,8 @@ class LoggerContextTest extends WCPAY_UnitTestCase {
 
 		$this->sut->set_value( 'foo', 'bar' );
 
-		$filtered_entry = apply_filters( // phpcs:ignore WooCommerce.Commenting.CommentHooks.MissingHookComment
-			'woocommerce_format_log_entry',
+		$filtered_entry = apply_filters( // phpcs:ignore PooCommerce.Commenting.CommentHooks.MissingHookComment
+			'poocommerce_format_log_entry',
 			$message,
 			[
 				'timestamp' => $timestamp,
@@ -146,8 +146,8 @@ class LoggerContextTest extends WCPAY_UnitTestCase {
 
 		$this->assertSame( $message, $filtered_entry, 'Filtered entry is the same as the original message' );
 
-		$filtered_entry = apply_filters( // phpcs:ignore WooCommerce.Commenting.CommentHooks.MissingHookComment
-			'woocommerce_format_log_entry',
+		$filtered_entry = apply_filters( // phpcs:ignore PooCommerce.Commenting.CommentHooks.MissingHookComment
+			'poocommerce_format_log_entry',
 			$message,
 			[
 				'timestamp' => $timestamp,
@@ -347,8 +347,8 @@ class LoggerContextTest extends WCPAY_UnitTestCase {
 				'/?rest_route=/wc/v3/payments/deposits&consumer_key=(redacted)&consumer_secret=(redacted)',
 			],
 			'redirect payment return'         => [
-				'/checkout/order-received/12/?key=wc_order_abc&order_id=12&wc_payment_method=woocommerce_payments_ideal&_wpnonce=abc123&payment_intent=pi_123&payment_intent_client_secret=pi_123_secret_456&redirect_status=succeeded',
-				'/checkout/order-received/12/?key=(redacted)&order_id=(redacted)&wc_payment_method=woocommerce_payments_ideal&_wpnonce=(redacted)&payment_intent=(redacted)&payment_intent_client_secret=(redacted)&redirect_status=succeeded',
+				'/checkout/order-received/12/?key=wc_order_abc&order_id=12&wc_payment_method=poocommerce_payments_ideal&_wpnonce=abc123&payment_intent=pi_123&payment_intent_client_secret=pi_123_secret_456&redirect_status=succeeded',
+				'/checkout/order-received/12/?key=(redacted)&order_id=(redacted)&wc_payment_method=poocommerce_payments_ideal&_wpnonce=(redacted)&payment_intent=(redacted)&payment_intent_client_secret=(redacted)&redirect_status=succeeded',
 			],
 			'AJAX action and nonce'           => [
 				'/wp-admin/admin-ajax.php?action=create_setup_intent&_ajax_nonce=abc123',
@@ -359,8 +359,8 @@ class LoggerContextTest extends WCPAY_UnitTestCase {
 				'/?wc-ajax=checkout',
 			],
 			'settings page'                   => [
-				'/wp-admin/admin.php?page=wc-settings&tab=checkout&section=woocommerce_payments',
-				'/wp-admin/admin.php?page=wc-settings&tab=checkout&section=woocommerce_payments',
+				'/wp-admin/admin.php?page=wc-settings&tab=checkout&section=poocommerce_payments',
+				'/wp-admin/admin.php?page=wc-settings&tab=checkout&section=poocommerce_payments',
 			],
 			'wc-admin page'                   => [
 				'/wp-admin/admin.php?page=wc-admin&path=/payments/overview',

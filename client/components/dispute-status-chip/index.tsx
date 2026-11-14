@@ -32,7 +32,7 @@ const DisputeStatusChip: React.FC< Props > = ( {
 	if ( prefixDisputeType && ! status.startsWith( 'warning' ) ) {
 		message = sprintf(
 			/** translators: %s is the status of the Dispute. */
-			__( 'Disputed: %s', 'woocommerce-payments' ),
+			__( 'Disputed: %s', 'poocommerce-payments' ),
 			message
 		);
 	}

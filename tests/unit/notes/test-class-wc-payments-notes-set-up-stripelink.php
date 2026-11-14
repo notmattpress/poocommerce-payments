@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Notes_Set_Up_StripeLink_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 /**
@@ -45,12 +45,12 @@ class WC_Payments_Notes_Set_Up_StripeLink_Test extends WCPAY_UnitTestCase {
 		$this->assertSame( 'Reduce cart abandonment and create a frictionless checkout experience with Link. Link autofills your customer’s payment and shipping details, so they can check out in just six seconds with the Link optimized experience.', $note->get_content() );
 		$this->assertSame( 'info', $note->get_type() );
 		$this->assertSame( 'wc-payments-notes-set-up-stripe-link', $note->get_name() );
-		$this->assertSame( 'woocommerce-payments', $note->get_source() );
+		$this->assertSame( 'poocommerce-payments', $note->get_source() );
 
 		list( $set_up_action ) = $note->get_actions();
 		$this->assertSame( 'wc-payments-notes-set-up-stripe-link', $set_up_action->name );
 		$this->assertSame( 'Set up now', $set_up_action->label );
-		$this->assertStringStartsWith( 'https://woocommerce.com/document/woopayments/payment-methods/link-by-stripe/', $set_up_action->query );
+		$this->assertStringStartsWith( 'https://poocommerce.com/document/woopayments/payment-methods/link-by-stripe/', $set_up_action->query );
 	}
 
 	public function test_stripelink_setup_note_uses_onelink_content_for_gb_account() {

@@ -28,7 +28,7 @@ export const encodePathSegment = ( id: unknown ): string => {
 		[ '', '.', '..' ].includes( String( id ) )
 	) {
 		throw new InvalidPathSegmentError(
-			__( 'Invalid identifier.', 'woocommerce-payments' )
+			__( 'Invalid identifier.', 'poocommerce-payments' )
 		);
 	}
 

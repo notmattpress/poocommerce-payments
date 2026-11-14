@@ -1,4 +1,4 @@
-title = "Gitleaks configuration for woocommerce-payments"
+title = "Gitleaks configuration for poocommerce-payments"
 
 [extend]
 useDefault = true

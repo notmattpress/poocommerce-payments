@@ -15,7 +15,7 @@ import { getAdminUrl } from 'wcpay/utils';
 import { recordEvent } from 'tracks';
 
 const mockHistoryPush = jest.fn();
-jest.mock( '@woocommerce/navigation', () => ( {
+jest.mock( '@poocommerce/navigation', () => ( {
 	getHistory: () => ( {
 		push: mockHistoryPush,
 	} ),

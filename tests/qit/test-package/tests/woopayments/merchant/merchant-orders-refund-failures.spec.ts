@@ -57,7 +57,7 @@ test.describe( 'Order > Refund Failure', { tag: '@merchant' }, () => {
 				};
 				await adminPage.evaluate(
 					hideElementIfExists,
-					'.woocommerce-layout__header'
+					'.poocommerce-layout__header'
 				);
 				await adminPage.evaluate( hideElementIfExists, '#wpadminbar' );
 
