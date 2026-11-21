@@ -95,7 +95,7 @@ describe( 'Tokenized Express Checkout Element - Product page logic', () => {
 		// just mocking some server-side-provided DOM elements.
 		render(
 			<div>
-				<div className="woocommerce-notices-wrapper" />
+				<div className="poocommerce-notices-wrapper" />
 				<button className="single_add_to_cart_button" value="333">
 					Fake button
 				</button>
@@ -915,7 +915,7 @@ describe( 'Tokenized Express Checkout Element - Product page logic', () => {
 		} );
 
 		// The shopper picks a variation before init registers the handler.
-		$( document.body ).trigger( 'woocommerce_variation_has_changed' );
+		$( document.body ).trigger( 'poocommerce_variation_has_changed' );
 		$( document.body ).trigger( 'show_variation' );
 		await act( async () => {
 			await Promise.resolve();

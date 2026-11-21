@@ -7,53 +7,53 @@ import { __ } from '@wordpress/i18n';
 
 export const feedbackQuestion = __(
 	'Did this report give you the information you needed?',
-	'woocommerce-payments'
+	'poocommerce-payments'
 );
 
 export const thumbsUpLabel = __(
 	'What did you use this report for? (optional)',
-	'woocommerce-payments'
+	'poocommerce-payments'
 );
 
 export const thumbsDownLabel = __(
 	"What's missing? (optional)",
-	'woocommerce-payments'
+	'poocommerce-payments'
 );
 
 export const thumbsUpAriaLabel = __(
 	'This report was helpful',
-	'woocommerce-payments'
+	'poocommerce-payments'
 );
 
 export const thumbsDownAriaLabel = __(
 	'This report was not helpful',
-	'woocommerce-payments'
+	'poocommerce-payments'
 );
 
 export const reportFeedbackRatingAriaLabel = __(
 	'Report feedback rating',
-	'woocommerce-payments'
+	'poocommerce-payments'
 );
 
 export const closeAriaLabel = __(
 	'Dismiss feedback survey',
-	'woocommerce-payments'
+	'poocommerce-payments'
 );
-export const cancelLabel = __( 'Cancel', 'woocommerce-payments' );
-export const sendLabel = __( 'Send', 'woocommerce-payments' );
+export const cancelLabel = __( 'Cancel', 'poocommerce-payments' );
+export const sendLabel = __( 'Send', 'poocommerce-payments' );
 export const submitErrorMessage = __(
 	'Your feedback could not be sent. Please try again.',
-	'woocommerce-payments'
+	'poocommerce-payments'
 );
 export const submitSuccessMessage = __(
 	'Thanks for your feedback!',
-	'woocommerce-payments'
+	'poocommerce-payments'
 );
 
 export const privacyDisclaimer = createInterpolateElement(
 	__(
-		'Your feedback will only be shared with WooCommerce and treated pursuant to our <a>privacy policy</a>.',
-		'woocommerce-payments'
+		'Your feedback will only be shared with PooCommerce and treated pursuant to our <a>privacy policy</a>.',
+		'poocommerce-payments'
 	),
 	{
 		a: (

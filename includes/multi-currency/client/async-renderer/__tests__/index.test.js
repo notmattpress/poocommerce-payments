@@ -115,13 +115,13 @@ describe( 'WCPayAsyncPriceRenderer', () => {
 			const template = document.createElement( 'template' );
 			template.id = 'wcpay-geolocation-notice';
 			template.innerHTML =
-				'<p class="woocommerce-store-notice" style="display:none;"><span data-wcpay-notice-country></span></p>';
+				'<p class="poocommerce-store-notice" style="display:none;"><span data-wcpay-notice-country></span></p>';
 			document.body.appendChild( template );
 
 			await renderer.init();
 
 			const notice = document.querySelector(
-				'.woocommerce-store-notice'
+				'.poocommerce-store-notice'
 			);
 			expect( notice.textContent ).toBe( 'Germany' );
 			expect( notice.style.display ).toBe( 'block' );
@@ -374,10 +374,10 @@ describe( 'WCPayAsyncPriceRenderer', () => {
 		} );
 
 		it( 'converts skeleton elements to formatted prices', () => {
-			// Build test DOM matching SSR markup: wrapper IS woocommerce-Price-amount.
+			// Build test DOM matching SSR markup: wrapper IS poocommerce-Price-amount.
 			const span = document.createElement( 'span' );
 			span.className =
-				'woocommerce-Price-amount amount wcpay-async-price';
+				'poocommerce-Price-amount amount wcpay-async-price';
 			span.setAttribute( 'data-wcpay-price', '10' );
 			span.setAttribute( 'data-wcpay-price-type', 'product' );
 			const skeleton = document.createElement( 'bdi' );
@@ -396,10 +396,10 @@ describe( 'WCPayAsyncPriceRenderer', () => {
 			const bdi = el.querySelector( 'bdi' );
 			expect( bdi ).not.toBeNull();
 			expect(
-				bdi.querySelector( '.woocommerce-Price-currencySymbol' )
+				bdi.querySelector( '.poocommerce-Price-currencySymbol' )
 			).not.toBeNull();
 			expect(
-				bdi.querySelector( '.woocommerce-Price-currencySymbol' )
+				bdi.querySelector( '.poocommerce-Price-currencySymbol' )
 					.textContent
 			).toBe( '\u20ac' ); // EUR is selected_currency in mockConfig
 		} );
@@ -407,7 +407,7 @@ describe( 'WCPayAsyncPriceRenderer', () => {
 		it( 'removes SSR placeholder when converting', () => {
 			const span = document.createElement( 'span' );
 			span.className =
-				'woocommerce-Price-amount amount wcpay-async-price';
+				'poocommerce-Price-amount amount wcpay-async-price';
 			span.setAttribute( 'data-wcpay-price', '10' );
 			span.setAttribute( 'data-wcpay-price-type', 'product' );
 			const skeleton = document.createElement( 'bdi' );
@@ -430,7 +430,7 @@ describe( 'WCPayAsyncPriceRenderer', () => {
 		it( 'skips already converted elements', () => {
 			const span = document.createElement( 'span' );
 			span.className =
-				'woocommerce-Price-amount amount wcpay-async-price wcpay-price-converted';
+				'poocommerce-Price-amount amount wcpay-async-price wcpay-price-converted';
 			span.setAttribute( 'data-wcpay-price', '10' );
 			span.setAttribute( 'data-wcpay-price-type', 'product' );
 			const bdi = document.createElement( 'bdi' );
@@ -500,10 +500,10 @@ describe( 'WCPayAsyncPriceRenderer', () => {
 			expect( bdi ).not.toBeNull();
 			expect( bdi.textContent ).toBe( '$10.00' );
 			expect(
-				bdi.querySelector( '.woocommerce-Price-currencySymbol' )
+				bdi.querySelector( '.poocommerce-Price-currencySymbol' )
 			).not.toBeNull();
 			expect(
-				bdi.querySelector( '.woocommerce-Price-currencySymbol' )
+				bdi.querySelector( '.poocommerce-Price-currencySymbol' )
 					.textContent
 			).toBe( '$' );
 		} );
@@ -563,7 +563,7 @@ describe( 'WCPayAsyncPriceRenderer', () => {
 			);
 			expect( bdi.tagName ).toBe( 'BDI' );
 			const symbol = bdi.querySelector(
-				'.woocommerce-Price-currencySymbol'
+				'.poocommerce-Price-currencySymbol'
 			);
 			expect( symbol ).not.toBeNull();
 			expect( symbol.textContent ).toBe( '$' );
@@ -576,7 +576,7 @@ describe( 'WCPayAsyncPriceRenderer', () => {
 				mockConfig.currencies.EUR
 			);
 			const symbol = bdi.querySelector(
-				'.woocommerce-Price-currencySymbol'
+				'.poocommerce-Price-currencySymbol'
 			);
 			expect( symbol.textContent ).toBe( '\u20ac' );
 			expect( bdi.textContent ).toBe( '8,99\u00a0\u20ac' );
@@ -589,7 +589,7 @@ describe( 'WCPayAsyncPriceRenderer', () => {
 			};
 			const bdi = renderer.buildPriceBdi( '10.50', currency );
 			const symbol = bdi.querySelector(
-				'.woocommerce-Price-currencySymbol'
+				'.poocommerce-Price-currencySymbol'
 			);
 			expect( symbol.textContent ).toBe( '$' );
 			expect( bdi.textContent ).toBe( '$\u00a010.50' );
@@ -602,7 +602,7 @@ describe( 'WCPayAsyncPriceRenderer', () => {
 			};
 			const bdi = renderer.buildPriceBdi( '10.50', currency );
 			const symbol = bdi.querySelector(
-				'.woocommerce-Price-currencySymbol'
+				'.poocommerce-Price-currencySymbol'
 			);
 			expect( symbol.textContent ).toBe( '$' );
 			expect( bdi.textContent ).toBe( '10.50$' );
@@ -775,7 +775,7 @@ describe( 'WCPayAsyncPriceRenderer', () => {
 	} );
 
 	describe( 'convertBlockScreenReaderText', () => {
-		// Mirrors the markup WooCommerce's product-price block renders for a
+		// Mirrors the markup PooCommerce's product-price block renders for a
 		// range-priced product: the visible prices carry the per-product Store
 		// API currency, the screen-reader label the (store) global currency.
 		const renderBlockPriceRange = ( { srText, min, max } ) => {
@@ -925,7 +925,7 @@ describe( 'WCPayAsyncPriceRenderer', () => {
 			// Add a skeleton price element.
 			const priceSpan = document.createElement( 'span' );
 			priceSpan.className =
-				'woocommerce-Price-amount amount wcpay-async-price';
+				'poocommerce-Price-amount amount wcpay-async-price';
 			priceSpan.setAttribute( 'data-wcpay-price', '10' );
 			priceSpan.setAttribute( 'data-wcpay-price-type', 'product' );
 			const skeleton = document.createElement( 'bdi' );
@@ -952,12 +952,12 @@ describe( 'WCPayAsyncPriceRenderer', () => {
 		} );
 	} );
 
-	describe( 'listenToWooCommerceEvents', () => {
+	describe( 'listenToPooCommerceEvents', () => {
 		afterEach( () => {
 			delete global.jQuery;
 		} );
 
-		it( 'calls convertAllPrices when a bound WooCommerce event fires', () => {
+		it( 'calls convertAllPrices when a bound PooCommerce event fires', () => {
 			let boundHandler;
 			global.jQuery = jest.fn( () => ( {
 				on: jest.fn().mockImplementation( ( _events, handler ) => {
@@ -967,13 +967,13 @@ describe( 'WCPayAsyncPriceRenderer', () => {
 				off: jest.fn(),
 			} ) );
 
-			renderer.listenToWooCommerceEvents();
+			renderer.listenToPooCommerceEvents();
 
 			const convertSpy = jest
 				.spyOn( renderer, 'convertAllPrices' )
 				.mockImplementation( () => {} );
 
-			// Simulate WooCommerce firing one of the bound events.
+			// Simulate PooCommerce firing one of the bound events.
 			boundHandler();
 
 			expect( convertSpy ).toHaveBeenCalledTimes( 1 );
@@ -1002,7 +1002,7 @@ describe( 'WCPayAsyncPriceRenderer', () => {
 				off: offFn,
 			} ) );
 
-			renderer.listenToWooCommerceEvents();
+			renderer.listenToPooCommerceEvents();
 			const handler = renderer.wcEventHandler;
 
 			renderer.destroy();
@@ -1259,16 +1259,16 @@ describe( 'WCPayAsyncPriceRenderer', () => {
 			const template = document.createElement( 'template' );
 			template.id = 'wcpay-geolocation-notice';
 			template.innerHTML =
-				'<p class="woocommerce-store-notice demo_store" data-notice-id="" style="display:none;">' +
+				'<p class="poocommerce-store-notice demo_store" data-notice-id="" style="display:none;">' +
 				"We noticed you're visiting from <span data-wcpay-notice-country></span>. " +
 				"We've updated our prices to <span data-wcpay-notice-currency></span> for your shopping convenience. " +
 				'<a href="?currency=USD">Use United States (US) dollar instead.</a>' +
-				' <a href="#" class="woocommerce-store-notice__dismiss-link">Dismiss</a></p>';
+				' <a href="#" class="poocommerce-store-notice__dismiss-link">Dismiss</a></p>';
 			document.body.appendChild( template );
 		};
 
 		const getNotice = () =>
-			document.querySelector( '.woocommerce-store-notice' );
+			document.querySelector( '.poocommerce-store-notice' );
 
 		beforeEach( () => {
 			document.body.textContent = '';
@@ -1341,7 +1341,7 @@ describe( 'WCPayAsyncPriceRenderer', () => {
 			renderer.showGeolocationNotice();
 
 			getNotice()
-				.querySelector( '.woocommerce-store-notice__dismiss-link' )
+				.querySelector( '.poocommerce-store-notice__dismiss-link' )
 				.click();
 
 			expect( document.cookie ).toContain( 'store_noticeabc1232=hidden' );
@@ -1353,7 +1353,7 @@ describe( 'WCPayAsyncPriceRenderer', () => {
 			renderer.showGeolocationNotice();
 
 			getNotice()
-				.querySelector( '.woocommerce-store-notice__dismiss-link' )
+				.querySelector( '.poocommerce-store-notice__dismiss-link' )
 				.dispatchEvent(
 					new KeyboardEvent( 'keydown', { key, cancelable: true } )
 				);
@@ -1367,7 +1367,7 @@ describe( 'WCPayAsyncPriceRenderer', () => {
 			renderer.showGeolocationNotice();
 
 			getNotice()
-				.querySelector( '.woocommerce-store-notice__dismiss-link' )
+				.querySelector( '.poocommerce-store-notice__dismiss-link' )
 				.dispatchEvent(
 					new KeyboardEvent( 'keydown', { key: 'Tab' } )
 				);

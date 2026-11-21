@@ -9,7 +9,7 @@ import React, { createContext } from 'react';
 import type { SkeletonProps } from './skeleton';
 
 /**
- * Context to allow injecting WooCommerce core's Skeleton component.
+ * Context to allow injecting PooCommerce core's Skeleton component.
  * When core provides a Skeleton via PaymentMethodInterface `components` prop,
  * it can be set here so all child components use it automatically.
  */

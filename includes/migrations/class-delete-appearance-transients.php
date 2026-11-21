@@ -2,7 +2,7 @@
 /**
  * Class Delete_Appearance_Transients
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Migrations;
@@ -23,7 +23,7 @@ class Delete_Appearance_Transients {
 	 * Checks whether it's worth doing the migration.
 	 */
 	public function maybe_migrate() {
-		$previous_version = get_option( 'woocommerce_woocommerce_payments_version' );
+		$previous_version = get_option( 'poocommerce_poocommerce_payments_version' );
 		if ( version_compare( '10.6.0', $previous_version, '>' ) ) {
 			$this->migrate();
 		}

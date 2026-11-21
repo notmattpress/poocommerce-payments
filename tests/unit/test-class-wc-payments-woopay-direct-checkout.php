@@ -2,7 +2,7 @@
 /**
  * These tests make assertions against class WC_Payments_WooPay_Direct_Checkout.
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\WooPay\WooPay_Utilities;

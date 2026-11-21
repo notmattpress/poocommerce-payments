@@ -3,10 +3,10 @@
  * Display a notice to merchants that have WCPay installed (and don't have UPE enabled)
  * to inform them that they can enable additional payment methods.
  *
- * @package WooCommerce\Payments\Admin
+ * @package PooCommerce\Payments\Admin
  */
 
-use Automattic\WooCommerce\Admin\Notes\NoteTraits;
+use Automattic\PooCommerce\Admin\Notes\NoteTraits;
 
 defined( 'ABSPATH' ) || exit;
 

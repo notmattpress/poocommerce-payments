@@ -2,18 +2,18 @@
 /**
  * Get Authorizations Summary ability definition.
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Internal\Abilities\Domain;
 
-use Automattic\WooCommerce\Abilities\AbilityDefinition;
+use Automattic\PooCommerce\Abilities\AbilityDefinition;
 use WCPay\Internal\Abilities\AbilitiesRegistrar;
 
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Registers the `woocommerce-payments/get-authorizations-summary` ability.
+ * Registers the `poocommerce-payments/get-authorizations-summary` ability.
  *
  * Zero-arg read that returns aggregate counts and total authorized amount
  * for pending authorizations. Answers "how much money is held in uncaptured
@@ -29,7 +29,7 @@ class GetAuthorizationsSummary implements AbilityDefinition {
 	 * @return string
 	 */
 	public static function get_name(): string {
-		return 'woocommerce-payments/get-authorizations-summary';
+		return 'poocommerce-payments/get-authorizations-summary';
 	}
 
 	/**
@@ -39,8 +39,8 @@ class GetAuthorizationsSummary implements AbilityDefinition {
 	 */
 	public static function get_registration_args(): array {
 		return [
-			'label'               => __( 'Get authorizations summary', 'woocommerce-payments' ),
-			'description'         => __( 'Return aggregate counts and total authorized amount for pending authorizations. Answers \'how much money is held in uncaptured authorizations?\'.', 'woocommerce-payments' ),
+			'label'               => __( 'Get authorizations summary', 'poocommerce-payments' ),
+			'description'         => __( 'Return aggregate counts and total authorized amount for pending authorizations. Answers \'how much money is held in uncaptured authorizations?\'.', 'poocommerce-payments' ),
 			'category'            => AbilitiesRegistrar::CATEGORY_SLUG,
 			'input_schema'        => [
 				'type'                 => 'object',
@@ -49,7 +49,7 @@ class GetAuthorizationsSummary implements AbilityDefinition {
 				'additionalProperties' => false,
 			],
 			'execute_callback'    => [ self::class, 'execute' ],
-			'permission_callback' => [ AbilitiesRegistrar::class, 'current_user_can_manage_woocommerce' ],
+			'permission_callback' => [ AbilitiesRegistrar::class, 'current_user_can_manage_poocommerce' ],
 			'meta'                => [
 				'annotations'  => [
 					'readonly'    => true,

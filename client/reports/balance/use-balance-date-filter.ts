@@ -4,7 +4,7 @@
  * External dependencies
  */
 import { useCallback, useContext, useEffect, useRef, useState } from 'react';
-import { getQuery, updateQueryString } from '@woocommerce/navigation';
+import { getQuery, updateQueryString } from '@poocommerce/navigation';
 
 /**
  * Internal dependencies

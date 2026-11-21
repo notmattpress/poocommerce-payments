@@ -2,7 +2,7 @@
 /**
  * Shipping helpers.
  *
- * @package WooCommerce/Tests
+ * @package PooCommerce/Tests
  */
 
 /**
@@ -27,8 +27,8 @@ class WC_Helper_Shipping {
 			'cost'         => '10',
 		];
 
-		update_option( 'woocommerce_flat_rate_settings', $flat_rate_settings );
-		update_option( 'woocommerce_flat_rate', [] );
+		update_option( 'poocommerce_flat_rate_settings', $flat_rate_settings );
+		update_option( 'poocommerce_flat_rate', [] );
 		WC_Cache_Helper::get_transient_version( 'shipping', true );
 		WC()->shipping()->load_shipping_methods();
 	}
@@ -39,8 +39,8 @@ class WC_Helper_Shipping {
 	 * @since 2.3
 	 */
 	public static function delete_simple_flat_rate() {
-		delete_option( 'woocommerce_flat_rate_settings' );
-		delete_option( 'woocommerce_flat_rate' );
+		delete_option( 'poocommerce_flat_rate_settings' );
+		delete_option( 'poocommerce_flat_rate' );
 		WC_Cache_Helper::get_transient_version( 'shipping', true );
 		WC()->shipping()->unregister_shipping_methods();
 	}

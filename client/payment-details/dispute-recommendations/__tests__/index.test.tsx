@@ -577,7 +577,7 @@ describe( 'DisputeRecommendationsCard', () => {
 			expect( link ).toBeInTheDocument();
 			expect( link ).toHaveAttribute(
 				'href',
-				'https://woocommerce.com/document/managing-payment-disputes/'
+				'https://poocommerce.com/document/managing-payment-disputes/'
 			);
 		} );
 
@@ -723,7 +723,7 @@ describe( 'Event 4: action_clicked', () => {
 				action: 'learn_more_clicked',
 				section: 'what_could_help',
 				link_href:
-					'https://woocommerce.com/document/managing-payment-disputes/',
+					'https://poocommerce.com/document/managing-payment-disputes/',
 			} )
 		);
 	} );

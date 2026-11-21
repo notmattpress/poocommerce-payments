@@ -122,7 +122,7 @@ const BackButton = ( { themedStyle } ) => {
 				className="preview-layout__back-button-label"
 				style={ themedStyle }
 			>
-				{ __( 'Return to cart', 'woocommerce-payments' ) }
+				{ __( 'Return to cart', 'poocommerce-payments' ) }
 			</span>
 		</div>
 	);
@@ -307,7 +307,7 @@ const WooPayLogo = () => {
 const CheckoutButton = ( { height } ) => {
 	return (
 		<div className="preview-layout__checkout-button" style={ { height } }>
-			{ __( 'Place order', 'woocommerce-payments' ) }
+			{ __( 'Place order', 'poocommerce-payments' ) }
 		</div>
 	);
 };
@@ -449,7 +449,7 @@ export default ( {
 			role="img"
 			aria-label={ __(
 				'WooPay checkout preview',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			) }
 			{ ...restProps }
 		>
@@ -483,7 +483,7 @@ export default ( {
 									>
 										{ __(
 											'Ship to',
-											'woocommerce-payments'
+											'poocommerce-payments'
 										) }
 										<ChevronDown />
 									</SectionHeader>
@@ -499,7 +499,7 @@ export default ( {
 									>
 										{ __(
 											'Shipping method',
-											'woocommerce-payments'
+											'poocommerce-payments'
 										) }
 										<ChevronDown />
 									</SectionHeader>
@@ -508,11 +508,11 @@ export default ( {
 											/* translators: %s: shipping method name */
 											__(
 												'%s — Free',
-												'woocommerce-payments'
+												'poocommerce-payments'
 											),
 											__(
 												'Free shipping',
-												'woocommerce-payments'
+												'poocommerce-payments'
 											)
 										) }
 									</FieldValue>
@@ -524,7 +524,7 @@ export default ( {
 									>
 										{ __(
 											'Pay with',
-											'woocommerce-payments'
+											'poocommerce-payments'
 										) }
 										<ChevronDown />
 									</SectionHeader>
@@ -568,7 +568,7 @@ export default ( {
 							>
 								{ __(
 									'Order summary',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								) }
 							</SectionHeader>
 							<VerticalSpacer height="0.6rem" />
@@ -579,7 +579,7 @@ export default ( {
 								<span className="preview-layout__cart-header-text">
 									{ sprintf(
 										/* translators: %d: number of items in cart */
-										__( '%d item', 'woocommerce-payments' ),
+										__( '%d item', 'poocommerce-payments' ),
 										1
 									) }
 								</span>
@@ -587,7 +587,7 @@ export default ( {
 									className="preview-layout__cart-header-toggle"
 									style={ themed.link }
 								>
-									{ __( 'Hide', 'woocommerce-payments' ) }
+									{ __( 'Hide', 'poocommerce-payments' ) }
 									<span className="preview-layout__chevron-up">
 										›
 									</span>
@@ -628,7 +628,7 @@ export default ( {
 										fill="currentColor"
 									/>
 								</svg>
-								{ __( 'Add a coupon', 'woocommerce-payments' ) }
+								{ __( 'Add a coupon', 'poocommerce-payments' ) }
 							</div>
 							<VerticalSpacer height="0.108rem" />
 							<div
@@ -669,14 +669,14 @@ export default ( {
 								</svg>
 								{ __(
 									'Add a gift card',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								) }
 							</div>
 							<VerticalSpacer height="0.24rem" />
 							<OrderRow
 								label={ __(
 									'Subtotal',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								) }
 								value="$ 18.00"
 								themedStyle={ themed.textBox }
@@ -684,14 +684,14 @@ export default ( {
 							<OrderRow
 								label={ __(
 									'Shipping',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								) }
-								value={ __( 'Free', 'woocommerce-payments' ) }
+								value={ __( 'Free', 'poocommerce-payments' ) }
 								themedStyle={ themed.textBox }
 							/>
 							<VerticalSpacer height="0.5rem" />
 							<OrderRow
-								label={ __( 'Total', 'woocommerce-payments' ) }
+								label={ __( 'Total', 'poocommerce-payments' ) }
 								value="$ 18.00"
 								themedStyle={ {
 									...themed.textBox,

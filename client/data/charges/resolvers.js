@@ -24,7 +24,7 @@ export function* getCharge( id ) {
 		yield controls.dispatch(
 			'core/notices',
 			'createErrorNotice',
-			__( 'Error retrieving transaction.', 'woocommerce-payments' )
+			__( 'Error retrieving transaction.', 'poocommerce-payments' )
 		);
 		yield updateErrorForCharge( id, null, e );
 	}
@@ -40,7 +40,7 @@ export function* getChargeFromOrder( id ) {
 		yield controls.dispatch(
 			'core/notices',
 			'createErrorNotice',
-			__( 'Error retrieving transaction.', 'woocommerce-payments' )
+			__( 'Error retrieving transaction.', 'poocommerce-payments' )
 		);
 		yield updateErrorForCharge( id, null, e );
 	}

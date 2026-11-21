@@ -18,16 +18,16 @@ import {
 } from 'wcpay/utils/wc-product-page-selectors';
 
 jQuery( ( $ ) => {
-	// Classic shortcode: WooCommerce updates the add to cart button on
+	// Classic shortcode: PooCommerce updates the add to cart button on
 	// `show_variation`/`hide_variation`, not on the change event, so refresh
 	// then.
 	let hasVariationChanged = false;
-	$( document.body ).on( 'woocommerce_variation_has_changed', () => {
+	$( document.body ).on( 'poocommerce_variation_has_changed', () => {
 		hasVariationChanged = true;
 		expressCheckoutButtonUi.blockButton();
 	} );
-	// Before WooCommerce 9.8, `show_variation` reaches the body before
-	// `woocommerce_variation_has_changed`, so act once the whole change has
+	// Before PooCommerce 9.8, `show_variation` reaches the body before
+	// `poocommerce_variation_has_changed`, so act once the whole change has
 	// been dispatched.
 	$( document.body ).on( 'show_variation hide_variation', () => {
 		queueMicrotask( () => {

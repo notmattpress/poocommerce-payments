@@ -12,7 +12,7 @@ const Agreement = () => {
 			{ interpolateComponents( {
 				mixedString: __(
 					"By continuing, you agree to WooPay's {{termsOfService/}} and {{privacyPolicy/}}.",
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				components: {
 					termsOfService: (
@@ -26,7 +26,7 @@ const Agreement = () => {
 								);
 							} }
 						>
-							{ __( 'Terms of Service', 'woocommerce-payments' ) }
+							{ __( 'Terms of Service', 'poocommerce-payments' ) }
 						</a>
 					),
 					privacyPolicy: (
@@ -40,7 +40,7 @@ const Agreement = () => {
 								);
 							} }
 						>
-							{ __( 'Privacy Policy', 'woocommerce-payments' ) }
+							{ __( 'Privacy Policy', 'poocommerce-payments' ) }
 						</a>
 					),
 				},

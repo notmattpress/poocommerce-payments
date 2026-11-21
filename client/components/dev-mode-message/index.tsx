@@ -28,7 +28,7 @@ const DevModeMessage: React.FC< Props > = ( {
 			<strong>
 				{ __(
 					'Your store is in development mode, so payments are simulated.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				) }
 			</strong>{ ' ' }
 			{ reason ? `${ reason } ` : null }
@@ -36,18 +36,18 @@ const DevModeMessage: React.FC< Props > = ( {
 				mixedString: isOnboarding
 					? __(
 							'Live accounts can only be set up on your live store. {{learnMoreLink}}Learn more{{/learnMoreLink}}',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						)
 					: __(
 							'Real payments only work on your live store. {{learnMoreLink}}Learn more{{/learnMoreLink}}',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						),
 				components: {
 					learnMoreLink: (
 						// @ts-expect-error: children is provided when interpolating the component
 						<ExternalLink
 							href={
-								'https://woocommerce.com/document/woopayments/testing-and-troubleshooting/test-accounts/#developer-notes'
+								'https://poocommerce.com/document/woopayments/testing-and-troubleshooting/test-accounts/#developer-notes'
 							}
 							onClick={ onLearnMoreClick }
 						/>

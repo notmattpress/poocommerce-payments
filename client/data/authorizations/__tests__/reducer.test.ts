@@ -2,7 +2,7 @@
 /**
  * External dependencies
  */
-import type { Query } from '@woocommerce/navigation';
+import type { Query } from '@poocommerce/navigation';
 
 /**
  * Internal dependencies

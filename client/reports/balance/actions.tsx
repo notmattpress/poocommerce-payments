@@ -6,7 +6,7 @@
 import React, { useId } from 'react';
 import { Button } from '@wordpress/components';
 import { useDispatch } from '@wordpress/data';
-import { downloadCSVFile } from '@woocommerce/csv-export';
+import { downloadCSVFile } from '@poocommerce/csv-export';
 import { __ } from '@wordpress/i18n';
 import { recordEvent } from 'tracks';
 
@@ -92,25 +92,25 @@ export const BalanceActions = (): JSX.Element => {
 		if ( ! hasDateFilterValue ) {
 			return __(
 				'Select a date range to enable Print and Export.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			);
 		}
 		if ( isLoading ) {
 			return __(
 				'Print and Export are available once the Balance report finishes loading.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			);
 		}
 		if ( hasStoreError || hasMalformedSummary ) {
 			return __(
 				'Print and Export are unavailable while the Balance report is unavailable.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			);
 		}
 		if ( ! hasActivity ) {
 			return __(
 				'Print and Export are unavailable when the selected range has no Balance activity.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			);
 		}
 		return '';
@@ -152,7 +152,7 @@ export const BalanceActions = (): JSX.Element => {
 				'error',
 				__(
 					'There was a problem generating your export.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				)
 			);
 		}
@@ -188,7 +188,7 @@ export const BalanceActions = (): JSX.Element => {
 				}
 				__next40pxDefaultSize
 			>
-				{ __( 'Print', 'woocommerce-payments' ) }
+				{ __( 'Print', 'poocommerce-payments' ) }
 			</Button>
 			<Button
 				variant="primary"
@@ -200,7 +200,7 @@ export const BalanceActions = (): JSX.Element => {
 				}
 				__next40pxDefaultSize
 			>
-				{ __( 'Export', 'woocommerce-payments' ) }
+				{ __( 'Export', 'poocommerce-payments' ) }
 			</Button>
 		</div>
 	);

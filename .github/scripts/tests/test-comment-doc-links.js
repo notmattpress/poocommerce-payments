@@ -18,10 +18,10 @@ const { test } = require( 'node:test' );
  */
 const { postReport } = require( '../comment-doc-links' );
 
-const REPOSITORY = 'Automattic/woocommerce-payments';
+const REPOSITORY = 'Automattic/poocommerce-payments';
 const REVISION = '1234567890123456789012345678901234567890';
 const RUN_URL =
-	'https://github.com/Automattic/woocommerce-payments/actions/runs/123';
+	'https://github.com/Automattic/poocommerce-payments/actions/runs/123';
 const MARKER = '<!-- wcpay-documentation-link-check -->';
 const PR_NUMBER = 42;
 
@@ -34,7 +34,7 @@ function fixture( { comments = [] } = {} ) {
 		}
 		assert.equal(
 			endpoint,
-			'repos/Automattic/woocommerce-payments/issues/42/comments'
+			'repos/Automattic/poocommerce-payments/issues/42/comments'
 		);
 		assert.equal( options.paginate, true );
 		return comments;
@@ -61,7 +61,7 @@ test( 'creates a release PR comment containing the failure report', () => {
 	assert.deepEqual( writes(), [
 		{
 			endpoint:
-				'repos/Automattic/woocommerce-payments/issues/42/comments',
+				'repos/Automattic/poocommerce-payments/issues/42/comments',
 			method: 'POST',
 			body: {
 				body:
@@ -95,7 +95,7 @@ test( 'updates the existing Actions comment with a passing report without creati
 	publish( 'All discovered documentation URLs and anchors passed.' );
 	assert.deepEqual( writes(), [
 		{
-			endpoint: 'repos/Automattic/woocommerce-payments/issues/comments/9',
+			endpoint: 'repos/Automattic/poocommerce-payments/issues/comments/9',
 			method: 'PATCH',
 			body: {
 				body: '<!-- wcpay-documentation-link-check -->\nAll discovered documentation URLs and anchors passed.',
@@ -132,7 +132,7 @@ test( 'reports a checker failure when no report was produced', () => {
 	);
 	assert.ok(
 		body.includes(
-			'https://github.com/Automattic/woocommerce-payments/actions/runs/123'
+			'https://github.com/Automattic/poocommerce-payments/actions/runs/123'
 		)
 	);
 } );
@@ -141,7 +141,7 @@ test( 'limits comment size at a line boundary and links the full report', () => 
 	const { publish, writes } = fixture();
 	const report =
 		'## WooPayments documentation links\n\n**1000 unique URLs checked; 1000 failed.**\n' +
-		'| https://woocommerce.com/document/example/ | Missing anchor #missing | client/example.ts:1 |\n'.repeat(
+		'| https://poocommerce.com/document/example/ | Missing anchor #missing | client/example.ts:1 |\n'.repeat(
 			1000
 		);
 	publish( report );
@@ -156,7 +156,7 @@ test( 'limits comment size at a line boundary and links the full report', () => 
 	assert.match( body, /client\/example.ts:1 \|\n\nReport truncated\./ );
 	assert.ok(
 		body.includes(
-			'https://github.com/Automattic/woocommerce-payments/actions/runs/123'
+			'https://github.com/Automattic/poocommerce-payments/actions/runs/123'
 		)
 	);
 } );
@@ -193,7 +193,7 @@ const args = process.argv.slice(2);
 const endpoint = args[1];
 const method = args[args.indexOf('--method') + 1];
 if (method === 'GET') {
-  if (endpoint !== 'repos/Automattic/woocommerce-payments/issues/42/comments') process.exit(4);
+  if (endpoint !== 'repos/Automattic/poocommerce-payments/issues/42/comments') process.exit(4);
   if (!args.includes('--paginate') || !args.includes('--slurp')) process.exit(2);
   process.stdout.write(JSON.stringify([[], [{id: 9, user: {login: 'github-actions[bot]'}, body: ${ JSON.stringify(
 		MARKER
@@ -222,7 +222,7 @@ if (method === 'GET') {
 		}
 	);
 	assert.deepEqual( JSON.parse( readFileSync( outputPath, 'utf8' ) ), {
-		endpoint: 'repos/Automattic/woocommerce-payments/issues/comments/9',
+		endpoint: 'repos/Automattic/poocommerce-payments/issues/comments/9',
 		method: 'PATCH',
 		payload: {
 			body: '<!-- wcpay-documentation-link-check -->\n## Checker result\nHTTP 404; Missing anchor #example\n',

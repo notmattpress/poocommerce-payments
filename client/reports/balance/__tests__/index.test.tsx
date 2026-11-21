@@ -3,7 +3,7 @@
 import React from 'react';
 import { act, render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { downloadCSVFile } from '@woocommerce/csv-export';
+import { downloadCSVFile } from '@poocommerce/csv-export';
 import { recordEvent } from 'tracks';
 
 import { expectPresetButtonBefore } from '../../test-helpers';
@@ -41,8 +41,8 @@ jest.mock( '@wordpress/data', () => ( {
 	} ),
 } ) );
 
-jest.mock( '@woocommerce/csv-export', () => {
-	const actual = jest.requireActual( '@woocommerce/csv-export' );
+jest.mock( '@poocommerce/csv-export', () => {
+	const actual = jest.requireActual( '@poocommerce/csv-export' );
 	return {
 		...actual,
 		downloadCSVFile: jest.fn(),

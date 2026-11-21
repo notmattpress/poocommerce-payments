@@ -113,14 +113,14 @@ export function* submitInstantDeposit( currency ) {
 			sprintf(
 				__(
 					'Instant payout for %s in transit.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				),
 				formatCurrency( deposit.amount )
 			),
 			{
 				actions: [
 					{
-						label: __( 'View details', 'woocommerce-payments' ),
+						label: __( 'View details', 'poocommerce-payments' ),
 						url: getAdminUrl( {
 							page: 'wc-admin',
 							path: '/payments/payouts/details',
@@ -132,7 +132,7 @@ export function* submitInstantDeposit( currency ) {
 		);
 	} catch {
 		yield dispatch( 'core/notices' ).createErrorNotice(
-			__( 'Error creating instant payout.', 'woocommerce-payments' )
+			__( 'Error creating instant payout.', 'poocommerce-payments' )
 		);
 	} finally {
 		yield dispatch( STORE_NAME ).finishResolution( 'getInstantDeposit', [

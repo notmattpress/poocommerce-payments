@@ -2,7 +2,7 @@
 /**
  * These tests make assertions against class WC_Payments_Dependency_Service_Test.
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 /**
@@ -82,7 +82,7 @@ class WC_Payments_Dependency_Service_Test extends WCPAY_UnitTestCase {
 
 		// Perform assertions...
 		$this->assertIsString( $result );
-		$this->assertStringContainsStringIgnoringCase( 'WooPayments requires WooCommerce Admin to be enabled', $result );
+		$this->assertStringContainsStringIgnoringCase( 'WooPayments requires PooCommerce Admin to be enabled', $result );
 	}
 
 	public function test_display_admin_notices_assets_not_built() {

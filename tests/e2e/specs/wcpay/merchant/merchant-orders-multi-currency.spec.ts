@@ -56,7 +56,7 @@ test.describe( 'Admin Multi-Currency Orders', () => {
 
 		// Get prices from order items table and confirm they are in the shopper currency (EUR)
 		const orderItemPrices = await merchantPage
-			.locator( '#woocommerce-order-items .woocommerce-Price-amount' )
+			.locator( '#poocommerce-order-items .poocommerce-Price-amount' )
 			.all();
 
 		expect( orderItemPrices.length ).toBeGreaterThan( 0 );
@@ -125,7 +125,7 @@ test.describe( 'Admin Multi-Currency Orders', () => {
 		refundAmount =
 			( await merchantPage
 				.getByRole( 'row', { name: 'Total available to refund' } )
-				.locator( '.woocommerce-Price-amount' )
+				.locator( '.poocommerce-Price-amount' )
 				.textContent() ) ?? '';
 
 		// Set the refund quantity to 1 for the first line item (full refund of item)
@@ -162,12 +162,12 @@ test.describe( 'Admin Multi-Currency Orders', () => {
 
 		// Verify refund details show EUR currency with the correct amount
 		await expect(
-			merchantPage.locator( '.refund .woocommerce-Price-amount' ).first()
+			merchantPage.locator( '.refund .poocommerce-Price-amount' ).first()
 		).toContainText( refundAmount );
 
 		// Finding the refund note, and verify it contains the EUR amount
 		const refundNote = merchantPage
-			.locator( '#woocommerce-order-notes .note_content' )
+			.locator( '#poocommerce-order-notes .note_content' )
 			.filter( { hasText: 'A refund of' } )
 			.filter( { hasText: 'was successfully processed' } );
 		await expect( refundNote ).toContainText( refundAmount );

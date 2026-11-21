@@ -21,7 +21,7 @@ assert_eq() {
 
 write_files() {
 	local v="$1" changelog_block="$2"
-	cat > woocommerce-payments.php <<PHP
+	cat > poocommerce-payments.php <<PHP
 <?php
 /**
  * Plugin Name: WooPayments

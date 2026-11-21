@@ -193,7 +193,7 @@ test.describe( 'Order > Partial refund', { tag: '@merchant' }, () => {
 			expect( refundNote ).toContain( title );
 			expect( refundNote ).toContain( refundTotalString );
 
-			// Check that the refunded amount line item is correct. Newer WooCommerce
+			// Check that the refunded amount line item is correct. Newer PooCommerce
 			// versions put the minus sign inside the `bdi`, older ones put it outside.
 			await expect(
 				adminPage

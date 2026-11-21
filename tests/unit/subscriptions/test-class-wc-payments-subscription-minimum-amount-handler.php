@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Subscription_Minimum_Amount_Handler_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use PHPUnit\Framework\MockObject\MockObject;

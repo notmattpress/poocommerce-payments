@@ -30,7 +30,7 @@ make_repo_fixture() {
 		mkdir -p changelog
 		# Leave changelog empty (no pending entries). Seed a .gitkeep so dir is preserved.
 		touch changelog/.gitkeep
-		cat > woocommerce-payments.php <<PHP
+		cat > poocommerce-payments.php <<PHP
 <?php
 /**
  * Plugin Name: WooPayments

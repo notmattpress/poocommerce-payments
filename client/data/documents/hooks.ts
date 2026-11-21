@@ -5,7 +5,7 @@
  */
 import { useSelect } from '@wordpress/data';
 import moment from 'moment';
-import type { Query } from '@woocommerce/navigation';
+import type { Query } from '@poocommerce/navigation';
 
 /**
  * Internal dependencies

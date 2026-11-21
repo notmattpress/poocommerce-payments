@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Subscriptions_Event_Handler
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\Exceptions\Invalid_Webhook_Data_Exception;

@@ -2,10 +2,10 @@
 /**
  * Class WC_Payments_Express_Checkout_Currency_Guard_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
-use Automattic\WooCommerce\StoreApi\Exceptions\RouteException;
+use Automattic\PooCommerce\StoreApi\Exceptions\RouteException;
 use PHPUnit\Framework\MockObject\MockObject;
 
 /**
@@ -116,7 +116,7 @@ class WC_Payments_Express_Checkout_Currency_Guard_Test extends WCPAY_UnitTestCas
 		$count_guard_callbacks = function () {
 			global $wp_filter;
 			$count = 0;
-			$hook  = $wp_filter['woocommerce_store_api_checkout_update_order_from_request'] ?? null;
+			$hook  = $wp_filter['poocommerce_store_api_checkout_update_order_from_request'] ?? null;
 			foreach ( $hook->callbacks[10] ?? [] as $callback ) {
 				if ( is_array( $callback['function'] )
 					&& $callback['function'][0] instanceof WC_Payments_Express_Checkout_Currency_Guard
@@ -135,7 +135,7 @@ class WC_Payments_Express_Checkout_Currency_Guard_Test extends WCPAY_UnitTestCas
 		$this->assertSame(
 			$before + 1,
 			$count_guard_callbacks(),
-			'Expected register() to hook assert_currency_matches_element() on woocommerce_store_api_checkout_update_order_from_request.'
+			'Expected register() to hook assert_currency_matches_element() on poocommerce_store_api_checkout_update_order_from_request.'
 		);
 	}
 

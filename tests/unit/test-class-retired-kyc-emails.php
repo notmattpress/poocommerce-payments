@@ -2,7 +2,7 @@
 /**
  * Regression tests for retired first-sale reminders.
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 /**
@@ -22,20 +22,20 @@ class Retired_Kyc_Emails_Test extends WCPAY_UnitTestCase {
 		add_option( 'wcpay_kyc_completion_date', time() );
 
 		foreach ( [ 7, 14, 30 ] as $stage ) {
-			$this->assertFalse( as_has_scheduled_action( 'wcpay_post_kyc_activation_email_send', [ $stage ], 'woocommerce-payments' ) );
+			$this->assertFalse( as_has_scheduled_action( 'wcpay_post_kyc_activation_email_send', [ $stage ], 'poocommerce-payments' ) );
 		}
 	}
 
-	public function test_email_is_not_registered_in_woocommerce(): void {
-		/** This filter is documented in WooCommerce's WC_Emails::init(). */
-		$emails = apply_filters( 'woocommerce_email_classes', [] );
+	public function test_email_is_not_registered_in_poocommerce(): void {
+		/** This filter is documented in PooCommerce's WC_Emails::init(). */
+		$emails = apply_filters( 'poocommerce_email_classes', [] );
 
 		$this->assertArrayNotHasKey( 'WC_Payments_Email_Post_Kyc_Activation', $emails );
 		$this->assertArrayHasKey( 'WC_Payments_Email_IPP_Receipt', $emails );
 	}
 
 	public function test_residual_action_completes_without_sending(): void {
-		$action_id = as_schedule_single_action( time() - 60, 'wcpay_post_kyc_activation_email_send', [ 7 ], 'woocommerce-payments' );
+		$action_id = as_schedule_single_action( time() - 60, 'wcpay_post_kyc_activation_email_send', [ 7 ], 'poocommerce-payments' );
 
 		ActionScheduler_QueueRunner::instance()->process_action( $action_id, 'test' );
 

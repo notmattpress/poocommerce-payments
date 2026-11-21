@@ -2,7 +2,7 @@
 /**
  * Locales information
  *
- * @package WooCommerce\Payments\i18n
+ * @package PooCommerce\Payments\i18n
  * @version 3.5.0
  */
 

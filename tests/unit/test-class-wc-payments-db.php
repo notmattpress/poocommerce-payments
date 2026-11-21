@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_DB_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 /**

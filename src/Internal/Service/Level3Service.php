@@ -2,7 +2,7 @@
 /**
  * Class Level3Service
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Internal\Service;
@@ -98,7 +98,7 @@ class Level3Service {
 		}
 
 		// The merchant’s U.S. shipping ZIP code.
-		$store_postcode = $this->legacy_proxy->call_function( 'get_option', 'woocommerce_store_postcode' );
+		$store_postcode = $this->legacy_proxy->call_function( 'get_option', 'poocommerce_store_postcode' );
 		if ( WC_Payments_Utils::is_valid_us_zip_code( $store_postcode ) ) {
 			$level3_data['shipping_from_zip'] = $store_postcode;
 		}
@@ -170,7 +170,7 @@ class Level3Service {
 		$description = substr( $item->get_name(), 0, 26 );
 		// Stripe rejects empty descriptions.
 		if ( '' === trim( $description ) ) {
-			$description = __( 'Item', 'woocommerce-payments' );
+			$description = __( 'Item', 'poocommerce-payments' );
 		}
 
 		$tax_amount = $this->prepare_amount( $item->get_total_tax(), $currency );
@@ -261,7 +261,7 @@ class Level3Service {
 
 		$level3_data['line_items'][] = (object) [
 			'product_code'        => 'rounding-fix',
-			'product_description' => mb_substr( __( 'Rounding fix', 'woocommerce-payments' ), 0, 26 ),
+			'product_description' => mb_substr( __( 'Rounding fix', 'poocommerce-payments' ), 0, 26 ),
 			'unit_cost'           => max( 0, $difference ),
 			'quantity'            => 1,
 			'tax_amount'          => 0,

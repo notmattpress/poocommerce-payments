@@ -1,6 +1,6 @@
 <?php
 /**
- * Class WooCommercePreOrders
+ * Class PooCommercePreOrders
  *
  * @package WCPay\MultiCurrency\Compatibility
  */
@@ -11,9 +11,9 @@ use WCPay\MultiCurrency\MultiCurrency;
 use WCPay\MultiCurrency\Utils;
 
 /**
- * Class that controls Multi Currency Compatibility with WooCommerce Pre-Orders Plugin.
+ * Class that controls Multi Currency Compatibility with PooCommerce Pre-Orders Plugin.
  */
-class WooCommercePreOrders extends BaseCompatibility {
+class PooCommercePreOrders extends BaseCompatibility {
 
 	/**
 	 * Init the class.

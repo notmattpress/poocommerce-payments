@@ -1,6 +1,6 @@
 <?php
 /**
- * Class WooCommerceNameYourPrice
+ * Class PooCommerceNameYourPrice
  *
  * @package WCPay\MultiCurrency\Compatibility
  */
@@ -10,9 +10,9 @@ namespace WCPay\MultiCurrency\Compatibility;
 use WCPay\MultiCurrency\MultiCurrency;
 
 /**
- * Class that controls Multi Currency Compatibility with WooCommerce Name Your Price Plugin.
+ * Class that controls Multi Currency Compatibility with PooCommerce Name Your Price Plugin.
  */
-class WooCommerceNameYourPrice extends BaseCompatibility {
+class PooCommerceNameYourPrice extends BaseCompatibility {
 
 	const NYP_CURRENCY = '_wcpay_multi_currency_nyp_currency';
 
@@ -25,12 +25,12 @@ class WooCommerceNameYourPrice extends BaseCompatibility {
 		// Add needed actions and filters if Name Your Price is active.
 		if ( class_exists( 'WC_Name_Your_Price' ) ) {
 			/*
-			 * Multi-currency support was added to WooCommerce Name Your Price in version 4.0.0.
+			 * Multi-currency support was added to PooCommerce Name Your Price in version 4.0.0.
 			 *
 			 * This prevents the loading of the compatibility class for Name Your Price in
 			 * versions that provide their own multi-currency support.
 			 *
-			 * @see https://github.com/Automattic/woocommerce-payments/issues/12228
+			 * @see https://github.com/Automattic/poocommerce-payments/issues/12228
 			 */
 			if ( function_exists( 'WC_Name_Your_Price' ) ) {
 				$nyp = WC_Name_Your_Price();
@@ -45,8 +45,8 @@ class WooCommerceNameYourPrice extends BaseCompatibility {
 			add_filter( 'wc_nyp_raw_suggested_price', [ $this, 'get_nyp_prices' ] );
 
 			// Maybe translate cart prices.
-			add_filter( 'woocommerce_add_cart_item_data', [ $this, 'add_initial_currency' ], 20, 3 );
-			add_filter( 'woocommerce_get_cart_item_from_session', [ $this, 'convert_cart_currency' ], 20, 2 );
+			add_filter( 'poocommerce_add_cart_item_data', [ $this, 'add_initial_currency' ], 20, 3 );
+			add_filter( 'poocommerce_get_cart_item_from_session', [ $this, 'convert_cart_currency' ], 20, 2 );
 			add_filter( MultiCurrency::FILTER_PREFIX . 'should_convert_product_price', [ $this, 'should_convert_product_price' ], 50, 2 );
 
 			// Convert cart editing price.

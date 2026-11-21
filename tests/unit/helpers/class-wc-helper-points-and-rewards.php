@@ -2,12 +2,12 @@
 /**
  * Points & Rewards helpers.
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 // phpcs:disable Generic.Files.OneObjectStructurePerFile.MultipleFound
 
-use Automattic\WooCommerce\Blocks\Integrations\IntegrationInterface;
+use Automattic\PooCommerce\Blocks\Integrations\IntegrationInterface;
 
 /**
  * Class WC_Points_Rewards.
@@ -36,7 +36,7 @@ class WC_Points_Rewards_Integration implements IntegrationInterface {
 
 	public function get_script_data() {
 		return [
-			'woocommerce-points-and-rewards-blocks' => 'active',
+			'poocommerce-points-and-rewards-blocks' => 'active',
 			'points_available'                      => 0,
 			'minimum_points_amount'                 => 0,
 			'partial_redemption_enabled'            => true,

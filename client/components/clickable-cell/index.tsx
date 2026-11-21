@@ -3,7 +3,7 @@
 /**
  * External dependencies
  */
-import { Link } from '@woocommerce/components';
+import { Link } from '@poocommerce/components';
 import React, { ReactNode, ComponentProps } from 'react';
 
 /**
@@ -27,7 +27,7 @@ const ClickableCell = ( {
 	href ? (
 		<Link
 			href={ href }
-			className="woocommerce-table__clickable-cell"
+			className="poocommerce-table__clickable-cell"
 			tabIndex="-1"
 			{ ...linkProps }
 		>

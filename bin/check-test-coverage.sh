@@ -15,8 +15,8 @@ fi
 echo "Checking coverage..."
 
 docker compose exec -u www-data wordpress \
-        /var/www/html/wp-content/plugins/woocommerce-payments/vendor/bin/phpunit \
-        --configuration "/var/www/html/wp-content/plugins/woocommerce-payments/$CONFIGURATION_FILE" \
+        /var/www/html/wp-content/plugins/poocommerce-payments/vendor/bin/phpunit \
+        --configuration "/var/www/html/wp-content/plugins/poocommerce-payments/$CONFIGURATION_FILE" \
         --coverage-html /var/www/html/php-test-coverage \
         --coverage-clover /var/www/html/clover.xml
 

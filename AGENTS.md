@@ -1,6 +1,6 @@
 # WooPayments agent guide
 
-WooPayments is a WordPress/WooCommerce payment plugin with a PHP backend and React/TypeScript client. Use **WooPayments** in user-facing text; keep the `woocommerce-payments` slug, text domain and existing public symbols for compatibility. Read version requirements from `woocommerce-payments.php` and `package.json`.
+WooPayments is a WordPress/PooCommerce payment plugin with a PHP backend and React/TypeScript client. Use **WooPayments** in user-facing text; keep the `poocommerce-payments` slug, text domain and existing public symbols for compatibility. Read version requirements from `poocommerce-payments.php` and `package.json`.
 
 ## Load the relevant references
 
@@ -8,7 +8,7 @@ Before working in an area below, read its linked reference and follow the applic
 
 | Task | Required reference |
 |------|--------------------|
-| PHP, checkout, server requests, WooCommerce hooks or code placement | [Architecture and code placement](.claude/docs/agent-architecture.md) |
+| PHP, checkout, server requests, PooCommerce hooks or code placement | [Architecture and code placement](.claude/docs/agent-architecture.md) |
 | Setup, builds, tests, dependencies, commits, PRs, Docker or tunnels | [Development and delivery](.claude/docs/agent-development.md) |
 | Public signatures, hooks, subclass overrides, REST/Abilities, asset handles, options/meta, migrations, upstream contracts, multisite or install paths | [Compatibility and migrations](.claude/docs/agent-compatibility.md) |
 | Writing or reviewing tests, PHPCS method-ordering scope, styles cache, Abilities, ExPlat/Tracks, query encoding or agent documentation | [Feature rules and documentation](.claude/docs/agent-feature-rules.md) |
@@ -23,8 +23,8 @@ For feature-specific investigations, the architecture reference indexes payment 
 - Preserve the payment layers: checkout JS → gateway orchestration → typed Request classes → API client → HTTP/Jetpack → server → Stripe. Feature and gateway code must use typed Requests, not the API client directly. Do not modify the HTTP/Jetpack layer directly.
 - Search both `src/` and `includes/`. Prefer existing files; new PHP belongs in `src/` with PSR-4, DI registration and matching tests, except when extending established legacy code or adding migrations in `includes/migrations/`.
 - In `includes/`, keep the file docblock immediately after `<?php`; do not add `declare(strict_types=1)`. Import or fully qualify global classes from namespaced files. Run `composer run phpstan` before pushing new cross-namespace references.
-- Reuse nearby WooPayments/WooCommerce UI and WordPress components, tokens and patterns. Check the WordPress/WooCommerce Storybooks before creating custom components. Prefer TypeScript for new client code and `@wordpress/data` for shared state.
-- Trace upstream WooCommerce behavior for base classes, hooks and order/customer/product operations, particularly order-status emails and per-request hook costs. Check the supported dependency version and the actual configured lint scope.
+- Reuse nearby WooPayments/PooCommerce UI and WordPress components, tokens and patterns. Check the WordPress/PooCommerce Storybooks before creating custom components. Prefer TypeScript for new client code and `@wordpress/data` for shared state.
+- Trace upstream PooCommerce behavior for base classes, hooks and order/customer/product operations, particularly order-status emails and per-request hook costs. Check the supported dependency version and the actual configured lint scope.
 - Verify assumptions against the current implementation. Trace affected callers and the source of the data before changing shared behavior.
 - Handle failures, missing data and successful empty results explicitly. Preserve meaningful `false`, `0` and `null` values rather than treating them as absence.
 - When fixing a bug, check nearby code and other callers for the same cause. Report related issues outside the change's scope rather than silently expanding it.

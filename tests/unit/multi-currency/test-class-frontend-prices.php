@@ -2,7 +2,7 @@
 /**
  * Class WCPay_Multi_Currency_Frontend_Prices_Tests
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\Constants\Currency_Code;
@@ -40,7 +40,7 @@ class WCPay_Multi_Currency_Frontend_Prices_Tests extends WCPAY_UnitTestCase {
 	private $localization_service;
 
 	/**
-	 * A `woocommerce_currency` filter standing in for the currency WooCommerce reports.
+	 * A `poocommerce_currency` filter standing in for the currency PooCommerce reports.
 	 *
 	 * @var callable|null
 	 */
@@ -62,9 +62,9 @@ class WCPay_Multi_Currency_Frontend_Prices_Tests extends WCPAY_UnitTestCase {
 
 	public function tear_down() {
 		remove_all_filters( 'wc_tax_enabled' );
-		remove_all_filters( 'woocommerce_find_rates' );
+		remove_all_filters( 'poocommerce_find_rates' );
 		if ( $this->reported_currency_filter ) {
-			remove_filter( 'woocommerce_currency', $this->reported_currency_filter, 5 );
+			remove_filter( 'poocommerce_currency', $this->reported_currency_filter, 5 );
 		}
 		WC()->session->cleanup_sessions();
 
@@ -72,9 +72,9 @@ class WCPay_Multi_Currency_Frontend_Prices_Tests extends WCPAY_UnitTestCase {
 	}
 
 	/**
-	 * @dataProvider woocommerce_filter_provider
+	 * @dataProvider poocommerce_filter_provider
 	 */
-	public function test_registers_woocommerce_filter( $filter, $function_name ) {
+	public function test_registers_poocommerce_filter( $filter, $function_name ) {
 		$this->assertGreaterThan(
 			98,
 			has_filter( $filter, [ $this->frontend_prices, $function_name ] ),
@@ -82,26 +82,26 @@ class WCPay_Multi_Currency_Frontend_Prices_Tests extends WCPAY_UnitTestCase {
 		);
 	}
 
-	public function woocommerce_filter_provider() {
+	public function poocommerce_filter_provider() {
 		return [
-			[ 'woocommerce_product_get_price', 'get_product_price_string' ],
-			[ 'woocommerce_product_get_regular_price', 'get_product_price_string' ],
-			[ 'woocommerce_product_get_sale_price', 'get_product_price_string' ],
-			[ 'woocommerce_product_variation_get_price', 'get_product_price_string' ],
-			[ 'woocommerce_product_variation_get_regular_price', 'get_product_price_string' ],
-			[ 'woocommerce_product_variation_get_sale_price', 'get_product_price_string' ],
-			[ 'woocommerce_variation_prices', 'get_variation_price_range' ],
-			[ 'woocommerce_get_variation_prices_hash', 'add_exchange_rate_to_variation_prices_hash' ],
-			[ 'woocommerce_shipping_method_add_rate_args', 'convert_shipping_method_rate_cost' ],
-			[ 'woocommerce_evaluate_shipping_cost_args', 'convert_shipping_cost_args_to_store_currency' ],
+			[ 'poocommerce_product_get_price', 'get_product_price_string' ],
+			[ 'poocommerce_product_get_regular_price', 'get_product_price_string' ],
+			[ 'poocommerce_product_get_sale_price', 'get_product_price_string' ],
+			[ 'poocommerce_product_variation_get_price', 'get_product_price_string' ],
+			[ 'poocommerce_product_variation_get_regular_price', 'get_product_price_string' ],
+			[ 'poocommerce_product_variation_get_sale_price', 'get_product_price_string' ],
+			[ 'poocommerce_variation_prices', 'get_variation_price_range' ],
+			[ 'poocommerce_get_variation_prices_hash', 'add_exchange_rate_to_variation_prices_hash' ],
+			[ 'poocommerce_shipping_method_add_rate_args', 'convert_shipping_method_rate_cost' ],
+			[ 'poocommerce_evaluate_shipping_cost_args', 'convert_shipping_cost_args_to_store_currency' ],
 			[ 'wc_get_price_decimals', 'use_store_currency_decimals_during_shipping_fee' ],
 			[ 'wc_get_price_decimal_separator', 'use_store_decimal_separator_during_shipping_fee' ],
-			[ 'woocommerce_shipping_zone_shipping_methods', 'convert_free_shipping_method_min_amount' ],
-			[ 'woocommerce_coupon_get_amount', 'get_coupon_amount' ],
-			[ 'woocommerce_coupon_get_minimum_amount', 'get_coupon_min_max_amount' ],
-			[ 'woocommerce_coupon_get_maximum_amount', 'get_coupon_min_max_amount' ],
-			[ 'woocommerce_order_recalculate_coupons_coupon_object', 'set_order_coupon' ],
-			[ 'woocommerce_new_order', 'add_order_meta' ],
+			[ 'poocommerce_shipping_zone_shipping_methods', 'convert_free_shipping_method_min_amount' ],
+			[ 'poocommerce_coupon_get_amount', 'get_coupon_amount' ],
+			[ 'poocommerce_coupon_get_minimum_amount', 'get_coupon_min_max_amount' ],
+			[ 'poocommerce_coupon_get_maximum_amount', 'get_coupon_min_max_amount' ],
+			[ 'poocommerce_order_recalculate_coupons_coupon_object', 'set_order_coupon' ],
+			[ 'poocommerce_new_order', 'add_order_meta' ],
 		];
 	}
 
@@ -112,7 +112,7 @@ class WCPay_Multi_Currency_Frontend_Prices_Tests extends WCPAY_UnitTestCase {
 	public function test_registers_shipping_fee_rendering_filters() {
 		$this->assertSame( 10, has_filter( 'shortcode_atts_fee', [ $this->frontend_prices, 'start_shipping_fee_rendering' ] ) );
 		$this->assertSame( PHP_INT_MIN, has_filter( 'do_shortcode_tag', [ $this->frontend_prices, 'end_shipping_fee_rendering' ] ) );
-		$this->assertSame( PHP_INT_MIN, has_action( 'woocommerce_before_calculate_totals', [ $this->frontend_prices, 'reset_shipping_fee_rendering' ] ) );
+		$this->assertSame( PHP_INT_MIN, has_action( 'poocommerce_before_calculate_totals', [ $this->frontend_prices, 'reset_shipping_fee_rendering' ] ) );
 	}
 
 	/**
@@ -164,7 +164,7 @@ class WCPay_Multi_Currency_Frontend_Prices_Tests extends WCPAY_UnitTestCase {
 		$this->assertArrayHasKey( 'wcpay_multi_currency', $result[0] );
 		$this->assertSame( 'skip-me', $result[1] );
 
-		// An empty package stays empty, so WooCommerce still discards it instead of rating it.
+		// An empty package stays empty, so PooCommerce still discards it instead of rating it.
 		$this->assertSame( [ [] ], $this->frontend_prices->add_currency_to_shipping_packages( [ [] ] ) );
 	}
 
@@ -184,7 +184,7 @@ class WCPay_Multi_Currency_Frontend_Prices_Tests extends WCPAY_UnitTestCase {
 	public function test_add_currency_to_shipping_packages_runs_last() {
 		$this->assertSame(
 			PHP_INT_MAX,
-			has_filter( 'woocommerce_cart_shipping_packages', [ $this->frontend_prices, 'add_currency_to_shipping_packages' ] )
+			has_filter( 'poocommerce_cart_shipping_packages', [ $this->frontend_prices, 'add_currency_to_shipping_packages' ] )
 		);
 	}
 
@@ -318,7 +318,7 @@ class WCPay_Multi_Currency_Frontend_Prices_Tests extends WCPAY_UnitTestCase {
 
 		add_filter( 'wc_tax_enabled', '__return_true' );
 		add_filter(
-			'woocommerce_find_rates',
+			'poocommerce_find_rates',
 			function () {
 				return [
 					1 =>
@@ -375,7 +375,7 @@ class WCPay_Multi_Currency_Frontend_Prices_Tests extends WCPAY_UnitTestCase {
 
 		add_filter( 'wc_tax_enabled', '__return_true' );
 		add_filter(
-			'woocommerce_find_rates',
+			'poocommerce_find_rates',
 			function () {
 				return [
 					1 =>
@@ -485,7 +485,7 @@ class WCPay_Multi_Currency_Frontend_Prices_Tests extends WCPAY_UnitTestCase {
 	}
 
 	public function test_fee_shortcode_not_registered_by_a_shipping_method_keeps_selected_currency_format() {
-		update_option( 'woocommerce_price_decimal_sep', ',' );
+		update_option( 'poocommerce_price_decimal_sep', ',' );
 		$this->use_selected_currency( Currency_Code::POUND_STERLING, 0.8 );
 
 		$seen = [];
@@ -504,7 +504,7 @@ class WCPay_Multi_Currency_Frontend_Prices_Tests extends WCPAY_UnitTestCase {
 	}
 
 	public function test_fee_shortcode_reads_store_decimal_separator_in_selected_currency() {
-		update_option( 'woocommerce_price_decimal_sep', ',' );
+		update_option( 'poocommerce_price_decimal_sep', ',' );
 		$this->use_selected_currency( Currency_Code::POUND_STERLING, 0.8 );
 
 		// No cost conversion is needed: the merchant types the fee in the store's format either way.
@@ -513,7 +513,7 @@ class WCPay_Multi_Currency_Frontend_Prices_Tests extends WCPAY_UnitTestCase {
 	}
 
 	public function test_fee_shortcode_keeps_decimal_separator_in_store_currency() {
-		update_option( 'woocommerce_price_decimal_sep', ',' );
+		update_option( 'poocommerce_price_decimal_sep', ',' );
 		$this->use_selected_currency( Currency_Code::UNITED_STATES_DOLLAR, 1.0 );
 
 		$this->assertSame( [ '.' ], $this->values_seen_by_shipping_fee_shortcode( '[fee percent="2,5"]', 'wc_get_price_decimal_separator' ) );
@@ -968,7 +968,7 @@ class WCPay_Multi_Currency_Frontend_Prices_Tests extends WCPAY_UnitTestCase {
 			->expects( $this->never() )
 			->method( 'get_price' );
 
-		// Depending on the WooCommerce version, the getter returns the amount as a string or a float.
+		// Depending on the PooCommerce version, the getter returns the amount as a string or a float.
 		$this->assertEquals( 5, $coupon->$getter() );
 	}
 
@@ -996,12 +996,12 @@ class WCPay_Multi_Currency_Frontend_Prices_Tests extends WCPAY_UnitTestCase {
 
 	public function test_add_order_meta_skips_order_in_third_party_switcher_currency() {
 		// An idle Multi-Currency module leaves the selection on the store currency, while a third-party
-		// currency switcher filters the WooCommerce currency and the order is created in it.
+		// currency switcher filters the PooCommerce currency and the order is created in it.
 		$default_currency = new WCPay\MultiCurrency\Currency( $this->localization_service, Currency_Code::UNITED_STATES_DOLLAR );
 		$this->mock_multi_currency->method( 'get_default_currency' )->willReturn( $default_currency );
 		$this->mock_multi_currency->method( 'get_selected_currency' )->willReturn( $default_currency );
 		$this->mock_multi_currency->method( 'get_price' )->with( 1, 'exchange_rate' )->willReturn( 1.0 );
-		$this->report_woocommerce_currency( Currency_Code::EURO );
+		$this->report_poocommerce_currency( Currency_Code::EURO );
 
 		$order = wc_create_order();
 		$order->set_currency( Currency_Code::EURO );
@@ -1028,7 +1028,7 @@ class WCPay_Multi_Currency_Frontend_Prices_Tests extends WCPAY_UnitTestCase {
 		);
 		$this->mock_multi_currency->method( 'get_selected_currency' )->willReturn( $default_currency );
 		$this->mock_multi_currency->method( 'get_price' )->with( 1, 'exchange_rate' )->willReturn( 1.0 );
-		$this->report_woocommerce_currency( Currency_Code::EURO );
+		$this->report_poocommerce_currency( Currency_Code::EURO );
 
 		$order = wc_create_order();
 		$order->set_currency( Currency_Code::EURO );
@@ -1057,7 +1057,7 @@ class WCPay_Multi_Currency_Frontend_Prices_Tests extends WCPAY_UnitTestCase {
 		);
 		$this->mock_multi_currency->method( 'get_selected_currency' )->willReturn( $selected_currency );
 		$this->mock_multi_currency->method( 'get_price' )->with( 1, 'exchange_rate' )->willReturn( 0.71 );
-		$this->report_woocommerce_currency( Currency_Code::EURO );
+		$this->report_poocommerce_currency( Currency_Code::EURO );
 
 		$order = wc_create_order();
 		$order->set_currency( Currency_Code::EURO );
@@ -1072,7 +1072,7 @@ class WCPay_Multi_Currency_Frontend_Prices_Tests extends WCPAY_UnitTestCase {
 	}
 
 	public function test_add_order_meta_keeps_explicit_order_currency() {
-		// An order created through the REST API or code with an explicit currency, while WooCommerce
+		// An order created through the REST API or code with an explicit currency, while PooCommerce
 		// itself still reports the store currency.
 		$default_currency = new WCPay\MultiCurrency\Currency( $this->localization_service, Currency_Code::UNITED_STATES_DOLLAR );
 		$this->mock_multi_currency->method( 'get_default_currency' )->willReturn( $default_currency );
@@ -1092,11 +1092,11 @@ class WCPay_Multi_Currency_Frontend_Prices_Tests extends WCPAY_UnitTestCase {
 	}
 
 	public function test_add_order_meta() {
-		// The shopper selected GBP in Multi-Currency, which reports it as the WooCommerce currency.
+		// The shopper selected GBP in Multi-Currency, which reports it as the PooCommerce currency.
 		$this->mock_multi_currency->method( 'get_default_currency' )->willReturn( new WCPay\MultiCurrency\Currency( $this->localization_service, 'USD' ) );
 		$this->mock_multi_currency->method( 'get_selected_currency' )->willReturn( new WCPay\MultiCurrency\Currency( $this->localization_service, Currency_Code::POUND_STERLING ) );
 		$this->mock_multi_currency->method( 'get_price' )->with( 1, 'exchange_rate' )->willReturn( 0.71 );
-		$this->report_woocommerce_currency( Currency_Code::POUND_STERLING );
+		$this->report_poocommerce_currency( Currency_Code::POUND_STERLING );
 
 		$order = wc_create_order();
 		$order->set_currency( 'GBP' );
@@ -1355,14 +1355,14 @@ class WCPay_Multi_Currency_Frontend_Prices_Tests extends WCPAY_UnitTestCase {
 	}
 
 	/**
-	 * Makes WooCommerce report the given currency, as a currency switcher's filter would.
+	 * Makes PooCommerce report the given currency, as a currency switcher's filter would.
 	 *
 	 * @param string $currency_code The currency code to report.
 	 */
-	private function report_woocommerce_currency( string $currency_code ) {
+	private function report_poocommerce_currency( string $currency_code ) {
 		$this->reported_currency_filter = static function () use ( $currency_code ) {
 			return $currency_code;
 		};
-		add_filter( 'woocommerce_currency', $this->reported_currency_filter, 5 );
+		add_filter( 'poocommerce_currency', $this->reported_currency_filter, 5 );
 	}
 }

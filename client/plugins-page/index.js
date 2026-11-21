@@ -16,7 +16,7 @@ const PluginsPage = () => {
 		window.wcpayPluginsSettings?.exitSurveyLastShown ?? null;
 
 	const deactivationLink = document.querySelector(
-		'#deactivate-woocommerce-payments, #deactivate-woocommerce-payments-dev'
+		'#deactivate-poocommerce-payments, #deactivate-poocommerce-payments-dev'
 	); // ID set by WP on the deactivation link.
 
 	const deactivatePlugin = useCallback( () => {

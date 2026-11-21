@@ -31,7 +31,7 @@ const {
 } = require( '../check-doc-links' );
 
 const SCRIPT = resolve( __dirname, '../check-doc-links.js' );
-const DOC_URL = 'https://woocommerce.com/document/example/';
+const DOC_URL = 'https://poocommerce.com/document/example/';
 const exec = promisify( execFile );
 
 function fixture( context, files ) {
@@ -51,25 +51,25 @@ test( 'scans readme.txt with source locations', ( context ) => {
 	const root = fixture( context, {
 		'readme.txt': [
 			'=== WooPayments ===',
-			'[Fees](https://woocommerce.com/document/woopayments/fees/).',
-			'[Countries](https://woocommerce.com/document/woopayments/compatibility/countries/#supported-countries)',
-			'[Product](https://woocommerce.com/payments/)',
+			'[Fees](https://poocommerce.com/document/woopayments/fees/).',
+			'[Countries](https://poocommerce.com/document/woopayments/compatibility/countries/#supported-countries)',
+			'[Product](https://poocommerce.com/payments/)',
 		].join( '\n' ),
 		'README.md': DOC_URL + '#developer-readme',
 		'client/readme.txt': DOC_URL + '#nested-readme',
 	} );
 	assert.deepEqual( Object.fromEntries( discoverLinks( root ) ), {
-		'https://woocommerce.com/document/woopayments/fees/': [
+		'https://poocommerce.com/document/woopayments/fees/': [
 			'readme.txt:2',
 		],
-		'https://woocommerce.com/document/woopayments/compatibility/countries/#supported-countries':
+		'https://poocommerce.com/document/woopayments/compatibility/countries/#supported-countries':
 			[ 'readme.txt:3' ],
 	} );
 } );
 
 test( 'scans tracked source extensions and excludes tests, dependencies, bundles and symlinks', ( context ) => {
 	const sources = [
-		'woocommerce-payments.php',
+		'poocommerce-payments.php',
 		'includes/example.php',
 		'src/Example.php',
 		'client/example.js',
@@ -114,7 +114,7 @@ test( 'scans tracked source extensions and excludes tests, dependencies, bundles
 	const links = discoverLinks( root );
 	assert.deepEqual(
 		[ ...links.keys() ],
-		[ 'https://woocommerce.com/document/example/#section' ]
+		[ 'https://poocommerce.com/document/example/#section' ]
 	);
 	assert.deepEqual(
 		links.get( DOC_URL + '#section' ).sort(),
@@ -125,27 +125,27 @@ test( 'scans tracked source extensions and excludes tests, dependencies, bundles
 test( 'recognizes supported URL forms and exact domain boundaries', ( context ) => {
 	const root = fixture( context, {
 		'example.php': [
-			'<a href="https://www.woocommerce.com/documentation/products/foo/?a=1&amp;b=2#hello%20world" />',
-			"'http://docs.woocommerce.com/document/old/#section'",
-			'`https://woocommerce.com/docs/example/#section`',
-			"'https://developer.woocommerce.com/docs/extensions/#section'",
-			String.raw`"https:\/\/woocommerce.com\/document\/escaped\/#section"`,
-			'// https://woocommerce.com/document/comment/.',
-			"'https://woocommerce.com/products/example/'",
-			"'https://woocommerce.com/documentary/'",
-			"'https://developer.woocommerce.com/2026/10/01/release-post/'",
-			"'https://woocommerce.com.evil.example/document/example/'",
+			'<a href="https://www.poocommerce.com/documentation/products/foo/?a=1&amp;b=2#hello%20world" />',
+			"'http://docs.poocommerce.com/document/old/#section'",
+			'`https://poocommerce.com/docs/example/#section`',
+			"'https://developer.poocommerce.com/docs/extensions/#section'",
+			String.raw`"https:\/\/poocommerce.com\/document\/escaped\/#section"`,
+			'// https://poocommerce.com/document/comment/.',
+			"'https://poocommerce.com/products/example/'",
+			"'https://poocommerce.com/documentary/'",
+			"'https://developer.poocommerce.com/2026/10/01/release-post/'",
+			"'https://poocommerce.com.evil.example/document/example/'",
 		].join( '\n' ),
 	} );
 	assert.deepEqual(
 		[ ...discoverLinks( root ).keys() ].sort(),
 		[
-			'https://www.woocommerce.com/documentation/products/foo/?a=1&b=2#hello%20world',
-			'http://docs.woocommerce.com/document/old/#section',
-			'https://woocommerce.com/docs/example/#section',
-			'https://developer.woocommerce.com/docs/extensions/#section',
-			'https://woocommerce.com/document/escaped/#section',
-			'https://woocommerce.com/document/comment/',
+			'https://www.poocommerce.com/documentation/products/foo/?a=1&b=2#hello%20world',
+			'http://docs.poocommerce.com/document/old/#section',
+			'https://poocommerce.com/docs/example/#section',
+			'https://developer.poocommerce.com/docs/extensions/#section',
+			'https://poocommerce.com/document/escaped/#section',
+			'https://poocommerce.com/document/comment/',
 		].sort()
 	);
 } );
@@ -319,11 +319,11 @@ describe( 'HTTP checks with a local server', () => {
 		assert.equal( results.get( base + '/json' ), 'Response is not HTML' );
 		assert.match(
 			results.get( base + '/offsite' ),
-			/not a WooCommerce documentation host/
+			/not a PooCommerce documentation host/
 		);
 		assert.match(
 			results.get( base + '/credentials' ),
-			/not a WooCommerce documentation host/
+			/not a PooCommerce documentation host/
 		);
 		assert.equal( results.get( base + '/loop' ), 'Too many redirects' );
 		assert.equal( requests.get( '/missing' ), 1 );
@@ -384,7 +384,7 @@ describe( 'HTTP checks with a local server', () => {
 				'example.php':
 					suffix === null
 						? '<?php // no URLs'
-						: 'http://woocommerce.com/document/example/' + suffix,
+						: 'http://poocommerce.com/document/example/' + suffix,
 			} );
 			execFileSync(
 				'git',
@@ -474,7 +474,7 @@ test( 'reports every failure and escapes source text', () => {
 	const report = makeReport( links, results, 'abc123' );
 	assert.equal( report.match( /Missing anchor/g ).length, 1000 );
 	assert.ok(
-		report.includes( 'https://woocommerce.com/document/example/999' )
+		report.includes( 'https://poocommerce.com/document/example/999' )
 	);
 	assert.ok( report.includes( '&lt;script&gt;&#124;&#96;file&#96;' ) );
 	assert.ok( report.startsWith( '## WooPayments documentation links' ) );

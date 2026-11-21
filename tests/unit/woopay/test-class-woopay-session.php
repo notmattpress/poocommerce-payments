@@ -2,7 +2,7 @@
 /**
  * Class WooPay_Session_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use PHPUnit\Framework\MockObject\MockObject;
@@ -72,7 +72,7 @@ class WooPay_Session_Test extends WCPAY_UnitTestCase {
 		if ( function_exists( 'wp_cache_flush' ) ) {
 			wp_cache_flush();
 		}
-		wp_cache_delete( 'wc_product_meta_lookup', 'woocommerce' );
+		wp_cache_delete( 'wc_product_meta_lookup', 'poocommerce' );
 
 		// Mock the main class's cache service.
 		$this->_cache     = WC_Payments::get_database_cache();
@@ -1289,7 +1289,7 @@ class WooPay_Session_Test extends WCPAY_UnitTestCase {
 
 			return $message;
 		};
-		add_filter( 'woocommerce_logger_log_message', $capture );
+		add_filter( 'poocommerce_logger_log_message', $capture );
 
 		$_SERVER['REQUEST_METHOD'] = 'POST';
 		$_SERVER['HTTP_ORIGIN']    = 'https://shop.example';
@@ -1374,8 +1374,8 @@ class WooPay_Session_Test extends WCPAY_UnitTestCase {
 		};
 
 		wp_set_current_user( 0 );
-		unset( $_COOKIE[ 'wp_woocommerce_session_' . COOKIEHASH ] );
-		add_filter( 'woocommerce_set_cookie_enabled', $disable_cookies );
+		unset( $_COOKIE[ 'wp_poocommerce_session_' . COOKIEHASH ] );
+		add_filter( 'poocommerce_set_cookie_enabled', $disable_cookies );
 
 		try {
 			// Initialize session identity and nonce handling without registering unrelated lifecycle hooks.
@@ -1402,7 +1402,7 @@ class WooPay_Session_Test extends WCPAY_UnitTestCase {
 			$response     = $this->post_save_user_choice( $second_nonce );
 			$this->assertTrue( $response['success'] );
 		} finally {
-			remove_filter( 'woocommerce_set_cookie_enabled', $disable_cookies );
+			remove_filter( 'poocommerce_set_cookie_enabled', $disable_cookies );
 			remove_filter( 'nonce_user_logged_out', [ $first_session, 'maybe_update_nonce_user_logged_out' ] );
 			remove_filter( 'nonce_user_logged_out', [ $second_session, 'maybe_update_nonce_user_logged_out' ] );
 			WC()->session = $original_session;
@@ -1483,7 +1483,7 @@ class WooPay_Session_Test extends WCPAY_UnitTestCase {
 		$this->setup_adapted_extensions();
 
 		add_action(
-			'woocommerce_blocks_checkout_block_registration',
+			'poocommerce_blocks_checkout_block_registration',
 			function ( $integration_registry ) {
 				$integration_registry->register( new WC_Points_Rewards_Integration() );
 			}
@@ -1677,7 +1677,7 @@ class WooPay_Session_Test extends WCPAY_UnitTestCase {
 	}
 
 	private function setup_adapted_extensions() {
-		update_option( WooPay_Scheduler::ENABLED_ADAPTED_EXTENSIONS_OPTION_NAME, [ 'woocommerce-points-and-rewards' ] );
+		update_option( WooPay_Scheduler::ENABLED_ADAPTED_EXTENSIONS_OPTION_NAME, [ 'poocommerce-points-and-rewards' ] );
 	}
 
 	private function set_is_woopay_eligible( $is_woopay_eligible ) {

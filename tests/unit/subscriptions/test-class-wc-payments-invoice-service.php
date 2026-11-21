@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Invoice_Service_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use PHPUnit\Framework\MockObject\MockObject;
@@ -161,15 +161,15 @@ class WC_Payments_Invoice_Service_Test extends WCPAY_UnitTestCase {
 	 * @param bool  $expected    Whether the invoice should match the order.
 	 */
 	public function test_does_invoice_payment_match_order_total_without_decimals( $order_total, $amount_paid, $expected ) {
-		update_option( 'woocommerce_currency', Currency_Code::HUNGARIAN_FORINT );
-		update_option( 'woocommerce_price_num_decimals', 0 );
+		update_option( 'poocommerce_currency', Currency_Code::HUNGARIAN_FORINT );
+		update_option( 'poocommerce_price_num_decimals', 0 );
 		$order = $this->create_order_with_two_lines( $order_total, Currency_Code::HUNGARIAN_FORINT );
 
 		$this->assertSame( $expected, WC_Payments_Invoice_Service::does_invoice_payment_match_order_total( $order, $amount_paid, 'huf' ) );
 	}
 
 	/**
-	 * Stripe rounds each line to a fillér, while WooCommerce rounds the order total to a forint.
+	 * Stripe rounds each line to a fillér, while PooCommerce rounds the order total to a forint.
 	 *
 	 * @return array
 	 */
@@ -231,7 +231,7 @@ class WC_Payments_Invoice_Service_Test extends WCPAY_UnitTestCase {
 		$mock_subscription = new WC_Subscription();
 
 		$mock_subscription->payment_tokens = [ uniqid( 'pm_' ) ];
-		$mock_subscription->payment_method = 'woocommerce_payments';
+		$mock_subscription->payment_method = 'poocommerce_payments';
 		$mock_subscription->update_meta_data( self::SUBSCRIPTION_ID_META_KEY, 'sub_123abc' );
 		$mock_subscription->save();
 

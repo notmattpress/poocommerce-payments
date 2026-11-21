@@ -2,7 +2,7 @@
 /**
  * Class Express_Checkout_Hong_Kong_States
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Constants;
@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Class Express_Checkout_Hong_Kong_States
  *
  * Maps Hong Kong regions, districts and sub-districts (equivalent to WC states) to the three
- * WooCommerce Hong Kong state keys (`HONG KONG`, `KOWLOON`, `NEW TERRITORIES`). This is necessary
+ * PooCommerce Hong Kong state keys (`HONG KONG`, `KOWLOON`, `NEW TERRITORIES`). This is necessary
  * because of bugs in Apple Pay/Google Pay that deliver Hong Kong address data inconsistently:
  * the region (e.g. "New Territories") may arrive in the `state` or `postcode` field, or be dropped
  * entirely — in which case only the district survives in the `city` field. By mapping every
@@ -24,30 +24,30 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * More info in pc4etw-bY-p2.
  *
- * Note: The original district list was kindly sourced from the WooCommerce Stripe Payment Gateway
+ * Note: The original district list was kindly sourced from the PooCommerce Stripe Payment Gateway
  * implementation, which addresses the same issue in that plugin.
- * See https://github.com/woocommerce/woocommerce-gateway-stripe/pull/1593.
+ * See https://github.com/poocommerce/poocommerce-gateway-stripe/pull/1593.
  *
  * @since x.x.x
  */
 class Express_Checkout_Hong_Kong_States {
 	/**
-	 * WooCommerce Hong Kong state key for Hong Kong Island.
+	 * PooCommerce Hong Kong state key for Hong Kong Island.
 	 */
 	const HONG_KONG_ISLAND = 'HONG KONG';
 
 	/**
-	 * WooCommerce Hong Kong state key for Kowloon.
+	 * PooCommerce Hong Kong state key for Kowloon.
 	 */
 	const KOWLOON = 'KOWLOON';
 
 	/**
-	 * WooCommerce Hong Kong state key for the New Territories.
+	 * PooCommerce Hong Kong state key for the New Territories.
 	 */
 	const NEW_TERRITORIES = 'NEW TERRITORIES';
 
 	/**
-	 * A map of Hong Kong regions, districts and sub-districts (English + 中文) to the WooCommerce
+	 * A map of Hong Kong regions, districts and sub-districts (English + 中文) to the PooCommerce
 	 * Hong Kong state key they belong to.
 	 *
 	 * Source: https://www.rvd.gov.hk/doc/tc/hkpr13/06.pdf.
@@ -354,7 +354,7 @@ class Express_Checkout_Hong_Kong_States {
 	// phpcs:enable
 
 	/**
-	 * Resolves the WooCommerce Hong Kong state key for a given region, district or sub-district.
+	 * Resolves the PooCommerce Hong Kong state key for a given region, district or sub-district.
 	 *
 	 * @param string $value  A Hong Kong region, district or sub-district name (English or 中文).
 	 * @return string  The WC state key (`HONG KONG`, `KOWLOON` or `NEW TERRITORIES`), or an empty string if not found.

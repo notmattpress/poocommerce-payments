@@ -2,18 +2,18 @@
 /**
  * Get Charge ability definition.
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Internal\Abilities\Domain;
 
-use Automattic\WooCommerce\Abilities\AbilityDefinition;
+use Automattic\PooCommerce\Abilities\AbilityDefinition;
 use WCPay\Internal\Abilities\AbilitiesRegistrar;
 
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Registers the `woocommerce-payments/get-charge` ability.
+ * Registers the `poocommerce-payments/get-charge` ability.
  *
  * Look up a single charge by Stripe ID (ch_… or py_…). Answers 'what
  * happened with charge ch_X?'. Returns `WP_Error( 'wcpay_missing_charge_id' )`
@@ -22,7 +22,7 @@ defined( 'ABSPATH' ) || exit;
  * PII exposure: billing details (name/email/phone/address) and order
  * metadata (customer_email, customer_name, ip_address, fraud_meta_box_type)
  * on the Stripe charge. No additional exposure over the existing admin
- * REST surface — the ability requires `manage_woocommerce`.
+ * REST surface — the ability requires `manage_poocommerce`.
  *
  * @see \WC_REST_Payments_Charges_Controller::get_charge()
  */
@@ -34,7 +34,7 @@ class GetCharge implements AbilityDefinition {
 	 * @return string
 	 */
 	public static function get_name(): string {
-		return 'woocommerce-payments/get-charge';
+		return 'poocommerce-payments/get-charge';
 	}
 
 	/**
@@ -44,8 +44,8 @@ class GetCharge implements AbilityDefinition {
 	 */
 	public static function get_registration_args(): array {
 		return [
-			'label'               => __( 'Get charge by ID', 'woocommerce-payments' ),
-			'description'         => __( 'Look up a single charge by Stripe ID (ch_… or py_…). Answers \'what happened with charge ch_X?\'.', 'woocommerce-payments' ),
+			'label'               => __( 'Get charge by ID', 'poocommerce-payments' ),
+			'description'         => __( 'Look up a single charge by Stripe ID (ch_… or py_…). Answers \'what happened with charge ch_X?\'.', 'poocommerce-payments' ),
 			'category'            => AbilitiesRegistrar::CATEGORY_SLUG,
 			'input_schema'        => [
 				'type'                 => 'object',
@@ -60,7 +60,7 @@ class GetCharge implements AbilityDefinition {
 				'additionalProperties' => false,
 			],
 			'execute_callback'    => [ self::class, 'execute' ],
-			'permission_callback' => [ AbilitiesRegistrar::class, 'current_user_can_manage_woocommerce' ],
+			'permission_callback' => [ AbilitiesRegistrar::class, 'current_user_can_manage_poocommerce' ],
 			'meta'                => [
 				'annotations'  => [
 					'readonly'    => true,
@@ -87,7 +87,7 @@ class GetCharge implements AbilityDefinition {
 		if ( ! is_array( $input ) || empty( $input['charge_id'] ) || ! is_string( $input['charge_id'] ) ) {
 			return new \WP_Error(
 				'wcpay_missing_charge_id',
-				__( 'A non-empty `charge_id` is required.', 'woocommerce-payments' )
+				__( 'A non-empty `charge_id` is required.', 'poocommerce-payments' )
 			);
 		}
 		$charge_id = $input['charge_id'];

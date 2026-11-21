@@ -2,18 +2,18 @@
 /**
  * Get Deposits Overview ability definition.
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Internal\Abilities\Domain;
 
-use Automattic\WooCommerce\Abilities\AbilityDefinition;
+use Automattic\PooCommerce\Abilities\AbilityDefinition;
 use WCPay\Internal\Abilities\AbilitiesRegistrar;
 
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Registers the `woocommerce-payments/get-deposits-overview` ability.
+ * Registers the `poocommerce-payments/get-deposits-overview` ability.
  *
  * Zero-arg read that returns a per-currency overview of upcoming and
  * recent payouts (Stripe deposits). Answers "when is my next payout and
@@ -29,7 +29,7 @@ class GetDepositsOverview implements AbilityDefinition {
 	 * @return string
 	 */
 	public static function get_name(): string {
-		return 'woocommerce-payments/get-deposits-overview';
+		return 'poocommerce-payments/get-deposits-overview';
 	}
 
 	/**
@@ -39,8 +39,8 @@ class GetDepositsOverview implements AbilityDefinition {
 	 */
 	public static function get_registration_args(): array {
 		return [
-			'label'               => __( 'Get payouts overview', 'woocommerce-payments' ),
-			'description'         => __( 'Return a per-currency overview of upcoming and recent payouts (Stripe deposits). Answers \'when is my next payout and how much?\'.', 'woocommerce-payments' ),
+			'label'               => __( 'Get payouts overview', 'poocommerce-payments' ),
+			'description'         => __( 'Return a per-currency overview of upcoming and recent payouts (Stripe deposits). Answers \'when is my next payout and how much?\'.', 'poocommerce-payments' ),
 			'category'            => AbilitiesRegistrar::CATEGORY_SLUG,
 			'input_schema'        => [
 				'type'                 => 'object',
@@ -49,7 +49,7 @@ class GetDepositsOverview implements AbilityDefinition {
 				'additionalProperties' => false,
 			],
 			'execute_callback'    => [ self::class, 'execute' ],
-			'permission_callback' => [ AbilitiesRegistrar::class, 'current_user_can_manage_woocommerce' ],
+			'permission_callback' => [ AbilitiesRegistrar::class, 'current_user_can_manage_poocommerce' ],
 			'meta'                => [
 				'annotations'  => [
 					'readonly'    => true,

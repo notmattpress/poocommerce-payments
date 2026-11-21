@@ -16,7 +16,7 @@ const IncompatibilityNotice = ( { message, learnMoreLinkHref } ) => (
 		{ interpolateComponents( {
 			mixedString: __(
 				'{{learnMoreLink}}Learn More{{/learnMoreLink}}',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			components: {
 				learnMoreLink: (
@@ -36,9 +36,9 @@ export const WooPayIncompatibilityNotice = () => (
 	<IncompatibilityNotice
 		message={ __(
 			'One or more of your extensions are incompatible with WooPay.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		) }
-		learnMoreLinkHref="https://woocommerce.com/document/woopay-merchant-documentation/#compatibility"
+		learnMoreLinkHref="https://poocommerce.com/document/woopay-merchant-documentation/#compatibility"
 	/>
 );
 
@@ -48,7 +48,7 @@ export const LinkWooPayConflictNotice = () => (
 			/* translators: %s: Payment method name, e.g. "Link" or "Onelink". */
 			__(
 				"%s and WooPay can't be enabled at the same time. Disable one of them.",
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			methodsConfiguration.link.label
 		) }

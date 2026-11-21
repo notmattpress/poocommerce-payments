@@ -2,7 +2,7 @@
 /**
  * Class WC_Payment_Gateway_WCPay_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use PHPUnit\Framework\MockObject\MockObject;
@@ -1364,11 +1364,11 @@ class WC_Payment_Gateway_WCPay_Subscriptions_Test extends WCPAY_UnitTestCase {
 		$subscription->add_payment_token( WC_Helper_Token::create_token( self::PAYMENT_METHOD_ID, self::USER_ID ) );
 
 		$this->wcpay_gateway->add_subscription_payment_meta( [], $subscription );
-		$this->assertTrue( has_action( 'woocommerce_subscription_payment_meta_input_' . WC_Payment_Gateway_WCPay::GATEWAY_ID . '_wc_order_tokens_token' ) );
+		$this->assertTrue( has_action( 'poocommerce_subscription_payment_meta_input_' . WC_Payment_Gateway_WCPay::GATEWAY_ID . '_wc_order_tokens_token' ) );
 	}
 
 	public function test_adds_custom_payment_meta_input_for_all_versions() {
-		remove_all_actions( 'woocommerce_admin_order_data_after_billing_address' );
+		remove_all_actions( 'poocommerce_admin_order_data_after_billing_address' );
 
 		$mock_payment_method = $this->getMockBuilder( UPE_Payment_Method::class )
 			->setConstructorArgs( [ $this->mock_token_service, CardDefinition::class ] )
@@ -1398,7 +1398,7 @@ class WC_Payment_Gateway_WCPay_Subscriptions_Test extends WCPAY_UnitTestCase {
 
 		$payment_gateway->init_hooks();
 
-		$this->assertTrue( has_action( 'woocommerce_admin_order_data_after_billing_address' ) );
+		$this->assertTrue( has_action( 'poocommerce_admin_order_data_after_billing_address' ) );
 	}
 
 	public function test_add_payment_method_select_to_subscription_edit_when_subscription() {
@@ -1526,7 +1526,7 @@ class WC_Payment_Gateway_WCPay_Subscriptions_Test extends WCPAY_UnitTestCase {
 
 	public function test_update_subscription_token_not_wcpay() {
 		$subscription    = WC_Helper_Order::create_order( self::USER_ID );
-		$non_wcpay_token = WC_Helper_Token::create_token( self::PAYMENT_METHOD_ID, self::USER_ID, 'not_woocommerce_payments' );
+		$non_wcpay_token = WC_Helper_Token::create_token( self::PAYMENT_METHOD_ID, self::USER_ID, 'not_poocommerce_payments' );
 
 		$updated = $this->wcpay_gateway->update_subscription_token( false, $subscription, $non_wcpay_token );
 
@@ -1545,7 +1545,7 @@ class WC_Payment_Gateway_WCPay_Subscriptions_Test extends WCPAY_UnitTestCase {
 		// Mock the current user as admin.
 		wp_set_current_user( self::USER_ID );
 		$user = wp_get_current_user();
-		$user->add_cap( 'manage_woocommerce' );
+		$user->add_cap( 'manage_poocommerce' );
 
 		// Prevent wp_die() from terminating the test.
 		add_filter( 'wp_doing_ajax', '__return_true' );
@@ -1573,7 +1573,7 @@ class WC_Payment_Gateway_WCPay_Subscriptions_Test extends WCPAY_UnitTestCase {
 
 		wp_set_current_user( self::USER_ID );
 		$user = wp_get_current_user();
-		$user->add_cap( 'manage_woocommerce' );
+		$user->add_cap( 'manage_poocommerce' );
 
 		// Prevent wp_die() from terminating the test.
 		add_filter( 'wp_doing_ajax', '__return_true' );
@@ -1600,7 +1600,7 @@ class WC_Payment_Gateway_WCPay_Subscriptions_Test extends WCPAY_UnitTestCase {
 
 		wp_set_current_user( self::USER_ID );
 		$user = wp_get_current_user();
-		$user->add_cap( 'manage_woocommerce' );
+		$user->add_cap( 'manage_poocommerce' );
 
 		// Prevent wp_die() from terminating the test.
 		add_filter( 'wp_doing_ajax', '__return_true' );
@@ -1666,7 +1666,7 @@ class WC_Payment_Gateway_WCPay_Subscriptions_Test extends WCPAY_UnitTestCase {
 	 * A WooPayments order still gets its attached card as the payment method, for its subscription's renewals.
 	 */
 	public function test_subscription_order_tracking_records_the_attached_card_of_a_woopayments_order() {
-		$order = $this->create_order_with_attached_card( 'woocommerce_payments' );
+		$order = $this->create_order_with_attached_card( 'poocommerce_payments' );
 
 		$this->wcpay_gateway->maybe_schedule_subscription_order_tracking( $order->get_id(), $order );
 

@@ -4,7 +4,7 @@
 # WordPress Coding Standards
 # https://make.wordpress.org/core/handbook/coding-standards/
 
-# Copied directly from the WooCommerce project
+# Copied directly from the PooCommerce project
 
 root = true
 

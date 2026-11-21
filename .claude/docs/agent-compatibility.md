@@ -7,7 +7,7 @@ Read the sections relevant to the current task. Paths and commands in this refer
 ## Version Support
 
 - **WordPress:** Strict L-2 (current + 2 previous major versions)
-- **WooCommerce:** Loose L-2
+- **PooCommerce:** Loose L-2
 - Details: `docs/version-support-policy.md`
 
 
@@ -18,7 +18,7 @@ WooPayments has backward-compatibility obligations in **both directions**. Any c
 Treat a symbol as **externally exposed** when it is implemented or consumed outside this plugin — by extensions, themes, WooPay, mobile apps, or other plugins — even if it lives under `Internal`. `Internal` is **not** a stability guarantee. When in doubt, assume it is exposed and state the BC impact.
 
 **As a producer of public API.** WooPayments exposes a large surface that third parties consume:
-- `do_action`/`apply_filters` hooks — `wcpay_*` and the `woocommerce_*` hooks this plugin fires (renaming a hook, changing its args, or dropping a filter's passthrough value is breaking).
+- `do_action`/`apply_filters` hooks — `wcpay_*` and the `poocommerce_*` hooks this plugin fires (renaming a hook, changing its args, or dropping a filter's passthrough value is breaking).
 - The Request/Response class layer (`includes/core/server/request/`) — deliberately hook-extensible (`wcpay_*_request` filters), so its constructors, setters, and validation are consumed externally.
 - The public gateway class `WC_Payment_Gateway_WCPay` and payment-method classes.
 - REST controllers (`includes/admin/`, `includes/reports/`, `includes/multi-currency/`) — route paths, params, response shapes — and registered Abilities.
@@ -28,15 +28,15 @@ Adding a **required** method to an interface that external code can implement is
 
 **Deprecate, don't rename.** Never rename or remove an existing public symbol (class, interface, method, constant, hook, option key) in place. Mark the old one `@deprecated`, add the replacement alongside it, and keep both working through a deprecation window so consumers can migrate.
 
-**Retire internal implementation with its feature.** The deprecation rule protects external contracts, and PHP visibility alone does not create one. Remove a symbol outright, no shim, when nothing outside its feature could obtain it (no accessor, no hook or filter handing it out, no registration the retirement keeps; use by name, `new`, `extends` or static calls, is what the search finds) and a search of public GitHub and the WooCommerce.com marketplace finds no consumer. A search cannot rule out private consumers, so state in the PR what went, when it shipped, where you looked, and what a remaining caller would hit. A no-op shim gives that caller the name without the behaviour. Anything on a long-lived public class, or behind a static accessor on `WC_Payments`, keeps the deprecation path. If you cannot run a check, flag it for review.
+**Retire internal implementation with its feature.** The deprecation rule protects external contracts, and PHP visibility alone does not create one. Remove a symbol outright, no shim, when nothing outside its feature could obtain it (no accessor, no hook or filter handing it out, no registration the retirement keeps; use by name, `new`, `extends` or static calls, is what the search finds) and a search of public GitHub and the PooCommerce.com marketplace finds no consumer. A search cannot rule out private consumers, so state in the PR what went, when it shipped, where you looked, and what a remaining caller would hit. A no-op shim gives that caller the name without the behaviour. Anything on a long-lived public class, or behind a static accessor on `WC_Payments`, keeps the deprecation path. If you cannot run a check, flag it for review.
 
-**As a consumer of upstream WooCommerce contracts.** WooPayments extends and implements upstream WooCommerce classes and interfaces — e.g. `WC_Payment_Gateway_CC`, `Blocks\Payments\Integrations\AbstractPaymentMethodType`, and `Blocks\Integrations\IntegrationInterface`. The `Internal` namespace is not a stability guarantee upstream either: WooCommerce can change these contracts, and doing so is exactly the class of break this guardrail exists to prevent (a WC 10.9.0 change to an `Internal` `FeedInterface` fataled older WooCommerce Stripe Gateway versions on load). When implementing an upstream contract, keep the implementation compatible across the supported WC range (L, L-1, L-2) and guard against contract changes rather than assuming the interface is frozen.
+**As a consumer of upstream PooCommerce contracts.** WooPayments extends and implements upstream PooCommerce classes and interfaces — e.g. `WC_Payment_Gateway_CC`, `Blocks\Payments\Integrations\AbstractPaymentMethodType`, and `Blocks\Integrations\IntegrationInterface`. The `Internal` namespace is not a stability guarantee upstream either: PooCommerce can change these contracts, and doing so is exactly the class of break this guardrail exists to prevent (a WC 10.9.0 change to an `Internal` `FeedInterface` fataled older PooCommerce Stripe Gateway versions on load). When implementing an upstream contract, keep the implementation compatible across the supported WC range (L, L-1, L-2) and guard against contract changes rather than assuming the interface is frozen.
 
 ### The compatibility surface is wider than PHP signatures
 
 Class and function signatures are not the only contracts. The following are equally binding: a change to any of them is **high-risk** and requires the same backward-compatibility impact statement in the PR description.
 
-**Hooks and filters are public contracts.** Every `do_action` and `apply_filters` call — the `wcpay_*` hooks and the `woocommerce_*` hooks this plugin fires — is an interface third-party callbacks depend on. Removing a hook, renaming it, or removing/reordering its arguments breaks every attached callback. Changing *when* or *whether* a hook fires can break consumers that depend on its timing. Additive is the safe path: append new arguments at the end, never remove or reorder existing ones. To retire a hook, fire it through `do_action_deprecated()` / `apply_filters_deprecated()` for a deprecation window instead of deleting it.
+**Hooks and filters are public contracts.** Every `do_action` and `apply_filters` call — the `wcpay_*` hooks and the `poocommerce_*` hooks this plugin fires — is an interface third-party callbacks depend on. Removing a hook, renaming it, or removing/reordering its arguments breaks every attached callback. Changing *when* or *whether* a hook fires can break consumers that depend on its timing. Additive is the safe path: append new arguments at the end, never remove or reorder existing ones. To retire a hook, fire it through `do_action_deprecated()` / `apply_filters_deprecated()` for a deprecation window instead of deleting it.
 
 **Never trust data that flows through hooks.** Keep hook callback parameters untyped and validate or coerce the value before passing it to strictly typed code, since any callback can receive a value another one produced. And when firing a filter, validate the final return value before using it, since any callback in the chain can return the wrong thing.
 
@@ -52,10 +52,10 @@ Class and function signatures are not the only contracts. The following are equa
 
 ### Database migrations
 
-Migration classes live in `includes/migrations/` and run on `woocommerce_woocommerce_payments_updated`, gated by `version_compare` against the version the store last had installed.
+Migration classes live in `includes/migrations/` and run on `poocommerce_poocommerce_payments_updated`, gated by `version_compare` against the version the store last had installed.
 
 - **The threshold is the release that runs it; only convergent migrations may bump it.** A new migration's threshold names the release that ships it; `@since` records when the class landed and never changes afterward. Bumping the threshold re-runs the migration on every store below the new value - the repo does this deliberately when a second run lands in the same end state (see the registration comment above the `Payment_Method_Deprecation_Settings_Update` hooks in `class-wc-payments.php`, which carries the live thresholds). Convergence is the test, not delete-only: that sweep rewrites `upe_enabled_payment_method_ids` and disables the deprecated gateway, and is still safe to bump because a second run filters an already-filtered list. If a second run would land somewhere different, write a new class.
-- **A missing version option runs everything.** `get_option( 'woocommerce_woocommerce_payments_version' )` returns `false` on a fresh install, which makes the `'>'` threshold gate true and the `'<='` early-return guard false - both styles in use, so every migration also fires on brand-new stores, and again if the option is ever lost. Guard `empty( $previous_version )` when running on a fresh store would be wrong, as `Multi_Currency_Cache_Autodetect_Existing_Install` does.
+- **A missing version option runs everything.** `get_option( 'poocommerce_poocommerce_payments_version' )` returns `false` on a fresh install, which makes the `'>'` threshold gate true and the `'<='` early-return guard false - both styles in use, so every migration also fires on brand-new stores, and again if the option is ever lost. Guard `empty( $previous_version )` when running on a fresh store would be wrong, as `Multi_Currency_Cache_Autodetect_Existing_Install` does.
 - **A downgrade must not fatal or corrupt data.** Deleting a dead option is fine - old code reads the default. Dropping a key old code still reads costs the merchant that setting: `Migrate_Express_Checkout_Locations` and `Migrate_Payment_Request_To_Express_Checkout_Enabled` do exactly that, a deliberate trade, not a pattern to copy. Reshaping a value in place fatals or silently misbehaves, since old code still parses that key: put the new shape under a new key, prefer leaving the old key readable for a release, and if you cut over, state what a downgrade costs in the PR description.
 
 ### Before changing any public or externally exposed surface (agent checklist)
@@ -66,4 +66,4 @@ Migration classes live in `includes/migrations/` and run on `woocommerce_woocomm
 4. State the impact in the PR description: what changed, who could consume it, and why it is safe or what the deprecation path is.
 5. If you cannot establish the impact, stop and flag it to the user as needing review.
 
-> Core's [AGENTS.md Backward Compatibility](https://github.com/woocommerce/woocommerce/blob/trunk/AGENTS.md#backward-compatibility) section carries the same guardrail.
+> Core's [AGENTS.md Backward Compatibility](https://github.com/poocommerce/poocommerce/blob/trunk/AGENTS.md#backward-compatibility) section carries the same guardrail.

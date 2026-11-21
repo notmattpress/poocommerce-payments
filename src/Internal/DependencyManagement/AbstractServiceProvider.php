@@ -2,7 +2,7 @@
 /**
  * Abstract service provider file.
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Internal\DependencyManagement;

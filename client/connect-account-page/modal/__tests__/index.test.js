@@ -19,7 +19,7 @@ const handleDeclinedStub = jest.fn();
 
 // Utility function for accessing the modal content in assertions
 const modalContent = () => {
-	const selector = '.woocommerce-payments__onboarding_location_check-modal';
+	const selector = '.poocommerce-payments__onboarding_location_check-modal';
 	return document.body.querySelector( selector );
 };
 

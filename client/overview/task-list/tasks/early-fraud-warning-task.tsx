@@ -2,7 +2,7 @@
  * External dependencies
  */
 import { __, sprintf } from '@wordpress/i18n';
-import { getHistory } from '@woocommerce/navigation';
+import { getHistory } from '@poocommerce/navigation';
 
 /**
  * Internal dependencies
@@ -45,13 +45,13 @@ const buildEarlyFraudWarningTask = (
 			/* translators: %s: order number, e.g. 12 or INV-42 */
 			__(
 				'Review order #%s flagged for potential fraud',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			),
 			orderNumber
 		),
 		content: __(
 			'Refunding it now can prevent a dispute.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		),
 		level: 2,
 		completed: false,
@@ -62,7 +62,7 @@ const buildEarlyFraudWarningTask = (
 		// or a platform update, and neither is theirs to trigger.
 		isDismissable: true,
 		showActionButton: true,
-		actionLabel: __( 'Review payment', 'woocommerce-payments' ),
+		actionLabel: __( 'Review payment', 'poocommerce-payments' ),
 		action: handleClick,
 		onClick: () => {
 			// Only handle clicks on the action button.

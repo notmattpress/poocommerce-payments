@@ -2,7 +2,7 @@
 /**
  * Class Extend_Request_Exception
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Core\Exceptions\Server\Request;

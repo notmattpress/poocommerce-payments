@@ -71,7 +71,7 @@ test.describe( 'Successful purchase', { tag: '@shopper' }, () => {
 				if ( ! ctpEnabled ) {
 					const orderId = await shopperPage
 						.locator(
-							'.woocommerce-order-overview__order.order > strong'
+							'.poocommerce-order-overview__order.order > strong'
 						)
 						.innerText();
 

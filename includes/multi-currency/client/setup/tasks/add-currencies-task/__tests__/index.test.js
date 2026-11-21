@@ -261,7 +261,7 @@ describe( 'Multi-Currency enabled currencies list', () => {
 
 		fireEvent.change(
 			screen.getByPlaceholderText(
-				__( 'Search currencies', 'woocommerce-payments' )
+				__( 'Search currencies', 'poocommerce-payments' )
 			),
 			{ target: { value: 'Danish krone' } }
 		);
@@ -283,7 +283,7 @@ describe( 'Multi-Currency enabled currencies list', () => {
 
 		fireEvent.change(
 			screen.getByPlaceholderText(
-				__( 'Search currencies', 'woocommerce-payments' )
+				__( 'Search currencies', 'poocommerce-payments' )
 			),
 			{ target: { value: 'DKK' } }
 		);
@@ -305,7 +305,7 @@ describe( 'Multi-Currency enabled currencies list', () => {
 
 		fireEvent.change(
 			screen.getByPlaceholderText(
-				__( 'Search currencies', 'woocommerce-payments' )
+				__( 'Search currencies', 'poocommerce-payments' )
 			),
 			{ target: { value: '€' } }
 		);

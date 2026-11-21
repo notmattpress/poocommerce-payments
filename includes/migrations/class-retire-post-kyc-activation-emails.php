@@ -2,7 +2,7 @@
 /**
  * Retire queued first-sale reminders.
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Migrations;
@@ -20,7 +20,7 @@ class Retire_Post_Kyc_Activation_Emails {
 	 * Queue cleanup when upgrading from a release with activation reminders.
 	 */
 	public function maybe_migrate() {
-		$previous_version = get_option( 'woocommerce_woocommerce_payments_version', '' );
+		$previous_version = get_option( 'poocommerce_poocommerce_payments_version', '' );
 		if ( version_compare( '11.3.0', $previous_version, '>' ) ) {
 			$this->migrate();
 		}
@@ -37,7 +37,7 @@ class Retire_Post_Kyc_Activation_Emails {
 		delete_transient( 'wcpay_post_kyc_activation_eligible' );
 
 		foreach ( [ 7, 14, 30 ] as $stage ) {
-			as_unschedule_all_actions( 'wcpay_post_kyc_activation_email_send', [ $stage ], 'woocommerce-payments' );
+			as_unschedule_all_actions( 'wcpay_post_kyc_activation_email_send', [ $stage ], 'poocommerce-payments' );
 		}
 	}
 }

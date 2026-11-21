@@ -47,7 +47,7 @@ jest.mock( 'utils/checkout', () => ( {
 	getConfig: jest.fn(),
 } ) );
 jest.mock(
-	'@woocommerce/blocks-checkout',
+	'@poocommerce/blocks-checkout',
 	() => ( {
 		ValidationInputError: () => {
 			return <div>Dummy error element</div>;
@@ -83,7 +83,7 @@ jest.mock( 'tracks', () => ( {
 } ) );
 
 jest.mock(
-	'@woocommerce/block-data',
+	'@poocommerce/block-data',
 	() => ( {
 		VALIDATION_STORE_KEY: 'wc/store/validation',
 	} ),

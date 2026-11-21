@@ -109,7 +109,7 @@ export const loginAsCustomer = async (
 			// `>> nth=0` greeting check was positional and locale-dependent).
 			await expect(
 				page.locator(
-					'.woocommerce-MyAccount-navigation-link--customer-logout'
+					'.poocommerce-MyAccount-navigation-link--customer-logout'
 				)
 			).toBeVisible();
 
@@ -217,7 +217,7 @@ export const checkPageExists = async (
 export const isCustomerLoggedIn = async ( page: Page ) => {
 	await page.goto( '/my-account' );
 	const logoutLink = page.locator(
-		'.woocommerce-MyAccount-navigation-link--customer-logout'
+		'.poocommerce-MyAccount-navigation-link--customer-logout'
 	);
 
 	return await logoutLink.isVisible();

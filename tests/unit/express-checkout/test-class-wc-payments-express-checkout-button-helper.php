@@ -2,7 +2,7 @@
 /**
  * These tests make assertions against class WC_Payments_Express_Checkout_Button_Helper.
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\Constants\Currency_Code;
@@ -117,8 +117,8 @@ class WC_Payments_Express_Checkout_Button_Helper_Test extends WCPAY_UnitTestCase
 		$this->zone->delete();
 		remove_filter( 'wc_tax_enabled', '__return_true' );
 		remove_filter( 'wc_tax_enabled', '__return_false' );
-		remove_filter( 'pre_option_woocommerce_tax_display_cart', [ $this, '__return_excl' ] );
-		remove_filter( 'pre_option_woocommerce_tax_display_cart', [ $this, '__return_incl' ] );
+		remove_filter( 'pre_option_poocommerce_tax_display_cart', [ $this, '__return_excl' ] );
+		remove_filter( 'pre_option_poocommerce_tax_display_cart', [ $this, '__return_incl' ] );
 
 		parent::tear_down();
 	}
@@ -693,14 +693,14 @@ class WC_Payments_Express_Checkout_Button_Helper_Test extends WCPAY_UnitTestCase
 
 	public function test_cart_prices_include_tax_with_tax_enabled_and_display_incl() {
 		add_filter( 'wc_tax_enabled', '__return_true' ); // reset in tear_down.
-		add_filter( 'pre_option_woocommerce_tax_display_cart', [ $this, '__return_incl' ] ); // reset in tear_down.
+		add_filter( 'pre_option_poocommerce_tax_display_cart', [ $this, '__return_incl' ] ); // reset in tear_down.
 
 		$this->assertTrue( $this->system_under_test->cart_prices_include_tax() );
 	}
 
 	public function test_cart_prices_include_tax_with_tax_enabled_and_display_excl() {
 		add_filter( 'wc_tax_enabled', '__return_true' ); // reset in tear_down.
-		add_filter( 'pre_option_woocommerce_tax_display_cart', [ $this, '__return_excl' ] ); // reset in tear_down.
+		add_filter( 'pre_option_poocommerce_tax_display_cart', [ $this, '__return_excl' ] ); // reset in tear_down.
 
 		$this->assertFalse( $this->system_under_test->cart_prices_include_tax() );
 	}
@@ -711,7 +711,7 @@ class WC_Payments_Express_Checkout_Button_Helper_Test extends WCPAY_UnitTestCase
 
 		$result = $this->system_under_test->get_total_label();
 
-		$this->assertEquals( 'Google Pay (via WooCommerce)', $result );
+		$this->assertEquals( 'Google Pay (via PooCommerce)', $result );
 	}
 
 	public function test_get_total_label_with_filter() {
@@ -736,16 +736,16 @@ class WC_Payments_Express_Checkout_Button_Helper_Test extends WCPAY_UnitTestCase
 		// Stores that sell in fractional units (e.g. fabric by the metre) swap the
 		// default integer stock-amount filter for a float one; mirror that here so
 		// wc_stock_amount() keeps the fraction instead of truncating it.
-		remove_filter( 'woocommerce_stock_amount', 'intval' );
-		add_filter( 'woocommerce_stock_amount', 'floatval' );
+		remove_filter( 'poocommerce_stock_amount', 'intval' );
+		add_filter( 'poocommerce_stock_amount', 'floatval' );
 
 		try {
 			$_POST['qty'] = '0.25';
 
 			$result = $this->system_under_test->get_quantity();
 		} finally {
-			remove_filter( 'woocommerce_stock_amount', 'floatval' );
-			add_filter( 'woocommerce_stock_amount', 'intval' );
+			remove_filter( 'poocommerce_stock_amount', 'floatval' );
+			add_filter( 'poocommerce_stock_amount', 'intval' );
 			unset( $_POST['qty'] );
 		}
 
@@ -754,16 +754,16 @@ class WC_Payments_Express_Checkout_Button_Helper_Test extends WCPAY_UnitTestCase
 
 	public function test_get_quantity_preserves_decimal_from_woopay_quantity_key() {
 		// WooPay posts the quantity as `quantity`; it must be preserved the same way.
-		remove_filter( 'woocommerce_stock_amount', 'intval' );
-		add_filter( 'woocommerce_stock_amount', 'floatval' );
+		remove_filter( 'poocommerce_stock_amount', 'intval' );
+		add_filter( 'poocommerce_stock_amount', 'floatval' );
 
 		try {
 			$_POST['quantity'] = '0.25';
 
 			$result = $this->system_under_test->get_quantity();
 		} finally {
-			remove_filter( 'woocommerce_stock_amount', 'floatval' );
-			add_filter( 'woocommerce_stock_amount', 'intval' );
+			remove_filter( 'poocommerce_stock_amount', 'floatval' );
+			add_filter( 'poocommerce_stock_amount', 'intval' );
 			unset( $_POST['quantity'] );
 		}
 
@@ -798,7 +798,7 @@ class WC_Payments_Express_Checkout_Button_Helper_Test extends WCPAY_UnitTestCase
 		$wp->query_vars       = [ 'order-pay' => strval( $order_id ) ];
 		$wp_query->query_vars = [ 'order-pay' => strval( $order_id ) ];
 
-		add_filter( 'woocommerce_is_checkout', '__return_true' );
+		add_filter( 'poocommerce_is_checkout', '__return_true' );
 
 		$helper = $this->getMockBuilder( WC_Payments_Express_Checkout_Button_Helper::class )
 			->setConstructorArgs( [ $this->mock_wcpay_gateway, $this->mock_wcpay_account ] )
@@ -809,7 +809,7 @@ class WC_Payments_Express_Checkout_Button_Helper_Test extends WCPAY_UnitTestCase
 
 		$this->assertTrue( $helper->should_show_express_checkout_button() );
 
-		remove_filter( 'woocommerce_is_checkout', '__return_true' );
+		remove_filter( 'poocommerce_is_checkout', '__return_true' );
 	}
 
 	public function test_should_show_express_checkout_button_for_pay_for_order_without_billing_email() {
@@ -831,7 +831,7 @@ class WC_Payments_Express_Checkout_Button_Helper_Test extends WCPAY_UnitTestCase
 		$wp->query_vars       = [ 'order-pay' => strval( $order_id ) ];
 		$wp_query->query_vars = [ 'order-pay' => strval( $order_id ) ];
 
-		add_filter( 'woocommerce_is_checkout', '__return_true' );
+		add_filter( 'poocommerce_is_checkout', '__return_true' );
 
 		$helper = $this->getMockBuilder( WC_Payments_Express_Checkout_Button_Helper::class )
 			->setConstructorArgs( [ $this->mock_wcpay_gateway, $this->mock_wcpay_account ] )
@@ -842,7 +842,7 @@ class WC_Payments_Express_Checkout_Button_Helper_Test extends WCPAY_UnitTestCase
 
 		$this->assertTrue( $helper->should_show_express_checkout_button() );
 
-		remove_filter( 'woocommerce_is_checkout', '__return_true' );
+		remove_filter( 'poocommerce_is_checkout', '__return_true' );
 	}
 
 	public function test_should_show_express_checkout_button_for_non_shipping_but_price_includes_tax() {
@@ -852,12 +852,12 @@ class WC_Payments_Express_Checkout_Button_Helper_Test extends WCPAY_UnitTestCase
 
 		WC_Payments::mode()->dev();
 
-		add_filter( 'woocommerce_is_checkout', '__return_true' );
+		add_filter( 'poocommerce_is_checkout', '__return_true' );
 		add_filter( 'wc_shipping_enabled', '__return_false' );
 		add_filter( 'wc_tax_enabled', '__return_true' );
 
-		update_option( 'woocommerce_tax_based_on', 'billing' );
-		update_option( 'woocommerce_prices_include_tax', 'yes' );
+		update_option( 'poocommerce_tax_based_on', 'billing' );
+		update_option( 'poocommerce_prices_include_tax', 'yes' );
 
 		$helper = $this->getMockBuilder( WC_Payments_Express_Checkout_Button_Helper::class )
 			->setConstructorArgs( [ $this->mock_wcpay_gateway, $this->mock_wcpay_account ] )
@@ -868,9 +868,9 @@ class WC_Payments_Express_Checkout_Button_Helper_Test extends WCPAY_UnitTestCase
 
 		$this->assertTrue( $helper->should_show_express_checkout_button() );
 
-		remove_filter( 'woocommerce_is_checkout', '__return_true' );
+		remove_filter( 'poocommerce_is_checkout', '__return_true' );
 		remove_filter( 'wc_tax_enabled', '__return_true' );
-		remove_filter( 'pre_option_woocommerce_tax_display_cart', [ $this, '__return_incl' ] );
+		remove_filter( 'pre_option_poocommerce_tax_display_cart', [ $this, '__return_incl' ] );
 	}
 
 	public function test_should_not_show_express_checkout_button_when_no_methods_enabled_at_location() {
@@ -880,7 +880,7 @@ class WC_Payments_Express_Checkout_Button_Helper_Test extends WCPAY_UnitTestCase
 
 		WC_Payments::mode()->dev();
 
-		add_filter( 'woocommerce_is_checkout', '__return_true' );
+		add_filter( 'poocommerce_is_checkout', '__return_true' );
 
 		// Clear all express checkout methods from the checkout location.
 		$this->mock_wcpay_gateway->update_option( 'express_checkout_checkout_methods', [] );
@@ -890,7 +890,7 @@ class WC_Payments_Express_Checkout_Button_Helper_Test extends WCPAY_UnitTestCase
 		// should_show_express_checkout_button to return false.
 		$this->assertFalse( $this->system_under_test->should_show_express_checkout_button() );
 
-		remove_filter( 'woocommerce_is_checkout', '__return_true' );
+		remove_filter( 'poocommerce_is_checkout', '__return_true' );
 
 		// Restore for other tests.
 		$this->mock_wcpay_gateway->update_option( 'express_checkout_checkout_methods', [ 'payment_request', 'woopay' ] );
@@ -908,14 +908,14 @@ class WC_Payments_Express_Checkout_Button_Helper_Test extends WCPAY_UnitTestCase
 		add_filter( 'wc_shipping_enabled', '__return_false' );
 		add_filter( 'wc_tax_enabled', '__return_true' );
 
-		update_option( 'woocommerce_tax_based_on', 'billing' );
-		update_option( 'woocommerce_prices_include_tax', 'no' );
+		update_option( 'poocommerce_tax_based_on', 'billing' );
+		update_option( 'poocommerce_prices_include_tax', 'no' );
 
 		$this->assertFalse( $helper->should_show_express_checkout_button() );
 
 		remove_filter( 'wc_shipping_enabled', '__return_false' );
 		remove_filter( 'wc_tax_enabled', '__return_true' );
-		remove_filter( 'pre_option_woocommerce_tax_display_cart', [ $this, '__return_incl' ] );
+		remove_filter( 'pre_option_poocommerce_tax_display_cart', [ $this, '__return_incl' ] );
 	}
 
 	/**
@@ -1151,7 +1151,7 @@ class WC_Payments_Express_Checkout_Button_Helper_Test extends WCPAY_UnitTestCase
 		WC_Payments::set_database_cache( $mock_cache );
 
 		// EUR is not supported for US merchants.
-		add_filter( 'woocommerce_currency', [ $this, 'return_eur_currency' ] );
+		add_filter( 'poocommerce_currency', [ $this, 'return_eur_currency' ] );
 
 		$mock_account = $this->createMock( WC_Payments_Account::class );
 		$mock_account->method( 'get_account_country' )->willReturn( 'US' );
@@ -1184,7 +1184,7 @@ class WC_Payments_Express_Checkout_Button_Helper_Test extends WCPAY_UnitTestCase
 		$this->assertNotContains( 'amazon_pay', $enabled_methods );
 
 		remove_all_filters( 'pre_option__wcpay_feature_amazon_pay' );
-		remove_filter( 'woocommerce_currency', [ $this, 'return_eur_currency' ] );
+		remove_filter( 'poocommerce_currency', [ $this, 'return_eur_currency' ] );
 		WC_Payments::set_database_cache( $original_cache );
 	}
 
@@ -1280,7 +1280,7 @@ class WC_Payments_Express_Checkout_Button_Helper_Test extends WCPAY_UnitTestCase
 
 		if ( $tax_on_billing ) {
 			add_filter( 'wc_tax_enabled', '__return_true' );
-			update_option( 'woocommerce_tax_based_on', 'billing' );
+			update_option( 'poocommerce_tax_based_on', 'billing' );
 		} else {
 			add_filter( 'wc_tax_enabled', '__return_false' );
 		}
@@ -1302,7 +1302,7 @@ class WC_Payments_Express_Checkout_Button_Helper_Test extends WCPAY_UnitTestCase
 		WC_Payments::set_database_cache( $original_cache );
 		remove_filter( 'wc_tax_enabled', '__return_true' );
 		remove_filter( 'wc_tax_enabled', '__return_false' );
-		delete_option( 'woocommerce_tax_based_on' );
+		delete_option( 'poocommerce_tax_based_on' );
 	}
 
 	public function test_can_use_amazon_pay_returns_false_when_express_checkout_in_payment_methods_enabled() {
@@ -1375,15 +1375,15 @@ class WC_Payments_Express_Checkout_Button_Helper_Test extends WCPAY_UnitTestCase
 
 	public function provider_block_page_content(): array {
 		return [
-			'cart block'     => [ '<!-- wp:woocommerce/cart /-->' ],
-			'checkout block' => [ '<!-- wp:woocommerce/checkout /-->' ],
+			'cart block'     => [ '<!-- wp:poocommerce/cart /-->' ],
+			'checkout block' => [ '<!-- wp:poocommerce/checkout /-->' ],
 		];
 	}
 
 	public function test_should_load_express_checkout_scripts_on_block_page_with_empty_cart_respects_page_requirements() {
 		$this->mock_wcpay_account->method( 'is_stripe_connected' )->willReturn( false );
 		WC_Payments::mode()->dev();
-		$this->set_current_post_content( '<!-- wp:woocommerce/cart /-->' );
+		$this->set_current_post_content( '<!-- wp:poocommerce/cart /-->' );
 		WC()->cart->empty_cart();
 		$helper = $this->getMockBuilder( WC_Payments_Express_Checkout_Button_Helper::class )
 			->setConstructorArgs( [ $this->mock_wcpay_gateway, $this->mock_wcpay_account ] )
@@ -1403,9 +1403,9 @@ class WC_Payments_Express_Checkout_Button_Helper_Test extends WCPAY_UnitTestCase
 		$this->mock_wcpay_account->method( 'is_stripe_connected' )->willReturn( true );
 		WC_Payments::mode()->dev();
 		add_filter( 'wc_tax_enabled', '__return_true' );
-		update_option( 'woocommerce_tax_based_on', 'billing' );
-		update_option( 'woocommerce_prices_include_tax', 'no' );
-		$this->set_current_post_content( '<!-- wp:woocommerce/cart /-->' );
+		update_option( 'poocommerce_tax_based_on', 'billing' );
+		update_option( 'poocommerce_prices_include_tax', 'no' );
+		$this->set_current_post_content( '<!-- wp:poocommerce/cart /-->' );
 		WC()->cart->empty_cart();
 		$helper = $this->getMockBuilder( WC_Payments_Express_Checkout_Button_Helper::class )
 			->setConstructorArgs( [ $this->mock_wcpay_gateway, $this->mock_wcpay_account ] )
@@ -1426,7 +1426,7 @@ class WC_Payments_Express_Checkout_Button_Helper_Test extends WCPAY_UnitTestCase
 	public function test_should_not_load_express_checkout_scripts_on_block_page_with_non_empty_zero_total_cart() {
 		$this->mock_wcpay_account->method( 'is_stripe_connected' )->willReturn( true );
 		WC_Payments::mode()->dev();
-		$this->set_current_post_content( '<!-- wp:woocommerce/cart /-->' );
+		$this->set_current_post_content( '<!-- wp:poocommerce/cart /-->' );
 		$free_product = WC_Helper_Product::create_simple_product();
 		$free_product->set_props(
 			[
@@ -1456,7 +1456,7 @@ class WC_Payments_Express_Checkout_Button_Helper_Test extends WCPAY_UnitTestCase
 	public function test_should_load_express_checkout_scripts_on_block_page_with_empty_cart_respects_should_show_override() {
 		$this->mock_wcpay_account->method( 'is_stripe_connected' )->willReturn( true );
 		WC_Payments::mode()->dev();
-		$this->set_current_post_content( '<!-- wp:woocommerce/cart /-->' );
+		$this->set_current_post_content( '<!-- wp:poocommerce/cart /-->' );
 		WC()->cart->empty_cart();
 		$helper = new class( $this->mock_wcpay_gateway, $this->mock_wcpay_account ) extends WC_Payments_Express_Checkout_Button_Helper {
 			public function should_show_express_checkout_button() {
@@ -1480,7 +1480,7 @@ class WC_Payments_Express_Checkout_Button_Helper_Test extends WCPAY_UnitTestCase
 		$this->mock_wcpay_account->method( 'is_stripe_connected' )->willReturn( true );
 		$this->mock_wcpay_gateway->update_option( 'express_checkout_cart_methods', [] );
 		WC_Payments::mode()->dev();
-		$this->set_current_post_content( '<!-- wp:woocommerce/cart /-->' );
+		$this->set_current_post_content( '<!-- wp:poocommerce/cart /-->' );
 		WC()->cart->empty_cart();
 
 		try {
@@ -1539,7 +1539,7 @@ class WC_Payments_Express_Checkout_Button_Helper_Test extends WCPAY_UnitTestCase
 	public function test_should_not_load_express_checkout_scripts_on_block_page_when_the_currency_rules_out_amazon_pay_and_cart_items_are_unsupported() {
 		$this->mock_wcpay_account->method( 'is_stripe_connected' )->willReturn( true );
 		WC_Payments::mode()->dev();
-		$this->set_current_post_content( '<!-- wp:woocommerce/cart /-->' );
+		$this->set_current_post_content( '<!-- wp:poocommerce/cart /-->' );
 		add_filter( 'wcpay_payment_request_is_cart_supported', '__return_false' );
 		$helper = $this->get_helper_with_only_amazon_pay_ruled_out_by_currency();
 
@@ -1554,7 +1554,7 @@ class WC_Payments_Express_Checkout_Button_Helper_Test extends WCPAY_UnitTestCase
 	public function test_should_not_load_express_checkout_scripts_on_block_page_when_amazon_pay_is_off_at_this_location() {
 		$this->mock_wcpay_account->method( 'is_stripe_connected' )->willReturn( true );
 		WC_Payments::mode()->dev();
-		$this->set_current_post_content( '<!-- wp:woocommerce/cart /-->' );
+		$this->set_current_post_content( '<!-- wp:poocommerce/cart /-->' );
 		$helper = $this->get_helper_with_only_amazon_pay_ruled_out_by_currency();
 		$this->mock_wcpay_gateway->update_option( 'express_checkout_cart_methods', [ 'payment_request' ] );
 
@@ -1597,14 +1597,14 @@ class WC_Payments_Express_Checkout_Button_Helper_Test extends WCPAY_UnitTestCase
 		$order                 = WC_Helper_Order::create_order( 1, 100 );
 		$wp->query_vars        = [ 'order-pay' => strval( $order->get_id() ) ];
 		$wp_query->query_vars  = [ 'order-pay' => strval( $order->get_id() ) ];
-		add_filter( 'woocommerce_is_checkout', '__return_true' );
+		add_filter( 'poocommerce_is_checkout', '__return_true' );
 		$helper = $this->get_helper_with_only_amazon_pay_ruled_out_by_currency();
 
 		try {
 			$this->assertFalse( $helper->should_show_express_checkout_button() );
 		} finally {
 			unset( $_GET['pay_for_order'] );
-			remove_filter( 'woocommerce_is_checkout', '__return_true' );
+			remove_filter( 'poocommerce_is_checkout', '__return_true' );
 			WC_Payments::mode()->live();
 		}
 	}
@@ -1629,7 +1629,7 @@ class WC_Payments_Express_Checkout_Button_Helper_Test extends WCPAY_UnitTestCase
 	}
 
 	/**
-	 * Stubs the page context rather than using the `woocommerce_is_cart` filter, which `is_cart()` lacks in older supported WooCommerce versions (e.g. 7.6).
+	 * Stubs the page context rather than using the `poocommerce_is_cart` filter, which `is_cart()` lacks in older supported PooCommerce versions (e.g. 7.6).
 	 *
 	 * @return WC_Payments_Express_Checkout_Button_Helper|MockObject
 	 */
@@ -1862,12 +1862,12 @@ class WC_Payments_Express_Checkout_Button_Helper_Test extends WCPAY_UnitTestCase
 	}
 
 	/**
-	 * The express checkout markup is emitted from `woocommerce_after_add_to_cart_form`, which
+	 * The express checkout markup is emitted from `poocommerce_after_add_to_cart_form`, which
 	 * fires inside the shortcode's own WP_Query loop — so by then the `$post` and `$wp_query`
 	 * globals point at the embedded product rather than the host page. The helper has to keep
 	 * recognising the page there, or the buttons are never rendered.
 	 *
-	 * The `sku` attribute is what exposes this: WooCommerce queries it via `meta_query` with no
+	 * The `sku` attribute is what exposes this: PooCommerce queries it via `meta_query` with no
 	 * post ID, so the inner query never derives `is_singular` the way the `id` attribute does.
 	 *
 	 * @dataProvider get_product_shortcode_syntaxes_provider
@@ -1877,7 +1877,7 @@ class WC_Payments_Express_Checkout_Button_Helper_Test extends WCPAY_UnitTestCase
 
 		$observed = [];
 		add_action(
-			'woocommerce_after_add_to_cart_form',
+			'poocommerce_after_add_to_cart_form',
 			function () use ( &$observed ) {
 				$resolved               = $this->system_under_test->get_product();
 				$observed['is_product'] = $this->system_under_test->is_product();
@@ -1889,13 +1889,13 @@ class WC_Payments_Express_Checkout_Button_Helper_Test extends WCPAY_UnitTestCase
 		// comments.php.
 		$this->setExpectedDeprecated( 'Theme without comments.php' );
 
-		// Render through WooCommerce's real shortcode rather than emulating its query, so this
+		// Render through PooCommerce's real shortcode rather than emulating its query, so this
 		// keeps testing the actual conditions the button markup is emitted under.
 		ob_start();
 		do_shortcode( sprintf( $shortcode_template, $use_sku ? $sku : $product->get_id() ) );
 		ob_end_clean();
 
-		$this->assertArrayHasKey( 'is_product', $observed, 'woocommerce_after_add_to_cart_form did not fire.' );
+		$this->assertArrayHasKey( 'is_product', $observed, 'poocommerce_after_add_to_cart_form did not fire.' );
 		$this->assertTrue( $observed['is_product'] );
 		$this->assertSame( $product->get_id(), $observed['product_id'] );
 	}
@@ -1925,11 +1925,11 @@ class WC_Payments_Express_Checkout_Button_Helper_Test extends WCPAY_UnitTestCase
 	public function test_repeated_calls_look_the_sku_up_once() {
 		list( $product ) = $this->go_to_page_embedding_product( '[product_page sku="%s"]', true );
 
-		// Counted from here so the uniqueness check WooCommerce runs when the fixture saves
+		// Counted from here so the uniqueness check PooCommerce runs when the fixture saves
 		// its SKU isn't mistaken for one of the helper's lookups.
 		$lookups = 0;
 		add_filter(
-			'woocommerce_get_product_id_by_sku',
+			'poocommerce_get_product_id_by_sku',
 			function ( $id ) use ( &$lookups ) {
 				++$lookups;
 				return $id;

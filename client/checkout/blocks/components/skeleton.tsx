@@ -7,11 +7,11 @@ import clsx from 'clsx';
 /**
  * Internal dependencies
  *
- * This component is ported from WooCommerce core's Skeleton component:
- * - Component: woocommerce/client/blocks/assets/js/base/components/skeleton/index.tsx
- * - Styles: woocommerce/client/blocks/assets/js/base/components/skeleton/style.scss
- * - Mixin: woocommerce/client/blocks/assets/css/abstracts/_mixins.scss (skeleton-animation, lines 352-383)
- * - Variables: woocommerce/client/blocks/assets/css/abstracts/_variables.scss ($universal-border-radius: 4px)
+ * This component is ported from PooCommerce core's Skeleton component:
+ * - Component: poocommerce/client/blocks/assets/js/base/components/skeleton/index.tsx
+ * - Styles: poocommerce/client/blocks/assets/js/base/components/skeleton/style.scss
+ * - Mixin: poocommerce/client/blocks/assets/css/abstracts/_mixins.scss (skeleton-animation, lines 352-383)
+ * - Variables: poocommerce/client/blocks/assets/css/abstracts/_variables.scss ($universal-border-radius: 4px)
  * - Keyframes renamed from wc-skeleton-shimmer to wcpay-skeleton-shimmer to avoid collisions with core.
  */
 import './skeleton.scss';

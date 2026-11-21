@@ -200,7 +200,7 @@ describe( 'ExpressCheckoutOrderApi', () => {
 
 		// First attempt: the Store API persists the wallet email, then the payment throws.
 		apiFetch.mockRejectedValueOnce( {
-			code: 'woocommerce_rest_checkout_process_payment_error',
+			code: 'poocommerce_rest_checkout_process_payment_error',
 			message: 'Card declined.',
 		} );
 		await expect(
@@ -209,7 +209,7 @@ describe( 'ExpressCheckoutOrderApi', () => {
 			} )
 		).rejects.toEqual(
 			expect.objectContaining( {
-				code: 'woocommerce_rest_checkout_process_payment_error',
+				code: 'poocommerce_rest_checkout_process_payment_error',
 			} )
 		);
 
@@ -280,7 +280,7 @@ describe( 'ExpressCheckoutOrderApi', () => {
 
 		// Address validation fails before the email is persisted to the order.
 		apiFetch.mockRejectedValueOnce( {
-			code: 'woocommerce_rest_invalid_address',
+			code: 'poocommerce_rest_invalid_address',
 			message: 'Phone is required.',
 		} );
 		await expect(
@@ -289,13 +289,13 @@ describe( 'ExpressCheckoutOrderApi', () => {
 			} )
 		).rejects.toEqual(
 			expect.objectContaining( {
-				code: 'woocommerce_rest_invalid_address',
+				code: 'poocommerce_rest_invalid_address',
 			} )
 		);
 
 		// Retry still authorizes with the order's (unchanged) empty email, surfacing the real error.
 		apiFetch.mockRejectedValueOnce( {
-			code: 'woocommerce_rest_invalid_address',
+			code: 'poocommerce_rest_invalid_address',
 			message: 'Phone is required.',
 		} );
 		await expect(
@@ -304,7 +304,7 @@ describe( 'ExpressCheckoutOrderApi', () => {
 			} )
 		).rejects.toEqual(
 			expect.objectContaining( {
-				code: 'woocommerce_rest_invalid_address',
+				code: 'poocommerce_rest_invalid_address',
 			} )
 		);
 

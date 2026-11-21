@@ -150,7 +150,7 @@ exports[`Payment details page should match the snapshot - Charge query param 1`]
 
 <div>
   <div
-    class="wcpay-payment-details woocommerce-payments-page"
+    class="wcpay-payment-details poocommerce-payments-page"
     id=""
     style="max-width: 1032px;"
   >
@@ -810,7 +810,7 @@ exports[`Payment details page should match the snapshot - Payment Intent query p
 
 <div>
   <div
-    class="wcpay-payment-details woocommerce-payments-page"
+    class="wcpay-payment-details poocommerce-payments-page"
     id=""
     style="max-width: 1032px;"
   >
@@ -1175,7 +1175,7 @@ exports[`Payment details page should match the snapshot - Payment Intent query p
           data-wp-component="CardBody"
         >
           <div
-            class="woocommerce-timeline"
+            class="poocommerce-timeline"
           >
             <p
               class="timeline_no_events"

@@ -61,7 +61,7 @@ const SetupLivePaymentsModal: React.FC< Props > = ( {
 		<Modal
 			title={ __(
 				'Activate payments on your store',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			) }
 			className="wcpay-setup-real-payments-modal"
 			isDismissible={ true }
@@ -72,7 +72,7 @@ const SetupLivePaymentsModal: React.FC< Props > = ( {
 					<p>
 						{ __(
 							"Before continuing, please make sure that you're aware of the following:",
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 					</p>
 				</div>
@@ -83,7 +83,7 @@ const SetupLivePaymentsModal: React.FC< Props > = ( {
 					<p className="wcpay-setup-real-payments-modal__content__item-flex__description">
 						{ __(
 							'Your test account will be deactivated, but your transactions can be found in your order history.',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 					</p>
 				</div>
@@ -96,7 +96,7 @@ const SetupLivePaymentsModal: React.FC< Props > = ( {
 							/* translators: %s: WooPayments */
 							__(
 								'To use %s, you will need to verify your business details.',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							),
 							'WooPayments'
 						) }
@@ -109,7 +109,7 @@ const SetupLivePaymentsModal: React.FC< Props > = ( {
 					<p className="wcpay-setup-real-payments-modal__content__item-flex__description">
 						{ __(
 							'In order to receive payouts, you will need to provide your bank details.',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 					</p>
 				</div>
@@ -122,7 +122,7 @@ const SetupLivePaymentsModal: React.FC< Props > = ( {
 					onClick={ handleSetup }
 					__next40pxDefaultSize
 				>
-					{ __( 'Activate payments', 'woocommerce-payments' ) }
+					{ __( 'Activate payments', 'poocommerce-payments' ) }
 				</Button>
 			</div>
 		</Modal>

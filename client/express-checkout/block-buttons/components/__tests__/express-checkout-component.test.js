@@ -37,7 +37,7 @@ describe( 'ExpressCheckoutComponent', () => {
 		const list = document.createElement( 'ul' );
 		const slot = document.createElement( 'li' );
 		slot.id =
-			'express-payment-method-woocommerce_payments_express_checkout_applePay';
+			'express-payment-method-poocommerce_payments_express_checkout_applePay';
 		list.appendChild( slot );
 		document.body.appendChild( list );
 
