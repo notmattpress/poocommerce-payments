@@ -2,7 +2,7 @@
 /**
  * Class Express_Checkout_Element_States_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\Constants\Express_Checkout_Element_States;

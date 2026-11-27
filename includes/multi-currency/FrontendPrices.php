@@ -1,8 +1,8 @@
 <?php
 /**
- * WooCommerce Payments Multi-Currency Frontend Prices
+ * PooCommerce Payments Multi-Currency Frontend Prices
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\MultiCurrency;
@@ -49,7 +49,7 @@ class FrontendPrices {
 	private $shipping_method_rendering_fee = null;
 
 	/**
-	 * The coupon WooCommerce is re-applying to an existing order, if any.
+	 * The coupon PooCommerce is re-applying to an existing order, if any.
 	 *
 	 * @var \WC_Coupon|false|null
 	 */
@@ -91,40 +91,40 @@ class FrontendPrices {
 		}
 
 		// Simple product price hooks.
-		add_filter( 'woocommerce_product_get_price', [ $this, 'get_product_price_string' ], 99, 2 );
-		add_filter( 'woocommerce_product_get_regular_price', [ $this, 'get_product_price_string' ], 99, 2 );
-		add_filter( 'woocommerce_product_get_sale_price', [ $this, 'get_product_price_string' ], 99, 2 );
+		add_filter( 'poocommerce_product_get_price', [ $this, 'get_product_price_string' ], 99, 2 );
+		add_filter( 'poocommerce_product_get_regular_price', [ $this, 'get_product_price_string' ], 99, 2 );
+		add_filter( 'poocommerce_product_get_sale_price', [ $this, 'get_product_price_string' ], 99, 2 );
 
 		// Variation price hooks.
-		add_filter( 'woocommerce_product_variation_get_price', [ $this, 'get_product_price_string' ], 99, 2 );
-		add_filter( 'woocommerce_product_variation_get_regular_price', [ $this, 'get_product_price_string' ], 99, 2 );
-		add_filter( 'woocommerce_product_variation_get_sale_price', [ $this, 'get_product_price_string' ], 99, 2 );
+		add_filter( 'poocommerce_product_variation_get_price', [ $this, 'get_product_price_string' ], 99, 2 );
+		add_filter( 'poocommerce_product_variation_get_regular_price', [ $this, 'get_product_price_string' ], 99, 2 );
+		add_filter( 'poocommerce_product_variation_get_sale_price', [ $this, 'get_product_price_string' ], 99, 2 );
 
 		// Variation price range hooks.
-		add_filter( 'woocommerce_variation_prices', [ $this, 'get_variation_price_range' ], 99 );
-		add_filter( 'woocommerce_get_variation_prices_hash', [ $this, 'add_exchange_rate_to_variation_prices_hash' ], 99 );
+		add_filter( 'poocommerce_variation_prices', [ $this, 'get_variation_price_range' ], 99 );
+		add_filter( 'poocommerce_get_variation_prices_hash', [ $this, 'add_exchange_rate_to_variation_prices_hash' ], 99 );
 
 		// Shipping methods hooks.
-		add_filter( 'woocommerce_shipping_zone_shipping_methods', [ $this, 'convert_free_shipping_method_min_amount' ], 99 );
-		add_filter( 'woocommerce_evaluate_shipping_cost_args', [ $this, 'convert_shipping_cost_args_to_store_currency' ], 99, 3 );
+		add_filter( 'poocommerce_shipping_zone_shipping_methods', [ $this, 'convert_free_shipping_method_min_amount' ], 99 );
+		add_filter( 'poocommerce_evaluate_shipping_cost_args', [ $this, 'convert_shipping_cost_args_to_store_currency' ], 99, 3 );
 		add_filter( 'wc_get_price_decimals', [ $this, 'use_store_currency_decimals_during_shipping_fee' ], 990 );
 		add_filter( 'wc_get_price_decimal_separator', [ $this, 'use_store_decimal_separator_during_shipping_fee' ], 990 );
 		add_filter( 'shortcode_atts_fee', [ $this, 'start_shipping_fee_rendering' ] );
 		add_filter( 'do_shortcode_tag', [ $this, 'end_shipping_fee_rendering' ], PHP_INT_MIN, 2 );
 		// PHP_INT_MIN so it runs before plugins that set item prices on the same action.
-		add_action( 'woocommerce_before_calculate_totals', [ $this, 'reset_shipping_fee_rendering' ], PHP_INT_MIN );
-		add_filter( 'woocommerce_shipping_method_add_rate_args', [ $this, 'convert_shipping_method_rate_cost' ], 99, 2 );
+		add_action( 'poocommerce_before_calculate_totals', [ $this, 'reset_shipping_fee_rendering' ], PHP_INT_MIN );
+		add_filter( 'poocommerce_shipping_method_add_rate_args', [ $this, 'convert_shipping_method_rate_cost' ], 99, 2 );
 		// PHP_INT_MAX so the marker is stamped last and survives a plugin that rebuilds the packages array on this filter.
-		add_filter( 'woocommerce_cart_shipping_packages', [ $this, 'add_currency_to_shipping_packages' ], PHP_INT_MAX );
+		add_filter( 'poocommerce_cart_shipping_packages', [ $this, 'add_currency_to_shipping_packages' ], PHP_INT_MAX );
 
 		// Coupon hooks.
-		add_filter( 'woocommerce_coupon_get_amount', [ $this, 'get_coupon_amount' ], 99, 2 );
-		add_filter( 'woocommerce_coupon_get_minimum_amount', [ $this, 'get_coupon_min_max_amount' ], 99, 2 );
-		add_filter( 'woocommerce_coupon_get_maximum_amount', [ $this, 'get_coupon_min_max_amount' ], 99, 2 );
-		add_filter( 'woocommerce_order_recalculate_coupons_coupon_object', [ $this, 'set_order_coupon' ], 99, 4 );
+		add_filter( 'poocommerce_coupon_get_amount', [ $this, 'get_coupon_amount' ], 99, 2 );
+		add_filter( 'poocommerce_coupon_get_minimum_amount', [ $this, 'get_coupon_min_max_amount' ], 99, 2 );
+		add_filter( 'poocommerce_coupon_get_maximum_amount', [ $this, 'get_coupon_min_max_amount' ], 99, 2 );
+		add_filter( 'poocommerce_order_recalculate_coupons_coupon_object', [ $this, 'set_order_coupon' ], 99, 4 );
 
 		// Order hooks.
-		add_filter( 'woocommerce_new_order', [ $this, 'add_order_meta' ], 99, 2 );
+		add_filter( 'poocommerce_new_order', [ $this, 'add_order_meta' ], 99, 2 );
 
 		// Price Filter Hooks.
 		add_filter( 'rest_post_dispatch', [ $this, 'maybe_modify_price_ranges_rest_response' ], 10, 3 );
@@ -366,7 +366,7 @@ class FrontendPrices {
 	 * rounds to wc_get_price_decimals(), which we otherwise filter to the selected currency and would
 	 * truncate the store-currency fee.
 	 *
-	 * @param int $decimals The decimals WooCommerce would use.
+	 * @param int $decimals The decimals PooCommerce would use.
 	 *
 	 * @return int
 	 */
@@ -380,7 +380,7 @@ class FrontendPrices {
 			return $decimals;
 		}
 
-		return absint( get_option( 'woocommerce_price_num_decimals', 2 ) );
+		return absint( get_option( 'poocommerce_price_num_decimals', 2 ) );
 	}
 
 	/**
@@ -388,7 +388,7 @@ class FrontendPrices {
 	 * The merchant types them in the store's number format, and WC_Shipping_Flat_Rate::fee() (WC 11.3+)
 	 * parses them with wc_get_price_decimal_separator(), which we otherwise switch to the selected currency.
 	 *
-	 * @param string $separator The decimal separator WooCommerce would use.
+	 * @param string $separator The decimal separator PooCommerce would use.
 	 *
 	 * @return string
 	 */
@@ -402,7 +402,7 @@ class FrontendPrices {
 		}
 
 		// wc_get_price_decimal_separator() falls back to a dot when the option is empty.
-		return (string) get_option( 'woocommerce_price_decimal_sep' );
+		return (string) get_option( 'poocommerce_price_decimal_sep' );
 	}
 
 	/**
@@ -471,7 +471,7 @@ class FrontendPrices {
 			/**
 			 * We need to keep the `cost` structure intact when applying
 			 * multi-currency conversions, because downstream it is important
-			 * for WooCommerce to keep the taxes flow consistent.
+			 * for PooCommerce to keep the taxes flow consistent.
 			 */
 			if ( is_array( $args['cost'] ) ) {
 				$args['cost'] = array_map(
@@ -550,7 +550,7 @@ class FrontendPrices {
 		// converted at checkout, while legacy `coupon_data` holds the raw store-currency amount, which must
 		// still be converted. A coupon rebuilt with no stored amount takes its value from the order line,
 		// already in the order's currency, so it is left as is.
-		// Known gap: WooCommerce's coupon data conversion tool (WC >= 8.7) rebuilt `coupon_info` from
+		// Known gap: PooCommerce's coupon data conversion tool (WC >= 8.7) rebuilt `coupon_info` from
 		// `coupon_data` without Multi-Currency, so on those orders a deleted coupon's amount is still in the
 		// store currency but is treated as converted.
 		// Cast like WC_Abstract_Order::get_temporary_coupon(), which also accepts object-valued meta.
@@ -584,7 +584,7 @@ class FrontendPrices {
 	}
 
 	/**
-	 * Adds the selected currency to each shipping package so WooCommerce's package hash changes on a
+	 * Adds the selected currency to each shipping package so PooCommerce's package hash changes on a
 	 * currency switch and cached shipping rates are rebuilt. WC's hash omits the currency, and the rate
 	 * is converted once at build time, so without this the stale rate is reused.
 	 *
@@ -657,7 +657,7 @@ class FrontendPrices {
 			return;
 		}
 
-		// A third-party currency switcher sets the order currency through the `woocommerce_currency`
+		// A third-party currency switcher sets the order currency through the `poocommerce_currency`
 		// filter, without the shopper selecting it in Multi-Currency. Multi-Currency did not convert
 		// that order, and a rate recorded for it would make Analytics convert the order on top of the
 		// switcher's own conversion. Orders given an explicit currency, such as through the REST API,
@@ -665,7 +665,7 @@ class FrontendPrices {
 		$order_currency = $order->get_currency();
 		if (
 			$this->multi_currency->get_selected_currency()->get_code() !== $order_currency
-			&& get_woocommerce_currency() === $order_currency
+			&& get_poocommerce_currency() === $order_currency
 		) {
 			return;
 		}

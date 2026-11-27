@@ -2,7 +2,7 @@
 /**
  * Subscription helpers.
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\Constants\Currency_Code;

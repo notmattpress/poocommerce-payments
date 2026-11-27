@@ -2,7 +2,7 @@
 /**
  * Class Database_Cache_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\Database_Cache;

@@ -3,7 +3,7 @@
  */
 import React, { useCallback, useEffect } from 'react';
 // @ts-expect-error The component exists.
-import { TextControlWithAffixes } from '@woocommerce/components';
+import { TextControlWithAffixes } from '@poocommerce/components';
 import './style.scss';
 
 interface AmountInputProps {

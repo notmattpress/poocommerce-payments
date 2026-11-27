@@ -58,7 +58,7 @@ test.describe( 'Shopper > Pay for Order', { tag: '@critical' }, () => {
 				await shopperNavigation.goToOrders( shopperPage );
 
 				const payForOrderButton = shopperPage
-					.locator( '.woocommerce-button.button.pay', {
+					.locator( '.poocommerce-button.button.pay', {
 						hasText: 'Pay',
 					} )
 					.first();

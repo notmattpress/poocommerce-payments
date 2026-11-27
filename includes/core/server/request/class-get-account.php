@@ -2,7 +2,7 @@
 /**
  * Class file for WCPay\Core\Server\Request\Get_Account.
  *
- * @package WooCommerce Payments
+ * @package PooCommerce Payments
  */
 
 namespace WCPay\Core\Server\Request;
@@ -40,11 +40,11 @@ class Get_Account extends Request {
 	}
 
 	/**
-	 * Set the WooCommerce store ID to send with the account request.
+	 * Set the PooCommerce store ID to send with the account request.
 	 *
-	 * @param string $woocommerce_store_id The WooCommerce store ID (UUID).
+	 * @param string $poocommerce_store_id The PooCommerce store ID (UUID).
 	 */
-	public function set_woocommerce_store_id( string $woocommerce_store_id ): void {
-		$this->set_param( 'woocommerce_store_id', $woocommerce_store_id );
+	public function set_poocommerce_store_id( string $poocommerce_store_id ): void {
+		$this->set_param( 'poocommerce_store_id', $poocommerce_store_id );
 	}
 }

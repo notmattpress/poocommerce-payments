@@ -239,7 +239,7 @@ class UPE_Payment_Method {
 				$order = WC_Payments_Utils::get_authorized_order_from_payment_link();
 			}
 
-			$currency = get_woocommerce_currency();
+			$currency = get_poocommerce_currency();
 			if ( $order ) {
 				$currency = $order->get_currency();
 			}
@@ -503,6 +503,6 @@ class UPE_Payment_Method {
 			}
 		}
 
-		return get_woocommerce_currency();
+		return get_poocommerce_currency();
 	}
 }

@@ -97,7 +97,7 @@ export const WooPayConnectIframe = () => {
 			} }
 			title={ __(
 				'WooPay Connect Direct Checkout',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			) }
 		/>
 	);

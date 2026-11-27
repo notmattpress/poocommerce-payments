@@ -2,7 +2,7 @@
 /**
  * Intention fraud metadata regression tests.
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\Core\Server\Request\Create_And_Confirm_Intention;

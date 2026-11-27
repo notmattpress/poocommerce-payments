@@ -2,7 +2,7 @@
 /**
  * Subscription WC_Subscriptions_Order helper.
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 /**

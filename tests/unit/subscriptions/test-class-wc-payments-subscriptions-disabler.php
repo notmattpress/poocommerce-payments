@@ -91,7 +91,7 @@ class WC_Payments_Subscriptions_Disabler_Test extends WCPAY_UnitTestCase {
 	 * Ensure the account menu subscriptions entry is removed.
 	 */
 	public function test_remove_account_menu_item_removes_subscription_entry() {
-		update_option( 'woocommerce_myaccount_subscriptions_endpoint', 'subscriptions' );
+		update_option( 'poocommerce_myaccount_subscriptions_endpoint', 'subscriptions' );
 
 		$menu_items = [
 			'dashboard'     => 'Dashboard',
@@ -125,7 +125,7 @@ class WC_Payments_Subscriptions_Disabler_Test extends WCPAY_UnitTestCase {
 	}
 
 	/**
-	 * Ensure subscription WooCommerce settings tab is removed.
+	 * Ensure subscription PooCommerce settings tab is removed.
 	 */
 	public function test_filter_settings_tabs_removes_subscription_tab() {
 		$tabs = [
@@ -183,7 +183,7 @@ class WC_Payments_Subscriptions_Disabler_Test extends WCPAY_UnitTestCase {
 	 */
 	public function test_remove_related_subscriptions_section() {
 		add_action(
-			'woocommerce_order_details_after_order_table',
+			'poocommerce_order_details_after_order_table',
 			[ 'WC_Subscriptions_Order', 'add_subscriptions_to_view_order_templates' ],
 			10,
 			1
@@ -191,7 +191,7 @@ class WC_Payments_Subscriptions_Disabler_Test extends WCPAY_UnitTestCase {
 
 		$this->assertNotFalse(
 			has_action(
-				'woocommerce_order_details_after_order_table',
+				'poocommerce_order_details_after_order_table',
 				[ 'WC_Subscriptions_Order', 'add_subscriptions_to_view_order_templates' ]
 			)
 		);
@@ -200,7 +200,7 @@ class WC_Payments_Subscriptions_Disabler_Test extends WCPAY_UnitTestCase {
 
 		$this->assertFalse(
 			has_action(
-				'woocommerce_order_details_after_order_table',
+				'poocommerce_order_details_after_order_table',
 				[ 'WC_Subscriptions_Order', 'add_subscriptions_to_view_order_templates' ]
 			)
 		);
@@ -224,7 +224,7 @@ class WC_Payments_Subscriptions_Disabler_Test extends WCPAY_UnitTestCase {
 				[
 					'page'                        => 'wc-settings',
 					'tab'                         => 'checkout',
-					'section'                     => 'woocommerce_payments',
+					'section'                     => 'poocommerce_payments',
 					'wcpay_subscription_disabled' => '1',
 				],
 				admin_url( 'admin.php' )
@@ -254,7 +254,7 @@ class WC_Payments_Subscriptions_Disabler_Test extends WCPAY_UnitTestCase {
 				[
 					'page'                        => 'wc-settings',
 					'tab'                         => 'checkout',
-					'section'                     => 'woocommerce_payments',
+					'section'                     => 'poocommerce_payments',
 					'wcpay_subscription_disabled' => '1',
 				],
 				admin_url( 'admin.php' )
@@ -278,7 +278,7 @@ class WC_Payments_Subscriptions_Disabler_Test extends WCPAY_UnitTestCase {
 				[
 					'page'                        => 'wc-settings',
 					'tab'                         => 'checkout',
-					'section'                     => 'woocommerce_payments',
+					'section'                     => 'poocommerce_payments',
 					'wcpay_subscription_disabled' => '1',
 				],
 				admin_url( 'admin.php' )
@@ -319,7 +319,7 @@ class WC_Payments_Subscriptions_Disabler_Test extends WCPAY_UnitTestCase {
 				[
 					'page'                        => 'wc-settings',
 					'tab'                         => 'checkout',
-					'section'                     => 'woocommerce_payments',
+					'section'                     => 'poocommerce_payments',
 					'wcpay_subscription_disabled' => '1',
 				],
 				admin_url( 'admin.php' )
@@ -367,7 +367,7 @@ class WC_Payments_Subscriptions_Disabler_Test extends WCPAY_UnitTestCase {
 				[
 					'page'                        => 'wc-settings',
 					'tab'                         => 'checkout',
-					'section'                     => 'woocommerce_payments',
+					'section'                     => 'poocommerce_payments',
 					'wcpay_subscription_disabled' => '1',
 				],
 				admin_url( 'admin.php' )
@@ -428,8 +428,8 @@ class WC_Payments_Subscriptions_Disabler_Test extends WCPAY_UnitTestCase {
 			]
 		);
 
-		update_option( 'woocommerce_myaccount_page_id', $page_id );
-		update_option( 'woocommerce_myaccount_subscriptions_endpoint', 'subscriptions' );
+		update_option( 'poocommerce_myaccount_page_id', $page_id );
+		update_option( 'poocommerce_myaccount_subscriptions_endpoint', 'subscriptions' );
 
 		$account_url = get_permalink( $page_id );
 
@@ -454,11 +454,11 @@ class WC_Payments_Subscriptions_Disabler_Test extends WCPAY_UnitTestCase {
 		$test_callback = function () {
 			return true;
 		};
-		add_action( 'woocommerce_renewal_order_payment_complete', $test_callback );
+		add_action( 'poocommerce_renewal_order_payment_complete', $test_callback );
 
 		// Verify the hook exists before disabler runs.
 		$this->assertIsInt(
-			has_action( 'woocommerce_renewal_order_payment_complete', $test_callback ),
+			has_action( 'poocommerce_renewal_order_payment_complete', $test_callback ),
 			'Renewal hook should exist before disabler init'
 		);
 
@@ -467,12 +467,12 @@ class WC_Payments_Subscriptions_Disabler_Test extends WCPAY_UnitTestCase {
 
 		// Verify the renewal hook still exists and was NOT removed by disabler.
 		$this->assertIsInt(
-			has_action( 'woocommerce_renewal_order_payment_complete', $test_callback ),
+			has_action( 'poocommerce_renewal_order_payment_complete', $test_callback ),
 			'Disabler should NOT remove the renewal order payment complete hook'
 		);
 
 		// Clean up.
-		remove_action( 'woocommerce_renewal_order_payment_complete', $test_callback );
+		remove_action( 'poocommerce_renewal_order_payment_complete', $test_callback );
 	}
 
 	/**
@@ -485,27 +485,27 @@ class WC_Payments_Subscriptions_Disabler_Test extends WCPAY_UnitTestCase {
 		$payment_callback  = function () {};
 		$checkout_callback = function () {};
 
-		add_action( 'woocommerce_subscription_payment_complete', $payment_callback );
-		add_action( 'woocommerce_checkout_subscription_created', $checkout_callback );
+		add_action( 'poocommerce_subscription_payment_complete', $payment_callback );
+		add_action( 'poocommerce_checkout_subscription_created', $checkout_callback );
 
 		// Initialize the disabler.
 		$this->disabler->init_hooks();
 
 		// Verify payment complete hook still exists (not removed by disabler).
 		$this->assertIsInt(
-			has_action( 'woocommerce_subscription_payment_complete', $payment_callback ),
+			has_action( 'poocommerce_subscription_payment_complete', $payment_callback ),
 			'Disabler should NOT remove subscription payment complete hook'
 		);
 
 		// Verify checkout subscription creation hook still exists.
 		$this->assertIsInt(
-			has_action( 'woocommerce_checkout_subscription_created', $checkout_callback ),
+			has_action( 'poocommerce_checkout_subscription_created', $checkout_callback ),
 			'Disabler should NOT remove checkout subscription created hook'
 		);
 
 		// Clean up.
-		remove_action( 'woocommerce_subscription_payment_complete', $payment_callback );
-		remove_action( 'woocommerce_checkout_subscription_created', $checkout_callback );
+		remove_action( 'poocommerce_subscription_payment_complete', $payment_callback );
+		remove_action( 'poocommerce_checkout_subscription_created', $checkout_callback );
 	}
 
 	/**
@@ -518,11 +518,11 @@ class WC_Payments_Subscriptions_Disabler_Test extends WCPAY_UnitTestCase {
 
 		// List of critical status change hooks that should NOT be affected.
 		$status_hooks = [
-			'woocommerce_subscription_status_cancelled',
-			'woocommerce_subscription_status_expired',
-			'woocommerce_subscription_status_on-hold',
-			'woocommerce_subscription_status_active',
-			'woocommerce_subscription_status_pending-cancel',
+			'poocommerce_subscription_status_cancelled',
+			'poocommerce_subscription_status_expired',
+			'poocommerce_subscription_status_on-hold',
+			'poocommerce_subscription_status_active',
+			'poocommerce_subscription_status_pending-cancel',
 		];
 
 		foreach ( $status_hooks as $hook ) {
@@ -564,14 +564,14 @@ class WC_Payments_Subscriptions_Disabler_Test extends WCPAY_UnitTestCase {
 			'Disabler should hook into product_type_selector to hide subscription types'
 		);
 
-		$hook_priority = has_filter( 'woocommerce_settings_tabs_array', [ $this->disabler, 'filter_settings_tabs' ] );
+		$hook_priority = has_filter( 'poocommerce_settings_tabs_array', [ $this->disabler, 'filter_settings_tabs' ] );
 		$this->assertNotFalse(
 			$hook_priority,
 			'Disabler should hook into settings tabs to remove subscription tab'
 		);
 
 		// Frontend UI hooks that SHOULD be present (these run regardless of is_admin()).
-		$hook_priority = has_filter( 'woocommerce_account_menu_items', [ $this->disabler, 'remove_account_menu_item' ] );
+		$hook_priority = has_filter( 'poocommerce_account_menu_items', [ $this->disabler, 'remove_account_menu_item' ] );
 		$this->assertNotFalse(
 			$hook_priority,
 			'Disabler should hook into account menu to remove subscription links'
@@ -619,8 +619,8 @@ class WC_Payments_Subscriptions_Disabler_Test extends WCPAY_UnitTestCase {
 		// Simulate renewal order creation (what happens in webhook handler), including the
 		// filters subscriptions core passes each new renewal order through before returning it.
 		$renewal_order = wcs_create_renewal_order( $mock_subscription );
-		$renewal_order = apply_filters( 'wcs_new_order_created', $renewal_order, $mock_subscription, 'renewal_order' ); // phpcs:ignore WooCommerce.Commenting.CommentHooks.MissingHookComment
-		$renewal_order = apply_filters( 'wcs_renewal_order_created', $renewal_order, $mock_subscription ); // phpcs:ignore WooCommerce.Commenting.CommentHooks.MissingHookComment
+		$renewal_order = apply_filters( 'wcs_new_order_created', $renewal_order, $mock_subscription, 'renewal_order' ); // phpcs:ignore PooCommerce.Commenting.CommentHooks.MissingHookComment
+		$renewal_order = apply_filters( 'wcs_renewal_order_created', $renewal_order, $mock_subscription ); // phpcs:ignore PooCommerce.Commenting.CommentHooks.MissingHookComment
 
 		// Verify renewal order was created successfully.
 		$this->assertInstanceOf( 'WC_Order', $renewal_order, 'Renewal order should be created even with disabler active' );
@@ -694,7 +694,7 @@ class WC_Payments_Subscriptions_Disabler_Test extends WCPAY_UnitTestCase {
 	public function test_display_subscription_disabled_notice() {
 		$_GET['wcpay_subscription_disabled'] = '1';
 		$_GET['page']                        = 'wc-settings';
-		$_GET['section']                     = 'woocommerce_payments';
+		$_GET['section']                     = 'poocommerce_payments';
 
 		ob_start();
 		$this->disabler->display_subscription_disabled_notice();
@@ -702,8 +702,8 @@ class WC_Payments_Subscriptions_Disabler_Test extends WCPAY_UnitTestCase {
 
 		$this->assertStringContainsString( 'To access your subscriptions data and keep managing recurring payments', $output );
 		$this->assertStringContainsString( 'Built-in support for subscriptions is no longer available in WooPayments.', $output );
-		$this->assertStringContainsString( 'WooCommerce Subscriptions', $output );
-		$this->assertStringContainsString( 'woocommerce.com/products/woocommerce-subscriptions', $output );
+		$this->assertStringContainsString( 'PooCommerce Subscriptions', $output );
+		$this->assertStringContainsString( 'poocommerce.com/products/poocommerce-subscriptions', $output );
 		$this->assertStringNotContainsString( 'is-dismissible', $output, 'Notice should not be dismissible' );
 
 		unset( $_GET['wcpay_subscription_disabled'], $_GET['page'], $_GET['section'] );
@@ -778,7 +778,7 @@ class WC_Payments_Subscriptions_Disabler_Test extends WCPAY_UnitTestCase {
 	 */
 	public function test_make_variable_subscription_products_unpurchasable() {
 		add_filter(
-			'woocommerce_data_stores',
+			'poocommerce_data_stores',
 			function ( $stores ) {
 				$stores['product-variable-subscription'] = 'WC_Product_Variable_Data_Store_CPT';
 				return $stores;
@@ -1005,7 +1005,7 @@ class WC_Payments_Subscriptions_Disabler_Test extends WCPAY_UnitTestCase {
 	/**
 	 * Verify that order-pay redirects when change_payment_method parameter contains subscription ID.
 	 *
-	 * This simulates the flow when WooCommerce Subscriptions redirects from
+	 * This simulates the flow when PooCommerce Subscriptions redirects from
 	 * /my-account/subscription-payment-method/765 to /checkout/order-pay/765/?change_payment_method=765
 	 */
 	public function test_order_pay_redirects_for_change_payment_method_with_subscription_id() {
@@ -1078,11 +1078,11 @@ class WC_Payments_Subscriptions_Disabler_Test extends WCPAY_UnitTestCase {
 	/**
 	 * Verify that subscription endpoints are redirected during pre_get_posts.
 	 *
-	 * This tests the early redirect that happens BEFORE WooCommerce Subscriptions
+	 * This tests the early redirect that happens BEFORE PooCommerce Subscriptions
 	 * can redirect to the order-pay endpoint.
 	 */
 	public function test_pre_get_posts_redirects_subscription_payment_method_endpoint() {
-		update_option( 'woocommerce_myaccount_subscription_payment_method_endpoint', 'subscription-payment-method' );
+		update_option( 'poocommerce_myaccount_subscription_payment_method_endpoint', 'subscription-payment-method' );
 
 		// Create a main query with subscription-payment-method endpoint.
 		$query_args = [
@@ -1113,7 +1113,7 @@ class WC_Payments_Subscriptions_Disabler_Test extends WCPAY_UnitTestCase {
 	 * Verify that non-main queries are not redirected.
 	 */
 	public function test_pre_get_posts_ignores_non_main_queries() {
-		update_option( 'woocommerce_myaccount_subscription_payment_method_endpoint', 'subscription-payment-method' );
+		update_option( 'poocommerce_myaccount_subscription_payment_method_endpoint', 'subscription-payment-method' );
 
 		// Create a non-main query (not setting as global query).
 		$query_args = [

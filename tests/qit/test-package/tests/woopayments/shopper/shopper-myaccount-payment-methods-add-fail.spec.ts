@@ -81,7 +81,7 @@ test.describe( 'Payment Methods', { tag: '@shopper' }, () => {
 				}
 
 				// For declined-incorrect, Stripe validates client-side and shows
-				// error only in the iframe - form is never submitted to WooCommerce
+				// error only in the iframe - form is never submitted to PooCommerce
 				if ( cardType === 'declined-incorrect' ) {
 					await expect(
 						shopperPage
@@ -93,7 +93,7 @@ test.describe( 'Payment Methods', { tag: '@shopper' }, () => {
 					).toContainText( errorText );
 				} else {
 					// For all other decline types, the error comes from server
-					// and displays as a WooCommerce notice on the page
+					// and displays as a PooCommerce notice on the page
 					await expect(
 						shopperPage.getByRole( 'alert' )
 					).toHaveText( errorText, { timeout: 30000 } );

@@ -2,7 +2,7 @@
 /**
  * Class Link_WooPay_Mutual_Exclusion_Handler
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Migrations;
@@ -48,7 +48,7 @@ class Link_WooPay_Mutual_Exclusion_Handler {
 	 * Only execute the migration if not applied yet.
 	 */
 	public function maybe_migrate() {
-		$previous_version = get_option( 'woocommerce_woocommerce_payments_version' );
+		$previous_version = get_option( 'poocommerce_poocommerce_payments_version' );
 		if ( version_compare( self::VERSION_SINCE, $previous_version, '>' ) ) {
 			$this->migrate();
 		}

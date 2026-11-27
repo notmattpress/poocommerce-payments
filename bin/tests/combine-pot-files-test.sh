@@ -29,24 +29,24 @@ make_fixture() {
 	dir="$(mktemp -d "${TMPDIR:-/tmp}/combine-pot-files-test.XXXXXX")"
 	mkdir -p "$dir/dist/chunks" "$dir/languages"
 	cat > "$dir/dist/index.js.map" <<'JSON'
-{"file":"index.js","sources":["webpack://woocommerce-payments/./client/index.js"]}
+{"file":"index.js","sources":["webpack://poocommerce-payments/./client/index.js"]}
 JSON
 	cat > "$dir/dist/settings.js.map" <<'JSON'
-{"file":"settings.js","sources":["webpack://woocommerce-payments/./client/settings/index.js"]}
+{"file":"settings.js","sources":["webpack://poocommerce-payments/./client/settings/index.js"]}
 JSON
 	cat > "$dir/dist/multi-currency.js.map" <<'JSON'
-{"file":"multi-currency.js","sources":["webpack://woocommerce-payments/./includes/multi-currency/client/settings/index.js"]}
+{"file":"multi-currency.js","sources":["webpack://poocommerce-payments/./includes/multi-currency/client/settings/index.js"]}
 JSON
 	cat > "$dir/dist/chunks/123.js.map" <<'JSON'
-{"file":"chunks/123.js?ver=abc","sources":["webpack://woocommerce-payments/./client/shared/lazy.tsx"]}
+{"file":"chunks/123.js?ver=abc","sources":["webpack://poocommerce-payments/./client/shared/lazy.tsx"]}
 JSON
 	cat > "$dir/dist/chunks/orphan.js.map" <<'JSON'
-{"file":"chunks/orphan.js?ver=def","sources":["webpack://woocommerce-payments/./client/orphan.tsx"]}
+{"file":"chunks/orphan.js?ver=def","sources":["webpack://poocommerce-payments/./client/orphan.tsx"]}
 JSON
 	cat > "$dir/dist/i18n-chunk-entries.json" <<'JSON'
 {"chunks/123.js":["index.js","settings.js"]}
 JSON
-	cat > "$dir/languages/woocommerce-payments-client.pot" <<'POT'
+	cat > "$dir/languages/poocommerce-payments-client.pot" <<'POT'
 msgid ""
 msgstr ""
 
@@ -66,7 +66,7 @@ msgstr ""
 msgid "Multi-currency string"
 msgstr ""
 POT
-	cat > "$dir/languages/woocommerce-payments.pot" <<'POT'
+	cat > "$dir/languages/poocommerce-payments.pot" <<'POT'
 msgid ""
 msgstr ""
 
@@ -78,13 +78,13 @@ POT
 }
 
 run_combine() {
-	( cd "$1" && php "$COMBINE" languages/woocommerce-payments-client.pot languages/woocommerce-payments.pot )
+	( cd "$1" && php "$COMBINE" languages/poocommerce-payments-client.pot languages/poocommerce-payments.pot )
 }
 
 # Test: strings in lazy chunks are credited to the entries that load them
 DIR=$(make_fixture)
 OUT=$(run_combine "$DIR")
-POT="$DIR/languages/woocommerce-payments.pot"
+POT="$DIR/languages/poocommerce-payments.pot"
 assert_eq "$(refs_for "$POT" "Entry string")" "#: dist/index.js:1
 #: client/index.js:1" "entry string references its entry file"
 assert_eq "$(refs_for "$POT" "Lazy string")" "#: dist/index.js:1
@@ -110,18 +110,18 @@ rm -rf "$DIR"
 
 # Test: a missing client POT fails the build
 DIR=$(make_fixture)
-rm "$DIR/languages/woocommerce-payments-client.pot"
+rm "$DIR/languages/poocommerce-payments-client.pot"
 set +e
 OUT=$(run_combine "$DIR")
 EXIT=$?
 set -e
 assert_eq "$EXIT" "1" "missing client POT exits with 1"
-assert_eq "$(echo "$OUT" | grep -c "File not found: languages/woocommerce-payments-client.pot")" "1" "missing client POT explains the failure"
+assert_eq "$(echo "$OUT" | grep -c "File not found: languages/poocommerce-payments-client.pot")" "1" "missing client POT explains the failure"
 rm -rf "$DIR"
 
 # Test: a missing argument fails with usage
 set +e
-OUT=$(php "$COMBINE" languages/woocommerce-payments-client.pot)
+OUT=$(php "$COMBINE" languages/poocommerce-payments-client.pot)
 EXIT=$?
 set -e
 assert_eq "$EXIT" "1" "missing argument exits with 1"

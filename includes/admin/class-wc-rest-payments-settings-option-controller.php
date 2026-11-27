@@ -2,7 +2,7 @@
 /**
  * Class WC_REST_Payments_Settings_Option_Controller
  *
- * @package WooCommerce\Payments\Admin
+ * @package PooCommerce\Payments\Admin
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -20,9 +20,9 @@ class WC_REST_Payments_Settings_Option_Controller extends WC_Payments_REST_Contr
 	 */
 	private const ALLOWED_OPTIONS = [
 		'wcpay_multi_currency_setup_completed'             => 'bool',
-		'woocommerce_dismissed_todo_tasks'                 => 'array',
-		'woocommerce_remind_me_later_todo_tasks'           => 'array',
-		'woocommerce_deleted_todo_tasks'                   => 'array',
+		'poocommerce_dismissed_todo_tasks'                 => 'array',
+		'poocommerce_remind_me_later_todo_tasks'           => 'array',
+		'poocommerce_deleted_todo_tasks'                   => 'array',
 		'wcpay_fraud_protection_welcome_tour_dismissed'    => 'bool',
 		'wcpay_onboarding_eligibility_modal_dismissed'     => 'bool',
 		'wcpay_connection_success_modal_dismissed'         => 'bool',
@@ -105,7 +105,7 @@ class WC_REST_Payments_Settings_Option_Controller extends WC_Payments_REST_Contr
 		return new WP_Error(
 			'rest_invalid_param',
 			/* translators: %s: expected type (bool, array, or string) */
-			sprintf( __( 'Invalid value type; expected %s', 'woocommerce-payments' ), $expected_type ),
+			sprintf( __( 'Invalid value type; expected %s', 'poocommerce-payments' ), $expected_type ),
 			[ 'status' => 400 ]
 		);
 	}

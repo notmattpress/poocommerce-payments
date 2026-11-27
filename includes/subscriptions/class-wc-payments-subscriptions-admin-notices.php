@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Subscriptions_Admin_Notices
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -29,7 +29,7 @@ class WC_Payments_Subscriptions_Admin_Notices {
 			return;
 		}
 
-		// Only show if Stripe Billing is enabled and WooCommerce Subscriptions is not active.
+		// Only show if Stripe Billing is enabled and PooCommerce Subscriptions is not active.
 		if ( ! $this->is_bundled_subscriptions_enabled() ) {
 			return;
 		}
@@ -44,27 +44,27 @@ class WC_Payments_Subscriptions_Admin_Notices {
 
 		if ( version_compare( $wcpay_version, '9.7.0', '<' ) ) {
 			$message = sprintf(
-				/* translators: %1$s: WooCommerce Subscriptions */
-				__( '<strong>Important:</strong> From version 9.7 of WooPayments (scheduled for 23 July, 2025), you\'ll <strong>no longer be able to offer new product subscriptions</strong>. To avoid disruption, please install <a target="_blank" href="%1$s">WooCommerce Subscriptions</a>.', 'woocommerce-payments' ),
-				'https://woocommerce.com/products/woocommerce-subscriptions/'
+				/* translators: %1$s: PooCommerce Subscriptions */
+				__( '<strong>Important:</strong> From version 9.7 of WooPayments (scheduled for 23 July, 2025), you\'ll <strong>no longer be able to offer new product subscriptions</strong>. To avoid disruption, please install <a target="_blank" href="%1$s">PooCommerce Subscriptions</a>.', 'poocommerce-payments' ),
+				'https://poocommerce.com/products/poocommerce-subscriptions/'
 			);
 		} elseif ( version_compare( $wcpay_version, '9.8.0', '<' ) ) {
 			$message = sprintf(
-				/* translators: %1$s: WooCommerce Subscriptions */
-				__( 'WooPayments no longer allows customers to create new subscriptions. Beginning in version 9.8, billing for existing customer subscriptions will no longer be supported. To ensure there is no interruption of service, please install <a target="_blank" href="%1$s">WooCommerce Subscriptions</a>.', 'woocommerce-payments' ),
-				'https://woocommerce.com/products/woocommerce-subscriptions/'
+				/* translators: %1$s: PooCommerce Subscriptions */
+				__( 'WooPayments no longer allows customers to create new subscriptions. Beginning in version 9.8, billing for existing customer subscriptions will no longer be supported. To ensure there is no interruption of service, please install <a target="_blank" href="%1$s">PooCommerce Subscriptions</a>.', 'poocommerce-payments' ),
+				'https://poocommerce.com/products/poocommerce-subscriptions/'
 			);
 		} elseif ( version_compare( $wcpay_version, '9.9.0', '<' ) ) {
 			$message = sprintf(
-				/* translators: %1$s: WooCommerce Subscriptions */
-				__( 'WooPayments no longer supports billing for existing customer subscriptions. All subscriptions data is read-only. Please install <a target="_blank" href="%1$s">WooCommerce Subscriptions</a> to continue managing your subscriptions.', 'woocommerce-payments' ),
-				'https://woocommerce.com/products/woocommerce-subscriptions/'
+				/* translators: %1$s: PooCommerce Subscriptions */
+				__( 'WooPayments no longer supports billing for existing customer subscriptions. All subscriptions data is read-only. Please install <a target="_blank" href="%1$s">PooCommerce Subscriptions</a> to continue managing your subscriptions.', 'poocommerce-payments' ),
+				'https://poocommerce.com/products/poocommerce-subscriptions/'
 			);
 		} else {
 			$message = sprintf(
-				/* translators: %1$s: WooCommerce Subscriptions */
-				__( 'WooPayments no longer supports subscriptions capabilities and subscriptions data can no longer be accessed. Please install <a target="_blank" href="%1$s">WooCommerce Subscriptions</a> to continue managing your subscriptions.', 'woocommerce-payments' ),
-				'https://woocommerce.com/products/woocommerce-subscriptions/'
+				/* translators: %1$s: PooCommerce Subscriptions */
+				__( 'WooPayments no longer supports subscriptions capabilities and subscriptions data can no longer be accessed. Please install <a target="_blank" href="%1$s">PooCommerce Subscriptions</a> to continue managing your subscriptions.', 'poocommerce-payments' ),
+				'https://poocommerce.com/products/poocommerce-subscriptions/'
 			);
 		}
 
@@ -85,7 +85,7 @@ class WC_Payments_Subscriptions_Admin_Notices {
 			return true;
 		} elseif ( false !== strpos( $screen, 'shop_subscription' ) ) {
 			return true;
-		} elseif ( 'woocommerce_page_wc-settings' === $screen && isset( $_GET['tab'] ) && 'subscriptions' === sanitize_text_field( wp_unslash( $_GET['tab'] ) ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		} elseif ( 'poocommerce_page_wc-settings' === $screen && isset( $_GET['tab'] ) && 'subscriptions' === sanitize_text_field( wp_unslash( $_GET['tab'] ) ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			return true;
 		}
 

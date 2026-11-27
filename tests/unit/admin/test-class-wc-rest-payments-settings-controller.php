@@ -2,7 +2,7 @@
 /**
  * Class WC_REST_Payments_Settings_Controller_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use PHPUnit\Framework\MockObject\MockObject;
@@ -337,14 +337,14 @@ class WC_REST_Payments_Settings_Controller_Test extends WCPAY_UnitTestCase {
 		$this->assertFalse( $response->get_data()['is_wcpay_enabled'] );
 	}
 
-	public function test_get_settings_fails_if_user_cannot_manage_woocommerce() {
-		$cb = $this->create_can_manage_woocommerce_cap_override( false );
+	public function test_get_settings_fails_if_user_cannot_manage_poocommerce() {
+		$cb = $this->create_can_manage_poocommerce_cap_override( false );
 		add_filter( 'user_has_cap', $cb );
 		$response = rest_do_request( new WP_REST_Request( 'GET', self::$settings_route ) );
 		$this->assertEquals( 403, $response->get_status() );
 		remove_filter( 'user_has_cap', $cb );
 
-		$cb = $this->create_can_manage_woocommerce_cap_override( true );
+		$cb = $this->create_can_manage_poocommerce_cap_override( true );
 		add_filter( 'user_has_cap', $cb );
 		$response = rest_do_request( new WP_REST_Request( 'GET', self::$settings_route ) );
 		$this->assertEquals( 200, $response->get_status() );
@@ -514,14 +514,14 @@ class WC_REST_Payments_Settings_Controller_Test extends WCPAY_UnitTestCase {
 		$controller->update_settings( $request );
 	}
 
-	public function test_update_settings_fails_if_user_cannot_manage_woocommerce() {
-		$cb = $this->create_can_manage_woocommerce_cap_override( false );
+	public function test_update_settings_fails_if_user_cannot_manage_poocommerce() {
+		$cb = $this->create_can_manage_poocommerce_cap_override( false );
 		add_filter( 'user_has_cap', $cb );
 		$response = rest_do_request( new WP_REST_Request( 'POST', self::$settings_route ) );
 		$this->assertEquals( 403, $response->get_status() );
 		remove_filter( 'user_has_cap', $cb );
 
-		$cb = $this->create_can_manage_woocommerce_cap_override( true );
+		$cb = $this->create_can_manage_poocommerce_cap_override( true );
 		add_filter( 'user_has_cap', $cb );
 		$response = rest_do_request( new WP_REST_Request( 'POST', self::$settings_route ) );
 		$this->assertEquals( 200, $response->get_status() );
@@ -1065,13 +1065,13 @@ class WC_REST_Payments_Settings_Controller_Test extends WCPAY_UnitTestCase {
 
 
 	/**
-	 * @param bool $can_manage_woocommerce
+	 * @param bool $can_manage_poocommerce
 	 *
 	 * @return Closure
 	 */
-	private function create_can_manage_woocommerce_cap_override( bool $can_manage_woocommerce ) {
-		return function ( $allcaps ) use ( $can_manage_woocommerce ) {
-			$allcaps['manage_woocommerce'] = $can_manage_woocommerce;
+	private function create_can_manage_poocommerce_cap_override( bool $can_manage_poocommerce ) {
+		return function ( $allcaps ) use ( $can_manage_poocommerce ) {
+			$allcaps['manage_poocommerce'] = $can_manage_poocommerce;
 
 			return $allcaps;
 		};

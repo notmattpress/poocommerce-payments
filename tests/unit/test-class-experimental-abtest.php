@@ -2,7 +2,7 @@
 /**
  * Class Experimental_Abtest_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 /**
@@ -10,7 +10,7 @@
  */
 class Experimental_Abtest_Test extends WCPAY_UnitTestCase {
 	public function test_get_variation_returns_control_if_consent_is_false() {
-		$abtest = new \WCPay\Experimental_Abtest( '', 'woocommerce', false );
+		$abtest = new \WCPay\Experimental_Abtest( '', 'poocommerce', false );
 
 		$result = $abtest->get_variation( 'test_name' );
 
@@ -19,7 +19,7 @@ class Experimental_Abtest_Test extends WCPAY_UnitTestCase {
 
 	public function test_get_variation_returns_control_if_test_name_is_empty() {
 		$requests = $this->stub_explat_response( '{"variations":{"":"treatment"},"ttl":7200}' );
-		$abtest   = new \WCPay\Experimental_Abtest( 'jetpack:anonJ', 'woocommerce', true );
+		$abtest   = new \WCPay\Experimental_Abtest( 'jetpack:anonJ', 'poocommerce', true );
 
 		$result = $abtest->get_variation( '' );
 
@@ -29,7 +29,7 @@ class Experimental_Abtest_Test extends WCPAY_UnitTestCase {
 
 	public function test_get_variation_returns_control_if_test_name_is_invalid() {
 		$requests = $this->stub_explat_response( '{"variations":{"invalid-test-name":"treatment"},"ttl":7200}' );
-		$abtest   = new \WCPay\Experimental_Abtest( 'jetpack:anonK', 'woocommerce', true );
+		$abtest   = new \WCPay\Experimental_Abtest( 'jetpack:anonK', 'poocommerce', true );
 
 		$result = $abtest->get_variation( 'invalid-test-name' );
 
@@ -38,8 +38,8 @@ class Experimental_Abtest_Test extends WCPAY_UnitTestCase {
 	}
 
 	public function test_cache_key_is_scoped_to_the_anon_id() {
-		$first  = $this->get_cache_key( new \WCPay\Experimental_Abtest( 'woo:cJ8kL2mN', 'woocommerce', true ), 'some_test' );
-		$second = $this->get_cache_key( new \WCPay\Experimental_Abtest( 'woo:pQ4rS6tU', 'woocommerce', true ), 'some_test' );
+		$first  = $this->get_cache_key( new \WCPay\Experimental_Abtest( 'woo:cJ8kL2mN', 'poocommerce', true ), 'some_test' );
+		$second = $this->get_cache_key( new \WCPay\Experimental_Abtest( 'woo:pQ4rS6tU', 'poocommerce', true ), 'some_test' );
 
 		$this->assertNotSame(
 			$first,
@@ -51,10 +51,10 @@ class Experimental_Abtest_Test extends WCPAY_UnitTestCase {
 
 	public function test_empty_variations_response_is_cached_so_it_is_not_re_requested() {
 		$requests = $this->stub_explat_response( '{"variations":{},"assignments":{},"ttl":7200}' );
-		$abtest   = new \WCPay\Experimental_Abtest( 'jetpack:anonA', 'woocommerce', true );
+		$abtest   = new \WCPay\Experimental_Abtest( 'jetpack:anonA', 'poocommerce', true );
 
 		$first  = $abtest->get_variation( 'some_test' );
-		$second = ( new \WCPay\Experimental_Abtest( 'jetpack:anonA', 'woocommerce', true ) )->get_variation( 'some_test' );
+		$second = ( new \WCPay\Experimental_Abtest( 'jetpack:anonA', 'poocommerce', true ) )->get_variation( 'some_test' );
 
 		$this->assertSame( 'control', $first );
 		$this->assertSame( 'control', $second, 'A cached no-assignment must still resolve to control.' );
@@ -66,8 +66,8 @@ class Experimental_Abtest_Test extends WCPAY_UnitTestCase {
 
 		// Onboarding_Experiment_Abtest returns null on WP_Error so a missing assignment
 		// is never persisted. That must hold for the cached path too.
-		$first  = new \WCPay\Onboarding_Experiment_Abtest( 'jetpack:anonB', 'woocommerce', true );
-		$second = new \WCPay\Onboarding_Experiment_Abtest( 'jetpack:anonB', 'woocommerce', true );
+		$first  = new \WCPay\Onboarding_Experiment_Abtest( 'jetpack:anonB', 'poocommerce', true );
+		$second = new \WCPay\Onboarding_Experiment_Abtest( 'jetpack:anonB', 'poocommerce', true );
 
 		$this->assertNull( $first->get_variation( 'some_test' ) );
 		$this->assertNull( $second->get_variation( 'some_test' ), 'A cached no-assignment must stay indistinguishable from a fresh one.' );
@@ -91,7 +91,7 @@ class Experimental_Abtest_Test extends WCPAY_UnitTestCase {
 			3
 		);
 
-		( new \WCPay\Experimental_Abtest( 'woo:aB+c/dEfGhIjKlMnOpQr', 'woocommerce', true ) )->get_variation( 'some_test' );
+		( new \WCPay\Experimental_Abtest( 'woo:aB+c/dEfGhIjKlMnOpQr', 'poocommerce', true ) )->get_variation( 'some_test' );
 
 		$query = [];
 		parse_str( (string) wp_parse_url( (string) $captured, PHP_URL_QUERY ), $query );
@@ -106,8 +106,8 @@ class Experimental_Abtest_Test extends WCPAY_UnitTestCase {
 	public function test_a_non_numeric_ttl_is_not_cached() {
 		$requests = $this->stub_explat_response( '{"variations":{"some_test":"treatment"},"ttl":"soon"}' );
 
-		( new \WCPay\Experimental_Abtest( 'jetpack:anonD', 'woocommerce', true ) )->get_variation( 'some_test' );
-		( new \WCPay\Experimental_Abtest( 'jetpack:anonD', 'woocommerce', true ) )->get_variation( 'some_test' );
+		( new \WCPay\Experimental_Abtest( 'jetpack:anonD', 'poocommerce', true ) )->get_variation( 'some_test' );
+		( new \WCPay\Experimental_Abtest( 'jetpack:anonD', 'poocommerce', true ) )->get_variation( 'some_test' );
 
 		$this->assertSame(
 			2,
@@ -119,8 +119,8 @@ class Experimental_Abtest_Test extends WCPAY_UnitTestCase {
 	public function test_a_fractional_ttl_is_not_cached() {
 		$requests = $this->stub_explat_response( '{"variations":{"some_test":"treatment"},"ttl":0.5}' );
 
-		( new \WCPay\Experimental_Abtest( 'jetpack:anonE', 'woocommerce', true ) )->get_variation( 'some_test' );
-		( new \WCPay\Experimental_Abtest( 'jetpack:anonE', 'woocommerce', true ) )->get_variation( 'some_test' );
+		( new \WCPay\Experimental_Abtest( 'jetpack:anonE', 'poocommerce', true ) )->get_variation( 'some_test' );
+		( new \WCPay\Experimental_Abtest( 'jetpack:anonE', 'poocommerce', true ) )->get_variation( 'some_test' );
 
 		$this->assertSame(
 			2,
@@ -132,8 +132,8 @@ class Experimental_Abtest_Test extends WCPAY_UnitTestCase {
 	public function test_a_transport_failure_is_not_re_requested_within_the_backoff_window() {
 		$requests = $this->stub_explat_response( new WP_Error( 'http_request_failed', 'Timed out.' ) );
 
-		$first  = ( new \WCPay\Experimental_Abtest( 'jetpack:anonC', 'woocommerce', true ) )->get_variation( 'some_test' );
-		$second = ( new \WCPay\Experimental_Abtest( 'jetpack:anonC', 'woocommerce', true ) )->get_variation( 'some_test' );
+		$first  = ( new \WCPay\Experimental_Abtest( 'jetpack:anonC', 'poocommerce', true ) )->get_variation( 'some_test' );
+		$second = ( new \WCPay\Experimental_Abtest( 'jetpack:anonC', 'poocommerce', true ) )->get_variation( 'some_test' );
 
 		$this->assertSame( 'control', $first );
 		$this->assertSame( 'control', $second );
@@ -142,7 +142,7 @@ class Experimental_Abtest_Test extends WCPAY_UnitTestCase {
 
 	public function test_a_transport_failure_backs_off_briefly_not_for_the_assignment_ttl() {
 		$this->stub_explat_response( new WP_Error( 'http_request_failed', 'Timed out.' ) );
-		$abtest = new \WCPay\Experimental_Abtest( 'jetpack:anonF', 'woocommerce', true );
+		$abtest = new \WCPay\Experimental_Abtest( 'jetpack:anonF', 'poocommerce', true );
 
 		$abtest->get_variation( 'some_test' );
 
@@ -160,8 +160,8 @@ class Experimental_Abtest_Test extends WCPAY_UnitTestCase {
 
 		// Onboarding_Experiment_Abtest persists assignments, so a cached failure
 		// must stay an error for it, exactly like a fresh one.
-		$first  = new \WCPay\Onboarding_Experiment_Abtest( 'jetpack:anonG', 'woocommerce', true );
-		$second = new \WCPay\Onboarding_Experiment_Abtest( 'jetpack:anonG', 'woocommerce', true );
+		$first  = new \WCPay\Onboarding_Experiment_Abtest( 'jetpack:anonG', 'poocommerce', true );
+		$second = new \WCPay\Onboarding_Experiment_Abtest( 'jetpack:anonG', 'poocommerce', true );
 
 		$this->assertNull( $first->get_variation( 'some_test' ) );
 		$this->assertNull( $second->get_variation( 'some_test' ), 'A cached failure must stay indistinguishable from a fresh one.' );
@@ -170,8 +170,8 @@ class Experimental_Abtest_Test extends WCPAY_UnitTestCase {
 	public function test_an_undecodable_body_is_treated_as_a_failed_request() {
 		$requests = $this->stub_explat_response( '<html>Too many requests</html>' );
 
-		( new \WCPay\Experimental_Abtest( 'jetpack:anonH', 'woocommerce', true ) )->get_variation( 'some_test' );
-		( new \WCPay\Experimental_Abtest( 'jetpack:anonH', 'woocommerce', true ) )->get_variation( 'some_test' );
+		( new \WCPay\Experimental_Abtest( 'jetpack:anonH', 'poocommerce', true ) )->get_variation( 'some_test' );
+		( new \WCPay\Experimental_Abtest( 'jetpack:anonH', 'poocommerce', true ) )->get_variation( 'some_test' );
 
 		$this->assertSame( 1, $requests->count, 'A rate-limiter page is an outage, not an answer, and must back off the same way.' );
 	}
@@ -194,7 +194,7 @@ class Experimental_Abtest_Test extends WCPAY_UnitTestCase {
 			3
 		);
 
-		( new \WCPay\Experimental_Abtest( 'jetpack:anonI', 'woocommerce', true ) )->get_variation( 'some_test' );
+		( new \WCPay\Experimental_Abtest( 'jetpack:anonI', 'poocommerce', true ) )->get_variation( 'some_test' );
 
 		$this->assertSame(
 			3,
@@ -221,7 +221,7 @@ class Experimental_Abtest_Test extends WCPAY_UnitTestCase {
 			3
 		);
 
-		( new \WCPay\Experimental_Abtest( 'jetpack:anonJ', 'woocommerce', true ) )->get_variation( 'some_test' );
+		( new \WCPay\Experimental_Abtest( 'jetpack:anonJ', 'poocommerce', true ) )->get_variation( 'some_test' );
 
 		$this->assertSame(
 			'WooPayments/' . WCPAY_VERSION_NUMBER,

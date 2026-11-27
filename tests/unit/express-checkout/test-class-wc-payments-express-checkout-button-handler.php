@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Express_Checkout_Button_Handler_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use PHPUnit\Framework\MockObject\MockObject;
@@ -130,7 +130,7 @@ class WC_Payments_Express_Checkout_Button_Handler_Test extends WCPAY_UnitTestCas
 			'Should not require shipping address for subscription without shipping methods'
 		);
 
-		remove_filter( 'woocommerce_shipping_method_count', '__return_zero' );
+		remove_filter( 'poocommerce_shipping_method_count', '__return_zero' );
 	}
 
 	public function test_get_express_checkout_params() {
@@ -293,15 +293,15 @@ class WC_Payments_Express_Checkout_Button_Handler_Test extends WCPAY_UnitTestCas
 	}
 
 	public function test_account_creation_is_possible_when_username_and_password_generation_are_disabled() {
-		update_option( 'woocommerce_enable_signup_and_login_from_checkout', 'yes' );
-		update_option( 'woocommerce_registration_generate_username', 'no' );
-		update_option( 'woocommerce_registration_generate_password', 'no' );
+		update_option( 'poocommerce_enable_signup_and_login_from_checkout', 'yes' );
+		update_option( 'poocommerce_registration_generate_username', 'no' );
+		update_option( 'poocommerce_registration_generate_password', 'no' );
 
 		$this->assertTrue( $this->system_under_test->is_account_creation_possible() );
 	}
 
 	public function test_account_creation_is_not_possible_when_signup_from_checkout_is_disabled() {
-		update_option( 'woocommerce_enable_signup_and_login_from_checkout', 'no' );
+		update_option( 'poocommerce_enable_signup_and_login_from_checkout', 'no' );
 
 		$this->assertFalse( $this->system_under_test->is_account_creation_possible() );
 	}

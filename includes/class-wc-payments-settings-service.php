@@ -1,8 +1,8 @@
 <?php
 /**
- * WooCommerce Payments WC_Payments_Settings_Service Class
+ * PooCommerce Payments WC_Payments_Settings_Service Class
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 use WCPay\MultiCurrency\Interfaces\MultiCurrencySettingsInterface;

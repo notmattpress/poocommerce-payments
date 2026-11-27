@@ -2,7 +2,7 @@
 /**
  * Class WCPay_Multi_Currency_Admin_Notices_Tests
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 /**

@@ -23,7 +23,7 @@ if ! [ -x "$(command -v svn)" ]; then
 	sudo apt-get install -y subversion
 fi
 sudo systemctl start mysql.service
-bash bin/install-wp-tests.sh woocommerce_test root root localhost $WP_VERSION $WC_VERSION false
+bash bin/install-wp-tests.sh poocommerce_test root root localhost $WP_VERSION $WC_VERSION false
 echo 'Running the tests...'
 bash bin/phpunit.sh -c $CONFIGURATION_FILE --coverage-clover /tmp/clover.xml
 vendor/bin/coverage-check /tmp/clover.xml $COVERAGE

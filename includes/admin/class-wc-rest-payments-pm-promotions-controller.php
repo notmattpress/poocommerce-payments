@@ -2,7 +2,7 @@
 /**
  * Class WC_REST_Payments_Promotions_Controller
  *
- * @package WooCommerce\Payments\Admin
+ * @package PooCommerce\Payments\Admin
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -64,7 +64,7 @@ class WC_REST_Payments_PM_Promotions_Controller extends WC_Payments_REST_Control
 					'id' => [
 						'required'          => true,
 						'type'              => 'string',
-						'description'       => __( 'The promotion unique identifier.', 'woocommerce-payments' ),
+						'description'       => __( 'The promotion unique identifier.', 'poocommerce-payments' ),
 						'sanitize_callback' => 'sanitize_text_field',
 						'validate_callback' => [ $this, 'validate_promotion_id' ],
 					],
@@ -82,7 +82,7 @@ class WC_REST_Payments_PM_Promotions_Controller extends WC_Payments_REST_Control
 					'id' => [
 						'required'          => true,
 						'type'              => 'string',
-						'description'       => __( 'The promotion unique identifier.', 'woocommerce-payments' ),
+						'description'       => __( 'The promotion unique identifier.', 'poocommerce-payments' ),
 						'sanitize_callback' => 'sanitize_text_field',
 						'validate_callback' => [ $this, 'validate_promotion_id' ],
 					],

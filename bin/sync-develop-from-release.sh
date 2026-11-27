@@ -8,7 +8,7 @@
 # the release branch on every run instead of cherry-picking a commit, so it
 # stays correct after cherry-picks, release date changes, and develop moving on.
 #
-#   - Sets the version in woocommerce-payments.php, package.json and readme.txt.
+#   - Sets the version in poocommerce-payments.php, package.json and readme.txt.
 #   - Copies changelog.txt from the release branch. develop only changes it
 #     through these syncs, so the release branch has the full shipped history.
 #   - Replaces (or inserts) the release's changelog block in readme.txt. Only

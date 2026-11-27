@@ -77,7 +77,7 @@ export function* getTransactions( query ) {
 		yield controls.dispatch(
 			'core/notices',
 			'createErrorNotice',
-			__( 'Error retrieving transactions.', 'woocommerce-payments' )
+			__( 'Error retrieving transactions.', 'poocommerce-payments' )
 		);
 		yield updateErrorForTransactions( query, null, e );
 	}
@@ -145,7 +145,7 @@ export function* getFraudOutcomeTransactions( status, query ) {
 		yield controls.dispatch(
 			'core/notices',
 			'createErrorNotice',
-			__( 'Error retrieving transactions.', 'woocommerce-payments' )
+			__( 'Error retrieving transactions.', 'poocommerce-payments' )
 		);
 		yield updateErrorForFraudOutcomeTransactions( status, query, e );
 	}
@@ -193,7 +193,7 @@ export function* getFraudOutcomeTransactionsSummary( status, query ) {
 			'createErrorNotice',
 			__(
 				'Error retrieving on review transactions.',
-				'woocommerce-payments'
+				'poocommerce-payments'
 			)
 		);
 		yield updateErrorForFraudOutcomeTransactionsSummary( status, query, e );

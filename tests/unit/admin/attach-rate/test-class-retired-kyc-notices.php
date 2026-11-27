@@ -2,7 +2,7 @@
 /**
  * Tests for retired activation notices.
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 /**

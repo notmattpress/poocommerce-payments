@@ -386,7 +386,7 @@ describe( 'Account fees utility functions', () => {
 				} )
 			).toHaveAttribute(
 				'href',
-				'https://woocommerce.com/document/woopayments/fees/#united-kingdom'
+				'https://poocommerce.com/document/woopayments/fees/#united-kingdom'
 			);
 		} );
 
@@ -399,7 +399,7 @@ describe( 'Account fees utility functions', () => {
 				} )
 			).toHaveAttribute(
 				'href',
-				'https://woocommerce.com/document/woopayments/fees/#sweden'
+				'https://poocommerce.com/document/woopayments/fees/#sweden'
 			);
 		} );
 
@@ -412,7 +412,7 @@ describe( 'Account fees utility functions', () => {
 				} )
 			).toHaveAttribute(
 				'href',
-				'https://woocommerce.com/document/woopayments/fees/'
+				'https://poocommerce.com/document/woopayments/fees/'
 			);
 		} );
 
@@ -443,7 +443,7 @@ describe( 'Account fees utility functions', () => {
 				} )
 			).toHaveAttribute(
 				'href',
-				'https://woocommerce.com/document/woopayments/fees/#united-states'
+				'https://poocommerce.com/document/woopayments/fees/#united-states'
 			);
 		} );
 
@@ -472,7 +472,7 @@ describe( 'Account fees utility functions', () => {
 				} )
 			).toHaveAttribute(
 				'href',
-				'https://woocommerce.com/document/woopayments/fees/'
+				'https://poocommerce.com/document/woopayments/fees/'
 			);
 			expect(
 				container.querySelector( '.wcpay-fees-tooltip__hint-text' )

@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Customer
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 use WCPay\Exceptions\API_Exception;
@@ -38,17 +38,17 @@ class WC_Payments_Customer_Service {
 	const WCPAY_TEST_CUSTOMER_ID_OPTION = '_wcpay_customer_id_test';
 
 	/**
-	 * Key used to store customer id for non logged in users in WooCommerce Session.
+	 * Key used to store customer id for non logged in users in PooCommerce Session.
 	 */
 	const CUSTOMER_ID_SESSION_KEY = 'wcpay_customer_id';
 
 	/**
-	 * Key used to store the ID of the WooCommerce Session which the customer id above was stored in.
+	 * Key used to store the ID of the PooCommerce Session which the customer id above was stored in.
 	 */
 	const CUSTOMER_ID_SESSION_OWNER_KEY = 'wcpay_customer_id_session';
 
 	/**
-	 * Client for making requests to the WooCommerce Payments API
+	 * Client for making requests to the PooCommerce Payments API
 	 *
 	 * @var WC_Payments_API_Client
 	 */
@@ -100,7 +100,7 @@ class WC_Payments_Customer_Service {
 	 */
 	public function init_hooks() {
 		/*
-		 * Adds the WooCommerce Payments customer ID found in the user session
+		 * Adds the PooCommerce Payments customer ID found in the user session
 		 * to the WordPress user as metadata.
 		 *
 		 * This is helpful in scenarios where the shopper begins the checkout flow
@@ -110,7 +110,7 @@ class WC_Payments_Customer_Service {
 		 * This occurs when a user account is necessary for checkout, e.g. when the shopper
 		 * purchases a subscription product.
 		 */
-		add_action( 'woocommerce_created_customer', [ $this, 'add_customer_id_to_user' ] );
+		add_action( 'poocommerce_created_customer', [ $this, 'add_customer_id_to_user' ] );
 	}
 
 	/**
@@ -308,11 +308,11 @@ class WC_Payments_Customer_Service {
 		if ( null !== $wc_customer && ! empty( $wc_customer->get_username() ) ) {
 			// We have a logged in user, so add their username to the customer description.
 			// translators: %1$s Name, %2$s Username.
-			$description = sprintf( __( 'Name: %1$s, Username: %2$s', 'woocommerce-payments' ), $name, $wc_customer->get_username() );
+			$description = sprintf( __( 'Name: %1$s, Username: %2$s', 'poocommerce-payments' ), $name, $wc_customer->get_username() );
 		} else {
 			// Current user is not logged in.
 			// translators: %1$s Name.
-			$description = sprintf( __( 'Name: %1$s, Guest', 'woocommerce-payments' ), $name );
+			$description = sprintf( __( 'Name: %1$s, Guest', 'poocommerce-payments' ), $name );
 		}
 
 		$data = [
@@ -465,11 +465,11 @@ class WC_Payments_Customer_Service {
 	}
 
 	/**
-	 * Updates the given user with the given WooCommerce Payments
+	 * Updates the given user with the given PooCommerce Payments
 	 * customer ID.
 	 *
 	 * @param int    $user_id     The WordPress user ID.
-	 * @param string $customer_id The WooCommerce Payments customer ID.
+	 * @param string $customer_id The PooCommerce Payments customer ID.
 	 */
 	public function update_user_customer_id( int $user_id, string $customer_id ) {
 		$global = WC_Payments::is_network_saved_cards_enabled();
@@ -480,7 +480,7 @@ class WC_Payments_Customer_Service {
 	}
 
 	/**
-	 * Adds the WooCommerce Payments customer ID found in the user session
+	 * Adds the PooCommerce Payments customer ID found in the user session
 	 * to the WordPress user as metadata.
 	 *
 	 * @param int $user_id The WordPress user ID.
@@ -494,7 +494,7 @@ class WC_Payments_Customer_Service {
 			return;
 		}
 
-		// Retrieve the WooCommerce Payments customer ID from the user session.
+		// Retrieve the PooCommerce Payments customer ID from the user session.
 		$customer_id = $this->get_customer_id_from_session();
 
 		if ( ! $customer_id || $this->is_customer_id_bound_to_another_user( $customer_id, (int) $user_id ) ) {
@@ -509,7 +509,7 @@ class WC_Payments_Customer_Service {
 	 *
 	 * A customer ID from the session is only added to a new account when no other account has it.
 	 *
-	 * @param string $customer_id The WooCommerce Payments customer ID.
+	 * @param string $customer_id The PooCommerce Payments customer ID.
 	 * @param int    $user_id     The WordPress user ID to leave out of the check.
 	 *
 	 * @return bool True if another user has the customer ID.

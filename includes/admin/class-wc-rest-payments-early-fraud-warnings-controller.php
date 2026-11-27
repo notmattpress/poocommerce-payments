@@ -2,7 +2,7 @@
 /**
  * Class WC_REST_Payments_Early_Fraud_Warnings_Controller
  *
- * @package WooCommerce\Payments\Admin
+ * @package PooCommerce\Payments\Admin
  */
 
 use WCPay\Database_Cache;
@@ -42,7 +42,7 @@ class WC_REST_Payments_Early_Fraud_Warnings_Controller extends WC_Payments_REST_
 	/**
 	 * Constructor.
 	 *
-	 * @param WC_Payments_API_Client    $api_client     WooCommerce Payments API client.
+	 * @param WC_Payments_API_Client    $api_client     PooCommerce Payments API client.
 	 * @param WC_Payments_Order_Service $order_service  Order service.
 	 * @param Database_Cache            $database_cache Database cache.
 	 */

@@ -102,7 +102,7 @@ describe( 'Test mode notification', () => {
 			screen.getByRole( 'link', { name: /Learn more/ } )
 		).toHaveAttribute(
 			'href',
-			'https://woocommerce.com/document/woopayments/testing-and-troubleshooting/test-accounts/#developer-notes'
+			'https://poocommerce.com/document/woopayments/testing-and-troubleshooting/test-accounts/#developer-notes'
 		);
 	} );
 
@@ -132,7 +132,7 @@ describe( 'Test mode notification', () => {
 				screen.getByRole( 'link', { name: /Learn more/ } )
 			).toHaveAttribute(
 				'href',
-				'https://woocommerce.com/document/woopayments/testing-and-troubleshooting/test-accounts/#developer-notes'
+				'https://poocommerce.com/document/woopayments/testing-and-troubleshooting/test-accounts/#developer-notes'
 			);
 		}
 	);

@@ -2,7 +2,7 @@
 /**
  * Class Immutable_Param
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Core\Exceptions\Server\Request;

@@ -41,7 +41,7 @@ const VISIBLE_PER_SECTION = 3;
 // Single "Learn more" destination for the coaching card, per RiskOps review.
 // eslint-disable-next-line @typescript-eslint/naming-convention -- module-level URL constant
 const LEARN_MORE_HREF =
-	'https://woocommerce.com/document/managing-payment-disputes/';
+	'https://poocommerce.com/document/managing-payment-disputes/';
 
 // Shared by render and the section-view event so they split sections alike.
 const isPositive = ( rec: Recommendation ): boolean =>
@@ -53,14 +53,14 @@ const urgencyLabel = ( urgency: RecommendationUrgency ): string => {
 	switch ( urgency ) {
 		case 'critical':
 			// translators: SR-only label preceding a critical recommendation title.
-			return __( 'Important:', 'woocommerce-payments' );
+			return __( 'Important:', 'poocommerce-payments' );
 		case 'tip':
 			// translators: SR-only label preceding a tip recommendation title.
-			return __( 'Tip:', 'woocommerce-payments' );
+			return __( 'Tip:', 'poocommerce-payments' );
 		case 'positive':
 		default:
 			// translators: SR-only label preceding a positive recommendation title.
-			return __( 'Working well:', 'woocommerce-payments' );
+			return __( 'Working well:', 'poocommerce-payments' );
 	}
 };
 
@@ -148,7 +148,7 @@ const RecommendationSection: React.FC< RecommendationSectionProps > = ( {
 							} )
 						}
 					>
-						{ __( 'Learn more', 'woocommerce-payments' ) }
+						{ __( 'Learn more', 'poocommerce-payments' ) }
 						{ /* SR-only context. Setting aria-label would override
 						     the whole accessible name and drop ExternalLink's
 						     built-in "(opens in a new tab)" suffix; a
@@ -157,7 +157,7 @@ const RecommendationSection: React.FC< RecommendationSectionProps > = ( {
 							{ ' ' +
 								__(
 									'about managing payment disputes',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								) }
 						</VisuallyHidden>
 					</ExternalLink>
@@ -190,7 +190,7 @@ const RecommendationSection: React.FC< RecommendationSectionProps > = ( {
 									'Show 1 more',
 									'Show %d more',
 									hidden.length,
-									'woocommerce-payments'
+									'poocommerce-payments'
 								),
 								hidden.length
 							) }
@@ -229,8 +229,8 @@ const DisputeRecommendationsCard: React.FC< Props > = ( { dispute } ) => {
 	// success, so reframe the heading there (design 2026-06-04). Tips stay.
 	const coachingHeading =
 		outcomeByStatus[ dispute.status ] === 'keep_doing'
-			? __( 'Tips for future disputes', 'woocommerce-payments' )
-			: __( 'What could help next time', 'woocommerce-payments' );
+			? __( 'Tips for future disputes', 'poocommerce-payments' )
+			: __( 'What could help next time', 'poocommerce-payments' );
 
 	return (
 		<>
@@ -238,10 +238,10 @@ const DisputeRecommendationsCard: React.FC< Props > = ( { dispute } ) => {
 				dispute={ dispute }
 				productType={ productType }
 				section="whats_working_well"
-				heading={ __( "What's working well", 'woocommerce-payments' ) }
+				heading={ __( "What's working well", 'poocommerce-payments' ) }
 				description={ __(
 					'These are the evidence strengths that supported your dispute response.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				) }
 				items={ positives }
 			/>
@@ -252,7 +252,7 @@ const DisputeRecommendationsCard: React.FC< Props > = ( { dispute } ) => {
 				heading={ coachingHeading }
 				description={ __(
 					'Strengthen future dispute responses by adding these details to your evidence before submitting.',
-					'woocommerce-payments'
+					'poocommerce-payments'
 				) }
 				items={ criticalsAndTips }
 				learnMoreHref={ LEARN_MORE_HREF }

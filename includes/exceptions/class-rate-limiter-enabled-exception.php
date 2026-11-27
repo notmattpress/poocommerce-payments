@@ -2,7 +2,7 @@
 /**
  * Class Rate_Limiter_Enabled_Exception
  *
- * @package WooCommerce\Payments
+ * @package PooCommerce\Payments
  */
 
 namespace WCPay\Exceptions;

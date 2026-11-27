@@ -28,13 +28,13 @@ const showTosNotice = ( settingsUrl ) => {
 	createInfoNotice(
 		sprintf(
 			/* translators: %s: WooPayments */
-			__( 'Disabled %s', 'woocommerce-payments' ),
+			__( 'Disabled %s', 'poocommerce-payments' ),
 			'WooPayments'
 		),
 		{
 			actions: [
 				{
-					label: __( 'Undo', 'woocommerce-payments' ),
+					label: __( 'Undo', 'poocommerce-payments' ),
 					onClick: enableGateway,
 				},
 			],

@@ -6,7 +6,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { CollapsibleList, TaskItem } from '@woocommerce/experimental';
+import { CollapsibleList, TaskItem } from '@poocommerce/experimental';
 
 /**
  * Internal dependencies
@@ -22,7 +22,7 @@ jest.mock( 'wcpay/data/dispute-readiness', () => ( {
 	useDisputeReadinessActions: jest.fn(),
 } ) );
 
-jest.mock( '@woocommerce/experimental', () => ( {
+jest.mock( '@poocommerce/experimental', () => ( {
 	CollapsibleList: jest.fn(),
 	TaskItem: jest.fn(),
 } ) );
@@ -218,7 +218,7 @@ describe( 'DisputeReadinessCard', () => {
 							status: 'incomplete',
 							label: 'Recognizable statement descriptor',
 							actionUrl:
-								'https://example.test/wp-admin/admin.php?page=wc-settings&tab=checkout&section=woocommerce_payments',
+								'https://example.test/wp-admin/admin.php?page=wc-settings&tab=checkout&section=poocommerce_payments',
 							reviewPrompt: {
 								text: "Your statement descriptor will show up on your customers' bank statements. Does it clearly identify your store?",
 								currentDescriptor: 'MY STORE',
@@ -252,7 +252,7 @@ describe( 'DisputeReadinessCard', () => {
 			screen.getByRole( 'link', { name: 'Update' } )
 		).toHaveAttribute(
 			'href',
-			'https://example.test/wp-admin/admin.php?page=wc-settings&tab=checkout&section=woocommerce_payments'
+			'https://example.test/wp-admin/admin.php?page=wc-settings&tab=checkout&section=poocommerce_payments'
 		);
 
 		await userEvent.click(

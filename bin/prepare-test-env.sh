@@ -2,8 +2,8 @@
 
 # Prepares the PHPUnit environment in the WordPress container, reusing the existing install when it
 # is usable. The WordPress test bootstrap recreates the core tables on every run, so installing is
-# only needed once. Most WooCommerce tables persist between runs. Rebuild with --reinstall to reset
-# them, or to pick up the latest WordPress, WooCommerce and Gutenberg.
+# only needed once. Most PooCommerce tables persist between runs. Rebuild with --reinstall to reset
+# them, or to pick up the latest WordPress, PooCommerce and Gutenberg.
 #
 # Usage: bin/prepare-test-env.sh [--reinstall]
 
@@ -17,7 +17,7 @@ fi
 
 # Generate unique test database name per worktree
 TEST_DB_NAME="wcpay_tests_${WORKTREE_ID}"
-PLUGIN_DIR=/var/www/html/wp-content/plugins/woocommerce-payments
+PLUGIN_DIR=/var/www/html/wp-content/plugins/poocommerce-payments
 
 if [ -z "$(docker compose ps -q --status running wordpress)" ]; then
 	echo "The WordPress container is not running. Start it with: pnpm run up"

@@ -46,13 +46,13 @@ const formatPaymentMethodDetails = ( charge ) => {
  * Placeholders to display while loading.
  */
 const paymentMethodPlaceholders = {
-	id: __( 'id placeholder', 'woocommerce-payments' ),
-	bank: __( 'bank name placeholder', 'woocommerce-payments' ),
-	reference: __( 'reference placeholder', 'woocommerce-payments' ),
-	verifiedName: __( 'verified_name placeholder', 'woocommerce-payments' ),
-	customerName: __( 'customer_name placeholder', 'woocommerce-payments' ),
-	email: __( 'email placeholder', 'woocommerce-payments' ),
-	formattedAddress: __( 'address placeholder', 'woocommerce-payments' ),
+	id: __( 'id placeholder', 'poocommerce-payments' ),
+	bank: __( 'bank name placeholder', 'poocommerce-payments' ),
+	reference: __( 'reference placeholder', 'poocommerce-payments' ),
+	verifiedName: __( 'verified_name placeholder', 'poocommerce-payments' ),
+	customerName: __( 'customer_name placeholder', 'poocommerce-payments' ),
+	email: __( 'email placeholder', 'poocommerce-payments' ),
+	formattedAddress: __( 'address placeholder', 'poocommerce-payments' ),
 };
 
 const P24Details = ( { charge = {}, isLoading } ) => {
@@ -78,28 +78,28 @@ const P24Details = ( { charge = {}, isLoading } ) => {
 			<div className="payment-method-details__column">
 				<Detail
 					isLoading={ isLoading }
-					label={ __( 'Bank name', 'woocommerce-payments' ) }
+					label={ __( 'Bank name', 'poocommerce-payments' ) }
 				>
 					{ p24BankList[ bank ] }
 				</Detail>
 
 				<Detail
 					isLoading={ isLoading }
-					label={ __( 'Reference', 'woocommerce-payments' ) }
+					label={ __( 'Reference', 'poocommerce-payments' ) }
 				>
 					{ reference }
 				</Detail>
 
 				<Detail
 					isLoading={ isLoading }
-					label={ __( 'ID', 'woocommerce-payments' ) }
+					label={ __( 'ID', 'poocommerce-payments' ) }
 				>
 					{ id }
 				</Detail>
 
 				<Detail
 					isLoading={ isLoading }
-					label={ __( 'Verified name', 'woocommerce-payments' ) }
+					label={ __( 'Verified name', 'poocommerce-payments' ) }
 				>
 					{ verifiedName }
 				</Detail>
@@ -108,21 +108,21 @@ const P24Details = ( { charge = {}, isLoading } ) => {
 			<div className="payment-method-details__column">
 				<Detail
 					isLoading={ isLoading }
-					label={ __( 'Owner', 'woocommerce-payments' ) }
+					label={ __( 'Owner', 'poocommerce-payments' ) }
 				>
 					{ customerName }
 				</Detail>
 
 				<Detail
 					isLoading={ isLoading }
-					label={ __( 'Owner email', 'woocommerce-payments' ) }
+					label={ __( 'Owner email', 'poocommerce-payments' ) }
 				>
 					{ email }
 				</Detail>
 
 				<Detail
 					isLoading={ isLoading }
-					label={ __( 'Address', 'woocommerce-payments' ) }
+					label={ __( 'Address', 'poocommerce-payments' ) }
 				>
 					<span
 						dangerouslySetInnerHTML={ {

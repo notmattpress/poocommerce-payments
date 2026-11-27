@@ -33,7 +33,7 @@ const SupportPhoneInput = ( { setInputValid } ) => {
 	if ( supportPhone === '' || ( ! isTestPhoneValid && ! isPhoneValid ) ) {
 		supportPhoneError = __(
 			'A support phone number is required. Please enter a valid phone number.',
-			'woocommerce-payments'
+			'poocommerce-payments'
 		);
 	}
 
@@ -45,7 +45,7 @@ const SupportPhoneInput = ( { setInputValid } ) => {
 
 	const labelText = __(
 		'Support phone number (required)',
-		'woocommerce-payments'
+		'poocommerce-payments'
 	);
 	return (
 		<>
@@ -61,14 +61,14 @@ const SupportPhoneInput = ( { setInputValid } ) => {
 						{ __(
 							// eslint-disable-next-line max-len
 							"This number may appear on customer bank statements and in-person purchase receipts, but not in order emails. Use a number you're comfortable sharing publicly.",
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 						{ isTestModeOnboarding && (
 							<>
 								<br />
 								{ __(
 									'(+1 0000000000 can be used for test accounts)',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								) }
 							</>
 						) }

@@ -2,7 +2,7 @@
 /**
  * Class WCPAY_UnitTestCase_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use PHPUnit\Framework\MockObject\MockObject;

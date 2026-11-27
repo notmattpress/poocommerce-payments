@@ -1,12 +1,12 @@
 <?php
 /**
- * Set up Link note for WooCommerce inbox.
+ * Set up Link note for PooCommerce inbox.
  *
- * @package WooCommerce\Payments\Admin
+ * @package PooCommerce\Payments\Admin
  */
 
-use Automattic\WooCommerce\Admin\Notes\Note;
-use Automattic\WooCommerce\Admin\Notes\NoteTraits;
+use Automattic\PooCommerce\Admin\Notes\Note;
+use Automattic\PooCommerce\Admin\Notes\NoteTraits;
 use WCPay\PaymentMethods\Configs\Definitions\CardDefinition;
 use WCPay\PaymentMethods\Configs\Definitions\LinkDefinition;
 
@@ -27,7 +27,7 @@ class WC_Payments_Notes_Set_Up_StripeLink {
 	/**
 	 * CTA button link
 	 */
-	const NOTE_DOCUMENTATION_URL = 'https://woocommerce.com/document/woopayments/payment-methods/link-by-stripe/';
+	const NOTE_DOCUMENTATION_URL = 'https://poocommerce.com/document/woopayments/payment-methods/link-by-stripe/';
 
 	/**
 	 * The account service instance.
@@ -71,21 +71,21 @@ class WC_Payments_Notes_Set_Up_StripeLink {
 
 		$link_brand = LinkDefinition::get_title( self::$gateway->get_account_country() );
 
-		$note->set_title( __( 'Increase conversion at checkout', 'woocommerce-payments' ) );
+		$note->set_title( __( 'Increase conversion at checkout', 'poocommerce-payments' ) );
 		$note->set_content(
 			sprintf(
 				/* translators: %1$s: Link brand name (Link or Onelink). */
-				__( 'Reduce cart abandonment and create a frictionless checkout experience with %1$s. %1$s autofills your customer’s payment and shipping details, so they can check out in just six seconds with the %1$s optimized experience.', 'woocommerce-payments' ),
+				__( 'Reduce cart abandonment and create a frictionless checkout experience with %1$s. %1$s autofills your customer’s payment and shipping details, so they can check out in just six seconds with the %1$s optimized experience.', 'poocommerce-payments' ),
 				$link_brand
 			)
 		);
 		$note->set_content_data( (object) [] );
 		$note->set_type( Note::E_WC_ADMIN_NOTE_INFORMATIONAL );
 		$note->set_name( self::NOTE_NAME );
-		$note->set_source( 'woocommerce-payments' );
+		$note->set_source( 'poocommerce-payments' );
 		$note->add_action(
 			self::NOTE_NAME,
-			__( 'Set up now', 'woocommerce-payments' ),
+			__( 'Set up now', 'poocommerce-payments' ),
 			self::NOTE_DOCUMENTATION_URL,
 			'unactioned',
 			true

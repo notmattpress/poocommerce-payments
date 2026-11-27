@@ -16,7 +16,7 @@ import {
 } from '@wordpress/components';
 import { HorizontalRule } from '@wordpress/primitives';
 import { moreVertical } from '@wordpress/icons';
-import { CollapsibleList, TaskItem } from '@woocommerce/experimental';
+import { CollapsibleList, TaskItem } from '@poocommerce/experimental';
 
 /**
  * Internal dependencies
@@ -32,12 +32,12 @@ import { redirectTo } from 'wcpay/utils';
 import './style.scss';
 
 const learnMoreUrl =
-	'https://woocommerce.com/document/woopayments/fraud-and-disputes/preventing-disputes/';
+	'https://poocommerce.com/document/woopayments/fraud-and-disputes/preventing-disputes/';
 
 const LoadingState = () => (
 	<Card className="wcpay-dispute-readiness-card">
 		<CardHeader className="wcpay-dispute-readiness-card__header">
-			{ __( 'Dispute readiness', 'woocommerce-payments' ) }
+			{ __( 'Dispute readiness', 'poocommerce-payments' ) }
 		</CardHeader>
 		<CardBody className="wcpay-dispute-readiness-card__body is-loading">
 			<Spinner />
@@ -139,7 +139,7 @@ const DisputeReadinessCard = () => {
 						<div className="wcpay-dispute-readiness-card__title">
 							{ __(
 								'Dispute readiness',
-								'woocommerce-payments'
+								'poocommerce-payments'
 							) }
 						</div>
 						<p className="wcpay-dispute-readiness-card__description">
@@ -148,12 +148,12 @@ const DisputeReadinessCard = () => {
 								__(
 									// eslint-disable-next-line max-len
 									'These %d steps help customers recognize charges, understand your policies, and contact you before opening a dispute.',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								),
 								overview.total
 							) }{ ' ' }
 							<ExternalLink href={ learnMoreUrl }>
-								{ __( 'Learn more', 'woocommerce-payments' ) }
+								{ __( 'Learn more', 'poocommerce-payments' ) }
 							</ExternalLink>
 						</p>
 					</div>
@@ -161,7 +161,7 @@ const DisputeReadinessCard = () => {
 						icon={ moreVertical }
 						label={ __(
 							'Dispute readiness actions',
-							'woocommerce-payments'
+							'poocommerce-payments'
 						) }
 						popoverProps={ {
 							position: 'bottom left',
@@ -176,7 +176,7 @@ const DisputeReadinessCard = () => {
 										onClose();
 									} }
 								>
-									{ __( 'Dismiss', 'woocommerce-payments' ) }
+									{ __( 'Dismiss', 'poocommerce-payments' ) }
 								</MenuItem>
 							</MenuGroup>
 						) }
@@ -186,8 +186,8 @@ const DisputeReadinessCard = () => {
 					className="wcpay-dispute-readiness-card__task-list"
 					collapsed={ false }
 					show={ overview.signals.length }
-					collapseLabel={ __( 'Hide tasks', 'woocommerce-payments' ) }
-					expandLabel={ __( 'Show tasks', 'woocommerce-payments' ) }
+					collapseLabel={ __( 'Hide tasks', 'poocommerce-payments' ) }
+					expandLabel={ __( 'Show tasks', 'poocommerce-payments' ) }
 				>
 					{ overview.signals.map(
 						( signal: DisputeReadinessSignal ) => {
@@ -213,7 +213,7 @@ const DisputeReadinessCard = () => {
 									}
 									actionLabel={
 										signal.actionLabel ||
-										__( 'Fix it', 'woocommerce-payments' )
+										__( 'Fix it', 'poocommerce-payments' )
 									}
 								/>
 							);
@@ -225,7 +225,7 @@ const DisputeReadinessCard = () => {
 				<Modal
 					title={ __(
 						'Review statement descriptor',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					) }
 					className="wcpay-dispute-readiness-card__statement-descriptor-modal"
 					onRequestClose={ () =>
@@ -238,7 +238,7 @@ const DisputeReadinessCard = () => {
 							<div className="wcpay-dispute-readiness-card__statement-descriptor-current-label">
 								{ __(
 									'Current statement descriptor',
-									'woocommerce-payments'
+									'poocommerce-payments'
 								) }
 							</div>
 							<div className="wcpay-dispute-readiness-card__statement-descriptor-current-value">

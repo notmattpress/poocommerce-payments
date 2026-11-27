@@ -4,7 +4,7 @@
  */
 import React, { useMemo, useState } from 'react';
 import { __ } from '@wordpress/i18n';
-import { TextControlWithAffixes } from '@woocommerce/components';
+import { TextControlWithAffixes } from '@poocommerce/components';
 import {
 	formatCurrency,
 	isZeroDecimalCurrency,
@@ -35,7 +35,7 @@ const CurrencyPreview = ( {
 			: converted;
 		const charmed = rounded + parseFloat( charmValue );
 		return isNaN( charmed )
-			? __( 'Please enter a valid number', 'woocommerce-payments' )
+			? __( 'Please enter a valid number', 'poocommerce-payments' )
 			: formatCurrency(
 					isZeroDecimalCurrency( targetCurrency.code )
 						? charmed

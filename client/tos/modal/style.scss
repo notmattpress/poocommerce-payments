@@ -1,4 +1,4 @@
-.woocommerce-payments__tos-modal {
+.poocommerce-payments__tos-modal {
 	.components-modal__header {
 		height: auto;
 		padding: 12px 24px;
@@ -9,17 +9,17 @@
 		}
 	}
 
-	.woocommerce-payments__tos-modal-message {
+	.poocommerce-payments__tos-modal-message {
 		font-size: 14px;
 		line-height: 21px;
 		margin: 0 0 24px 0;
 	}
 
-	.woocommerce-payments__tos-footer {
+	.poocommerce-payments__tos-footer {
 		@include modal-footer-buttons;
 	}
 
-	.woocommerce-payments__tos-error {
+	.poocommerce-payments__tos-error {
 		margin: 0 0 1em;
 	}
 }

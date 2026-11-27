@@ -49,7 +49,7 @@ export const handleWooPayEmailInput = async (
 
 	// Make the otp iframe.
 	const iframe = document.createElement( 'iframe' );
-	iframe.title = __( 'WooPay SMS code verification', 'woocommerce-payments' );
+	iframe.title = __( 'WooPay SMS code verification', 'poocommerce-payments' );
 	iframe.classList.add( 'woopay-otp-iframe' );
 
 	// To prevent twentytwenty.intrinsicRatioVideos from trying to resize the iframe.
@@ -227,7 +227,7 @@ export const handleWooPayEmailInput = async (
 	const errorMessage = document.createElement( 'div' );
 	errorMessage.textContent = __(
 		'WooPay is unavailable at this time. Please complete your checkout below. Sorry for the inconvenience.',
-		'woocommerce-payments'
+		'poocommerce-payments'
 	);
 	errorMessage.classList.add( 'wc-block-checkout__guest-checkout-notice' );
 
@@ -362,7 +362,7 @@ export const handleWooPayEmailInput = async (
 				throw new Error(
 					__(
 						'Request for signature failed.',
-						'woocommerce-payments'
+						'poocommerce-payments'
 					)
 				);
 			} )
@@ -372,7 +372,7 @@ export const handleWooPayEmailInput = async (
 				}
 
 				throw new Error(
-					__( 'Signature not found.', 'woocommerce-payments' )
+					__( 'Signature not found.', 'poocommerce-payments' )
 				);
 			} )
 			.then( ( signature ) => {

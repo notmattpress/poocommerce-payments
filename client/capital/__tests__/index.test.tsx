@@ -4,7 +4,7 @@
 import React from 'react';
 import { render, screen, within } from '@testing-library/react';
 import user from '@testing-library/user-event';
-import { useUserPreferences } from '@woocommerce/data';
+import { useUserPreferences } from '@poocommerce/data';
 /**
  * Internal dependencies
  */
@@ -17,8 +17,8 @@ jest.mock( 'wcpay/data/capital', () => ( {
 	useActiveLoanSummary: jest.fn(),
 } ) );
 
-jest.mock( '@woocommerce/data', () => {
-	const actualModule = jest.requireActual( '@woocommerce/data' );
+jest.mock( '@poocommerce/data', () => {
+	const actualModule = jest.requireActual( '@poocommerce/data' );
 
 	return {
 		...actualModule,

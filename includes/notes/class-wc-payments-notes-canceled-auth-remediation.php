@@ -2,11 +2,11 @@
 /**
  * WC Admin Inbox note for canceled authorization fee remediation.
  *
- * @package WooCommerce\Payments\Admin
+ * @package PooCommerce\Payments\Admin
  */
 
-use Automattic\WooCommerce\Admin\Notes\Note;
-use Automattic\WooCommerce\Admin\Notes\NoteTraits;
+use Automattic\PooCommerce\Admin\Notes\Note;
+use Automattic\PooCommerce\Admin\Notes\NoteTraits;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -27,7 +27,7 @@ class WC_Payments_Notes_Canceled_Auth_Remediation {
 	const NOTE_NAME = 'wc-payments-notes-canceled-auth-remediation';
 
 	/**
-	 * URL to the WooCommerce Tools page.
+	 * URL to the PooCommerce Tools page.
 	 */
 	const NOTE_TOOLS_URL = 'admin.php?page=wc-status&tab=tools';
 
@@ -65,20 +65,20 @@ class WC_Payments_Notes_Canceled_Auth_Remediation {
 	public static function get_note() {
 		$note = new Note();
 
-		$note->set_title( __( 'WooPayments: Fix incorrect order data', 'woocommerce-payments' ) );
+		$note->set_title( __( 'WooPayments: Fix incorrect order data', 'poocommerce-payments' ) );
 		$note->set_content(
 			__(
-				'Some orders with canceled payment authorizations have incorrect data that may cause negative values in your WooCommerce Analytics. This affects stores using manual capture (authorize and capture separately). Run the fix tool to correct this.',
-				'woocommerce-payments'
+				'Some orders with canceled payment authorizations have incorrect data that may cause negative values in your PooCommerce Analytics. This affects stores using manual capture (authorize and capture separately). Run the fix tool to correct this.',
+				'poocommerce-payments'
 			)
 		);
 		$note->set_content_data( (object) [] );
 		$note->set_type( Note::E_WC_ADMIN_NOTE_WARNING );
 		$note->set_name( self::NOTE_NAME );
-		$note->set_source( 'woocommerce-payments' );
+		$note->set_source( 'poocommerce-payments' );
 		$note->add_action(
 			'run-remediation-tool',
-			__( 'Go to Tools page', 'woocommerce-payments' ),
+			__( 'Go to Tools page', 'poocommerce-payments' ),
 			admin_url( self::NOTE_TOOLS_URL ),
 			'actioned',
 			false
@@ -129,7 +129,7 @@ class WC_Payments_Notes_Canceled_Auth_Remediation {
 			time() + 10,
 			WC_Payments_Remediate_Canceled_Auth_Fees::CHECK_AFFECTED_ORDERS_HOOK,
 			[],
-			'woocommerce-payments'
+			'poocommerce-payments'
 		);
 	}
 

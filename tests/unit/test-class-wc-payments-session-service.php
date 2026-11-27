@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Session_Service_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use PHPUnit\Framework\MockObject\MockObject;
@@ -83,7 +83,7 @@ class WC_Payments_Session_Service_Test extends WCPAY_UnitTestCase {
 		$this->migration_session_ids          = [];
 		[ WC()->session, $_COOKIE, $user_id ] = $this->original_session_state;
 		wp_set_current_user( $user_id );
-		remove_filter( 'woocommerce_set_cookie_enabled', [ $this, 'capture_session_cookie' ], 10 );
+		remove_filter( 'poocommerce_set_cookie_enabled', [ $this, 'capture_session_cookie' ], 10 );
 
 		remove_filter( 'pre_option_' . WC_Payments_Session_Service::SESSION_STORE_ID_OPTION, [ $this, 'mock_session_store_id' ] );
 		parent::tear_down();
@@ -99,7 +99,7 @@ class WC_Payments_Session_Service_Test extends WCPAY_UnitTestCase {
 
 		$paid_order = WC_Helper_Order::create_order();
 		$paid_order->set_status( Order_Status::COMPLETED );
-		$paid_order->set_payment_method( 'woocommerce_payments' );
+		$paid_order->set_payment_method( 'poocommerce_payments' );
 		$paid_order->set_cart_hash( 'same_cart' );
 		$paid_order->update_meta_data( '_intent_id', 'pi_test' );
 		$paid_order->save();
@@ -247,7 +247,7 @@ class WC_Payments_Session_Service_Test extends WCPAY_UnitTestCase {
 		$_COOKIE      = [];
 		WC()->session = new WC_Session_Handler();
 		WC()->session->init_session_cookie();
-		add_filter( 'woocommerce_set_cookie_enabled', [ $this, 'capture_session_cookie' ], 10, 3 );
+		add_filter( 'poocommerce_set_cookie_enabled', [ $this, 'capture_session_cookie' ], 10, 3 );
 		WC()->session->set_customer_session_cookie( true );
 		$session_id                    = WC()->session->get_customer_id();
 		$this->migration_session_ids[] = $session_id;
@@ -263,7 +263,7 @@ class WC_Payments_Session_Service_Test extends WCPAY_UnitTestCase {
 	 * @return bool
 	 */
 	public function capture_session_cookie( $enabled, $name, $value ) {
-		if ( 0 === strpos( $name, 'wp_woocommerce_session_' ) ) {
+		if ( 0 === strpos( $name, 'wp_poocommerce_session_' ) ) {
 			$_COOKIE[ $name ] = $value;
 			return false;
 		}
@@ -293,11 +293,11 @@ class WC_Payments_Session_Service_Test extends WCPAY_UnitTestCase {
 			->addMethods( [ 'set' ] )
 			->getMock();
 
-		add_filter( 'woocommerce_session_handler', [ $this, 'return_stdclass' ] );
+		add_filter( 'poocommerce_session_handler', [ $this, 'return_stdclass' ] );
 
 		$this->assertFalse( $this->session_service->user_just_logged_in() );
 
-		remove_filter( 'woocommerce_session_handler', [ $this, 'return_stdclass' ] );
+		remove_filter( 'poocommerce_session_handler', [ $this, 'return_stdclass' ] );
 
 		WC()->session = $tmp_session;
 	}
@@ -416,11 +416,11 @@ class WC_Payments_Session_Service_Test extends WCPAY_UnitTestCase {
 			->addMethods( [ 'set' ] )
 			->getMock();
 
-		add_filter( 'woocommerce_session_handler', [ $this, 'return_stdclass' ] );
+		add_filter( 'poocommerce_session_handler', [ $this, 'return_stdclass' ] );
 
 		$this->assertNull( $this->session_service->get_sift_session_id() );
 
-		remove_filter( 'woocommerce_session_handler', [ $this, 'return_stdclass' ] );
+		remove_filter( 'poocommerce_session_handler', [ $this, 'return_stdclass' ] );
 
 		WC()->session = $tmp_session;
 	}
@@ -446,11 +446,11 @@ class WC_Payments_Session_Service_Test extends WCPAY_UnitTestCase {
 			->addMethods( [ 'set' ] )
 			->getMock();
 
-		add_filter( 'woocommerce_session_handler', [ $this, 'return_stdclass' ] );
+		add_filter( 'poocommerce_session_handler', [ $this, 'return_stdclass' ] );
 
 		$this->assertNull( $this->session_service->get_cookie_session_id() );
 
-		remove_filter( 'woocommerce_session_handler', [ $this, 'return_stdclass' ] );
+		remove_filter( 'poocommerce_session_handler', [ $this, 'return_stdclass' ] );
 
 		WC()->session = $tmp_session;
 	}

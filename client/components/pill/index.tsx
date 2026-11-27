@@ -2,7 +2,7 @@
  * External dependencies
  */
 import React, { FC, ReactNode } from 'react';
-import { Pill as WC_Pill } from '@woocommerce/components';
+import { Pill as WC_Pill } from '@poocommerce/components';
 import clsx from 'clsx';
 
 /**

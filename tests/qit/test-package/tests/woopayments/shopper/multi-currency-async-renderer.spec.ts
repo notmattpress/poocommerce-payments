@@ -89,10 +89,10 @@ test.describe(
 				'wcpay_multi_currency_enable_auto_currency'
 			);
 
-			// Read the store's default currency symbol via WooCommerce.
+			// Read the store's default currency symbol via PooCommerce.
 			defaultCurrencySymbol = (
 				await qit.wp(
-					'eval "echo html_entity_decode( get_woocommerce_currency_symbol() );"',
+					'eval "echo html_entity_decode( get_poocommerce_currency_symbol() );"',
 					true
 				)
 			).stdout.trim();
@@ -117,7 +117,7 @@ test.describe(
 			// enqueues on any frontend page in cache-optimized mode.
 			switcherPageId = (
 				await qit.wp(
-					`post create --post_type=page --post_status=publish --post_title='MCCY Switcher Test' --porcelain --post_content='<!-- wp:woocommerce-payments/multi-currency-switcher /-->'`,
+					`post create --post_type=page --post_status=publish --post_title='MCCY Switcher Test' --porcelain --post_content='<!-- wp:poocommerce-payments/multi-currency-switcher /-->'`,
 					true
 				)
 			).stdout.trim();
@@ -295,7 +295,7 @@ test.describe(
 
 				// Prices should be in EUR (server-side converted).
 				const priceAmount = shopperPage
-					.locator( '.woocommerce-Price-amount' )
+					.locator( '.poocommerce-Price-amount' )
 					.first();
 				await expect( priceAmount ).toBeVisible();
 				const priceText = await priceAmount.textContent();

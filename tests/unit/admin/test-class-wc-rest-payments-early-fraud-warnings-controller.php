@@ -2,7 +2,7 @@
 /**
  * Class WC_REST_Payments_Early_Fraud_Warnings_Controller_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use WCPay\Database_Cache;

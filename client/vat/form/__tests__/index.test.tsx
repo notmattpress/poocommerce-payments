@@ -113,7 +113,7 @@ describe( 'VAT form requirement hint copy', () => {
 		} );
 		expect( learnMoreLink ).toHaveAttribute(
 			'href',
-			'https://woocommerce.com/document/woopayments/taxes/documents/'
+			'https://poocommerce.com/document/woopayments/taxes/documents/'
 		);
 	} );
 

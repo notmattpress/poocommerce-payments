@@ -2,7 +2,7 @@
 /**
  * Class WC_Payments_Http_Test
  *
- * @package WooCommerce\Payments\Tests
+ * @package PooCommerce\Payments\Tests
  */
 
 use Automattic\Jetpack\Connection\Manager;

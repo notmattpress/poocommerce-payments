@@ -5,7 +5,7 @@
  *
  * It also allows an arbitrary string for dynamic event names.
  *
- * @see https://github.com/Automattic/woocommerce-payments/issues/8075#issuecomment-1933823687
+ * @see https://github.com/Automattic/poocommerce-payments/issues/8075#issuecomment-1933823687
  */
 export type ShopperEvent =
 	| 'applepay_button_click'
@@ -33,7 +33,7 @@ export type ShopperEvent =
  *
  * It also allows an arbitrary string for dynamic event names.
  *
- * @see https://github.com/Automattic/woocommerce-payments/issues/8075#issuecomment-1933823687
+ * @see https://github.com/Automattic/poocommerce-payments/issues/8075#issuecomment-1933823687
  */
 export type MerchantEvent =
 	| 'page_view'
